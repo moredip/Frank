@@ -1,0 +1,17 @@
+//
+// Prefix header for all source files of the 'CocoaTouchStaticLibrary' target in the 'CocoaTouchStaticLibrary' project.
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+	#import <UIKit/UIKit.h>
+#endif
+
+//#define OldLog(...) NSLog(...)
+#ifndef NEW_LOG_DEFINED
+#define NEW_LOG_DEFINED 1
+
+#define NSLog(f,...) LogToMemory(f,##__VA_ARGS__)
+
+extern void LogToMemory(NSString *format, ...);
+#endif
