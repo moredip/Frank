@@ -7,7 +7,7 @@ Frank is an iPhone/iPad UI testing tool. It combines UISpec with an embedded HTT
 
 Architecture
 ----
-![Frank Architecture Overview](https://github.com/skizz/frank/raw/master/doc/Frank%20Architecture.png)
+![Frank Architecture Overview](http://github.com/moredip/frank/raw/master/doc/Frank%20Architecture.png)
 
 Usage
 -----
