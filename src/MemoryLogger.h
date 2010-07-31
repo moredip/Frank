@@ -3,7 +3,7 @@
 //  Frank
 //
 //  Created by Derek Longmuir on 5/31/10.
-//  Copyright 2010 ThoughtWorks. All rights reserved.
+//  Copyright 2010 ThoughtWorks. See NOTICE file for details.
 //
 
 #import <Foundation/Foundation.h>

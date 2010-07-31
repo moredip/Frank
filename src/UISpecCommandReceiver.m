@@ -3,7 +3,7 @@
 //  UICatalog
 //
 //  Created by phodgson on 5/23/10.
-//  Copyright 2010 ThoughtWorks. All rights reserved.
+//  Copyright 2010 ThoughtWorks. See NOTICE file for details.
 //
 
 #import "UISpecCommandReceiver.h"
