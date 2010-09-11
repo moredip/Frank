@@ -52,6 +52,39 @@ module FrankHelper
     puts JSON.pretty_generate(JSON.parse(res)) rescue puts res #dumping a super-deep DOM causes errors
   end
 
+
+  def wait_for_frank_to_come_up
+    num_consec_successes = 0
+    num_consec_failures = 0
+    Timeout.timeout(60) do
+      while num_consec_successes <= 6
+        if frankly_ping
+          num_consec_failures = 0
+          num_consec_successes += 1
+          print (num_consec_successes == 1 ) ? "\n" : "\r"
+          print "FRANK!".slice(0,num_consec_successes)
+        else
+          num_consec_successes = 0
+          num_consec_failures += 1
+          print (num_consec_failures == 1 ) ? "\n" : "\r"
+          print "PING FAILED" + "!"*num_consec_failures
+        end
+        STDOUT.flush
+        sleep 0.2
+      end
+      puts ''
+    end
+  end
+
+  def frankly_ping
+    get_to_uispec_server('')
+    return true
+  rescue Errno::ECONNREFUSED
+    return false
+  rescue EOFError
+    return false
+  end
+
   #taken from Ian Dee's Encumber
   def post_to_uispec_server( verb, command_hash )
     url = frank_url_for( verb )
