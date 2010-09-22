@@ -82,7 +82,23 @@ When /^I fill in text fields as follows:$/ do |table|
 end
 
 # -- Rotate -- #
-And /^I rotate to the "([^\"]*)"$/ do |direction|
+Given /^the device is in a landscape orientation$/ do
+  unless frankly_oriented_landscape?
+    rotate_simulator_left
+    sleep 1
+    raise "expected orientation to be landscape after rotating left, but it is #{frankly_current_orientation}" unless frankly_oriented_landscape?
+  end
+end
+
+Given /^the device is in a portrait orientation$/ do
+  unless frankly_oriented_portrait?
+    rotate_simulator_left
+    sleep 1
+    raise "expected orientation to be portrait after rotating left, but it is #{frankly_current_orientation}" unless frankly_oriented_portrait?
+  end
+end
+
+Then /^I rotate to the "([^\"]*)"$/ do |direction|
   if direction == "right"
     rotate_simulator_right
   elsif direction == "left"

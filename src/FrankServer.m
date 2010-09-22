@@ -14,6 +14,7 @@
 #import "FrankCommandRoute.h"
 #import "DumpCommand.h"
 #import "MapOperationCommand.h"
+#import "OrientationCommand.h"
 #import "MemoryLogger.h"
 
 void LogToMemory(NSString *format, ...) {
@@ -52,6 +53,7 @@ void LogToMemory(NSString *format, ...) {
 		FrankCommandRoute *frankCommandRoute = [[[FrankCommandRoute alloc] init] autorelease];
 		[frankCommandRoute registerCommand:[[[DumpCommand alloc]init]autorelease] withName:@"dump"];
 		[frankCommandRoute registerCommand:[[[MapOperationCommand alloc]init]autorelease] withName:@"map"];
+		[frankCommandRoute registerCommand:[[[OrientationCommand alloc]init]autorelease] withName:@"orientation"];
 		[[RequestRouter singleton] registerRoute:frankCommandRoute];
 		
 		StaticResourcesRoute *staticRoute = [[[StaticResourcesRoute alloc] initWithStaticResourceSubDir:bundleName] autorelease];

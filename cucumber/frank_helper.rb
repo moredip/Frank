@@ -52,6 +52,18 @@ module FrankHelper
     puts JSON.pretty_generate(JSON.parse(res)) rescue puts res #dumping a super-deep DOM causes errors
   end
 
+  def frankly_oriented_portrait?
+    'portrait' == frankly_current_orientation
+  end
+
+  def frankly_oriented_landscape?
+    'landscape' == frankly_current_orientation
+  end
+
+  def frankly_current_orientation
+    res = get_to_uispec_server( 'orientation' )
+    JSON.parse( res )['orientation']
+  end
 
   def wait_for_frank_to_come_up
     num_consec_successes = 0
