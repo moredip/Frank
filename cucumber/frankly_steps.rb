@@ -64,9 +64,9 @@ end
 
 # -- Type/Fill in -- #
 
-When /^I type "([^\"]*)" into the "([^\"]*)" text field$/ do |text_to_type, mark|
-  text_fields_modified = frankly_map( "textField marked:'#{mark}'", "setText:", text_to_type )
-  raise "could not find text fields marked '#{text_to_type}'" if text_fields_modified.empty?
+When /^I type "([^\"]*)" into the "([^\"]*)" text field$/ do |text_to_type, field_name|
+  text_fields_modified = frankly_map( "textField placeholder:'#{field_name}'", "setText:", text_to_type )
+  raise "could not find text fields with placeholder '#{field_name}'" if text_fields_modified.empty?
   #TODO raise warning if text_fields_modified.count > 1
 end
 
