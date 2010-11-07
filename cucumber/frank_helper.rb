@@ -33,6 +33,25 @@ module FrankHelper
     check_element_exists( "view marked:'#{expected_mark}'" )
   end
 
+  def app_exec(method_name, *method_args)
+    operation_map = {
+      :method_name => method_name,
+      :arguments => method_args
+    }
+    
+    before = Time.now
+    res = post_to_uispec_server( 'app_exec', :operation => operation_map )
+    logger.debug( "MAP applying #{method_name} with args:( #{method_args.inspect} ) to 'Application Delegate' took #{Time.now - before} seconds" )
+
+    res = JSON.parse( res )
+    if res['outcome'] != 'SUCCESS'
+      raise "app_exec #{method_name} failed because: #{res['reason']}\n#{res['details']}"
+    end
+
+    res['results']
+  end
+  
+  
   def frankly_map( query, method_name, *method_args )
     operation_map = {
       :method_name => method_name,
