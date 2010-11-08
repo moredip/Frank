@@ -64,9 +64,9 @@ end
 
 # -- Type/Fill in -- #
 
-When /^I type "([^\"]*)" into the "([^\"]*)" text field$/ do |text_to_type, mark|
-  text_fields_modified = frankly_map( "textField marked:'#{mark}'", "setText:", text_to_type )
-  raise "could not find text fields marked '#{text_to_type}'" if text_fields_modified.empty?
+When /^I type "([^\"]*)" into the "([^\"]*)" text field$/ do |text_to_type, field_name|
+  text_fields_modified = frankly_map( "textField placeholder:'#{field_name}'", "setText:", text_to_type )
+  raise "could not find text fields with placeholder '#{field_name}'" if text_fields_modified.empty?
   #TODO raise warning if text_fields_modified.count > 1
 end
 
@@ -82,7 +82,23 @@ When /^I fill in text fields as follows:$/ do |table|
 end
 
 # -- Rotate -- #
-And /^I rotate to the "([^\"]*)"$/ do |direction|
+Given /^the device is in a landscape orientation$/ do
+  unless frankly_oriented_landscape?
+    rotate_simulator_left
+    sleep 1
+    raise "expected orientation to be landscape after rotating left, but it is #{frankly_current_orientation}" unless frankly_oriented_landscape?
+  end
+end
+
+Given /^the device is in a portrait orientation$/ do
+  unless frankly_oriented_portrait?
+    rotate_simulator_left
+    sleep 1
+    raise "expected orientation to be portrait after rotating left, but it is #{frankly_current_orientation}" unless frankly_oriented_portrait?
+  end
+end
+
+Then /^I rotate to the "([^\"]*)"$/ do |direction|
   if direction == "right"
     rotate_simulator_right
   elsif direction == "left"

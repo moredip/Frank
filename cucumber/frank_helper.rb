@@ -33,6 +33,25 @@ module FrankHelper
     check_element_exists( "view marked:'#{expected_mark}'" )
   end
 
+  def app_exec(method_name, *method_args)
+    operation_map = {
+      :method_name => method_name,
+      :arguments => method_args
+    }
+    
+    before = Time.now
+    res = post_to_uispec_server( 'app_exec', :operation => operation_map )
+    logger.debug( "MAP applying #{method_name} with args:( #{method_args.inspect} ) to 'Application Delegate' took #{Time.now - before} seconds" )
+
+    res = JSON.parse( res )
+    if res['outcome'] != 'SUCCESS'
+      raise "app_exec #{method_name} failed because: #{res['reason']}\n#{res['details']}"
+    end
+
+    res['results']
+  end
+  
+  
   def frankly_map( query, method_name, *method_args )
     operation_map = {
       :method_name => method_name,
@@ -52,6 +71,18 @@ module FrankHelper
     puts JSON.pretty_generate(JSON.parse(res)) rescue puts res #dumping a super-deep DOM causes errors
   end
 
+  def frankly_oriented_portrait?
+    'portrait' == frankly_current_orientation
+  end
+
+  def frankly_oriented_landscape?
+    'landscape' == frankly_current_orientation
+  end
+
+  def frankly_current_orientation
+    res = get_to_uispec_server( 'orientation' )
+    JSON.parse( res )['orientation']
+  end
 
   def wait_for_frank_to_come_up
     num_consec_successes = 0
