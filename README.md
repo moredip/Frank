@@ -40,7 +40,6 @@ Frankified target
 5. Add the code to launch Frank to the Frankified app. You can do this
 either by creating a whole new main.m just for testing with Frank or
 by using conditional compilation.
-
 To create a whole new main.m, duplicate your main.m file and add the
 Frank launching code to it. See the sample provided in
 Frank/main.m.sample. Be sure to use your new main.m in the Frankified
