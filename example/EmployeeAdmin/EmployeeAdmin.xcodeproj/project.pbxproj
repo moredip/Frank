@@ -15,6 +15,7 @@
 		2860E32F111B888700E27156 /* MainWindow_Pad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2860E32D111B888700E27156 /* MainWindow_Pad.xib */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		D64EF8F911D3C332002A8749 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D64EF8F811D3C332002A8749 /* main.m */; };
+		D69A0B0F124C2ED900BEC9EC /* OrientationCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D69A0B0E124C2ED900BEC9EC /* OrientationCommand.m */; };
 		D6A833ED11CDBF35001B8585 /* PureMVC_ObjectiveC_1_1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A833B411CDBF35001B8585 /* PureMVC_ObjectiveC_1_1.a */; };
 		D6A833EF11CDBF35001B8585 /* ApplicationFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A833BE11CDBF35001B8585 /* ApplicationFacade.m */; };
 		D6A833F011CDBF35001B8585 /* CreateUserCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A833C111CDBF35001B8585 /* CreateUserCommand.m */; };
@@ -143,6 +144,8 @@
 		32CA4F630368D1EE00C91783 /* EmployeeAdmin_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployeeAdmin_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* EmployeeAdmin-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "EmployeeAdmin-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		D64EF8F811D3C332002A8749 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D69A0B0D124C2ED900BEC9EC /* OrientationCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrientationCommand.h; sourceTree = "<group>"; };
+		D69A0B0E124C2ED900BEC9EC /* OrientationCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrientationCommand.m; sourceTree = "<group>"; };
 		D6A8339F11CDBF35001B8585 /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
 		D6A833A011CDBF35001B8585 /* Facade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facade.h; sourceTree = "<group>"; };
 		D6A833A111CDBF35001B8585 /* ICommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICommand.h; sourceTree = "<group>"; };
@@ -784,6 +787,8 @@
 		D6A8363511CDC594001B8585 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				D69A0B0D124C2ED900BEC9EC /* OrientationCommand.h */,
+				D69A0B0E124C2ED900BEC9EC /* OrientationCommand.m */,
 				D6D79B5511D7FB7C003E0E60 /* Operation.h */,
 				D6D79B5611D7FB7C003E0E60 /* Operation.m */,
 				D6A8363611CDC594001B8585 /* DumpCommand.h */,
@@ -1003,6 +1008,7 @@
 				D6A8367F11CDC594001B8585 /* UISpecCommandReceiver.m in Sources */,
 				D64EF8F911D3C332002A8749 /* main.m in Sources */,
 				D6D79B5711D7FB7C003E0E60 /* Operation.m in Sources */,
+				D69A0B0F124C2ED900BEC9EC /* OrientationCommand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
