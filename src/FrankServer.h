@@ -14,6 +14,7 @@
 	HTTPServer *_httpServer;
 }
 
+- (id) initWithDefaultBundle;
 - (id) initWithStaticFrankBundleNamed:(NSString *)bundleName;
 
 - (BOOL) startServer;

@@ -41,6 +41,10 @@ void LogToMemory(NSString *format, ...) {
 
 @implementation FrankServer
 
+- (id) initWithDefaultBundle {
+	return [self initWithStaticFrankBundleNamed: @"frank_static_resources"];
+}
+
 - (id) initWithStaticFrankBundleNamed:(NSString *)bundleName
 {
 	self = [super init];
