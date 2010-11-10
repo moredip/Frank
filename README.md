@@ -98,7 +98,7 @@ Writing Cucumber Steps
 Tutorial - Your first Frankified App
 ------------------------------------
 
-Moved - Please see the [tutorial/Tutorial.md](tutorial/Tutorial.md) for detailed instructions.
+Moved - Please see the [tutorial/Tutorial.md](Frank/tutorial/Tutorial.md) for detailed instructions.
 
 
 Anything else?
