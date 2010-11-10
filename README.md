@@ -105,6 +105,7 @@ Anything else?
 --------------
 
 There are a couple of files to get you started writing your cucumber and gherkin.
+
 * See **cucumber/frankly_steps.rb** for steps that can be used in your cucumber scenarios.
 * See **cucumber/frank_helper.rb** for more low level ruby calls that can be used in writing steps.
 
@@ -120,14 +121,14 @@ Pete Hodgson
 
 Derek Longmuir
 
-* [github - dereklongmuir](http://github.com/dereklongmuir)
+* [github - dlongmuir](http://github.com/dlongmuir)
 
 
 Please help!
 ------------
 
 We are still working on improving this tool. Please fork this repo and
-commit your changes. Feedback, suggestions and questions are welcome
+commit your changes. Feedback, suggestions and questions are welcome.
 <tell how to here>.
 
 
