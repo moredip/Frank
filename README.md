@@ -50,9 +50,6 @@ Installing Frank
 
 (see section below "Your first Frankified App" for detailed steps)
 
-There is also a [brief screencast](http://screencast.com/t/XnW5pL8q)
-showing these setup steps.
-
 1. Duplicate your app target, creating a new "Frankified" target
 
 2. Create a Frank group in your project to hold the Frank source
@@ -76,7 +73,7 @@ target.
 6. Enable accessibility features. In OSX, go to System Preferences,
 Universal Access and check "Enable access for assistive devices". In
 the simulator open the Settings, then
-General->Accessibility->Accessibility Inspector and switch it to "On".
+General->Accessibility->Accessibility Inspector and switch it to "On". This [brief screencast](http://screencast.com/t/XnW5pL8q) demonstrates how to do that.
 
 
 7. Build and run. You might get a warning about allowing incoming
