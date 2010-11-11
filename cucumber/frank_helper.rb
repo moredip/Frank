@@ -16,12 +16,12 @@ module FrankHelper
   end
 
   def check_element_exists( query )
-    puts "checking #{query} exists..."
+    #puts "checking #{query} exists..."
     element_exists( query ).should be_true
   end
 
   def check_element_does_not_exist( query )
-    puts "checking #{query} does not exist..."
+    #puts "checking #{query} does not exist..."
     element_exists( query ).should be_false
   end
 
