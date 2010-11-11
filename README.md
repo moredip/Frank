@@ -1,4 +1,4 @@
-Frank
+What is Frank?
 =====
 
 An iPhone and iPad testing tool that uses UISpec's UIScript to
@@ -10,19 +10,18 @@ remotely drive an App.
 Goals
 -----
 
-* Provide support for using Cucumber when developing an iOS app.
-* Use UIScript syntax to drive the app
-* Work on both the simulator and device
-* Provide supporting tools and techniques for supporting BDD and
-  regression testing
+* Provide support for automating functional testing of an iOS app.
+* Support Cucumber primarily, but create an architecture which allows other tools such as JBehave or Fitnesse to also drive iOS tests. 
+* Work on both the simulator and device.
+* Provide tools and techniques to support BDD and automated regression testing.
 
 
 Features
 --------
 
-* Embedded web server allows inspection of iOS GUI to ease the
-  difficulty in writing scripts
-* Record Cucumber and simulator runs to see how the UI is responding
+* Embedded web app allows inspection of live iOS GUI as it is running, to ease the difficulty in writing scripts.
+* Record Frank test runs as movies to see how the UI is responding throughout your script. We've found this very useful when included as a CI build artifact. 
+* Leverage UISpec's UIQuery syntax to easily select specific GUI elements within your app.
 
 
 Overview
@@ -31,7 +30,7 @@ Overview
 ![Frank Architecture Overview](http://github.com/moredip/frank/raw/master/doc/Frank%20Architecture.png)
 
 There are also slides from a [lightning talk](http://moredip.github.com/frank_lightning_talk_slides.html)
-given by moredip about Frank.
+given by Pete about Frank.
 
 
 Getting Started
@@ -41,9 +40,9 @@ Getting started is easy. You just need to create a new target, add the
 source, and set up cucumber. We'll go through those steps in more
 detail below. 
 
-While the details might look long and intimidating, we've tried to
-make them easy to follow even for an Xcode beginner so if you are an
-experienced iOS developer it will go very quickly.
+While the details might seem a little intimidating, we've tried to
+make them easy to follow even for an Xcode beginner. If you are an
+experienced iOS developer it should be a breeze.
 
 
 Installing Frank
@@ -92,13 +91,13 @@ warnings from the included libraries. These can be safely ignored.
 Writing Cucumber Steps
 ----------------------
 
-* more to come - see the tutorial below for some getting started info
+* more to come - see the tutorial below for some basic info
 
 
 Tutorial - Your first Frankified App
 ------------------------------------
 
-Moved - Please see the [tutorial/Tutorial.md](Frank/tree/master/tutorial/Tutorial.md) for detailed instructions.
+Please see the [tutorial/Tutorial.md](Frank/tree/master/tutorial/Tutorial.md) for detailed instructions on how to get started testing *your* iPhone or iPad application with Frank today!
 
 
 Anything else?
@@ -128,14 +127,11 @@ Please help!
 ------------
 
 We are still working on improving this tool. Please fork this repo and
-commit your changes. Feedback, suggestions and questions are welcome.
-<tell how to here>.
-
+commit your changes. Feedback, suggestions and questions are most welcome.
 
 FAQ
 ---
 
 * ** Why isn't Frank compiled as a static library?**
 
-  Something to do with UISpec functionality not completely working
-  when compiled as a static library. (Pete?)
+	Some of the functionality provided by UISpec does not appear to work when compiled in as a static library. If anyone has a way to make Frank work as a static library we'd love to hear about it!
