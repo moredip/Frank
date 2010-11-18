@@ -6,6 +6,10 @@ remotely drive an App.
 
 [Check out Frank in action!](http://sl.thepete.net/frank_ea_demo) This short screencast shows a sample iPhone app being exercised in the iPhone simulator by a set of cucumber tests.
 
+Where can I ask questions?
+-----
+Please ask away in the [Frank google group](http://groups.google.com/group/frank-discuss).
+
 
 Goals
 -----
