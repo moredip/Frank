@@ -93,7 +93,7 @@ Here are some detailed steps on how to create your first Frankified app. Screenc
 
        Select "Build->Build and Run" to launch the app. You will see lots of warnings as the libraries that Frank uses are compiled, these are safe to ignore.
        You will see the app launch in the simulator. You may get a "Allow incoming connections" dialog, you should select "Allow" to let network connections in to the simulator
-       Confirm that everything is working by connecting to the simulator using a browser. Open http://127.0.0.1:37265/ 
+       Confirm that everything is working by connecting to the simulator using a browser. Open http://localhost:37265/ 
 
     
 7. Get Cucumber fired up
@@ -139,7 +139,7 @@ Here are some detailed steps on how to create your first Frankified app. Screenc
               When I touch the Plus button
        Run cucumber and copy the step snippet starting with "When /^I touch the Plus button$/ do" into your tutorial_steps.rb file
        Now we need to figure out the UIScript that we need to send to actually touch the plus button. First we need to find out what we can about the button.
-       Start up a browser and navigate to "http://127.0.0.1:37265". In the Selector entry field that comes up, type "navigationButton" (no quotes) and press the "Flash matching elements link"
+       Start up a browser and navigate to "http://localhost:37265". In the Selector entry field that comes up, type "navigationButton" (no quotes) and press the "Flash matching elements link"
        You should see the + and the Edit button outlines flash briefly
        Click on "Dump current DOM"
        Search for "NavigationButton", you should find a line with "class: UINavigationButton"
