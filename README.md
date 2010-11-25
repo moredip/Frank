@@ -83,7 +83,7 @@ General->Accessibility->Accessibility Inspector and switch it to "On". This [bri
 7. Build and run. You might get a warning about allowing incoming
 connections depending on your firewall rules. Test out your install by
 connecting to the embedded Frank server using your browser at
-http://127.0.0.1:37265 . If everything has worked you'll see a simple
+http://localhost:37265 . If everything has worked you'll see a simple
 html page entitled "Symbiote" along with some controls to interrogate
 the iOS app. The first time you compile, there will be many compiler
 warnings from the included libraries. These can be safely ignored.
