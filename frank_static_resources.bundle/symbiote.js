@@ -82,7 +82,7 @@ $(document).ready(function() {
 		$('#loading').hide();
 		var test = eval(data);
 		var html = '<table id="accessibility">';
-        html +=	'<tr><th>Marked</th><th>Class</th></tr>';
+        html +=	'<tr><th>Marked (accessibilityLabel)</th><th>Class</th></tr>';
         	
 		for (index in test)
   		{
