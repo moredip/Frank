@@ -98,6 +98,10 @@ Given /^the device is in a portrait orientation$/ do
   end
 end
 
+When /^I simulate a memory warning$/ do
+  simulate_memory_warning
+end
+
 Then /^I rotate to the "([^\"]*)"$/ do |direction|
   if direction == "right"
     rotate_simulator_right
