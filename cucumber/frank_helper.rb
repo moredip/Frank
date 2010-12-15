@@ -208,4 +208,11 @@ end tell
     simulator_hardware_menu_press "Shake Gesture"
   end
   
+  def simulate_memory_warning
+    simulator_hardware_menu_press "Simulate Memory Warning"
+  end
+  
+  def toggle_call_status_bar
+    simulator_hardware_menu_press "Toggle In-Call Status Bar"
+  end
 end
