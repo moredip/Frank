@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C1DD76012BADFA400E10B8C /* InspectCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1DD75E12BADFA400E10B8C /* InspectCommand.m */; };
+		4C1DD76112BADFA400E10B8C /* InspectCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C1DD75F12BADFA400E10B8C /* InspectCommand.h */; };
+		4C1DD76C12BADFE100E10B8C /* OrientationCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1DD76812BADFE100E10B8C /* OrientationCommand.m */; };
+		4C1DD76D12BADFE100E10B8C /* OrientationCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C1DD76912BADFE100E10B8C /* OrientationCommand.h */; };
+		4C1DD76E12BADFE100E10B8C /* AppCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1DD76A12BADFE100E10B8C /* AppCommand.m */; };
+		4C1DD76F12BADFE100E10B8C /* AppCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C1DD76B12BADFE100E10B8C /* AppCommand.h */; };
 		AA747D9F0F9514B9006C5449 /* Frank_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* Frank_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		D629926B11AB2D1F00CE0FB0 /* AsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = D629926911AB2D1F00CE0FB0 /* AsyncSocket.h */; };
@@ -97,8 +103,6 @@
 		D6D05CB811C883AA0081C5A5 /* FrankServer.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D05CA611C883AA0081C5A5 /* FrankServer.m */; };
 		D6D05CB911C883AA0081C5A5 /* MapOperationCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = D6D05CA711C883AA0081C5A5 /* MapOperationCommand.h */; };
 		D6D05CBA11C883AA0081C5A5 /* MapOperationCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D05CA811C883AA0081C5A5 /* MapOperationCommand.m */; };
-		D6D05CBB11C883AA0081C5A5 /* MemoryLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = D6D05CA911C883AA0081C5A5 /* MemoryLogger.h */; };
-		D6D05CBC11C883AA0081C5A5 /* MemoryLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D05CAA11C883AA0081C5A5 /* MemoryLogger.m */; };
 		D6D05CBD11C883AA0081C5A5 /* RequestRouter.h in Headers */ = {isa = PBXBuildFile; fileRef = D6D05CAB11C883AA0081C5A5 /* RequestRouter.h */; };
 		D6D05CBE11C883AA0081C5A5 /* RequestRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D05CAC11C883AA0081C5A5 /* RequestRouter.m */; };
 		D6D05CBF11C883AA0081C5A5 /* RoutingHTTPConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = D6D05CAD11C883AA0081C5A5 /* RoutingHTTPConnection.h */; };
@@ -125,6 +129,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C1DD75E12BADFA400E10B8C /* InspectCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InspectCommand.m; path = src/InspectCommand.m; sourceTree = "<group>"; };
+		4C1DD75F12BADFA400E10B8C /* InspectCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InspectCommand.h; path = src/InspectCommand.h; sourceTree = "<group>"; };
+		4C1DD76812BADFE100E10B8C /* OrientationCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrientationCommand.m; path = src/OrientationCommand.m; sourceTree = "<group>"; };
+		4C1DD76912BADFE100E10B8C /* OrientationCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrientationCommand.h; path = src/OrientationCommand.h; sourceTree = "<group>"; };
+		4C1DD76A12BADFE100E10B8C /* AppCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppCommand.m; path = src/AppCommand.m; sourceTree = "<group>"; };
+		4C1DD76B12BADFE100E10B8C /* AppCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppCommand.h; path = src/AppCommand.h; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* Frank_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Frank_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libFrank.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFrank.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -220,8 +230,6 @@
 		D6D05CA611C883AA0081C5A5 /* FrankServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FrankServer.m; path = src/FrankServer.m; sourceTree = "<group>"; };
 		D6D05CA711C883AA0081C5A5 /* MapOperationCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapOperationCommand.h; path = src/MapOperationCommand.h; sourceTree = "<group>"; };
 		D6D05CA811C883AA0081C5A5 /* MapOperationCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapOperationCommand.m; path = src/MapOperationCommand.m; sourceTree = "<group>"; };
-		D6D05CA911C883AA0081C5A5 /* MemoryLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MemoryLogger.h; path = src/MemoryLogger.h; sourceTree = "<group>"; };
-		D6D05CAA11C883AA0081C5A5 /* MemoryLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MemoryLogger.m; path = src/MemoryLogger.m; sourceTree = "<group>"; };
 		D6D05CAB11C883AA0081C5A5 /* RequestRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RequestRouter.h; path = src/RequestRouter.h; sourceTree = "<group>"; };
 		D6D05CAC11C883AA0081C5A5 /* RequestRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RequestRouter.m; path = src/RequestRouter.m; sourceTree = "<group>"; };
 		D6D05CAD11C883AA0081C5A5 /* RoutingHTTPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RoutingHTTPConnection.h; path = src/RoutingHTTPConnection.h; sourceTree = "<group>"; };
@@ -294,6 +302,12 @@
 		08FB77AEFE84172EC02AAC07 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				4C1DD76812BADFE100E10B8C /* OrientationCommand.m */,
+				4C1DD76912BADFE100E10B8C /* OrientationCommand.h */,
+				4C1DD76A12BADFE100E10B8C /* AppCommand.m */,
+				4C1DD76B12BADFE100E10B8C /* AppCommand.h */,
+				4C1DD75E12BADFA400E10B8C /* InspectCommand.m */,
+				4C1DD75F12BADFA400E10B8C /* InspectCommand.h */,
 				D6D79B5B11D7FB8B003E0E60 /* Operation.h */,
 				D6D79B5C11D7FB8B003E0E60 /* Operation.m */,
 				D6D05CA111C883AA0081C5A5 /* DumpCommand.h */,
@@ -304,8 +318,6 @@
 				D6D05CA611C883AA0081C5A5 /* FrankServer.m */,
 				D6D05CA711C883AA0081C5A5 /* MapOperationCommand.h */,
 				D6D05CA811C883AA0081C5A5 /* MapOperationCommand.m */,
-				D6D05CA911C883AA0081C5A5 /* MemoryLogger.h */,
-				D6D05CAA11C883AA0081C5A5 /* MemoryLogger.m */,
 				D6D05CAB11C883AA0081C5A5 /* RequestRouter.h */,
 				D6D05CAC11C883AA0081C5A5 /* RequestRouter.m */,
 				D6D05CAD11C883AA0081C5A5 /* RoutingHTTPConnection.h */,
@@ -544,12 +556,14 @@
 				D6D05CB511C883AA0081C5A5 /* FrankCommandRoute.h in Headers */,
 				D6D05CB711C883AA0081C5A5 /* FrankServer.h in Headers */,
 				D6D05CB911C883AA0081C5A5 /* MapOperationCommand.h in Headers */,
-				D6D05CBB11C883AA0081C5A5 /* MemoryLogger.h in Headers */,
 				D6D05CBD11C883AA0081C5A5 /* RequestRouter.h in Headers */,
 				D6D05CBF11C883AA0081C5A5 /* RoutingHTTPConnection.h in Headers */,
 				D6D05CC111C883AA0081C5A5 /* StaticResourcesRoute.h in Headers */,
 				D6D05CC311C883AA0081C5A5 /* UISpecCommandReceiver.h in Headers */,
 				D6D79B5D11D7FB8B003E0E60 /* Operation.h in Headers */,
+				4C1DD76112BADFA400E10B8C /* InspectCommand.h in Headers */,
+				4C1DD76D12BADFE100E10B8C /* OrientationCommand.h in Headers */,
+				4C1DD76F12BADFE100E10B8C /* AppCommand.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -581,7 +595,14 @@
 			isa = PBXProject;
 			buildConfigurationList = 1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "Frank" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
 			mainGroup = 0867D691FE84028FC02AAC07 /* Frank */;
 			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
 			projectDirPath = "";
@@ -656,12 +677,14 @@
 				D6D05CB611C883AA0081C5A5 /* FrankCommandRoute.m in Sources */,
 				D6D05CB811C883AA0081C5A5 /* FrankServer.m in Sources */,
 				D6D05CBA11C883AA0081C5A5 /* MapOperationCommand.m in Sources */,
-				D6D05CBC11C883AA0081C5A5 /* MemoryLogger.m in Sources */,
 				D6D05CBE11C883AA0081C5A5 /* RequestRouter.m in Sources */,
 				D6D05CC011C883AA0081C5A5 /* RoutingHTTPConnection.m in Sources */,
 				D6D05CC211C883AA0081C5A5 /* StaticResourcesRoute.m in Sources */,
 				D6D05CC411C883AA0081C5A5 /* UISpecCommandReceiver.m in Sources */,
 				D6D79B5E11D7FB8B003E0E60 /* Operation.m in Sources */,
+				4C1DD76012BADFA400E10B8C /* InspectCommand.m in Sources */,
+				4C1DD76C12BADFE100E10B8C /* OrientationCommand.m in Sources */,
+				4C1DD76E12BADFE100E10B8C /* AppCommand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -683,6 +706,7 @@
 				GCC_PREFIX_HEADER = Frank_Prefix.pch;
 				INSTALL_PATH = /usr/local/lib;
 				PRODUCT_NAME = Frank;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -697,6 +721,7 @@
 				GCC_PREFIX_HEADER = Frank_Prefix.pch;
 				INSTALL_PATH = /usr/local/lib;
 				PRODUCT_NAME = Frank;
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
@@ -710,7 +735,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.2;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -723,7 +748,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.2;
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
