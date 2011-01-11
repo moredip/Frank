@@ -83,6 +83,12 @@ end
 
 # -- Rotate -- #
 Given /^the device is in a landscape orientation$/ do
+  # for some reason the simulator sometimes starts of reporting its orientation as 'flat'. Workaround for this is to rotate the device then wait a bit
+  if 'flat' == frankly_current_orientation
+    rotate_simulator_right
+    sleep 1
+  end
+  
   unless frankly_oriented_landscape?
     rotate_simulator_left
     sleep 1
@@ -91,6 +97,12 @@ Given /^the device is in a landscape orientation$/ do
 end
 
 Given /^the device is in a portrait orientation$/ do
+  # for some reason the simulator sometimes starts of reporting its orientation as 'flat'. Workaround for this is to rotate the device then wait a bit
+  if 'flat' == frankly_current_orientation
+    rotate_simulator_right
+    sleep 1
+  end
+  
   unless frankly_oriented_portrait?
     rotate_simulator_left
     sleep 1
