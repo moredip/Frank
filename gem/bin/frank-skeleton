@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+require 'fileutils'
+
+features_dir = File.join( FileUtils.pwd, "features" )
+
+if File.exists?( features_dir ) 
+  puts "A features directory already exists. I won't overwrite it. Giving up."
+  exit 1
+else
+  puts "I'm about to create a subdirectory called features which will contain all your Cucumber tests. Please hit return to confirm that's what you want."
+  exit 2 unless STDIN.gets.chomp == ''
+end
+
+source_dir = File.join( File.dirname(__FILE__), '..', 'features-skeleton' )
+
+FileUtils.cp_r( source_dir, features_dir )
+
+puts "features subdirectory created. Try executing 'cucumber' from the current directory to see how you new cucumber setup runs." 
