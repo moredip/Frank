@@ -298,3 +298,7 @@ end
 When /^I dump the DOM$/ do
   dom = frankly_dump
 end
+
+When /^I quit the simulator/ do
+  quit_simulator 
+end
