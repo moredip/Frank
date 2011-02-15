@@ -59,10 +59,57 @@ Then /I should see the following:/ do |table|
   end
 end
 
+Then /I should not see the following:/ do |table|
+  values = frankly_map( 'view', 'accessibilityLabel' )
+  table.raw.each do |expected_mark|
+    values.should_not include( expected_mark.first )
+  end
+end
+
 Then /^I should see a navigation bar titled "([^\"]*)"$/ do |expected_mark|
   values = frankly_map( 'navigationItemView', 'accessibilityLabel' )
   values.should include(expected_mark)
 end
+
+Then /^I should see an alert view titled "([^\"]*)"$/ do |expected_mark|
+  values = frankly_map( 'alertView', 'message')
+  puts values
+  values.should include(expected_mark)
+end
+
+Then /^I should not see an alert view$/ do
+  check_element_does_not_exist( 'alertView' )
+end
+
+Then /^I should see an element of class "([^\"]*)" with name "([^\"]*)" with the following labels: "([^\"]*)"$/ do |className, classLabel, listOfLabels|
+	arrayOfLabels = listOfLabels.split(',');
+	arrayOfLabels.each do |label|
+		check_element_exists("view marked:'#{classLabel}' parent view:'#{className}' descendant view marked:'#{label}'")
+	end
+end
+
+Then /^I should see an element of class "([^\"]*)" with name "([^\"]*)" with a "([^\"]*)" button$/ do |className, classLabel, buttonName|
+	check_element_exists("view marked:'#{classLabel}' parent view:'#{className}' descendant button marked:'#{buttonName}'")
+end
+
+Then /^I should not see a hidden button marked "([^\"]*)"$/ do |expected_mark|
+  element_is_not_hidden("button marked:'#{expected_mark}'").should be_false
+end
+
+Then /^I should see a nonhidden button marked "([^\"]*)"$/ do |expected_mark|
+  element_is_not_hidden("button marked:'#{expected_mark}'").should be_true
+end
+
+Then /^I should see an element of class "([^\"]*)"$/ do |className|
+	element_is_not_hidden("view:'#{className}'")
+end
+
+Then /^I should not see an element of class "([^\"]*)"$/ do |className|
+  selector = "view:'#{className}'"
+  element_exists_and_is_not_hidden = element_exists( selector ) && element_is_not_hidden(selector)
+  element_exists_and_is_not_hidden.should be_false
+end
+
 
 # -- Type/Fill in -- #
 
@@ -84,7 +131,13 @@ When /^I fill in text fields as follows:$/ do |table|
 end
 
 # -- Rotate -- #
-Given /^the device is in (a )?landscape orientation$/ do
+Given /^the device is in (a )?landscape orientation$/ do |ignored|
+  # for some reason the simulator sometimes starts of reporting its orientation as 'flat'. Workaround for this is to rotate the device then wait a bit
+  if 'flat' == frankly_current_orientation
+    rotate_simulator_right
+    sleep 1
+  end 
+  
   unless frankly_oriented_landscape?
     rotate_simulator_left
     sleep 1
@@ -92,11 +145,17 @@ Given /^the device is in (a )?landscape orientation$/ do
   end
 end
 
-Given /^the device is in (a )?portrait orientation$/ do
+Given /^the device is in (a )?portrait orientation$/ do |ignored|
+  # for some reason the simulator sometimes starts of reporting its orientation as 'flat'. Workaround for this is to rotate the device then wait a bit
+  if 'flat' == frankly_current_orientation
+    rotate_simulator_right
+    sleep 1
+  end 
+
   unless frankly_oriented_portrait?
     rotate_simulator_left
     sleep 1
-    raise "expected orientation to be portrait after rotating left, but it is #{frankly_current_orientation}" unless frankly_oriented_portrait?
+    raise "Expected orientation to be portrait after rotating left, but it is #{frankly_current_orientation}" unless frankly_oriented_portrait?
   end
 end
 
@@ -110,19 +169,42 @@ Then /^I rotate to the "([^\"]*)"$/ do |direction|
   elsif direction == "left"
     rotate_simulator_left
   else 
-	puts "[" + red('ERROR') + "] Direction specified is INVALID!!"
+    raise %Q|Rotation direction specified ("#{direction}") is invalid. Please specify right or left.|
   end
   sleep 1
 end
 
 # -- touch -- #
 When /^I touch "([^\"]*)"$/ do |mark|
-  if element_exists("view marked:'#{mark}'")
-     touch( "view marked:'#{mark}'" )
+  selector = "view marked:'#{mark}' first"
+  if element_exists(selector)
+     touch( selector )
   else
-     raise "[" + red('FAIL') + "] Can't touch. Element #{mark} does NOT exist!!"  
+     raise "Could not touch [#{mark}], it does not exist."  
   end
   sleep 1
+end
+
+When /^I touch "([^\"]*)" if exists$/ do |mark|
+  sleep 1
+  selector = "view marked:'#{mark}' first"
+  if element_exists(selector)
+  	touch(selector)
+    sleep 1
+  end
+end
+
+When /^I touch the first table cell$/ do
+    touch("tableViewCell first")
+end
+
+When /^I touch the table cell marked "([^\"]*)"$/ do |mark|
+  touch("tableViewCell marked:'#{mark}'")
+end
+
+When /^I touch the (\d*)(?:st|nd|rd|th)? table cell$/ do |ordinal|
+    ordinal = ordinal.to_i - 1
+    touch("tableViewCell index:#{ordinal}")
 end
 
 Then /I touch the following:/ do |table|
@@ -146,7 +228,24 @@ When /^I touch the (\d*)(?:st|nd|rd|th)? action sheet button$/ do |ordinal|
   touch( "actionSheet threePartButton tag:#{ordinal}" )
 end
 
+When /^I touch the (\d*)(?:st|nd|rd|th)? alert view button$/ do |ordinal|
+  ordinal = ordinal.to_i
+  touch( "alertView threePartButton tag:#{ordinal}" )
+end
+
 # -- switch -- #
+
+When /^I flip switch "([^\"]*)" on$/ do |mark|
+  selector = "view:'UISwitch' marked:'#{mark}'"
+  views_switched = frankly_map( selector, 'setOn:animated:', true, true )
+  raise "could not find anything matching [#{uiquery}] to switch" if views_switched.empty?
+end
+
+When /^I flip switch "([^\"]*)" off$/ do |mark|
+  selector = "view:'UISwitch' marked:'#{mark}'"
+  views_switched = frankly_map( selector, 'setOn:animated:', false, true )
+  raise "could not find anything matching [#{uiquery}] to switch" if views_switched.empty?
+end
 
 When /^I flip switch "([^\"]*)"$/ do |mark|
   touch("view:'UISwitch' marked:'#{mark}'") 
@@ -179,6 +278,12 @@ end
 
 
 # -- misc -- #
+
+When /^I wait for ([\d\.]+) second(?:s)?$/ do |num_seconds|
+  num_seconds = num_seconds.to_f
+  sleep num_seconds
+end
+
 Then /^a pop\-over menu is displayed with the following:$/ do |table|
   sleep 1
   table.raw.each do |expected_mark|

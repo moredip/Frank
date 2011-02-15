@@ -35,6 +35,13 @@ module FrankHelper
     check_element_exists( "view marked:'#{expected_mark}'" )
   end
 
+  # a better name would be element_exists_and_is_not_hidden
+  def element_is_not_hidden(query)
+     matches = frankly_map( query, 'isHidden' )
+     matches.delete(true)
+     !matches.empty?
+  end
+
   def app_exec(method_name, *method_args)
     operation_map = {
       :method_name => method_name,
