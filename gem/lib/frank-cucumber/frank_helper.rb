@@ -190,6 +190,12 @@ application "iPhone Simulator" activate
     sleep 5 # TODO: replace this with polling for the frank server
   end
 
+  def quit_simulator
+    %x{osascript<<APPLESCRIPT-
+      application "iPhone Simulator" quit
+    APPLESCRIPT}
+  end
+
   #Note this needs to have "Enable access for assistive devices"
   #chcked in the Universal Access system preferences
   def simulator_hardware_menu_press( menu_label )
