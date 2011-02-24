@@ -94,6 +94,7 @@ Writing Cucumber Steps
 
 * more to come - see the tutorial below for some basic info
 
+Also see "cucmber/frankly_steps.rb" for some predefined steps
 
 Tutorial - Your first Frankified App
 ------------------------------------

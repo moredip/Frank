@@ -12,27 +12,48 @@ var Symbiote = {
         +"details: "+response.details );
   },
   display_chatting_popup: function() {
-    var overlay = $("div#modal_overlay");
-    overlay.width( overlay.parent().width() )
-      .height( overlay.parent().height() );
-
-    overlay.show();
-
-    var popup = $('div#chatting_popup');
-
-    popup.css( { left: (overlay.width()/2) - (popup.width()/2),
-        top: overlay.height()/2 - popup.height()/2 } );
+    
+    $('#loading').show();
   },
   hide_chatting_popup: function() {
-    $("div#modal_overlay").hide();
+    $('#loading').hide();
   }
 }
 
+function classClicked(link){    
+    var command = {
+      query: "view marked:'" + link.innerHTML + "'",
+      operation: {
+        method_name: 'flash',
+        arguments: []
+      }
+    };
+
+    Symbiote.display_chatting_popup();
+    $.ajax({
+      type: "POST",
+      dataType: "json",
+      data: JSON.stringify( command ),
+      url: G.base_url + "/map",
+      success: function(data) {
+        if( Symbiote.is_error_response( data ) )
+          Symbiote.display_error_response( data );
+      },
+      error: function(xhr,status,error) {
+        Symbiote.hide_chatting_popup();
+        alert( "Error while talking to Frank: " + status );
+      },
+      complete: function(xhr,status) {
+        Symbiote.hide_chatting_popup();
+      }
+    });
+  }
 
 $(document).ready(function() { 
-
+	$("#tabs").tabs();
+	$('#loading').hide();
 	$('#dump_button').click( function(){
-    //alert('dumping');
+	 Symbiote.display_chatting_popup();
 
     $.ajax({
       type: "POST",
@@ -44,13 +65,40 @@ $(document).ready(function() {
 		   $("#dom_dump").treeview({
 								   collapsed: false
 								   });
+		 Symbiote.hide_chatting_popup();						   
       },
       error: function(xhr,status,error) {
+        $('#loading').hide();
         alert( "Error while talking to Frank: " + status );
       }
     });
+    
+    $.ajax({
+      type: "POST",
+      dataType: "json",
+      data: '["DUMMY"]', // a bug in cocoahttpserver means it can't handle POSTs without a body
+      url: G.base_url + "/inspect",
+      success: function(data) {
+		$('#loading').hide();
+		var test = eval(data);
+		var html = '<table id="accessibility">';
+        html +=	'<tr><th>Marked (accessibilityLabel)</th><th>Class</th></tr>';
+        	
+		for (index in test)
+  		{
+  			var elem = test[index];
+  			html += '<tr><td><a onClick="javascript: classClicked(this);" href="#">' + elem.label+ '</a></td><td>' + elem.class + '</td></tr>';
+  		}
+		html += '</table>';
+		$('div#access_dump').html(html);
+      },
+      error: function(xhr,status,error) {
+      $('#loading').hide();
+        alert( "Error while talking to Frank: " + status );
+      }
+    });
+    
   });
-
 
   $('#flash_button').click( function(){
     var command = {
@@ -73,10 +121,13 @@ $(document).ready(function() {
       },
       error: function(xhr,status,error) {
         alert( "Error while talking to Frank: " + status );
+        $('#loading').hide();
       },
       complete: function(xhr,status) {
         Symbiote.hide_chatting_popup();
       }
     });
   });
+  
+  
 });

@@ -4,72 +4,48 @@
 		<meta http-equiv="content-type" content="text/html;charset=UTF-8" /> 
 		<title>Symbiote</title> 
 		<script src="jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 		<script src="jquery.treeview.js"></script>
 		<script src="json2.js"></script>
 		<script src="json_tools.js"></script>
 		<script src="symbiote.js"></script>
-
-    <link rel="stylesheet" type="text/css" href="jquery.treeview.css" />
-		<style type="text/css">
-			div#universal_commands {
-				float:left;
-				border: 1px dotted black;
-				margin: 5px;
-				padding: 5px;
-			}
-			div#selector_commands {
-				float: left;
-				border: 1px dotted black;
-				margin: 5px;
-				padding: 5px;
-			}
-			div#modal_overlay {
-				display:none;
-				position: absolute;
-				z-index:9000;
-				opacity:0.9;
-				background-color: #888;
-			}
-			div#chatting_popup {
-				position:absolute;  
-				z-index:9999;  
-				padding:10px;  
-				background-color: #FFF;
-			}
-			</style>
+		<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+    	<link rel="stylesheet" type="text/css" href="jquery.treeview.css" />
+    	<link rel="stylesheet" type="text/css" href="symbiote.css" />
 	</head>
 	<body>
-		
-		<h1>Symbiote</h1>
-		<p>From here you can inspect the current state of the app's UI, and test which UI elements 
-		a selector will select</p>
-        <div id="comand_bar">
-            <div id=modal_overlay>
-				<div id="chatting_popup">
-					<h3>Chatting with Frank...</h3>
+		<div id="header">
+			<div style="float: left;">
+			<h1>symbiote</h1>
+			<p>From here you can inspect the current state of the app's UI, and test which UI elements 
+			a selector will select</p>
+			</div>
+			<div id="refresh">
+				<div><a href="#" id="dump_button">Refresh</a></div>
+				<div>
+					<img id="loading" src="images/ajax-loader.gif" align="right"/>
 				</div>
-            </div>
-            <div id="universal_commands">
-				<h3>General commands</h3>
-				<ul>
-					<li><a href="#" id="dump_button">Dump current DOM</a></li>
-				</ul>
-            </div>
-            <div id="selector_commands"><form action="#">
-				<h3>Selector-based commands</h3>
+			</div>
+		</div>
+		<div id="tabs">
+    <ul>
+        <li><a href="#tab-1"><span>View DOM</span></a></li>
+        <li><a href="#tab-2"><span>Accessibility Elements</span></a></li>
+    </ul>
+    <div id="tab-1">
 				<div>
 					<label for="query">Selector</label>
 					<input id="query"/>
+					<button id="flash_button">Flash</button>
+					<!--<button id="inspec_button">Inspect</button>-->
 				</div>
-				<ul>
-					<li><a href="#" id="flash_button">Flash matching elements</a></li>
-					<li><a href="#" id="inspect_button">Inspect matching element</a></li>
-				</ul>
-            </form></div>
-            <div style="clear: both;"> </div>
-		</div>
-		<hr/>
-        <div id="dom_dump"></div>
-		
-	</body>
+				<p>ex. label text:'Search'</p>
+				<div id="dom_dump"></div>
+    </div>
+    <div id="tab-2">
+    <p>Click on an accessibilityLabel to flash that item in the simulator</p>
+        <div id="access_dump"></div>
+    </div>
+</div>
+</body>
 </html>

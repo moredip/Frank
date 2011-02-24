@@ -83,6 +83,12 @@ end
 
 # -- Rotate -- #
 Given /^the device is in a landscape orientation$/ do
+  # for some reason the simulator sometimes starts of reporting its orientation as 'flat'. Workaround for this is to rotate the device then wait a bit
+  if 'flat' == frankly_current_orientation
+    rotate_simulator_right
+    sleep 1
+  end
+  
   unless frankly_oriented_landscape?
     rotate_simulator_left
     sleep 1
@@ -91,11 +97,21 @@ Given /^the device is in a landscape orientation$/ do
 end
 
 Given /^the device is in a portrait orientation$/ do
+  # for some reason the simulator sometimes starts of reporting its orientation as 'flat'. Workaround for this is to rotate the device then wait a bit
+  if 'flat' == frankly_current_orientation
+    rotate_simulator_right
+    sleep 1
+  end
+  
   unless frankly_oriented_portrait?
     rotate_simulator_left
     sleep 1
     raise "expected orientation to be portrait after rotating left, but it is #{frankly_current_orientation}" unless frankly_oriented_portrait?
   end
+end
+
+When /^I simulate a memory warning$/ do
+  simulate_memory_warning
 end
 
 Then /^I rotate to the "([^\"]*)"$/ do |direction|

@@ -23,3 +23,15 @@ int main(int argc, char *argv[]) {
     [pool release];
     return retVal;
 }
+
+/* UNCOMMENT THIS SECTION IF YOU'RE USING MapKit AND YOU ARE SEEING CRASHES IN iOS4
+
+// Work around the issue in iOS 4 where exceptions thrown within a NSInvocation are not catchable.
+// This was causing crashes in UIQuery::describeView when trying to dump the DOM w. Symbiote
+// see http://groups.google.com/group/uispec/browse_thread/thread/1879741ebae978d/a90001a8956290af
+@implementation NSObject (MapKitUISpecHack) 
+- (id)_mapkit_hasPanoramaID { 
+	return nil; 
+} 
+@end
+*/
