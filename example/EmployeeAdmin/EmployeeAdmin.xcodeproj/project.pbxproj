@@ -861,7 +861,14 @@
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "EmployeeAdmin" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1100,6 +1107,7 @@
 					"\\\"$(SRCROOT)/Shared/lib/PureMVC\\\"",
 				);
 				PRODUCT_NAME = EmployeeAdmin;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};

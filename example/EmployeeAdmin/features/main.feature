@@ -1,20 +1,20 @@
 Feature: Demonstrating using Frank to test the EmployeeAdmin example app
 
 Background:
-		Given the app has just started
+    Given the app has just started
 
 Scenario: Add test user
     When I touch the Add User button
-		And I fill in text fields as follows:
-		  | field      | text   |
-			| First Name | Brian  |
-			| Last Name  | Knorr  |
-			| Email      | a@b.c  |
-			| Username   | bknorr |
-			| Password   | 123    |
-			| Confirm    | 123    |
-		And I touch "Save"
-		Then I should be on the Users screen
+    And I fill in text fields as follows:
+      | field      | text   |
+      | First Name | Brian  |
+      | Last Name  | Knorr  |
+      | Email      | a@b.c  |
+      | Username   | bknorr |
+      | Password   | 123    |
+      | Confirm    | 123    |
+    And I touch "Save"
+    Then I should be on the Users screen
     And I should see a table containing "Brian Knorr" 
 
 Scenario: default users should be present after app startup

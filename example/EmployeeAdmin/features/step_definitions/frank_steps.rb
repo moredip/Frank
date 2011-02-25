@@ -1,5 +1,3 @@
-require File.join( %w{.. .. .. cucumber frankly_steps} )
-
 When /^I wait ([\d.]+) second(?:s)?$/ do |seconds|
   seconds = seconds.to_f
   sleep( seconds )
@@ -22,10 +20,6 @@ end
 
 Then /^I should see an alert view saying "([^\"]*)"$/ do |expected_mark|
   check_element_exists( "alertView view marked:'#{expected_mark}'" )
-end
-
-Then /^I should not see an alert view$/ do
-  check_element_does_not_exist( "alertView" )
 end
 
 When /^I scroll down (\d*)(?:st|nd|rd|th)? row(?:s)?$/ do |rows_to_scroll|
