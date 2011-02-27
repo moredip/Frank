@@ -1041,6 +1041,7 @@
 					"\"$(SRCROOT)/Shared/lib/PureMVC\"",
 				);
 				PRODUCT_NAME = EmployeeAdmin;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
