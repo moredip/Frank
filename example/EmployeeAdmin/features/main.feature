@@ -26,6 +26,7 @@ Scenario: default users should be present after app startup
 
 Scenario: attempting to a new user without supplying any input
     When I touch the Add User button
+    And I wait to see a navigation bar titled "User Profile"
     And I touch the "Save" nav bar button
     Then I should see an alert view saying "Invalid User"
 
