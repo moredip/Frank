@@ -23,7 +23,7 @@ end
 Then /^I wait to see a navigation bar titled "([^\"]*)"$/ do |expected_mark|
     Timeout::timeout(30) do
       values = frankly_map( 'navigationItemView', 'accessibilityLabel' )
-      until values.include(expected_mark)
+      until values.include?(expected_mark)
         values = frankly_map( 'navigationItemView', 'accessibilityLabel' )
         sleep 0.1
       end
@@ -33,7 +33,7 @@ end
 Then /^I wait to not see a navigation bar titled "([^\"]*)"$/ do |expected_mark|
     Timeout::timeout(30) do
       values = frankly_map( 'navigationItemView', 'accessibilityLabel' )
-      while values.include(expected_mark)
+      while values.include?(expected_mark)
         values = frankly_map( 'navigationItemView', 'accessibilityLabel' )
         sleep 0.1
       end
