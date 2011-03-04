@@ -37,6 +37,7 @@
 		[frankCommandRoute registerCommand:[[[InspectCommand alloc]init]autorelease] withName:@"inspect"];
 		[frankCommandRoute registerCommand:[[[MapOperationCommand alloc]init]autorelease] withName:@"map"];
 		[frankCommandRoute registerCommand:[[[OrientationCommand alloc]init]autorelease] withName:@"orientation"];
+    [frankCommandRoute registerCommand:[[[AccessibilityCheckCommand alloc] init]autorelease] withName:@"accessibility_check"];
 		[frankCommandRoute registerCommand:[[[AppCommand alloc] init]autorelease] withName:@"app_exec"];
 		[[RequestRouter singleton] registerRoute:frankCommandRoute];
 		

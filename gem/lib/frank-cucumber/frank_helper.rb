@@ -93,10 +93,16 @@ module FrankHelper
     JSON.parse( res )['orientation']
   end
 
+
+  def frankly_is_accessibility_enabled
+    res = get_to_uispec_server( 'accessibility_check' )
+    JSON.parse( res )['accessibility_enabled'] == 'true'
+  end
+
   def wait_for_frank_to_come_up
     num_consec_successes = 0
     num_consec_failures = 0
-    Timeout.timeout(60) do
+    Timeout.timeout(20) do
       while num_consec_successes <= 6
         if frankly_ping
           num_consec_failures = 0
@@ -114,8 +120,12 @@ module FrankHelper
       end
       puts ''
     end
-  end
 
+    unless frankly_is_accessibility_enabled
+      raise "ACCESSIBILITY DOES NOT APPEAR TO BE ENABLED ON YOUR SIMULATOR. Hit the home button, go to settings, select Accessibility, and turn the inspector on."
+    end
+  end
+  
   def frankly_ping
     get_to_uispec_server('')
     return true
