@@ -185,21 +185,6 @@ module FrankHelper
   APPLESCRIPT}  
   end
   
-  def launch_app_in_simulator
-    %x{osascript<<APPLESCRIPT
-application "iPhone Simulator" quit
-tell application "Xcode"
-	set myprojectdocument to active project document
-	set myproject to project of myprojectdocument
-	tell myproject
-		launch
-	end tell
-end tell
-application "iPhone Simulator" activate
-  APPLESCRIPT}
-    sleep 5 # TODO: replace this with polling for the frank server
-  end
-
   def quit_simulator
     %x{osascript<<APPLESCRIPT-
       application "iPhone Simulator" quit
