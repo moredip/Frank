@@ -18,7 +18,28 @@ var Symbiote = {
   hide_chatting_popup: function() {
     $('#loading').hide();
   }
-}
+};
+
+(function(){
+  function transformDumpedViewToListItem( rawView ) {
+    var title = ""+rawView['class'];
+    if( rawView['accessibilityLabel'] )
+      title = title + ": '"+rawView['accessibilityLabel']+"'";
+
+    var viewListItem = $("<li><span>"+title+"</span></li>"),
+    subviewList = $("<ul/>");
+
+    $.each( rawView.subviews, function(i,subview) {
+      subviewList.append( transformDumpedViewToListItem( subview ) );
+    });
+    
+    viewListItem.append( subviewList );
+    return viewListItem; 
+  };
+
+  Symbiote.transformDumpedViewToListItem = transformDumpedViewToListItem;
+
+}());
 
 function classClicked(link){    
     var command = {
@@ -61,10 +82,13 @@ $(document).ready(function() {
       data: '["DUMMY"]', // a bug in cocoahttpserver means it can't handle POSTs without a body
       url: G.base_url + "/dump",
       success: function(data) {
-		$('div#dom_dump').append( JsonTools.convert_json_to_dom( data ) );
-		   $("#dom_dump").treeview({
-								   collapsed: false
-								   });
+        var $domList = $('div#dom_dump > ul');
+        $domList.children().remove();
+        $domList.append( Symbiote.transformDumpedViewToListItem( data ) );
+        //$('div#dom_dump').append( JsonTools.convert_json_to_dom( data ) );
+        $domList.treeview({
+                     collapsed: false
+                     });
 		 Symbiote.hide_chatting_popup();						   
       },
       error: function(xhr,status,error) {
