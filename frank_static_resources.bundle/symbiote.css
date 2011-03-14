@@ -29,6 +29,23 @@ div#chatting_popup {
 	background-color: #FFF;
 }
 
+div#tabs {
+}
+
+div#dom_dump {
+  font-size:0.8em;
+  float:left;
+  width:50%;
+  height:400px;
+  overflow:auto;
+}
+
+div#dom_detail {
+  float:right;
+  width:50%;
+  overflow:auto;
+}
+
 h1 {
 	margin:0px;
 	padding: 0px;
