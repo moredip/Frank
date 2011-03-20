@@ -2,7 +2,7 @@ require 'tmpdir'
 
 SVN_URL = "http://uispec.googlecode.com/svn/trunk"
 
-dest_dir = Dir.pwd
+dest_dir = File.expand_path(File.dirname(__FILE__))
 
 Dir.mktmpdir('frank_is_updating_uispec') do |tmpdir|
   snapshot_dir = File.join( tmpdir, "svn_snapshot" )
