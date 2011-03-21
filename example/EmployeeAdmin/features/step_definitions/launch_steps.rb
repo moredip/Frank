@@ -10,7 +10,9 @@ Given /^I launch the app$/ do
 
   require 'sim_launcher'
 
-  app_path = ENV['APP_BUNDLE_PATH'] || APP_BUNDLE_PATH
+  # Replace EmployeeAdmin.app to the application unders test
+  app_path = File.dirname(__FILE__) + "/../../FrankDeploy/EmployeeAdmin.app"
+
   raise "APP_BUNDLE_PATH was not set. \nPlease set a APP_BUNDLE_PATH ruby constant or environment variable to the path of your compiled Frankified iOS app bundle" if app_path.nil?
 
   if( ENV['USE_SIM_LAUNCHER_SERVER'] )
