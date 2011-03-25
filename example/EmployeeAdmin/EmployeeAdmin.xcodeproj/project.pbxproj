@@ -334,6 +334,11 @@
 		D6D79B5511D7FB7C003E0E60 /* Operation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Operation.h; sourceTree = "<group>"; };
 		D6D79B5611D7FB7C003E0E60 /* Operation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Operation.m; sourceTree = "<group>"; };
 		D6D79B7511D7FC73003E0E60 /* frank_static_resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = frank_static_resources.bundle; path = ../../frank_static_resources.bundle; sourceTree = SOURCE_ROOT; };
+		D6F6A6AF133D54CF00912A68 /* main.feature */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.feature; sourceTree = "<group>"; };
+		D6F6A6B1133D54CF00912A68 /* employee_admin_steps.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = employee_admin_steps.rb; sourceTree = "<group>"; };
+		D6F6A6B2133D54CF00912A68 /* frank_steps.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = frank_steps.rb; sourceTree = "<group>"; };
+		D6F6A6B3133D54CF00912A68 /* launch_steps.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = launch_steps.rb; sourceTree = "<group>"; };
+		D6F6A6B5133D54CF00912A68 /* env.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = env.rb; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -406,6 +411,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				D6F6A6AE133D54CF00912A68 /* features */,
 				D6A8351D11CDC54B001B8585 /* Frank */,
 				2860E32A111B888700E27156 /* iPad */,
 				2860E324111B887F00E27156 /* iPhone */,
@@ -823,6 +829,34 @@
 			path = ../../src;
 			sourceTree = SOURCE_ROOT;
 		};
+		D6F6A6AE133D54CF00912A68 /* features */ = {
+			isa = PBXGroup;
+			children = (
+				D6F6A6AF133D54CF00912A68 /* main.feature */,
+				D6F6A6B0133D54CF00912A68 /* step_definitions */,
+				D6F6A6B4133D54CF00912A68 /* support */,
+			);
+			path = features;
+			sourceTree = "<group>";
+		};
+		D6F6A6B0133D54CF00912A68 /* step_definitions */ = {
+			isa = PBXGroup;
+			children = (
+				D6F6A6B1133D54CF00912A68 /* employee_admin_steps.rb */,
+				D6F6A6B2133D54CF00912A68 /* frank_steps.rb */,
+				D6F6A6B3133D54CF00912A68 /* launch_steps.rb */,
+			);
+			path = step_definitions;
+			sourceTree = "<group>";
+		};
+		D6F6A6B4133D54CF00912A68 /* support */ = {
+			isa = PBXGroup;
+			children = (
+				D6F6A6B5133D54CF00912A68 /* env.rb */,
+			);
+			path = support;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1050,6 +1084,7 @@
 				);
 				PRODUCT_NAME = EmployeeAdmin;
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1066,6 +1101,8 @@
 					"\"$(SRCROOT)/Shared/lib/PureMVC\"",
 				);
 				PRODUCT_NAME = EmployeeAdmin;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1117,6 +1154,7 @@
 				);
 				PRODUCT_NAME = EmployeeAdmin;
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1133,6 +1171,8 @@
 					"\\\"$(SRCROOT)/Shared/lib/PureMVC\\\"",
 				);
 				PRODUCT_NAME = EmployeeAdmin;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
