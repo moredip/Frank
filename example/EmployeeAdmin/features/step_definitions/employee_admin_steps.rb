@@ -1,7 +1,3 @@
-Given /^the app has just started$/ do
-  launch_app_in_simulator
-end
-
 When /^I touch the Add User button$/ do
   touch( "navigationButton" )  
 end

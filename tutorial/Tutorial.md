@@ -133,34 +133,19 @@ Step 7. Get Cucumber fired up
 
 Install Cucumber[http://cukes.info] if you don't have it installed already
 
-Make the standard Cucumber directories in your project directory - a "features" directory, and "step_definitions" and "support" subdirectories under features
+Install the frank-cucumber gem:
+    sudo gem install frank-cucumber
 
-Copy the Frank/cucumber/env.rb to the features/support directory that was just made
+Create a skeletal cucumber directory structure inside your project directory by running the frank-skeleton command that was installed when you installed the frank-cucumber gem.
 
-Edit the env.rb file and change the FRANK_LOCATION to point at where Frank was installed
-
-Run cucumber (in Terminal, cd to your features directory and type "cucumber")
-
-You will see an error - 
-
-* if you see a line starting with "no such file to load --" then the loading of the Frank cucumber steps has failed. You should see the path it tried to load the steps from on the rest of the line and adjust the FRANK_LOCATION in the env.rb accordingly
-* if you see a line starting with "No such file or directory - features" then you're all set (cucumber was just complaining that you didn't give it a features file yet)
+Run the cucumber command from your project directory. You should see cucumber attempt to run the initial cucumber feature that frank-skeleton installed. It will fail because you haven't yet defined what the "Given I launch the app" step should do.
 
 Step 8. Write your first step
 ============================
 
-Open up your editor of choice and create a file called "tutorial.feature"
+First create a subdirectory inside of features called step_definitions. This is where your custom step definitions will live.
 
-Add the following to it:
-
-		Feature: Drive our SampleNavApp using Cucumber
-
-		Scenario: Plus button adds timestamp
-		  Given the app is launched
-
-If you run "cucumber tutorial.feature" now, you'll see it run and fail with 1 undefined step
-
-Copy the step definition that it shows, starting with "Given"
+When you ran cucumber if should have given you a sample step definition in yellow text. Copy the step definition that it shows, starting with "Given".
 
 In your editor, create a new file in your step_definitons directory called tutorial_steps.rb and paste in Given step definition
 

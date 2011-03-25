@@ -126,6 +126,8 @@
 		D6A8368311CDC5BA001B8585 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A8368211CDC5BA001B8585 /* CFNetwork.framework */; };
 		D6A8368C11CDC755001B8585 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		D6AE0919128CA0C000CDC4C4 /* AppCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D6AE0918128CA0C000CDC4C4 /* AppCommand.m */; };
+		D6C73C8B1321BB2F00C731A2 /* AccessibilityCheckCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C73C8A1321BB2F00C731A2 /* AccessibilityCheckCommand.m */; };
+		D6C73C9E1321BB5D00C731A2 /* AccessibilityCheckCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C73C8A1321BB2F00C731A2 /* AccessibilityCheckCommand.m */; };
 		D6D79B5711D7FB7C003E0E60 /* Operation.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D79B5611D7FB7C003E0E60 /* Operation.m */; };
 		D6D79B7611D7FC73003E0E60 /* frank_static_resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D6D79B7511D7FC73003E0E60 /* frank_static_resources.bundle */; };
 /* End PBXBuildFile section */
@@ -327,6 +329,8 @@
 		D6A8368211CDC5BA001B8585 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		D6AE0917128CA0C000CDC4C4 /* AppCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppCommand.h; sourceTree = "<group>"; };
 		D6AE0918128CA0C000CDC4C4 /* AppCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppCommand.m; sourceTree = "<group>"; };
+		D6C73C891321BB2F00C731A2 /* AccessibilityCheckCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessibilityCheckCommand.h; sourceTree = "<group>"; };
+		D6C73C8A1321BB2F00C731A2 /* AccessibilityCheckCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessibilityCheckCommand.m; sourceTree = "<group>"; };
 		D6D79B5511D7FB7C003E0E60 /* Operation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Operation.h; sourceTree = "<group>"; };
 		D6D79B5611D7FB7C003E0E60 /* Operation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Operation.m; sourceTree = "<group>"; };
 		D6D79B7511D7FC73003E0E60 /* frank_static_resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = frank_static_resources.bundle; path = ../../frank_static_resources.bundle; sourceTree = SOURCE_ROOT; };
@@ -789,6 +793,8 @@
 		D6A8363511CDC594001B8585 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				D6C73C891321BB2F00C731A2 /* AccessibilityCheckCommand.h */,
+				D6C73C8A1321BB2F00C731A2 /* AccessibilityCheckCommand.m */,
 				D63AE37E12BD9627008EB8DE /* InspectCommand.m */,
 				D6AE0917128CA0C000CDC4C4 /* AppCommand.h */,
 				D6AE0918128CA0C000CDC4C4 /* AppCommand.m */,
@@ -932,6 +938,7 @@
 				D6A8340211CDBF35001B8585 /* UserListMediator.m in Sources */,
 				D6A8340311CDBF35001B8585 /* UserRolesMediator.m in Sources */,
 				D6A8368C11CDC755001B8585 /* main.m in Sources */,
+				D6C73C9E1321BB5D00C731A2 /* AccessibilityCheckCommand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1020,6 +1027,7 @@
 				D69A0B0F124C2ED900BEC9EC /* OrientationCommand.m in Sources */,
 				D6AE0919128CA0C000CDC4C4 /* AppCommand.m in Sources */,
 				D63AE37F12BD9627008EB8DE /* InspectCommand.m in Sources */,
+				D6C73C8B1321BB2F00C731A2 /* AccessibilityCheckCommand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
