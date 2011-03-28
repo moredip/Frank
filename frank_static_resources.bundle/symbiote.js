@@ -61,7 +61,7 @@ $(document).ready(function() {
       data: '["DUMMY"]', // a bug in cocoahttpserver means it can't handle POSTs without a body
       url: G.base_url + "/dump",
       success: function(data) {
-		$('div#dom_dump').append( JsonTools.convert_json_to_dom( data ) );
+		$('div#dom_dump').html( JsonTools.convert_json_to_dom( data ) );
 		   $("#dom_dump").treeview({
 								   collapsed: false
 								   });
