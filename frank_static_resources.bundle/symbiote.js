@@ -20,6 +20,27 @@ var Symbiote = {
   }
 }
 
+function sendCommand(command) {
+    Symbiote.display_chatting_popup();
+    $.ajax({
+           type: "POST",
+           dataType: "json",
+           data: JSON.stringify( command ),
+           url: G.base_url + "/map",
+           success: function(data) {
+           if( Symbiote.is_error_response( data ) )
+           Symbiote.display_error_response( data );
+           },
+           error: function(xhr,status,error) {
+           alert( "Error while talking to Frank: " + status );
+           $('#loading').hide();
+           },
+           complete: function(xhr,status) {
+           Symbiote.hide_chatting_popup();
+           }
+           });
+}
+
 function classClicked(link){    
     var command = {
       query: "view marked:'" + link.innerHTML + "'",
@@ -29,25 +50,8 @@ function classClicked(link){
       }
     };
 
-    Symbiote.display_chatting_popup();
-    $.ajax({
-      type: "POST",
-      dataType: "json",
-      data: JSON.stringify( command ),
-      url: G.base_url + "/map",
-      success: function(data) {
-        if( Symbiote.is_error_response( data ) )
-          Symbiote.display_error_response( data );
-      },
-      error: function(xhr,status,error) {
-        Symbiote.hide_chatting_popup();
-        alert( "Error while talking to Frank: " + status );
-      },
-      complete: function(xhr,status) {
-        Symbiote.hide_chatting_popup();
-      }
-    });
-  }
+    sendCommand(command);
+}
 
 $(document).ready(function() { 
 	$("#tabs").tabs();
@@ -109,25 +113,31 @@ $(document).ready(function() {
       }
     };
 
-    Symbiote.display_chatting_popup();
-    $.ajax({
-      type: "POST",
-      dataType: "json",
-      data: JSON.stringify( command ),
-      url: G.base_url + "/map",
-      success: function(data) {
-        if( Symbiote.is_error_response( data ) )
-          Symbiote.display_error_response( data );
-      },
-      error: function(xhr,status,error) {
-        alert( "Error while talking to Frank: " + status );
-        $('#loading').hide();
-      },
-      complete: function(xhr,status) {
-        Symbiote.hide_chatting_popup();
-      }
-    });
+    sendCommand(command);
   });
   
-  
+  $('#touch_button').click( function(){
+    var command = {
+      query: $("input#query").val(),
+      operation: {
+        method_name: 'touch',
+        arguments: []
+      }
+    };
+
+    sendCommand(command);
+  });
+
+$('#delete_button').click( function(){
+    var command = {
+      query: $("input#query").val(),
+      operation: {
+        method_name: 'delete',
+        arguments: []
+      }
+    };
+
+    sendCommand(command);
+  });
+
 });
