@@ -31,7 +31,7 @@ Features
 Overview
 --------
 
-![Frank Architecture Overview](http://github.com/moredip/frank/raw/master/doc/Frank%20Architecture.png)
+![Frank Architecture Overview](https://github.com/moredip/frank/raw/master/doc/Frank%20Architecture.png)
 
 There are also slides from a [lightning talk](http://moredip.github.com/frank_lightning_talk_slides.html)
 given by Pete about Frank.
