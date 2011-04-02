@@ -8,6 +8,8 @@ remotely drive an App.
 
 [Watch a short presentation on Frank](http://bit.ly/fyUfJE) This is a recording of a 30 minute presentation Pete Hodgson did at the San Francisco Selenium meetup.
 
+[Watch another presentation on Frank](http://www.melbournecocoaheads.com/testing-ios-apps-with-frank-slides-and-videos/) Stew Gleadow also did a Frank presentation, this one for the Melbourne Cocoaheads group.
+
 Where can I ask questions?
 -----
 Please ask away in the [Frank google group](http://groups.google.com/group/frank-discuss).
