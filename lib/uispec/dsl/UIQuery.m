@@ -284,7 +284,7 @@
 		id objValue;
 		int intValue;
 		long longValue;
-		char *charPtrValue;
+		char *charPtrValue; 
 		char charValue;
 		short shortValue;
 		float floatValue;

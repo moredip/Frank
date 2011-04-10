@@ -36,14 +36,21 @@ div#dom_dump {
   font-size:0.8em;
   float:left;
   width:50%;
-  height:400px;
   overflow:auto;
+}
+div#dom_dump .treeview .selected { 
+  font-weight: bold;
+  color: black; /*set color to black to overwrite the red color on hover, just for the selected item*/
 }
 
 div#dom_detail {
   float:right;
   width:50%;
   overflow:auto;
+}
+
+div#dom_detail tr.interesting td {
+  font-weight: bold;
 }
 
 h1 {

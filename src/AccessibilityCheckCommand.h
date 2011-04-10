@@ -3,7 +3,7 @@
 //  Chase iPad
 //
 //  Created by Pete Hodgson on 1/19/11.
-//  Copyright 2011 JPMorgan Chase. All rights reserved.
+//  Copyright 2011 ThoughtWorks. See NOTICE file for details.
 //
 
 #import "FrankCommandRoute.h"
