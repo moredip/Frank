@@ -14,4 +14,6 @@
 
 }
 
++ (NSObject *) jsonify:(id) obj;
+
 @end
