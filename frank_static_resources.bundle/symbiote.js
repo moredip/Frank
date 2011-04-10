@@ -1,6 +1,6 @@
 //GLOBALS
 var G = {
-  base_url: "http://localhost:37265"
+  base_url: window.location.protocol + "//" + window.location.host
 };
 
 var Symbiote = {
