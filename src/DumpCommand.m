@@ -180,8 +180,35 @@ NSObject *jsonifyValue(NSValue *val) {
 		NSString *typeString = [NSString stringWithFormat:@"%s", [val objCType]+1]; //we use +1 to skip past the {
 		
 		NSString *valueType = [[typeString componentsSeparatedByString:@"="] objectAtIndex:0];
+
+		if( [valueType isEqualToString:@"CGSize"] ){
+			CGSize rawSize;
+			[val getValue:&rawSize];
+			return [NSDictionary dictionaryWithObjectsAndKeys:
+					[NSNumber numberWithFloat:rawSize.width], @"width",
+					[NSNumber numberWithFloat:rawSize.height], @"height",
+					nil];
+		}
 		
-		// In the future we could convert the type into a dictionary, if it is helpful to do that
+		if( [valueType isEqualToString:@"CGRect"] ){
+			CGRect rawRect;
+			[val getValue:&rawRect];
+			NSDictionary *originDict = [NSDictionary dictionaryWithObjectsAndKeys:
+									  [NSNumber numberWithFloat:rawRect.origin.x], @"x",
+									  [NSNumber numberWithFloat:rawRect.origin.y], @"y",
+									  nil];
+			NSDictionary *sizeDict = [NSDictionary dictionaryWithObjectsAndKeys:
+											 [NSNumber numberWithFloat:rawRect.size.width], @"width",
+											 [NSNumber numberWithFloat:rawRect.size.height], @"height",
+											 nil];
+			
+			return [NSDictionary dictionaryWithObjectsAndKeys:
+					originDict, @"origin",
+					sizeDict, @"size",
+					nil];
+		}
+		
+		// In the future we could add support for converting any generic type into a dictionary, if it is helpful to do that
 		return [NSString stringWithFormat:@"<%@>", valueType];
 		
 	}
@@ -220,6 +247,8 @@ NSObject *jsonifyColor(UIColor *color){
 	if( nil == obj )
 		return [NSNull null];
 	
+	if( [obj isKindOfClass:[NSNull class]] )
+		return obj;
 	if( [obj isKindOfClass:[NSString class]] || 
 	   [obj isKindOfClass:[NSNumber class]] )
 		return obj;
@@ -231,7 +260,7 @@ NSObject *jsonifyColor(UIColor *color){
 		return jsonifyColor((UIColor *)obj);
 	}
 	
-	return @"<COMPLEX TYPE>";
+	return [NSString stringWithFormat:@"<%@>", NSStringFromClass([obj class])];
 }
 
 - (NSString *)handleCommandWithRequestBody:(NSString *)requestBody {
