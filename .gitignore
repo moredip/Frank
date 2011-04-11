@@ -1,4 +1,5 @@
 build
+.DS_Store
 Frank.xcodeproj/*.mode1v3
 Frank.xcodeproj/*.pbxuser
 Frank.xcodeproj/ThoughtWorks.mode2v3
