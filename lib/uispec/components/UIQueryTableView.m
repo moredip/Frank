@@ -33,6 +33,13 @@
 	return [UIQuery withViews:views className:className];
 }
 
+-(UIQuery*)scrollToTop {
+	UITableView *table = self;
+	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+	[table scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+	return [UIQuery withViews:views className:className];
+}
+
 -(NSArray *)rowIndexPathList {
 	UITableView *table = self;
 	NSMutableArray *rowIndexPathList = [NSMutableArray array];
