@@ -72,16 +72,17 @@ div#header {
 	font-weight: bold;          
 }
 
-table#accessibility th, table#accessibility td{
-	text-align: left;
-	padding: 5px;
-	width: 250px;
-}
-
-table#accessibility a{
+div#accessible-views a{
 	color: #6ab23f;
 	text-decoration: none;
+  font-style: italic;
 }
+
+div#accessible-views span{
+  font-style: normal;
+  font-weight: bold;
+}
+
 #query {
 	width: 300px;
 }
