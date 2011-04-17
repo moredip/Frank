@@ -1,10 +1,5 @@
-//GLOBALS
-var G = {
-  base_url: window.location.protocol + "//" + window.location.host
-};
-
-var Symbiote = {
-};
+/*jslint browser: true, white: false, devel: true */
+/*global window: true, Raphael: true, $: true, _: true */
 
 $(document).ready(function() { 
 
@@ -12,13 +7,13 @@ $(document).ready(function() {
       $domList = $('div#dom_dump > ul'),
       $domAccessibleDump = $('div#accessible-views'),
       $loading = $('#loading'),
-      INTERESTING_PROPERTIES = ['class', 'accessibilityLabel', 'tag', 'alpha', 'isHidden'];
+      INTERESTING_PROPERTIES = ['class', 'accessibilityLabel', 'tag', 'alpha', 'isHidden'],
+      baseUrl = window.location.protocol + "//" + window.location.host,
 
-
-  var uiLocator = (function(){
-    var paper = Raphael( 'ui-locator', 370, 720 ),
+  uiLocator = (function(){
+    var paper = new Raphael( 'ui-locator', 370, 720 ),
         viewIndicator = { remove: _.identity },
-        screenshotUrl = G.base_url + "/screenshot",
+        screenshotUrl = baseUrl + "/screenshot",
         backdrop = { remove: _.identity },
         deviceBackground = paper.rect( 6, 6, 360, 708, 40 ).attr( {
           'fill': 'black',
@@ -63,7 +58,7 @@ $(document).ready(function() {
       showViewLocation: showViewLocation,
       hideViewLocation: hideViewLocation,
       updateBackdrop: updateBackdrop,
-    }
+    };
   }());
 
 
@@ -72,8 +67,8 @@ $(document).ready(function() {
   }
 
   function displayErrorResponse( response ){
-    alert( "Frank isn't happy: "+response.reason+"\n"
-        +"details: "+response.details );
+    alert( "Frank isn't happy: "+response.reason+"\n" +
+        "details: "+response.details );
   }
 
   function showLoadingUI() {
@@ -99,10 +94,11 @@ $(document).ready(function() {
       type: "POST",
       dataType: "json",
       data: JSON.stringify( command ),
-      url: G.base_url + "/map",
+      url: baseUrl + "/map",
       success: function(data) {
-        if( isErrorResponse( data ) )
+        if( isErrorResponse( data ) ) {
           displayErrorResponse( data );
+        }
       },
       error: function(xhr,status,error) {
         alert( "Error while talking to Frank: " + status );
@@ -118,7 +114,7 @@ $(document).ready(function() {
   function displayDetailsFor( view ) {
     console.debug( 'displaying details for:', view );
 
-    $table = $('<table/>');
+    var $table = $('<table/>');
 
     function tableRow( propertyName, propertyValue, cssClass ){
       if( propertyValue === null ){
@@ -144,7 +140,7 @@ $(document).ready(function() {
 
 
     _.each( _.keys(view).sort(), function(propertyName) {
-      if( propertyName == 'subviews' ){ return }
+      if( propertyName === 'subviews' ){ return; }
       if( _.contains( INTERESTING_PROPERTIES, propertyName ) ){ return; } // don't want to include the interesting properties twice
 
       var propertyValue = view[propertyName];
@@ -173,13 +169,19 @@ $(document).ready(function() {
     uiLocator.hideViewLocation();
   }
 
-  function transformDumpedViewToListItem( rawView ) {
+  function listItemTitleFor( rawView ) {
     var title = ""+rawView['class'];
-    if( rawView.accessibilityLabel )
-      title = title + ": '"+rawView.accessibilityLabel+"'";
+    if( rawView.accessibilityLabel ) {
+      return title + ": '"+rawView.accessibilityLabel+"'";
+    }else{
+      return title;
+    }
+  }
 
-    var viewListItem = $("<li><a>"+title+"</a></li>"),
-    subviewList = $("<ul/>");
+  function transformDumpedViewToListItem( rawView ) {
+    var title = listItemTitleFor( rawView ),
+        viewListItem = $("<li><a>"+title+"</a></li>"),
+        subviewList = $("<ul/>");
 
     $('a',viewListItem).data( 'rawView', rawView );
 
@@ -189,8 +191,7 @@ $(document).ready(function() {
     
     viewListItem.append( subviewList );
     return viewListItem; 
-  };
-
+  }
 
   function updateDumpView( data ) {
     $domList.children().remove();
@@ -217,17 +218,23 @@ $(document).ready(function() {
   }
 
   function selectorForAccessibleView( view ) {
-    return "view:'"+view.class+"' marked:'" + view.accessibilityLabel + "'";
+    return _.template( 
+        "view:'<%=viewClass%>' marked:'<%=viewLabel%>'", 
+        { viewClass: view['class'], viewLabel: view.accessibilityLabel }
+        );
   }
 
   function updateAccessibleViews( data ) {
-    var accessibleViews = collectAccessibleViews( data );
-        	
+    var accessibleViews = collectAccessibleViews( data ),
+        divTemplate = _.template( '<div><a href="#" title="<%=selector%>"><span class="viewClass"><%=viewClass%></span> with label "<span class="viewLabel"><%=viewLabel%></span>"</a></div>' );
+
     $domAccessibleDump.children().remove();
 
     _.each( accessibleViews, function( view ) {
-      var selector = selectorForAccessibleView(view);
-      $('<div><a href="#" title="'+selector+'"><span class="viewClass">'+view.class+'</span> with label "<span class="viewLabel">'+view.accessibilityLabel+'</span>"</a></div>')
+      var selector = selectorForAccessibleView(view),
+          divHtml = divTemplate({ selector: selector, viewClass: view['class'], viewLabel: view.accessibilityLabel });
+
+      $(divHtml)
         .click( function(){
           sendFlashCommand( selector );
           return false;
@@ -245,7 +252,7 @@ $(document).ready(function() {
       type: "POST",
       dataType: "json",
       data: '["DUMMY"]', // a bug in cocoahttpserver means it can't handle POSTs without a body
-      url: G.base_url + "/dump",
+      url: baseUrl + "/dump",
       success: function(data) {
         console.debug( 'dump returned', data );
         updateDumpView( data );
