@@ -9,6 +9,8 @@
 #import "FrankCommandRoute.h"
 #import "RoutingHTTPConnection.h"
 
+#import <QuartzCore/QuartzCore.h>
+
 @implementation FrankCommandRoute
 
 - (id) init
@@ -30,6 +32,19 @@
 	[_commandDict setObject:command forKey:commandName];
 }
 
+CGImageRef UIGetScreenImage(void); //private API - you should NOT be adding Frank to the target you release to the App Store.
+
+- (NSData *) grabScreenshot {	
+	UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
+	
+	UIGraphicsBeginImageContext(keyWindow.bounds.size);
+    [keyWindow.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+	
+	return UIImagePNGRepresentation(image);
+}
+
 #pragma mark Route implementation
 
 - (id<FrankCommand>) commandForPath: (NSArray *)path{
@@ -40,6 +55,12 @@
 }
 
 - (NSObject<HTTPResponse> *) handleRequestForPath: (NSArray *)path withConnection:(RoutingHTTPConnection *)connection{
+	
+	if( [@"screenshot" isEqualToString:[path objectAtIndex:0]] )
+	{
+		return [[[HTTPDataResponse alloc] initWithData:[self grabScreenshot]] autorelease];
+	}
+		
 	
 	id<FrankCommand> command = [self commandForPath:path];
 	if( nil == command )

@@ -4,59 +4,85 @@ var G = {
 };
 
 var Symbiote = {
-  is_error_response: function( response ){
-    return 'ERROR' === response.outcome;
-  },
-  display_error_response: function( response ){
-    alert( "Frank isn't happy: "+response.reason+"\n"
-        +"details: "+response.details );
-  },
-  display_chatting_popup: function() {
-    
-    $('#loading').show();
-  },
-  hide_chatting_popup: function() {
-    $('#loading').hide();
-  }
 };
-
-function classClicked(link){    
-    var command = {
-      query: "view marked:'" + link.innerHTML + "'",
-      operation: {
-        method_name: 'flash',
-        arguments: []
-      }
-    }; 
-
-    Symbiote.display_chatting_popup();
-    $.ajax({
-      type: "POST",
-      dataType: "json",
-      data: JSON.stringify( command ),
-      url: G.base_url + "/map",
-      success: function(data) {
-        if( Symbiote.is_error_response( data ) )
-          Symbiote.display_error_response( data );
-      },
-      error: function(xhr,status,error) {
-        Symbiote.hide_chatting_popup();
-        alert( "Error while talking to Frank: " + status );
-      },
-      complete: function(xhr,status) {
-        Symbiote.hide_chatting_popup();
-      }
-    });
-  }
 
 $(document).ready(function() { 
 
   var $domDetails = $('#dom_detail'),
       $domList = $('div#dom_dump > ul'),
       $domAccessibleDump = $('div#accessible-views'),
+      $loading = $('#loading'),
       INTERESTING_PROPERTIES = ['class', 'accessibilityLabel', 'tag', 'alpha', 'isHidden'];
 
 
+  var uiLocator = (function(){
+    var paper = Raphael( 'ui-locator', 370, 720 ),
+        viewIndicator = { remove: _.identity },
+        screenshotUrl = G.base_url + "/screenshot",
+        backdrop = { remove: _.identity },
+        deviceBackground = paper.rect( 6, 6, 360, 708, 40 ).attr( {
+          'fill': 'black',
+          'stroke': 'gray',
+          'stroke-width': 4,
+        });
+
+    paper.circle( 180+6, 655, 34 ).attr( 'fill', '90-#303030-#101010' ); // home button
+    paper.rect( 180+6, 655, 22, 22, 5 ).attr({  // square inside home button
+      'stroke': 'gray',
+      'stroke-width': 2,
+    }).translate( -11, -11 ); 
+
+    function showViewLocation( view ) {
+      viewIndicator.remove();
+
+      viewIndicator = paper.rect( 
+        view.accessibilityFrame.origin.x, 
+        view.accessibilityFrame.origin.y, 
+        view.accessibilityFrame.size.width, 
+        view.accessibilityFrame.size.height
+      )
+        .attr({
+          fill: '#aaff00',
+          opacity: 0.8,
+          stroke: 'black',
+        })
+        .translate( 24, 120 );
+    }
+
+    function hideViewLocation() {
+      viewIndicator.remove();
+    }
+
+    function updateBackdrop(){
+      var cacheBusterUrl = screenshotUrl+"?"+(new Date()).getTime();
+      backdrop.remove();
+      backdrop = paper.image( cacheBusterUrl, 24, 120, 320, 480 );
+    }
+
+    return {
+      showViewLocation: showViewLocation,
+      hideViewLocation: hideViewLocation,
+      updateBackdrop: updateBackdrop,
+    }
+  }());
+
+
+  function isErrorResponse( response ){
+    return 'ERROR' === response.outcome;
+  }
+
+  function displayErrorResponse( response ){
+    alert( "Frank isn't happy: "+response.reason+"\n"
+        +"details: "+response.details );
+  }
+
+  function showLoadingUI() {
+    $loading.show();
+  }
+
+  function hideLoadingUI() {
+    $loading.hide();
+  }
 
 
   function sendFlashCommand( selector ) {
@@ -68,22 +94,21 @@ $(document).ready(function() {
       }
     };
 
-    Symbiote.display_chatting_popup();
+    showLoadingUI();
     $.ajax({
       type: "POST",
       dataType: "json",
       data: JSON.stringify( command ),
       url: G.base_url + "/map",
       success: function(data) {
-        if( Symbiote.is_error_response( data ) )
-          Symbiote.display_error_response( data );
+        if( isErrorResponse( data ) )
+          displayErrorResponse( data );
       },
       error: function(xhr,status,error) {
         alert( "Error while talking to Frank: " + status );
-        $('#loading').hide();
       },
       complete: function(xhr,status) {
-        Symbiote.hide_chatting_popup();
+        hideLoadingUI();
       }
     });
   }
@@ -139,6 +164,14 @@ $(document).ready(function() {
     $this.addClass('selected');
   }
 
+  function treeElementEntered(){
+    var view = $(this).data('rawView');
+    uiLocator.showViewLocation( view );
+  }
+
+  function treeElementLeft(){
+    uiLocator.hideViewLocation();
+  }
 
   function transformDumpedViewToListItem( rawView ) {
     var title = ""+rawView['class'];
@@ -150,7 +183,7 @@ $(document).ready(function() {
 
     $('a',viewListItem).data( 'rawView', rawView );
 
-    $.each( rawView.subviews, function(i,subview) {
+    _.each( rawView.subviews, function(subview) {
       subviewList.append( transformDumpedViewToListItem( subview ) );
     });
     
@@ -163,6 +196,8 @@ $(document).ready(function() {
     $domList.children().remove();
     $domList.append( transformDumpedViewToListItem( data ) );
     $('a', $domList ).bind( 'click', treeElementSelected );
+    $('a', $domList ).bind( 'mouseenter', treeElementEntered );
+    $('a', $domList ).bind( 'mouseleave', treeElementLeft );
     $domList.treeview({
                  collapsed: false
                  });
@@ -204,7 +239,7 @@ $(document).ready(function() {
 	$("#tabs").tabs();
 	$('#loading').hide();
 	$('#dump_button').click( function(){
-	 Symbiote.display_chatting_popup();
+    showLoadingUI();
 
     $.ajax({
       type: "POST",
@@ -215,11 +250,13 @@ $(document).ready(function() {
         console.debug( 'dump returned', data );
         updateDumpView( data );
         updateAccessibleViews( data );
-        Symbiote.hide_chatting_popup();						   
+        uiLocator.updateBackdrop();
       },
       error: function(xhr,status,error) {
-        $('#loading').hide();
         alert( "Error while talking to Frank: " + status );
+      },
+      complete: function(){
+        hideLoadingUI();
       }
     });
   });

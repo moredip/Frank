@@ -42,7 +42,7 @@
 	if( [operation appliesToObject:wrappedView] )
 		return [operation applyToObject:wrappedView];
 	
-	return nil;
+	return nil; 
 }
 
 - (NSString *)handleCommandWithRequestBody:(NSString *)requestBody {
