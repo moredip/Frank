@@ -16,7 +16,6 @@
 #import "MapOperationCommand.h"
 #import "OrientationCommand.h"
 #import "AppCommand.h"
-#import "InspectCommand.h"
 #import "AccessibilityCheckCommand.h"
 
 @implementation FrankServer
@@ -35,7 +34,6 @@
 		
 		FrankCommandRoute *frankCommandRoute = [[[FrankCommandRoute alloc] init] autorelease];
 		[frankCommandRoute registerCommand:[[[DumpCommand alloc]init]autorelease] withName:@"dump"];
-		[frankCommandRoute registerCommand:[[[InspectCommand alloc]init]autorelease] withName:@"inspect"];
 		[frankCommandRoute registerCommand:[[[MapOperationCommand alloc]init]autorelease] withName:@"map"];
 		[frankCommandRoute registerCommand:[[[OrientationCommand alloc]init]autorelease] withName:@"orientation"];
 		[frankCommandRoute registerCommand:[[[AccessibilityCheckCommand alloc] init]autorelease] withName:@"accessibility_check"];

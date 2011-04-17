@@ -85,6 +85,9 @@ static RequestRouter *s_singleton;
 @implementation RequestRouter(Private)
 
 - (NSArray *)pathComponentsWithPath:(NSString *)path{
+	// get rid of query params. We have no use for them, at least for now
+	path = [[path componentsSeparatedByString:@"?"] objectAtIndex:0];
+			
 	NSMutableArray *pathComponents = [NSMutableArray arrayWithArray:[path pathComponents]];
 	[pathComponents removeObject:@"/"]; //handles leading and trailing slashs
 	
