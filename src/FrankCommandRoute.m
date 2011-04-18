@@ -32,8 +32,6 @@
 	[_commandDict setObject:command forKey:commandName];
 }
 
-CGImageRef UIGetScreenImage(void); //private API - you should NOT be adding Frank to the target you release to the App Store.
-
 - (NSData *) grabScreenshot {	
 	UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
 	
