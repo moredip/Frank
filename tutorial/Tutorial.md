@@ -4,6 +4,8 @@ Here are some detailed steps on how to create your first Frankified app. Screenc
 
 **Please don't be intimidated by the length of this tutorial, it is also to help complete Xcode beginners**
 
+Pete recorded a [quick 7 minute screencast](http://vimeo.com/22537514) which runs through this tutorial start to finish on a real iOS app.
+
 
 Step 1. Create your app! :-)
 ============================
