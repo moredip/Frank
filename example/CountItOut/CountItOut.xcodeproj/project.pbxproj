@@ -106,7 +106,6 @@
 		D6039443135BD1E900116449 /* DumpCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D60393FC135BD1E900116449 /* DumpCommand.m */; };
 		D6039444135BD1E900116449 /* FrankCommandRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = D60393FE135BD1E900116449 /* FrankCommandRoute.m */; };
 		D6039445135BD1E900116449 /* FrankServer.m in Sources */ = {isa = PBXBuildFile; fileRef = D6039400135BD1E900116449 /* FrankServer.m */; };
-		D6039446135BD1E900116449 /* InspectCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D6039402135BD1E900116449 /* InspectCommand.m */; };
 		D6039447135BD1E900116449 /* MapOperationCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D6039404135BD1E900116449 /* MapOperationCommand.m */; };
 		D6039448135BD1E900116449 /* Operation.m in Sources */ = {isa = PBXBuildFile; fileRef = D6039406135BD1E900116449 /* Operation.m */; };
 		D6039449135BD1E900116449 /* OrientationCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D6039408135BD1E900116449 /* OrientationCommand.m */; };
@@ -258,8 +257,6 @@
 		D60393FE135BD1E900116449 /* FrankCommandRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrankCommandRoute.m; sourceTree = "<group>"; };
 		D60393FF135BD1E900116449 /* FrankServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrankServer.h; sourceTree = "<group>"; };
 		D6039400135BD1E900116449 /* FrankServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrankServer.m; sourceTree = "<group>"; };
-		D6039401135BD1E900116449 /* InspectCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InspectCommand.h; sourceTree = "<group>"; };
-		D6039402135BD1E900116449 /* InspectCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectCommand.m; sourceTree = "<group>"; };
 		D6039403135BD1E900116449 /* MapOperationCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapOperationCommand.h; sourceTree = "<group>"; };
 		D6039404135BD1E900116449 /* MapOperationCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapOperationCommand.m; sourceTree = "<group>"; };
 		D6039405135BD1E900116449 /* Operation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Operation.h; sourceTree = "<group>"; };
@@ -585,8 +582,6 @@
 				D60393FE135BD1E900116449 /* FrankCommandRoute.m */,
 				D60393FF135BD1E900116449 /* FrankServer.h */,
 				D6039400135BD1E900116449 /* FrankServer.m */,
-				D6039401135BD1E900116449 /* InspectCommand.h */,
-				D6039402135BD1E900116449 /* InspectCommand.m */,
 				D6039403135BD1E900116449 /* MapOperationCommand.h */,
 				D6039404135BD1E900116449 /* MapOperationCommand.m */,
 				D6039405135BD1E900116449 /* Operation.h */,
@@ -789,7 +784,6 @@
 				D6039443135BD1E900116449 /* DumpCommand.m in Sources */,
 				D6039444135BD1E900116449 /* FrankCommandRoute.m in Sources */,
 				D6039445135BD1E900116449 /* FrankServer.m in Sources */,
-				D6039446135BD1E900116449 /* InspectCommand.m in Sources */,
 				D6039447135BD1E900116449 /* MapOperationCommand.m in Sources */,
 				D6039448135BD1E900116449 /* Operation.m in Sources */,
 				D6039449135BD1E900116449 /* OrientationCommand.m in Sources */,
