@@ -155,6 +155,7 @@ $(document).ready(function() {
     var $this = $(this),
         selectedView = $this.data('rawView');
     displayDetailsFor( selectedView );
+    selectViewDetailsTab();
 
     $('a',$domList).removeClass('selected');
     $this.addClass('selected');
@@ -243,7 +244,19 @@ $(document).ready(function() {
     });
   }
 
-	$("#tabs").tabs();
+	$("#list-tabs").tabs();
+	$("#inspect-tabs").tabs();
+
+  function selectViewDetailsTab(){
+    $("#inspect-tabs").tabs('select', 0);
+  }
+  function selectLocatorTab(){
+    $("#inspect-tabs").tabs('select', 1);
+  }
+  
+  // show locator tab by default
+  selectLocatorTab();
+
 	$('#loading').hide();
 	$('#dump_button').click( function(){
     showLoadingUI();
@@ -274,5 +287,8 @@ $(document).ready(function() {
   
   // do initial DOM dump straight after page has finished loading
   $('#dump_button').click();
+  
+  // show locator tab by default
+  selectLocatorTab();
   
 });

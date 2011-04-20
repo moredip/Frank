@@ -3,50 +3,55 @@ body {
 	margin: 0px;
 	font-family: Georgia;
 }
-div#universal_commands {
-	float:left;
-	border: 1px dotted black;
-	margin: 5px;
-	padding: 5px;
-}
-div#selector_commands {
-	
-	border: 0px dotted black;
-	margin: 5px;
-	padding: 5px;
-}
-div#modal_overlay {
-	display:none;
-	position: absolute;
-	z-index:9000;
-	opacity:0.9;
-	background-color: #888;
-}
-div#chatting_popup {
-	position:absolute;  
-	z-index:9999;  
-	padding:10px;  
-	background-color: #FFF;
+
+div#selector-test {
+  padding: 20px;
+  padding-bottom: 0px;
+  white-space: nowrap;
 }
 
-div#tabs {
+table.symbiote_shell {
+  table-layout: fixed;
+  width: 100%;
+}
+
+table.symbiote_shell td {
+ vertical-align: top;
+}
+
+div#inspect-tabs li {
+  float: right;
+  font-size: 12px;
+}
+div#inspect-tabs ul {
+  background: #333;
+}
+
+a#dump_button {
+  vertical-align: middle;
+}
+
+img#loading {
+  vertical-align: middle;
+	margin-right: 6px;
+}
+
+div#refresh {
+  padding: 20px;
+  text-align:right;
 }
 
 div#dom_dump {
   font-size:0.8em;
-  float:left;
-  width:50%;
-  overflow:auto;
 }
+
 div#dom_dump .treeview .selected { 
   font-weight: bold;
   color: black; /*set color to black to overwrite the red color on hover, just for the selected item*/
 }
 
 div#dom_detail {
-  float:right;
-  width:50%;
-  overflow:auto;
+  font-size:0.8em;
 }
 
 div#dom_detail tr.interesting td {
@@ -72,6 +77,15 @@ div#header {
 	font-weight: bold;          
 }
 
+div#accessible-views-tab div.hints{
+  font-size: 0.8em;
+  border: 1px;
+  border-style: dashed;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 10px;
+}
+
 div#accessible-views a{
 	color: #6ab23f;
 	text-decoration: none;
@@ -86,10 +100,6 @@ div#accessible-views span{
 #query {
 	width: 300px;
 }
-#loading {
-	margin-top: 10px;
-	margin-right: 0px;
-}
 
 ul {
 	list-style-type: none;  
@@ -97,9 +107,4 @@ ul {
 
 ul.features li {
 	margin-top: 5px;
-}
-
-div#refresh {
-	float: right; 
-	width: 100px;
 }
