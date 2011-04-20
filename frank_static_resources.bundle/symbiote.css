@@ -97,6 +97,14 @@ div#accessible-views span{
   font-weight: bold;
 }
 
+div#live-view{
+  text-align: center;
+}
+
+div#ui-locator-view{
+  text-align: center;
+}
+
 #query {
 	width: 300px;
 }

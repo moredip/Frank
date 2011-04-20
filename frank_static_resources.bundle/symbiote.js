@@ -1,6 +1,89 @@
 /*jslint browser: true, white: false, devel: true */
 /*global window: true, Raphael: true, $: true, _: true */
 
+
+var symbiote = {};
+
+symbiote.baseUrlFor = function(path){ return window.location.protocol + "//" + window.location.host + "/" + path; };
+
+symbiote.UiLocator = function(){
+  var paper = new Raphael( 'ui-locator-view', 370, 720 ),
+      viewIndicator = { remove: _.identity },
+      screenshotUrl = symbiote.baseUrlFor( "screenshot" ),
+      backdrop = { remove: _.identity },
+      deviceBackground = paper.rect( 6, 6, 360, 708, 40 ).attr( {
+        'fill': 'black',
+        'stroke': 'gray',
+        'stroke-width': 4,
+      });
+
+  paper.circle( 180+6, 655, 34 ).attr( 'fill', '90-#303030-#101010' ); // home button
+  paper.rect( 180+6, 655, 22, 22, 5 ).attr({  // square inside home button
+    'stroke': 'gray',
+    'stroke-width': 2,
+  }).translate( -11, -11 ); 
+
+  function showViewLocation( view ) {
+    viewIndicator.remove();
+
+    viewIndicator = paper.rect( 
+      view.accessibilityFrame.origin.x, 
+      view.accessibilityFrame.origin.y, 
+      view.accessibilityFrame.size.width, 
+      view.accessibilityFrame.size.height
+    )
+      .attr({
+        fill: '#aaff00',
+        opacity: 0.8,
+        stroke: 'black',
+      })
+      .translate( 24, 120 );
+  }
+
+  function hideViewLocation() {
+    viewIndicator.remove();
+  }
+
+  function updateBackdrop(){
+    var cacheBusterUrl = screenshotUrl+"?"+(new Date()).getTime();
+    backdrop.remove();
+    backdrop = paper.image( cacheBusterUrl, 24, 120, 320, 480 );
+  }
+
+  return {
+    showViewLocation: showViewLocation,
+    hideViewLocation: hideViewLocation,
+    updateBackdrop: updateBackdrop,
+  };
+};
+
+symbiote.LiveView = function(updateViewFn,updateHeirarchyFn){
+
+  var viewTimer,heirTimer;
+
+  function stop(){
+    window.clearInterval(viewTimer);
+    window.clearInterval(heirTimer);
+  }
+
+  function start(){
+    stop(); // stop any existing timer
+
+    viewTimer = window.setInterval( function(){
+      updateViewFn();
+    }, 700 );
+    heirTimer = window.setInterval( function(){
+      updateHeirarchyFn();
+    }, 2000 );
+  }
+
+  return {
+    start: start,
+    stop: stop
+  };
+};
+
+
 $(document).ready(function() { 
 
   var $domDetails = $('#dom_detail'),
@@ -8,58 +91,21 @@ $(document).ready(function() {
       $domAccessibleDump = $('div#accessible-views'),
       $loading = $('#loading'),
       INTERESTING_PROPERTIES = ['class', 'accessibilityLabel', 'tag', 'alpha', 'isHidden'],
-      baseUrl = window.location.protocol + "//" + window.location.host,
+      uiLocator = symbiote.UiLocator(),
+      liveView;
 
-  uiLocator = (function(){
-    var paper = new Raphael( 'ui-locator', 370, 720 ),
-        viewIndicator = { remove: _.identity },
-        screenshotUrl = baseUrl + "/screenshot",
-        backdrop = { remove: _.identity },
-        deviceBackground = paper.rect( 6, 6, 360, 708, 40 ).attr( {
-          'fill': 'black',
-          'stroke': 'gray',
-          'stroke-width': 4,
-        });
 
-    paper.circle( 180+6, 655, 34 ).attr( 'fill', '90-#303030-#101010' ); // home button
-    paper.rect( 180+6, 655, 22, 22, 5 ).attr({  // square inside home button
-      'stroke': 'gray',
-      'stroke-width': 2,
-    }).translate( -11, -11 ); 
 
-    function showViewLocation( view ) {
-      viewIndicator.remove();
 
-      viewIndicator = paper.rect( 
-        view.accessibilityFrame.origin.x, 
-        view.accessibilityFrame.origin.y, 
-        view.accessibilityFrame.size.width, 
-        view.accessibilityFrame.size.height
-      )
-        .attr({
-          fill: '#aaff00',
-          opacity: 0.8,
-          stroke: 'black',
-        })
-        .translate( 24, 120 );
-    }
+	$("#list-tabs").tabs();
+	$("#inspect-tabs").tabs();
 
-    function hideViewLocation() {
-      viewIndicator.remove();
-    }
-
-    function updateBackdrop(){
-      var cacheBusterUrl = screenshotUrl+"?"+(new Date()).getTime();
-      backdrop.remove();
-      backdrop = paper.image( cacheBusterUrl, 24, 120, 320, 480 );
-    }
-
-    return {
-      showViewLocation: showViewLocation,
-      hideViewLocation: hideViewLocation,
-      updateBackdrop: updateBackdrop,
-    };
-  }());
+  function selectViewDetailsTab(){
+    $("#inspect-tabs").tabs('select', 0);
+  }
+  function selectLocatorTab(){
+    $("#inspect-tabs").tabs('select', 1);
+  }
 
 
   function isErrorResponse( response ){
@@ -78,37 +124,6 @@ $(document).ready(function() {
   function hideLoadingUI() {
     $loading.hide();
   }
-
-
-  function sendFlashCommand( selector ) {
-    var command = {
-      query: selector,
-      operation: {
-        method_name: 'flash',
-        arguments: []
-      }
-    };
-
-    showLoadingUI();
-    $.ajax({
-      type: "POST",
-      dataType: "json",
-      data: JSON.stringify( command ),
-      url: baseUrl + "/map",
-      success: function(data) {
-        if( isErrorResponse( data ) ) {
-          displayErrorResponse( data );
-        }
-      },
-      error: function(xhr,status,error) {
-        alert( "Error while talking to Frank: " + status );
-      },
-      complete: function(xhr,status) {
-        hideLoadingUI();
-      }
-    });
-  }
-
 
 
   function displayDetailsFor( view ) {
@@ -225,7 +240,41 @@ $(document).ready(function() {
         );
   }
 
-  function updateAccessibleViews( data ) {
+
+
+
+
+
+  function sendFlashCommand( selector ) {
+    var command = {
+      query: selector,
+      operation: {
+        method_name: 'flash',
+        arguments: []
+      }
+    };
+
+    showLoadingUI();
+    $.ajax({
+      type: "POST",
+      dataType: "json",
+      data: JSON.stringify( command ),
+      url: symbiote.baseUrlFor( "/map" ),
+      success: function(data) {
+        if( isErrorResponse( data ) ) {
+          displayErrorResponse( data );
+        }
+      },
+      error: function(xhr,status,error) {
+        alert( "Error while talking to Frank: " + status );
+      },
+      complete: function(xhr,status) {
+        hideLoadingUI();
+      }
+    });
+  }
+
+    function updateAccessibleViews( data ) {
     var accessibleViews = collectAccessibleViews( data ),
         divTemplate = _.template( '<div><a href="#" title="<%=selector%>"><span class="viewClass"><%=viewClass%></span> with label "<span class="viewLabel"><%=viewLabel%></span>"</a></div>' );
 
@@ -244,33 +293,19 @@ $(document).ready(function() {
     });
   }
 
-	$("#list-tabs").tabs();
-	$("#inspect-tabs").tabs();
 
-  function selectViewDetailsTab(){
-    $("#inspect-tabs").tabs('select', 0);
-  }
-  function selectLocatorTab(){
-    $("#inspect-tabs").tabs('select', 1);
-  }
-  
-  // show locator tab by default
-  selectLocatorTab();
-
-	$('#loading').hide();
-	$('#dump_button').click( function(){
+  function refreshViewHeirarchy(){
     showLoadingUI();
 
     $.ajax({
       type: "POST",
       dataType: "json",
       data: '["DUMMY"]', // a bug in cocoahttpserver means it can't handle POSTs without a body
-      url: baseUrl + "/dump",
+      url: symbiote.baseUrlFor( "/dump" ),
       success: function(data) {
         console.debug( 'dump returned', data );
         updateDumpView( data );
         updateAccessibleViews( data );
-        uiLocator.updateBackdrop();
       },
       error: function(xhr,status,error) {
         alert( "Error while talking to Frank: " + status );
@@ -279,11 +314,37 @@ $(document).ready(function() {
         hideLoadingUI();
       }
     });
+  }
+
+
+
+	$('#dump_button').click( function(){
+    refreshViewHeirarchy();
+    uiLocator.updateBackdrop();
   });
 
   $('#flash_button').click( function(){
     sendFlashCommand( $("input#query").val() );
   });
+
+  
+  liveView = symbiote.LiveView( uiLocator.updateBackdrop, refreshViewHeirarchy );
+
+  $("#live-view button").click( function(){
+    $(this).toggleClass('down');
+    if( $(this).hasClass('down') ){
+      liveView.start();
+      $(this).text('stop Live View');
+    }else{
+      liveView.stop();
+      $(this).text('start Live View');
+    }
+  });
+
+
+  //initial UI setup
+
+	$('#loading').hide();
   
   // do initial DOM dump straight after page has finished loading
   $('#dump_button').click();
