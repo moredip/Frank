@@ -7,7 +7,9 @@ var symbiote = {};
 symbiote.baseUrlFor = function(path){ return window.location.protocol + "//" + window.location.host + "/" + path; };
 
 symbiote.UiLocator = function(){
-  var paper = new Raphael( 'ui-locator-view', 370, 720 ),
+  var SCREEN_OFFSET = { x: 24, y: 120 },
+      views = [],
+      paper = new Raphael( 'ui-locator-view', 370, 720 ),
       viewIndicator = { remove: _.identity },
       screenshotUrl = symbiote.baseUrlFor( "screenshot" ),
       backdrop = { remove: _.identity },
@@ -23,6 +25,15 @@ symbiote.UiLocator = function(){
     'stroke-width': 2,
   }).translate( -11, -11 ); 
 
+  function viewClick(e){
+    var coords = { 
+      x: e.offsetX - SCREEN_OFFSET.x, 
+      y: e.offsetY - SCREEN_OFFSET.y
+    };
+
+    console.debug( 'view click at ', coords, e );
+  }
+
   function showViewLocation( view ) {
     viewIndicator.remove();
 
@@ -37,7 +48,7 @@ symbiote.UiLocator = function(){
         opacity: 0.8,
         stroke: 'black',
       })
-      .translate( 24, 120 );
+      .translate( SCREEN_OFFSET.x, SCREEN_OFFSET.y );
   }
 
   function hideViewLocation() {
@@ -47,13 +58,19 @@ symbiote.UiLocator = function(){
   function updateBackdrop(){
     var cacheBusterUrl = screenshotUrl+"?"+(new Date()).getTime();
     backdrop.remove();
-    backdrop = paper.image( cacheBusterUrl, 24, 120, 320, 480 );
+    backdrop = paper.image( cacheBusterUrl, SCREEN_OFFSET.x, SCREEN_OFFSET.y, 320, 480 );
+    backdrop.click( viewClick );
+  }
+
+  function updateViews(_views){
+    views = _views;
   }
 
   return {
     showViewLocation: showViewLocation,
     hideViewLocation: hideViewLocation,
     updateBackdrop: updateBackdrop,
+    updateViews: updateViews,
   };
 };
 
@@ -220,17 +237,25 @@ $(document).ready(function() {
                  });
   }
 
-  function collectAccessibleViews( view )
-  {
-    var accessibleSubElements = _.flatten( _.map( view.subviews, function(subview) {
-      return collectAccessibleViews( subview );
-    }) );
+  function flattenViews( rootView ) {
 
-    if( view.accessibilityLabel ) {
-      return [view].concat( accessibleSubElements );
-    }else{
-      return accessibleSubElements;
-    }
+    var flattenedViews = [];
+
+    function collectSubViews( view ) {
+      flattenedViews.push( view );
+      _.each( view.subviews, function(subview){
+        collectSubViews( subview );
+      });
+    } 
+
+    collectSubViews( rootView, flattenedViews );
+    return flattenedViews;
+  }
+
+  function filterAccessibleViews( views ) {
+    return _.filter( views, function(view){
+      return view.accessibilityLabel;
+    });
   }
 
   function selectorForAccessibleView( view ) {
@@ -239,9 +264,6 @@ $(document).ready(function() {
         { viewClass: view['class'], viewLabel: view.accessibilityLabel }
         );
   }
-
-
-
 
 
 
@@ -274,8 +296,8 @@ $(document).ready(function() {
     });
   }
 
-    function updateAccessibleViews( data ) {
-    var accessibleViews = collectAccessibleViews( data ),
+    function updateAccessibleViews( views ) {
+    var accessibleViews = filterAccessibleViews( views ),
         divTemplate = _.template( '<div><a href="#" title="<%=selector%>"><span class="viewClass"><%=viewClass%></span> with label "<span class="viewLabel"><%=viewLabel%></span>"</a></div>' );
 
     $domAccessibleDump.children().remove();
@@ -304,8 +326,12 @@ $(document).ready(function() {
       url: symbiote.baseUrlFor( "/dump" ),
       success: function(data) {
         console.debug( 'dump returned', data );
+
+        var allViews = flattenViews(data);
+
         updateDumpView( data );
-        updateAccessibleViews( data );
+        updateAccessibleViews( allViews );
+        //uiLocator.updateViews( flattenViews(data) );
       },
       error: function(xhr,status,error) {
         alert( "Error while talking to Frank: " + status );
