@@ -8,7 +8,9 @@ symbiote.baseUrlFor = function(path){ return window.location.protocol + "//" + w
 
 symbiote.UiLocator = function(){
   var SCREEN_OFFSET = { x: 24, y: 120 },
-      views = [],
+      allViews = [],
+      viewsHoveredHandler = _.identity,
+      viewsLeftHandler = _.identity,
       paper = new Raphael( 'ui-locator-view', 370, 720 ),
       viewIndicator = { remove: _.identity },
       screenshotUrl = symbiote.baseUrlFor( "screenshot" ),
@@ -25,13 +27,34 @@ symbiote.UiLocator = function(){
     'stroke-width': 2,
   }).translate( -11, -11 ); 
 
-  function viewClick(e){
+  function pointIsWithinView(point,view){
+    var offsetFromOrigin = {
+      x: point.x - view.accessibilityFrame.origin.x,
+      y: point.y - view.accessibilityFrame.origin.y
+    },
+        isInHorz = offsetFromOrigin.x >= 0 && offsetFromOrigin.x <= view.accessibilityFrame.size.width,
+        isInVert = offsetFromOrigin.y >= 0 && offsetFromOrigin.y <= view.accessibilityFrame.size.height;
+    return isInHorz && isInVert;
+  }
+
+
+  function findViewsAt( point ){
+    return _.filter( allViews, function(view){
+      return pointIsWithinView(point,view);
+    });
+
+  }
+
+  function backdropHover(e){
     var coords = { 
       x: e.offsetX - SCREEN_OFFSET.x, 
       y: e.offsetY - SCREEN_OFFSET.y
     };
+    viewsHoveredHandler( findViewsAt( coords) );
+  }
 
-    console.debug( 'view click at ', coords, e );
+  function backdropLeft(e){
+    viewsLeftHandler();
   }
 
   function showViewLocation( view ) {
@@ -59,11 +82,12 @@ symbiote.UiLocator = function(){
     var cacheBusterUrl = screenshotUrl+"?"+(new Date()).getTime();
     backdrop.remove();
     backdrop = paper.image( cacheBusterUrl, SCREEN_OFFSET.x, SCREEN_OFFSET.y, 320, 480 );
-    backdrop.click( viewClick );
+    backdrop.mousemove( backdropHover );
+    backdrop.mouseout( backdropLeft );
   }
 
-  function updateViews(_views){
-    views = _views;
+  function updateViews(views){
+    allViews = views;
   }
 
   return {
@@ -71,6 +95,8 @@ symbiote.UiLocator = function(){
     hideViewLocation: hideViewLocation,
     updateBackdrop: updateBackdrop,
     updateViews: updateViews,
+    viewsHovered: function(handler){ viewsHoveredHandler = handler; },
+    viewsLeft: function(handler){ viewsLeftHandler = handler; },
   };
 };
 
@@ -112,6 +138,34 @@ $(document).ready(function() {
       liveView;
 
 
+  function domListItemForView(view){
+    var $found = null;
+    $('a',$domList).each(function(i,el){
+      var $el = $(el);
+      if( $el.data('rawView') === view ){
+        $found = $el;
+        return false;
+      }
+    });
+    return $found;
+  }
+
+  uiLocator.viewsHovered( function(views){
+    var $lis = _.map( views, domListItemForView );
+
+    $('a',$domList).removeClass('hovered-in-locator');
+
+    _.each( $lis, function($li){
+      $li.addClass('hovered-in-locator');
+    });
+  });
+
+  uiLocator.viewsLeft( function(){
+    $('a',$domList).removeClass('hovered-in-locator');
+  });
+  
+  
+  
 
 
 	$("#list-tabs").tabs();
@@ -331,7 +385,7 @@ $(document).ready(function() {
 
         updateDumpView( data );
         updateAccessibleViews( allViews );
-        //uiLocator.updateViews( flattenViews(data) );
+        uiLocator.updateViews( allViews );
       },
       error: function(xhr,status,error) {
         alert( "Error while talking to Frank: " + status );
