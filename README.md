@@ -6,6 +6,12 @@ remotely drive an App.
 
 [Check out Frank in action!](http://sl.thepete.net/frank_ea_demo) This short screencast shows a sample iPhone app being exercised in the iPhone simulator by a set of cucumber tests.
 
+<iframe src="http://player.vimeo.com/video/21860134" width="400" height="300" frameborder="0"></iframe>
+
+[Watch a short presentation on Frank](http://bit.ly/fyUfJE) This is a recording of a 30 minute presentation Pete Hodgson did at the San Francisco Selenium meetup.
+
+[Watch another presentation on Frank](http://www.melbournecocoaheads.com/testing-ios-apps-with-frank-slides-and-videos/) Stew Gleadow also did a Frank presentation, this one for the Melbourne Cocoaheads group.
+
 Where can I ask questions?
 -----
 Please ask away in the [Frank google group](http://groups.google.com/group/frank-discuss).
@@ -31,7 +37,7 @@ Features
 Overview
 --------
 
-![Frank Architecture Overview](http://github.com/moredip/frank/raw/master/doc/Frank%20Architecture.png)
+![Frank Architecture Overview](https://github.com/moredip/frank/raw/master/doc/Frank%20Architecture.png)
 
 There are also slides from a [lightning talk](http://moredip.github.com/frank_lightning_talk_slides.html)
 given by Pete about Frank.
