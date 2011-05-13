@@ -10,4 +10,13 @@
 
 }
 
+-(id)set:(id)object forSelector:(SEL)selector;
+-(id)set:(id)object for:(id)key;
+-(id)getForSelector:(SEL)selector;
+-(id)get:(id)key;
+-(void)clear;
+
++(NSMutableDictionary *)getFullCache;
++(void)clear;
+
 @end

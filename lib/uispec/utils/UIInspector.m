@@ -81,7 +81,7 @@ static BOOL inBrowserMode = YES;
 			valueLabel.text = value;
 			[cell.contentView addSubview:valueLabel];
 		} else {
-			cell.text = [NSString stringWithFormat:@"%@%@", key, value];
+			cell.textLabel.text = [NSString stringWithFormat:@"%@%@", key, value];
 		}
 		if (![object isKindOfClass:[NSString class]]) {
 			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -108,7 +108,7 @@ static BOOL inBrowserMode = YES;
 			[cell.contentView addSubview:textLabel];
 		} else {
 			cell.imageView.image = viewImage;
-			cell.text = text;
+			cell.textLabel.text = text;
 		}
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
