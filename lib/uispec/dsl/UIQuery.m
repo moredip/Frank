@@ -418,6 +418,32 @@
 	return [UIQuery withViews:views className:className];
 }
 
+- (UIQuery *)touchxy:(NSNumber *)x ycoord:(NSNumber *)y {
+	//NSLog(@"UIQuery - (UIQuery *)touchxy:(int)x ycoord:(int)y = %@, %@", x, y);
+	[[UIQueryExpectation withQuery:self] exist:@"before you can touch it"];
+	
+	for (UIView *view in [self targetViews]) {
+		UITouch *touch = [[UITouch alloc] initInView:view xcoord:[x intValue] ycoord:[y intValue]];
+		UIEvent *eventDown = [[NSClassFromString(@"UITouchesEvent") alloc] initWithTouch:touch];
+		NSSet *touches = [[NSMutableSet alloc] initWithObjects:&touch count:1];
+		
+		[touch.view touchesBegan:touches withEvent:eventDown];
+		
+		UIEvent *eventUp = [[NSClassFromString(@"UITouchesEvent") alloc] initWithTouch:touch];
+		[touch setPhase:UITouchPhaseEnded];
+		
+		[touch.view touchesEnded:touches withEvent:eventDown];
+		
+		[eventDown release];
+		[eventUp release];
+		[touches release];
+		[touch release];
+		[self wait:.5];
+	}
+	return [UIQuery withViews:views className:className];
+}
+
+
 -(NSString *)description {
 	return [NSString stringWithFormat:@"UIQuery: %@", [views description]];
 }
@@ -556,6 +582,42 @@ UIQuery * $(NSMutableString *script, ...) {
 	return self;
 }
 
+
+- (id)initInView:(UIView *)view xcoord:(int)x ycoord:(int)y
+{
+	self = [super init];
+	if (self != nil)
+	{
+		CGRect frameInWindow;
+		if ([view isKindOfClass:[UIWindow class]])
+		{
+			frameInWindow = view.frame;
+		}
+		else
+		{
+			frameInWindow =
+			[view.window convertRect:view.frame fromView:view.superview];
+		}
+		
+		_tapCount = 1;
+		_locationInWindow =
+		CGPointMake(
+					frameInWindow.origin.x + x,
+					frameInWindow.origin.y + y);
+		_previousLocationInWindow = _locationInWindow;
+		
+		UIView *target = [view.window hitTest:_locationInWindow withEvent:nil];
+		
+		_window = [view.window retain];
+		_view = [target retain];
+		_phase = UITouchPhaseBegan;
+		_touchFlags._firstTouchForView = 1;
+		_touchFlags._isTap = 1;
+		_timestamp = [NSDate timeIntervalSinceReferenceDate];
+	}
+	return self;
+}
+
 //
 // setPhase:
 //
@@ -673,5 +735,4 @@ UIQuery * $(NSMutableString *script, ...) {
 }
 
 @end
-
 
