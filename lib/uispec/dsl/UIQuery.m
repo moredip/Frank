@@ -8,6 +8,7 @@
 #import "UIRedoer.h"
 #import "UIQueryTableViewCell.h"
 #import "UIQueryTableView.h"
+#import "UIQueryScrollView.h"
 #import "UIQuerySearchBar.h"
 #import "UIQueryTabBar.h"
 #import "UIQuerySegmentedControl.h"
@@ -19,7 +20,16 @@
 
 @implementation UIQuery
 
-@synthesize views, className, redoer, timeout;
+@synthesize with;
+@synthesize should;
+@synthesize parent, child, descendant, find;
+@synthesize touch, flash, show, path, inspect;
+@synthesize timeout;
+@synthesize views;
+@synthesize className;
+@synthesize redoer;
+@synthesize first, last, all, redo;
+@synthesize exists;
 
 +(id)withApplication {
 	return [self withViews:[NSMutableArray arrayWithObject:[UIApplication sharedApplication]] className:NSStringFromClass([UIApplication class])];
@@ -133,6 +143,9 @@
 		return [UIQueryTableViewCell withViews:array className:className];
 	} else if ([className isEqualToString:@"UITableView"]) {
 		return [UIQueryTableView withViews:array className:className];
+	} 
+	else if ([className isEqualToString:@"UIScrollView"]) {
+		return [UIQueryScrollView withViews:array className:className];
 	} 
 	else if ([className isEqualToString:@"UISearchBar"]) {
 		return [UIQuerySearchBar withViews:array className:className];
