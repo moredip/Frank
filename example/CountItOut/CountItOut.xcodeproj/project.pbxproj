@@ -115,6 +115,7 @@
 		D603944C135BD1E900116449 /* StaticResourcesRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = D603940E135BD1E900116449 /* StaticResourcesRoute.m */; };
 		D603944D135BD1E900116449 /* UISpecCommandReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = D6039410135BD1E900116449 /* UISpecCommandReceiver.m */; };
 		D603945D135BD22000116449 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D603945C135BD22000116449 /* CFNetwork.framework */; };
+		D6C8BCE5137CD613000EF521 /* UIQueryScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C8BCE4137CD613000EF521 /* UIQueryScrollView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -275,6 +276,8 @@
 		D603940F135BD1E900116449 /* UISpecCommandReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISpecCommandReceiver.h; sourceTree = "<group>"; };
 		D6039410135BD1E900116449 /* UISpecCommandReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UISpecCommandReceiver.m; sourceTree = "<group>"; };
 		D603945C135BD22000116449 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		D6C8BCE3137CD613000EF521 /* UIQueryScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIQueryScrollView.h; sourceTree = "<group>"; };
+		D6C8BCE4137CD613000EF521 /* UIQueryScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIQueryScrollView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -495,6 +498,8 @@
 		D60393B4135BD1E900116449 /* components */ = {
 			isa = PBXGroup;
 			children = (
+				D6C8BCE3137CD613000EF521 /* UIQueryScrollView.h */,
+				D6C8BCE4137CD613000EF521 /* UIQueryScrollView.m */,
 				D60393B5135BD1E900116449 /* UIQuerySearchBar.h */,
 				D60393B6135BD1E900116449 /* UIQuerySearchBar.m */,
 				D60393B7135BD1E900116449 /* UIQuerySegmentedControl.h */,
@@ -797,6 +802,7 @@
 				D603944B135BD1E900116449 /* RoutingHTTPConnection.m in Sources */,
 				D603944C135BD1E900116449 /* StaticResourcesRoute.m in Sources */,
 				D603944D135BD1E900116449 /* UISpecCommandReceiver.m in Sources */,
+				D6C8BCE5137CD613000EF521 /* UIQueryScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
