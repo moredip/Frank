@@ -1,13 +1,5 @@
 Given /^I launch the app$/ do
 
-  # kill the app if it's already running, just in case this helps 
-  # reduce simulator flakiness when relaunching the app. Use a timeout of 5 seconds to 
-  # prevent us hanging around for ages waiting for the ping to fail if the app isn't running
-  begin
-    Timeout::timeout(5) { press_home_on_simulator if frankly_ping }
-  rescue Timeout::Error 
-  end
-
   require 'sim_launcher'
 
   app_path = ENV['APP_BUNDLE_PATH'] || APP_BUNDLE_PATH
@@ -18,6 +10,19 @@ Given /^I launch the app$/ do
   else
     simulator = SimLauncher::DirectClient.for_iphone_app( app_path, "4.2" )
   end
+
+
+  # kill the app if it's already running, just in case this helps 
+  # reduce simulator flakiness when relaunching the app. Use a timeout of 5 seconds to 
+  # prevent us hanging around for ages waiting for the ping to fail if the app isn't running.
+  #
+  # We sleep for a second after pressing home to give the app time to quit, otherwise it can fail to immediately re-launch when asked to do some 
+  # immediately below.
+  begin
+    Timeout::timeout(5) { (press_home_on_simulator and sleep 1) if frankly_ping }
+  rescue Timeout::Error 
+  end
+
   
   num_timeouts = 0
   loop do
