@@ -4,6 +4,41 @@
 
 @implementation ViewFilterSwizzler
 
+@synthesize textField;
+@synthesize navigationBar;
+@synthesize label;
+@synthesize button;
+@synthesize navigationButton;
+@synthesize alertView;
+@synthesize textView;
+@synthesize tableView;
+@synthesize tableViewCell;
+@synthesize toolbar;
+@synthesize toolbarButton;
+@synthesize tabBar;
+@synthesize tabBarButton;
+@synthesize datePicker;
+@synthesize window;
+@synthesize webView;
+@synthesize view;
+@synthesize Switch;
+@synthesize slider;
+@synthesize segmentedControl;
+@synthesize searchBar;
+@synthesize scrollView;
+@synthesize progressView;
+@synthesize pickerView;
+@synthesize pageControl;
+@synthesize imageView;
+@synthesize control;
+@synthesize actionSheet;
+@synthesize activityIndicatorView;
+@synthesize threePartButton;
+@synthesize navigationItemButtonView;
+@synthesize navigationItemView;
+@synthesize removeControlMinusButton;
+@synthesize pushButton;
+
 +(void)initialize {
 	[self swizzleFiltersForClass:[self class]];
 }
