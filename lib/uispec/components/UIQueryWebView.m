@@ -41,7 +41,7 @@
 	
 	BOOL isJQuerySupported = [html rangeOfString:@"jquery"].location != NSNotFound;
 	
-	NSLog([NSString stringWithFormat:@"jQuery Supported : %d", isJQuerySupported]);
+	NSLog(@"jQuery Supported : %d", isJQuerySupported);
 	return isJQuerySupported;
 }
 
