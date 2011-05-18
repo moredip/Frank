@@ -1,6 +1,10 @@
-Given /^I the app is launched$/ do
+def running_on_device
+  Frank::USING_PHYSICAL_DEVICE
+end
+
+Given /^the app is launched$/ do
   # when running tests on the device we don't want to do anything, we just expect the app to be up and running
-  return if running_on_device
+  next if running_on_device
 
   require 'sim_launcher'
 
