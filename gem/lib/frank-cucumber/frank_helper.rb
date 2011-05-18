@@ -151,7 +151,7 @@ module FrankHelper
   end
 
   def frank_url_for( verb )
-    url = URI.parse "http://localhost:37265/"
+    url = $frank_base_uri.dup
     url.path = '/'+verb
     url
   end
