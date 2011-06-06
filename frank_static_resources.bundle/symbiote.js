@@ -7,8 +7,7 @@ var symbiote = {};
 symbiote.baseUrlFor = function(path){ return window.location.protocol + "//" + window.location.host + "/" + path; };
 
 symbiote.UiLocator = function(){
-  var SCREEN_OFFSET = { x: 24, y: 120 },
-      allViews = [],
+  var allViews = [],
       viewsHoveredHandler = _.identity,
       viewsLeftHandler = _.identity,
       paper = new Raphael( 'ui-locator-view', 370, 720 ),
@@ -45,7 +44,8 @@ symbiote.UiLocator = function(){
     }
 
     return {
-      drawFakeDevice: drawFakeDevice
+      drawFakeDevice: drawFakeDevice,
+      screenOffset: function(){ return BACKDROP_FRAME; }
     };
 
   }
@@ -69,10 +69,11 @@ symbiote.UiLocator = function(){
   }
 
   function backdropHover(e){
-    var coords = { 
-      x: e.offsetX - SCREEN_OFFSET.x, 
-      y: e.offsetY - SCREEN_OFFSET.y
-    };
+    var screenOffset = erstaz.screenOffset(),
+        coords = { 
+          x: e.offsetX - screenOffset.x, 
+          y: e.offsetY - screenOffset.y
+        };
     viewsHoveredHandler( findViewsAt( coords) );
   }
 
@@ -81,6 +82,8 @@ symbiote.UiLocator = function(){
   }
 
   function showViewLocation( view ) {
+    var screenOffset = erstaz.screenOffset();
+
     viewIndicator.remove();
 
     viewIndicator = paper.rect( 
@@ -94,7 +97,7 @@ symbiote.UiLocator = function(){
         opacity: 0.8,
         stroke: 'black',
       })
-      .translate( SCREEN_OFFSET.x, SCREEN_OFFSET.y );
+      .translate( screenOffset.x, screenOffset.y );
   }
 
   function hideViewLocation() {
