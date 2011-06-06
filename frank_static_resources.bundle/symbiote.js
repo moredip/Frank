@@ -7,11 +7,10 @@ var symbiote = {};
 symbiote.baseUrlFor = function(path){ return window.location.protocol + "//" + window.location.host + "/" + path; };
 
 symbiote.UiLocator = function(){
-  var SCREEN_OFFSET = { x: 24, y: 120 },
-      allViews = [],
+  var allViews = [],
       viewsHoveredHandler = _.identity,
       viewsLeftHandler = _.identity,
-      paper = new Raphael( 'ui-locator-view', 370, 720 ),
+      paper = new Raphael( 'ui-locator-view'),
       viewIndicator = { remove: _.identity },
       screenshotUrl = symbiote.baseUrlFor( "screenshot" ),
       backdrop = null,
@@ -45,7 +44,47 @@ symbiote.UiLocator = function(){
     }
 
     return {
-      drawFakeDevice: drawFakeDevice
+      drawFakeDevice: drawFakeDevice,
+      screenOffset: function(){ return BACKDROP_FRAME; }
+    };
+
+  }
+
+  function iPadErsatz(raphael){
+    var BACKDROP_FRAME = { x: 55, y: 55, width: 768, height: 1024 };
+
+    function drawFakeDevice(backdrop){
+
+      paper.canvas.setAttribute('preserveAspectRatio','xMidYMin meet');
+      paper.canvas.setAttribute('width','100%');
+      paper.canvas.setAttribute('height','100%');
+      paper.canvas.setAttribute("viewBox", "0 0 900 1200");
+      
+      // main outline of device
+      paper.rect( 10, 10, 855, 1110, 20 ).attr( {
+          'fill': 'black',
+          'stroke': 'gray',
+          'stroke-width': 6
+        });
+
+      // home button
+      //paper.circle( 180+6, 655, 34 ).attr( 'fill', '90-#303030-#101010' );
+
+      // square inside home button
+      //paper.rect( 180+6, 655, 22, 22, 5 ).attr({  
+        //'stroke': 'gray',
+        //'stroke-width': 2,
+      //}).translate( -11, -11 );
+
+      if( backdrop ){
+        // reposition backdrop within frame
+        backdrop.attr( BACKDROP_FRAME ).toFront();
+      }
+    }
+
+    return {
+      drawFakeDevice: drawFakeDevice,
+      screenOffset: function(){ return BACKDROP_FRAME; }
     };
 
   }
@@ -69,10 +108,11 @@ symbiote.UiLocator = function(){
   }
 
   function backdropHover(e){
-    var coords = { 
-      x: e.offsetX - SCREEN_OFFSET.x, 
-      y: e.offsetY - SCREEN_OFFSET.y
-    };
+    var screenOffset = erstaz.screenOffset(),
+        coords = { 
+          x: e.offsetX - screenOffset.x, 
+          y: e.offsetY - screenOffset.y
+        };
     viewsHoveredHandler( findViewsAt( coords) );
   }
 
@@ -81,6 +121,8 @@ symbiote.UiLocator = function(){
   }
 
   function showViewLocation( view ) {
+    var screenOffset = erstaz.screenOffset();
+
     viewIndicator.remove();
 
     viewIndicator = paper.rect( 
@@ -94,33 +136,39 @@ symbiote.UiLocator = function(){
         opacity: 0.8,
         stroke: 'black',
       })
-      .translate( SCREEN_OFFSET.x, SCREEN_OFFSET.y );
+      .translate( screenOffset.x, screenOffset.y );
   }
 
   function hideViewLocation() {
     viewIndicator.remove();
   }
 
-  function updateBackdrop(){
-    var cacheBusterUrl = screenshotUrl+"?"+(new Date()).getTime();
+  function addBackdropImage(){
+    return paper.image()
+      .mousemove( backdropHover ) 
+      .mouseout( backdropLeft );
+  }
 
-    if( !backdrop )
-    {
-      backdrop = paper.image( cacheBusterUrl )
-        .mousemove( backdropHover ) 
-        .mouseout( backdropLeft );
-    }else{
-      backdrop.attr( 'src', cacheBusterUrl );
+  function updateBackdrop(){
+    if( !backdrop ){
+      return;
     }
+
+    var cacheBusterUrl = screenshotUrl+"?"+(new Date()).getTime();
+    backdrop.attr( 'src', cacheBusterUrl );
   }
 
   function updateDeviceFamily(deviceFamily){
     if( !erstaz )
     {
-      erstaz = iPhoneErsatz(paper);
+      if( deviceFamily === 'ipad' ){
+        erstaz = iPadErsatz(paper);
+      }else{
+        erstaz = iPhoneErsatz(paper);
+      }
 
       paper.clear();
-      backdrop = null;
+      backdrop = addBackdropImage();
       updateBackdrop();
 
       erstaz.drawFakeDevice(backdrop);
