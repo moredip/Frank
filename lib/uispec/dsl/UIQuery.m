@@ -419,6 +419,11 @@
 	return [UIQuery withViews:views className:className];
 }
 
+- (UIQuery *)touchxy:(NSNumber *)x ycoord:(NSNumber *)y
+{
+    [self touchx:x y:y]; // call new function name but allow for choice
+}
+
 - (UIQuery *)touchx:(NSNumber *)x y:(NSNumber *)y {
 	//NSLog(@"UIQuery - (UIQuery *)touchxy:(int)x ycoord:(int)y = %@, %@", x, y);
 	[[UIQueryExpectation withQuery:self] exist:@"before you can touch it"];
@@ -436,14 +441,14 @@
 		NSSet *touches = [[NSMutableSet alloc] initWithObjects:&aTouch count:1];
 		
 		[aTouch.view touchesBegan:touches withEvent:eventDown];
-		
+        
         [self wait:.5]; // Pause so touch can be seen
         
 		UIEvent *eventUp = [[NSClassFromString(@"UITouchesEvent") alloc] initWithTouch:aTouch];
 		[aTouch setPhase:UITouchPhaseEnded];
 		
 		[aTouch.view touchesEnded:touches withEvent:eventDown];
-		
+        
         [visibleTouch removeFromSuperview];
         [visibleTouch release];
         
