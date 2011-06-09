@@ -448,7 +448,7 @@
             [recognizer touchesBegan:touches withEvent:eventDown];
         }
         
-        [self wait:.125]; // Pause so touch can be seen
+        [self wait:.25]; // Pause so touch can be seen
         
 		UIEvent *eventUp = [[NSClassFromString(@"UITouchesEvent") alloc] initWithTouch:aTouch];
 		[aTouch setPhase:UITouchPhaseEnded];
