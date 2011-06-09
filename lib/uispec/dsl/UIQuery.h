@@ -65,7 +65,7 @@ UIQuery * $(NSMutableString *script, ...);
 -(UIQuery *)path;
 -(UIQuery *)inspect;
 - (UIQuery *)touch;
-- (UIQuery *)touchxy:(NSNumber *)x ycoord:(NSNumber *)y;
+- (UIQuery *)touchx:(NSNumber *)x y:(NSNumber *)y;
 -(NSString *)description;
 -(void)logRange:(NSString *)prefix range:(NSRange)range;
 
