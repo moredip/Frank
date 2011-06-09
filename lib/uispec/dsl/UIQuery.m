@@ -442,12 +442,23 @@
 		
 		[aTouch.view touchesBegan:touches withEvent:eventDown];
         
-        [self wait:.5]; // Pause so touch can be seen
+        // Send event to the gesture recognizers
+        for (UIGestureRecognizer *recognizer in [aView gestureRecognizers])
+        {
+            [recognizer touchesBegan:touches withEvent:eventDown];
+        }
+        
+        [self wait:.125]; // Pause so touch can be seen
         
 		UIEvent *eventUp = [[NSClassFromString(@"UITouchesEvent") alloc] initWithTouch:aTouch];
 		[aTouch setPhase:UITouchPhaseEnded];
 		
 		[aTouch.view touchesEnded:touches withEvent:eventDown];
+        
+        for (UIGestureRecognizer *recognizer in [aView gestureRecognizers])
+        {
+            [recognizer touchesEnded:touches withEvent:eventDown];
+        }
         
         [visibleTouch removeFromSuperview];
         [visibleTouch release];
