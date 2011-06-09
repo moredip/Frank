@@ -17,6 +17,7 @@
 #import "UIFilter.h"
 #import "UIBug.h"
 #import "UIQueryExpectation.h"
+#import "VisibleTouch.h"
 
 @implementation UIQuery
 
@@ -424,16 +425,28 @@
 	
 	for (UIView *view in [self targetViews]) {
 		UITouch *touch = [[UITouch alloc] initInView:view xcoord:[x intValue] ycoord:[y intValue]];
+        
+        // Create a view to display a visible touch on the screen with a center of the touch
+        CGPoint thePoint = CGPointMake([x floatValue], [y floatValue]);
+        UIView *visibleTouch = [[VisibleTouch alloc] initWithCenter:thePoint];
+        [[view window] addSubview:visibleTouch];
+        [[view window] bringSubviewToFront:visibleTouch];
+        
 		UIEvent *eventDown = [[NSClassFromString(@"UITouchesEvent") alloc] initWithTouch:touch];
 		NSSet *touches = [[NSMutableSet alloc] initWithObjects:&touch count:1];
 		
 		[touch.view touchesBegan:touches withEvent:eventDown];
 		
+        [self wait:.5]; // Pause so touch can be seen
+        
 		UIEvent *eventUp = [[NSClassFromString(@"UITouchesEvent") alloc] initWithTouch:touch];
 		[touch setPhase:UITouchPhaseEnded];
 		
 		[touch.view touchesEnded:touches withEvent:eventDown];
 		
+        [visibleTouch removeFromSuperview];
+        [visibleTouch release];
+        
 		[eventDown release];
 		[eventUp release];
 		[touches release];
