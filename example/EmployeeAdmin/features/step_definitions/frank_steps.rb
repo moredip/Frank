@@ -18,6 +18,10 @@ When /^I touch the "([^\"]*)" nav bar button$/ do |mark|
   touch( "navigationButton marked:'#{mark}'" )
 end
 
+When /^I touch the screen at \((\d+),(\d+)\)$/ do |x, y|
+  frankly_map( "view:'UILayoutContainerView'", "touchx:y:", x, y )
+end
+
 Then /^I should see an alert view saying "([^\"]*)"$/ do |expected_mark|
   check_element_exists( "alertView view marked:'#{expected_mark}'" )
 end
