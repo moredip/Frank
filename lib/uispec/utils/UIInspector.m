@@ -19,7 +19,8 @@ static BOOL inBrowserMode = YES;
 }
 
 -(id)initWithView:(UIView *)_targetView {
-	if (self = [super initWithStyle:UITableViewStyleGrouped]) {
+    self = [super initWithStyle:UITableViewStyleGrouped];
+	if (self) {
 		self.targetView = _targetView;
 		if ([_targetView respondsToSelector:@selector(subviews)]) {
 			self.targetSubviews = targetView.subviews;

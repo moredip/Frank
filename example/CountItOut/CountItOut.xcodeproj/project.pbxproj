@@ -116,6 +116,7 @@
 		D603944D135BD1E900116449 /* UISpecCommandReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = D6039410135BD1E900116449 /* UISpecCommandReceiver.m */; };
 		D603945D135BD22000116449 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D603945C135BD22000116449 /* CFNetwork.framework */; };
 		D6C8BCE5137CD613000EF521 /* UIQueryScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C8BCE4137CD613000EF521 /* UIQueryScrollView.m */; };
+		D6D17BF513A2673700F9C1A8 /* VisibleTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D17BF413A2673700F9C1A8 /* VisibleTouch.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -278,6 +279,8 @@
 		D603945C135BD22000116449 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		D6C8BCE3137CD613000EF521 /* UIQueryScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIQueryScrollView.h; sourceTree = "<group>"; };
 		D6C8BCE4137CD613000EF521 /* UIQueryScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIQueryScrollView.m; sourceTree = "<group>"; };
+		D6D17BF313A2673700F9C1A8 /* VisibleTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisibleTouch.h; sourceTree = "<group>"; };
+		D6D17BF413A2673700F9C1A8 /* VisibleTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisibleTouch.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -519,6 +522,8 @@
 		D60393C1135BD1E900116449 /* dsl */ = {
 			isa = PBXGroup;
 			children = (
+				D6D17BF313A2673700F9C1A8 /* VisibleTouch.h */,
+				D6D17BF413A2673700F9C1A8 /* VisibleTouch.m */,
 				D60393C2135BD1E900116449 /* Recordable.h */,
 				D60393C3135BD1E900116449 /* Recordable.m */,
 				D60393C4135BD1E900116449 /* UIChildren.h */,
@@ -803,6 +808,7 @@
 				D603944C135BD1E900116449 /* StaticResourcesRoute.m in Sources */,
 				D603944D135BD1E900116449 /* UISpecCommandReceiver.m in Sources */,
 				D6C8BCE5137CD613000EF521 /* UIQueryScrollView.m in Sources */,
+				D6D17BF513A2673700F9C1A8 /* VisibleTouch.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

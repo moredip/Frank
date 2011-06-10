@@ -129,6 +129,7 @@
 		D6C73C8B1321BB2F00C731A2 /* AccessibilityCheckCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C73C8A1321BB2F00C731A2 /* AccessibilityCheckCommand.m */; };
 		D6C73C9E1321BB5D00C731A2 /* AccessibilityCheckCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C73C8A1321BB2F00C731A2 /* AccessibilityCheckCommand.m */; };
 		D6C8BCAB137CD2EE000EF521 /* UIQueryScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C8BCAA137CD2EE000EF521 /* UIQueryScrollView.m */; };
+		D6D17C0413A2679A00F9C1A8 /* VisibleTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D17C0313A2679A00F9C1A8 /* VisibleTouch.m */; };
 		D6D79B5711D7FB7C003E0E60 /* Operation.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D79B5611D7FB7C003E0E60 /* Operation.m */; };
 		D6D79B7611D7FC73003E0E60 /* frank_static_resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D6D79B7511D7FC73003E0E60 /* frank_static_resources.bundle */; };
 /* End PBXBuildFile section */
@@ -334,6 +335,8 @@
 		D6C73C8A1321BB2F00C731A2 /* AccessibilityCheckCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessibilityCheckCommand.m; sourceTree = "<group>"; };
 		D6C8BCA9137CD2EE000EF521 /* UIQueryScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIQueryScrollView.h; sourceTree = "<group>"; };
 		D6C8BCAA137CD2EE000EF521 /* UIQueryScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIQueryScrollView.m; sourceTree = "<group>"; };
+		D6D17C0213A2679A00F9C1A8 /* VisibleTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisibleTouch.h; sourceTree = "<group>"; };
+		D6D17C0313A2679A00F9C1A8 /* VisibleTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisibleTouch.m; sourceTree = "<group>"; };
 		D6D79B5511D7FB7C003E0E60 /* Operation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Operation.h; sourceTree = "<group>"; };
 		D6D79B5611D7FB7C003E0E60 /* Operation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Operation.m; sourceTree = "<group>"; };
 		D6D79B7511D7FC73003E0E60 /* frank_static_resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = frank_static_resources.bundle; path = ../../frank_static_resources.bundle; sourceTree = SOURCE_ROOT; };
@@ -737,6 +740,8 @@
 		D6A8360011CDC594001B8585 /* dsl */ = {
 			isa = PBXGroup;
 			children = (
+				D6D17C0213A2679A00F9C1A8 /* VisibleTouch.h */,
+				D6D17C0313A2679A00F9C1A8 /* VisibleTouch.m */,
 				D6A8360111CDC594001B8585 /* Recordable.h */,
 				D6A8360211CDC594001B8585 /* Recordable.m */,
 				D6A8360311CDC594001B8585 /* UIChildren.h */,
@@ -1034,6 +1039,7 @@
 				D63AE37F12BD9627008EB8DE /* InspectCommand.m in Sources */,
 				D6C73C8B1321BB2F00C731A2 /* AccessibilityCheckCommand.m in Sources */,
 				D6C8BCAB137CD2EE000EF521 /* UIQueryScrollView.m in Sources */,
+				D6D17C0413A2679A00F9C1A8 /* VisibleTouch.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
