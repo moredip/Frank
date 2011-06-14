@@ -47,6 +47,8 @@ function classClicked(link){
         Symbiote.hide_chatting_popup();
       }
     });
+
+    return false;
   }
 
 $(document).ready(function() { 
@@ -87,7 +89,7 @@ $(document).ready(function() {
 		for (index in test)
   		{
   			var elem = test[index];
-  			html += '<tr><td><a onClick="javascript: classClicked(this);" href="#">' + elem.label+ '</a></td><td>' + elem.class + '</td></tr>';
+  			html += '<tr><td><a onClick="javascript: return classClicked(this);" href="#">' + elem.label+ '</a></td><td>' + elem.class + '</td></tr>';
   		}
 		html += '</table>';
 		$('div#access_dump').html(html);
