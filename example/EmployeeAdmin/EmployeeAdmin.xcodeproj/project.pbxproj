@@ -14,6 +14,8 @@
 		2860E32E111B888700E27156 /* AppDelegate_Pad.m in Sources */ = {isa = PBXBuildFile; fileRef = 2860E32C111B888700E27156 /* AppDelegate_Pad.m */; };
 		2860E32F111B888700E27156 /* MainWindow_Pad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2860E32D111B888700E27156 /* MainWindow_Pad.xib */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		B1845EF213B1C72300137966 /* simple_swipe.plist in Resources */ = {isa = PBXBuildFile; fileRef = B1845EF113B1C72300137966 /* simple_swipe.plist */; };
+		B1CBD5D413B1B4C500AC4C62 /* Recorder.m in Sources */ = {isa = PBXBuildFile; fileRef = B1CBD5D313B1B4C500AC4C62 /* Recorder.m */; };
 		D63AE37F12BD9627008EB8DE /* InspectCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D63AE37E12BD9627008EB8DE /* InspectCommand.m */; };
 		D64EF8F911D3C332002A8749 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D64EF8F811D3C332002A8749 /* main.m */; };
 		D69A0B0F124C2ED900BEC9EC /* OrientationCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D69A0B0E124C2ED900BEC9EC /* OrientationCommand.m */; };
@@ -148,6 +150,9 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Shared/main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* EmployeeAdmin_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployeeAdmin_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* EmployeeAdmin-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "EmployeeAdmin-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		B1845EF113B1C72300137966 /* simple_swipe.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = simple_swipe.plist; sourceTree = "<group>"; };
+		B1CBD5D213B1B4C500AC4C62 /* Recorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Recorder.h; sourceTree = "<group>"; };
+		B1CBD5D313B1B4C500AC4C62 /* Recorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Recorder.m; sourceTree = "<group>"; };
 		D63AE37E12BD9627008EB8DE /* InspectCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectCommand.m; sourceTree = "<group>"; };
 		D64EF8F811D3C332002A8749 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D69A0B0D124C2ED900BEC9EC /* OrientationCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrientationCommand.h; sourceTree = "<group>"; };
@@ -443,6 +448,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B1845EF013B1C72300137966 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				B1845EF113B1C72300137966 /* simple_swipe.plist */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
 		D6A8339C11CDBF35001B8585 /* lib */ = {
 			isa = PBXGroup;
 			children = (
@@ -705,6 +718,7 @@
 		D6A835F211CDC594001B8585 /* uispec */ = {
 			isa = PBXGroup;
 			children = (
+				B1845EF013B1C72300137966 /* resources */,
 				D6A835F311CDC594001B8585 /* components */,
 				D6A8360011CDC594001B8585 /* dsl */,
 				D6A8362011CDC594001B8585 /* UISpec.bundle */,
@@ -780,6 +794,8 @@
 		D6A8362411CDC594001B8585 /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				B1CBD5D213B1B4C500AC4C62 /* Recorder.h */,
+				B1CBD5D313B1B4C500AC4C62 /* Recorder.m */,
 				D6A8362511CDC594001B8585 /* CallCache.h */,
 				D6A8362611CDC594001B8585 /* CallCache.m */,
 				D6A8362711CDC594001B8585 /* NSNumberCreator.h */,
@@ -914,6 +930,7 @@
 				D6A8366C11CDC594001B8585 /* UISpec.bundle in Resources */,
 				D6A8366E11CDC594001B8585 /* update_from_svn.rb in Resources */,
 				D6D79B7611D7FC73003E0E60 /* frank_static_resources.bundle in Resources */,
+				B1845EF213B1C72300137966 /* simple_swipe.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1040,6 +1057,7 @@
 				D6C73C8B1321BB2F00C731A2 /* AccessibilityCheckCommand.m in Sources */,
 				D6C8BCAB137CD2EE000EF521 /* UIQueryScrollView.m in Sources */,
 				D6D17C0413A2679A00F9C1A8 /* VisibleTouch.m in Sources */,
+				B1CBD5D413B1B4C500AC4C62 /* Recorder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

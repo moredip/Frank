@@ -4,4 +4,6 @@ Frank.xcodeproj/*.pbxuser
 Frank.xcodeproj/ThoughtWorks.mode2v3
 Frank.xcodeproj/project.xcworkspace/
 Frank.xcodeproj/xcuserdata
-
+.idea/
+example/EmployeeAdmin/EmployeeAdmin.xcodeproj/project.xcworkspace/
+example/EmployeeAdmin/EmployeeAdmin.xcodeproj/xcuserdata/

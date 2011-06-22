@@ -67,6 +67,7 @@ UIQuery * $(NSMutableString *script, ...);
 - (UIQuery *)touch;
 - (UIQuery *)touchx:(NSNumber *)x y:(NSNumber *)y;
 - (UIQuery *)touchxy:(NSNumber *)x ycoord:(NSNumber *)y;
+- (UIQuery *)swipe:(NSString*) direction;
 -(NSString *)description;
 -(void)logRange:(NSString *)prefix range:(NSRange)range;
 
@@ -110,3 +111,5 @@ UIQuery * $(NSMutableString *script, ...);
 - (void)setPhase:(UITouchPhase)phase;
 - (void)setLocationInWindow:(CGPoint)location;
 @end
+
+static CGPoint CenterOfView(UIView* view);

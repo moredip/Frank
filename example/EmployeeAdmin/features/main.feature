@@ -3,6 +3,14 @@ Feature: Demonstrating using Frank to test the EmployeeAdmin example app
 Background:
     Given I launch the app 
 
+Scenario: Delete user
+    When I swipe the first table cell
+    Then I should see "Delete"
+    When I touch "Delete"
+    Then I should see a table containing the following:
+      | Curly Stooge |
+      | Moe Stooge   |
+
 Scenario: Add test user
     When I touch the Add User button
     And I fill in text fields as follows:

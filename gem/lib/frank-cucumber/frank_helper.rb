@@ -5,6 +5,13 @@ module Frank module Cucumber
 
 module FrankHelper 
 
+
+  def swipe( uiquery, direction )
+    views_touched = frankly_map( uiquery, "swipe:", direction)
+    raise "could not find anything matching [#{uiquery}] to swipe" if views_touched.empty?
+    #TODO raise warning if views_touched.count > 1
+  end
+
   def touch( uiquery )
     views_touched = frankly_map( uiquery, 'touch' )
     raise "could not find anything matching [#{uiquery}] to touch" if views_touched.empty?
