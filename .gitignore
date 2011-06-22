@@ -2,3 +2,6 @@ build
 Frank.xcodeproj/*.mode1v3
 Frank.xcodeproj/*.pbxuser
 Frank.xcodeproj/ThoughtWorks.mode2v3
+Frank.xcodeproj/project.xcworkspace/
+Frank.xcodeproj/xcuserdata
+
