@@ -198,14 +198,35 @@ When /^I touch the first table cell$/ do
     touch("tableViewCell first")
 end
 
+When /^I swipe the first table cell?/ do
+  swipe( "tableViewCell index:0", :right)
+  sleep 2 # give the UI a chance to animate the swipe
+end
+
+
 When /^I touch the table cell marked "([^\"]*)"$/ do |mark|
   touch("tableViewCell marked:'#{mark}'")
 end
+
+When /^I swipe the table cell marked "([^\"]*)"$/ do |cell_index_s|
+  swipe( "tableViewCell marked:'#{mark}'", :right)
+  sleep 2 # give the UI a chance to animate the swipe
+end
+
 
 When /^I touch the (\d*)(?:st|nd|rd|th)? table cell$/ do |ordinal|
     ordinal = ordinal.to_i - 1
     touch("tableViewCell index:#{ordinal}")
 end
+
+
+When /^I swipe the (\d*)(?:st|nd|rd|th)? table cell?/ do |cell_index_s|
+  cell_index = cell_index_s.to_i - 1 #index 0 corresponds to 1st
+  raise "Row should have a positive index" if cell_index <= 0
+  swipe( "tableViewCell index:#{cell_index}", :right)
+  sleep 2 # give the UI a chance to animate the swipe
+end
+
 
 Then /I touch the following:/ do |table|
   values = frankly_map( 'view', 'accessibilityLabel' )

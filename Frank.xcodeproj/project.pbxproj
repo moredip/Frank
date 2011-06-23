@@ -15,6 +15,8 @@
 		4C1DD76F12BADFE100E10B8C /* AppCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C1DD76B12BADFE100E10B8C /* AppCommand.h */; };
 		AA747D9F0F9514B9006C5449 /* Frank_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* Frank_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		B1CBD5CF13B1B45D00AC4C62 /* Recorder.h in Headers */ = {isa = PBXBuildFile; fileRef = B1CBD5CD13B1B45D00AC4C62 /* Recorder.h */; };
+		B1CBD5D013B1B45D00AC4C62 /* Recorder.m in Sources */ = {isa = PBXBuildFile; fileRef = B1CBD5CE13B1B45D00AC4C62 /* Recorder.m */; };
 		D629926B11AB2D1F00CE0FB0 /* AsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = D629926911AB2D1F00CE0FB0 /* AsyncSocket.h */; };
 		D629926C11AB2D1F00CE0FB0 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D629926A11AB2D1F00CE0FB0 /* AsyncSocket.m */; };
 		D629928111AB2D4C00CE0FB0 /* DDData.h in Headers */ = {isa = PBXBuildFile; fileRef = D629927111AB2D4C00CE0FB0 /* DDData.h */; };
@@ -139,6 +141,8 @@
 		4C1DD76B12BADFE100E10B8C /* AppCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppCommand.h; path = src/AppCommand.h; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* Frank_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Frank_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B1CBD5CD13B1B45D00AC4C62 /* Recorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Recorder.h; sourceTree = "<group>"; };
+		B1CBD5CE13B1B45D00AC4C62 /* Recorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Recorder.m; sourceTree = "<group>"; };
 		D2AAC07E0554694100DB518D /* libFrank.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFrank.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D629926911AB2D1F00CE0FB0 /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AsyncSocket.h; path = lib/cocoahttpserver/AsyncSocket.h; sourceTree = "<group>"; };
 		D629926A11AB2D1F00CE0FB0 /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AsyncSocket.m; path = lib/cocoahttpserver/AsyncSocket.m; sourceTree = "<group>"; };
@@ -453,6 +457,8 @@
 		D62992DC11AB2DDD00CE0FB0 /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				B1CBD5CD13B1B45D00AC4C62 /* Recorder.h */,
+				B1CBD5CE13B1B45D00AC4C62 /* Recorder.m */,
 				D62992DD11AB2DDD00CE0FB0 /* CallCache.h */,
 				D62992DE11AB2DDD00CE0FB0 /* CallCache.m */,
 				D62992DF11AB2DDD00CE0FB0 /* NSNumberCreator.h */,
@@ -571,6 +577,7 @@
 				4C1DD76D12BADFE100E10B8C /* OrientationCommand.h in Headers */,
 				4C1DD76F12BADFE100E10B8C /* AppCommand.h in Headers */,
 				D6C8BCC5137CD5E2000EF521 /* UIQueryScrollView.h in Headers */,
+				B1CBD5CF13B1B45D00AC4C62 /* Recorder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -693,6 +700,7 @@
 				4C1DD76C12BADFE100E10B8C /* OrientationCommand.m in Sources */,
 				4C1DD76E12BADFE100E10B8C /* AppCommand.m in Sources */,
 				D6C8BCC6137CD5E2000EF521 /* UIQueryScrollView.m in Sources */,
+				B1CBD5D013B1B45D00AC4C62 /* Recorder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

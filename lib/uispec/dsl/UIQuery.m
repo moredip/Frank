@@ -18,6 +18,7 @@
 #import "UIBug.h"
 #import "UIQueryExpectation.h"
 #import "VisibleTouch.h"
+#import "Recorder.h"
 
 @implementation UIQuery
 
@@ -472,6 +473,87 @@
 	return [UIQuery withViews:views className:className];
 }
 
+- (UIQuery *) swipe:(NSString*) direction {
+    NSLog(@"swipe %@",direction);
+    [[UIQueryExpectation withQuery:self] exist:@"before you can swipe it"];
+    
+    NSString *eventsPath = [[NSBundle mainBundle] pathForResource:@"simple_swipe" ofType:@"plist"];
+    NSMutableArray *eventsRecord = [NSMutableArray arrayWithContentsOfFile: eventsPath];
+    NSMutableArray *transformedEvents = [NSMutableArray arrayWithCapacity:[eventsRecord count]];
+    NSRange xRange  = NSMakeRange(48, 4);
+    NSRange yRange  = NSMakeRange(52, 4);
+    
+    
+    
+	for (UIView *_view in [self targetViews]) {
+        CGPoint _viewCenter = CenterOfView(_view);
+        
+   		CGPoint currentPoint,
+                lastPoint = CGRectNull.origin;
+        CGPoint delta = CGPointZero;
+        float x_buf[1];
+        float y_buf[1];
+        for (NSDictionary *d in eventsRecord) {
+            
+            NSDictionary* loc = [d valueForKey:@"Location"];
+            NSDictionary* windowLoc = [d valueForKey:@"WindowLocation"];
+            
+            
+            currentPoint = CGPointMake([[windowLoc valueForKey:@"X"] floatValue], 
+                                       [[windowLoc valueForKey:@"Y"] floatValue]);
+            if (!CGPointEqualToPoint(CGRectNull.origin,lastPoint)) {
+                delta = CGPointMake(delta.x + (currentPoint.x-lastPoint.x),delta.y+(currentPoint.y-lastPoint.y));
+            }
+            
+                        
+            NSMutableDictionary* newLoc = [NSMutableDictionary dictionaryWithDictionary:loc];
+            NSMutableDictionary* newWindowLoc = [NSMutableDictionary dictionaryWithDictionary:windowLoc];
+            
+            [newLoc setValue:
+             [NSNumber numberWithFloat:_viewCenter.x + delta.x] forKey:@"X"];
+            [newLoc setValue:
+             [NSNumber numberWithFloat:_viewCenter.y+ delta.y] forKey:@"Y"];
+            
+            [newWindowLoc setValue:
+             [NSNumber numberWithFloat:_viewCenter.x+ delta.x] forKey:@"X"];
+            [newWindowLoc setValue:
+             [NSNumber numberWithFloat:_viewCenter.y + delta.y] forKey:@"Y"];
+            
+            
+            
+            
+            NSData *data = [d valueForKey:@"Data"];
+            
+            [data getBytes:x_buf   range:xRange];
+            [data getBytes:y_buf   range:yRange];
+            
+            NSMutableDictionary* newD = [NSMutableDictionary dictionaryWithDictionary:d];
+            NSMutableData *newData = [NSMutableData dataWithData:data];
+            
+            
+            x_buf[0] = _viewCenter.x + delta.x;
+            y_buf[0] = _viewCenter.y + delta.y;
+            [newData replaceBytesInRange:xRange withBytes:x_buf];            
+            [newData replaceBytesInRange:yRange withBytes:y_buf]; 
+            
+            
+            [newD setValue:newData forKey:@"Data"];
+            [newD setValue:newLoc forKey:@"Location"];
+            [newD setValue:newWindowLoc forKey:@"WindowLocation"];
+            
+            [transformedEvents addObject:newD];
+            lastPoint = currentPoint;
+            
+            
+        }
+        
+        [[Recorder sharedRecorder] load: transformedEvents];
+        [[Recorder sharedRecorder] playbackWithDelegate: nil doneSelector: @selector(finishResponse)];
+        
+	}
+
+	return [UIQuery withViews:views className:className];
+}
 
 -(NSString *)description {
 	return [NSString stringWithFormat:@"UIQuery: %@", [views description]];
@@ -554,6 +636,24 @@ UIQuery * $(NSMutableString *script, ...) {
 	return result;
 }
 
+static CGPoint CenterOfView(UIView* view) {
+    CGRect frameInWindow;
+    if ([view isKindOfClass:[UIWindow class]])
+    {
+        frameInWindow = view.frame;
+    }
+    else
+    {
+        frameInWindow =
+        [view.window convertRect:view.frame fromView:view.superview];
+    }
+    
+    return CGPointMake(
+                       frameInWindow.origin.x + 0.5 * frameInWindow.size.width,
+                       frameInWindow.origin.y + 0.5 * frameInWindow.size.height);
+}
+
+
 //
 //  TouchSynthesis.m
 //  SelfTesting
@@ -581,22 +681,8 @@ UIQuery * $(NSMutableString *script, ...) {
 	self = [super init];
 	if (self != nil)
 	{
-		CGRect frameInWindow;
-		if ([view isKindOfClass:[UIWindow class]])
-		{
-			frameInWindow = view.frame;
-		}
-		else
-		{
-			frameInWindow =
-			[view.window convertRect:view.frame fromView:view.superview];
-		}
-		
 		_tapCount = 1;
-		_locationInWindow =
-		CGPointMake(
-					frameInWindow.origin.x + 0.5 * frameInWindow.size.width,
-					frameInWindow.origin.y + 0.5 * frameInWindow.size.height);
+		_locationInWindow = CenterOfView(view);
 		_previousLocationInWindow = _locationInWindow;
 		
 		UIView *target = [view.window hitTest:_locationInWindow withEvent:nil];
@@ -617,22 +703,8 @@ UIQuery * $(NSMutableString *script, ...) {
 	self = [super init];
 	if (self != nil)
 	{
-		CGRect frameInWindow;
-		if ([view isKindOfClass:[UIWindow class]])
-		{
-			frameInWindow = view.frame;
-		}
-		else
-		{
-			frameInWindow =
-			[view.window convertRect:view.frame fromView:view.superview];
-		}
-		
 		_tapCount = 1;
-		_locationInWindow =
-		CGPointMake(
-					frameInWindow.origin.x + x,
-					frameInWindow.origin.y + y);
+		_locationInWindow = CenterOfView(view);
 		_previousLocationInWindow = _locationInWindow;
 		
 		UIView *target = [view.window hitTest:_locationInWindow withEvent:nil];
