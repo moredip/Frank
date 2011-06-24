@@ -20,7 +20,7 @@ Given /^I launch the app$/ do
     end
   end
       
-  raise "Application was not set. \nPlease set ruby constant or environment variable in support/env.rb so the path of your compiled Frankified iOS app bundle can be found" if app_path.nil?
+  raise "Application was not found. \nPlease set ruby constant or environment variable in support/env.rb so the path of your compiled Frankified iOS app bundle can be found" if app_path.nil?
 
   if( ENV['USE_SIM_LAUNCHER_SERVER'] )
     simulator = SimLauncher::Client.for_iphone_app( app_path, "#{SDK_VERSION_MAJOR}#{SDK_VERSION_MINOR}" )
