@@ -71,7 +71,11 @@ Then /^I should see a navigation bar titled "([^\"]*)"$/ do |expected_mark|
   values.should include(expected_mark)
 end
 
-Then /^I should see an alert view titled "([^\"]*)"$/ do |expected_mark|
+Then /^I should see an alert view with title "([^\"]*)"$/ do |expected_mark|
+  check_element_exists( "alertView view marked:'#{expected_mark}'" )
+end
+
+Then /^I should see an alert view with message "([^\"]*)"$/ do |expected_mark|
   values = frankly_map( 'alertView', 'message')
   puts values
   values.should include(expected_mark)
