@@ -83,7 +83,7 @@ Then /^I should (not )?see an alert view with title "([^\"]*)"$/ do |qualifier, 
     
 end
 
-Then /^I should (not )?see an alert view with message "([^\"]*)"$/ do |expected_mark|
+Then /^I should (not )?see an alert view with message "([^\"]*)"$/ do |qualifier, expected_mark|
     expected_to_see = "not " != qualifier
     values = frankly_map( 'alertView', 'message')
     puts values
