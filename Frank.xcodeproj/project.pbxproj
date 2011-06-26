@@ -23,53 +23,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		008AFD4513B56C02000A5C00 /* AsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD0E13B56C02000A5C00 /* AsyncSocket.h */; };
-		008AFD4613B56C02000A5C00 /* DDData.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD0F13B56C02000A5C00 /* DDData.h */; };
-		008AFD4713B56C02000A5C00 /* DDNumber.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD1013B56C02000A5C00 /* DDNumber.h */; };
-		008AFD4813B56C02000A5C00 /* DDRange.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD1113B56C02000A5C00 /* DDRange.h */; };
-		008AFD4913B56C02000A5C00 /* HTTPAuthenticationRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD1213B56C02000A5C00 /* HTTPAuthenticationRequest.h */; };
-		008AFD4A13B56C02000A5C00 /* HTTPConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD1313B56C02000A5C00 /* HTTPConnection.h */; };
-		008AFD4B13B56C02000A5C00 /* HTTPResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD1413B56C02000A5C00 /* HTTPResponse.h */; };
-		008AFD4C13B56C02000A5C00 /* HTTPServer.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD1513B56C02000A5C00 /* HTTPServer.h */; };
-		008AFD4D13B56C02000A5C00 /* MyHTTPConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD1613B56C02000A5C00 /* MyHTTPConnection.h */; };
-		008AFD5013B56C03000A5C00 /* JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD1B13B56C02000A5C00 /* JSON.h */; };
-		008AFD5113B56C03000A5C00 /* NSObject+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD1C13B56C02000A5C00 /* NSObject+SBJSON.h */; };
-		008AFD5213B56C03000A5C00 /* NSString+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD1D13B56C02000A5C00 /* NSString+SBJSON.h */; };
-		008AFD5313B56C03000A5C00 /* SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD1E13B56C02000A5C00 /* SBJSON.h */; };
-		008AFD5413B56C03000A5C00 /* SBJsonBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD1F13B56C02000A5C00 /* SBJsonBase.h */; };
-		008AFD5513B56C03000A5C00 /* SBJsonParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD2013B56C02000A5C00 /* SBJsonParser.h */; };
-		008AFD5613B56C03000A5C00 /* SBJsonWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD2113B56C02000A5C00 /* SBJsonWriter.h */; };
-		008AFD5813B56C03000A5C00 /* CallCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD2513B56C02000A5C00 /* CallCache.h */; };
-		008AFD5913B56C03000A5C00 /* NSNumberCreator.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD2613B56C02000A5C00 /* NSNumberCreator.h */; };
-		008AFD5A13B56C03000A5C00 /* Recordable.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD2713B56C02000A5C00 /* Recordable.h */; };
-		008AFD5B13B56C03000A5C00 /* ReturnCacher.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD2813B56C02000A5C00 /* ReturnCacher.h */; };
-		008AFD5C13B56C03000A5C00 /* UIBug.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD2913B56C02000A5C00 /* UIBug.h */; };
-		008AFD5D13B56C03000A5C00 /* UIChildren.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD2A13B56C02000A5C00 /* UIChildren.h */; };
-		008AFD5E13B56C03000A5C00 /* UIConsole.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD2B13B56C02000A5C00 /* UIConsole.h */; };
-		008AFD5F13B56C03000A5C00 /* UIConsoleLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD2C13B56C02000A5C00 /* UIConsoleLog.h */; };
-		008AFD6013B56C03000A5C00 /* UIDescendants.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD2D13B56C02000A5C00 /* UIDescendants.h */; };
-		008AFD6113B56C03000A5C00 /* UIExpectation.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD2E13B56C02000A5C00 /* UIExpectation.h */; };
-		008AFD6213B56C03000A5C00 /* UIFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD2F13B56C02000A5C00 /* UIFilter.h */; };
-		008AFD6313B56C03000A5C00 /* UIInspector.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD3013B56C02000A5C00 /* UIInspector.h */; };
-		008AFD6413B56C03000A5C00 /* UILog.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD3113B56C02000A5C00 /* UILog.h */; };
-		008AFD6513B56C03000A5C00 /* UIMatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD3213B56C02000A5C00 /* UIMatcher.h */; };
-		008AFD6613B56C03000A5C00 /* UIParents.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD3313B56C02000A5C00 /* UIParents.h */; };
-		008AFD6713B56C03000A5C00 /* UIProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD3413B56C02000A5C00 /* UIProxy.h */; };
-		008AFD6813B56C03000A5C00 /* UIQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD3513B56C02000A5C00 /* UIQuery.h */; };
-		008AFD6913B56C03000A5C00 /* UIQueryAll.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD3613B56C02000A5C00 /* UIQueryAll.h */; };
-		008AFD6A13B56C03000A5C00 /* UIQueryExpectation.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD3713B56C02000A5C00 /* UIQueryExpectation.h */; };
-		008AFD6B13B56C03000A5C00 /* UIQuerySearchBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD3813B56C02000A5C00 /* UIQuerySearchBar.h */; };
-		008AFD6C13B56C03000A5C00 /* UIQuerySegmentedControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD3913B56C02000A5C00 /* UIQuerySegmentedControl.h */; };
-		008AFD6D13B56C03000A5C00 /* UIQueryTabBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD3A13B56C02000A5C00 /* UIQueryTabBar.h */; };
-		008AFD6E13B56C03000A5C00 /* UIQueryTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD3B13B56C02000A5C00 /* UIQueryTableView.h */; };
-		008AFD6F13B56C03000A5C00 /* UIQueryTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD3C13B56C02000A5C00 /* UIQueryTableViewCell.h */; };
-		008AFD7013B56C03000A5C00 /* UIQueryWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD3D13B56C02000A5C00 /* UIQueryWebView.h */; };
-		008AFD7113B56C03000A5C00 /* UIRedoer.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD3E13B56C02000A5C00 /* UIRedoer.h */; };
-		008AFD7213B56C03000A5C00 /* UISpec.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD3F13B56C02000A5C00 /* UISpec.h */; };
-		008AFD7313B56C03000A5C00 /* UISpec_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD4013B56C02000A5C00 /* UISpec_Prefix.pch */; };
-		008AFD7413B56C03000A5C00 /* UITouchPerformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD4113B56C02000A5C00 /* UITouchPerformer.h */; };
-		008AFD7513B56C03000A5C00 /* ViewFilterSwizzler.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD4213B56C02000A5C00 /* ViewFilterSwizzler.h */; };
-		008AFD7613B56C03000A5C00 /* WaitUntilIdle.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD4313B56C02000A5C00 /* WaitUntilIdle.h */; };
 		008AFD7713B56C03000A5C00 /* UISpec.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 008AFD4413B56C02000A5C00 /* UISpec.bundle */; };
 		008AFD7A13B56D8B000A5C00 /* Frank_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* Frank_Prefix.pch */; };
 		008AFD7B13B56D8B000A5C00 /* DumpCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = D6D05CA111C883AA0081C5A5 /* DumpCommand.h */; };
@@ -85,53 +38,6 @@
 		008AFD8513B56D8B000A5C00 /* OrientationCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C1DD76912BADFE100E10B8C /* OrientationCommand.h */; };
 		008AFD8613B56D8B000A5C00 /* AppCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C1DD76B12BADFE100E10B8C /* AppCommand.h */; };
 		008AFD8713B56D8B000A5C00 /* AccessibilityCheckCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 00F5DC4D13B4EE760095D50A /* AccessibilityCheckCommand.h */; };
-		008AFD8813B56D8B000A5C00 /* AsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD0E13B56C02000A5C00 /* AsyncSocket.h */; };
-		008AFD8913B56D8B000A5C00 /* DDData.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD0F13B56C02000A5C00 /* DDData.h */; };
-		008AFD8A13B56D8B000A5C00 /* DDNumber.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD1013B56C02000A5C00 /* DDNumber.h */; };
-		008AFD8B13B56D8B000A5C00 /* DDRange.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD1113B56C02000A5C00 /* DDRange.h */; };
-		008AFD8C13B56D8B000A5C00 /* HTTPAuthenticationRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD1213B56C02000A5C00 /* HTTPAuthenticationRequest.h */; };
-		008AFD8D13B56D8B000A5C00 /* HTTPConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD1313B56C02000A5C00 /* HTTPConnection.h */; };
-		008AFD8E13B56D8B000A5C00 /* HTTPResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD1413B56C02000A5C00 /* HTTPResponse.h */; };
-		008AFD8F13B56D8B000A5C00 /* HTTPServer.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD1513B56C02000A5C00 /* HTTPServer.h */; };
-		008AFD9013B56D8B000A5C00 /* MyHTTPConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD1613B56C02000A5C00 /* MyHTTPConnection.h */; };
-		008AFD9113B56D8B000A5C00 /* JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD1B13B56C02000A5C00 /* JSON.h */; };
-		008AFD9213B56D8B000A5C00 /* NSObject+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD1C13B56C02000A5C00 /* NSObject+SBJSON.h */; };
-		008AFD9313B56D8B000A5C00 /* NSString+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD1D13B56C02000A5C00 /* NSString+SBJSON.h */; };
-		008AFD9413B56D8B000A5C00 /* SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD1E13B56C02000A5C00 /* SBJSON.h */; };
-		008AFD9513B56D8B000A5C00 /* SBJsonBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD1F13B56C02000A5C00 /* SBJsonBase.h */; };
-		008AFD9613B56D8B000A5C00 /* SBJsonParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD2013B56C02000A5C00 /* SBJsonParser.h */; };
-		008AFD9713B56D8B000A5C00 /* SBJsonWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD2113B56C02000A5C00 /* SBJsonWriter.h */; };
-		008AFD9813B56D8B000A5C00 /* CallCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD2513B56C02000A5C00 /* CallCache.h */; };
-		008AFD9913B56D8B000A5C00 /* NSNumberCreator.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD2613B56C02000A5C00 /* NSNumberCreator.h */; };
-		008AFD9A13B56D8B000A5C00 /* Recordable.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD2713B56C02000A5C00 /* Recordable.h */; };
-		008AFD9B13B56D8B000A5C00 /* ReturnCacher.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD2813B56C02000A5C00 /* ReturnCacher.h */; };
-		008AFD9C13B56D8B000A5C00 /* UIBug.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD2913B56C02000A5C00 /* UIBug.h */; };
-		008AFD9D13B56D8B000A5C00 /* UIChildren.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD2A13B56C02000A5C00 /* UIChildren.h */; };
-		008AFD9E13B56D8B000A5C00 /* UIConsole.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD2B13B56C02000A5C00 /* UIConsole.h */; };
-		008AFD9F13B56D8B000A5C00 /* UIConsoleLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD2C13B56C02000A5C00 /* UIConsoleLog.h */; };
-		008AFDA013B56D8B000A5C00 /* UIDescendants.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD2D13B56C02000A5C00 /* UIDescendants.h */; };
-		008AFDA113B56D8B000A5C00 /* UIExpectation.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD2E13B56C02000A5C00 /* UIExpectation.h */; };
-		008AFDA213B56D8B000A5C00 /* UIFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD2F13B56C02000A5C00 /* UIFilter.h */; };
-		008AFDA313B56D8B000A5C00 /* UIInspector.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD3013B56C02000A5C00 /* UIInspector.h */; };
-		008AFDA413B56D8B000A5C00 /* UILog.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD3113B56C02000A5C00 /* UILog.h */; };
-		008AFDA513B56D8B000A5C00 /* UIMatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD3213B56C02000A5C00 /* UIMatcher.h */; };
-		008AFDA613B56D8B000A5C00 /* UIParents.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD3313B56C02000A5C00 /* UIParents.h */; };
-		008AFDA713B56D8B000A5C00 /* UIProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD3413B56C02000A5C00 /* UIProxy.h */; };
-		008AFDA813B56D8B000A5C00 /* UIQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD3513B56C02000A5C00 /* UIQuery.h */; };
-		008AFDA913B56D8B000A5C00 /* UIQueryAll.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD3613B56C02000A5C00 /* UIQueryAll.h */; };
-		008AFDAA13B56D8B000A5C00 /* UIQueryExpectation.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD3713B56C02000A5C00 /* UIQueryExpectation.h */; };
-		008AFDAB13B56D8B000A5C00 /* UIQuerySearchBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD3813B56C02000A5C00 /* UIQuerySearchBar.h */; };
-		008AFDAC13B56D8B000A5C00 /* UIQuerySegmentedControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD3913B56C02000A5C00 /* UIQuerySegmentedControl.h */; };
-		008AFDAD13B56D8B000A5C00 /* UIQueryTabBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD3A13B56C02000A5C00 /* UIQueryTabBar.h */; };
-		008AFDAE13B56D8B000A5C00 /* UIQueryTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD3B13B56C02000A5C00 /* UIQueryTableView.h */; };
-		008AFDAF13B56D8B000A5C00 /* UIQueryTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD3C13B56C02000A5C00 /* UIQueryTableViewCell.h */; };
-		008AFDB013B56D8B000A5C00 /* UIQueryWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD3D13B56C02000A5C00 /* UIQueryWebView.h */; };
-		008AFDB113B56D8B000A5C00 /* UIRedoer.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD3E13B56C02000A5C00 /* UIRedoer.h */; };
-		008AFDB213B56D8B000A5C00 /* UISpec.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD3F13B56C02000A5C00 /* UISpec.h */; };
-		008AFDB313B56D8B000A5C00 /* UISpec_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD4013B56C02000A5C00 /* UISpec_Prefix.pch */; };
-		008AFDB413B56D8B000A5C00 /* UITouchPerformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD4113B56C02000A5C00 /* UITouchPerformer.h */; };
-		008AFDB513B56D8B000A5C00 /* ViewFilterSwizzler.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD4213B56C02000A5C00 /* ViewFilterSwizzler.h */; };
-		008AFDB613B56D8B000A5C00 /* WaitUntilIdle.h in Headers */ = {isa = PBXBuildFile; fileRef = 008AFD4313B56C02000A5C00 /* WaitUntilIdle.h */; };
 		008AFDB813B56D8B000A5C00 /* DumpCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D05CA211C883AA0081C5A5 /* DumpCommand.m */; };
 		008AFDB913B56D8B000A5C00 /* FrankCommandRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D05CA411C883AA0081C5A5 /* FrankCommandRoute.m */; };
 		008AFDBA13B56D8B000A5C00 /* FrankServer.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D05CA611C883AA0081C5A5 /* FrankServer.m */; };
@@ -518,53 +424,6 @@
 				008AFD8513B56D8B000A5C00 /* OrientationCommand.h in Headers */,
 				008AFD8613B56D8B000A5C00 /* AppCommand.h in Headers */,
 				008AFD8713B56D8B000A5C00 /* AccessibilityCheckCommand.h in Headers */,
-				008AFD8813B56D8B000A5C00 /* AsyncSocket.h in Headers */,
-				008AFD8913B56D8B000A5C00 /* DDData.h in Headers */,
-				008AFD8A13B56D8B000A5C00 /* DDNumber.h in Headers */,
-				008AFD8B13B56D8B000A5C00 /* DDRange.h in Headers */,
-				008AFD8C13B56D8B000A5C00 /* HTTPAuthenticationRequest.h in Headers */,
-				008AFD8D13B56D8B000A5C00 /* HTTPConnection.h in Headers */,
-				008AFD8E13B56D8B000A5C00 /* HTTPResponse.h in Headers */,
-				008AFD8F13B56D8B000A5C00 /* HTTPServer.h in Headers */,
-				008AFD9013B56D8B000A5C00 /* MyHTTPConnection.h in Headers */,
-				008AFD9113B56D8B000A5C00 /* JSON.h in Headers */,
-				008AFD9213B56D8B000A5C00 /* NSObject+SBJSON.h in Headers */,
-				008AFD9313B56D8B000A5C00 /* NSString+SBJSON.h in Headers */,
-				008AFD9413B56D8B000A5C00 /* SBJSON.h in Headers */,
-				008AFD9513B56D8B000A5C00 /* SBJsonBase.h in Headers */,
-				008AFD9613B56D8B000A5C00 /* SBJsonParser.h in Headers */,
-				008AFD9713B56D8B000A5C00 /* SBJsonWriter.h in Headers */,
-				008AFD9813B56D8B000A5C00 /* CallCache.h in Headers */,
-				008AFD9913B56D8B000A5C00 /* NSNumberCreator.h in Headers */,
-				008AFD9A13B56D8B000A5C00 /* Recordable.h in Headers */,
-				008AFD9B13B56D8B000A5C00 /* ReturnCacher.h in Headers */,
-				008AFD9C13B56D8B000A5C00 /* UIBug.h in Headers */,
-				008AFD9D13B56D8B000A5C00 /* UIChildren.h in Headers */,
-				008AFD9E13B56D8B000A5C00 /* UIConsole.h in Headers */,
-				008AFD9F13B56D8B000A5C00 /* UIConsoleLog.h in Headers */,
-				008AFDA013B56D8B000A5C00 /* UIDescendants.h in Headers */,
-				008AFDA113B56D8B000A5C00 /* UIExpectation.h in Headers */,
-				008AFDA213B56D8B000A5C00 /* UIFilter.h in Headers */,
-				008AFDA313B56D8B000A5C00 /* UIInspector.h in Headers */,
-				008AFDA413B56D8B000A5C00 /* UILog.h in Headers */,
-				008AFDA513B56D8B000A5C00 /* UIMatcher.h in Headers */,
-				008AFDA613B56D8B000A5C00 /* UIParents.h in Headers */,
-				008AFDA713B56D8B000A5C00 /* UIProxy.h in Headers */,
-				008AFDA813B56D8B000A5C00 /* UIQuery.h in Headers */,
-				008AFDA913B56D8B000A5C00 /* UIQueryAll.h in Headers */,
-				008AFDAA13B56D8B000A5C00 /* UIQueryExpectation.h in Headers */,
-				008AFDAB13B56D8B000A5C00 /* UIQuerySearchBar.h in Headers */,
-				008AFDAC13B56D8B000A5C00 /* UIQuerySegmentedControl.h in Headers */,
-				008AFDAD13B56D8B000A5C00 /* UIQueryTabBar.h in Headers */,
-				008AFDAE13B56D8B000A5C00 /* UIQueryTableView.h in Headers */,
-				008AFDAF13B56D8B000A5C00 /* UIQueryTableViewCell.h in Headers */,
-				008AFDB013B56D8B000A5C00 /* UIQueryWebView.h in Headers */,
-				008AFDB113B56D8B000A5C00 /* UIRedoer.h in Headers */,
-				008AFDB213B56D8B000A5C00 /* UISpec.h in Headers */,
-				008AFDB313B56D8B000A5C00 /* UISpec_Prefix.pch in Headers */,
-				008AFDB413B56D8B000A5C00 /* UITouchPerformer.h in Headers */,
-				008AFDB513B56D8B000A5C00 /* ViewFilterSwizzler.h in Headers */,
-				008AFDB613B56D8B000A5C00 /* WaitUntilIdle.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -586,53 +445,6 @@
 				4C1DD76D12BADFE100E10B8C /* OrientationCommand.h in Headers */,
 				4C1DD76F12BADFE100E10B8C /* AppCommand.h in Headers */,
 				00F5DC4F13B4EE760095D50A /* AccessibilityCheckCommand.h in Headers */,
-				008AFD4513B56C02000A5C00 /* AsyncSocket.h in Headers */,
-				008AFD4613B56C02000A5C00 /* DDData.h in Headers */,
-				008AFD4713B56C02000A5C00 /* DDNumber.h in Headers */,
-				008AFD4813B56C02000A5C00 /* DDRange.h in Headers */,
-				008AFD4913B56C02000A5C00 /* HTTPAuthenticationRequest.h in Headers */,
-				008AFD4A13B56C02000A5C00 /* HTTPConnection.h in Headers */,
-				008AFD4B13B56C02000A5C00 /* HTTPResponse.h in Headers */,
-				008AFD4C13B56C02000A5C00 /* HTTPServer.h in Headers */,
-				008AFD4D13B56C02000A5C00 /* MyHTTPConnection.h in Headers */,
-				008AFD5013B56C03000A5C00 /* JSON.h in Headers */,
-				008AFD5113B56C03000A5C00 /* NSObject+SBJSON.h in Headers */,
-				008AFD5213B56C03000A5C00 /* NSString+SBJSON.h in Headers */,
-				008AFD5313B56C03000A5C00 /* SBJSON.h in Headers */,
-				008AFD5413B56C03000A5C00 /* SBJsonBase.h in Headers */,
-				008AFD5513B56C03000A5C00 /* SBJsonParser.h in Headers */,
-				008AFD5613B56C03000A5C00 /* SBJsonWriter.h in Headers */,
-				008AFD5813B56C03000A5C00 /* CallCache.h in Headers */,
-				008AFD5913B56C03000A5C00 /* NSNumberCreator.h in Headers */,
-				008AFD5A13B56C03000A5C00 /* Recordable.h in Headers */,
-				008AFD5B13B56C03000A5C00 /* ReturnCacher.h in Headers */,
-				008AFD5C13B56C03000A5C00 /* UIBug.h in Headers */,
-				008AFD5D13B56C03000A5C00 /* UIChildren.h in Headers */,
-				008AFD5E13B56C03000A5C00 /* UIConsole.h in Headers */,
-				008AFD5F13B56C03000A5C00 /* UIConsoleLog.h in Headers */,
-				008AFD6013B56C03000A5C00 /* UIDescendants.h in Headers */,
-				008AFD6113B56C03000A5C00 /* UIExpectation.h in Headers */,
-				008AFD6213B56C03000A5C00 /* UIFilter.h in Headers */,
-				008AFD6313B56C03000A5C00 /* UIInspector.h in Headers */,
-				008AFD6413B56C03000A5C00 /* UILog.h in Headers */,
-				008AFD6513B56C03000A5C00 /* UIMatcher.h in Headers */,
-				008AFD6613B56C03000A5C00 /* UIParents.h in Headers */,
-				008AFD6713B56C03000A5C00 /* UIProxy.h in Headers */,
-				008AFD6813B56C03000A5C00 /* UIQuery.h in Headers */,
-				008AFD6913B56C03000A5C00 /* UIQueryAll.h in Headers */,
-				008AFD6A13B56C03000A5C00 /* UIQueryExpectation.h in Headers */,
-				008AFD6B13B56C03000A5C00 /* UIQuerySearchBar.h in Headers */,
-				008AFD6C13B56C03000A5C00 /* UIQuerySegmentedControl.h in Headers */,
-				008AFD6D13B56C03000A5C00 /* UIQueryTabBar.h in Headers */,
-				008AFD6E13B56C03000A5C00 /* UIQueryTableView.h in Headers */,
-				008AFD6F13B56C03000A5C00 /* UIQueryTableViewCell.h in Headers */,
-				008AFD7013B56C03000A5C00 /* UIQueryWebView.h in Headers */,
-				008AFD7113B56C03000A5C00 /* UIRedoer.h in Headers */,
-				008AFD7213B56C03000A5C00 /* UISpec.h in Headers */,
-				008AFD7313B56C03000A5C00 /* UISpec_Prefix.pch in Headers */,
-				008AFD7413B56C03000A5C00 /* UITouchPerformer.h in Headers */,
-				008AFD7513B56C03000A5C00 /* ViewFilterSwizzler.h in Headers */,
-				008AFD7613B56C03000A5C00 /* WaitUntilIdle.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
