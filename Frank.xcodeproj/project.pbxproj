@@ -147,8 +147,6 @@
 		008AFDC413B56D8B000A5C00 /* AccessibilityCheckCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F5DC4E13B4EE760095D50A /* AccessibilityCheckCommand.m */; };
 		008AFDC613B56D8B000A5C00 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		008AFDC713B56D8B000A5C00 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D629937F11AB2DF300CE0FB0 /* UIKit.framework */; };
-		008AFDC813B56D8B000A5C00 /* libcocoahttp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 008AFD1713B56C02000A5C00 /* libcocoahttp.a */; };
-		008AFDC913B56D8B000A5C00 /* libUISpec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 008AFD2313B56C02000A5C00 /* libUISpec.a */; };
 		008AFDCB13B56D8B000A5C00 /* UISpec.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 008AFD4413B56C02000A5C00 /* UISpec.bundle */; };
 		00F5DC4F13B4EE760095D50A /* AccessibilityCheckCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 00F5DC4D13B4EE760095D50A /* AccessibilityCheckCommand.h */; };
 		00F5DC5013B4EE760095D50A /* AccessibilityCheckCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F5DC4E13B4EE760095D50A /* AccessibilityCheckCommand.m */; };
@@ -208,7 +206,6 @@
 		008AFD1413B56C02000A5C00 /* HTTPResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPResponse.h; sourceTree = "<group>"; };
 		008AFD1513B56C02000A5C00 /* HTTPServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPServer.h; sourceTree = "<group>"; };
 		008AFD1613B56C02000A5C00 /* MyHTTPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyHTTPConnection.h; sourceTree = "<group>"; };
-		008AFD1713B56C02000A5C00 /* libcocoahttp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcocoahttp.a; sourceTree = "<group>"; };
 		008AFD1913B56C02000A5C00 /* libSBJSON.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSBJSON.a; sourceTree = "<group>"; };
 		008AFD1B13B56C02000A5C00 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		008AFD1C13B56C02000A5C00 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
@@ -217,7 +214,6 @@
 		008AFD1F13B56C02000A5C00 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
 		008AFD2013B56C02000A5C00 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
 		008AFD2113B56C02000A5C00 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
-		008AFD2313B56C02000A5C00 /* libUISpec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUISpec.a; sourceTree = "<group>"; };
 		008AFD2513B56C02000A5C00 /* CallCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallCache.h; sourceTree = "<group>"; };
 		008AFD2613B56C02000A5C00 /* NSNumberCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSNumberCreator.h; sourceTree = "<group>"; };
 		008AFD2713B56C02000A5C00 /* Recordable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Recordable.h; sourceTree = "<group>"; };
@@ -251,6 +247,8 @@
 		008AFD4313B56C02000A5C00 /* WaitUntilIdle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitUntilIdle.h; sourceTree = "<group>"; };
 		008AFD4413B56C02000A5C00 /* UISpec.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UISpec.bundle; sourceTree = "<group>"; };
 		008AFDCF13B56D8B000A5C00 /* libFrank-iphonesimulator.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libFrank-iphonesimulator.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		00BF119713B5778D00DDB8C0 /* libUISpec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUISpec.a; sourceTree = "<group>"; };
+		00BF119A13B577A100DDB8C0 /* libcocoahttp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcocoahttp.a; sourceTree = "<group>"; };
 		00F5DC4D13B4EE760095D50A /* AccessibilityCheckCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccessibilityCheckCommand.h; path = src/AccessibilityCheckCommand.h; sourceTree = "<group>"; };
 		00F5DC4E13B4EE760095D50A /* AccessibilityCheckCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccessibilityCheckCommand.m; path = src/AccessibilityCheckCommand.m; sourceTree = "<group>"; };
 		4C1DD75E12BADFA400E10B8C /* InspectCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InspectCommand.m; path = src/InspectCommand.m; sourceTree = "<group>"; };
@@ -293,8 +291,6 @@
 			files = (
 				008AFDC613B56D8B000A5C00 /* Foundation.framework in Frameworks */,
 				008AFDC713B56D8B000A5C00 /* UIKit.framework in Frameworks */,
-				008AFDC813B56D8B000A5C00 /* libcocoahttp.a in Frameworks */,
-				008AFDC913B56D8B000A5C00 /* libUISpec.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,8 +309,8 @@
 		008AFD0C13B56C02000A5C00 /* cocoahttp */ = {
 			isa = PBXGroup;
 			children = (
+				00BF119A13B577A100DDB8C0 /* libcocoahttp.a */,
 				008AFD0D13B56C02000A5C00 /* cocoahttp */,
-				008AFD1713B56C02000A5C00 /* libcocoahttp.a */,
 			);
 			name = cocoahttp;
 			path = lib/cocoahttp;
@@ -363,9 +359,9 @@
 		008AFD2213B56C02000A5C00 /* uispec */ = {
 			isa = PBXGroup;
 			children = (
-				008AFD2313B56C02000A5C00 /* libUISpec.a */,
 				008AFD2413B56C02000A5C00 /* UISpec */,
 				008AFD4413B56C02000A5C00 /* UISpec.bundle */,
+				00BF119713B5778D00DDB8C0 /* libUISpec.a */,
 			);
 			name = uispec;
 			path = lib/uispec;
@@ -819,11 +815,10 @@
 					"\"${SRC_ROOT}/lib/uispec\"",
 				);
 				INSTALL_PATH = /usr/local/lib;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/lib/cocoahttp\"",
-					"\"$(SRCROOT)/lib/JSON\"",
-					"\"$(SRCROOT)/lib/uispec\"",
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"-lcocoahttp",
+					"-lUISpec",
 				);
 				PRODUCT_NAME = "Frank-iphonesimulator";
 				PUBLIC_HEADERS_FOLDER_PATH = "${inherited}";
@@ -851,11 +846,10 @@
 					"\"${SRC_ROOT}/lib/uispec\"",
 				);
 				INSTALL_PATH = /usr/local/lib;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/lib/cocoahttp\"",
-					"\"$(SRCROOT)/lib/JSON\"",
-					"\"$(SRCROOT)/lib/uispec\"",
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"-lcocoahttp",
+					"-lUISpec",
 				);
 				PRODUCT_NAME = "Frank-iphonesimulator";
 				PUBLIC_HEADERS_FOLDER_PATH = "${inherited}";
@@ -909,8 +903,11 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/lib/cocoahttp\"",
-					"\"$(SRCROOT)/lib/JSON\"",
 					"\"$(SRCROOT)/lib/uispec\"",
+				);
+				OTHER_LDFLAGS = (
+					"-lcocoahttp",
+					"-lUISpec",
 				);
 				PRODUCT_NAME = "Frank-iphoneos";
 				SDKROOT = iphoneos;
@@ -938,6 +935,10 @@
 					"\"$(SRCROOT)/lib/JSON\"",
 					"\"$(SRCROOT)/lib/uispec\"",
 				);
+				OTHER_LDFLAGS = (
+					"-lcocoahttp",
+					"-lUISpec",
+				);
 				PRODUCT_NAME = "Frank-iphoneos";
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = iphoneos;
@@ -963,12 +964,10 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(CONFIGURATION_BUILD_DIR)",
-					"\"${SRC_ROOT}/lib/cocoahttp\"",
-					"\"${SRC_ROOT}/lib/JSON\"",
-					"\"${SRC_ROOT}/lib/uispec\"",
+					"$(SRCROOT)/lib/cocoahttp",
+					"$(SRCROOT)/lib/UISpec",
 				);
 				OTHER_LDFLAGS = (
-					"-ObjC",
 					"-lUISpec",
 					"-lcocoahttp",
 				);
@@ -995,12 +994,10 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(CONFIGURATION_BUILD_DIR)",
-					"\"${SRC_ROOT}/lib/cocoahttp\"",
-					"\"${SRC_ROOT}/lib/JSON\"",
-					"\"${SRC_ROOT}/lib/uispec\"",
+					"$(SRCROOT)/lib/cocoahttp",
+					"$(SRCROOT)/lib/UISpec",
 				);
 				OTHER_LDFLAGS = (
-					"-ObjC",
 					"-lUISpec",
 					"-lcocoahttp",
 				);
@@ -1030,6 +1027,7 @@
 				008AFDE313B56E3C000A5C00 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1DEB921E08733DC00010E9CD /* Build configuration list for PBXNativeTarget "Frank-iphoneos" */ = {
 			isa = XCConfigurationList;
