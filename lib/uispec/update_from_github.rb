@@ -9,6 +9,7 @@ dest_dir = File.expand_path(File.dirname(__FILE__))
 Dir.mktmpdir('frank_is_updating_uispec') do |tmpdir|
   `cd #{tmpdir}; curl -L #{GITHUB_TARBALL} | tar xzv`
   FileUtils.cp_r( Dir.glob( File.join( tmpdir, '*', "src", "*" )),  dest_dir )
+  FileUtils.cp_r( Dir.glob( File.join( tmpdir, '*', "Private Headers" )),  dest_dir )
 
   puts "\n"*3
   puts "uispec source files copied to current dir"
