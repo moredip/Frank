@@ -14,11 +14,17 @@ symbiote.UiLocator = function(){
       backdrop = null,
       erstaz = null;
 
+  paper.canvas.setAttribute('preserveAspectRatio','xMidYMin meet');
+
   function iPhoneErsatz(raphael){
     var BACKDROP_FRAME = { x: 24, y: 120, width: 320, height: 480 };
 
     function drawFakeDevice(backdrop){
       
+      paper.canvas.setAttribute('width','100%');
+      paper.canvas.setAttribute('height','100%');
+      paper.canvas.setAttribute("viewBox", "0 0 380 720");
+
       // main outline of device
       paper.rect( 6, 6, 360, 708, 40 ).attr( {
           'fill': 'black',
@@ -53,7 +59,6 @@ symbiote.UiLocator = function(){
 
     function drawFakeDevice(backdrop){
 
-      paper.canvas.setAttribute('preserveAspectRatio','xMidYMin meet');
       paper.canvas.setAttribute('width','100%');
       paper.canvas.setAttribute('height','100%');
       paper.canvas.setAttribute("viewBox", "0 0 900 1200");
