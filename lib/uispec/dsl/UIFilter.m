@@ -10,7 +10,8 @@
 }
 
 -(id)initWithQuery:(UIQuery *)_query {
-	if (self = [super init]) {
+    self = [super init];
+	if (self) {
 		self.query = _query;
 	}
 	return self;

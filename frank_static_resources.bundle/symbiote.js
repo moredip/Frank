@@ -407,6 +407,8 @@ $(document).ready(function() {
         hideLoadingUI();
       }
     });
+
+    return false;
   }
 
     function updateAccessibleViews( views ) {

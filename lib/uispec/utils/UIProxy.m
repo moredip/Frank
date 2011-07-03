@@ -9,7 +9,8 @@
 }
 
 -(id)initWithTarget:(id)_target {
-	if (self = [super init]) {
+    self = [super init];
+	if (self) {
 		self.target = _target;
 	}
 	return self;

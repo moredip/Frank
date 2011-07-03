@@ -34,6 +34,17 @@
 	return [target respondsToSelector:_selector];
 }
 
+- (void)castNumber:(NSNumber *)number toType:(const char*)objCType intoBuffer:(void *)buffer{
+	// specific cases should be added here as needed
+	if( !strcmp(objCType, @encode(int)) ){
+		*((int *)buffer) = [number intValue];
+	}else if( !strcmp(objCType, @encode(uint)) ){
+		*((uint *)buffer) = [number unsignedIntValue];
+	}else {
+		NSLog(@"Didn't know how to convert NSNumber to type %s", objCType); 
+	}	
+}
+
 - (id) applyToObject:(id)target {
 	NSMethodSignature *signature = [target methodSignatureForSelector:_selector];
 	NSUInteger requiredNumberOfArguments = signature.numberOfArguments - 2; // Indices 0 and 1 indicate the hidden arguments self and _cmd, respectively
@@ -44,9 +55,18 @@
 	NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
 	[invocation setSelector:_selector];
 	
+	char invocationBuffer[300]; //let's hope we don't get asked to invoke a method with more than 28 arguments.
+	
 	NSInteger index = 2; // Indices 0 and 1 indicate the hidden arguments self and _cmd, respectively
 	for( id arg in _arguments ) {
-		[invocation setArgument:&arg atIndex:index++];
+		if( [arg isKindOfClass:[NSNumber class]] ){
+			void *buffer = &(invocationBuffer[index*10]);
+			[self castNumber:arg toType:[signature getArgumentTypeAtIndex:index] intoBuffer:buffer];
+			[invocation setArgument:buffer atIndex:index];
+		}else {
+			[invocation setArgument:&arg atIndex:index];
+		}
+		index++;
 	}
 		 
 	[invocation invokeWithTarget:target];
