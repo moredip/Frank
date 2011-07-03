@@ -8,7 +8,8 @@
 @synthesize callCache;
 
 -(id)initWithTarget:(id)_target {
-	if (self = [super initWithTarget:_target]) {
+    self = [super initWithTarget:_target];
+	if (self) {
 		self.callCache = [[[CallCache alloc] init] autorelease];
 	}
 	return self;

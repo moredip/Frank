@@ -63,7 +63,8 @@ static CGPoint originalPoint;
 		[UIBug swizzleMethodOnClass:[UIApplication class] originalSelector:@selector(sendEvent:) fromClass:[UIBug class] alternateSelector:@selector(mySendEvent:)];
 		swizzleWasDone = YES;
 	}
-	if (self = [super initWithImage:[UIImage imageNamed:@"UISpec.bundle/images/uibug.png"] highlightedImage:[UIImage imageNamed:@"UISpec.bundle/images/uibug2.png"]]) {
+    self = [super initWithImage:[UIImage imageNamed:@"UISpec.bundle/images/uibug.png"] highlightedImage:[UIImage imageNamed:@"UISpec.bundle/images/uibug2.png"]];
+	if (self) {
 		self.userInteractionEnabled = YES;
 		self.frame = CGRectMake(point.x, point.y, self.frame.size.width, self.frame.size.height);
 	}

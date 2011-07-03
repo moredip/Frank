@@ -17,6 +17,7 @@
 #import "UIFilter.h"
 #import "UIBug.h"
 #import "UIQueryExpectation.h"
+#import "VisibleTouch.h"
 
 @implementation UIQuery
 
@@ -418,26 +419,54 @@
 	return [UIQuery withViews:views className:className];
 }
 
-- (UIQuery *)touchxy:(NSNumber *)x ycoord:(NSNumber *)y {
+- (UIQuery *)touchxy:(NSNumber *)x ycoord:(NSNumber *)y
+{
+    return [self touchx:x y:y]; // call new function name but allow for choice
+}
+
+- (UIQuery *)touchx:(NSNumber *)x y:(NSNumber *)y {
 	//NSLog(@"UIQuery - (UIQuery *)touchxy:(int)x ycoord:(int)y = %@, %@", x, y);
 	[[UIQueryExpectation withQuery:self] exist:@"before you can touch it"];
 	
-	for (UIView *view in [self targetViews]) {
-		UITouch *touch = [[UITouch alloc] initInView:view xcoord:[x intValue] ycoord:[y intValue]];
-		UIEvent *eventDown = [[NSClassFromString(@"UITouchesEvent") alloc] initWithTouch:touch];
-		NSSet *touches = [[NSMutableSet alloc] initWithObjects:&touch count:1];
+	for (UIView *aView in [self targetViews]) {
+		UITouch *aTouch = [[UITouch alloc] initInView:aView xcoord:[x intValue] ycoord:[y intValue]];
+        
+        // Create a view to display a visible touch on the screen with a center of the touch
+        CGPoint thePoint = CGPointMake([x floatValue], [y floatValue]);
+        UIView *visibleTouch = [[VisibleTouch alloc] initWithCenter:thePoint];
+        [[aView window] addSubview:visibleTouch];
+        [[aView window] bringSubviewToFront:visibleTouch];
+        
+		UIEvent *eventDown = [[NSClassFromString(@"UITouchesEvent") alloc] initWithTouch:aTouch];
+		NSSet *touches = [[NSMutableSet alloc] initWithObjects:&aTouch count:1];
 		
-		[touch.view touchesBegan:touches withEvent:eventDown];
+		[aTouch.view touchesBegan:touches withEvent:eventDown];
+        
+        // Send event to the gesture recognizers
+        for (UIGestureRecognizer *recognizer in [aView gestureRecognizers])
+        {
+            [recognizer touchesBegan:touches withEvent:eventDown];
+        }
+        
+        [self wait:.25]; // Pause so touch can be seen
+        
+		UIEvent *eventUp = [[NSClassFromString(@"UITouchesEvent") alloc] initWithTouch:aTouch];
+		[aTouch setPhase:UITouchPhaseEnded];
 		
-		UIEvent *eventUp = [[NSClassFromString(@"UITouchesEvent") alloc] initWithTouch:touch];
-		[touch setPhase:UITouchPhaseEnded];
-		
-		[touch.view touchesEnded:touches withEvent:eventDown];
-		
+		[aTouch.view touchesEnded:touches withEvent:eventDown];
+        
+        for (UIGestureRecognizer *recognizer in [aView gestureRecognizers])
+        {
+            [recognizer touchesEnded:touches withEvent:eventDown];
+        }
+        
+        [visibleTouch removeFromSuperview];
+        [visibleTouch release];
+        
 		[eventDown release];
 		[eventUp release];
 		[touches release];
-		[touch release];
+		[aTouch release];
 		[self wait:.5];
 	}
 	return [UIQuery withViews:views className:className];

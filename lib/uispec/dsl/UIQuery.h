@@ -65,6 +65,7 @@ UIQuery * $(NSMutableString *script, ...);
 -(UIQuery *)path;
 -(UIQuery *)inspect;
 - (UIQuery *)touch;
+- (UIQuery *)touchx:(NSNumber *)x y:(NSNumber *)y;
 - (UIQuery *)touchxy:(NSNumber *)x ycoord:(NSNumber *)y;
 -(NSString *)description;
 -(void)logRange:(NSString *)prefix range:(NSRange)range;
@@ -99,3 +100,13 @@ UIQuery * $(NSMutableString *script, ...);
 
 @end
 
+@interface UIEvent (Synthesis)
+- (id)initWithTouch:(UITouch *)touch;
+@end
+
+@interface UITouch (Synthesize)
+- (id)initInView:(UIView *)view;
+- (id)initInView:(UIView *)view xcoord:(int)x ycoord:(int)y;
+- (void)setPhase:(UITouchPhase)phase;
+- (void)setLocationInWindow:(CGPoint)location;
+@end
