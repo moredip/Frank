@@ -8,8 +8,6 @@ symbiote.baseUrlFor = function(path){ return window.location.protocol + "//" + w
 
 symbiote.UiLocator = function(){
   var allViews = [],
-      viewsHoveredHandler = _.identity,
-      viewsLeftHandler = _.identity,
       paper = new Raphael( 'ui-locator-view'),
       viewIndicator = { remove: _.identity },
       screenshotUrl = symbiote.baseUrlFor( "screenshot" ),
@@ -107,19 +105,6 @@ symbiote.UiLocator = function(){
 
   }
 
-  function backdropHover(e){
-    var screenOffset = erstaz.screenOffset(),
-        coords = { 
-          x: e.offsetX - screenOffset.x, 
-          y: e.offsetY - screenOffset.y
-        };
-    viewsHoveredHandler( findViewsAt( coords) );
-  }
-
-  function backdropLeft(e){
-    viewsLeftHandler();
-  }
-
   function showViewLocation( view ) {
     var screenOffset = erstaz.screenOffset();
 
@@ -144,9 +129,7 @@ symbiote.UiLocator = function(){
   }
 
   function addBackdropImage(){
-    return paper.image()
-      .mousemove( backdropHover ) 
-      .mouseout( backdropLeft );
+    return paper.image();
   }
 
   function updateBackdrop(){
@@ -185,9 +168,7 @@ symbiote.UiLocator = function(){
     hideViewLocation: hideViewLocation,
     updateBackdrop: updateBackdrop,
     updateViews: updateViews,
-    updateDeviceFamily: updateDeviceFamily,
-    viewsHovered: function(handler){ viewsHoveredHandler = handler; },
-    viewsLeft: function(handler){ viewsLeftHandler = handler; },
+    updateDeviceFamily: updateDeviceFamily
   };
 };
 
@@ -240,24 +221,6 @@ $(document).ready(function() {
     });
     return $found;
   }
-
-  uiLocator.viewsHovered( function(views){
-    var $lis = _.map( views, domListItemForView );
-
-    $('a',$domList).removeClass('hovered-in-locator');
-
-    _.each( $lis, function($li){
-      $li.addClass('hovered-in-locator');
-    });
-  });
-
-  uiLocator.viewsLeft( function(){
-    $('a',$domList).removeClass('hovered-in-locator');
-  });
-  
-  
-  
-
 
 	$("#list-tabs").tabs();
 	$("#inspect-tabs").tabs();
