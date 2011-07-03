@@ -110,6 +110,7 @@ div#live-view{
 }
 
 div#ui-locator-view{
+  height: 85%;
   text-align: center;
 }
 
