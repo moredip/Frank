@@ -43,7 +43,7 @@
 	[self swizzleFiltersForClass:[self class]];
 }
 
-+(void)swizzleFiltersForClass:(Class *)class {
++(void)swizzleFiltersForClass:(Class)class {
 	int i, propertyCount = 0;
 	objc_property_t *propertyList = class_copyPropertyList([ViewFilterSwizzler class], &propertyCount);
 	for (i=0; i<propertyCount; i++) {

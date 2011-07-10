@@ -33,6 +33,11 @@
     return self;
 }
 
+- (void) addToKeyWindow{
+	[[[UIApplication sharedApplication] keyWindow] addSubview:self];
+	[[[UIApplication sharedApplication] keyWindow] bringSubviewToFront:self];
+}
+
 - (void)drawRect:(CGRect)rect
 {
     CGContextRef context = UIGraphicsGetCurrentContext();

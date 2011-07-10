@@ -19,6 +19,13 @@
 #import "UIQueryExpectation.h"
 #import "VisibleTouch.h"
 
+#import "UIEvent+Synthesize.h"
+#import "UITouch+Synthesize.h"
+
+@interface UIQuery()
+@property (nonatomic, readwrite, retain) UITouchPerformer *touchPerformer;
+@end
+
 @implementation UIQuery
 
 @synthesize with;
@@ -80,6 +87,8 @@
 	}
 	return self;
 }
+
+@synthesize touchPerformer;
 
 -(NSArray *)collect:(NSArray *)views {
 	return [[[[UIDescendants alloc] init] autorelease] collect:views];
@@ -298,7 +307,7 @@
 		id objValue;
 		int intValue;
 		long longValue;
-		char *charPtrValue; 
+		char *charPtrValue;
 		char charValue;
 		short shortValue;
 		float floatValue;
@@ -395,27 +404,23 @@
     return properties;
 }
 
+#pragma mark - User Event Generation (tap, swipe etc).
+#pragma mark Gesture delegate lazy getter
+- (UITouchPerformer*) touchPerformer
+{
+    if(touchPerformer == nil)
+    {
+        self.touchPerformer = [UITouchPerformer touchPerformer];
+    }
+    return touchPerformer;
+}
+
+#pragma mark Legacy Touch
 - (UIQuery *)touch {
 	[[UIQueryExpectation withQuery:self] exist:@"before you can touch it"];
 	
-	for (UIView *view in [self targetViews]) {
-		UITouch *touch = [[UITouch alloc] initInView:view];
-		UIEvent *eventDown = [[NSClassFromString(@"UITouchesEvent") alloc] initWithTouch:touch];
-		NSSet *touches = [[NSMutableSet alloc] initWithObjects:&touch count:1];
-		
-		[touch.view touchesBegan:touches withEvent:eventDown];
-		
-		UIEvent *eventUp = [[NSClassFromString(@"UITouchesEvent") alloc] initWithTouch:touch];
-		[touch setPhase:UITouchPhaseEnded];
-		
-		[touch.view touchesEnded:touches withEvent:eventDown];
-		
-		[eventDown release];
-		[eventUp release];
-		[touches release];
-		[touch release];
-		[self wait:.5];
-	}
+    [self.touchPerformer touch: [self targetViews]];
+    
 	return [UIQuery withViews:views className:className];
 }
 
@@ -425,53 +430,95 @@
 }
 
 - (UIQuery *)touchx:(NSNumber *)x y:(NSNumber *)y {
-	//NSLog(@"UIQuery - (UIQuery *)touchxy:(int)x ycoord:(int)y = %@, %@", x, y);
+
 	[[UIQueryExpectation withQuery:self] exist:@"before you can touch it"];
-	
-	for (UIView *aView in [self targetViews]) {
-		UITouch *aTouch = [[UITouch alloc] initInView:aView xcoord:[x intValue] ycoord:[y intValue]];
-        
-        // Create a view to display a visible touch on the screen with a center of the touch
-        CGPoint thePoint = CGPointMake([x floatValue], [y floatValue]);
-        UIView *visibleTouch = [[VisibleTouch alloc] initWithCenter:thePoint];
-        [[aView window] addSubview:visibleTouch];
-        [[aView window] bringSubviewToFront:visibleTouch];
-        
-		UIEvent *eventDown = [[NSClassFromString(@"UITouchesEvent") alloc] initWithTouch:aTouch];
-		NSSet *touches = [[NSMutableSet alloc] initWithObjects:&aTouch count:1];
-		
-		[aTouch.view touchesBegan:touches withEvent:eventDown];
-        
-        // Send event to the gesture recognizers
-        for (UIGestureRecognizer *recognizer in [aView gestureRecognizers])
-        {
-            [recognizer touchesBegan:touches withEvent:eventDown];
-        }
-        
-        [self wait:.25]; // Pause so touch can be seen
-        
-		UIEvent *eventUp = [[NSClassFromString(@"UITouchesEvent") alloc] initWithTouch:aTouch];
-		[aTouch setPhase:UITouchPhaseEnded];
-		
-		[aTouch.view touchesEnded:touches withEvent:eventDown];
-        
-        for (UIGestureRecognizer *recognizer in [aView gestureRecognizers])
-        {
-            [recognizer touchesEnded:touches withEvent:eventDown];
-        }
-        
-        [visibleTouch removeFromSuperview];
-        [visibleTouch release];
-        
-		[eventDown release];
-		[eventUp release];
-		[touches release];
-		[aTouch release];
-		[self wait:.5];
-	}
+    
+    // rebuild point, grab target views and pass that to the touch performer
+	CGPoint point = CGPointMake([x intValue], [y intValue]);
+    NSArray *targetViews = [self targetViews];
+    
+    [self.touchPerformer touchViews:targetViews atPoint: point];
+    
 	return [UIQuery withViews:views className:className];
 }
 
+#pragma mark Tap
+- (UIQuery *) tap
+{
+    // forward call to touch performer with our target views
+    [self.touchPerformer tapOnViews: [self targetViews]];    
+    return [UIQuery withViews:views className:className];
+}
+
+- (UIQuery *) tapAtPoint: (NSString *) point
+{
+    CGPoint tapPoint = CGPointFromString(point);
+    // forward call to touch performer
+    [self.touchPerformer tapAtPoint: tapPoint];
+    return [UIQuery withViews:views className:className];
+}
+
+#pragma mark Swipe
+
+- (SwipeDirection) parseSwipeDirectionString:(NSString *)direction {
+	direction = [direction lowercaseString];
+	
+	if( [direction isEqualToString:@"up"] ){
+		return SwipeDirectionUp;
+	}else if( [direction isEqualToString:@"down"] ){
+		return SwipeDirectionDown;
+	}else if( [direction isEqualToString:@"left"] ){
+		return SwipeDirectionLeft;
+	}else if( [direction isEqualToString:@"right"] ){
+		return SwipeDirectionRight;
+	}else{
+		[NSException raise:@"Invalid swipe direction" format:@"Must be one of left, right, up, or down"];
+		return 0;
+	}
+
+}
+
+// swipes from center of view in the given direction
+- (UIQuery *)swipeInDirection: (NSString *) directionString
+{
+    NSArray *targetViews = [self targetViews];
+    [self.touchPerformer swipeInViews: targetViews 
+							direction:[self parseSwipeDirectionString:directionString]];
+    
+    return [UIQuery withViews:views className:className];
+}
+
+// swipe at given point in given direction
+// point must be in the format recognized by CGPointFromString
+// direction maps to SwipingDirection enum
+- (UIQuery *) swipeAt: (NSString *) start direction:  (NSString *) directionString
+{
+    CGPoint point = CGPointFromString(start);
+    [self.touchPerformer swipeAt: point 
+					   direction:[self parseSwipeDirectionString:directionString]];
+    
+    return [UIQuery withViews:views className:className];
+}
+
+// swipes from start to end during DEFAULT_DURATION seconds
+- (UIQuery *)swipeFrom: (NSString*) start to: (NSString*) end
+{
+    CGPoint startPoint = CGPointFromString(start);
+    CGPoint endPoint = CGPointFromString(end);
+    [self.touchPerformer swipeFrom: startPoint to: endPoint];
+    
+    return [UIQuery withViews:views className:className];
+}
+
+#pragma mark Pinch
+- (UIQuery *) pinchFrom: (NSString *) start to: (NSString *) end
+{
+    CGRect startRect = CGRectFromString(start);
+    CGRect endRect = CGRectFromString(end);    
+    [self.touchPerformer pinchFrom: startRect to: endRect];
+
+    return [UIQuery withViews:views className:className];
+}
 
 -(NSString *)description {
 	return [NSString stringWithFormat:@"UIQuery: %@", [views description]];
@@ -485,6 +532,7 @@
 	self.views = nil;
 	self.className = nil;
 	self.redoer = nil;
+    self.touchPerformer = nil;
 	[super dealloc];
 }
 
@@ -552,215 +600,6 @@ UIQuery * $(NSMutableString *script, ...) {
 		//NSLog(@"result = %@", result);
 	}
 	return result;
-}
-
-//
-//  TouchSynthesis.m
-//  SelfTesting
-//
-//  Created by Matt Gallagher on 23/11/08.
-//  Copyright 2008 Matt Gallagher. All rights reserved.
-//
-//  Permission is given to use this source code file, free of charge, in any
-//  project, commercial or otherwise, entirely at your risk, with the condition
-//  that any redistribution (in part or whole) of source code must retain
-//  this copyright and permission notice. Attribution in compiled projects is
-//  appreciated but not required.
-//
-
-@implementation UITouch (Synthesize)
-
-//
-// initInView:phase:
-//
-// Creats a UITouch, centered on the specified view, in the view's window.
-// Sets the phase as specified.
-//
-- (id)initInView:(UIView *)view
-{
-	self = [super init];
-	if (self != nil)
-	{
-		CGRect frameInWindow;
-		if ([view isKindOfClass:[UIWindow class]])
-		{
-			frameInWindow = view.frame;
-		}
-		else
-		{
-			frameInWindow =
-			[view.window convertRect:view.frame fromView:view.superview];
-		}
-		
-		_tapCount = 1;
-		_locationInWindow =
-		CGPointMake(
-					frameInWindow.origin.x + 0.5 * frameInWindow.size.width,
-					frameInWindow.origin.y + 0.5 * frameInWindow.size.height);
-		_previousLocationInWindow = _locationInWindow;
-		
-		UIView *target = [view.window hitTest:_locationInWindow withEvent:nil];
-		
-		_window = [view.window retain];
-		_view = [target retain];
-		_phase = UITouchPhaseBegan;
-		_touchFlags._firstTouchForView = 1;
-		_touchFlags._isTap = 1;
-		_timestamp = [NSDate timeIntervalSinceReferenceDate];
-	}
-	return self;
-}
-
-
-- (id)initInView:(UIView *)view xcoord:(int)x ycoord:(int)y
-{
-	self = [super init];
-	if (self != nil)
-	{
-		CGRect frameInWindow;
-		if ([view isKindOfClass:[UIWindow class]])
-		{
-			frameInWindow = view.frame;
-		}
-		else
-		{
-			frameInWindow =
-			[view.window convertRect:view.frame fromView:view.superview];
-		}
-		
-		_tapCount = 1;
-		_locationInWindow =
-		CGPointMake(
-					frameInWindow.origin.x + x,
-					frameInWindow.origin.y + y);
-		_previousLocationInWindow = _locationInWindow;
-		
-		UIView *target = [view.window hitTest:_locationInWindow withEvent:nil];
-		
-		_window = [view.window retain];
-		_view = [target retain];
-		_phase = UITouchPhaseBegan;
-		_touchFlags._firstTouchForView = 1;
-		_touchFlags._isTap = 1;
-		_timestamp = [NSDate timeIntervalSinceReferenceDate];
-	}
-	return self;
-}
-
-//
-// setPhase:
-//
-// Setter to allow access to the _phase member.
-//
-- (void)setPhase:(UITouchPhase)phase
-{
-	_phase = phase;
-	_timestamp = [NSDate timeIntervalSinceReferenceDate];
-}
-
-//
-// setPhase:
-//
-// Setter to allow access to the _locationInWindow member.
-//
-- (void)setLocationInWindow:(CGPoint)location
-{
-	_previousLocationInWindow = _locationInWindow;
-	_locationInWindow = location;
-	_timestamp = [NSDate timeIntervalSinceReferenceDate];
-}
-
-@end
-
-//
-// GSEvent is an undeclared object. We don't need to use it ourselves but some
-// Apple APIs (UIScrollView in particular) require the x and y fields to be present.
-//
-@interface GSEventProxy : NSObject
-{
-@public
-	unsigned int flags;
-	unsigned int type;
-	unsigned int ignored1;
-	float x1;
-	float y1;
-	float x2;
-	float y2;
-	unsigned int ignored2[10];
-	unsigned int ignored3[7];
-	float sizeX;
-	float sizeY;
-	float x3;
-	float y3;
-	unsigned int ignored4[3];
-}
-@end
-@implementation GSEventProxy
-@end
-
-//
-// PublicEvent
-//
-// A dummy class used to gain access to UIEvent's private member variables.
-// If UIEvent changes at all, this will break.
-//
-@interface PublicEvent : NSObject
-{
-@public
-    GSEventProxy           *_event;
-    NSTimeInterval          _timestamp;
-    NSMutableSet           *_touches;
-    CFMutableDictionaryRef  _keyedTouches;
-}
-@end
-
-@implementation PublicEvent
-@end
-
-@interface UIEvent (Creation)
-
-- (id)_initWithEvent:(GSEventProxy *)fp8 touches:(id)fp12;
-
-@end
-
-//
-// UIEvent (Synthesize)
-//
-// A category to allow creation of a touch event.
-//
-@implementation UIEvent (Synthesize)
-
-- (id)initWithTouch:(UITouch *)touch
-{
-	CGPoint location = [touch locationInView:touch.window];
-	GSEventProxy *gsEventProxy = [[GSEventProxy alloc] init];
-	gsEventProxy->x1 = location.x;
-	gsEventProxy->y1 = location.y;
-	gsEventProxy->x2 = location.x;
-	gsEventProxy->y2 = location.y;
-	gsEventProxy->x3 = location.x;
-	gsEventProxy->y3 = location.y;
-	gsEventProxy->sizeX = 1.0;
-	gsEventProxy->sizeY = 1.0;
-	gsEventProxy->flags = ([touch phase] == UITouchPhaseEnded) ? 0x1010180 : 0x3010180;
-	gsEventProxy->type = 3001;	
-	
-	//
-	// On SDK versions 3.0 and greater, we need to reallocate as a
-	// UITouchesEvent.
-	//
-	Class touchesEventClass = objc_getClass("UITouchesEvent");
-	if (touchesEventClass && ![[self class] isEqual:touchesEventClass])
-	{
-		[self release];
-		self = [touchesEventClass alloc];
-	}
-	
-	self = [self _initWithEvent:gsEventProxy touches:[NSSet setWithObject:touch]];
-	if (self != nil)
-	{
-	}
-	return self;
 }
 
 @end

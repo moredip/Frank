@@ -14,6 +14,6 @@
 *threePartButton, *navigationItemButtonView, *navigationItemView, *removeControlMinusButton, *pushButton;
 
 +(void)initialize;
-+(void)swizzleFiltersForClass:(Class *)class;
++(void)swizzleFiltersForClass:(Class)class;
 
 @end

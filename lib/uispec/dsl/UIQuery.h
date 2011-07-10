@@ -7,8 +7,10 @@
 //
 #import "ViewFilterSwizzler.h"
 #import "UIQueryExpectation.h"
+#import "UITouchPerformer.h"
 
-@class UIFilter, UIRedoer;
+@class UIFilter;
+@class UIRedoer;
 
 UIQuery * $(NSMutableString *script, ...);
 
@@ -23,6 +25,8 @@ UIQuery * $(NSMutableString *script, ...);
 	UIRedoer *redoer;
 	int timeout;
 	BOOL filter, exists;
+    
+    UITouchPerformer *touchPerformer;
 }
 
 @property(nonatomic, readonly) UIFilter *with;
@@ -64,11 +68,26 @@ UIQuery * $(NSMutableString *script, ...);
 -(UIQuery *)show;
 -(UIQuery *)path;
 -(UIQuery *)inspect;
+-(NSString *)description;
+-(void)logRange:(NSString *)prefix range:(NSRange)range;
+
+// User event generation
+// legacy
 - (UIQuery *)touch;
 - (UIQuery *)touchx:(NSNumber *)x y:(NSNumber *)y;
 - (UIQuery *)touchxy:(NSNumber *)x ycoord:(NSNumber *)y;
--(NSString *)description;
--(void)logRange:(NSString *)prefix range:(NSRange)range;
+
+//tapping
+- (UIQuery *)tap;
+- (UIQuery *)tapAtPoint: (NSString*) point;
+
+// swiping
+- (UIQuery *)swipeInDirection: (NSNumber *) direction;
+- (UIQuery *)swipeAt: (NSString*) start direction: (NSNumber *) direction;
+- (UIQuery *)swipeFrom: (NSString*) start to: (NSString*) end;
+
+// pinch
+- (UIQuery *) pinchFrom: (NSString *) start to: (NSString *) end;
 
 +(id)withApplication;
 +(NSDictionary *)describe:(id)object;
@@ -98,15 +117,4 @@ UIQuery * $(NSMutableString *script, ...);
 -(UIQuery *)wait:(double)seconds;
 -(UIQuery *)target;
 
-@end
-
-@interface UIEvent (Synthesis)
-- (id)initWithTouch:(UITouch *)touch;
-@end
-
-@interface UITouch (Synthesize)
-- (id)initInView:(UIView *)view;
-- (id)initInView:(UIView *)view xcoord:(int)x ycoord:(int)y;
-- (void)setPhase:(UITouchPhase)phase;
-- (void)setLocationInWindow:(CGPoint)location;
 @end

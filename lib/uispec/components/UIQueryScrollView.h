@@ -9,6 +9,7 @@
 
 }
 
+-(UIQuery*)scrollToTop;
 -(UIQuery *)scrollDown:(int)offset;
 -(UIQuery *)scrollToBottom;
 

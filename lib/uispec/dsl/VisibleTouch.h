@@ -16,4 +16,6 @@
 // Designated Initializer all others throw exceptions =)
 - (id)initWithCenter:(CGPoint)ctr;
 
+- (void) addToKeyWindow;
+
 @end

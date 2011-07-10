@@ -33,12 +33,12 @@ static UILog *logger = nil;
 }
 
 +(void)runSpec:(NSTimer *)timer {
-	Class *class = NSClassFromString(timer.userInfo);
+	Class class = NSClassFromString(timer.userInfo);
 	[self runSpecClasses:[NSArray arrayWithObject:class]];
 }
 
 +(void)runSpecExample:(NSTimer *)timer {
-	Class *class = NSClassFromString([timer.userInfo objectAtIndex:0]);
+	Class class = NSClassFromString([timer.userInfo objectAtIndex:0]);
 	NSString *exampleName = [timer.userInfo objectAtIndex:1];
 	[logger onStart];
 	[self runExamples:[NSArray arrayWithObject:exampleName] onSpec:class];
@@ -49,7 +49,7 @@ static UILog *logger = nil;
 	if (specClasses.count == 0) return;
 	int examplesCount = 0;
 	[logger onStart];
-	for (Class *class in specClasses) {
+	for (Class class in specClasses) {
 		NSArray *examples = [self examplesForSpecClass:class];
 		if (examples.count == 0) continue;
 		examplesCount = examplesCount + examples.count;
@@ -58,7 +58,7 @@ static UILog *logger = nil;
 	[logger onFinish:examplesCount];
 }
 
-+(void)runExamples:(NSArray *)examples onSpec:(Class *)class {
++(void)runExamples:(NSArray *)examples onSpec:(Class)class {
 	UISpec *spec = [[[class alloc] init] autorelease];
 	[logger onSpec:spec];
 	if ([spec respondsToSelector:@selector(beforeAll)]) {
@@ -116,7 +116,7 @@ static UILog *logger = nil;
 	return specsAndExamples;
 }
 
-+(NSArray *)examplesForSpecClass:(Class *)specClass {
++(NSArray *)examplesForSpecClass:(Class)specClass {
 	NSMutableArray *array = [NSMutableArray array];
 	unsigned int methodCount;
 	Method *methods = class_copyMethodList(specClass, &methodCount);
@@ -150,7 +150,7 @@ static UILog *logger = nil;
         (void) objc_getClassList (classes, numClasses);
         int i;
         for (i = 0; i < numClasses; i++) {
-            Class *c = classes[i];
+            Class c = classes[i];
 			if ([self isASpec:c]) {
 				[array addObject:c];
 			}

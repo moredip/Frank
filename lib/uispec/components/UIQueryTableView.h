@@ -6,13 +6,12 @@
 //  Copyright(c) 2009 StarterStep, Inc., Some rights reserved.
 //
 
-#import "UIQuery.h"
+#import "UIQueryScrollView.h"
 
-@interface UIQueryTableView : UIQuery {
+@interface UIQueryTableView : UIQueryScrollView {
 
 }
 
--(UIQuery *)scrollToBottom;
 -(UIQuery *)scrollDown:(int)numberOfRows;
 -(NSArray *)rowIndexPathList;
 
