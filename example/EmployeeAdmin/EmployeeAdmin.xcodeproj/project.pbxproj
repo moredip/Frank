@@ -14,6 +14,10 @@
 		2860E32E111B888700E27156 /* AppDelegate_Pad.m in Sources */ = {isa = PBXBuildFile; fileRef = 2860E32C111B888700E27156 /* AppDelegate_Pad.m */; };
 		2860E32F111B888700E27156 /* MainWindow_Pad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2860E32D111B888700E27156 /* MainWindow_Pad.xib */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		D64607FD13C92E6D00604011 /* UIEvent+Synthesize.m in Sources */ = {isa = PBXBuildFile; fileRef = D64607F813C92E6D00604011 /* UIEvent+Synthesize.m */; };
+		D64607FE13C92E6D00604011 /* UITouch+Synthesize.m in Sources */ = {isa = PBXBuildFile; fileRef = D64607FA13C92E6D00604011 /* UITouch+Synthesize.m */; };
+		D64607FF13C92E6D00604011 /* UITouchPerformer.m in Sources */ = {isa = PBXBuildFile; fileRef = D64607FC13C92E6D00604011 /* UITouchPerformer.m */; };
+		D646082D13C92ED700604011 /* GraphicsServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D646082C13C92ED700604011 /* GraphicsServices.framework */; };
 		D64EF8F911D3C332002A8749 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D64EF8F811D3C332002A8749 /* main.m */; };
 		D69A0B0F124C2ED900BEC9EC /* OrientationCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D69A0B0E124C2ED900BEC9EC /* OrientationCommand.m */; };
 		D6A833ED11CDBF35001B8585 /* PureMVC_ObjectiveC_1_1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A833B411CDBF35001B8585 /* PureMVC_ObjectiveC_1_1.a */; };
@@ -147,6 +151,27 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Shared/main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* EmployeeAdmin_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployeeAdmin_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* EmployeeAdmin-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "EmployeeAdmin-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		D64607F713C92E6D00604011 /* UIEvent+Synthesize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIEvent+Synthesize.h"; sourceTree = "<group>"; };
+		D64607F813C92E6D00604011 /* UIEvent+Synthesize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIEvent+Synthesize.m"; sourceTree = "<group>"; };
+		D64607F913C92E6D00604011 /* UITouch+Synthesize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITouch+Synthesize.h"; sourceTree = "<group>"; };
+		D64607FA13C92E6D00604011 /* UITouch+Synthesize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITouch+Synthesize.m"; sourceTree = "<group>"; };
+		D64607FB13C92E6D00604011 /* UITouchPerformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITouchPerformer.h; sourceTree = "<group>"; };
+		D64607FC13C92E6D00604011 /* UITouchPerformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITouchPerformer.m; sourceTree = "<group>"; };
+		D646080613C92E7D00604011 /* GraphicsServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicsServices.h; sourceTree = "<group>"; };
+		D646080713C92E7D00604011 /* GSBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSBase.h; sourceTree = "<group>"; };
+		D646080813C92E7D00604011 /* GSCapability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSCapability.h; sourceTree = "<group>"; };
+		D646080913C92E7D00604011 /* GSColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSColor.h; sourceTree = "<group>"; };
+		D646080A13C92E7D00604011 /* GSEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSEvent.h; sourceTree = "<group>"; };
+		D646080B13C92E7D00604011 /* GSFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSFont.h; sourceTree = "<group>"; };
+		D646080C13C92E7D00604011 /* GSGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSGeometry.h; sourceTree = "<group>"; };
+		D646080D13C92E7D00604011 /* GSHeartbeat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSHeartbeat.h; sourceTree = "<group>"; };
+		D646080E13C92E7D00604011 /* GSHiccup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSHiccup.h; sourceTree = "<group>"; };
+		D646080F13C92E7D00604011 /* GSKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSKeyboard.h; sourceTree = "<group>"; };
+		D646081013C92E7D00604011 /* GSMainScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSMainScreen.h; sourceTree = "<group>"; };
+		D646081113C92E7D00604011 /* GSMaps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSMaps.h; sourceTree = "<group>"; };
+		D646081213C92E7D00604011 /* GSStatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSStatusBar.h; sourceTree = "<group>"; };
+		D646081313C92E7D00604011 /* GSWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSWindow.h; sourceTree = "<group>"; };
+		D646082C13C92ED700604011 /* GraphicsServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GraphicsServices.framework; path = Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/PrivateFrameworks/GraphicsServices.framework; sourceTree = DEVELOPER_DIR; };
 		D64EF8F811D3C332002A8749 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D69A0B0D124C2ED900BEC9EC /* OrientationCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrientationCommand.h; sourceTree = "<group>"; };
 		D69A0B0E124C2ED900BEC9EC /* OrientationCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrientationCommand.m; sourceTree = "<group>"; };
@@ -361,6 +386,7 @@
 				D6A8351511CDC3D3001B8585 /* CoreGraphics.framework in Frameworks */,
 				D6A8351611CDC3D3001B8585 /* PureMVC_ObjectiveC_1_1.a in Frameworks */,
 				D6A8368311CDC5BA001B8585 /* CFNetwork.framework in Frameworks */,
+				D646082D13C92ED700604011 /* GraphicsServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +443,7 @@
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				D646082C13C92ED700604011 /* GraphicsServices.framework */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -439,6 +466,35 @@
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D646080413C92E7D00604011 /* Private Headers */ = {
+			isa = PBXGroup;
+			children = (
+				D646080513C92E7D00604011 /* GraphicsServices */,
+			);
+			path = "Private Headers";
+			sourceTree = "<group>";
+		};
+		D646080513C92E7D00604011 /* GraphicsServices */ = {
+			isa = PBXGroup;
+			children = (
+				D646080613C92E7D00604011 /* GraphicsServices.h */,
+				D646080713C92E7D00604011 /* GSBase.h */,
+				D646080813C92E7D00604011 /* GSCapability.h */,
+				D646080913C92E7D00604011 /* GSColor.h */,
+				D646080A13C92E7D00604011 /* GSEvent.h */,
+				D646080B13C92E7D00604011 /* GSFont.h */,
+				D646080C13C92E7D00604011 /* GSGeometry.h */,
+				D646080D13C92E7D00604011 /* GSHeartbeat.h */,
+				D646080E13C92E7D00604011 /* GSHiccup.h */,
+				D646080F13C92E7D00604011 /* GSKeyboard.h */,
+				D646081013C92E7D00604011 /* GSMainScreen.h */,
+				D646081113C92E7D00604011 /* GSMaps.h */,
+				D646081213C92E7D00604011 /* GSStatusBar.h */,
+				D646081313C92E7D00604011 /* GSWindow.h */,
+			);
+			path = GraphicsServices;
 			sourceTree = "<group>";
 		};
 		D6A8339C11CDBF35001B8585 /* lib */ = {
@@ -703,6 +759,7 @@
 		D6A835F211CDC594001B8585 /* uispec */ = {
 			isa = PBXGroup;
 			children = (
+				D646080413C92E7D00604011 /* Private Headers */,
 				D6A835F311CDC594001B8585 /* components */,
 				D6A8360011CDC594001B8585 /* dsl */,
 				D6A8362011CDC594001B8585 /* UISpec.bundle */,
@@ -738,6 +795,12 @@
 		D6A8360011CDC594001B8585 /* dsl */ = {
 			isa = PBXGroup;
 			children = (
+				D64607F713C92E6D00604011 /* UIEvent+Synthesize.h */,
+				D64607F813C92E6D00604011 /* UIEvent+Synthesize.m */,
+				D64607F913C92E6D00604011 /* UITouch+Synthesize.h */,
+				D64607FA13C92E6D00604011 /* UITouch+Synthesize.m */,
+				D64607FB13C92E6D00604011 /* UITouchPerformer.h */,
+				D64607FC13C92E6D00604011 /* UITouchPerformer.m */,
 				D6D17C0213A2679A00F9C1A8 /* VisibleTouch.h */,
 				D6D17C0313A2679A00F9C1A8 /* VisibleTouch.m */,
 				D6A8360111CDC594001B8585 /* Recordable.h */,
@@ -1036,6 +1099,9 @@
 				D6C73C8B1321BB2F00C731A2 /* AccessibilityCheckCommand.m in Sources */,
 				D6C8BCAB137CD2EE000EF521 /* UIQueryScrollView.m in Sources */,
 				D6D17C0413A2679A00F9C1A8 /* VisibleTouch.m in Sources */,
+				D64607FD13C92E6D00604011 /* UIEvent+Synthesize.m in Sources */,
+				D64607FE13C92E6D00604011 /* UITouch+Synthesize.m in Sources */,
+				D64607FF13C92E6D00604011 /* UITouchPerformer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1114,6 +1180,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(DEVELOPER_DIR)/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/PrivateFrameworks\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1133,6 +1203,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(DEVELOPER_DIR)/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/PrivateFrameworks\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = EmployeeAdmin_Prefix.pch;
 				INFOPLIST_FILE = "EmployeeAdmin-Info copy.plist";
