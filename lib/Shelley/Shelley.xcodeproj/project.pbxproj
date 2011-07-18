@@ -1,0 +1,425 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D6CF39AD13D3E481000C7901 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6CF399413D3E195000C7901 /* UIKit.framework */; };
+		D6CF39AE13D3E481000C7901 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6E8FF3513D3DC9200D24F43 /* Foundation.framework */; };
+		D6CF39AF13D3E481000C7901 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6CF399713D3E195000C7901 /* CoreGraphics.framework */; };
+		D6CF39B513D3E481000C7901 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D6CF39B313D3E481000C7901 /* InfoPlist.strings */; };
+		D6CF39C313D3EE78000C7901 /* IntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D6CF39C213D3EE78000C7901 /* IntegrationTests.m */; };
+		D6CF39C713D3F02F000C7901 /* Shelley.h in Headers */ = {isa = PBXBuildFile; fileRef = D6CF39C513D3F02F000C7901 /* Shelley.h */; };
+		D6CF39C813D3F02F000C7901 /* Shelley.m in Sources */ = {isa = PBXBuildFile; fileRef = D6CF39C613D3F02F000C7901 /* Shelley.m */; };
+		D6CF39C913D3F02F000C7901 /* Shelley.m in Sources */ = {isa = PBXBuildFile; fileRef = D6CF39C613D3F02F000C7901 /* Shelley.m */; };
+		D6E8FF3613D3DC9200D24F43 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6E8FF3513D3DC9200D24F43 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D6CF399413D3E195000C7901 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D6CF399713D3E195000C7901 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		D6CF399B13D3E195000C7901 /* Unit Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Unit Tests-Info.plist"; sourceTree = "<group>"; };
+		D6CF399D13D3E195000C7901 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D6CF399F13D3E195000C7901 /* Unit Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Unit Tests-Prefix.pch"; sourceTree = "<group>"; };
+		D6CF39AC13D3E481000C7901 /* Unit Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Unit Tests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6CF39B213D3E481000C7901 /* Unit Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Unit Tests-Info.plist"; sourceTree = "<group>"; };
+		D6CF39B413D3E481000C7901 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D6CF39B613D3E481000C7901 /* Unit Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Unit Tests-Prefix.pch"; sourceTree = "<group>"; };
+		D6CF39C113D3EE78000C7901 /* IntegrationTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntegrationTests.h; sourceTree = "<group>"; };
+		D6CF39C213D3EE78000C7901 /* IntegrationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntegrationTests.m; sourceTree = "<group>"; };
+		D6CF39C513D3F02F000C7901 /* Shelley.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shelley.h; sourceTree = "<group>"; };
+		D6CF39C613D3F02F000C7901 /* Shelley.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shelley.m; sourceTree = "<group>"; };
+		D6DD26EC13D3DF9100F90588 /* Unit Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Unit Tests-Info.plist"; sourceTree = "<group>"; };
+		D6E8FF3213D3DC9200D24F43 /* libShelley.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libShelley.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6E8FF3513D3DC9200D24F43 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D6E8FF3913D3DC9300D24F43 /* Shelley-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Shelley-Prefix.pch"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D6CF39A813D3E481000C7901 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6CF39AD13D3E481000C7901 /* UIKit.framework in Frameworks */,
+				D6CF39AE13D3E481000C7901 /* Foundation.framework in Frameworks */,
+				D6CF39AF13D3E481000C7901 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6E8FF2F13D3DC9200D24F43 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6E8FF3613D3DC9200D24F43 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D6CF399913D3E195000C7901 /* Unit Tests */ = {
+			isa = PBXGroup;
+			children = (
+				D6CF399A13D3E195000C7901 /* Supporting Files */,
+			);
+			path = "Unit Tests";
+			sourceTree = "<group>";
+		};
+		D6CF399A13D3E195000C7901 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D6CF399B13D3E195000C7901 /* Unit Tests-Info.plist */,
+				D6CF399C13D3E195000C7901 /* InfoPlist.strings */,
+				D6CF399F13D3E195000C7901 /* Unit Tests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D6CF39B013D3E481000C7901 /* Unit Tests */ = {
+			isa = PBXGroup;
+			children = (
+				D6CF39C113D3EE78000C7901 /* IntegrationTests.h */,
+				D6CF39C213D3EE78000C7901 /* IntegrationTests.m */,
+				D6CF39B113D3E481000C7901 /* Supporting Files */,
+			);
+			path = "Unit Tests";
+			sourceTree = "<group>";
+		};
+		D6CF39B113D3E481000C7901 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D6CF39B213D3E481000C7901 /* Unit Tests-Info.plist */,
+				D6CF39B313D3E481000C7901 /* InfoPlist.strings */,
+				D6CF39B613D3E481000C7901 /* Unit Tests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D6CF39C413D3F018000C7901 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				D6CF39C513D3F02F000C7901 /* Shelley.h */,
+				D6CF39C613D3F02F000C7901 /* Shelley.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		D6E8FF2713D3DC9200D24F43 = {
+			isa = PBXGroup;
+			children = (
+				D6E8FF3713D3DC9200D24F43 /* Shelley */,
+				D6CF399913D3E195000C7901 /* Unit Tests */,
+				D6CF39B013D3E481000C7901 /* Unit Tests */,
+				D6E8FF3413D3DC9200D24F43 /* Frameworks */,
+				D6E8FF3313D3DC9200D24F43 /* Products */,
+				D6DD26EC13D3DF9100F90588 /* Unit Tests-Info.plist */,
+			);
+			sourceTree = "<group>";
+		};
+		D6E8FF3313D3DC9200D24F43 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D6E8FF3213D3DC9200D24F43 /* libShelley.a */,
+				D6CF39AC13D3E481000C7901 /* Unit Tests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D6E8FF3413D3DC9200D24F43 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D6E8FF3513D3DC9200D24F43 /* Foundation.framework */,
+				D6CF399413D3E195000C7901 /* UIKit.framework */,
+				D6CF399713D3E195000C7901 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D6E8FF3713D3DC9200D24F43 /* Shelley */ = {
+			isa = PBXGroup;
+			children = (
+				D6CF39C413D3F018000C7901 /* Classes */,
+				D6E8FF3813D3DC9300D24F43 /* Supporting Files */,
+			);
+			path = Shelley;
+			sourceTree = "<group>";
+		};
+		D6E8FF3813D3DC9300D24F43 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D6E8FF3913D3DC9300D24F43 /* Shelley-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		D6E8FF3013D3DC9200D24F43 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6CF39C713D3F02F000C7901 /* Shelley.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		D6CF39AB13D3E481000C7901 /* Unit Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D6CF39BB13D3E481000C7901 /* Build configuration list for PBXNativeTarget "Unit Tests" */;
+			buildPhases = (
+				D6CF39A713D3E481000C7901 /* Sources */,
+				D6CF39A813D3E481000C7901 /* Frameworks */,
+				D6CF39A913D3E481000C7901 /* Resources */,
+				D6CF39AA13D3E481000C7901 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Unit Tests";
+			productName = "Unit Tests";
+			productReference = D6CF39AC13D3E481000C7901 /* Unit Tests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+		D6E8FF3113D3DC9200D24F43 /* Shelley */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D6E8FF3C13D3DC9300D24F43 /* Build configuration list for PBXNativeTarget "Shelley" */;
+			buildPhases = (
+				D6E8FF2E13D3DC9200D24F43 /* Sources */,
+				D6E8FF2F13D3DC9200D24F43 /* Frameworks */,
+				D6E8FF3013D3DC9200D24F43 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Shelley;
+			productName = Shelley;
+			productReference = D6E8FF3213D3DC9200D24F43 /* libShelley.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D6E8FF2913D3DC9200D24F43 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = ThoughtWorks;
+			};
+			buildConfigurationList = D6E8FF2C13D3DC9200D24F43 /* Build configuration list for PBXProject "Shelley" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D6E8FF2713D3DC9200D24F43;
+			productRefGroup = D6E8FF3313D3DC9200D24F43 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D6E8FF3113D3DC9200D24F43 /* Shelley */,
+				D6CF39AB13D3E481000C7901 /* Unit Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D6CF39A913D3E481000C7901 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6CF39B513D3E481000C7901 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D6CF39AA13D3E481000C7901 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D6CF39A713D3E481000C7901 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6CF39C313D3EE78000C7901 /* IntegrationTests.m in Sources */,
+				D6CF39C913D3F02F000C7901 /* Shelley.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6E8FF2E13D3DC9200D24F43 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6CF39C813D3F02F000C7901 /* Shelley.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D6CF399C13D3E195000C7901 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D6CF399D13D3E195000C7901 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		D6CF39B313D3E481000C7901 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D6CF39B413D3E481000C7901 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D6CF39BC13D3E481000C7901 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Unit Tests/Unit Tests-Prefix.pch";
+				INFOPLIST_FILE = "Unit Tests/Unit Tests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		D6CF39BD13D3E481000C7901 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Unit Tests/Unit Tests-Prefix.pch";
+				INFOPLIST_FILE = "Unit Tests/Unit Tests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+		D6E8FF3A13D3DC9300D24F43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		D6E8FF3B13D3DC9300D24F43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		D6E8FF3D13D3DC9300D24F43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DSTROOT = /tmp/Shelley.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Shelley/Shelley-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D6E8FF3E13D3DC9300D24F43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DSTROOT = /tmp/Shelley.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Shelley/Shelley-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D6CF39BB13D3E481000C7901 /* Build configuration list for PBXNativeTarget "Unit Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D6CF39BC13D3E481000C7901 /* Debug */,
+				D6CF39BD13D3E481000C7901 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D6E8FF2C13D3DC9200D24F43 /* Build configuration list for PBXProject "Shelley" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D6E8FF3A13D3DC9300D24F43 /* Debug */,
+				D6E8FF3B13D3DC9300D24F43 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D6E8FF3C13D3DC9300D24F43 /* Build configuration list for PBXNativeTarget "Shelley" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D6E8FF3D13D3DC9300D24F43 /* Debug */,
+				D6E8FF3E13D3DC9300D24F43 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D6E8FF2913D3DC9200D24F43 /* Project object */;
+}
