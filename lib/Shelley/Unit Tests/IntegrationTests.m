@@ -70,6 +70,21 @@
     [self assertArray:selectedViews containsObject:viewC];
 }
 
+- (void) xtestMarkedSelectsOnlyViewsWhichAreHidden {
+    [viewA setHidden:YES];
+    [viewABA setHidden:YES];
+    [viewBA setHidden:YES];
+    
+    Shelley *shelley = [Shelley withSelectorString:@"view hidden"];
+    NSArray *selectedViews = [shelley selectFrom:view];
+    
+    STAssertEquals((NSUInteger)3, selectedViews.count, nil);
+    [self assertArray:selectedViews containsObject:viewA];
+    [self assertArray:selectedViews containsObject:viewABA];
+    [self assertArray:selectedViews containsObject:viewBA];
+
+}
+
 - (void) xtestMarkedSelectsOnlyViewsWithMatchingAccessibilityLabel {
     [viewA setAccessibilityLabel:@"brap"];
     [viewABA setAccessibilityLabel:@"brap"];

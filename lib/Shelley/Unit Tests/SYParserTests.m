@@ -10,6 +10,7 @@
 #import "SYParser.h"
 #import "SYDescendants.h"
 #import "SYParents.h"
+#import "SYPredicateFilter.h"
 
 @implementation SYParserTests
 
@@ -34,7 +35,7 @@
 }
 
 - (void) testInvalidSelectorEventuallyCausesParserToBomb{
-    SYParser *parser = [[SYParser alloc] initWithSelectorString:@"view invalid"];
+    SYParser *parser = [[SYParser alloc] initWithSelectorString:@"view invalid-string"];
     
     id<SYFilter> filter = [parser nextFilter];
     STAssertNotNil(filter, nil);
@@ -42,7 +43,54 @@
     STAssertThrows([parser nextFilter], nil);
 }
 
-// test invalid selector keyword
+- (void) testNoArgPredicateSelectorParses{
+    SYParser *parser = [[SYParser alloc] initWithSelectorString:@"noArgMethod"];
+    
+    id<SYFilter> filter = [parser nextFilter];
+    STAssertTrue([filter isKindOfClass:[SYPredicateFilter class]], nil);
+    
+    SYPredicateFilter *predicateFilter = (SYPredicateFilter *)filter;
+    STAssertEquals((SEL)[predicateFilter selector], @selector(noArgMethod), nil);
+    STAssertEquals([[predicateFilter args] count], (NSUInteger)0, nil );
+
+}
+
+- (void) testSingleArgPredicateSelectorParses{
+    SYParser *parser = [[SYParser alloc] initWithSelectorString:@"singleArg:123"];
+    
+    id<SYFilter> filter = [parser nextFilter];
+    STAssertTrue([filter isKindOfClass:[SYPredicateFilter class]], nil);
+    
+    SYPredicateFilter *predicateFilter = (SYPredicateFilter *)filter;
+    STAssertEquals((SEL)[predicateFilter selector], @selector(singleArg:), nil);
+    STAssertEquals([[predicateFilter args] count], (NSUInteger)1,nil );
+    
+    NSNumber *firstArg = [[predicateFilter args] objectAtIndex:0];
+    STAssertTrue( [firstArg isEqualToNumber:[NSNumber numberWithInt:123]], nil);
+}
+
+- (void) testMultiArgPredicateSelectorParses{
+    SYParser *parser = [[SYParser alloc] initWithSelectorString:@"argOne:123argTwo:456argThree:789"];
+    
+    id<SYFilter> filter = [parser nextFilter];
+    STAssertTrue([filter isKindOfClass:[SYPredicateFilter class]], nil);
+    
+    SYPredicateFilter *predicateFilter = (SYPredicateFilter *)filter;
+    STAssertEquals((SEL)[predicateFilter selector], @selector(argOne:argTwo:argThree:), nil);
+    STAssertEquals([[predicateFilter args] count], (NSUInteger)3,nil );
+    
+    NSNumber *firstArg = [[predicateFilter args] objectAtIndex:0];
+    STAssertTrue( [firstArg isEqualToNumber:[NSNumber numberWithInt:123]], nil);
+
+    NSNumber *secondArg = [[predicateFilter args] objectAtIndex:1];
+    STAssertTrue( [secondArg isEqualToNumber:[NSNumber numberWithInt:456]], nil);
+    
+    NSNumber *thirdArg = [[predicateFilter args] objectAtIndex:2];
+    STAssertTrue( [thirdArg isEqualToNumber:[NSNumber numberWithInt:789]], nil);
+}
+
+
+//test bombs on invalid predicate filter e.g. foo-bar
 
 
 
