@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D661B50C13D7BCD200BBF32D /* SYParents.h in Headers */ = {isa = PBXBuildFile; fileRef = D661B50A13D7BCD200BBF32D /* SYParents.h */; };
+		D661B50D13D7BCD200BBF32D /* SYParents.m in Sources */ = {isa = PBXBuildFile; fileRef = D661B50B13D7BCD200BBF32D /* SYParents.m */; };
+		D661B50E13D7BCD200BBF32D /* SYParents.m in Sources */ = {isa = PBXBuildFile; fileRef = D661B50B13D7BCD200BBF32D /* SYParents.m */; };
+		D68761F213D409160057A375 /* SYParser.h in Headers */ = {isa = PBXBuildFile; fileRef = D68761F013D409160057A375 /* SYParser.h */; };
+		D68761F313D409160057A375 /* SYParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D68761F113D409160057A375 /* SYParser.m */; };
+		D68761F413D409160057A375 /* SYParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D68761F113D409160057A375 /* SYParser.m */; };
+		D68761F713D4092A0057A375 /* SYParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D68761F613D4092A0057A375 /* SYParserTests.m */; };
+		D687620013D40D3D0057A375 /* SYFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = D68761FF13D40D3D0057A375 /* SYFilter.h */; };
+		D687620413D40DEF0057A375 /* SYDescendants.h in Headers */ = {isa = PBXBuildFile; fileRef = D687620213D40DEF0057A375 /* SYDescendants.h */; };
+		D687620513D40DEF0057A375 /* SYDescendants.m in Sources */ = {isa = PBXBuildFile; fileRef = D687620313D40DEF0057A375 /* SYDescendants.m */; };
+		D687620613D40DEF0057A375 /* SYDescendants.m in Sources */ = {isa = PBXBuildFile; fileRef = D687620313D40DEF0057A375 /* SYDescendants.m */; };
 		D6CF39AD13D3E481000C7901 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6CF399413D3E195000C7901 /* UIKit.framework */; };
 		D6CF39AE13D3E481000C7901 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6E8FF3513D3DC9200D24F43 /* Foundation.framework */; };
 		D6CF39AF13D3E481000C7901 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6CF399713D3E195000C7901 /* CoreGraphics.framework */; };
@@ -19,11 +30,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D661B50A13D7BCD200BBF32D /* SYParents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYParents.h; sourceTree = "<group>"; };
+		D661B50B13D7BCD200BBF32D /* SYParents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYParents.m; sourceTree = "<group>"; };
+		D68761F013D409160057A375 /* SYParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYParser.h; sourceTree = "<group>"; };
+		D68761F113D409160057A375 /* SYParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYParser.m; sourceTree = "<group>"; };
+		D68761F513D4092A0057A375 /* SYParserTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYParserTests.h; sourceTree = "<group>"; };
+		D68761F613D4092A0057A375 /* SYParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYParserTests.m; sourceTree = "<group>"; };
+		D68761FF13D40D3D0057A375 /* SYFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYFilter.h; sourceTree = "<group>"; };
+		D687620213D40DEF0057A375 /* SYDescendants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYDescendants.h; sourceTree = "<group>"; };
+		D687620313D40DEF0057A375 /* SYDescendants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYDescendants.m; sourceTree = "<group>"; };
 		D6CF399413D3E195000C7901 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D6CF399713D3E195000C7901 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		D6CF399B13D3E195000C7901 /* Unit Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Unit Tests-Info.plist"; sourceTree = "<group>"; };
-		D6CF399D13D3E195000C7901 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D6CF399F13D3E195000C7901 /* Unit Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Unit Tests-Prefix.pch"; sourceTree = "<group>"; };
 		D6CF39AC13D3E481000C7901 /* Unit Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Unit Tests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6CF39B213D3E481000C7901 /* Unit Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Unit Tests-Info.plist"; sourceTree = "<group>"; };
 		D6CF39B413D3E481000C7901 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -60,22 +77,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D6CF399913D3E195000C7901 /* Unit Tests */ = {
+		D687620113D40DD30057A375 /* Filters */ = {
 			isa = PBXGroup;
 			children = (
-				D6CF399A13D3E195000C7901 /* Supporting Files */,
+				D68761FF13D40D3D0057A375 /* SYFilter.h */,
+				D687620213D40DEF0057A375 /* SYDescendants.h */,
+				D687620313D40DEF0057A375 /* SYDescendants.m */,
+				D661B50A13D7BCD200BBF32D /* SYParents.h */,
+				D661B50B13D7BCD200BBF32D /* SYParents.m */,
 			);
-			path = "Unit Tests";
-			sourceTree = "<group>";
-		};
-		D6CF399A13D3E195000C7901 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				D6CF399B13D3E195000C7901 /* Unit Tests-Info.plist */,
-				D6CF399C13D3E195000C7901 /* InfoPlist.strings */,
-				D6CF399F13D3E195000C7901 /* Unit Tests-Prefix.pch */,
-			);
-			name = "Supporting Files";
+			name = Filters;
 			sourceTree = "<group>";
 		};
 		D6CF39B013D3E481000C7901 /* Unit Tests */ = {
@@ -84,6 +95,8 @@
 				D6CF39C113D3EE78000C7901 /* IntegrationTests.h */,
 				D6CF39C213D3EE78000C7901 /* IntegrationTests.m */,
 				D6CF39B113D3E481000C7901 /* Supporting Files */,
+				D68761F513D4092A0057A375 /* SYParserTests.h */,
+				D68761F613D4092A0057A375 /* SYParserTests.m */,
 			);
 			path = "Unit Tests";
 			sourceTree = "<group>";
@@ -101,8 +114,11 @@
 		D6CF39C413D3F018000C7901 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D687620113D40DD30057A375 /* Filters */,
 				D6CF39C513D3F02F000C7901 /* Shelley.h */,
 				D6CF39C613D3F02F000C7901 /* Shelley.m */,
+				D68761F013D409160057A375 /* SYParser.h */,
+				D68761F113D409160057A375 /* SYParser.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -111,7 +127,6 @@
 			isa = PBXGroup;
 			children = (
 				D6E8FF3713D3DC9200D24F43 /* Shelley */,
-				D6CF399913D3E195000C7901 /* Unit Tests */,
 				D6CF39B013D3E481000C7901 /* Unit Tests */,
 				D6E8FF3413D3DC9200D24F43 /* Frameworks */,
 				D6E8FF3313D3DC9200D24F43 /* Products */,
@@ -163,6 +178,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D6CF39C713D3F02F000C7901 /* Shelley.h in Headers */,
+				D68761F213D409160057A375 /* SYParser.h in Headers */,
+				D687620013D40D3D0057A375 /* SYFilter.h in Headers */,
+				D687620413D40DEF0057A375 /* SYDescendants.h in Headers */,
+				D661B50C13D7BCD200BBF32D /* SYParents.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,6 +283,10 @@
 			files = (
 				D6CF39C313D3EE78000C7901 /* IntegrationTests.m in Sources */,
 				D6CF39C913D3F02F000C7901 /* Shelley.m in Sources */,
+				D68761F413D409160057A375 /* SYParser.m in Sources */,
+				D68761F713D4092A0057A375 /* SYParserTests.m in Sources */,
+				D687620613D40DEF0057A375 /* SYDescendants.m in Sources */,
+				D661B50E13D7BCD200BBF32D /* SYParents.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,20 +295,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				D6CF39C813D3F02F000C7901 /* Shelley.m in Sources */,
+				D68761F313D409160057A375 /* SYParser.m in Sources */,
+				D687620513D40DEF0057A375 /* SYDescendants.m in Sources */,
+				D661B50D13D7BCD200BBF32D /* SYParents.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		D6CF399C13D3E195000C7901 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D6CF399D13D3E195000C7901 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		D6CF39B313D3E481000C7901 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -400,6 +418,7 @@
 				D6CF39BD13D3E481000C7901 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D6E8FF2C13D3DC9200D24F43 /* Build configuration list for PBXProject "Shelley" */ = {
 			isa = XCConfigurationList;

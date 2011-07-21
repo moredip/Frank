@@ -1,5 +1,5 @@
 //
-//  IntegrationTests.h
+//  SYParserTests.h
 //  Shelley
 //
 //  Created by Pete Hodgson on 7/17/11.
@@ -10,21 +10,12 @@
 //  Application unit tests contain unit test code that must be injected into an application to run correctly.
 //  Define USE_APPLICATION_UNIT_TEST to 0 if the unit test code is designed to be linked into an independent test executable.
 
-
 #import <SenTestingKit/SenTestingKit.h>
 #import <UIKit/UIKit.h>
 //#import "application_headers" as required
 
 
-@interface IntegrationTests : SenTestCase {
-    UIView *view;
-    UIView *viewA;
-    UIView *viewAA;
-    UIView *viewAB;
-    UIView *viewABA;
-    UIView *viewB;
-    UIView *viewBA;
-    UIView *viewC;
+@interface SYParserTests : SenTestCase {
 }
 
 @end

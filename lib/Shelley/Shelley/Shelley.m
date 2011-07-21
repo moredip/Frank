@@ -17,10 +17,18 @@
     return [[[self alloc] init] autorelease];
 }
 
++ (NSArray *) allDescendantsOf:(UIView *)view{
+    NSMutableArray *descendants = [NSMutableArray array];
+    for (UIView *subview in [view subviews]) {
+        [descendants addObject:subview];
+        [descendants addObjectsFromArray:[self allDescendantsOf:subview]];
+    }
+    return descendants;
+}
+
 - (NSArray *) selectFrom:(UIView *)rootView
 {
-    return [rootView subviews];
-//    return [rootView.subviews subarrayWithRange:NSRangeFromString(@"0 1")];
+    return [Shelley allDescendantsOf:rootView];
 }
 
 @end
