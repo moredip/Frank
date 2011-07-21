@@ -9,8 +9,38 @@
 #import "IntegrationTests.h"
 #import "Shelley.h"
 
-
 @implementation IntegrationTests
+
+- (void) setUp{
+    view = [[[UIView alloc] init] autorelease];
+    viewA = [[[UIView alloc] init] autorelease];
+    viewAA = [[[UIView alloc] init] autorelease];
+    viewAB = [[[UIView alloc] init] autorelease];
+    viewABA = [[[UIView alloc] init] autorelease];
+    viewB = [[[UIView alloc] init] autorelease];
+    viewBA = [[[UIView alloc] init] autorelease];
+    viewC = [[[UIView alloc] init] autorelease];
+    
+    [view addSubview:viewA];
+    [viewA addSubview:viewAA];
+    [viewA addSubview:viewAB];
+    [viewAB addSubview:viewABA];
+    
+    [view addSubview:viewB]; 
+    [viewB addSubview:viewBA];
+    
+    [view addSubview:viewC];
+}
+
+- (void) assertArray:(NSArray *)array containsObject:(id)object{
+    STAssertTrue( [array containsObject:object], nil );
+}
+
+- (void) assertArray:(NSArray *)array containsObjects:(NSArray *)objects{
+    for (id obj in objects) {
+        [self assertArray:array containsObject:obj];
+    }
+}
 
 - (void) testViewReturnsAllSubviews {
     UIView *someView = [[[UIView alloc] init] autorelease];
@@ -23,35 +53,37 @@
     NSArray *selectedViews = [shelley selectFrom:someView];
     
     STAssertEquals(selectedViews.count, someView.subviews.count, nil);
-    for (int i = 0; i < selectedViews.count; i++) {
-        STAssertEquals([selectedViews objectAtIndex:i], [someView.subviews objectAtIndex:i], nil);
-    }
+    [self assertArray:selectedViews containsObjects:someView.subviews];
 }
 
 - (void) testViewReturnsAllDescendants {
-    UIView *view = [[[UIView alloc] init] autorelease];
-    UIView *viewA = [[[UIView alloc] init] autorelease];
-    UIView *viewAA = [[[UIView alloc] init] autorelease];
-    UIView *viewAB = [[[UIView alloc] init] autorelease];
-    UIView *viewABA = [[[UIView alloc] init] autorelease];
-    UIView *viewB = [[[UIView alloc] init] autorelease];
-    UIView *viewBA = [[[UIView alloc] init] autorelease];
-    UIView *viewC = [[[UIView alloc] init] autorelease];
-    
-    [view addSubview:viewA];
-    [viewA addSubview:viewAA];
-    [viewA addSubview:viewAB];
-    [viewAB addSubview:viewABA];
-
-    [view addSubview:viewB]; 
-    [viewB addSubview:viewBA];
-    
-    [view addSubview:viewC];
-    
     Shelley *shelley = [Shelley withSelectorString:@"view"];
     NSArray *selectedViews = [shelley selectFrom:view];
     
-    //STAssertEquals((NSUInteger)7, selectedViews.count, nil);
+    STAssertEquals((NSUInteger)7, selectedViews.count, nil);
+    [self assertArray:selectedViews containsObject:viewA];
+    [self assertArray:selectedViews containsObject:viewAA];
+    [self assertArray:selectedViews containsObject:viewAB];
+    [self assertArray:selectedViews containsObject:viewABA];
+    [self assertArray:selectedViews containsObject:viewAB];
+    [self assertArray:selectedViews containsObject:viewBA];
+    [self assertArray:selectedViews containsObject:viewC];
 }
+
+- (void) xtestMarkedSelectsOnlyViewsWithMatchingAccessibilityLabel {
+    [viewA setAccessibilityLabel:@"brap"];
+    [viewABA setAccessibilityLabel:@"brap"];
+    [viewBA setAccessibilityLabel: @"brap"];
+    
+    Shelley *shelley = [Shelley withSelectorString:@"view marked:'brap'"];
+    NSArray *selectedViews = [shelley selectFrom:view];
+    
+    STAssertEquals((NSUInteger)3, selectedViews.count, nil);
+    [self assertArray:selectedViews containsObject:viewA];
+    [self assertArray:selectedViews containsObject:viewABA];
+    [self assertArray:selectedViews containsObject:viewBA];
+}
+
+//- (void) testWeFilterOutDupes e.g. parent pivot on ancestors would have a lot of dupes
 
 @end
