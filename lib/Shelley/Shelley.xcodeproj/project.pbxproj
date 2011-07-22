@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D610CA6213D9F8D8008AB1F5 /* SYParentsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D610CA6113D9F8D8008AB1F5 /* SYParentsTests.m */; };
+		D610CA6513D9F9E7008AB1F5 /* SenTestCase+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = D610CA6413D9F9E7008AB1F5 /* SenTestCase+Extensions.m */; };
+		D610CA6813DA0752008AB1F5 /* SYPredicateFilterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D610CA6713DA0752008AB1F5 /* SYPredicateFilterTests.m */; };
 		D62B32E413D9D4BC000C2B81 /* SYClassFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = D62B32E213D9D4BC000C2B81 /* SYClassFilter.h */; };
 		D62B32E513D9D4BC000C2B81 /* SYClassFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = D62B32E313D9D4BC000C2B81 /* SYClassFilter.m */; };
 		D62B32E613D9D4BC000C2B81 /* SYClassFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = D62B32E313D9D4BC000C2B81 /* SYClassFilter.m */; };
@@ -36,6 +39,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D610CA6013D9F8D8008AB1F5 /* SYParentsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYParentsTests.h; sourceTree = "<group>"; };
+		D610CA6113D9F8D8008AB1F5 /* SYParentsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYParentsTests.m; sourceTree = "<group>"; };
+		D610CA6313D9F9E7008AB1F5 /* SenTestCase+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SenTestCase+Extensions.h"; sourceTree = "<group>"; };
+		D610CA6413D9F9E7008AB1F5 /* SenTestCase+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SenTestCase+Extensions.m"; sourceTree = "<group>"; };
+		D610CA6613DA0752008AB1F5 /* SYPredicateFilterTests.h */ = {isa = PBXFileReference; fileEncoding = 4; path = SYPredicateFilterTests.h; sourceTree = "<group>"; };
+		D610CA6713DA0752008AB1F5 /* SYPredicateFilterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYPredicateFilterTests.m; sourceTree = "<group>"; };
 		D62B32E213D9D4BC000C2B81 /* SYClassFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYClassFilter.h; sourceTree = "<group>"; };
 		D62B32E313D9D4BC000C2B81 /* SYClassFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYClassFilter.m; sourceTree = "<group>"; };
 		D661B50A13D7BCD200BBF32D /* SYParents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYParents.h; sourceTree = "<group>"; };
@@ -111,6 +120,12 @@
 				D6CF39B113D3E481000C7901 /* Supporting Files */,
 				D68761F513D4092A0057A375 /* SYParserTests.h */,
 				D68761F613D4092A0057A375 /* SYParserTests.m */,
+				D610CA6013D9F8D8008AB1F5 /* SYParentsTests.h */,
+				D610CA6113D9F8D8008AB1F5 /* SYParentsTests.m */,
+				D610CA6313D9F9E7008AB1F5 /* SenTestCase+Extensions.h */,
+				D610CA6413D9F9E7008AB1F5 /* SenTestCase+Extensions.m */,
+				D610CA6613DA0752008AB1F5 /* SYPredicateFilterTests.h */,
+				D610CA6713DA0752008AB1F5 /* SYPredicateFilterTests.m */,
 			);
 			path = "Unit Tests";
 			sourceTree = "<group>";
@@ -305,6 +320,9 @@
 				D661B50E13D7BCD200BBF32D /* SYParents.m in Sources */,
 				D661B51313D7EFC700BBF32D /* SYPredicateFilter.m in Sources */,
 				D62B32E613D9D4BC000C2B81 /* SYClassFilter.m in Sources */,
+				D610CA6213D9F8D8008AB1F5 /* SYParentsTests.m in Sources */,
+				D610CA6513D9F9E7008AB1F5 /* SenTestCase+Extensions.m in Sources */,
+				D610CA6813DA0752008AB1F5 /* SYPredicateFilterTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

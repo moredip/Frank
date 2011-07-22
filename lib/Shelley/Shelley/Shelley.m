@@ -29,6 +29,15 @@
     [super dealloc];
 }
 
+- (NSArray *) applyFilter:(id<SYFilter>)filter toViews:(NSArray *)views{
+    NSMutableArray *filteredViews = [NSMutableArray array];
+    for (UIView *view in views) {
+        [filteredViews addObjectsFromArray:[filter applyToView:view]];
+    }
+    // TODO: filter out dupes
+    return filteredViews;
+}
+
 - (NSArray *) selectFrom:(UIView *)rootView
 {
     id<SYFilter> filter = [_parser nextFilter];
@@ -37,7 +46,12 @@
     
     NSArray *views = [filter applyToView:rootView];
     
-    //TODO: apply subsequent filters
+    while(( filter = [_parser nextFilter] )){
+        views = [self applyFilter:filter toViews:views];
+    }
+    
+    //TODO: filter out dupes
+    
     return views;
 }
 
