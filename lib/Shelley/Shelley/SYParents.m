@@ -11,4 +11,9 @@
 
 @implementation SYParents
 
+-(NSArray *)applyToView:(UIView *)view{
+    //TODO
+    return nil;
+}
+
 @end

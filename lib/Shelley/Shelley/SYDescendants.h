@@ -12,5 +12,6 @@
 @interface SYDescendants : NSObject<SYFilter> {
     
 }
++ (NSArray *) allDescendantsOf:(UIView *)view;
 
 @end

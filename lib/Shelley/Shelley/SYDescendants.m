@@ -11,4 +11,17 @@
 
 @implementation SYDescendants
 
++ (NSArray *) allDescendantsOf:(UIView *)view{
+    NSMutableArray *descendants = [NSMutableArray array];
+    for (UIView *subview in [view subviews]) {
+        [descendants addObject:subview];
+        [descendants addObjectsFromArray:[self allDescendantsOf:subview]];
+    }
+    return descendants;
+}
+
+-(NSArray *)applyToView:(UIView *)view{
+    return [SYDescendants allDescendantsOf:view];
+}
+
 @end

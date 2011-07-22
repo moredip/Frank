@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SYFilter.h"
 
-
-@interface SYParents : NSObject {
+@interface SYParents : NSObject<SYFilter> {
     
 }
 
