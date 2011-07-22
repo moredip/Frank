@@ -10,6 +10,7 @@
 #import "SYDescendants.h"
 #import "SYParents.h"
 #import "SYPredicateFilter.h"
+#import "SYClassFilter.h"
 
 @interface SYSelectorParser : NSObject {
     NSScanner *_scanner;
@@ -146,15 +147,11 @@
         return [[[SYDescendants alloc] init] autorelease];
     }else if( [filterString isEqualToString:@"parent"] ){
         return [[[SYParents alloc] init] autorelease];
+    }else if( [filterString isEqualToString:@"button"] ){
+        return [[[SYClassFilter alloc] initWithClass:[UIButton class]] autorelease];
     }
     
     return [self parsePredicateFilter:filterString];
-  
-    
-//    [[NSException exceptionWithName:@"InvalidSelectorKeyword" 
-//                            reason:[NSString stringWithFormat:@"invalid selector keyword %@", filterString] 
-//                          userInfo:nil] raise];    
-//    return nil;
 }
 
 @end

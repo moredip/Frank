@@ -6,8 +6,10 @@
 //  Copyright 2011 ThoughtWorks. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @protocol SYFilter <NSObject>
+
+- (NSArray *) applyToView:(UIView *)view;
 
 @end

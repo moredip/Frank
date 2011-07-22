@@ -13,22 +13,32 @@
 
 + (Shelley *) withSelectorString:(NSString *)selectorString
 {
-    // TODO
-    return [[[self alloc] init] autorelease];
+    return [[[self alloc] initWithSelectorString:selectorString] autorelease];
 }
 
-+ (NSArray *) allDescendantsOf:(UIView *)view{
-    NSMutableArray *descendants = [NSMutableArray array];
-    for (UIView *subview in [view subviews]) {
-        [descendants addObject:subview];
-        [descendants addObjectsFromArray:[self allDescendantsOf:subview]];
+- (id)initWithSelectorString:selectorString {
+    self = [super init];
+    if (self) {
+        _parser = [[SYParser alloc] initWithSelectorString:selectorString];
     }
-    return descendants;
+    return self;
+}
+
+- (void)dealloc {
+    [_parser release];
+    [super dealloc];
 }
 
 - (NSArray *) selectFrom:(UIView *)rootView
 {
-    return [Shelley allDescendantsOf:rootView];
+    id<SYFilter> filter = [_parser nextFilter];
+    if( !filter )
+        return [NSArray array];
+    
+    NSArray *views = [filter applyToView:rootView];
+    
+    //TODO: apply subsequent filters
+    return views;
 }
 
 @end

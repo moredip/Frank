@@ -24,4 +24,10 @@
     [super dealloc];
 }
 
+
+-(NSArray *)applyToView:(UIView *)view{
+    //TODO
+    return nil;
+}
+
 @end

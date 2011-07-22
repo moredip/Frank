@@ -14,10 +14,10 @@
 - (void) setUp{
     view = [[[UIView alloc] init] autorelease];
     viewA = [[[UIView alloc] init] autorelease];
-    viewAA = [[[UIView alloc] init] autorelease];
+    viewAA = [[[UIButton alloc] init] autorelease];
     viewAB = [[[UIView alloc] init] autorelease];
     viewABA = [[[UIView alloc] init] autorelease];
-    viewB = [[[UIView alloc] init] autorelease];
+    viewB = [[[UIButton alloc] init] autorelease];
     viewBA = [[[UIView alloc] init] autorelease];
     viewC = [[[UIView alloc] init] autorelease];
     
@@ -66,8 +66,26 @@
     [self assertArray:selectedViews containsObject:viewAB];
     [self assertArray:selectedViews containsObject:viewABA];
     [self assertArray:selectedViews containsObject:viewAB];
+    [self assertArray:selectedViews containsObject:viewB];
     [self assertArray:selectedViews containsObject:viewBA];
     [self assertArray:selectedViews containsObject:viewC];
+}
+
+- (void) testButtonReturnsAllDescendantsWhichAreButtons {
+    Shelley *shelley = [Shelley withSelectorString:@"button"];
+    NSArray *selectedViews = [shelley selectFrom:view];
+    
+    STAssertEquals((NSUInteger)2, selectedViews.count, nil);
+    [self assertArray:selectedViews containsObject:viewAA];
+    [self assertArray:selectedViews containsObject:viewB];
+}
+
+-(void) testViewButtonReturnsAllGrandChildrenWhichAreButtons {
+    Shelley *shelley = [Shelley withSelectorString:@"view button"];
+    NSArray *selectedViews = [shelley selectFrom:view];
+    
+    STAssertEquals((NSUInteger)1, selectedViews.count, nil);
+    [self assertArray:selectedViews containsObject:viewAA];
 }
 
 - (void) xtestMarkedSelectsOnlyViewsWhichAreHidden {

@@ -11,6 +11,7 @@
 #import "SYDescendants.h"
 #import "SYParents.h"
 #import "SYPredicateFilter.h"
+#import "SYClassFilter.h"
 
 @implementation SYParserTests
 
@@ -89,8 +90,26 @@
     STAssertTrue( [thirdArg isEqualToNumber:[NSNumber numberWithInt:789]], nil);
 }
 
+- (void) testButtonShorthandClassSelectorParses {
+    SYParser *parser = [[SYParser alloc] initWithSelectorString:@"button"];
+    
+    id<SYFilter> filter = [parser nextFilter];
+    STAssertTrue([filter isKindOfClass:[SYClassFilter class]], nil);
+    
+    //check filter is for UIButtons
+    UIView *parentView = [[[UIView alloc] init]autorelease];
+    UIButton *button = [[[UIButton alloc] init] autorelease];
+    [parentView addSubview:button];
+    [parentView addSubview:[[[UIView alloc]init]autorelease]];
+    
+     NSArray *filteredViews = [filter applyToView:parentView];
+     STAssertEquals([filteredViews count], (NSUInteger)1, nil);
+     STAssertEquals([filteredViews objectAtIndex:0], button, nil);
+}
 
-//test bombs on invalid predicate filter e.g. foo-bar
+
+// test handles view class selectors (view:'UIButton')
+// test handles view class shorthand
 
 
 
