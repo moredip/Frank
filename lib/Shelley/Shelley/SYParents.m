@@ -12,8 +12,14 @@
 @implementation SYParents
 
 -(NSArray *)applyToView:(UIView *)view{
-    //TODO
-    return nil;
+    NSMutableArray *ancestors = [NSMutableArray array];
+
+    UIView *currentView = view;
+    while(( currentView = [currentView superview])){
+        [ancestors addObject:currentView];
+    }
+    
+    return ancestors;
 }
 
 @end

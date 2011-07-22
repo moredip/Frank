@@ -32,16 +32,6 @@
     [view addSubview:viewC];
 }
 
-- (void) assertArray:(NSArray *)array containsObject:(id)object{
-    STAssertTrue( [array containsObject:object], nil );
-}
-
-- (void) assertArray:(NSArray *)array containsObjects:(NSArray *)objects{
-    for (id obj in objects) {
-        [self assertArray:array containsObject:obj];
-    }
-}
-
 - (void) testViewReturnsAllSubviews {
     UIView *someView = [[[UIView alloc] init] autorelease];
     [someView addSubview:[[[UIView alloc] init] autorelease]];
@@ -88,7 +78,18 @@
     [self assertArray:selectedViews containsObject:viewAA];
 }
 
-- (void) xtestMarkedSelectsOnlyViewsWhichAreHidden {
+-(void) testButtonParentReturnsTheRootView {
+    UIView *rootView = [[[UIView alloc] init] autorelease];
+    [rootView addSubview:[[[UIButton alloc] init] autorelease]];
+    
+    Shelley *shelley = [Shelley withSelectorString:@"button parent"];
+    NSArray *selectedViews = [shelley selectFrom:rootView];
+    
+    STAssertEquals((NSUInteger)1, selectedViews.count, nil);
+    [self assertArray:selectedViews containsObject:rootView];
+}
+
+- (void) xTestMarkedSelectsOnlyViewsWhichAreHidden {
     [viewA setHidden:YES];
     [viewABA setHidden:YES];
     [viewBA setHidden:YES];
