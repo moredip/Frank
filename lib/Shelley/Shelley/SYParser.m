@@ -71,6 +71,18 @@
     return YES;
 }
 
+- (BOOL) parseSingleQuote{
+    return [_scanner scanString:@"'" intoString:NULL];
+}
+
+- (BOOL) parseStringClosedWithSingleQuote{
+    NSString *string;
+    if( ![_scanner scanUpToCharactersFromSet:[NSCharacterSet characterSetWithCharactersInString:@"'"] intoString:&string] )
+        return NO;
+    [_args addObject:string];
+    return YES;
+}
+
 - (BOOL) parseNumber{
     NSString *numberString;
     if( ![_scanner scanCharactersFromSet:_numberChars intoString:&numberString] )
@@ -83,7 +95,13 @@
 }
 
 - (BOOL) parseArg{
-    // FIXME, NEED TO SCAN STRINGS, etc
+    if( [self parseSingleQuote] ){
+        if( ![self parseStringClosedWithSingleQuote] ){
+            [NSException raise:@"Parse Error" format:@"did not find a closing single quote"];
+        }
+        return YES;
+    }
+    // FIXME, need to scan double-quoted strings
     return [self parseNumber];
 }
 
