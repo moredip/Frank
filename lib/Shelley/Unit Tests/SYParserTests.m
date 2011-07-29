@@ -90,6 +90,18 @@
     STAssertTrue( [thirdArg isEqualToNumber:[NSNumber numberWithInt:789]], nil);
 }
 
+- (void) testParsesSingleQuoteStringArguments {
+    SYParser *parser = [[SYParser alloc] initWithSelectorString:@"foo:'xyz'"];
+    
+    id<SYFilter> filter = [parser nextFilter];
+    STAssertTrue([filter isKindOfClass:[SYPredicateFilter class]], nil);
+    
+    SYPredicateFilter *predicateFilter = (SYPredicateFilter *)filter;
+    STAssertEquals((SEL)[predicateFilter selector], @selector(foo:), nil);
+    STAssertEquals([[predicateFilter args] count], (NSUInteger)1,nil );
+    STAssertTrue([[[predicateFilter args] objectAtIndex:0] isEqualToString:@"xyz"],nil );
+}
+
 - (void) testButtonShorthandClassSelectorParses {
     SYParser *parser = [[SYParser alloc] initWithSelectorString:@"button"];
     
@@ -109,7 +121,6 @@
 
 
 // test handles view class selectors (view:'UIButton')
-// test handles view class shorthand
 
 
 

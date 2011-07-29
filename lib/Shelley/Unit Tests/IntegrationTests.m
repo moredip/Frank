@@ -9,6 +9,8 @@
 #import "IntegrationTests.h"
 #import "Shelley.h"
 
+#import "UIViewWithAccessibilityLabel.h"
+
 @implementation IntegrationTests
 
 - (void) setUp{
@@ -89,12 +91,12 @@
     [self assertArray:selectedViews containsObject:rootView];
 }
 
-- (void) xTestMarkedSelectsOnlyViewsWhichAreHidden {
+- (void) testMarkedSelectsOnlyViewsWhichAreHidden {
     [viewA setHidden:YES];
     [viewABA setHidden:YES];
     [viewBA setHidden:YES];
     
-    Shelley *shelley = [Shelley withSelectorString:@"view hidden"];
+    Shelley *shelley = [Shelley withSelectorString:@"view isHidden"];
     NSArray *selectedViews = [shelley selectFrom:view];
     
     STAssertEquals((NSUInteger)3, selectedViews.count, nil);
@@ -104,18 +106,22 @@
 
 }
 
-- (void) xtestMarkedSelectsOnlyViewsWithMatchingAccessibilityLabel {
-    [viewA setAccessibilityLabel:@"brap"];
-    [viewABA setAccessibilityLabel:@"brap"];
-    [viewBA setAccessibilityLabel: @"brap"];
+- (void) testMarkedSelectsOnlyViewsWithMatchingAccessibilityLabel {
+    UIView *rootView = [[[UIView alloc] init]autorelease];
+    UIViewWithAccessibilityLabel *subviewA = [[[UIViewWithAccessibilityLabel alloc] initWithAccessibilityLabel:@"brap"] autorelease];
+    UIViewWithAccessibilityLabel *subviewB = [[[UIViewWithAccessibilityLabel alloc] initWithAccessibilityLabel:@"not brap"] autorelease];
+    UIViewWithAccessibilityLabel *subviewC = [[[UIViewWithAccessibilityLabel alloc] initWithAccessibilityLabel:@"brap"] autorelease];
+    
+    [rootView addSubview:subviewA];
+    [rootView addSubview:subviewB];
+    [rootView addSubview:subviewC];
     
     Shelley *shelley = [Shelley withSelectorString:@"view marked:'brap'"];
-    NSArray *selectedViews = [shelley selectFrom:view];
+    NSArray *selectedViews = [shelley selectFrom:rootView];
     
-    STAssertEquals((NSUInteger)3, selectedViews.count, nil);
-    [self assertArray:selectedViews containsObject:viewA];
-    [self assertArray:selectedViews containsObject:viewABA];
-    [self assertArray:selectedViews containsObject:viewBA];
+    STAssertEquals((NSUInteger)2, selectedViews.count, nil);
+    [self assertArray:selectedViews containsObject:subviewA];
+    [self assertArray:selectedViews containsObject:subviewC];
 }
 
 //- (void) testWeFilterOutDupes e.g. parent pivot on ancestors would have a lot of dupes
