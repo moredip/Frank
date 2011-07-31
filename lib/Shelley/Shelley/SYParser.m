@@ -21,17 +21,17 @@
 }
 @property(readonly) NSArray *params, *args;
 
-- (id)initWithString:(NSString *)stringToParse;
+- (id)initWithScanner: (NSScanner *)scanner;
 - (void) parse;
 @end
 
 @implementation SYSelectorParser
 @synthesize params=_params,args=_args;
 
-- (id)initWithString:(NSString *)stringToParse {
+- (id)initWithScanner: (NSScanner *)scanner{
     self = [super init];
     if (self) {
-        _scanner = [[NSScanner alloc] initWithString:stringToParse];
+        _scanner = [scanner retain];
         _paramChars = [[NSCharacterSet letterCharacterSet] retain];
         _numberChars = [[NSCharacterSet characterSetWithCharactersInString:@"0123456789."]retain];
         _params = [[NSMutableArray alloc] init];
@@ -75,11 +75,25 @@
     return [_scanner scanString:@"'" intoString:NULL];
 }
 
+- (BOOL) parseDoubleQuote{
+    return [_scanner scanString:@"\"" intoString:NULL];
+}
+
 - (BOOL) parseStringClosedWithSingleQuote{
     NSString *string;
     if( ![_scanner scanUpToCharactersFromSet:[NSCharacterSet characterSetWithCharactersInString:@"'"] intoString:&string] )
         return NO;
     [_args addObject:string];
+    [self parseSingleQuote];    
+    return YES;
+}
+
+- (BOOL) parseStringClosedWithDoubleQuote{
+    NSString *string;
+    if( ![_scanner scanUpToCharactersFromSet:[NSCharacterSet characterSetWithCharactersInString:@"\""] intoString:&string] )
+        return NO;
+    [_args addObject:string];
+    [self parseDoubleQuote];
     return YES;
 }
 
@@ -100,9 +114,14 @@
             [NSException raise:@"Parse Error" format:@"did not find a closing single quote"];
         }
         return YES;
+    }else if( [self parseDoubleQuote] ){
+        if( ![self parseStringClosedWithDoubleQuote] ){
+            [NSException raise:@"Parse Error" format:@"did not find a closing single quote"];
+        }
+        return YES;
+    }else{
+        return [self parseNumber];
     }
-    // FIXME, need to scan double-quoted strings
-    return [self parseNumber];
 }
 
 - (void) parse{
@@ -141,8 +160,8 @@
     [super dealloc];
 }
 
-- (SYPredicateFilter *) parsePredicateFilter:(NSString *) filterString{
-    SYSelectorParser *parser = [[[SYSelectorParser alloc] initWithString:filterString] autorelease];
+- (SYPredicateFilter *) parsePredicateFilter{
+    SYSelectorParser *parser = [[[SYSelectorParser alloc] initWithScanner:_scanner] autorelease];
     [parser parse];
     
     NSString *selectorDesc;
@@ -156,20 +175,32 @@
                                                    args:[parser args]] autorelease];
 }
 
+- (id<SYFilter>) parseSpecialFilters{
+    if( [_scanner scanString:@"view" intoString:NULL] ){
+        return [[[SYDescendants alloc] init] autorelease];
+    }else if( [_scanner scanString:@"parent" intoString:NULL] ){
+        return [[[SYParents alloc] init] autorelease];
+    }else if( [_scanner scanString:@"button" intoString:NULL] ){
+        return [[[SYClassFilter alloc] initWithClass:[UIButton class]] autorelease];
+    }else{
+        return nil;
+    }
+}
+          
+- (BOOL) parseSpace{
+    return [_scanner scanString:@" " intoString:NULL];
+}
+
 - (id<SYFilter>) nextFilter{
-    NSString *filterString;
-    if( ![_scanner scanUpToString:@" " intoString:&filterString] )
+    if( [_scanner isAtEnd] )
         return nil;
     
-    if( [filterString isEqualToString:@"view"] ){
-        return [[[SYDescendants alloc] init] autorelease];
-    }else if( [filterString isEqualToString:@"parent"] ){
-        return [[[SYParents alloc] init] autorelease];
-    }else if( [filterString isEqualToString:@"button"] ){
-        return [[[SYClassFilter alloc] initWithClass:[UIButton class]] autorelease];
-    }
+    id<SYFilter> nextFilter = [self parseSpecialFilters];
+    if( !nextFilter )
+        nextFilter = [self parsePredicateFilter];
     
-    return [self parsePredicateFilter:filterString];
+    [self parseSpace];
+    return nextFilter;
 }
 
 @end

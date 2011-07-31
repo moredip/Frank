@@ -102,6 +102,28 @@
     STAssertTrue([[[predicateFilter args] objectAtIndex:0] isEqualToString:@"xyz"],nil );
 }
 
+- (void) testParsesDoubleQuoteStringArguments {
+    SYParser *parser = [[SYParser alloc] initWithSelectorString:@"foo:\"xyz\""];
+    
+    id<SYFilter> filter = [parser nextFilter];
+    
+    SYPredicateFilter *predicateFilter = (SYPredicateFilter *)filter;
+    STAssertEquals((SEL)[predicateFilter selector], @selector(foo:), nil);
+    STAssertEquals([[predicateFilter args] count], (NSUInteger)1,nil );
+    STAssertTrue([[[predicateFilter args] objectAtIndex:0] isEqualToString:@"xyz"],nil );
+}
+
+- (void) testParsesQuotedStringsContainingSpaces {
+    SYParser *parser = [[SYParser alloc] initWithSelectorString:@"foo:'string with spaces'"];
+    
+    id<SYFilter> filter = [parser nextFilter];
+    
+    SYPredicateFilter *predicateFilter = (SYPredicateFilter *)filter;
+    STAssertEquals([[predicateFilter args] count], (NSUInteger)1,nil );
+    STAssertTrue([[[predicateFilter args] objectAtIndex:0] isEqualToString:@"string with spaces"],nil );
+
+}
+
 - (void) testButtonShorthandClassSelectorParses {
     SYParser *parser = [[SYParser alloc] initWithSelectorString:@"button"];
     
