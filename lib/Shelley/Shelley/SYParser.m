@@ -7,7 +7,6 @@
 //
 
 #import "SYParser.h"
-#import "SYDescendants.h"
 #import "SYParents.h"
 #import "SYPredicateFilter.h"
 #import "SYClassFilter.h"
@@ -177,7 +176,7 @@
 
 - (id<SYFilter>) parseSpecialFilters{
     if( [_scanner scanString:@"view" intoString:NULL] ){
-        return [[[SYDescendants alloc] init] autorelease];
+        return [[[SYClassFilter alloc] initWithClass:[UIView class]] autorelease];
     }else if( [_scanner scanString:@"parent" intoString:NULL] ){
         return [[[SYParents alloc] init] autorelease];
     }else if( [_scanner scanString:@"button" intoString:NULL] ){
