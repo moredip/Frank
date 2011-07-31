@@ -8,18 +8,18 @@
 
 #import "SYParserTests.h"
 #import "SYParser.h"
-#import "SYDescendants.h"
 #import "SYParents.h"
 #import "SYPredicateFilter.h"
 #import "SYClassFilter.h"
 
 @implementation SYParserTests
 
-- (void) testViewSelectorYieldsASingleDescendentOperator{
+- (void) testViewSelectorYieldsAClassFilter{
     SYParser *parser = [[SYParser alloc] initWithSelectorString:@"view"];
     
     id<SYFilter> filter = [parser nextFilter];
-    STAssertTrue([filter isKindOfClass:[SYDescendants class]], nil);
+    STAssertTrue([filter isKindOfClass:[SYClassFilter class]], nil);
+    STAssertEquals([(SYClassFilter *)filter target], [UIView class], nil);
     
     filter = [parser nextFilter];
     STAssertNil( filter, nil );
@@ -129,16 +129,7 @@
     
     id<SYFilter> filter = [parser nextFilter];
     STAssertTrue([filter isKindOfClass:[SYClassFilter class]], nil);
-    
-    //check filter is for UIButtons
-    UIView *parentView = [[[UIView alloc] init]autorelease];
-    UIButton *button = [[[UIButton alloc] init] autorelease];
-    [parentView addSubview:button];
-    [parentView addSubview:[[[UIView alloc]init]autorelease]];
-    
-     NSArray *filteredViews = [filter applyToView:parentView];
-     STAssertEquals([filteredViews count], (NSUInteger)1, nil);
-     STAssertEquals([filteredViews objectAtIndex:0], button, nil);
+    STAssertEquals([(SYClassFilter *)filter target], [UIButton class], nil);
 }
 
 

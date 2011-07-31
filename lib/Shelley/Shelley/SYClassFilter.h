@@ -12,6 +12,8 @@
 @interface SYClassFilter : NSObject<SYFilter> {
     Class _targetClass;
 }
+@property (readonly) Class target;
+
 - (id)initWithClass:(Class)class;
 
 @end

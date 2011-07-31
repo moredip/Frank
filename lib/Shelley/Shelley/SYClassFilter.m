@@ -8,9 +8,17 @@
 
 #import "SYClassFilter.h"
 
-#import "SYDescendants.h"
-
 @implementation SYClassFilter
+@synthesize target=_targetClass;
+
++ (NSArray *) allDescendantsOf:(UIView *)view{
+    NSMutableArray *descendants = [NSMutableArray array];
+    for (UIView *subview in [view subviews]) {
+        [descendants addObject:subview];
+        [descendants addObjectsFromArray:[self allDescendantsOf:subview]];
+    }
+    return descendants;
+}
 
 - (id)initWithClass:(Class)class {
     self = [super init];
@@ -21,7 +29,7 @@
 }
 
 -(NSArray *)applyToView:(UIView *)view{
-    NSArray *allDescendants = [SYDescendants allDescendantsOf:view];
+    NSArray *allDescendants = [SYClassFilter allDescendantsOf:view];
     
     // TODO: look at using predicates
     NSMutableArray *filteredDescendants = [NSMutableArray array];

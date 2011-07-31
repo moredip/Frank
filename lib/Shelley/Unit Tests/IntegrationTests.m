@@ -148,6 +148,34 @@
     [self assertArray:selectedViews containsObject:subview];
 }
 
-//- (void) testWeFilterOutDupes e.g. parent pivot on ancestors would have a lot of dupes
+- (void) testAppliesFiltersSequentiallyInADepthFirstManner {
+    UIView *rootView = [[[UIView alloc] init]autorelease];
+
+    UIButton *buttonA = [[[UIButton alloc] init] autorelease];
+    UIButton *buttonAA = [[[UIButton alloc] init] autorelease];
+    UIView *nonButtonB = [[[UIView alloc] init]autorelease];
+    UIButton *buttonBA = [[[UIButton alloc] init] autorelease];
+    
+    [rootView addSubview:buttonA];
+    [buttonA addSubview:buttonAA];
+    [rootView addSubview:nonButtonB];
+    [nonButtonB addSubview:buttonBA];
+    
+    Shelley *shelley = [Shelley withSelectorString:@"button button"];
+    NSArray *selectedViews = [shelley selectFrom:rootView];
+    
+    // The only button whose parent is a button is button AA
+    STAssertEquals((NSUInteger)1, selectedViews.count, nil);
+    [self assertArray:selectedViews containsObject:buttonAA];
+}
+
+- (void) TODO_testWeFilterOutDupes {
+    Shelley *shelley = [Shelley withSelectorString:@"button parent button"];
+    NSArray *selectedViews = [shelley selectFrom:view];
+    
+    STAssertEquals((NSUInteger)2, selectedViews.count, nil);
+    [self assertArray:selectedViews containsObject:viewAA];
+    [self assertArray:selectedViews containsObject:viewB];
+}
 
 @end
