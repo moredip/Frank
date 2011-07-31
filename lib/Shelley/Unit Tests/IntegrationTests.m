@@ -124,6 +124,30 @@
     [self assertArray:selectedViews containsObject:subviewC];
 }
 
+- (void) testHandlesDoubleQuotedstringsWithSingleQuotesAndSpacesInside {
+    UIView *rootView = [[[UIView alloc] init]autorelease];
+    UIViewWithAccessibilityLabel *subview = [[[UIViewWithAccessibilityLabel alloc] initWithAccessibilityLabel:@"I'm selected"] autorelease];
+    [rootView addSubview:subview];
+    
+    Shelley *shelley = [Shelley withSelectorString:@"view marked:\"I'm selected\""];
+    NSArray *selectedViews = [shelley selectFrom:rootView];
+    
+    STAssertEquals((NSUInteger)1, selectedViews.count, nil);
+    [self assertArray:selectedViews containsObject:subview];
+}
+
+- (void) testHandlesSingleQuotesWithDoubleQuotesInside {
+    UIView *rootView = [[[UIView alloc] init]autorelease];
+    UIViewWithAccessibilityLabel *subview = [[[UIViewWithAccessibilityLabel alloc] initWithAccessibilityLabel:@"say \"hi\" now"] autorelease];
+    [rootView addSubview:subview];
+    
+    Shelley *shelley = [Shelley withSelectorString:@"view marked:'say \"hi\" now'"];
+    NSArray *selectedViews = [shelley selectFrom:rootView];
+    
+    STAssertEquals((NSUInteger)1, selectedViews.count, nil);
+    [self assertArray:selectedViews containsObject:subview];
+}
+
 //- (void) testWeFilterOutDupes e.g. parent pivot on ancestors would have a lot of dupes
 
 @end
