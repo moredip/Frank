@@ -11,37 +11,52 @@
 #import "SYPredicateFilter.h"
 #import "SYClassFilter.h"
 
-@implementation SYParser
+@interface SYSectionParser : NSObject {
+    NSScanner *_scanner;
+    NSCharacterSet *_paramChars;
+    NSCharacterSet *_numberChars;
+    NSMutableArray *_params;
+    NSMutableArray *_args;
+}
+@property(readonly) NSArray *params, *args;
 
-- (id)initWithSelectorString:(NSString *)selectorString {
+- (id)initWithScanner: (NSScanner *)scanner;
+- (void) parse;
+- (BOOL) hasNoArgs;
+@end
+
+@implementation SYSectionParser
+@synthesize params=_params,args=_args;
+
+- (id)initWithScanner: (NSScanner *)scanner{
     self = [super init];
     if (self) {
-        _scanner = [[NSScanner alloc] initWithString:selectorString];
-        
+        _scanner = [scanner retain];
         _paramChars = [[NSCharacterSet letterCharacterSet] retain];
         _numberChars = [[NSCharacterSet characterSetWithCharactersInString:@"0123456789."]retain];
-        _currentParams = [[NSMutableArray alloc] init];
-        _currentArgs = [[NSMutableArray alloc] init];
-
+        _params = [[NSMutableArray alloc] init];
+        _args = [[NSMutableArray alloc] init];
     }
     return self;
 }
-
 - (void)dealloc {
     [_scanner release];
-    
     [_paramChars release];
     [_numberChars release];
-    [_currentParams release];
-    [_currentArgs release];
-
+    [_params release];
+    [_args release];
+    
     [super dealloc];
 }
 
-- (BOOL) parseIdentifierWithoutColon{
+- (BOOL) hasNoArgs {
+    return [_args count] == 0;
+}
+
+- (BOOL) parseParamWithoutColon{
     NSString *paramString;
     if( [_scanner scanCharactersFromSet:_paramChars intoString:&paramString] ){
-        [_currentParams addObject:paramString];
+        [_params addObject:paramString];
         return YES;
     }else{
         return NO;
@@ -52,8 +67,8 @@
 	return [_scanner scanString:@":" intoString:NULL];
 }
 
-- (BOOL) parseIdentifierWithColon{
-    if( ![self parseIdentifierWithoutColon] )
+- (BOOL) parseParamWithColon{
+    if( ![self parseParamWithoutColon] )
         return NO;
     if( ![self parseColon] )
         [NSException raise:@"Parse Error" format:@"expected a :"];
@@ -66,24 +81,6 @@
 
 - (BOOL) parseDoubleQuote{
     return [_scanner scanString:@"\"" intoString:NULL];
-}
-
-- (BOOL) parseStringClosedWithDoubleQuote{
-    NSString *string;
-    if( ![_scanner scanUpToCharactersFromSet:[NSCharacterSet characterSetWithCharactersInString:@"\""] intoString:&string] )
-        return NO;
-    [_currentArgs addObject:string];
-    [self parseDoubleQuote];
-    return YES;
-}
-
-- (NSNumber *) parseNumber{
-    NSString *numberString;
-    if( ![_scanner scanCharactersFromSet:_numberChars intoString:&numberString] )
-        return nil;
-    
-    NSNumberFormatter *f = [[[NSNumberFormatter alloc] init] autorelease];
-    return [f numberFromString:numberString];
 }
 
 - (NSString *)parseSingleQuotedString{
@@ -115,6 +112,15 @@
     return string;
 }
 
+- (NSNumber *) parseNumber{
+    NSString *numberString;
+    if( ![_scanner scanCharactersFromSet:_numberChars intoString:&numberString] )
+        return nil;
+    
+    NSNumberFormatter *f = [[[NSNumberFormatter alloc] init] autorelease];
+    return [f numberFromString:numberString];
+}
+
 - (id) parseArg{
     NSString *parsedString = [self parseQuotedString];
     if( parsedString )
@@ -123,78 +129,92 @@
     return [self parseNumber];
 }
 
-- (BOOL) parsePredicateArg{
+- (void) parseArgAndCollect{
     id arg = [self parseArg];
-    if( !arg )
-        return NO;
-    
-    [_currentArgs addObject:[self parseArg]];
-    return YES;
+    if( arg )
+        [_args addObject:arg];
 }
 
-// a predicate is e.g. "marked:'foo'"
-- (void) parsePredicate{
-    [_currentArgs removeAllObjects];
-    [_currentParams removeAllObjects];
-    
-    [self parseIdentifierWithoutColon];
+- (void) parse{
+    [self parseParamWithoutColon];
     if( ![self parseColon] ){
-        // looks like we were a no-arg message
-        if( ![_scanner isAtEnd] )
-            [NSException raise:@"Parse Error" format:@"unexpected character after no-arg filter predicate"];
-        
         return; 
     }
     
-    [self parsePredicateArg];
+    
+    [self parseArgAndCollect];
     while( YES ){
-        if( ![self parseIdentifierWithColon] )
+        if( ![self parseParamWithColon] )
             break;
-        [self parsePredicateArg];
+        [self parseArgAndCollect];
     }
 }
 
-- (SYPredicateFilter *) parsePredicateFilter{
-    [self parsePredicate];
+@end
+
+
+@implementation SYParser
+
+- (id)initWithSelectorString:(NSString *)selectorString {
+    self = [super init];
+    if (self) {
+        _scanner = [[NSScanner alloc] initWithString:selectorString];
+        
+        _paramChars = [[NSCharacterSet letterCharacterSet] retain];
+        _numberChars = [[NSCharacterSet characterSetWithCharactersInString:@"0123456789."]retain];
+        _currentParams = [[NSMutableArray alloc] init];
+        _currentArgs = [[NSMutableArray alloc] init];
+
+    }
+    return self;
+}
+
+- (void)dealloc {
+    [_scanner release];
+    
+    [_paramChars release];
+    [_numberChars release];
+    [_currentParams release];
+    [_currentArgs release];
+
+    [super dealloc];
+}
+
+- (id<SYFilter>) interpretSectionIntoFilter:(SYSectionParser *)parsedSection{
+    if( [parsedSection hasNoArgs] ){
+        NSString *singleParam = [[parsedSection params] objectAtIndex:0];
+        
+        if( [singleParam isEqualToString:@"parent"] )
+            return [[[SYParents alloc] init] autorelease];
+        else if( [singleParam isEqualToString:@"view"] )
+            return [[[SYClassFilter alloc] initWithClass:[UIView class]] autorelease];
+        else if( [singleParam isEqualToString:@"button"] )
+            return [[[SYClassFilter alloc] initWithClass:[UIButton class]] autorelease];
+    }
+    
     
     NSString *selectorDesc;
-    if( [_currentArgs count] == 0 ){
-        selectorDesc = [_currentParams objectAtIndex:0];
+    if( [parsedSection hasNoArgs] ){
+        selectorDesc = [[parsedSection params] objectAtIndex:0];
     }else{
-        selectorDesc = [[_currentParams componentsJoinedByString:@":"] stringByAppendingString:@":"];
+        selectorDesc = [[[parsedSection params] componentsJoinedByString:@":"] stringByAppendingString:@":"];
     }
     
     return [[[SYPredicateFilter alloc] initWithSelector:NSSelectorFromString(selectorDesc) 
-                                                   args:_currentArgs] autorelease];
-}
-
-- (id<SYFilter>) parseSpecialFilters{
-    
-    if( [_scanner scanString:@"view" intoString:NULL] ){
-        return [[[SYClassFilter alloc] initWithClass:[UIView class]] autorelease];
-    }else if( [_scanner scanString:@"parent" intoString:NULL] ){
-        return [[[SYParents alloc] init] autorelease];
-    }else if( [_scanner scanString:@"button" intoString:NULL] ){
-        return [[[SYClassFilter alloc] initWithClass:[UIButton class]] autorelease];
-    }else{
-        return nil;
-    }
-}
-          
-- (BOOL) parseSpace{
-    return [_scanner scanString:@" " intoString:NULL];
+                                                   args:[parsedSection args]] autorelease];
 }
 
 - (id<SYFilter>) nextFilter{
+    
+    [_scanner scanCharactersFromSet:[NSCharacterSet whitespaceCharacterSet] intoString:nil];
+    
     if( [_scanner isAtEnd] )
         return nil;
     
-    id<SYFilter> nextFilter = [self parseSpecialFilters];
-    if( !nextFilter )
-        nextFilter = [self parsePredicateFilter];
+    SYSectionParser *sectionParser = [[[SYSectionParser alloc] initWithScanner:_scanner] autorelease];
+    [sectionParser parse];
     
-    [self parseSpace];
-    return nextFilter;
+    return [self interpretSectionIntoFilter:sectionParser];
 }
 
 @end
