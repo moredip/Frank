@@ -132,6 +132,13 @@
     STAssertEquals([(SYClassFilter *)filter target], [UIButton class], nil);
 }
 
+- (void) xtestExplicitClassSelectorParses {
+    SYParser *parser = [[SYParser alloc] initWithSelectorString:@"view:'UITextView'"];
+    
+    id<SYFilter> filter = [parser nextFilter];
+    STAssertTrue([filter isKindOfClass:[SYClassFilter class]], nil);
+    STAssertEquals([(SYClassFilter *)filter target], [UITextView class], nil);
+}
 
 // test handles view class selectors (view:'UIButton')
 
