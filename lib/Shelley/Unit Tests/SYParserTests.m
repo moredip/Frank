@@ -41,7 +41,7 @@
     id<SYFilter> filter = [parser nextFilter];
     STAssertNotNil(filter, nil);
     
-    STAssertThrows([parser nextFilter], nil);
+    STAssertThrows([parser nextFilter] && [parser nextFilter], nil);
 }
 
 - (void) testNoArgPredicateSelectorParses{
