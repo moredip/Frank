@@ -68,15 +68,6 @@
     return [_scanner scanString:@"\"" intoString:NULL];
 }
 
-- (BOOL) parseStringClosedWithSingleQuote{
-    NSString *string;
-    if( ![_scanner scanUpToCharactersFromSet:[NSCharacterSet characterSetWithCharactersInString:@"'"] intoString:&string] )
-        return NO;
-    [_currentArgs addObject:string];
-    [self parseSingleQuote];    
-    return YES;
-}
-
 - (BOOL) parseStringClosedWithDoubleQuote{
     NSString *string;
     if( ![_scanner scanUpToCharactersFromSet:[NSCharacterSet characterSetWithCharactersInString:@"\""] intoString:&string] )
@@ -86,31 +77,59 @@
     return YES;
 }
 
-- (BOOL) parseNumber{
+- (NSNumber *) parseNumber{
     NSString *numberString;
     if( ![_scanner scanCharactersFromSet:_numberChars intoString:&numberString] )
-        return NO;
+        return nil;
     
-    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
-    [_currentArgs addObject:[f numberFromString:numberString]];
-    [f release];
-    return YES;
+    NSNumberFormatter *f = [[[NSNumberFormatter alloc] init] autorelease];
+    return [f numberFromString:numberString];
+}
+
+- (NSString *)parseSingleQuotedString{
+    if( ![self parseSingleQuote] )
+        return nil;
+    
+    NSString *string;
+    [_scanner scanUpToCharactersFromSet:[NSCharacterSet characterSetWithCharactersInString:@"'"] intoString:&string];
+    [self parseSingleQuote];    
+    return string;
+}
+
+- (NSString *)parseDoubleQuotedString{
+    if( ![self parseDoubleQuote] )
+        return nil;
+    
+    NSString *string;
+    [_scanner scanUpToCharactersFromSet:[NSCharacterSet characterSetWithCharactersInString:@"\""] intoString:&string];
+    [self parseDoubleQuote];    
+    return string;
+}
+
+
+- (NSString *)parseQuotedString{
+    NSString *string = [self parseSingleQuotedString];
+    if( !string )
+        string = [self parseDoubleQuotedString];
+    
+    return string;
+}
+
+- (id) parseArg{
+    NSString *parsedString = [self parseQuotedString];
+    if( parsedString )
+        return parsedString;
+    
+    return [self parseNumber];
 }
 
 - (BOOL) parsePredicateArg{
-    if( [self parseSingleQuote] ){
-        if( ![self parseStringClosedWithSingleQuote] ){
-            [NSException raise:@"Parse Error" format:@"did not find a closing single quote"];
-        }
-        return YES;
-    }else if( [self parseDoubleQuote] ){
-        if( ![self parseStringClosedWithDoubleQuote] ){
-            [NSException raise:@"Parse Error" format:@"did not find a closing single quote"];
-        }
-        return YES;
-    }else{
-        return [self parseNumber];
-    }
+    id arg = [self parseArg];
+    if( !arg )
+        return NO;
+    
+    [_currentArgs addObject:[self parseArg]];
+    return YES;
 }
 
 // a predicate is e.g. "marked:'foo'"
