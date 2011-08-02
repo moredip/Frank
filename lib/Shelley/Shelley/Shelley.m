@@ -29,12 +29,25 @@
     [super dealloc];
 }
 
+- (void) removeDuplicatesFromArray:(NSMutableArray *)mutableArray{
+    NSArray *copy = [mutableArray copy];
+    NSInteger index = [copy count] - 1;
+    for (id object in [copy reverseObjectEnumerator]) {
+        if ([mutableArray indexOfObject:object inRange:NSMakeRange(0, index)] != NSNotFound) {
+            [mutableArray removeObjectAtIndex:index];
+        }
+        index--;
+    }
+    [copy release];
+}
+
 - (NSArray *) applyFilter:(id<SYFilter>)filter toViews:(NSArray *)views{
     NSMutableArray *filteredViews = [NSMutableArray array];
     for (UIView *view in views) {
         [filteredViews addObjectsFromArray:[filter applyToView:view]];
     }
-    // TODO: filter out dupes
+    [self removeDuplicatesFromArray:filteredViews];
+    
     return filteredViews;
 }
 
@@ -49,8 +62,6 @@
     while(( filter = [_parser nextFilter] )){
         views = [self applyFilter:filter toViews:views];
     }
-    
-    //TODO: filter out dupes
     
     return views;
 }

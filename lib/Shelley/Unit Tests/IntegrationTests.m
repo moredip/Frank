@@ -169,7 +169,7 @@
     [self assertArray:selectedViews containsObject:buttonAA];
 }
 
-- (void) TODO_testWeFilterOutDupes {
+- (void) testWeFilterOutDupes {
     Shelley *shelley = [Shelley withSelectorString:@"button parent button"];
     NSArray *selectedViews = [shelley selectFrom:view];
     
