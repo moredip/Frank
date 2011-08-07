@@ -13,6 +13,10 @@
 }
 -(UIQuery *)setValue:(NSString *)value forElementWithId:(NSString *)elementId;
 -(UIQuery *)clickElementWithId:(NSString *)elementId;
+
+-(UIQuery *)setValue:(NSString *)value forElementWithName:(NSString *)elementName;
+-(UIQuery *)clickElementWithName:(NSString *)elementId;
+
 -(NSString *)html;
 
 @end

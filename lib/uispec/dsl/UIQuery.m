@@ -239,7 +239,9 @@
 
 -(UIQuery *)flash {
 	[[UIQueryExpectation withQuery:self] exist:@"before you can flash it"];
-	for (UIView *view in [self targetViews]) {
+	for (UIView *view in [self targetViews])
+    if( [view isKindOfClass:[UIView class]])
+    {
 		UIColor *tempColor = [view.backgroundColor retain];
 		for (int i=0; i<5; i++) {
 			view.backgroundColor = [UIColor yellowColor];
@@ -410,8 +412,8 @@
 		
 		[touch.view touchesEnded:touches withEvent:eventDown];
 		
-		[eventDown release];
-		[eventUp release];
+		//[eventDown release];
+		//[eventUp release];
 		[touches release];
 		[touch release];
 		[self wait:.5];
@@ -463,8 +465,8 @@
         [visibleTouch removeFromSuperview];
         [visibleTouch release];
         
-		[eventDown release];
-		[eventUp release];
+		//[eventDown release];
+		//[eventUp release];
 		[touches release];
 		[aTouch release];
 		[self wait:.5];
@@ -547,7 +549,11 @@ UIQuery * $(NSMutableString *script, ...) {
 			}
 			result = [result performSelector:NSSelectorFromString([NSString stringWithFormat:@"%@:", commandValue]) withObject:paramValue];
 		} else {
-			result = [result performSelector:NSSelectorFromString(commandValue)];
+            
+            if( [commandValue length] )
+                result = [result performSelector:NSSelectorFromString(commandValue)];
+            else
+                NSLog(@"[commandValue length] = 0");
 		}
 		//NSLog(@"result = %@", result);
 	}
