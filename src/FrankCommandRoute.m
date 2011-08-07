@@ -65,7 +65,12 @@
 		return nil;
 	
 	NSString *response = [command handleCommandWithRequestBody:connection.postDataAsString];
-	NSLog( @"returning:\n%@", response );
+    
+    //block huge response
+    if( [response length] < 1024 )
+        NSLog( @"returning:\n%@", response );
+    else
+        NSLog(@"Huge response %d", [response length]);
 	
 	NSData *browseData = [response dataUsingEncoding:NSUTF8StringEncoding];
 	return [[[HTTPDataResponse alloc] initWithData:browseData] autorelease];
