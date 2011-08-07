@@ -34,7 +34,13 @@ NSDictionary *customAttributesFor( UIView *view ) {
 	}
 	
 	[customAttributes setObject:NSStringFromClass([view class]) forKey:@"class"];
-	[customAttributes setObject:[NSNumber numberWithFloat:[view alpha]]  forKey:@"alpha"];
+    
+    //UIImageView can have nan alpha, but I don't undestand why
+    if( isnan([view alpha]) )
+        [customAttributes setObject:[NSNumber numberWithFloat:0.0f]  forKey:@"alpha"];
+    else
+        [customAttributes setObject:[NSNumber numberWithFloat:[view alpha]]  forKey:@"alpha"];
+    
 	[customAttributes setObject:[NSNumber numberWithBool:[view isOpaque]]  forKey:@"isOpaque"];
 	[customAttributes setObject:[NSNumber numberWithBool:[view isHidden]]  forKey:@"isHidden"];
 	[customAttributes setObject:[DumpCommand jsonify:[view backgroundColor]] forKey:@"backgroundColor"];
@@ -73,6 +79,9 @@ NSDictionary *mapObjectToPropertiesDictionary( NSObject *object ) {
 			if ([[[attributes lastObject] substringToIndex:1] isEqualToString:@"G"]) {
 				key = [[attributes lastObject] substringFromIndex:1];
 			}
+            
+            if([key isEqualToString:@"_caretRect"])
+                continue;
 			
 			SEL selector = NSSelectorFromString(key);
 			if ([object respondsToSelector:selector]) {
@@ -83,6 +92,8 @@ NSDictionary *mapObjectToPropertiesDictionary( NSObject *object ) {
 				//NSLog(@"invocation selector = %@", NSStringFromSelector([invocation selector]));
 				[invocation setTarget:object];
 				
+                
+                
 				@try {
 					[invocation invoke];
 				}
