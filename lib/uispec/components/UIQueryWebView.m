@@ -14,6 +14,14 @@
 	return [UIQuery withViews:views className:className];
 }
 
+-(UIQuery *)setValue:(NSString *)value forElementWithName:(NSString *)elementName {
+	//NSString *javascript = [NSString stringWithFormat:@"$('#%@').val('%@');", elementId, value];
+	NSString *javascript = [NSString stringWithFormat:@"document.getElementsByName('%@')[0].value = '%@';", elementName, value];
+                        
+	[self stringByEvaluatingJavaScriptFromString:javascript];
+	return [UIQuery withViews:views className:className];
+}
+
 -(UIQuery *)clickElementWithId:(NSString *)elementId {	
 	//NSString *javascript = [NSString stringWithFormat:@"$('#%@').click();", elementId];
 	NSString *javascript = [NSString stringWithFormat:@"document.getElementById('%@').click();", elementId];
@@ -23,6 +31,14 @@
 	//	javascript = [NSString stringWithFormat:@"$('#%@').click();", elementId];
 //	else 
 //		javascript = [NSString stringWithFormat:@"document.getElementById('%@').click();", elementId];
+	
+	[self stringByEvaluatingJavaScriptFromString:javascript];
+	return [UIQuery withViews:views className:className];
+}
+
+-(UIQuery *)clickElementWithName:(NSString *)elementId {	
+
+	NSString *javascript = [NSString stringWithFormat:@"document.getElementsByName('%@')[0].click();", elementId];
 	
 	[self stringByEvaluatingJavaScriptFromString:javascript];
 	return [UIQuery withViews:views className:className];

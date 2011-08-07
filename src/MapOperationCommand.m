@@ -9,6 +9,7 @@
 #import "MapOperationCommand.h"
 
 #import "UIQuery.h"
+#import "UIQueryWebView.h"
 #import "JSON.h"
 #import "Operation.h"
 #import "DumpCommand.h"
@@ -36,9 +37,20 @@
 	if( [operation appliesToObject:view] )
 		return [operation applyToObject:view];
 	
-	// wrapping the view in a uiquery like this lets us perform operations like touch, flash, inspect, etc
-	UIQuery *wrappedView = [UIQuery withViews:[NSMutableArray arrayWithObject:view]
-									className:@"UIView"];
+    UIQuery *wrappedView = nil;
+    
+    if( [view isKindOfClass:[UIWebView class]] )
+    {
+        wrappedView = [UIQueryWebView withViews:[NSMutableArray arrayWithObject:view]
+                                      className:@"UIWebView"];
+        
+    }else
+    {    
+        // wrapping the view in a uiquery like this lets us perform operations like touch, flash, inspect, etc
+        wrappedView = [UIQuery withViews:[NSMutableArray arrayWithObject:view]
+                                        className:@"UIView"];
+    }
+    
 	if( [operation appliesToObject:wrappedView] )
 		return [operation applyToObject:wrappedView];
 	
