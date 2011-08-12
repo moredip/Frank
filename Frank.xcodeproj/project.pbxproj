@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4C1DD76012BADFA400E10B8C /* InspectCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1DD75E12BADFA400E10B8C /* InspectCommand.m */; };
-		4C1DD76112BADFA400E10B8C /* InspectCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C1DD75F12BADFA400E10B8C /* InspectCommand.h */; };
 		4C1DD76C12BADFE100E10B8C /* OrientationCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1DD76812BADFE100E10B8C /* OrientationCommand.m */; };
 		4C1DD76D12BADFE100E10B8C /* OrientationCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C1DD76912BADFE100E10B8C /* OrientationCommand.h */; };
 		4C1DD76E12BADFE100E10B8C /* AppCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1DD76A12BADFE100E10B8C /* AppCommand.m */; };
@@ -95,6 +93,8 @@
 		D629932811AB2DDD00CE0FB0 /* WaitUntilIdle.h in Headers */ = {isa = PBXBuildFile; fileRef = D62992EB11AB2DDD00CE0FB0 /* WaitUntilIdle.h */; };
 		D629932911AB2DDD00CE0FB0 /* WaitUntilIdle.m in Sources */ = {isa = PBXBuildFile; fileRef = D62992EC11AB2DDD00CE0FB0 /* WaitUntilIdle.m */; };
 		D629938011AB2DF300CE0FB0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D629937F11AB2DF300CE0FB0 /* UIKit.framework */; };
+		D67F2AAD13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = D67F2AAB13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.h */; };
+		D67F2AAE13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D67F2AAC13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.m */; };
 		D6C8BCC5137CD5E2000EF521 /* UIQueryScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = D6C8BCC3137CD5E2000EF521 /* UIQueryScrollView.h */; };
 		D6C8BCC6137CD5E2000EF521 /* UIQueryScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C8BCC4137CD5E2000EF521 /* UIQueryScrollView.m */; };
 		D6D05CB311C883AA0081C5A5 /* DumpCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = D6D05CA111C883AA0081C5A5 /* DumpCommand.h */; };
@@ -131,8 +131,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4C1DD75E12BADFA400E10B8C /* InspectCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InspectCommand.m; path = src/InspectCommand.m; sourceTree = "<group>"; };
-		4C1DD75F12BADFA400E10B8C /* InspectCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InspectCommand.h; path = src/InspectCommand.h; sourceTree = "<group>"; };
 		4C1DD76812BADFE100E10B8C /* OrientationCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrientationCommand.m; path = src/OrientationCommand.m; sourceTree = "<group>"; };
 		4C1DD76912BADFE100E10B8C /* OrientationCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrientationCommand.h; path = src/OrientationCommand.h; sourceTree = "<group>"; };
 		4C1DD76A12BADFE100E10B8C /* AppCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppCommand.m; path = src/AppCommand.m; sourceTree = "<group>"; };
@@ -224,6 +222,8 @@
 		D62AEFAA11B4897B00B824F3 /* env.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = env.rb; sourceTree = "<group>"; };
 		D62AEFAB11B4897B00B824F3 /* frank_helper.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = frank_helper.rb; sourceTree = "<group>"; };
 		D6782D8511BC423900FD0CE1 /* frank_static_resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = frank_static_resources.bundle; sourceTree = "<group>"; };
+		D67F2AAB13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccessibilityCheckCommand.h; path = src/AccessibilityCheckCommand.h; sourceTree = "<group>"; };
+		D67F2AAC13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccessibilityCheckCommand.m; path = src/AccessibilityCheckCommand.m; sourceTree = "<group>"; };
 		D6C8BCC3137CD5E2000EF521 /* UIQueryScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIQueryScrollView.h; sourceTree = "<group>"; };
 		D6C8BCC4137CD5E2000EF521 /* UIQueryScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIQueryScrollView.m; sourceTree = "<group>"; };
 		D6D05CA111C883AA0081C5A5 /* DumpCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DumpCommand.h; path = src/DumpCommand.h; sourceTree = "<group>"; };
@@ -306,12 +306,12 @@
 		08FB77AEFE84172EC02AAC07 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				D67F2AAB13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.h */,
+				D67F2AAC13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.m */,
 				4C1DD76812BADFE100E10B8C /* OrientationCommand.m */,
 				4C1DD76912BADFE100E10B8C /* OrientationCommand.h */,
 				4C1DD76A12BADFE100E10B8C /* AppCommand.m */,
 				4C1DD76B12BADFE100E10B8C /* AppCommand.h */,
-				4C1DD75E12BADFA400E10B8C /* InspectCommand.m */,
-				4C1DD75F12BADFA400E10B8C /* InspectCommand.h */,
 				D6D79B5B11D7FB8B003E0E60 /* Operation.h */,
 				D6D79B5C11D7FB8B003E0E60 /* Operation.m */,
 				D6D05CA111C883AA0081C5A5 /* DumpCommand.h */,
@@ -567,10 +567,10 @@
 				D6D05CC111C883AA0081C5A5 /* StaticResourcesRoute.h in Headers */,
 				D6D05CC311C883AA0081C5A5 /* UISpecCommandReceiver.h in Headers */,
 				D6D79B5D11D7FB8B003E0E60 /* Operation.h in Headers */,
-				4C1DD76112BADFA400E10B8C /* InspectCommand.h in Headers */,
 				4C1DD76D12BADFE100E10B8C /* OrientationCommand.h in Headers */,
 				4C1DD76F12BADFE100E10B8C /* AppCommand.h in Headers */,
 				D6C8BCC5137CD5E2000EF521 /* UIQueryScrollView.h in Headers */,
+				D67F2AAD13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -689,10 +689,10 @@
 				D6D05CC211C883AA0081C5A5 /* StaticResourcesRoute.m in Sources */,
 				D6D05CC411C883AA0081C5A5 /* UISpecCommandReceiver.m in Sources */,
 				D6D79B5E11D7FB8B003E0E60 /* Operation.m in Sources */,
-				4C1DD76012BADFA400E10B8C /* InspectCommand.m in Sources */,
 				4C1DD76C12BADFE100E10B8C /* OrientationCommand.m in Sources */,
 				4C1DD76E12BADFE100E10B8C /* AppCommand.m in Sources */,
 				D6C8BCC6137CD5E2000EF521 /* UIQueryScrollView.m in Sources */,
+				D67F2AAE13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
