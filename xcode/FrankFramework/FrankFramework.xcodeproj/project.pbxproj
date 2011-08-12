@@ -123,7 +123,7 @@
 		D6C4A13A13ECF534003E1BE6 /* DumpCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C4A12213ECF534003E1BE6 /* DumpCommand.m */; };
 		D6C4A13B13ECF534003E1BE6 /* FrankCommandRoute.h in Headers */ = {isa = PBXBuildFile; fileRef = D6C4A12313ECF534003E1BE6 /* FrankCommandRoute.h */; };
 		D6C4A13C13ECF534003E1BE6 /* FrankCommandRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C4A12413ECF534003E1BE6 /* FrankCommandRoute.m */; };
-		D6C4A13D13ECF534003E1BE6 /* FrankServer.h in Headers */ = {isa = PBXBuildFile; fileRef = D6C4A12513ECF534003E1BE6 /* FrankServer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D6C4A13D13ECF534003E1BE6 /* FrankServer.h in Headers */ = {isa = PBXBuildFile; fileRef = D6C4A12513ECF534003E1BE6 /* FrankServer.h */; settings = {ATTRIBUTES = (); }; };
 		D6C4A13E13ECF534003E1BE6 /* FrankServer.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C4A12613ECF534003E1BE6 /* FrankServer.m */; };
 		D6C4A13F13ECF534003E1BE6 /* MapOperationCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = D6C4A12713ECF534003E1BE6 /* MapOperationCommand.h */; };
 		D6C4A14013ECF534003E1BE6 /* MapOperationCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C4A12813ECF534003E1BE6 /* MapOperationCommand.m */; };
@@ -140,6 +140,8 @@
 		D6C4A14B13ECF534003E1BE6 /* UISpecCommandReceiver.h in Headers */ = {isa = PBXBuildFile; fileRef = D6C4A13313ECF534003E1BE6 /* UISpecCommandReceiver.h */; };
 		D6C4A14C13ECF534003E1BE6 /* UISpecCommandReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C4A13413ECF534003E1BE6 /* UISpecCommandReceiver.m */; };
 		D6C4A14E13ECF54A003E1BE6 /* frank_static_resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D6C4A14D13ECF54A003E1BE6 /* frank_static_resources.bundle */; };
+		D6C5468C13F5E2D4002B18CC /* FrankLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = D6C5468A13F5E2D4002B18CC /* FrankLoader.h */; };
+		D6C5468D13F5E2D4002B18CC /* FrankLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C5468B13F5E2D4002B18CC /* FrankLoader.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -265,6 +267,8 @@
 		D6C4A13313ECF534003E1BE6 /* UISpecCommandReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISpecCommandReceiver.h; sourceTree = "<group>"; };
 		D6C4A13413ECF534003E1BE6 /* UISpecCommandReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UISpecCommandReceiver.m; sourceTree = "<group>"; };
 		D6C4A14D13ECF54A003E1BE6 /* frank_static_resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = frank_static_resources.bundle; path = ../../frank_static_resources.bundle; sourceTree = "<group>"; };
+		D6C5468A13F5E2D4002B18CC /* FrankLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrankLoader.h; sourceTree = "<group>"; };
+		D6C5468B13F5E2D4002B18CC /* FrankLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrankLoader.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -493,6 +497,8 @@
 				D6C4A13213ECF534003E1BE6 /* StaticResourcesRoute.m */,
 				D6C4A13313ECF534003E1BE6 /* UISpecCommandReceiver.h */,
 				D6C4A13413ECF534003E1BE6 /* UISpecCommandReceiver.m */,
+				D6C5468A13F5E2D4002B18CC /* FrankLoader.h */,
+				D6C5468B13F5E2D4002B18CC /* FrankLoader.m */,
 			);
 			name = src;
 			path = ../../src;
@@ -566,6 +572,7 @@
 				D6C4A14713ECF534003E1BE6 /* RoutingHTTPConnection.h in Headers */,
 				D6C4A14913ECF534003E1BE6 /* StaticResourcesRoute.h in Headers */,
 				D6C4A14B13ECF534003E1BE6 /* UISpecCommandReceiver.h in Headers */,
+				D6C5468C13F5E2D4002B18CC /* FrankLoader.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -719,6 +726,7 @@
 				D6C4A14813ECF534003E1BE6 /* RoutingHTTPConnection.m in Sources */,
 				D6C4A14A13ECF534003E1BE6 /* StaticResourcesRoute.m in Sources */,
 				D6C4A14C13ECF534003E1BE6 /* UISpecCommandReceiver.m in Sources */,
+				D6C5468D13F5E2D4002B18CC /* FrankLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
