@@ -31,6 +31,9 @@
 #import "SBJsonParser.h"
 #import "SBJsonWriter.h"
 
+@class Franks_SBJSON;
+@compatibility_alias SBJSON Franks_SBJSON;
+
 /**
  @brief Facade for SBJsonWriter/SBJsonParser.
 
@@ -70,6 +73,4 @@
 - (NSString*)stringWithObject:(id)value
                   allowScalar:(BOOL)x
     					error:(NSError**)error;
-
-
 @end

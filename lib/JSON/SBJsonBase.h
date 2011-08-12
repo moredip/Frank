@@ -29,6 +29,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define SBJSONErrorDomain Franks_SBJSONErrorDomain
+
 extern NSString * SBJSONErrorDomain;
 
 
@@ -47,12 +49,15 @@ enum {
     EINPUT
 };
 
+@class Franks_SBJsonBase;
+@compatibility_alias SBJsonBase Franks_SBJsonBase;
+
 /**
  @brief Common base class for parsing & writing.
 
  This class contains the common error-handling code and option between the parser/writer.
  */
-@interface SBJsonBase : NSObject {
+@interface Franks_SBJsonBase : NSObject {
     NSMutableArray *errorTrace;
 
 @protected
