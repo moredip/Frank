@@ -95,6 +95,8 @@
 		D629938011AB2DF300CE0FB0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D629937F11AB2DF300CE0FB0 /* UIKit.framework */; };
 		D67F2AAD13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = D67F2AAB13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.h */; };
 		D67F2AAE13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D67F2AAC13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.m */; };
+		D67F2ABF13F5F55A00A0BFF1 /* FrankLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = D67F2ABD13F5F55A00A0BFF1 /* FrankLoader.h */; };
+		D67F2AC013F5F55A00A0BFF1 /* FrankLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = D67F2ABE13F5F55A00A0BFF1 /* FrankLoader.m */; };
 		D6C8BCC5137CD5E2000EF521 /* UIQueryScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = D6C8BCC3137CD5E2000EF521 /* UIQueryScrollView.h */; };
 		D6C8BCC6137CD5E2000EF521 /* UIQueryScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C8BCC4137CD5E2000EF521 /* UIQueryScrollView.m */; };
 		D6D05CB311C883AA0081C5A5 /* DumpCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = D6D05CA111C883AA0081C5A5 /* DumpCommand.h */; };
@@ -224,6 +226,8 @@
 		D6782D8511BC423900FD0CE1 /* frank_static_resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = frank_static_resources.bundle; sourceTree = "<group>"; };
 		D67F2AAB13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccessibilityCheckCommand.h; path = src/AccessibilityCheckCommand.h; sourceTree = "<group>"; };
 		D67F2AAC13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccessibilityCheckCommand.m; path = src/AccessibilityCheckCommand.m; sourceTree = "<group>"; };
+		D67F2ABD13F5F55A00A0BFF1 /* FrankLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FrankLoader.h; path = src/FrankLoader.h; sourceTree = "<group>"; };
+		D67F2ABE13F5F55A00A0BFF1 /* FrankLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FrankLoader.m; path = src/FrankLoader.m; sourceTree = "<group>"; };
 		D6C8BCC3137CD5E2000EF521 /* UIQueryScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIQueryScrollView.h; sourceTree = "<group>"; };
 		D6C8BCC4137CD5E2000EF521 /* UIQueryScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIQueryScrollView.m; sourceTree = "<group>"; };
 		D6D05CA111C883AA0081C5A5 /* DumpCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DumpCommand.h; path = src/DumpCommand.h; sourceTree = "<group>"; };
@@ -306,6 +310,8 @@
 		08FB77AEFE84172EC02AAC07 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				D67F2ABD13F5F55A00A0BFF1 /* FrankLoader.h */,
+				D67F2ABE13F5F55A00A0BFF1 /* FrankLoader.m */,
 				D67F2AAB13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.h */,
 				D67F2AAC13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.m */,
 				4C1DD76812BADFE100E10B8C /* OrientationCommand.m */,
@@ -571,6 +577,7 @@
 				4C1DD76F12BADFE100E10B8C /* AppCommand.h in Headers */,
 				D6C8BCC5137CD5E2000EF521 /* UIQueryScrollView.h in Headers */,
 				D67F2AAD13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.h in Headers */,
+				D67F2ABF13F5F55A00A0BFF1 /* FrankLoader.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -693,6 +700,7 @@
 				4C1DD76E12BADFE100E10B8C /* AppCommand.m in Sources */,
 				D6C8BCC6137CD5E2000EF521 /* UIQueryScrollView.m in Sources */,
 				D67F2AAE13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.m in Sources */,
+				D67F2AC013F5F55A00A0BFF1 /* FrankLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
