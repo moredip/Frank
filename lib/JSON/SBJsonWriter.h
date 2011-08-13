@@ -68,6 +68,10 @@
 
 @end
 
+@class Franks_SBJsonWriter;
+@compatibility_alias SBJsonWriter Franks_SBJsonWriter;
+
+
 
 /**
  @brief The JSON writer class.
