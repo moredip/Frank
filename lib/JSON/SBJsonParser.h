@@ -49,6 +49,10 @@
 
 @end
 
+@class Franks_SBJsonParser;
+@compatibility_alias SBJsonParser Franks_SBJsonParser;
+
+
 
 /**
  @brief The JSON parser class.
