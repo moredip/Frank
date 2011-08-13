@@ -14,9 +14,9 @@ Given /^I launch the app$/ do
   raise "APP_BUNDLE_PATH was not set. \nPlease set a APP_BUNDLE_PATH ruby constant or environment variable to the path of your compiled Frankified iOS app bundle" if app_path.nil?
 
   if( ENV['USE_SIM_LAUNCHER_SERVER'] )
-    simulator = SimLauncher::Client.for_iphone_app( app_path, "4.2" )
+    simulator = SimLauncher::Client.for_iphone_app( app_path )
   else
-    simulator = SimLauncher::DirectClient.for_iphone_app( app_path, "4.2" )
+    simulator = SimLauncher::DirectClient.for_iphone_app( app_path )
   end
   
   num_timeouts = 0
