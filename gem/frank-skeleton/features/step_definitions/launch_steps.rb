@@ -1,5 +1,28 @@
 Given /^I launch the app$/ do
 
+
+  app_path = ENV['APP_BUNDLE_PATH'] || (defined?(APP_BUNDLE_PATH) && APP_BUNDLE_PATH)
+
+  ####################
+  # once you're setting APP_BUNDLE_PATH correctly you can get rid 
+  # of this detection/reporting code if you want
+  #
+  if app_path.nil?
+    require 'frank-cucumber/app_bundle_locator'
+    message = "APP_BUNDLE_PATH is not set. \n\nPlease set APP_BUNDLE_PATH (either an environment variable, or the ruby constant in support/env.rb) to the path of your Frankified target's iOS app bundle."
+    possible_app_bundles = Frank::Cucumber::AppBundleLocator.new.guess_possible_app_bundles_for_dir( Dir.pwd )
+    if possible_app_bundles && !possible_app_bundles.empty?
+      message << "\n\nBased on your current directory, you probably want to use one of the following paths for your APP_BUNDLE_PATH:\n"
+      message << possible_app_bundles.join("\n")
+    end
+
+    raise "\n\n"+("="*80)+"\n"+message+"\n"+("="*80)+"\n\n"
+  end
+  #
+  ####################
+
+
+
   # kill the app if it's already running, just in case this helps 
   # reduce simulator flakiness when relaunching the app. Use a timeout of 5 seconds to 
   # prevent us hanging around for ages waiting for the ping to fail if the app isn't running
@@ -8,10 +31,8 @@ Given /^I launch the app$/ do
   rescue Timeout::Error 
   end
 
-  require 'sim_launcher'
 
-  app_path = ENV['APP_BUNDLE_PATH'] || APP_BUNDLE_PATH
-  raise "APP_BUNDLE_PATH was not set. \nPlease set a APP_BUNDLE_PATH ruby constant or environment variable to the path of your compiled Frankified iOS app bundle" if app_path.nil?
+  require 'sim_launcher'
 
   if( ENV['USE_SIM_LAUNCHER_SERVER'] )
     simulator = SimLauncher::Client.for_iphone_app( app_path )
