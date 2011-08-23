@@ -71,7 +71,7 @@
 }
 
 - (void) testMultiArgPredicateSelectorParses{
-    SYParser *parser = [[SYParser alloc] initWithSelectorString:@"argOne:123argTwo:456argThree:789"];
+    SYParser *parser = [[SYParser alloc] initWithSelectorString:@"argOne:123argTwo:'foo'argThree:789"];
     
     id<SYFilter> filter = [parser nextFilter];
     STAssertTrue([filter isKindOfClass:[SYPredicateFilter class]], nil);
@@ -83,8 +83,8 @@
     NSNumber *firstArg = [[predicateFilter args] objectAtIndex:0];
     STAssertTrue( [firstArg isEqualToNumber:[NSNumber numberWithInt:123]], nil);
 
-    NSNumber *secondArg = [[predicateFilter args] objectAtIndex:1];
-    STAssertTrue( [secondArg isEqualToNumber:[NSNumber numberWithInt:456]], nil);
+    NSString *secondArg = [[predicateFilter args] objectAtIndex:1];
+    STAssertTrue( [secondArg isEqualToString:@"foo"], nil);
     
     NSNumber *thirdArg = [[predicateFilter args] objectAtIndex:2];
     STAssertTrue( [thirdArg isEqualToNumber:[NSNumber numberWithInt:789]], nil);
