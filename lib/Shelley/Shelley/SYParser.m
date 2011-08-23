@@ -181,17 +181,19 @@
 }
 
 - (id<SYFilter>) interpretSectionIntoFilter:(SYSectionParser *)parsedSection{
-    if( [parsedSection hasNoArgs] ){
-        NSString *singleParam = [[parsedSection params] objectAtIndex:0];
-        
-        if( [singleParam isEqualToString:@"parent"] )
-            return [[[SYParents alloc] init] autorelease];
-        else if( [singleParam isEqualToString:@"view"] )
-            return [[[SYClassFilter alloc] initWithClass:[UIView class]] autorelease];
-        else if( [singleParam isEqualToString:@"button"] )
-            return [[[SYClassFilter alloc] initWithClass:[UIButton class]] autorelease];
-    }
+    NSString *firstParam = [[parsedSection params] objectAtIndex:0];
     
+    if( [parsedSection hasNoArgs] ){
+        if( [firstParam isEqualToString:@"parent"] )
+            return [[[SYParents alloc] init] autorelease];
+        else if( [firstParam isEqualToString:@"view"] )
+            return [[[SYClassFilter alloc] initWithClass:[UIView class]] autorelease];
+        else if( [firstParam isEqualToString:@"button"] )
+            return [[[SYClassFilter alloc] initWithClass:[UIButton class]] autorelease];
+    }else if( [[parsedSection args] count] == 1 && [firstParam isEqualToString:@"view"] ){
+        NSString *firstArg = [[parsedSection args] objectAtIndex:0];
+        return [[[SYClassFilter alloc] initWithClass:(NSClassFromString(firstArg))] autorelease];
+    }
     
     NSString *selectorDesc;
     if( [parsedSection hasNoArgs] ){
