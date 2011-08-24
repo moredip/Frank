@@ -12,6 +12,10 @@
 @implementation UIView (ShelleyExtensions)
 
 - (BOOL) marked:(NSString *)targetLabel{
+    return ([[self accessibilityLabel] rangeOfString:targetLabel]).location != NSNotFound;
+}
+
+- (BOOL) markedExactly:(NSString *)targetLabel{
     return [[self accessibilityLabel] isEqualToString:targetLabel];
 }
 

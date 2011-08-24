@@ -91,7 +91,7 @@
     [self assertArray:selectedViews containsObject:rootView];
 }
 
-- (void) testMarkedSelectsOnlyViewsWhichAreHidden {
+- (void) testSelectsOnlyViewsWhichAreHidden {
     [viewA setHidden:YES];
     [viewABA setHidden:YES];
     [viewBA setHidden:YES];
@@ -109,7 +109,7 @@
 - (void) testMarkedSelectsOnlyViewsWithMatchingAccessibilityLabel {
     UIView *rootView = [[[UIView alloc] init]autorelease];
     UIViewWithAccessibilityLabel *subviewA = [[[UIViewWithAccessibilityLabel alloc] initWithAccessibilityLabel:@"brap"] autorelease];
-    UIViewWithAccessibilityLabel *subviewB = [[[UIViewWithAccessibilityLabel alloc] initWithAccessibilityLabel:@"not brap"] autorelease];
+    UIViewWithAccessibilityLabel *subviewB = [[[UIViewWithAccessibilityLabel alloc] initWithAccessibilityLabel:@"flap"] autorelease];
     UIViewWithAccessibilityLabel *subviewC = [[[UIViewWithAccessibilityLabel alloc] initWithAccessibilityLabel:@"brap"] autorelease];
     
     [rootView addSubview:subviewA];
@@ -122,6 +122,33 @@
     STAssertEquals((NSUInteger)2, selectedViews.count, nil);
     [self assertArray:selectedViews containsObject:subviewA];
     [self assertArray:selectedViews containsObject:subviewC];
+}
+
+- (void) testMarkedSelectedSubstringMatchesWhileMarkedExactlyOnlySelectsExactMatches {
+    UIView *rootView = [[[UIView alloc] init]autorelease];
+    UIViewWithAccessibilityLabel *subviewA = [[[UIViewWithAccessibilityLabel alloc] initWithAccessibilityLabel:@"Frankly"] autorelease];
+    UIViewWithAccessibilityLabel *subviewB = [[[UIViewWithAccessibilityLabel alloc] initWithAccessibilityLabel:@"rank"] autorelease];
+    UIViewWithAccessibilityLabel *subviewC = [[[UIViewWithAccessibilityLabel alloc] initWithAccessibilityLabel:@"Fr-anky"] autorelease];
+    UIViewWithAccessibilityLabel *subviewD = [[[UIViewWithAccessibilityLabel alloc] initWithAccessibilityLabel:@" rank"] autorelease];
+
+    [rootView addSubview:subviewA];
+    [rootView addSubview:subviewB];
+    [rootView addSubview:subviewC];
+    [rootView addSubview:subviewD];
+    
+    Shelley *shelley = [Shelley withSelectorString:@"view marked:'rank'"];
+    NSArray *selectedViews = [shelley selectFrom:rootView];
+    
+    STAssertEquals((NSUInteger)3, selectedViews.count, nil);
+    [self assertArray:selectedViews containsObject:subviewA];
+    [self assertArray:selectedViews containsObject:subviewB];
+    [self assertArray:selectedViews containsObject:subviewD];
+
+    shelley = [Shelley withSelectorString:@"view markedExactly:'rank'"];
+    selectedViews = [shelley selectFrom:rootView];
+    
+    STAssertEquals((NSUInteger)1, selectedViews.count, nil);
+    [self assertArray:selectedViews containsObject:subviewB];
 }
 
 - (void) testHandlesDoubleQuotedstringsWithSingleQuotesAndSpacesInside {
