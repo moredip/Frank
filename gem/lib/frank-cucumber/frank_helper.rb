@@ -90,7 +90,8 @@ module FrankHelper
 
   def frankly_current_orientation
     res = get_to_uispec_server( 'orientation' )
-    JSON.parse( res )['orientation']
+    orientation = JSON.parse( res )['orientation']
+    puts "orientation reported as '#{orientation}'" if $DEBUG
   end
 
 

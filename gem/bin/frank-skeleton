@@ -2,18 +2,24 @@
 
 require 'fileutils'
 
-features_dir = File.join( FileUtils.pwd, "features" )
+frank_dir = File.join( FileUtils.pwd, "Frank" )
 
-if File.exists?( features_dir ) 
-  puts "A features directory already exists. I won't overwrite it. Giving up."
+if File.exists?( frank_dir ) 
+  puts "A Frank directory already exists. I won't overwrite it. Giving up."
   exit 1
 else
-  puts "I'm about to create a subdirectory called features which will contain all your Cucumber tests. Please hit return to confirm that's what you want."
+  puts "I'm about to create a subdirectory called Frank which will contain the Frank server files and also your Cucumber tests. Please hit return to confirm that's what you want."
   exit 2 unless STDIN.gets.chomp == ''
 end
 
-source_dir = File.join( File.dirname(__FILE__), '..', 'features-skeleton' )
+FileUtils.mkdir_p( frank_dir )
 
-FileUtils.cp_r( source_dir, features_dir )
+source_dir = File.join( File.dirname(__FILE__), '..', 'frank-skeleton' )
 
-puts "features subdirectory created. Try executing 'cucumber' from the current directory to see how you new cucumber setup runs." 
+FileUtils.cp_r( Dir.glob( source_dir+"/*" ), frank_dir )
+
+puts <<-EOS
+Frank subdirectory created.
+Your next step is to create a Frankified target for your app, and add the libFrank.a and frank_static_resources.bundle files inside the Frank directory to that target.
+After that, you can build the target and try executing 'cucumber' from the Frank directory to see how your initial cucumber test runs.
+EOS
