@@ -10,6 +10,7 @@
 #import "SYParents.h"
 #import "SYPredicateFilter.h"
 #import "SYClassFilter.h"
+#import "SYFirstElementFilter.h"
 
 @interface SYSectionParser : NSObject {
     NSScanner *_scanner;
@@ -187,6 +188,8 @@
     if( [parsedSection hasNoArgs] ){
         if( [firstParam isEqualToString:@"parent"] )
             return [[[SYParents alloc] init] autorelease];
+        if( [firstParam isEqualToString:@"first"] )
+            return [[[SYFirstElementFilter alloc] init] autorelease];
         else if( [firstParam isEqualToString:@"view"] )
             return [[[SYClassFilter alloc] initWithClass:[UIView class]] autorelease];
         else if( [firstParam isEqualToString:@"button"] )

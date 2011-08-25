@@ -6,10 +6,9 @@
 //  Copyright 2011 ThoughtWorks. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "SYFilter.h"
+#import "SYArrayFilterTemplate.h"
 
-@interface SYPredicateFilter : NSObject<SYFilter> {
+@interface SYPredicateFilter : SYArrayFilterTemplate {
     SEL _selector;
     NSArray *_args;
     

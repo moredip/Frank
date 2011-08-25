@@ -42,12 +42,8 @@
 }
 
 - (NSArray *) applyFilter:(id<SYFilter>)filter toViews:(NSArray *)views{
-    NSMutableArray *filteredViews = [NSMutableArray array];
-    for (UIView *view in views) {
-        [filteredViews addObjectsFromArray:[filter applyToView:view]];
-    }
+    NSMutableArray *filteredViews = [NSMutableArray arrayWithArray:[filter applyToViews:views]];
     [self removeDuplicatesFromArray:filteredViews];
-    
     return filteredViews;
 }
 
@@ -57,7 +53,7 @@
     if( !filter )
         return [NSArray array];
     
-    NSArray *views = [filter applyToView:rootView];
+    NSArray *views = [filter applyToViews:[NSArray arrayWithObject:rootView]];
     
     while(( filter = [_parser nextFilter] )){
         views = [self applyFilter:filter toViews:views];

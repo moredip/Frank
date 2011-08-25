@@ -91,6 +91,22 @@
     [self assertArray:selectedViews containsObject:rootView];
 }
 
+- (void) testFirstSelectsFirstViewInMatchSet {
+    UIView *rootView = [[[UIView alloc] init] autorelease];
+    UIButton *firstButton = [[[UIButton alloc] init] autorelease];
+    [rootView addSubview:[[[UIView alloc] init] autorelease]];
+    [rootView addSubview:firstButton];
+    [rootView addSubview:[[[UIButton alloc] init] autorelease]];
+    [rootView addSubview:[[[UIView alloc] init] autorelease]];
+    
+    Shelley *shelley = [Shelley withSelectorString:@"button first"];
+    NSArray *selectedViews = [shelley selectFrom:rootView];
+    
+    STAssertEquals((NSUInteger)1, selectedViews.count, nil);
+    [self assertArray:selectedViews containsObject:firstButton];
+
+}
+
 - (void) testSelectsOnlyViewsWhichAreHidden {
     [viewA setHidden:YES];
     [viewABA setHidden:YES];
