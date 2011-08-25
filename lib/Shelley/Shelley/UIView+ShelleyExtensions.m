@@ -6,8 +6,8 @@
 //  Copyright 2011 ThoughtWorks. All rights reserved.
 //
 
-#import "UIView+ShelleyExtensions.h"
-
+@interface FORCELOAD_UIView_ShelleyExtensions @end 
+@implementation FORCELOAD_UIView_ShelleyExtensions @end
 
 @implementation UIView (ShelleyExtensions)
 
