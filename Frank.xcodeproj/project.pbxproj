@@ -93,6 +93,18 @@
 		D629932811AB2DDD00CE0FB0 /* WaitUntilIdle.h in Headers */ = {isa = PBXBuildFile; fileRef = D62992EB11AB2DDD00CE0FB0 /* WaitUntilIdle.h */; };
 		D629932911AB2DDD00CE0FB0 /* WaitUntilIdle.m in Sources */ = {isa = PBXBuildFile; fileRef = D62992EC11AB2DDD00CE0FB0 /* WaitUntilIdle.m */; };
 		D629938011AB2DF300CE0FB0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D629937F11AB2DF300CE0FB0 /* UIKit.framework */; };
+		D659F21814056F2A0046CF83 /* Shelley.h in Headers */ = {isa = PBXBuildFile; fileRef = D659F20A14056F2A0046CF83 /* Shelley.h */; };
+		D659F21914056F2A0046CF83 /* Shelley.m in Sources */ = {isa = PBXBuildFile; fileRef = D659F20B14056F2A0046CF83 /* Shelley.m */; };
+		D659F21A14056F2A0046CF83 /* SYClassFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = D659F20C14056F2A0046CF83 /* SYClassFilter.h */; };
+		D659F21B14056F2A0046CF83 /* SYClassFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = D659F20D14056F2A0046CF83 /* SYClassFilter.m */; };
+		D659F21C14056F2A0046CF83 /* SYFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = D659F20E14056F2A0046CF83 /* SYFilter.h */; };
+		D659F21D14056F2A0046CF83 /* SYParents.h in Headers */ = {isa = PBXBuildFile; fileRef = D659F20F14056F2A0046CF83 /* SYParents.h */; };
+		D659F21E14056F2A0046CF83 /* SYParents.m in Sources */ = {isa = PBXBuildFile; fileRef = D659F21014056F2A0046CF83 /* SYParents.m */; };
+		D659F21F14056F2A0046CF83 /* SYParser.h in Headers */ = {isa = PBXBuildFile; fileRef = D659F21114056F2A0046CF83 /* SYParser.h */; };
+		D659F22014056F2A0046CF83 /* SYParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D659F21214056F2A0046CF83 /* SYParser.m */; };
+		D659F22114056F2A0046CF83 /* SYPredicateFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = D659F21314056F2A0046CF83 /* SYPredicateFilter.h */; };
+		D659F22214056F2A0046CF83 /* SYPredicateFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = D659F21414056F2A0046CF83 /* SYPredicateFilter.m */; };
+		D659F22414056F2A0046CF83 /* UIView+ShelleyExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = D659F21614056F2A0046CF83 /* UIView+ShelleyExtensions.m */; };
 		D67F2AAD13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = D67F2AAB13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.h */; };
 		D67F2AAE13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D67F2AAC13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.m */; };
 		D67F2ABF13F5F55A00A0BFF1 /* FrankLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = D67F2ABD13F5F55A00A0BFF1 /* FrankLoader.h */; };
@@ -101,6 +113,8 @@
 		D67F2B0713F5F6CD00A0BFF1 /* VisibleTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = D67F2B0513F5F6CD00A0BFF1 /* VisibleTouch.m */; };
 		D67F2B3413F5F82700A0BFF1 /* LoadableCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = D67F2B3313F5F82700A0BFF1 /* LoadableCategory.h */; };
 		D67F2B3A13F5F91700A0BFF1 /* UIView+MapKitWorkaround.m in Sources */ = {isa = PBXBuildFile; fileRef = D67F2B3813F5F91700A0BFF1 /* UIView+MapKitWorkaround.m */; };
+		D68B8EA11405D51000030C51 /* ShelleyMapOperationCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = D68B8E9F1405D51000030C51 /* ShelleyMapOperationCommand.h */; };
+		D68B8EA21405D51000030C51 /* ShelleyMapOperationCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D68B8EA01405D51000030C51 /* ShelleyMapOperationCommand.m */; };
 		D6C8BCC5137CD5E2000EF521 /* UIQueryScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = D6C8BCC3137CD5E2000EF521 /* UIQueryScrollView.h */; };
 		D6C8BCC6137CD5E2000EF521 /* UIQueryScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C8BCC4137CD5E2000EF521 /* UIQueryScrollView.m */; };
 		D6D05CB311C883AA0081C5A5 /* DumpCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = D6D05CA111C883AA0081C5A5 /* DumpCommand.h */; };
@@ -227,6 +241,18 @@
 		D629937F11AB2DF300CE0FB0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D62AEFAA11B4897B00B824F3 /* env.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = env.rb; sourceTree = "<group>"; };
 		D62AEFAB11B4897B00B824F3 /* frank_helper.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = frank_helper.rb; sourceTree = "<group>"; };
+		D659F20A14056F2A0046CF83 /* Shelley.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shelley.h; sourceTree = "<group>"; };
+		D659F20B14056F2A0046CF83 /* Shelley.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shelley.m; sourceTree = "<group>"; };
+		D659F20C14056F2A0046CF83 /* SYClassFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYClassFilter.h; sourceTree = "<group>"; };
+		D659F20D14056F2A0046CF83 /* SYClassFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYClassFilter.m; sourceTree = "<group>"; };
+		D659F20E14056F2A0046CF83 /* SYFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYFilter.h; sourceTree = "<group>"; };
+		D659F20F14056F2A0046CF83 /* SYParents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYParents.h; sourceTree = "<group>"; };
+		D659F21014056F2A0046CF83 /* SYParents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYParents.m; sourceTree = "<group>"; };
+		D659F21114056F2A0046CF83 /* SYParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYParser.h; sourceTree = "<group>"; };
+		D659F21214056F2A0046CF83 /* SYParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYParser.m; sourceTree = "<group>"; };
+		D659F21314056F2A0046CF83 /* SYPredicateFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYPredicateFilter.h; sourceTree = "<group>"; };
+		D659F21414056F2A0046CF83 /* SYPredicateFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYPredicateFilter.m; sourceTree = "<group>"; };
+		D659F21614056F2A0046CF83 /* UIView+ShelleyExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ShelleyExtensions.m"; sourceTree = "<group>"; };
 		D6782D8511BC423900FD0CE1 /* frank_static_resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = frank_static_resources.bundle; sourceTree = "<group>"; };
 		D67F2AAB13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccessibilityCheckCommand.h; path = src/AccessibilityCheckCommand.h; sourceTree = "<group>"; };
 		D67F2AAC13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccessibilityCheckCommand.m; path = src/AccessibilityCheckCommand.m; sourceTree = "<group>"; };
@@ -236,6 +262,8 @@
 		D67F2B0513F5F6CD00A0BFF1 /* VisibleTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisibleTouch.m; sourceTree = "<group>"; };
 		D67F2B3313F5F82700A0BFF1 /* LoadableCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadableCategory.h; sourceTree = "<group>"; };
 		D67F2B3813F5F91700A0BFF1 /* UIView+MapKitWorkaround.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MapKitWorkaround.m"; sourceTree = "<group>"; };
+		D68B8E9F1405D51000030C51 /* ShelleyMapOperationCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShelleyMapOperationCommand.h; sourceTree = "<group>"; };
+		D68B8EA01405D51000030C51 /* ShelleyMapOperationCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShelleyMapOperationCommand.m; sourceTree = "<group>"; };
 		D6C8BCC3137CD5E2000EF521 /* UIQueryScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIQueryScrollView.h; sourceTree = "<group>"; };
 		D6C8BCC4137CD5E2000EF521 /* UIQueryScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIQueryScrollView.m; sourceTree = "<group>"; };
 		D6D05CA111C883AA0081C5A5 /* DumpCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DumpCommand.h; path = src/DumpCommand.h; sourceTree = "<group>"; };
@@ -345,6 +373,8 @@
 				D6D05CB111C883AA0081C5A5 /* UISpecCommandReceiver.h */,
 				D6D05CB211C883AA0081C5A5 /* UISpecCommandReceiver.m */,
 				D67F2B3813F5F91700A0BFF1 /* UIView+MapKitWorkaround.m */,
+				D68B8E9F1405D51000030C51 /* ShelleyMapOperationCommand.h */,
+				D68B8EA01405D51000030C51 /* ShelleyMapOperationCommand.m */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -360,6 +390,7 @@
 		D629926711AB2CF700CE0FB0 /* 3rd Party */ = {
 			isa = PBXGroup;
 			children = (
+				D659F20814056F2A0046CF83 /* Shelley */,
 				D6E7B46C11B36D42005CAA34 /* JSON */,
 				D62992AB11AB2DDD00CE0FB0 /* uispec */,
 				D629926811AB2D0500CE0FB0 /* cocoahttpserver */,
@@ -500,6 +531,26 @@
 			path = cucumber;
 			sourceTree = "<group>";
 		};
+		D659F20814056F2A0046CF83 /* Shelley */ = {
+			isa = PBXGroup;
+			children = (
+				D659F20A14056F2A0046CF83 /* Shelley.h */,
+				D659F20B14056F2A0046CF83 /* Shelley.m */,
+				D659F20C14056F2A0046CF83 /* SYClassFilter.h */,
+				D659F20D14056F2A0046CF83 /* SYClassFilter.m */,
+				D659F20E14056F2A0046CF83 /* SYFilter.h */,
+				D659F20F14056F2A0046CF83 /* SYParents.h */,
+				D659F21014056F2A0046CF83 /* SYParents.m */,
+				D659F21114056F2A0046CF83 /* SYParser.h */,
+				D659F21214056F2A0046CF83 /* SYParser.m */,
+				D659F21314056F2A0046CF83 /* SYPredicateFilter.h */,
+				D659F21414056F2A0046CF83 /* SYPredicateFilter.m */,
+				D659F21614056F2A0046CF83 /* UIView+ShelleyExtensions.m */,
+			);
+			name = Shelley;
+			path = lib/Shelley/Shelley;
+			sourceTree = "<group>";
+		};
 		D6E7B46C11B36D42005CAA34 /* JSON */ = {
 			isa = PBXGroup;
 			children = (
@@ -592,6 +643,13 @@
 				D67F2ABF13F5F55A00A0BFF1 /* FrankLoader.h in Headers */,
 				D67F2B0613F5F6CD00A0BFF1 /* VisibleTouch.h in Headers */,
 				D67F2B3413F5F82700A0BFF1 /* LoadableCategory.h in Headers */,
+				D659F21814056F2A0046CF83 /* Shelley.h in Headers */,
+				D659F21A14056F2A0046CF83 /* SYClassFilter.h in Headers */,
+				D659F21C14056F2A0046CF83 /* SYFilter.h in Headers */,
+				D659F21D14056F2A0046CF83 /* SYParents.h in Headers */,
+				D659F21F14056F2A0046CF83 /* SYParser.h in Headers */,
+				D659F22114056F2A0046CF83 /* SYPredicateFilter.h in Headers */,
+				D68B8EA11405D51000030C51 /* ShelleyMapOperationCommand.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -717,6 +775,13 @@
 				D67F2AC013F5F55A00A0BFF1 /* FrankLoader.m in Sources */,
 				D67F2B0713F5F6CD00A0BFF1 /* VisibleTouch.m in Sources */,
 				D67F2B3A13F5F91700A0BFF1 /* UIView+MapKitWorkaround.m in Sources */,
+				D659F21914056F2A0046CF83 /* Shelley.m in Sources */,
+				D659F21B14056F2A0046CF83 /* SYClassFilter.m in Sources */,
+				D659F21E14056F2A0046CF83 /* SYParents.m in Sources */,
+				D659F22014056F2A0046CF83 /* SYParser.m in Sources */,
+				D659F22214056F2A0046CF83 /* SYPredicateFilter.m in Sources */,
+				D659F22414056F2A0046CF83 /* UIView+ShelleyExtensions.m in Sources */,
+				D68B8EA21405D51000030C51 /* ShelleyMapOperationCommand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
