@@ -16,7 +16,7 @@
     return [[[self alloc] initWithSelectorString:selectorString] autorelease];
 }
 
-- (id)initWithSelectorString:selectorString {
+- (id)initWithSelectorString:(NSString *)selectorString {
     self = [super init];
     if (self) {
         _parser = [[SYParser alloc] initWithSelectorString:selectorString];
