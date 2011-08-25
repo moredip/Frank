@@ -133,11 +133,17 @@
 }
 
 - (void) testExplicitClassSelectorParses {
-    SYParser *parser = [[SYParser alloc] initWithSelectorString:@"view:'UITextView'"];
+    SYParser *parser = [[SYParser alloc] initWithSelectorString:@"view:'UITextView' somePredicate:'method'"];
     
     id<SYFilter> filter = [parser nextFilter];
     STAssertTrue([filter isKindOfClass:[SYClassFilter class]], nil);
     STAssertEquals([(SYClassFilter *)filter target], [UITextView class], nil);
+    
+    filter = [parser nextFilter];
+    STAssertTrue([filter isKindOfClass:[SYPredicateFilter class]], nil);
+    
+    filter = [parser nextFilter];
+    STAssertNil(filter, nil);
 }
 
 

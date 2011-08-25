@@ -106,22 +106,25 @@
 
 }
 
+
 - (void) testMarkedSelectsOnlyViewsWithMatchingAccessibilityLabel {
     UIView *rootView = [[[UIView alloc] init]autorelease];
     UIViewWithAccessibilityLabel *subviewA = [[[UIViewWithAccessibilityLabel alloc] initWithAccessibilityLabel:@"brap"] autorelease];
     UIViewWithAccessibilityLabel *subviewB = [[[UIViewWithAccessibilityLabel alloc] initWithAccessibilityLabel:@"flap"] autorelease];
-    UIViewWithAccessibilityLabel *subviewC = [[[UIViewWithAccessibilityLabel alloc] initWithAccessibilityLabel:@"brap"] autorelease];
+    UIViewWithAccessibilityLabel *subviewC = [[[UIViewWithAccessibilityLabel alloc] initWithAccessibilityLabel:nil] autorelease];
+    UIViewWithAccessibilityLabel *subviewD = [[[UIViewWithAccessibilityLabel alloc] initWithAccessibilityLabel:@"brap"] autorelease];
     
     [rootView addSubview:subviewA];
     [rootView addSubview:subviewB];
     [rootView addSubview:subviewC];
+    [rootView addSubview:subviewD];
     
     Shelley *shelley = [Shelley withSelectorString:@"view marked:'brap'"];
     NSArray *selectedViews = [shelley selectFrom:rootView];
     
     STAssertEquals((NSUInteger)2, selectedViews.count, nil);
     [self assertArray:selectedViews containsObject:subviewA];
-    [self assertArray:selectedViews containsObject:subviewC];
+    [self assertArray:selectedViews containsObject:subviewD];
 }
 
 - (void) testMarkedSelectedSubstringMatchesWhileMarkedExactlyOnlySelectsExactMatches {
@@ -129,12 +132,14 @@
     UIViewWithAccessibilityLabel *subviewA = [[[UIViewWithAccessibilityLabel alloc] initWithAccessibilityLabel:@"Frankly"] autorelease];
     UIViewWithAccessibilityLabel *subviewB = [[[UIViewWithAccessibilityLabel alloc] initWithAccessibilityLabel:@"rank"] autorelease];
     UIViewWithAccessibilityLabel *subviewC = [[[UIViewWithAccessibilityLabel alloc] initWithAccessibilityLabel:@"Fr-anky"] autorelease];
-    UIViewWithAccessibilityLabel *subviewD = [[[UIViewWithAccessibilityLabel alloc] initWithAccessibilityLabel:@" rank"] autorelease];
+    UIViewWithAccessibilityLabel *subviewD = [[[UIViewWithAccessibilityLabel alloc] initWithAccessibilityLabel:nil] autorelease];
+    UIViewWithAccessibilityLabel *subviewE = [[[UIViewWithAccessibilityLabel alloc] initWithAccessibilityLabel:@" rank"] autorelease];
 
     [rootView addSubview:subviewA];
     [rootView addSubview:subviewB];
     [rootView addSubview:subviewC];
     [rootView addSubview:subviewD];
+    [rootView addSubview:subviewE];
     
     Shelley *shelley = [Shelley withSelectorString:@"view marked:'rank'"];
     NSArray *selectedViews = [shelley selectFrom:rootView];
@@ -142,7 +147,7 @@
     STAssertEquals((NSUInteger)3, selectedViews.count, nil);
     [self assertArray:selectedViews containsObject:subviewA];
     [self assertArray:selectedViews containsObject:subviewB];
-    [self assertArray:selectedViews containsObject:subviewD];
+    [self assertArray:selectedViews containsObject:subviewE];
 
     shelley = [Shelley withSelectorString:@"view markedExactly:'rank'"];
     selectedViews = [shelley selectFrom:rootView];
