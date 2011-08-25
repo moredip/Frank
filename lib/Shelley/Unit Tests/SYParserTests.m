@@ -11,6 +11,7 @@
 #import "SYParents.h"
 #import "SYPredicateFilter.h"
 #import "SYClassFilter.h"
+#import "SYFirstElementFilter.h"
 
 @implementation SYParserTests
 
@@ -131,6 +132,14 @@
     STAssertTrue([filter isKindOfClass:[SYClassFilter class]], nil);
     STAssertEquals([(SYClassFilter *)filter target], [UIButton class], nil);
 }
+
+- (void) testFirstSelectorParses {
+    SYParser *parser = [[SYParser alloc] initWithSelectorString:@"first"];
+    
+    id<SYFilter> filter = [parser nextFilter];
+    STAssertTrue([filter isKindOfClass:[SYFirstElementFilter class]], nil);
+}
+
 
 - (void) testExplicitClassSelectorParses {
     SYParser *parser = [[SYParser alloc] initWithSelectorString:@"view:'UITextView' somePredicate:'method'"];

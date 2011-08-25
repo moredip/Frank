@@ -6,10 +6,10 @@
 //  Copyright 2011 ThoughtWorks. All rights reserved.
 //
 
-#import "SYFilter.h"
+#import "SYArrayFilterTemplate.h"
 
 
-@interface SYClassFilter : NSObject<SYFilter> {
+@interface SYClassFilter : SYArrayFilterTemplate {
     Class _targetClass;
 }
 @property (readonly) Class target;
