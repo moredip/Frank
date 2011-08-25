@@ -17,7 +17,7 @@
 }
 + (Shelley *) withSelectorString:(NSString *)selectorString;
 
-- (id)initWithSelectorString:selectorString;
+- (id)initWithSelectorString:(NSString *)selectorString;
 
 - (NSArray *) selectFrom:(UIView *)rootView;
 
