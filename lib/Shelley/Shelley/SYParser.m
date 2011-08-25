@@ -159,6 +159,7 @@
     self = [super init];
     if (self) {
         _scanner = [[NSScanner alloc] initWithString:selectorString];
+        [_scanner setCharactersToBeSkipped:nil];
         
         _paramChars = [[NSCharacterSet letterCharacterSet] retain];
         _numberChars = [[NSCharacterSet characterSetWithCharactersInString:@"0123456789."]retain];
