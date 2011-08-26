@@ -6,8 +6,9 @@
 //  Copyright 2011 ThoughtWorks. All rights reserved.
 //
 
-@interface FORCELOAD_UIView_ShelleyExtensions @end 
-@implementation FORCELOAD_UIView_ShelleyExtensions @end
+#import "LoadableCategory.h"
+
+MAKE_CATEGORIES_LOADABLE(UIView_ShelleyExtensions)
 
 @implementation UIView (ShelleyExtensions)
 
