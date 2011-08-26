@@ -15,7 +15,8 @@
 }
 
 -(id)initWithValue:(const void *)aValue objCType:(const char *)aTypeDescription file:(const char *)aFile line:(int)aLine isFailureTest:(BOOL)failureTest{
-	if (self = [super init]) {
+    self = [super init];
+	if (self) {
 		//NSLog(@" UIExpectation initWithValue %s, %s, %d", aTypeDescription, aFile, aLine);
 		typeDescription = aTypeDescription;
 		value = [[NSNumberCreator numberWithValue:aValue objCType:aTypeDescription] retain];

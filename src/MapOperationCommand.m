@@ -11,6 +11,7 @@
 #import "UIQuery.h"
 #import "JSON.h"
 #import "Operation.h"
+#import "DumpCommand.h"
 
 @implementation MapOperationCommand
 
@@ -37,22 +38,11 @@
 	
 	// wrapping the view in a uiquery like this lets us perform operations like touch, flash, inspect, etc
 	UIQuery *wrappedView = [UIQuery withViews:[NSMutableArray arrayWithObject:view]
-									 className:@"UIView"];
+									className:@"UIView"];
 	if( [operation appliesToObject:wrappedView] )
 		return [operation applyToObject:wrappedView];
 	
-	return nil;
-}
-
-- (NSObject *) makeJsonFriendly: (id) obj {
-	if( nil == obj )
-		return [NSNull null];
-	
-	if( [obj isKindOfClass:[NSString class]] || 
-		[obj isKindOfClass:[NSNumber class]] )
-		return obj;
-	
-	return @"<COMPLEX TYPE>";
+	return nil; 
 }
 
 - (NSString *)handleCommandWithRequestBody:(NSString *)requestBody {
@@ -76,7 +66,7 @@
 	for (UIView *view in [query views]) {
 		@try {
 			id result = [self performOperation:operation onView:view];
-			[results addObject:[self makeJsonFriendly:result]];
+			[results addObject:[DumpCommand jsonify:result]];
 		}
 		@catch (NSException * e) {
 			NSLog( @"Exception while performing operation %@\n%@", operation, e );

@@ -4,7 +4,7 @@
 @implementation UIQuerySearchBar
 
 -(UIQuery *)searchWithText:(NSString *)searchText {
-	UISearchBar *theSearchBar = self;
+	UISearchBar *theSearchBar = (UISearchBar*)self;
 	[theSearchBar becomeFirstResponder];
 	[theSearchBar setText:searchText];
 	[theSearchBar.delegate searchBarSearchButtonClicked:theSearchBar];

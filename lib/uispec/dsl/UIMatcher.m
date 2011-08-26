@@ -11,7 +11,9 @@
 }
 
 -(id)initWithValue:(const void *)aValue objCType:(const char *)aTypeDescription matchSelector:(SEL)aMatchSelector {
-	if (self = [super init]) {
+    
+    self = [super init];
+	if (self) {
 		expectedTypeDescription = aTypeDescription;
 		expectedValue = [NSNumberCreator numberWithValue:aValue objCType:aTypeDescription];
 		matchSelector = aMatchSelector;

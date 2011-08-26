@@ -14,7 +14,6 @@
 		2860E32E111B888700E27156 /* AppDelegate_Pad.m in Sources */ = {isa = PBXBuildFile; fileRef = 2860E32C111B888700E27156 /* AppDelegate_Pad.m */; };
 		2860E32F111B888700E27156 /* MainWindow_Pad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2860E32D111B888700E27156 /* MainWindow_Pad.xib */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
-		D63AE37F12BD9627008EB8DE /* InspectCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D63AE37E12BD9627008EB8DE /* InspectCommand.m */; };
 		D64EF8F911D3C332002A8749 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D64EF8F811D3C332002A8749 /* main.m */; };
 		D69A0B0F124C2ED900BEC9EC /* OrientationCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D69A0B0E124C2ED900BEC9EC /* OrientationCommand.m */; };
 		D6A833ED11CDBF35001B8585 /* PureMVC_ObjectiveC_1_1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A833B411CDBF35001B8585 /* PureMVC_ObjectiveC_1_1.a */; };
@@ -128,6 +127,8 @@
 		D6AE0919128CA0C000CDC4C4 /* AppCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D6AE0918128CA0C000CDC4C4 /* AppCommand.m */; };
 		D6C73C8B1321BB2F00C731A2 /* AccessibilityCheckCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C73C8A1321BB2F00C731A2 /* AccessibilityCheckCommand.m */; };
 		D6C73C9E1321BB5D00C731A2 /* AccessibilityCheckCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C73C8A1321BB2F00C731A2 /* AccessibilityCheckCommand.m */; };
+		D6C8BCAB137CD2EE000EF521 /* UIQueryScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C8BCAA137CD2EE000EF521 /* UIQueryScrollView.m */; };
+		D6D17C0413A2679A00F9C1A8 /* VisibleTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D17C0313A2679A00F9C1A8 /* VisibleTouch.m */; };
 		D6D79B5711D7FB7C003E0E60 /* Operation.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D79B5611D7FB7C003E0E60 /* Operation.m */; };
 		D6D79B7611D7FC73003E0E60 /* frank_static_resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D6D79B7511D7FC73003E0E60 /* frank_static_resources.bundle */; };
 /* End PBXBuildFile section */
@@ -146,7 +147,6 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Shared/main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* EmployeeAdmin_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployeeAdmin_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* EmployeeAdmin-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "EmployeeAdmin-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
-		D63AE37E12BD9627008EB8DE /* InspectCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectCommand.m; sourceTree = "<group>"; };
 		D64EF8F811D3C332002A8749 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D69A0B0D124C2ED900BEC9EC /* OrientationCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrientationCommand.h; sourceTree = "<group>"; };
 		D69A0B0E124C2ED900BEC9EC /* OrientationCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrientationCommand.m; sourceTree = "<group>"; };
@@ -331,6 +331,10 @@
 		D6AE0918128CA0C000CDC4C4 /* AppCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppCommand.m; sourceTree = "<group>"; };
 		D6C73C891321BB2F00C731A2 /* AccessibilityCheckCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessibilityCheckCommand.h; sourceTree = "<group>"; };
 		D6C73C8A1321BB2F00C731A2 /* AccessibilityCheckCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessibilityCheckCommand.m; sourceTree = "<group>"; };
+		D6C8BCA9137CD2EE000EF521 /* UIQueryScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIQueryScrollView.h; sourceTree = "<group>"; };
+		D6C8BCAA137CD2EE000EF521 /* UIQueryScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIQueryScrollView.m; sourceTree = "<group>"; };
+		D6D17C0213A2679A00F9C1A8 /* VisibleTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisibleTouch.h; sourceTree = "<group>"; };
+		D6D17C0313A2679A00F9C1A8 /* VisibleTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisibleTouch.m; sourceTree = "<group>"; };
 		D6D79B5511D7FB7C003E0E60 /* Operation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Operation.h; sourceTree = "<group>"; };
 		D6D79B5611D7FB7C003E0E60 /* Operation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Operation.m; sourceTree = "<group>"; };
 		D6D79B7511D7FC73003E0E60 /* frank_static_resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = frank_static_resources.bundle; path = ../../frank_static_resources.bundle; sourceTree = SOURCE_ROOT; };
@@ -719,6 +723,8 @@
 		D6A835F311CDC594001B8585 /* components */ = {
 			isa = PBXGroup;
 			children = (
+				D6C8BCA9137CD2EE000EF521 /* UIQueryScrollView.h */,
+				D6C8BCAA137CD2EE000EF521 /* UIQueryScrollView.m */,
 				D6A835F411CDC594001B8585 /* UIQuerySearchBar.h */,
 				D6A835F511CDC594001B8585 /* UIQuerySearchBar.m */,
 				D6A835F611CDC594001B8585 /* UIQuerySegmentedControl.h */,
@@ -738,6 +744,8 @@
 		D6A8360011CDC594001B8585 /* dsl */ = {
 			isa = PBXGroup;
 			children = (
+				D6D17C0213A2679A00F9C1A8 /* VisibleTouch.h */,
+				D6D17C0313A2679A00F9C1A8 /* VisibleTouch.m */,
 				D6A8360111CDC594001B8585 /* Recordable.h */,
 				D6A8360211CDC594001B8585 /* Recordable.m */,
 				D6A8360311CDC594001B8585 /* UIChildren.h */,
@@ -801,7 +809,6 @@
 			children = (
 				D6C73C891321BB2F00C731A2 /* AccessibilityCheckCommand.h */,
 				D6C73C8A1321BB2F00C731A2 /* AccessibilityCheckCommand.m */,
-				D63AE37E12BD9627008EB8DE /* InspectCommand.m */,
 				D6AE0917128CA0C000CDC4C4 /* AppCommand.h */,
 				D6AE0918128CA0C000CDC4C4 /* AppCommand.m */,
 				D69A0B0D124C2ED900BEC9EC /* OrientationCommand.h */,
@@ -1060,8 +1067,9 @@
 				D6D79B5711D7FB7C003E0E60 /* Operation.m in Sources */,
 				D69A0B0F124C2ED900BEC9EC /* OrientationCommand.m in Sources */,
 				D6AE0919128CA0C000CDC4C4 /* AppCommand.m in Sources */,
-				D63AE37F12BD9627008EB8DE /* InspectCommand.m in Sources */,
 				D6C73C8B1321BB2F00C731A2 /* AccessibilityCheckCommand.m in Sources */,
+				D6C8BCAB137CD2EE000EF521 /* UIQueryScrollView.m in Sources */,
+				D6D17C0413A2679A00F9C1A8 /* VisibleTouch.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

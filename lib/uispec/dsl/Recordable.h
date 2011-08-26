@@ -15,6 +15,12 @@
 @property(nonatomic, retain) NSInvocation *invocation;
 @property(nonatomic, readonly) id play;
 
+-(id)initWithTarget:(id)_target;
+-(NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector;
+-(void)forwardInvocation:(NSInvocation *)anInvocation;
+-(BOOL)respondsToSelector:(SEL)aSelector;
+-(id)play;
+
 +(id)withTarget:(id)target;
 
 @end

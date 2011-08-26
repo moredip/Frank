@@ -17,7 +17,8 @@
 @implementation UIConsole
 
 - (id)init {
-    if (self = [super initWithFrame:CGRectMake(0,20,320,16)]) {
+    self = [super initWithFrame:CGRectMake(0,20,320,16)];
+    if (self) {
 		self.backgroundColor = [UIColor whiteColor];
         scriptField = [[MyTextField alloc] initWithFrame:CGRectMake(0, 0, 265, 16)];
 		scriptField.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -27,14 +28,14 @@
 		
 		UIButton *goButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 		goButton.frame = CGRectMake(265, 0, 30, 16);
-		goButton.font = [UIFont systemFontOfSize:13];
+		goButton.titleLabel.font = [UIFont systemFontOfSize:13];
 		[goButton setTitle:@"Run" forState:UIControlStateNormal];
 		[goButton addTarget:self action:@selector(go) forControlEvents:UIControlEventTouchUpInside];
 		[self addSubview:goButton];
 		
 		UIButton *exitButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 		exitButton.frame = CGRectMake(300, 0, 20, 16);
-		exitButton.font = [UIFont systemFontOfSize:13];
+		exitButton.titleLabel.font = [UIFont systemFontOfSize:13];
 		[exitButton setTitle:@"X" forState:UIControlStateNormal];
 		[exitButton addTarget:self action:@selector(exit) forControlEvents:UIControlEventTouchUpInside];
 		[self addSubview:exitButton];

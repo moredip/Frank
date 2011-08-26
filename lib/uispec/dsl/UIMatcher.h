@@ -15,6 +15,10 @@
 
 @property(nonatomic, retain) NSString *errorMessage;
 
+-(id)initWithValue:(const void *)aValue objCType:(const char *)aTypeDescription matchSelector:(SEL)aMatchSelector;
+-(BOOL)matches:(id)value;
+-(BOOL)be:(id)value;
+
 +(id)withValue:(const void *)aValue objCType:(const char *)aTypeDescription matchSelector:(SEL)aMatchSelector;
 +(NSString *)valueAsString:(const void *)value objCType:(const char *)typeDescription;
 

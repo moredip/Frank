@@ -13,4 +13,7 @@
 *searchBar, *scrollView, *progressView, *pickerView, *pageControl, *imageView, *control, *actionSheet, *activityIndicatorView,
 *threePartButton, *navigationItemButtonView, *navigationItemView, *removeControlMinusButton, *pushButton;
 
++(void)initialize;
++(void)swizzleFiltersForClass:(Class *)class;
+
 @end

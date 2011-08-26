@@ -19,7 +19,8 @@ static BOOL inBrowserMode = YES;
 }
 
 -(id)initWithView:(UIView *)_targetView {
-	if (self = [super initWithStyle:UITableViewStyleGrouped]) {
+    self = [super initWithStyle:UITableViewStyleGrouped];
+	if (self) {
 		self.targetView = _targetView;
 		if ([_targetView respondsToSelector:@selector(subviews)]) {
 			self.targetSubviews = targetView.subviews;
@@ -81,7 +82,7 @@ static BOOL inBrowserMode = YES;
 			valueLabel.text = value;
 			[cell.contentView addSubview:valueLabel];
 		} else {
-			cell.text = [NSString stringWithFormat:@"%@%@", key, value];
+			cell.textLabel.text = [NSString stringWithFormat:@"%@%@", key, value];
 		}
 		if (![object isKindOfClass:[NSString class]]) {
 			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -108,7 +109,7 @@ static BOOL inBrowserMode = YES;
 			[cell.contentView addSubview:textLabel];
 		} else {
 			cell.imageView.image = viewImage;
-			cell.text = text;
+			cell.textLabel.text = text;
 		}
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}

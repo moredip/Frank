@@ -7,7 +7,8 @@
 @synthesize invocation;
 
 -(id)initWithTarget:(id)_target {
-	if (self = [super initWithTarget:_target]) {
+    self = [super initWithTarget:_target];
+	if (self) {
 		isIdle = NO;
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:[NSString stringWithFormat:@"IdleNotification%d", self.hash] object:nil];
 	}

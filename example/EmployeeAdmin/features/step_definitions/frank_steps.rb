@@ -14,8 +14,20 @@ Then /^I should see a table containing the following:$/ do |table|
   end
 end
 
+Then /^I should see (\d+) rows in section (\d+)$/ do |expected_num_rows, section|
+  section = section.to_i
+  expected_num_rows = expected_num_rows.to_i
+  num_rows_array = frankly_map( "tableView first", "numberOfRowsInSection:", section ) 
+  raise "no table found" if num_rows_array.empty?
+  num_rows_array.first.should eq(expected_num_rows)
+end
+
 When /^I touch the "([^\"]*)" nav bar button$/ do |mark|
   touch( "navigationButton marked:'#{mark}'" )
+end
+
+When /^I touch the screen at \((\d+),(\d+)\)$/ do |x, y|
+  frankly_map( "view:'UILayoutContainerView'", "touchx:y:", x, y )
 end
 
 Then /^I should see an alert view saying "([^\"]*)"$/ do |expected_mark|
