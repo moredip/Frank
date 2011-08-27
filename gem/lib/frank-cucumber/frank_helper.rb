@@ -92,6 +92,7 @@ module FrankHelper
     res = get_to_uispec_server( 'orientation' )
     orientation = JSON.parse( res )['orientation']
     puts "orientation reported as '#{orientation}'" if $DEBUG
+    orientation
   end
 
 
