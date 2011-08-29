@@ -857,6 +857,7 @@
 				D6A834F611CDC3D3001B8585 /* Resources */,
 				D6A834F911CDC3D3001B8585 /* Sources */,
 				D6A8351211CDC3D3001B8585 /* Frameworks */,
+				85C6043B1337E5D000E03008 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -915,6 +916,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		85C6043B1337E5D000E03008 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ ! ./FrankDeploy $1 ]\nthen\n/bin/mkdir ./FrankDeploy\nfi\n\nditto \"${BUILD_DIR}/Debug-iphonesimulator/EmployeeAdmin.app\" \"./FrankDeploy/EmployeeAdmin.app\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1D60588E0D05DD3D006BFB54 /* Sources */ = {
