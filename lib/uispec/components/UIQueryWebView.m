@@ -1,4 +1,3 @@
-
 #import "UIQueryWebView.h"
 
 @implementation UIQueryWebView
@@ -49,4 +48,11 @@
 	return [self stringByEvaluatingJavaScriptFromString: @"document.body.innerHTML"];
 }
 
+-(NSString *) title {
+
+    NSString *title =[self stringByEvaluatingJavaScriptFromString:@"document.title"];
+
+    
+	return title;
+}
 @end
