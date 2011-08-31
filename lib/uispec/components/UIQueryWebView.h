@@ -14,5 +14,5 @@
 -(UIQuery *)setValue:(NSString *)value forElementWithId:(NSString *)elementId;
 -(UIQuery *)clickElementWithId:(NSString *)elementId;
 -(NSString *)html;
-
+-(NSString *)title;
 @end
