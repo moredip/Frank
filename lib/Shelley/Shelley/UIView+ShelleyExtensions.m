@@ -23,3 +23,19 @@ MAKE_CATEGORIES_LOADABLE(UIView_ShelleyExtensions)
 }
 
 @end
+
+@implementation UITextField (ShelleyExtensions)
+
+- (BOOL) placeholder:(NSString *)expectedPlaceholder{
+	//should be substring match
+	return [[self placeholder] isEqualToString:expectedPlaceholder];
+}
+
+- (BOOL) text:(NSString *)expectedText{
+	//should be substring match
+	return [[self text] isEqualToString:expectedText];
+}
+
+
+@end
+
