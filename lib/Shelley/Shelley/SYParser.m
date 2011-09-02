@@ -196,6 +196,11 @@
             return [[[SYClassFilter alloc] initWithClass:[UIView class] includeSelf:YES] autorelease];
         else if( [firstParam isEqualToString:@"button"] )
             return [[[SYClassFilter alloc] initWithClass:[UIButton class]] autorelease];
+        else if( [firstParam isEqualToString:@"textField"] )
+            return [[[SYClassFilter alloc] initWithClass:[UITextField class]] autorelease];
+        else if( [firstParam isEqualToString:@"tableView"] )
+            return [[[SYClassFilter alloc] initWithClass:[UITableView class]] autorelease];
+
     }else if( [[parsedSection args] count] == 1 && [firstParam isEqualToString:@"view"] ){
         NSString *firstArg = [[parsedSection args] objectAtIndex:0];
         return [[[SYClassFilter alloc] initWithClass:(NSClassFromString(firstArg))] autorelease];
