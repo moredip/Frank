@@ -192,6 +192,8 @@
             return [[[SYFirstElementFilter alloc] init] autorelease];
         else if( [firstParam isEqualToString:@"view"] )
             return [[[SYClassFilter alloc] initWithClass:[UIView class]] autorelease];
+        else if( [firstParam isEqualToString:@"descendant"] )
+            return [[[SYClassFilter alloc] initWithClass:[UIView class] includeSelf:YES] autorelease];
         else if( [firstParam isEqualToString:@"button"] )
             return [[[SYClassFilter alloc] initWithClass:[UIButton class]] autorelease];
     }else if( [[parsedSection args] count] == 1 && [firstParam isEqualToString:@"view"] ){

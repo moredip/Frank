@@ -21,21 +21,28 @@
 }
 
 - (id)initWithClass:(Class)class {
+    return [self initWithClass:class includeSelf:NO];
+}
+
+- (id)initWithClass:(Class)class includeSelf:(BOOL)includeSelf {
     self = [super init];
     if (self) {
         _targetClass = class;
+		_includeSelf = includeSelf;
     }
     return self;
 }
 
+
 -(NSArray *)applyToView:(UIView *)view{
-    NSArray *allDescendants = [SYClassFilter allDescendantsOf:view];
-    
+    NSMutableArray *allViews = _includeSelf ? [NSMutableArray arrayWithObject:view] : [NSMutableArray array];
+    [allViews addObjectsFromArray:[SYClassFilter allDescendantsOf:view]];
+	
     // TODO: look at using predicates
     NSMutableArray *filteredDescendants = [NSMutableArray array];
-    for (UIView *descendant in allDescendants) {
-        if( [descendant isKindOfClass:_targetClass] ){
-            [filteredDescendants addObject:descendant];
+    for (UIView *v in allViews) {
+        if( [v isKindOfClass:_targetClass] ){
+            [filteredDescendants addObject:v];
         }
     }
     
