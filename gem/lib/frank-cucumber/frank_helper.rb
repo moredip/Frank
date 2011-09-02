@@ -50,7 +50,7 @@ module FrankHelper
     
     before = Time.now
     res = post_to_uispec_server( 'app_exec', :operation => operation_map )
-    logger.debug( "MAP applying #{method_name} with args:( #{method_args.inspect} ) to 'Application Delegate' took #{Time.now - before} seconds" )
+    #logger.debug( "MAP applying #{method_name} with args:( #{method_args.inspect} ) to 'Application Delegate' took #{Time.now - before} seconds" )
 
     res = JSON.parse( res )
     if res['outcome'] != 'SUCCESS'
