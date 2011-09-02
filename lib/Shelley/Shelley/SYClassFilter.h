@@ -11,9 +11,11 @@
 
 @interface SYClassFilter : SYArrayFilterTemplate {
     Class _targetClass;
+	BOOL _includeSelf;
 }
 @property (readonly) Class target;
 
 - (id)initWithClass:(Class)class;
+- (id)initWithClass:(Class)class includeSelf:(BOOL)includeSelf;
 
 @end

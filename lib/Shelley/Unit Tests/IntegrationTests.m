@@ -63,6 +63,14 @@
     [self assertArray:selectedViews containsObject:viewC];
 }
 
+- (void) testDescendantReturnsAllDescendantsPlusSelf_ForBackwardsCompatibilityWithUIQuery {
+    Shelley *shelley = [Shelley withSelectorString:@"descendant"];
+    NSArray *selectedViews = [shelley selectFrom:view];
+    
+    STAssertEquals((NSUInteger)8, selectedViews.count, nil);
+    [self assertArray:selectedViews containsObject:view];
+}
+
 - (void) testButtonReturnsAllDescendantsWhichAreButtons {
     Shelley *shelley = [Shelley withSelectorString:@"button"];
     NSArray *selectedViews = [shelley selectFrom:view];
