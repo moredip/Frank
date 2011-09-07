@@ -234,4 +234,35 @@
     [self assertArray:selectedViews containsObject:viewB];
 }
 
+- (void) xtestAllowsSelectionOfSiblingsViaParentFilter {
+    UITableView *tableView = [[[UITableView alloc] init]autorelease];
+    
+    UITableViewCell *cellA = [[[UITableViewCell alloc] init] autorelease];
+    UIViewWithAccessibilityLabel *subviewA = [[[UIViewWithAccessibilityLabel alloc] initWithAccessibilityLabel:@"cell A"] autorelease];
+    UIButton *buttonA = [[[UIButton alloc] init]autorelease];    
+    [cellA addSubview:subviewA];
+    [cellA addSubview:buttonA];
+
+    UITableViewCell *cellB = [[[UITableViewCell alloc] init] autorelease];
+    UIViewWithAccessibilityLabel *subviewB = [[[UIViewWithAccessibilityLabel alloc] initWithAccessibilityLabel:@"cell B"] autorelease];
+    UIButton *buttonB = [[[UIButton alloc] init]autorelease];    
+    [cellB addSubview:subviewB];
+    [cellB addSubview:buttonB];
+    
+    [tableView addSubview:cellA];
+    [tableView addSubview:cellB];
+    
+    NSArray *selectedViews = [[Shelley withSelectorString:@"view marked:'cell B'"] selectFrom:tableView];
+    [self assertArray:selectedViews containsExactlyObjects:[NSArray arrayWithObject:subviewB]];
+
+    selectedViews = [[Shelley withSelectorString:@"view marked:'cell B' parent"] selectFrom:tableView];
+    [self assertArray:selectedViews containsExactlyObjects:[NSArray arrayWithObjects:cellB,tableView,nil]];
+    
+    selectedViews = [[Shelley withSelectorString:@"view marked:'cell B' parent view:'UITableViewCell'"] selectFrom:tableView];
+    [self assertArray:selectedViews containsExactlyObjects:[NSArray arrayWithObject:cellB]];
+    
+  //  selectedViews = [[Shelley withSelectorString:@"view marked:'cell B' parent view:'UITableViewCell' button"] selectFrom:tableView];
+  //  [self assertArray:selectedViews containsExactlyObjects:[NSArray arrayWithObject:buttonB]];
+}
+
 @end
