@@ -18,6 +18,11 @@
     }
 }
 
+- (void) assertArray:(NSArray *)array containsExactlyObjects:(NSArray *)objects{
+    STAssertEquals([objects count], [array count], nil);
+    [self assertArray:array containsObjects:objects];
+}
+
 - (void) assertArray:(NSArray *)array containsObject:(id)object{
     STAssertTrue( [array containsObject:object], nil );
 }

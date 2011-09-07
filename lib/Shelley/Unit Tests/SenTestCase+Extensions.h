@@ -11,5 +11,6 @@
 
 @interface SenTestCase(Extensions)
 - (void) assertArray:(NSArray *)array containsObjects:(NSArray *)objects;
+- (void) assertArray:(NSArray *)array containsExactlyObjects:(NSArray *)objects;
 - (void) assertArray:(NSArray *)array containsObject:(id)object;
 @end
