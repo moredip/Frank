@@ -134,6 +134,18 @@
 		D6E7B48411B36D42005CAA34 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E7B47711B36D42005CAA34 /* SBJsonParser.m */; };
 		D6E7B48511B36D42005CAA34 /* SBJsonWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = D6E7B47811B36D42005CAA34 /* SBJsonWriter.h */; };
 		D6E7B48611B36D42005CAA34 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E7B47911B36D42005CAA34 /* SBJsonWriter.m */; };
+		D6FA01AB14283C4F00576AD1 /* CGGeometry-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D6FA019E14283C4F00576AD1 /* CGGeometry-KIFAdditions.h */; };
+		D6FA01AC14283C4F00576AD1 /* CGGeometry-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FA019F14283C4F00576AD1 /* CGGeometry-KIFAdditions.m */; };
+		D6FA01AE14283C4F00576AD1 /* UIAccessibilityElement-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D6FA01A114283C4F00576AD1 /* UIAccessibilityElement-KIFAdditions.h */; };
+		D6FA01AF14283C4F00576AD1 /* UIAccessibilityElement-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FA01A214283C4F00576AD1 /* UIAccessibilityElement-KIFAdditions.m */; };
+		D6FA01B014283C4F00576AD1 /* UIApplication-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D6FA01A314283C4F00576AD1 /* UIApplication-KIFAdditions.h */; };
+		D6FA01B114283C4F00576AD1 /* UIApplication-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FA01A414283C4F00576AD1 /* UIApplication-KIFAdditions.m */; };
+		D6FA01B214283C4F00576AD1 /* UIScrollView-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D6FA01A514283C4F00576AD1 /* UIScrollView-KIFAdditions.h */; };
+		D6FA01B314283C4F00576AD1 /* UIScrollView-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FA01A614283C4F00576AD1 /* UIScrollView-KIFAdditions.m */; };
+		D6FA01B414283C4F00576AD1 /* UITouch-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D6FA01A714283C4F00576AD1 /* UITouch-KIFAdditions.h */; };
+		D6FA01B514283C4F00576AD1 /* UITouch-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FA01A814283C4F00576AD1 /* UITouch-KIFAdditions.m */; };
+		D6FA01B614283C4F00576AD1 /* UIView-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D6FA01A914283C4F00576AD1 /* UIView-KIFAdditions.h */; };
+		D6FA01B714283C4F00576AD1 /* UIView-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FA01AA14283C4F00576AD1 /* UIView-KIFAdditions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -269,6 +281,18 @@
 		D6E7B47711B36D42005CAA34 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
 		D6E7B47811B36D42005CAA34 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		D6E7B47911B36D42005CAA34 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		D6FA019E14283C4F00576AD1 /* CGGeometry-KIFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CGGeometry-KIFAdditions.h"; path = "lib/KIF/Additions/CGGeometry-KIFAdditions.h"; sourceTree = "<group>"; };
+		D6FA019F14283C4F00576AD1 /* CGGeometry-KIFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CGGeometry-KIFAdditions.m"; path = "lib/KIF/Additions/CGGeometry-KIFAdditions.m"; sourceTree = "<group>"; };
+		D6FA01A114283C4F00576AD1 /* UIAccessibilityElement-KIFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIAccessibilityElement-KIFAdditions.h"; path = "lib/KIF/Additions/UIAccessibilityElement-KIFAdditions.h"; sourceTree = "<group>"; };
+		D6FA01A214283C4F00576AD1 /* UIAccessibilityElement-KIFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIAccessibilityElement-KIFAdditions.m"; path = "lib/KIF/Additions/UIAccessibilityElement-KIFAdditions.m"; sourceTree = "<group>"; };
+		D6FA01A314283C4F00576AD1 /* UIApplication-KIFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIApplication-KIFAdditions.h"; path = "lib/KIF/Additions/UIApplication-KIFAdditions.h"; sourceTree = "<group>"; };
+		D6FA01A414283C4F00576AD1 /* UIApplication-KIFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIApplication-KIFAdditions.m"; path = "lib/KIF/Additions/UIApplication-KIFAdditions.m"; sourceTree = "<group>"; };
+		D6FA01A514283C4F00576AD1 /* UIScrollView-KIFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIScrollView-KIFAdditions.h"; path = "lib/KIF/Additions/UIScrollView-KIFAdditions.h"; sourceTree = "<group>"; };
+		D6FA01A614283C4F00576AD1 /* UIScrollView-KIFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView-KIFAdditions.m"; path = "lib/KIF/Additions/UIScrollView-KIFAdditions.m"; sourceTree = "<group>"; };
+		D6FA01A714283C4F00576AD1 /* UITouch-KIFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITouch-KIFAdditions.h"; path = "lib/KIF/Additions/UITouch-KIFAdditions.h"; sourceTree = "<group>"; };
+		D6FA01A814283C4F00576AD1 /* UITouch-KIFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITouch-KIFAdditions.m"; path = "lib/KIF/Additions/UITouch-KIFAdditions.m"; sourceTree = "<group>"; };
+		D6FA01A914283C4F00576AD1 /* UIView-KIFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView-KIFAdditions.h"; path = "lib/KIF/Additions/UIView-KIFAdditions.h"; sourceTree = "<group>"; };
+		D6FA01AA14283C4F00576AD1 /* UIView-KIFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView-KIFAdditions.m"; path = "lib/KIF/Additions/UIView-KIFAdditions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -360,6 +384,7 @@
 		D629926711AB2CF700CE0FB0 /* 3rd Party */ = {
 			isa = PBXGroup;
 			children = (
+				D6FA019D14283BEA00576AD1 /* KIF Additions */,
 				D6E7B46C11B36D42005CAA34 /* JSON */,
 				D62992AB11AB2DDD00CE0FB0 /* uispec */,
 				D629926811AB2D0500CE0FB0 /* cocoahttpserver */,
@@ -521,6 +546,25 @@
 			path = lib/JSON;
 			sourceTree = "<group>";
 		};
+		D6FA019D14283BEA00576AD1 /* KIF Additions */ = {
+			isa = PBXGroup;
+			children = (
+				D6FA019E14283C4F00576AD1 /* CGGeometry-KIFAdditions.h */,
+				D6FA019F14283C4F00576AD1 /* CGGeometry-KIFAdditions.m */,
+				D6FA01A114283C4F00576AD1 /* UIAccessibilityElement-KIFAdditions.h */,
+				D6FA01A214283C4F00576AD1 /* UIAccessibilityElement-KIFAdditions.m */,
+				D6FA01A314283C4F00576AD1 /* UIApplication-KIFAdditions.h */,
+				D6FA01A414283C4F00576AD1 /* UIApplication-KIFAdditions.m */,
+				D6FA01A514283C4F00576AD1 /* UIScrollView-KIFAdditions.h */,
+				D6FA01A614283C4F00576AD1 /* UIScrollView-KIFAdditions.m */,
+				D6FA01A714283C4F00576AD1 /* UITouch-KIFAdditions.h */,
+				D6FA01A814283C4F00576AD1 /* UITouch-KIFAdditions.m */,
+				D6FA01A914283C4F00576AD1 /* UIView-KIFAdditions.h */,
+				D6FA01AA14283C4F00576AD1 /* UIView-KIFAdditions.m */,
+			);
+			name = "KIF Additions";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -592,6 +636,12 @@
 				D67F2ABF13F5F55A00A0BFF1 /* FrankLoader.h in Headers */,
 				D67F2B0613F5F6CD00A0BFF1 /* VisibleTouch.h in Headers */,
 				D67F2B3413F5F82700A0BFF1 /* LoadableCategory.h in Headers */,
+				D6FA01AB14283C4F00576AD1 /* CGGeometry-KIFAdditions.h in Headers */,
+				D6FA01AE14283C4F00576AD1 /* UIAccessibilityElement-KIFAdditions.h in Headers */,
+				D6FA01B014283C4F00576AD1 /* UIApplication-KIFAdditions.h in Headers */,
+				D6FA01B214283C4F00576AD1 /* UIScrollView-KIFAdditions.h in Headers */,
+				D6FA01B414283C4F00576AD1 /* UITouch-KIFAdditions.h in Headers */,
+				D6FA01B614283C4F00576AD1 /* UIView-KIFAdditions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -717,6 +767,12 @@
 				D67F2AC013F5F55A00A0BFF1 /* FrankLoader.m in Sources */,
 				D67F2B0713F5F6CD00A0BFF1 /* VisibleTouch.m in Sources */,
 				D67F2B3A13F5F91700A0BFF1 /* UIView+MapKitWorkaround.m in Sources */,
+				D6FA01AC14283C4F00576AD1 /* CGGeometry-KIFAdditions.m in Sources */,
+				D6FA01AF14283C4F00576AD1 /* UIAccessibilityElement-KIFAdditions.m in Sources */,
+				D6FA01B114283C4F00576AD1 /* UIApplication-KIFAdditions.m in Sources */,
+				D6FA01B314283C4F00576AD1 /* UIScrollView-KIFAdditions.m in Sources */,
+				D6FA01B514283C4F00576AD1 /* UITouch-KIFAdditions.m in Sources */,
+				D6FA01B714283C4F00576AD1 /* UIView-KIFAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
