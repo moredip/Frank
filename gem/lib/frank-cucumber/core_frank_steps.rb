@@ -101,7 +101,7 @@ Then /^I should see a nonhidden button marked "([^\"]*)"$/ do |expected_mark|
 end
 
 Then /^I should see an element of class "([^\"]*)"$/ do |className|
-	element_is_not_hidden("view:'#{className}'")
+  element_is_not_hidden("view:'#{className}'").should be_true
 end
 
 Then /^I should not see an element of class "([^\"]*)"$/ do |className|
