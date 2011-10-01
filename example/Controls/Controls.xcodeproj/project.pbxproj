@@ -16,6 +16,8 @@
 		D6225FAE1436D886002B04AA /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6225FAC1436D886002B04AA /* MainWindow.xib */; };
 		D6225FB11436D886002B04AA /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6225FB01436D886002B04AA /* RootViewController.m */; };
 		D6225FB41436D886002B04AA /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6225FB21436D886002B04AA /* RootViewController.xib */; };
+		D69137BF1436DB00003C26AC /* UISwitchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D69137BD1436DB00003C26AC /* UISwitchViewController.m */; };
+		D69137C01436DB00003C26AC /* UISwitchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D69137BE1436DB00003C26AC /* UISwitchViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,9 @@
 		D6225FAF1436D886002B04AA /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		D6225FB01436D886002B04AA /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		D6225FB31436D886002B04AA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootViewController.xib; sourceTree = "<group>"; };
+		D69137BC1436DB00003C26AC /* UISwitchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISwitchViewController.h; sourceTree = "<group>"; };
+		D69137BD1436DB00003C26AC /* UISwitchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UISwitchViewController.m; sourceTree = "<group>"; };
+		D69137BE1436DB00003C26AC /* UISwitchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UISwitchViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +91,9 @@
 				D6225FB01436D886002B04AA /* RootViewController.m */,
 				D6225FB21436D886002B04AA /* RootViewController.xib */,
 				D6225FA11436D886002B04AA /* Supporting Files */,
+				D69137BC1436DB00003C26AC /* UISwitchViewController.h */,
+				D69137BD1436DB00003C26AC /* UISwitchViewController.m */,
+				D69137BE1436DB00003C26AC /* UISwitchViewController.xib */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -154,6 +162,7 @@
 				D6225FA51436D886002B04AA /* InfoPlist.strings in Resources */,
 				D6225FAE1436D886002B04AA /* MainWindow.xib in Resources */,
 				D6225FB41436D886002B04AA /* RootViewController.xib in Resources */,
+				D69137C01436DB00003C26AC /* UISwitchViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +176,7 @@
 				D6225FA81436D886002B04AA /* main.m in Sources */,
 				D6225FAB1436D886002B04AA /* ControlsAppDelegate.m in Sources */,
 				D6225FB11436D886002B04AA /* RootViewController.m in Sources */,
+				D69137BF1436DB00003C26AC /* UISwitchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
