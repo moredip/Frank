@@ -7,6 +7,7 @@
 //
 
 #import "RootViewController.h"
+#import "UISwitchViewController.h"
 
 typedef enum {
     RowsUISwitch,
@@ -123,13 +124,16 @@ typedef enum {
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    /*
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-    // ...
-    // Pass the selected object to the new view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
-    [detailViewController release];
-	*/
+    UIViewController *detailVC;
+    
+    switch ([indexPath row]) {
+        case RowsUISwitch:
+            detailVC = [[UISwitchViewController alloc] initWithNibName:@"UISwitchViewController" bundle:nil];
+            break;
+    }
+    
+    [self.navigationController pushViewController:detailVC animated:YES];
+    [detailVC release];
 }
 
 - (void)didReceiveMemoryWarning
