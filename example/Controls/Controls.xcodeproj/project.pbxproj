@@ -16,6 +16,8 @@
 		D6225FAE1436D886002B04AA /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6225FAC1436D886002B04AA /* MainWindow.xib */; };
 		D6225FB11436D886002B04AA /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6225FB01436D886002B04AA /* RootViewController.m */; };
 		D6225FB41436D886002B04AA /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6225FB21436D886002B04AA /* RootViewController.xib */; };
+		D6445A471437EB5400B20F48 /* libFrank.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6445A461437EB5400B20F48 /* libFrank.a */; };
+		D6445A491437EB7A00B20F48 /* frank_static_resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D6445A481437EB7A00B20F48 /* frank_static_resources.bundle */; };
 		D69137BF1436DB00003C26AC /* UISwitchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D69137BD1436DB00003C26AC /* UISwitchViewController.m */; };
 		D69137C01436DB00003C26AC /* UISwitchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D69137BE1436DB00003C26AC /* UISwitchViewController.xib */; };
 		D69137C41436E112003C26AC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D6225FA71436D886002B04AA /* main.m */; };
@@ -29,10 +31,25 @@
 		D69137CE1436E112003C26AC /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6225FAC1436D886002B04AA /* MainWindow.xib */; };
 		D69137CF1436E112003C26AC /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6225FB21436D886002B04AA /* RootViewController.xib */; };
 		D69137D01436E112003C26AC /* UISwitchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D69137BE1436DB00003C26AC /* UISwitchViewController.xib */; };
-		D69137D81436E164003C26AC /* frank_static_resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D69137D61436E164003C26AC /* frank_static_resources.bundle */; };
-		D69137D91436E164003C26AC /* libFrank.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D69137D71436E164003C26AC /* libFrank.a */; };
 		D69137DB1436E1D2003C26AC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D69137DA1436E1D2003C26AC /* CFNetwork.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D6445A421437E65B00B20F48 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D6FD775D1437E46700B38060 /* Frank.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
+			remoteInfo = Frank;
+		};
+		D6FD77611437E46800B38060 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D6FD775D1437E46700B38060 /* Frank.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D;
+			remoteInfo = Frank;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		D6225F961436D886002B04AA /* Controls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Controls.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,13 +66,14 @@
 		D6225FAF1436D886002B04AA /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		D6225FB01436D886002B04AA /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		D6225FB31436D886002B04AA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootViewController.xib; sourceTree = "<group>"; };
+		D6445A461437EB5400B20F48 /* libFrank.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libFrank.a; sourceTree = SOURCE_ROOT; };
+		D6445A481437EB7A00B20F48 /* frank_static_resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = frank_static_resources.bundle; path = ../../frank_static_resources.bundle; sourceTree = "<group>"; };
 		D69137BC1436DB00003C26AC /* UISwitchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISwitchViewController.h; sourceTree = "<group>"; };
 		D69137BD1436DB00003C26AC /* UISwitchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UISwitchViewController.m; sourceTree = "<group>"; };
 		D69137BE1436DB00003C26AC /* UISwitchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UISwitchViewController.xib; sourceTree = "<group>"; };
 		D69137D41436E112003C26AC /* Controls Frankified.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Controls Frankified.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D69137D61436E164003C26AC /* frank_static_resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = frank_static_resources.bundle; path = ../../dist/frank_static_resources.bundle; sourceTree = "<group>"; };
-		D69137D71436E164003C26AC /* libFrank.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFrank.a; path = ../../dist/libFrank.a; sourceTree = "<group>"; };
 		D69137DA1436E1D2003C26AC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		D6FD775D1437E46700B38060 /* Frank.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Frank.xcodeproj; path = ../../Frank.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,11 +91,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6445A471437EB5400B20F48 /* libFrank.a in Frameworks */,
+				D69137CB1436E112003C26AC /* CoreGraphics.framework in Frameworks */,
 				D69137DB1436E1D2003C26AC /* CFNetwork.framework in Frameworks */,
 				D69137C91436E112003C26AC /* UIKit.framework in Frameworks */,
 				D69137CA1436E112003C26AC /* Foundation.framework in Frameworks */,
-				D69137CB1436E112003C26AC /* CoreGraphics.framework in Frameworks */,
-				D69137D91436E164003C26AC /* libFrank.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +105,8 @@
 		D6225F8B1436D886002B04AA = {
 			isa = PBXGroup;
 			children = (
+				D6445A481437EB7A00B20F48 /* frank_static_resources.bundle */,
+				D6445A461437EB5400B20F48 /* libFrank.a */,
 				D69137DA1436E1D2003C26AC /* CFNetwork.framework */,
 				D69137C11436E0EF003C26AC /* Frank */,
 				D6225FA01436D886002B04AA /* Controls */,
@@ -145,10 +165,17 @@
 		D69137C11436E0EF003C26AC /* Frank */ = {
 			isa = PBXGroup;
 			children = (
-				D69137D61436E164003C26AC /* frank_static_resources.bundle */,
-				D69137D71436E164003C26AC /* libFrank.a */,
+				D6FD775D1437E46700B38060 /* Frank.xcodeproj */,
 			);
 			name = Frank;
+			sourceTree = "<group>";
+		};
+		D6FD775E1437E46700B38060 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D6FD77621437E46800B38060 /* libFrank.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,6 +210,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D6445A431437E65B00B20F48 /* PBXTargetDependency */,
 			);
 			name = "Controls Frankified";
 			productName = Controls;
@@ -207,6 +235,12 @@
 			mainGroup = D6225F8B1436D886002B04AA;
 			productRefGroup = D6225F971436D886002B04AA /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = D6FD775E1437E46700B38060 /* Products */;
+					ProjectRef = D6FD775D1437E46700B38060 /* Frank.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D6225F951436D886002B04AA /* Controls */,
@@ -214,6 +248,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		D6FD77621437E46800B38060 /* libFrank.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libFrank.a;
+			remoteRef = D6FD77611437E46800B38060 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D6225F941436D886002B04AA /* Resources */ = {
@@ -231,11 +275,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6445A491437EB7A00B20F48 /* frank_static_resources.bundle in Resources */,
 				D69137CD1436E112003C26AC /* InfoPlist.strings in Resources */,
 				D69137CE1436E112003C26AC /* MainWindow.xib in Resources */,
 				D69137CF1436E112003C26AC /* RootViewController.xib in Resources */,
 				D69137D01436E112003C26AC /* UISwitchViewController.xib in Resources */,
-				D69137D81436E164003C26AC /* frank_static_resources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +327,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D6445A431437E65B00B20F48 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Frank;
+			targetProxy = D6445A421437E65B00B20F48 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D6225FA31436D886002B04AA /* InfoPlist.strings */ = {
@@ -384,6 +436,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../dist\"",
+					"\"$(SRCROOT)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -405,6 +458,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../dist\"",
+					"\"$(SRCROOT)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
