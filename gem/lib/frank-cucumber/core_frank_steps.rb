@@ -235,47 +235,20 @@ end
 
 # -- switch -- #
 
-When /^I flip switch "([^\"]*)" on$/ do |mark|
-  selector = "view:'UISwitch' marked:'#{mark}'"
-  views_switched = frankly_map( selector, 'setOn:animated:', true, true )
-  raise "could not find anything matching [#{uiquery}] to switch" if views_switched.empty?
-end
-
-When /^I flip switch "([^\"]*)" off$/ do |mark|
-  selector = "view:'UISwitch' marked:'#{mark}'"
-  views_switched = frankly_map( selector, 'setOn:animated:', false, true )
-  raise "could not find anything matching [#{uiquery}] to switch" if views_switched.empty?
-end
-
 When /^I flip switch "([^\"]*)"$/ do |mark|
   touch("view:'UISwitch' marked:'#{mark}'") 
 end
 
-Then /^switch "([^\"]*)" should be on$/ do |mark|
-#  switch_states = frankly_map( "view:'Switch' marked:'#{mark}'", "isOn" )
-  switch_states = frankly_map( "view accesibilityLabel:'#{mark}'", "isOn" )
-  puts "test #{switch_states.inspect}"
-  
-  if switch_states == 0
-    puts "Switch #{mark} is ON"
-  else
-    puts "Switch #{mark} is OFF, flim switch ON"
-    Then %Q|I flip switch "#{mark}"|
+Then /^switch "([^\"]*)" should be (on|off)$/ do |mark,expected_state|
+  expected_state = expected_state == 'on'
+
+  selector = "view:'UISwitch' marked:'#{mark}'"
+  switch_states = frankly_map( selector, "isOn" )
+
+  switch_states.each do |switch_state|
+    switch_state.should == expected_state
   end
 end
-
-Then /^switch "([^\"]*)" should be off$/ do |mark|
-  switch_states = frankly_map( "view:'UISwitch' marked:'#{mark}'", "isOn" )
-  puts "test #{switch_states.inspect}"
-  
-  if switch_states == 0
-    puts "Switch #{mark} is ON, flip switch OFF"
-    Then %Q|I flip switch "#{mark}"|
-  else
-    puts "Switch #{mark} is OFF"
-  end
-end
-
 
 # -- misc -- #
 
