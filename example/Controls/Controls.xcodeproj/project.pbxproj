@@ -1,0 +1,506 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D6225F9B1436D886002B04AA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6225F9A1436D886002B04AA /* UIKit.framework */; };
+		D6225F9D1436D886002B04AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6225F9C1436D886002B04AA /* Foundation.framework */; };
+		D6225F9F1436D886002B04AA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6225F9E1436D886002B04AA /* CoreGraphics.framework */; };
+		D6225FA51436D886002B04AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D6225FA31436D886002B04AA /* InfoPlist.strings */; };
+		D6225FA81436D886002B04AA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D6225FA71436D886002B04AA /* main.m */; };
+		D6225FAB1436D886002B04AA /* ControlsAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D6225FAA1436D886002B04AA /* ControlsAppDelegate.m */; };
+		D6225FAE1436D886002B04AA /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6225FAC1436D886002B04AA /* MainWindow.xib */; };
+		D6225FB11436D886002B04AA /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6225FB01436D886002B04AA /* RootViewController.m */; };
+		D6225FB41436D886002B04AA /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6225FB21436D886002B04AA /* RootViewController.xib */; };
+		D6445A471437EB5400B20F48 /* libFrank.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6445A461437EB5400B20F48 /* libFrank.a */; };
+		D6445A491437EB7A00B20F48 /* frank_static_resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D6445A481437EB7A00B20F48 /* frank_static_resources.bundle */; };
+		D69137BF1436DB00003C26AC /* UISwitchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D69137BD1436DB00003C26AC /* UISwitchViewController.m */; };
+		D69137C01436DB00003C26AC /* UISwitchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D69137BE1436DB00003C26AC /* UISwitchViewController.xib */; };
+		D69137C41436E112003C26AC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D6225FA71436D886002B04AA /* main.m */; };
+		D69137C51436E112003C26AC /* ControlsAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D6225FAA1436D886002B04AA /* ControlsAppDelegate.m */; };
+		D69137C61436E112003C26AC /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6225FB01436D886002B04AA /* RootViewController.m */; };
+		D69137C71436E112003C26AC /* UISwitchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D69137BD1436DB00003C26AC /* UISwitchViewController.m */; };
+		D69137C91436E112003C26AC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6225F9A1436D886002B04AA /* UIKit.framework */; };
+		D69137CA1436E112003C26AC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6225F9C1436D886002B04AA /* Foundation.framework */; };
+		D69137CB1436E112003C26AC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6225F9E1436D886002B04AA /* CoreGraphics.framework */; };
+		D69137CD1436E112003C26AC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D6225FA31436D886002B04AA /* InfoPlist.strings */; };
+		D69137CE1436E112003C26AC /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6225FAC1436D886002B04AA /* MainWindow.xib */; };
+		D69137CF1436E112003C26AC /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6225FB21436D886002B04AA /* RootViewController.xib */; };
+		D69137D01436E112003C26AC /* UISwitchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D69137BE1436DB00003C26AC /* UISwitchViewController.xib */; };
+		D69137DB1436E1D2003C26AC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D69137DA1436E1D2003C26AC /* CFNetwork.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D6445A421437E65B00B20F48 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D6FD775D1437E46700B38060 /* Frank.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
+			remoteInfo = Frank;
+		};
+		D6FD77611437E46800B38060 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D6FD775D1437E46700B38060 /* Frank.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D;
+			remoteInfo = Frank;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D6225F961436D886002B04AA /* Controls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Controls.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6225F9A1436D886002B04AA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D6225F9C1436D886002B04AA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D6225F9E1436D886002B04AA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		D6225FA21436D886002B04AA /* Controls-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Controls-Info.plist"; sourceTree = "<group>"; };
+		D6225FA41436D886002B04AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D6225FA61436D886002B04AA /* Controls-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Controls-Prefix.pch"; sourceTree = "<group>"; };
+		D6225FA71436D886002B04AA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D6225FA91436D886002B04AA /* ControlsAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ControlsAppDelegate.h; sourceTree = "<group>"; };
+		D6225FAA1436D886002B04AA /* ControlsAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ControlsAppDelegate.m; sourceTree = "<group>"; };
+		D6225FAD1436D886002B04AA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		D6225FAF1436D886002B04AA /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		D6225FB01436D886002B04AA /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		D6225FB31436D886002B04AA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootViewController.xib; sourceTree = "<group>"; };
+		D6445A461437EB5400B20F48 /* libFrank.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libFrank.a; sourceTree = SOURCE_ROOT; };
+		D6445A481437EB7A00B20F48 /* frank_static_resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = frank_static_resources.bundle; path = ../../frank_static_resources.bundle; sourceTree = "<group>"; };
+		D69137BC1436DB00003C26AC /* UISwitchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISwitchViewController.h; sourceTree = "<group>"; };
+		D69137BD1436DB00003C26AC /* UISwitchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UISwitchViewController.m; sourceTree = "<group>"; };
+		D69137BE1436DB00003C26AC /* UISwitchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UISwitchViewController.xib; sourceTree = "<group>"; };
+		D69137D41436E112003C26AC /* Controls Frankified.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Controls Frankified.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D69137DA1436E1D2003C26AC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		D6FD775D1437E46700B38060 /* Frank.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Frank.xcodeproj; path = ../../Frank.xcodeproj; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D6225F931436D886002B04AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6225F9B1436D886002B04AA /* UIKit.framework in Frameworks */,
+				D6225F9D1436D886002B04AA /* Foundation.framework in Frameworks */,
+				D6225F9F1436D886002B04AA /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D69137C81436E112003C26AC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6445A471437EB5400B20F48 /* libFrank.a in Frameworks */,
+				D69137CB1436E112003C26AC /* CoreGraphics.framework in Frameworks */,
+				D69137DB1436E1D2003C26AC /* CFNetwork.framework in Frameworks */,
+				D69137C91436E112003C26AC /* UIKit.framework in Frameworks */,
+				D69137CA1436E112003C26AC /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D6225F8B1436D886002B04AA = {
+			isa = PBXGroup;
+			children = (
+				D6445A481437EB7A00B20F48 /* frank_static_resources.bundle */,
+				D6445A461437EB5400B20F48 /* libFrank.a */,
+				D69137DA1436E1D2003C26AC /* CFNetwork.framework */,
+				D69137C11436E0EF003C26AC /* Frank */,
+				D6225FA01436D886002B04AA /* Controls */,
+				D6225F991436D886002B04AA /* Frameworks */,
+				D6225F971436D886002B04AA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D6225F971436D886002B04AA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D6225F961436D886002B04AA /* Controls.app */,
+				D69137D41436E112003C26AC /* Controls Frankified.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D6225F991436D886002B04AA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D6225F9A1436D886002B04AA /* UIKit.framework */,
+				D6225F9C1436D886002B04AA /* Foundation.framework */,
+				D6225F9E1436D886002B04AA /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D6225FA01436D886002B04AA /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				D6225FA91436D886002B04AA /* ControlsAppDelegate.h */,
+				D6225FAA1436D886002B04AA /* ControlsAppDelegate.m */,
+				D6225FAC1436D886002B04AA /* MainWindow.xib */,
+				D6225FAF1436D886002B04AA /* RootViewController.h */,
+				D6225FB01436D886002B04AA /* RootViewController.m */,
+				D6225FB21436D886002B04AA /* RootViewController.xib */,
+				D6225FA11436D886002B04AA /* Supporting Files */,
+				D69137BC1436DB00003C26AC /* UISwitchViewController.h */,
+				D69137BD1436DB00003C26AC /* UISwitchViewController.m */,
+				D69137BE1436DB00003C26AC /* UISwitchViewController.xib */,
+			);
+			path = Controls;
+			sourceTree = "<group>";
+		};
+		D6225FA11436D886002B04AA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D6225FA21436D886002B04AA /* Controls-Info.plist */,
+				D6225FA31436D886002B04AA /* InfoPlist.strings */,
+				D6225FA61436D886002B04AA /* Controls-Prefix.pch */,
+				D6225FA71436D886002B04AA /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D69137C11436E0EF003C26AC /* Frank */ = {
+			isa = PBXGroup;
+			children = (
+				D6FD775D1437E46700B38060 /* Frank.xcodeproj */,
+			);
+			name = Frank;
+			sourceTree = "<group>";
+		};
+		D6FD775E1437E46700B38060 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D6FD77621437E46800B38060 /* libFrank.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D6225F951436D886002B04AA /* Controls */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D6225FB71436D886002B04AA /* Build configuration list for PBXNativeTarget "Controls" */;
+			buildPhases = (
+				D6225F921436D886002B04AA /* Sources */,
+				D6225F931436D886002B04AA /* Frameworks */,
+				D6225F941436D886002B04AA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Controls;
+			productName = Controls;
+			productReference = D6225F961436D886002B04AA /* Controls.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D69137C21436E112003C26AC /* Controls Frankified */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D69137D11436E112003C26AC /* Build configuration list for PBXNativeTarget "Controls Frankified" */;
+			buildPhases = (
+				D69137C31436E112003C26AC /* Sources */,
+				D69137C81436E112003C26AC /* Frameworks */,
+				D69137CC1436E112003C26AC /* Resources */,
+				D69137DC1436E47F003C26AC /* Run Script */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D6445A431437E65B00B20F48 /* PBXTargetDependency */,
+			);
+			name = "Controls Frankified";
+			productName = Controls;
+			productReference = D69137D41436E112003C26AC /* Controls Frankified.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D6225F8D1436D886002B04AA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = ThoughtWorks;
+			};
+			buildConfigurationList = D6225F901436D886002B04AA /* Build configuration list for PBXProject "Controls" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D6225F8B1436D886002B04AA;
+			productRefGroup = D6225F971436D886002B04AA /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = D6FD775E1437E46700B38060 /* Products */;
+					ProjectRef = D6FD775D1437E46700B38060 /* Frank.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				D6225F951436D886002B04AA /* Controls */,
+				D69137C21436E112003C26AC /* Controls Frankified */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		D6FD77621437E46800B38060 /* libFrank.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libFrank.a;
+			remoteRef = D6FD77611437E46800B38060 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D6225F941436D886002B04AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6225FA51436D886002B04AA /* InfoPlist.strings in Resources */,
+				D6225FAE1436D886002B04AA /* MainWindow.xib in Resources */,
+				D6225FB41436D886002B04AA /* RootViewController.xib in Resources */,
+				D69137C01436DB00003C26AC /* UISwitchViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D69137CC1436E112003C26AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6445A491437EB7A00B20F48 /* frank_static_resources.bundle in Resources */,
+				D69137CD1436E112003C26AC /* InfoPlist.strings in Resources */,
+				D69137CE1436E112003C26AC /* MainWindow.xib in Resources */,
+				D69137CF1436E112003C26AC /* RootViewController.xib in Resources */,
+				D69137D01436E112003C26AC /* UISwitchViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D69137DC1436E47F003C26AC /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+				"$(",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo APP_BUNDLE_PATH=\\\"$BUILT_PRODUCTS_DIR/$EXECUTABLE_NAME.app\\\" > $SRCROOT/features/support/bundle_path.rb\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D6225F921436D886002B04AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6225FA81436D886002B04AA /* main.m in Sources */,
+				D6225FAB1436D886002B04AA /* ControlsAppDelegate.m in Sources */,
+				D6225FB11436D886002B04AA /* RootViewController.m in Sources */,
+				D69137BF1436DB00003C26AC /* UISwitchViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D69137C31436E112003C26AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D69137C41436E112003C26AC /* main.m in Sources */,
+				D69137C51436E112003C26AC /* ControlsAppDelegate.m in Sources */,
+				D69137C61436E112003C26AC /* RootViewController.m in Sources */,
+				D69137C71436E112003C26AC /* UISwitchViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D6445A431437E65B00B20F48 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Frank;
+			targetProxy = D6445A421437E65B00B20F48 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D6225FA31436D886002B04AA /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D6225FA41436D886002B04AA /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		D6225FAC1436D886002B04AA /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D6225FAD1436D886002B04AA /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		D6225FB21436D886002B04AA /* RootViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D6225FB31436D886002B04AA /* en */,
+			);
+			name = RootViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D6225FB51436D886002B04AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		D6225FB61436D886002B04AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		D6225FB81436D886002B04AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Controls/Controls-Prefix.pch";
+				INFOPLIST_FILE = "Controls/Controls-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		D6225FB91436D886002B04AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Controls/Controls-Prefix.pch";
+				INFOPLIST_FILE = "Controls/Controls-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		D69137D21436E112003C26AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Controls/Controls-Prefix.pch";
+				INFOPLIST_FILE = "Controls/Controls-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../dist\"",
+					"\"$(SRCROOT)\"",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "Controls Frankified";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		D69137D31436E112003C26AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Controls/Controls-Prefix.pch";
+				INFOPLIST_FILE = "Controls/Controls-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../dist\"",
+					"\"$(SRCROOT)\"",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "Controls Frankified";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D6225F901436D886002B04AA /* Build configuration list for PBXProject "Controls" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D6225FB51436D886002B04AA /* Debug */,
+				D6225FB61436D886002B04AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D6225FB71436D886002B04AA /* Build configuration list for PBXNativeTarget "Controls" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D6225FB81436D886002B04AA /* Debug */,
+				D6225FB91436D886002B04AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D69137D11436E112003C26AC /* Build configuration list for PBXNativeTarget "Controls Frankified" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D69137D21436E112003C26AC /* Debug */,
+				D69137D31436E112003C26AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D6225F8D1436D886002B04AA /* Project object */;
+}
