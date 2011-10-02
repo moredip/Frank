@@ -1,5 +1,6 @@
 build
 dist
-Frank.xcodeproj/*.mode1v3
-Frank.xcodeproj/*.pbxuser
-Frank.xcodeproj/ThoughtWorks.mode2v3
+*.mode1v3
+*.mode2v3
+*.pbxuser
+xcuserdata
