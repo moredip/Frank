@@ -4,11 +4,21 @@ Feature:
 				I want Frank to be able to automate UISwitches
 
 				Background:
-								#								Given I launch the app
+								Given I launch the app
 								And I touch "UISwitch"
 
 				Scenario: Flipping the switch off and on
-								When I touch "the switch"
+								Given switch "the switch" should be on
 
-								#When I flip switch "the switch" on
-								#Then I should see "Switch is on"
+								When I touch "the switch"
+								Then switch "the switch" should be off
+								Then I should see "Switch is off"
+
+								When I touch "the switch"
+								Then switch "the switch" should be on
+								Then I should see "Switch is on"
+
+				# STILL TO DO
+				#Scenario: setting the switch declaratively
+				#Scenario: swiping the switch on
+				#Scenario: swiping the switch off
