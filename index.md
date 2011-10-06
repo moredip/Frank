@@ -28,3 +28,4 @@ information on your running app.
 * **Record Video** - record video of your test runs to show the app in action
 * **Run everywhere** - Run your tests on both the Simulator and Device
 * **Integrates with CI** - Run your tests on every checkin
+* [**Great Community**](mailing_lists.html) - A strong community of helpful people

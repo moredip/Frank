@@ -12,6 +12,8 @@ changes and send a pull request.
 Feedback, suggestions and questions are always welcome on the [Mailing
 List](mailing_lists.html).
 
+We also track issues and feature requests [here](http://github.com/moredip/Frank/issues).
+
 ## Hacking on the Frank Ruby source
 
 Use the RUBYLIB environment variable to get your Ruby environment to
