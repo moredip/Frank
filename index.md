@@ -17,7 +17,7 @@ Scenario: Successful login
 {% endhighlight %}
 
 Frank also includes a powerful "app inspector" (called
-[Symbiote](symbiote.html)) that you can use to get detailed
+[Symbiote](coming_soon.html)) that you can use to get detailed
 information on your running app.
 
 ## Features
