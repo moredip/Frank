@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+    <title>Testing With Frank &mdash; {{ page.title }}</title>
+    <style type='text/css'>
+      @import 'css/default.css';
+      @import 'css/syntax.css';
+    </style>
+    <meta content='Official Buildr documentation from the people in the know' name='subject'>
+    <link href='images/favicon.png' rel='shortcut icon'>
+  </head>
+  <body>
+    <div id='wrap'>
+      <div id='header'>
+        <a href='index.html' title="Testing With Frank"><img alt='testing with frank' src='images/testing_with_frank.png'></a>
+      </div>
+      <div id='pages'>
+        <ol class='toc'>
+          <li><a href='index.html'>Home</a></li>
+          <li>Get Started
+            <ol class="toc">
+              <li><a href='installing.html'>Installing</a></li>
+              <li><a href='configuration.html'>Configuration</a></li>
+              <li><a href='troubleshooting.html'>Troubleshooting</a></li>
+              <li><a href='tutorial.html'>Tutorial</a></li>
+            </ol>
+          </li>
+          <li>More Information
+            <ol class="toc">
+              <li><a href='presentations.html'>Presentations</a></li>
+              <li><a href='screencasts.html'>Screencasts</a></li>
+            </ol>
+          </li>
+          <li>Get Involved
+            <ol class="toc">
+              <li><a href='mailing_lists.html'>Mailing Lists</a></li>
+              <li><a href='contributing.html'>Contributing</a></li>
+            </ol>
+          </li>
+        </ol>
+      </div>
+      <div id='content'>
+        <h1 id='{{ page.title | downcase | replace(' ', '_') }}'>{{ page.title }}</h1>
+        {{ content }}
+      </div>
+      <div id='footer'>www.testingwithfrank.com<br/>
+        {{site.time}} <br/
+        <p>Site design from github.com/apache/buildr</p></div>
+    </div>
+  </body>
+</html>

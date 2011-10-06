@@ -1,0 +1,13 @@
+body {
+  font-family: "Helvetica Neue";
+}
+
+pre, code {
+    font-family: "Monaco", "Courier";
+    font-size: 10pt;
+}
+
+h1, h2 {
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid #A0A0A0;
+}
