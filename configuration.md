@@ -44,8 +44,8 @@ time where some ruby methods are used and the simulator starts with
 your app, and a *Server* mode where it listens for commands to launch
 iOS apps via HTTP.
 
-When you are running your tests from the command line you can just use
-the Direct mode.
+When you are running your tests from the command line you can use the
+default, which is Direct mode.
 
 
 ### On your CI server (Hudson, Jenkins, Go, CruiseControl)
