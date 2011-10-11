@@ -3,11 +3,7 @@ layout: default
 title: Tutorial
 ---
 
-# **I need to run through this one time to verify**
-
-***Everything should be working or close to working, I've just
-moved it over from the old documentation and cleaned it up where I saw
-problems***
+# **This is currently a little out of date, updates soon**
 
 ## Create a blank app to play with
     
