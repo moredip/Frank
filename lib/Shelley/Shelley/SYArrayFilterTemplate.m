@@ -25,4 +25,13 @@
     return filteredViews;
 }
 
+// default implementation ignores this directive, may be implemented by subclass
+- (void)setDoNotDescend:(BOOL)doNotDescend {
+}
+
+// default implementation may be implemented by subclass
+- (BOOL) nextFilterShouldNotDescend {
+    return NO;
+}
+
 @end

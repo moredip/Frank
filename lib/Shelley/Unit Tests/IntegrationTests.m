@@ -226,7 +226,7 @@
 }
 
 - (void) testWeFilterOutDupes {
-    Shelley *shelley = [Shelley withSelectorString:@"button parent button"];
+    Shelley *shelley = [Shelley withSelectorString:@"button parent descendant button"];
     NSArray *selectedViews = [shelley selectFrom:view];
     
     STAssertEquals((NSUInteger)2, selectedViews.count, nil);
@@ -234,7 +234,7 @@
     [self assertArray:selectedViews containsObject:viewB];
 }
 
-- (void) xtestAllowsSelectionOfSiblingsViaParentFilter {
+- (void) testAllowsSelectionOfSiblingsViaParentFilter {
     UITableView *tableView = [[[UITableView alloc] init]autorelease];
     
     UITableViewCell *cellA = [[[UITableViewCell alloc] init] autorelease];
@@ -261,8 +261,8 @@
     selectedViews = [[Shelley withSelectorString:@"view marked:'cell B' parent view:'UITableViewCell'"] selectFrom:tableView];
     [self assertArray:selectedViews containsExactlyObjects:[NSArray arrayWithObject:cellB]];
     
-  //  selectedViews = [[Shelley withSelectorString:@"view marked:'cell B' parent view:'UITableViewCell' button"] selectFrom:tableView];
-  //  [self assertArray:selectedViews containsExactlyObjects:[NSArray arrayWithObject:buttonB]];
+    selectedViews = [[Shelley withSelectorString:@"view marked:'cell B' parent view:'UITableViewCell' button"] selectFrom:tableView];
+    [self assertArray:selectedViews containsExactlyObjects:[NSArray arrayWithObject:buttonB]];
 }
 
 @end

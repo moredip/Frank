@@ -15,4 +15,12 @@
     return [NSArray arrayWithObject:[views objectAtIndex:0]];
 }
 
+- (void)setDoNotDescend:(BOOL)doNotDescend {
+    // ignored
+}
+
+- (BOOL) nextFilterShouldNotDescend {
+    return NO;
+}
+
 @end

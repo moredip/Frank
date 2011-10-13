@@ -50,13 +50,17 @@
 - (NSArray *) selectFrom:(UIView *)rootView
 {
     id<SYFilter> filter = [_parser nextFilter];
+    id<SYFilter> prevFilter = filter;
+    
     if( !filter )
         return [NSArray array];
     
     NSArray *views = [filter applyToViews:[NSArray arrayWithObject:rootView]];
     
     while(( filter = [_parser nextFilter] )){
+        [filter setDoNotDescend:[prevFilter nextFilterShouldNotDescend]];
         views = [self applyFilter:filter toViews:views];
+        prevFilter = filter;
     }
     
     return views;

@@ -12,6 +12,7 @@
 @interface SYClassFilter : SYArrayFilterTemplate {
     Class _targetClass;
 	BOOL _includeSelf;
+    BOOL _justFilter;
 }
 @property (readonly) Class target;
 
