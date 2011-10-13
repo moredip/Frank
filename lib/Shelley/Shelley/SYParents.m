@@ -22,4 +22,8 @@
     return ancestors;
 }
 
+- (BOOL) nextFilterShouldNotDescend {
+    return YES;
+}
+
 @end

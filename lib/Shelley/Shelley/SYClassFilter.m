@@ -29,14 +29,27 @@
     if (self) {
         _targetClass = class;
 		_includeSelf = includeSelf;
+        _justFilter = NO;
     }
     return self;
 }
 
+- (void)setDoNotDescend:(BOOL)doNotDescend {
+    _justFilter = doNotDescend;
+}
 
--(NSArray *)applyToView:(UIView *)view{
+-(NSArray *)viewsToConsiderFromView:(UIView *)view{
+    if( _justFilter )
+        return [NSArray arrayWithObject:view];
+    
     NSMutableArray *allViews = _includeSelf ? [NSMutableArray arrayWithObject:view] : [NSMutableArray array];
     [allViews addObjectsFromArray:[SYClassFilter allDescendantsOf:view]];
+    return allViews;
+}
+
+
+-(NSArray *)applyToView:(UIView *)view{
+    NSArray *allViews = [self viewsToConsiderFromView:view];
 	
     // TODO: look at using predicates
     NSMutableArray *filteredDescendants = [NSMutableArray array];
