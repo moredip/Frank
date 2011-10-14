@@ -11,6 +11,9 @@ asked on the [frank-discuss mailing list](mailing_lists.html)!
 No sorry. In order to test an application with Frank you need to
 compile or link the Frank server into the application you are testing.
 
+## Can I use Frank to test web-based apps?
+If you want to test a pure web app (no native code at all) then Frank can't help you, but [the WebDriver project's iPhoneDriver](http://code.google.com/p/selenium/wiki/IPhoneDriver) is a good option. If you have a hybrid app (a Native app which uses web views to implement some of the UI) then Frank does have some functionality to inspect the state of a web view, and evaluate javacript, but it's fairly basic for now.
+
 ## Is there a way to stop Frank waiting so long when it can't find a UI element?
 
 Technically there should be a way to do this by modifying UISpec, the
