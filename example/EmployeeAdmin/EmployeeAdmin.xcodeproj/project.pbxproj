@@ -487,6 +487,7 @@
 				D6A834F611CDC3D3001B8585 /* Resources */,
 				D6A834F911CDC3D3001B8585 /* Sources */,
 				D6A8351211CDC3D3001B8585 /* Frameworks */,
+				D6F09564144A62F000B78FEC /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -543,6 +544,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D6F09564144A62F000B78FEC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo APP_BUNDLE_PATH=\\\"$BUILT_PRODUCTS_DIR/$EXECUTABLE_NAME.app\\\" > $SRCROOT/features/support/bundle_path.rb";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1D60588E0D05DD3D006BFB54 /* Sources */ = {
