@@ -234,7 +234,7 @@
     [self assertArray:selectedViews containsObject:viewB];
 }
 
-- (void) testAllowsSelectionOfSiblingsViaParentFilter {
+- (void) testAllowsSelectionOfSiblingsAndCousinsViaParentFilter {
     UITableView *tableView = [[[UITableView alloc] init]autorelease];
     
     UITableViewCell *cellA = [[[UITableViewCell alloc] init] autorelease];
@@ -263,6 +263,12 @@
     
     selectedViews = [[Shelley withSelectorString:@"view marked:'cell B' parent view:'UITableViewCell' button"] selectFrom:tableView];
     [self assertArray:selectedViews containsExactlyObjects:[NSArray arrayWithObject:buttonB]];
+    
+    selectedViews = [[Shelley withSelectorString:@"view marked:'cell B' parent view:'UITableView'"] selectFrom:tableView];
+    [self assertArray:selectedViews containsExactlyObjects:[NSArray arrayWithObject:tableView]];    
+
+    selectedViews = [[Shelley withSelectorString:@"view marked:'cell B' parent view:'UITableView' view marked:'cell A'"] selectFrom:tableView];
+    [self assertArray:selectedViews containsExactlyObjects:[NSArray arrayWithObject:subviewA]];    
 }
 
 @end
