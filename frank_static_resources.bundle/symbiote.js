@@ -380,21 +380,22 @@ $(document).ready(function() {
 
 
 
-  function sendFlashCommand( selector ) {
-    var command = {
-      query: selector,
-      operation: {
-        method_name: 'flash',
-        arguments: []
-      }
-    };
+  function sendFlashCommand( selector, use_shelley ) {
+    var operation = use_shelley ? '/shelley_map' : '/map',
+        command = {
+          query: selector,
+          operation: {
+            method_name: 'flash',
+            arguments: []
+          }
+        };
 
     showLoadingUI();
     $.ajax({
       type: "POST",
       dataType: "json",
       data: JSON.stringify( command ),
-      url: symbiote.baseUrlFor( "/map" ),
+      url: symbiote.baseUrlFor( operation ),
       success: function(data) {
         if( isErrorResponse( data ) ) {
           displayErrorResponse( data );
@@ -481,7 +482,11 @@ $(document).ready(function() {
   });
 
   $('#flash_button').click( function(){
-    sendFlashCommand( $("input#query").val() );
+    sendFlashCommand( $("input#query").val(), false );
+  });
+
+  $('#shelley_flash_button').click( function(){
+    sendFlashCommand( $("input#query").val(), true );
   });
 
   
