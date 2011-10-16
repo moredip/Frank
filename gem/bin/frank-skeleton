@@ -2,24 +2,51 @@
 
 require 'fileutils'
 
-frank_dir = File.join( FileUtils.pwd, "Frank" )
+TARGET_DIR = File.join( FileUtils.pwd, "Frank" )
+SOURCE_DIR = File.join( File.dirname(__FILE__), '..', 'frank-skeleton' )
 
-if File.exists?( frank_dir ) 
-  puts "A Frank directory already exists. I won't overwrite it. Giving up."
-  exit 1
-else
-  puts "I'm about to create a subdirectory called Frank which will contain the Frank server files and also your Cucumber tests. Please hit return to confirm that's what you want."
-  exit 2 unless STDIN.gets.chomp == ''
+command = ARGV[0]
+
+unless ["update-server",nil].include? command
+  puts "unrecognized command #{command}"
+  puts "the only valid command at the moment is update-server"
+  exit 10
 end
 
-FileUtils.mkdir_p( frank_dir )
+update_mode = ARGV[0] == 'update-server'
 
-source_dir = File.join( File.dirname(__FILE__), '..', 'frank-skeleton' )
+def create_skeleton_dir
+  puts "I'm about to create a subdirectory called Frank which will contain the Frank server files and also your Cucumber tests. Please hit return to confirm that's what you want."
+  exit 3 unless STDIN.gets.chomp == ''
 
-FileUtils.cp_r( Dir.glob( source_dir+"/*" ), frank_dir )
+  FileUtils.mkdir_p( TARGET_DIR )
+  FileUtils.cp_r( Dir.glob( SOURCE_DIR+"/*" ), TARGET_DIR )
 
-puts <<-EOS
-Frank subdirectory created.
-Your next step is to create a Frankified target for your app, and add the libFrank.a and frank_static_resources.bundle files inside the Frank directory to that target.
-After that, you can build the target and try executing 'cucumber' from the Frank directory to see how your initial cucumber test runs.
-EOS
+  puts <<-EOS
+  Frank subdirectory created.
+  Your next step is to create a Frankified target for your app, and add the libFrank.a and frank_static_resources.bundle files inside the Frank directory to that target.
+  After that, you can build the target and try executing 'cucumber' from the Frank directory to see how your initial cucumber test runs.
+  EOS
+end
+
+def update_server_files
+  source_files = %w{libFrank.a frank_static_resources.bundle}.map{ |x| File.join( SOURCE_DIR, x ) }
+  FileUtils.cp_r( source_files, TARGET_DIR )
+  puts "All done. I've updated libFrank.a and frank_static_resources.bundle inside #{TARGET_DIR}"
+end
+
+frank_dir_already_exists = File.exists?( TARGET_DIR ) 
+
+if frank_dir_already_exists && !update_mode
+  puts "A Frank subdirectory already exists. I don't want to mess with that. \n\nIf you want me to update the frank server code in that directory then run `frank-skeleton update-server`"
+  exit 1
+elsif !frank_dir_already_exists && update_mode
+  puts "There isn't a Frank subdirectory here for me to update.\n\nIf you want to create a new Frank subdirectory containing the Frank server code and an initial Cucumber setup then you should run `frank-skeleton` with no arguments"
+  exit 2
+end
+
+if update_mode
+  update_server_files
+else
+  create_skeleton_dir
+end
