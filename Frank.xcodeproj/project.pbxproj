@@ -32,18 +32,6 @@
 		D629928F11AB2D4C00CE0FB0 /* MyHTTPConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = D629927F11AB2D4C00CE0FB0 /* MyHTTPConnection.h */; };
 		D629929011AB2D4C00CE0FB0 /* MyHTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = D629928011AB2D4C00CE0FB0 /* MyHTTPConnection.m */; };
 		D629938011AB2DF300CE0FB0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D629937F11AB2DF300CE0FB0 /* UIKit.framework */; };
-		D659F21814056F2A0046CF83 /* Shelley.h in Headers */ = {isa = PBXBuildFile; fileRef = D659F20A14056F2A0046CF83 /* Shelley.h */; };
-		D659F21914056F2A0046CF83 /* Shelley.m in Sources */ = {isa = PBXBuildFile; fileRef = D659F20B14056F2A0046CF83 /* Shelley.m */; };
-		D659F21A14056F2A0046CF83 /* SYClassFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = D659F20C14056F2A0046CF83 /* SYClassFilter.h */; };
-		D659F21B14056F2A0046CF83 /* SYClassFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = D659F20D14056F2A0046CF83 /* SYClassFilter.m */; };
-		D659F21C14056F2A0046CF83 /* SYFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = D659F20E14056F2A0046CF83 /* SYFilter.h */; };
-		D659F21D14056F2A0046CF83 /* SYParents.h in Headers */ = {isa = PBXBuildFile; fileRef = D659F20F14056F2A0046CF83 /* SYParents.h */; };
-		D659F21E14056F2A0046CF83 /* SYParents.m in Sources */ = {isa = PBXBuildFile; fileRef = D659F21014056F2A0046CF83 /* SYParents.m */; };
-		D659F21F14056F2A0046CF83 /* SYParser.h in Headers */ = {isa = PBXBuildFile; fileRef = D659F21114056F2A0046CF83 /* SYParser.h */; };
-		D659F22014056F2A0046CF83 /* SYParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D659F21214056F2A0046CF83 /* SYParser.m */; };
-		D659F22114056F2A0046CF83 /* SYPredicateFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = D659F21314056F2A0046CF83 /* SYPredicateFilter.h */; };
-		D659F22214056F2A0046CF83 /* SYPredicateFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = D659F21414056F2A0046CF83 /* SYPredicateFilter.m */; };
-		D659F22414056F2A0046CF83 /* UIView+ShelleyExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = D659F21614056F2A0046CF83 /* UIView+ShelleyExtensions.m */; };
 		D6325EA81437F7180057330D /* UIQueryScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = D6325E681437F7180057330D /* UIQueryScrollView.h */; };
 		D6325EA91437F7180057330D /* UIQueryScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6325E691437F7180057330D /* UIQueryScrollView.m */; };
 		D6325EAA1437F7180057330D /* UIQuerySearchBar.h in Headers */ = {isa = PBXBuildFile; fileRef = D6325E6A1437F7180057330D /* UIQuerySearchBar.h */; };
@@ -106,6 +94,7 @@
 		D6325EE31437F7180057330D /* UIProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = D6325EA51437F7180057330D /* UIProxy.m */; };
 		D6325EE41437F7180057330D /* WaitUntilIdle.h in Headers */ = {isa = PBXBuildFile; fileRef = D6325EA61437F7180057330D /* WaitUntilIdle.h */; };
 		D6325EE51437F7180057330D /* WaitUntilIdle.m in Sources */ = {isa = PBXBuildFile; fileRef = D6325EA71437F7180057330D /* WaitUntilIdle.m */; };
+		D64DA8C4144B732700FB72F3 /* libShelley.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D64DA8BF144B72F400FB72F3 /* libShelley.a */; };
 		D67F2AAD13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = D67F2AAB13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.h */; };
 		D67F2AAE13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D67F2AAC13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.m */; };
 		D67F2ABF13F5F55A00A0BFF1 /* FrankLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = D67F2ABD13F5F55A00A0BFF1 /* FrankLoader.h */; };
@@ -114,8 +103,6 @@
 		D67F2B3A13F5F91700A0BFF1 /* UIView+MapKitWorkaround.m in Sources */ = {isa = PBXBuildFile; fileRef = D67F2B3813F5F91700A0BFF1 /* UIView+MapKitWorkaround.m */; };
 		D68B8EA11405D51000030C51 /* ShelleyMapOperationCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = D68B8E9F1405D51000030C51 /* ShelleyMapOperationCommand.h */; };
 		D68B8EA21405D51000030C51 /* ShelleyMapOperationCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D68B8EA01405D51000030C51 /* ShelleyMapOperationCommand.m */; };
-		D6C8BCC5137CD5E2000EF521 /* UIQueryScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = D6C8BCC3137CD5E2000EF521 /* UIQueryScrollView.h */; };
-		D6C8BCC6137CD5E2000EF521 /* UIQueryScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C8BCC4137CD5E2000EF521 /* UIQueryScrollView.m */; };
 		D6D05CB311C883AA0081C5A5 /* DumpCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = D6D05CA111C883AA0081C5A5 /* DumpCommand.h */; };
 		D6D05CB411C883AA0081C5A5 /* DumpCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D05CA211C883AA0081C5A5 /* DumpCommand.m */; };
 		D6D05CB511C883AA0081C5A5 /* FrankCommandRoute.h in Headers */ = {isa = PBXBuildFile; fileRef = D6D05CA311C883AA0081C5A5 /* FrankCommandRoute.h */; };
@@ -162,6 +149,30 @@
 		D6FA01B714283C4F00576AD1 /* UIView-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FA01AA14283C4F00576AD1 /* UIView-KIFAdditions.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		D64DA8BE144B72F400FB72F3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D64DA8B6144B72F300FB72F3 /* Shelley.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D6E8FF3213D3DC9200D24F43;
+			remoteInfo = Shelley;
+		};
+		D64DA8C0144B72F400FB72F3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D64DA8B6144B72F300FB72F3 /* Shelley.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D6CF39AC13D3E481000C7901;
+			remoteInfo = "Unit Tests";
+		};
+		D64DA8C5144B736400FB72F3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D64DA8B6144B72F300FB72F3 /* Shelley.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D6E8FF3113D3DC9200D24F43;
+			remoteInfo = Shelley;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		4C1DD76812BADFE100E10B8C /* OrientationCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrientationCommand.m; path = src/OrientationCommand.m; sourceTree = "<group>"; };
 		4C1DD76912BADFE100E10B8C /* OrientationCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrientationCommand.h; path = src/OrientationCommand.h; sourceTree = "<group>"; };
@@ -191,18 +202,6 @@
 		D629937F11AB2DF300CE0FB0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D62AEFAA11B4897B00B824F3 /* env.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = env.rb; sourceTree = "<group>"; };
 		D62AEFAB11B4897B00B824F3 /* frank_helper.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = frank_helper.rb; sourceTree = "<group>"; };
-		D659F20A14056F2A0046CF83 /* Shelley.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shelley.h; sourceTree = "<group>"; };
-		D659F20B14056F2A0046CF83 /* Shelley.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shelley.m; sourceTree = "<group>"; };
-		D659F20C14056F2A0046CF83 /* SYClassFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYClassFilter.h; sourceTree = "<group>"; };
-		D659F20D14056F2A0046CF83 /* SYClassFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYClassFilter.m; sourceTree = "<group>"; };
-		D659F20E14056F2A0046CF83 /* SYFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYFilter.h; sourceTree = "<group>"; };
-		D659F20F14056F2A0046CF83 /* SYParents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYParents.h; sourceTree = "<group>"; };
-		D659F21014056F2A0046CF83 /* SYParents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYParents.m; sourceTree = "<group>"; };
-		D659F21114056F2A0046CF83 /* SYParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYParser.h; sourceTree = "<group>"; };
-		D659F21214056F2A0046CF83 /* SYParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYParser.m; sourceTree = "<group>"; };
-		D659F21314056F2A0046CF83 /* SYPredicateFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYPredicateFilter.h; sourceTree = "<group>"; };
-		D659F21414056F2A0046CF83 /* SYPredicateFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYPredicateFilter.m; sourceTree = "<group>"; };
-		D659F21614056F2A0046CF83 /* UIView+ShelleyExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ShelleyExtensions.m"; sourceTree = "<group>"; };
 		D6325E681437F7180057330D /* UIQueryScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIQueryScrollView.h; sourceTree = "<group>"; };
 		D6325E691437F7180057330D /* UIQueryScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIQueryScrollView.m; sourceTree = "<group>"; };
 		D6325E6A1437F7180057330D /* UIQuerySearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIQuerySearchBar.h; sourceTree = "<group>"; };
@@ -265,6 +264,7 @@
 		D6325EA51437F7180057330D /* UIProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIProxy.m; sourceTree = "<group>"; };
 		D6325EA61437F7180057330D /* WaitUntilIdle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitUntilIdle.h; sourceTree = "<group>"; };
 		D6325EA71437F7180057330D /* WaitUntilIdle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitUntilIdle.m; sourceTree = "<group>"; };
+		D64DA8B6144B72F300FB72F3 /* Shelley.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Shelley.xcodeproj; path = lib/Shelley/Shelley.xcodeproj; sourceTree = SOURCE_ROOT; };
 		D6782D8511BC423900FD0CE1 /* frank_static_resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = frank_static_resources.bundle; sourceTree = "<group>"; };
 		D67F2AAB13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccessibilityCheckCommand.h; path = src/AccessibilityCheckCommand.h; sourceTree = "<group>"; };
 		D67F2AAC13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccessibilityCheckCommand.m; path = src/AccessibilityCheckCommand.m; sourceTree = "<group>"; };
@@ -274,8 +274,6 @@
 		D67F2B3813F5F91700A0BFF1 /* UIView+MapKitWorkaround.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MapKitWorkaround.m"; sourceTree = "<group>"; };
 		D68B8E9F1405D51000030C51 /* ShelleyMapOperationCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShelleyMapOperationCommand.h; sourceTree = "<group>"; };
 		D68B8EA01405D51000030C51 /* ShelleyMapOperationCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShelleyMapOperationCommand.m; sourceTree = "<group>"; };
-		D6C8BCC3137CD5E2000EF521 /* UIQueryScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIQueryScrollView.h; sourceTree = "<group>"; };
-		D6C8BCC4137CD5E2000EF521 /* UIQueryScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIQueryScrollView.m; sourceTree = "<group>"; };
 		D6D05CA111C883AA0081C5A5 /* DumpCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DumpCommand.h; path = src/DumpCommand.h; sourceTree = "<group>"; };
 		D6D05CA211C883AA0081C5A5 /* DumpCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DumpCommand.m; path = src/DumpCommand.m; sourceTree = "<group>"; };
 		D6D05CA311C883AA0081C5A5 /* FrankCommandRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FrankCommandRoute.h; path = src/FrankCommandRoute.h; sourceTree = "<group>"; };
@@ -329,6 +327,7 @@
 			files = (
 				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
 				D629938011AB2DF300CE0FB0 /* UIKit.framework in Frameworks */,
+				D64DA8C4144B732700FB72F3 /* libShelley.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,7 +413,7 @@
 		D629926711AB2CF700CE0FB0 /* 3rd Party */ = {
 			isa = PBXGroup;
 			children = (
-				D659F20814056F2A0046CF83 /* Shelley */,
+				D64DA8B6144B72F300FB72F3 /* Shelley.xcodeproj */,
 				D6325E661437F7180057330D /* UISpec */,
 				D6FA019D14283BEA00576AD1 /* KIF Additions */,
 				D6E7B46C11B36D42005CAA34 /* JSON */,
@@ -552,24 +551,13 @@
 			path = utils;
 			sourceTree = "<group>";
 		};
-		D659F20814056F2A0046CF83 /* Shelley */ = {
+		D64DA8B7144B72F300FB72F3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D659F20A14056F2A0046CF83 /* Shelley.h */,
-				D659F20B14056F2A0046CF83 /* Shelley.m */,
-				D659F20C14056F2A0046CF83 /* SYClassFilter.h */,
-				D659F20D14056F2A0046CF83 /* SYClassFilter.m */,
-				D659F20E14056F2A0046CF83 /* SYFilter.h */,
-				D659F20F14056F2A0046CF83 /* SYParents.h */,
-				D659F21014056F2A0046CF83 /* SYParents.m */,
-				D659F21114056F2A0046CF83 /* SYParser.h */,
-				D659F21214056F2A0046CF83 /* SYParser.m */,
-				D659F21314056F2A0046CF83 /* SYPredicateFilter.h */,
-				D659F21414056F2A0046CF83 /* SYPredicateFilter.m */,
-				D659F21614056F2A0046CF83 /* UIView+ShelleyExtensions.m */,
+				D64DA8BF144B72F400FB72F3 /* libShelley.a */,
+				D64DA8C1144B72F400FB72F3 /* Unit Tests.octest */,
 			);
-			name = Shelley;
-			path = lib/Shelley/Shelley;
+			name = Products;
 			sourceTree = "<group>";
 		};
 		D6E7B46C11B36D42005CAA34 /* JSON */ = {
@@ -650,12 +638,6 @@
 				D67F2AAD13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.h in Headers */,
 				D67F2ABF13F5F55A00A0BFF1 /* FrankLoader.h in Headers */,
 				D67F2B3413F5F82700A0BFF1 /* LoadableCategory.h in Headers */,
-				D659F21814056F2A0046CF83 /* Shelley.h in Headers */,
-				D659F21A14056F2A0046CF83 /* SYClassFilter.h in Headers */,
-				D659F21C14056F2A0046CF83 /* SYFilter.h in Headers */,
-				D659F21D14056F2A0046CF83 /* SYParents.h in Headers */,
-				D659F21F14056F2A0046CF83 /* SYParser.h in Headers */,
-				D659F22114056F2A0046CF83 /* SYPredicateFilter.h in Headers */,
 				D68B8EA11405D51000030C51 /* ShelleyMapOperationCommand.h in Headers */,
 				D6FA01AB14283C4F00576AD1 /* CGGeometry-KIFAdditions.h in Headers */,
 				D6FA01AE14283C4F00576AD1 /* UIAccessibilityElement-KIFAdditions.h in Headers */,
@@ -712,6 +694,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D64DA8C6144B736400FB72F3 /* PBXTargetDependency */,
 			);
 			name = Frank;
 			productName = Frank;
@@ -736,12 +719,35 @@
 			mainGroup = 0867D691FE84028FC02AAC07 /* Frank */;
 			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = D64DA8B7144B72F300FB72F3 /* Products */;
+					ProjectRef = D64DA8B6144B72F300FB72F3 /* Shelley.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D2AAC07D0554694100DB518D /* Frank */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		D64DA8BF144B72F400FB72F3 /* libShelley.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libShelley.a;
+			remoteRef = D64DA8BE144B72F400FB72F3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D64DA8C1144B72F400FB72F3 /* Unit Tests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Unit Tests.octest";
+			remoteRef = D64DA8C0144B72F400FB72F3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D6782DD711BC67FE00FD0CE1 /* Resources */ = {
@@ -788,12 +794,6 @@
 				D67F2AAE13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.m in Sources */,
 				D67F2AC013F5F55A00A0BFF1 /* FrankLoader.m in Sources */,
 				D67F2B3A13F5F91700A0BFF1 /* UIView+MapKitWorkaround.m in Sources */,
-				D659F21914056F2A0046CF83 /* Shelley.m in Sources */,
-				D659F21B14056F2A0046CF83 /* SYClassFilter.m in Sources */,
-				D659F21E14056F2A0046CF83 /* SYParents.m in Sources */,
-				D659F22014056F2A0046CF83 /* SYParser.m in Sources */,
-				D659F22214056F2A0046CF83 /* SYPredicateFilter.m in Sources */,
-				D659F22414056F2A0046CF83 /* UIView+ShelleyExtensions.m in Sources */,
 				D68B8EA21405D51000030C51 /* ShelleyMapOperationCommand.m in Sources */,
 				D6FA01AC14283C4F00576AD1 /* CGGeometry-KIFAdditions.m in Sources */,
 				D6FA01AF14283C4F00576AD1 /* UIAccessibilityElement-KIFAdditions.m in Sources */,
@@ -837,11 +837,19 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		D64DA8C6144B736400FB72F3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Shelley;
+			targetProxy = D64DA8C5144B736400FB72F3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
 		1DEB921F08733DC00010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
 				DSTROOT = /tmp/Frank.dst;
@@ -852,23 +860,33 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Frank_Prefix.pch;
 				INSTALL_PATH = /usr/local/lib;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = Frank;
 				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = lib/Shelley/Shelley;
 			};
 			name = Debug;
 		};
 		1DEB922008733DC00010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DSTROOT = /tmp/Frank.dst;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Frank_Prefix.pch;
 				INSTALL_PATH = /usr/local/lib;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = Frank;
 				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = lib/Shelley/Shelley;
 			};
 			name = Release;
 		};

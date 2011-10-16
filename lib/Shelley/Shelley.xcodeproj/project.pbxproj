@@ -38,7 +38,7 @@
 		D6CF39AF13D3E481000C7901 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6CF399713D3E195000C7901 /* CoreGraphics.framework */; };
 		D6CF39B513D3E481000C7901 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D6CF39B313D3E481000C7901 /* InfoPlist.strings */; };
 		D6CF39C313D3EE78000C7901 /* IntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D6CF39C213D3EE78000C7901 /* IntegrationTests.m */; };
-		D6CF39C713D3F02F000C7901 /* Shelley.h in Headers */ = {isa = PBXBuildFile; fileRef = D6CF39C513D3F02F000C7901 /* Shelley.h */; };
+		D6CF39C713D3F02F000C7901 /* Shelley.h in Headers */ = {isa = PBXBuildFile; fileRef = D6CF39C513D3F02F000C7901 /* Shelley.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D6CF39C813D3F02F000C7901 /* Shelley.m in Sources */ = {isa = PBXBuildFile; fileRef = D6CF39C613D3F02F000C7901 /* Shelley.m */; };
 		D6CF39C913D3F02F000C7901 /* Shelley.m in Sources */ = {isa = PBXBuildFile; fileRef = D6CF39C613D3F02F000C7901 /* Shelley.m */; };
 		D6E8FF3613D3DC9200D24F43 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6E8FF3513D3DC9200D24F43 /* Foundation.framework */; };

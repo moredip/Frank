@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#import "SYParser.h"
+@class SYParser;
 
 @interface Shelley : NSObject {
     SYParser *_parser;
