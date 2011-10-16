@@ -4,3 +4,4 @@ dist
 *.mode2v3
 *.pbxuser
 xcuserdata
+*.xcworkspace
