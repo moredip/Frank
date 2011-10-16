@@ -14,6 +14,8 @@
 		2860E32E111B888700E27156 /* AppDelegate_Pad.m in Sources */ = {isa = PBXBuildFile; fileRef = 2860E32C111B888700E27156 /* AppDelegate_Pad.m */; };
 		2860E32F111B888700E27156 /* MainWindow_Pad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2860E32D111B888700E27156 /* MainWindow_Pad.xib */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		D68FD3D21417DE3400538C41 /* frank_static_resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D68FD3D01417DE3400538C41 /* frank_static_resources.bundle */; };
+		D68FD3D31417DE3400538C41 /* libFrank.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D68FD3D11417DE3400538C41 /* libFrank.a */; };
 		D6A833ED11CDBF35001B8585 /* PureMVC_ObjectiveC_1_1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A833B411CDBF35001B8585 /* PureMVC_ObjectiveC_1_1.a */; };
 		D6A833EF11CDBF35001B8585 /* ApplicationFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A833BE11CDBF35001B8585 /* ApplicationFacade.m */; };
 		D6A833F011CDBF35001B8585 /* CreateUserCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A833C111CDBF35001B8585 /* CreateUserCommand.m */; };
@@ -67,9 +69,7 @@
 		D6A8351611CDC3D3001B8585 /* PureMVC_ObjectiveC_1_1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A833B411CDBF35001B8585 /* PureMVC_ObjectiveC_1_1.a */; };
 		D6A8368311CDC5BA001B8585 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A8368211CDC5BA001B8585 /* CFNetwork.framework */; };
 		D6A8368C11CDC755001B8585 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
-		D6AED4AF141679150062E9CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
-		D6CE60DD141700C6004EDA99 /* frank_static_resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D6CE60DB141700C6004EDA99 /* frank_static_resources.bundle */; };
-		D6CE60DE141700C6004EDA99 /* libFrank.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6CE60DC141700C6004EDA99 /* libFrank.a */; };
+		D6CE615E1417DD81004EDA99 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +86,8 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Shared/main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* EmployeeAdmin_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployeeAdmin_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* EmployeeAdmin-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "EmployeeAdmin-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		D68FD3D01417DE3400538C41 /* frank_static_resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = frank_static_resources.bundle; path = ../../dist/frank_static_resources.bundle; sourceTree = SOURCE_ROOT; };
+		D68FD3D11417DE3400538C41 /* libFrank.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFrank.a; path = ../../dist/libFrank.a; sourceTree = SOURCE_ROOT; };
 		D6A8339F11CDBF35001B8585 /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
 		D6A833A011CDBF35001B8585 /* Facade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facade.h; sourceTree = "<group>"; };
 		D6A833A111CDBF35001B8585 /* ICommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICommand.h; sourceTree = "<group>"; };
@@ -153,8 +155,6 @@
 		D6A8351A11CDC3D3001B8585 /* EmployeeAdmin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmployeeAdmin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6A8351C11CDC3D3001B8585 /* EmployeeAdmin-Info copy.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EmployeeAdmin-Info copy.plist"; sourceTree = "<group>"; };
 		D6A8368211CDC5BA001B8585 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		D6CE60DB141700C6004EDA99 /* frank_static_resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = frank_static_resources.bundle; path = ../../dist/frank_static_resources.bundle; sourceTree = SOURCE_ROOT; };
-		D6CE60DC141700C6004EDA99 /* libFrank.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFrank.a; path = ../../dist/libFrank.a; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,7 +178,7 @@
 				D6A8351511CDC3D3001B8585 /* CoreGraphics.framework in Frameworks */,
 				D6A8351611CDC3D3001B8585 /* PureMVC_ObjectiveC_1_1.a in Frameworks */,
 				D6A8368311CDC5BA001B8585 /* CFNetwork.framework in Frameworks */,
-				D6CE60DE141700C6004EDA99 /* libFrank.a in Frameworks */,
+				D68FD3D31417DE3400538C41 /* libFrank.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,8 +454,8 @@
 		D6A8351D11CDC54B001B8585 /* Frank */ = {
 			isa = PBXGroup;
 			children = (
-				D6CE60DB141700C6004EDA99 /* frank_static_resources.bundle */,
-				D6CE60DC141700C6004EDA99 /* libFrank.a */,
+				D68FD3D01417DE3400538C41 /* frank_static_resources.bundle */,
+				D68FD3D11417DE3400538C41 /* libFrank.a */,
 			);
 			name = Frank;
 			sourceTree = "<group>";
@@ -487,6 +487,7 @@
 				D6A834F611CDC3D3001B8585 /* Resources */,
 				D6A834F911CDC3D3001B8585 /* Sources */,
 				D6A8351211CDC3D3001B8585 /* Frameworks */,
+				D6F09564144A62F000B78FEC /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -538,11 +539,27 @@
 			files = (
 				D6A834F711CDC3D3001B8585 /* MainWindow_Phone.xib in Resources */,
 				D6A834F811CDC3D3001B8585 /* MainWindow_Pad.xib in Resources */,
-				D6CE60DD141700C6004EDA99 /* frank_static_resources.bundle in Resources */,
+				D68FD3D21417DE3400538C41 /* frank_static_resources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D6F09564144A62F000B78FEC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo APP_BUNDLE_PATH=\\\"$BUILT_PRODUCTS_DIR/$EXECUTABLE_NAME.app\\\" > $SRCROOT/features/support/bundle_path.rb";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1D60588E0D05DD3D006BFB54 /* Sources */ = {
@@ -603,7 +620,7 @@
 				D6A8350F11CDC3D3001B8585 /* UserFormMediator.m in Sources */,
 				D6A8351011CDC3D3001B8585 /* UserListMediator.m in Sources */,
 				D6A8351111CDC3D3001B8585 /* UserRolesMediator.m in Sources */,
-				D6AED4AF141679150062E9CA /* main.m in Sources */,
+				D6CE615E1417DD81004EDA99 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -698,7 +715,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\\\"$(SRCROOT)/Shared/lib/PureMVC\\\"",
-					"\"$(SRCROOT)/Frank\"",
 					"\"$(SRCROOT)/../../dist\"",
 				);
 				PRODUCT_NAME = EmployeeAdmin;
@@ -717,7 +733,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\\\"$(SRCROOT)/Shared/lib/PureMVC\\\"",
-					"\"$(SRCROOT)/Frank\"",
 					"\"$(SRCROOT)/../../dist\"",
 				);
 				PRODUCT_NAME = EmployeeAdmin;
