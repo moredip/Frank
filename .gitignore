@@ -5,3 +5,5 @@ dist
 *.pbxuser
 xcuserdata
 *.xcworkspace
+.idea
+.DS_Store
