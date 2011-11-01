@@ -101,8 +101,6 @@
 		D67F2AC013F5F55A00A0BFF1 /* FrankLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = D67F2ABE13F5F55A00A0BFF1 /* FrankLoader.m */; };
 		D67F2B3413F5F82700A0BFF1 /* LoadableCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = D67F2B3313F5F82700A0BFF1 /* LoadableCategory.h */; };
 		D67F2B3A13F5F91700A0BFF1 /* UIView+MapKitWorkaround.m in Sources */ = {isa = PBXBuildFile; fileRef = D67F2B3813F5F91700A0BFF1 /* UIView+MapKitWorkaround.m */; };
-		D68B8EA11405D51000030C51 /* ShelleyMapOperationCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = D68B8E9F1405D51000030C51 /* ShelleyMapOperationCommand.h */; };
-		D68B8EA21405D51000030C51 /* ShelleyMapOperationCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D68B8EA01405D51000030C51 /* ShelleyMapOperationCommand.m */; };
 		D6D05CB311C883AA0081C5A5 /* DumpCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = D6D05CA111C883AA0081C5A5 /* DumpCommand.h */; };
 		D6D05CB411C883AA0081C5A5 /* DumpCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D05CA211C883AA0081C5A5 /* DumpCommand.m */; };
 		D6D05CB511C883AA0081C5A5 /* FrankCommandRoute.h in Headers */ = {isa = PBXBuildFile; fileRef = D6D05CA311C883AA0081C5A5 /* FrankCommandRoute.h */; };
@@ -272,8 +270,6 @@
 		D67F2ABE13F5F55A00A0BFF1 /* FrankLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FrankLoader.m; path = src/FrankLoader.m; sourceTree = "<group>"; };
 		D67F2B3313F5F82700A0BFF1 /* LoadableCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadableCategory.h; sourceTree = "<group>"; };
 		D67F2B3813F5F91700A0BFF1 /* UIView+MapKitWorkaround.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MapKitWorkaround.m"; sourceTree = "<group>"; };
-		D68B8E9F1405D51000030C51 /* ShelleyMapOperationCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShelleyMapOperationCommand.h; sourceTree = "<group>"; };
-		D68B8EA01405D51000030C51 /* ShelleyMapOperationCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShelleyMapOperationCommand.m; sourceTree = "<group>"; };
 		D6D05CA111C883AA0081C5A5 /* DumpCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DumpCommand.h; path = src/DumpCommand.h; sourceTree = "<group>"; };
 		D6D05CA211C883AA0081C5A5 /* DumpCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DumpCommand.m; path = src/DumpCommand.m; sourceTree = "<group>"; };
 		D6D05CA311C883AA0081C5A5 /* FrankCommandRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FrankCommandRoute.h; path = src/FrankCommandRoute.h; sourceTree = "<group>"; };
@@ -395,8 +391,6 @@
 				D6D05CB111C883AA0081C5A5 /* UISpecCommandReceiver.h */,
 				D6D05CB211C883AA0081C5A5 /* UISpecCommandReceiver.m */,
 				D67F2B3813F5F91700A0BFF1 /* UIView+MapKitWorkaround.m */,
-				D68B8E9F1405D51000030C51 /* ShelleyMapOperationCommand.h */,
-				D68B8EA01405D51000030C51 /* ShelleyMapOperationCommand.m */,
 				D6F0955A144A5F4600B78FEC /* UIView+KIFAdapter.m */,
 			);
 			name = src;
@@ -638,7 +632,6 @@
 				D67F2AAD13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.h in Headers */,
 				D67F2ABF13F5F55A00A0BFF1 /* FrankLoader.h in Headers */,
 				D67F2B3413F5F82700A0BFF1 /* LoadableCategory.h in Headers */,
-				D68B8EA11405D51000030C51 /* ShelleyMapOperationCommand.h in Headers */,
 				D6FA01AB14283C4F00576AD1 /* CGGeometry-KIFAdditions.h in Headers */,
 				D6FA01AE14283C4F00576AD1 /* UIAccessibilityElement-KIFAdditions.h in Headers */,
 				D6FA01B014283C4F00576AD1 /* UIApplication-KIFAdditions.h in Headers */,
@@ -794,7 +787,6 @@
 				D67F2AAE13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.m in Sources */,
 				D67F2AC013F5F55A00A0BFF1 /* FrankLoader.m in Sources */,
 				D67F2B3A13F5F91700A0BFF1 /* UIView+MapKitWorkaround.m in Sources */,
-				D68B8EA21405D51000030C51 /* ShelleyMapOperationCommand.m in Sources */,
 				D6FA01AC14283C4F00576AD1 /* CGGeometry-KIFAdditions.m in Sources */,
 				D6FA01AF14283C4F00576AD1 /* UIAccessibilityElement-KIFAdditions.m in Sources */,
 				D6FA01B114283C4F00576AD1 /* UIApplication-KIFAdditions.m in Sources */,

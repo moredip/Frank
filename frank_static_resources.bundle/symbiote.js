@@ -381,21 +381,21 @@ $(document).ready(function() {
 
 
   function sendFlashCommand( selector, use_shelley ) {
-    var operation = use_shelley ? '/shelley_map' : '/map',
-        command = {
-          query: selector,
-          operation: {
-            method_name: 'flash',
-            arguments: []
-          }
-        };
+    var command = {
+      query: selector,
+      selector_engine: use_shelley ? 'shelley_compat' : 'uiquery',
+      operation: {
+        method_name: 'flash',
+        arguments: []
+      }
+    };
 
     showLoadingUI();
     $.ajax({
       type: "POST",
       dataType: "json",
       data: JSON.stringify( command ),
-      url: symbiote.baseUrlFor( operation ),
+      url: symbiote.baseUrlFor( '/map' ),
       success: function(data) {
         if( isErrorResponse( data ) ) {
           displayErrorResponse( data );

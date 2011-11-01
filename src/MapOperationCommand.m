@@ -9,6 +9,7 @@
 #import "MapOperationCommand.h"
 
 #import "UIQuery.h"
+#import "Shelley.h"
 #import "JSON.h"
 #import "Operation.h"
 #import "DumpCommand.h"
@@ -62,25 +63,47 @@
 
 }
 
+- (NSArray *)selectViewsUsingUIQueryWithSelector:(NSString *)queryString{
+    NSLog( @"Using UIQuery to select views with selector: %@", queryString );
+	UIQuery *query = $( [NSMutableString stringWithString:queryString] );
+    return [query views];
+}
+
+- (NSArray *)selectViewsUsingShelleyWithSelector:(NSString *)queryString{
+    NSLog( @"Using Shelley to select views with selector: %@", queryString );
+    Shelley *shelley = [Shelley withSelectorString:queryString];
+	return [shelley selectFrom:[[UIApplication sharedApplication] keyWindow]];
+}
+
 - (NSString *)handleCommandWithRequestBody:(NSString *)requestBody {
 	
 	NSDictionary *requestCommand = [requestBody JSONValue];
+    
+	NSString *selectorEngineString = [requestCommand objectForKey:@"selector_engine"];
 	NSString *queryString = [requestCommand objectForKey:@"query"];
 	NSDictionary *operationDict = [requestCommand objectForKey:@"operation"];
 	Operation *operation = [[[Operation alloc] initFromJsonRepresentation:operationDict] autorelease];
-	
-	UIQuery *query;
-	
-	@try {
-		query = $( [NSMutableString stringWithString:queryString] );
-	}
-	@catch (NSException * e) {
-		NSLog( @"Exception while executing query '%@':\n%@", queryString, e );
+    
+    NSArray *viewsToMap = nil;
+    @try {
+        if( [selectorEngineString isEqualToString:@"uiquery"] || selectorEngineString == nil )
+        {
+            viewsToMap = [self selectViewsUsingUIQueryWithSelector:queryString];
+        }else if( [selectorEngineString isEqualToString:@"shelley_compat"] ){
+            viewsToMap = [self selectViewsUsingShelleyWithSelector:queryString];
+        }else{
+            NSLog( @"Unrecognized selector_engine '%@'", selectorEngineString );
+			return [self generateErrorResponseWithReason:@"unrecognized selector engine" 
+											  andDetails:[NSString stringWithFormat:@"selector_engine '%@' unrecognized. Supported engines are 'uiquery' or 'shelley_compat'", selectorEngineString]];
+        }
+    }	
+    @catch (NSException * e) {
+		NSLog( @"Exception while using %@ to select views with '%@':\n%@", selectorEngineString, queryString, e );
 		return [self generateErrorResponseWithReason:@"invalid selector" andDetails:[e reason]];
 	}
 	
-	NSMutableArray *results = [NSMutableArray arrayWithCapacity:[[query views] count]];
-	for (UIView *view in [query views]) {
+    NSMutableArray *results = [NSMutableArray arrayWithCapacity:[viewsToMap count]];
+	for (UIView *view in viewsToMap) {
 		@try {
 			id result = [self performOperation:operation onView:view];
 			[results addObject:[DumpCommand jsonify:result]];
