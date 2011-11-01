@@ -1,4 +1,4 @@
-Given /^I launch the app$/ do
+Given /^I launch the app in the (iPad|iPhone) simulator$/ do | mode |
 
 
   app_path = ENV['APP_BUNDLE_PATH'] || (defined?(APP_BUNDLE_PATH) && APP_BUNDLE_PATH)
@@ -35,9 +35,9 @@ Given /^I launch the app$/ do
   require 'sim_launcher'
 
   if( ENV['USE_SIM_LAUNCHER_SERVER'] )
-    simulator = SimLauncher::Client.for_iphone_app( app_path )
+    simulator = SimLauncher::Client.send "for_#{mode.downcase}_app", app_path
   else
-    simulator = SimLauncher::DirectClient.for_iphone_app( app_path )
+    simulator = SimLauncher::DirectClient.send "for_#{mode.downcase}_app", app_path
   end
   
   num_timeouts = 0
