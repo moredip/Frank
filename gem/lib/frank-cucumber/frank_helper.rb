@@ -50,6 +50,7 @@ module FrankHelper
     
     before = Time.now
     res = post_to_uispec_server( 'app_exec', :operation => operation_map )
+
     #logger.debug( "MAP applying #{method_name} with args:( #{method_args.inspect} ) to 'Application Delegate' took #{Time.now - before} seconds" )
 
     res = JSON.parse( res )
@@ -109,18 +110,28 @@ module FrankHelper
         if frankly_ping
           num_consec_failures = 0
           num_consec_successes += 1
-          print (num_consec_successes == 1 ) ? "\n" : "\r"
-          print "FRANK!".slice(0,num_consec_successes)
         else
           num_consec_successes = 0
           num_consec_failures += 1
-          print (num_consec_failures == 1 ) ? "\n" : "\r"
-          print "PING FAILED" + "!"*num_consec_failures
+          if num_consec_failures >= 5 # don't show small timing errors
+            print (num_consec_failures == 5 ) ? "\n" : "\r"
+            print "PING FAILED" + "!"*num_consec_failures
+          end
         end
         STDOUT.flush
         sleep 0.2
       end
-      puts ''
+
+      if num_consec_successes < 6
+        print (num_consec_successes == 1 ) ? "\n" : "\r"
+        print "FRANK!".slice(0,num_consec_successes)
+        STDOUT.flush
+        puts ''
+      end
+
+      if num_consec_failures >= 5
+        puts ''
+      end
     end
 
     unless frankly_is_accessibility_enabled
