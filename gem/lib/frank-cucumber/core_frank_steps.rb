@@ -239,6 +239,7 @@ When /^I flip switch "([^\"]*)"$/ do |mark|
   touch("view:'UISwitch' marked:'#{mark}'") 
 end
 
+
 Then /^switch "([^\"]*)" should be (on|off)$/ do |mark,expected_state|
   expected_state = expected_state == 'on'
 
