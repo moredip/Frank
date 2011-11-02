@@ -5,6 +5,11 @@ module Frank module Cucumber
 
 module FrankHelper 
 
+  # TODO: adding an ivar into whatever class we were mixed into is a bit of a hack. We need a FrankDriver class, or similar
+  def use_shelley_from_now_on
+    @selector_engine = 'shelley'
+  end
+
   def touch( uiquery )
     views_touched = frankly_map( uiquery, 'touch' )
     raise "could not find anything matching [#{uiquery}] to touch" if views_touched.empty?
@@ -64,9 +69,10 @@ module FrankHelper
   def frankly_map( query, method_name, *method_args )
     operation_map = {
       :method_name => method_name,
-      :arguments => method_args
+      :arguments => method_args,
     }
-    res = post_to_uispec_server( 'map', :query => query, :operation => operation_map )
+    selector_engine = @selector_engine || 'uiquery' # default to UIQuery for backwards compatibility
+    res = post_to_uispec_server( 'map', :query => query, :operation => operation_map, :selector_engine => selector_engine )
     res = JSON.parse( res )
     if res['outcome'] != 'SUCCESS'
       raise "frankly_map #{query} #{method_name} failed because: #{res['reason']}\n#{res['details']}"
