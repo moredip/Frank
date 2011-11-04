@@ -114,8 +114,13 @@
     [self assertArray:selectedViews containsObject:firstButton];
 }
 
-- (void) xtestIndexSelectsNthViewInMatchSet {
-    //TO IMPLEMENT
+- (void) testIndexSelectsNthViewInMatchSet {
+    Shelley *shelley = [Shelley withSelectorString:@"button index:1"];
+    NSArray *selectedViews = [shelley selectFrom:view];
+    
+    STAssertEquals((NSUInteger)1, selectedViews.count, nil);
+    [self assertArray:selectedViews containsObject:viewB];
+
 }
 
 - (void) testSelectsOnlyViewsWhichAreHidden {

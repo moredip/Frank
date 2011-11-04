@@ -11,7 +11,7 @@
 #import "SYParents.h"
 #import "SYPredicateFilter.h"
 #import "SYClassFilter.h"
-#import "SYFirstElementFilter.h"
+#import "SYNthElementFilter.h"
 
 @implementation SYParserTests
 
@@ -137,7 +137,17 @@
     SYParser *parser = [[SYParser alloc] initWithSelectorString:@"first"];
     
     id<SYFilter> filter = [parser nextFilter];
-    STAssertTrue([filter isKindOfClass:[SYFirstElementFilter class]], nil);
+    STAssertTrue([filter isKindOfClass:[SYNthElementFilter class]], nil);
+    STAssertEquals( [(SYNthElementFilter *)filter index], (NSUInteger)0, nil );
+}
+
+- (void) testIndexSelectorParses {
+    SYParser *parser = [[SYParser alloc] initWithSelectorString:@"index:124"];
+    
+    id<SYFilter> filter = [parser nextFilter];
+    STAssertTrue([filter isKindOfClass:[SYNthElementFilter class]], nil);
+    STAssertEquals( [(SYNthElementFilter *)filter index], (NSUInteger)124, nil );
+    
 }
 
 
