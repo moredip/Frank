@@ -10,7 +10,7 @@
 #import "SYParents.h"
 #import "SYPredicateFilter.h"
 #import "SYClassFilter.h"
-#import "SYFirstElementFilter.h"
+#import "SYNthElementFilter.h"
 
 @interface SYSectionParser : NSObject {
     NSScanner *_scanner;
@@ -189,7 +189,7 @@
         if( [firstParam isEqualToString:@"parent"] )
             return [[[SYParents alloc] init] autorelease];
         if( [firstParam isEqualToString:@"first"] )
-            return [[[SYFirstElementFilter alloc] init] autorelease];
+            return [[[SYNthElementFilter alloc] initWithIndex:0] autorelease];
         else if( [firstParam isEqualToString:@"view"] )
             return [[[SYClassFilter alloc] initWithClass:[UIView class]] autorelease];
         else if( [firstParam isEqualToString:@"descendant"] )
@@ -201,9 +201,14 @@
         else if( [firstParam isEqualToString:@"tableView"] )
             return [[[SYClassFilter alloc] initWithClass:[UITableView class]] autorelease];
 
-    }else if( [[parsedSection args] count] == 1 && [firstParam isEqualToString:@"view"] ){
-        NSString *firstArg = [[parsedSection args] objectAtIndex:0];
-        return [[[SYClassFilter alloc] initWithClass:(NSClassFromString(firstArg))] autorelease];
+    }else if( [[parsedSection args] count] == 1 ){
+        if( [firstParam isEqualToString:@"view"] ) {
+            NSString *firstArg = [[parsedSection args] objectAtIndex:0];
+            return [[[SYClassFilter alloc] initWithClass:(NSClassFromString(firstArg))] autorelease];
+        }else if( [firstParam isEqualToString:@"index"] ) {
+            NSNumber *firstArg = [[parsedSection args] objectAtIndex:0];
+            return [[[SYNthElementFilter alloc] initWithIndex:[firstArg unsignedIntValue]] autorelease];            
+        }
     }
     
     NSString *selectorDesc;
