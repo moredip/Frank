@@ -1,6 +1,6 @@
 module Frank module Cucumber
 
-module FrankHelper
+module Launcher 
   
   def launch_app(app_path)
     if app_path.nil?

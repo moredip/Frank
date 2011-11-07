@@ -4,6 +4,7 @@ require 'frank-cucumber/launcher'
 
 World(Frank::Cucumber::ColorHelper)
 World(Frank::Cucumber::FrankHelper)
+World(Frank::Cucumber::Launcher)
 
 AfterConfiguration do
   require 'frank-cucumber/core_frank_steps'
