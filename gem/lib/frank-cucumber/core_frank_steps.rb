@@ -121,12 +121,12 @@ end
 
 # alias 
 When /^I fill in "([^\"]*)" with "([^\"]*)"$/ do |text_field, text_to_type|
-  When %Q|I type "#{text_to_type}" into the "#{text_field}" text field|
+  step %Q|I type "#{text_to_type}" into the "#{text_field}" text field|
 end
 
 When /^I fill in text fields as follows:$/ do |table|
   table.hashes.each do |row|
-    When %Q|I type "#{row['text']}" into the "#{row['field']}" text field|
+    step %Q|I type "#{row['text']}" into the "#{row['field']}" text field|
   end
 end
 
