@@ -10,12 +10,14 @@
 
 MAKE_CATEGORIES_LOADABLE(UIView_ShelleyExtensions)
 
+BOOL substringMatch(NSString *actualString, NSString *expectedSubstring){	
+    return actualString && ([actualString rangeOfString:expectedSubstring].location != NSNotFound);    
+}
+
 @implementation UIView (ShelleyExtensions)
 
 - (BOOL) marked:(NSString *)targetLabel{
-	NSString *mark = [self accessibilityLabel];
-	
-    return mark && ([mark rangeOfString:targetLabel].location != NSNotFound);
+    return substringMatch([self accessibilityLabel], targetLabel);
 }
 
 - (BOOL) markedExactly:(NSString *)targetLabel{
@@ -27,13 +29,11 @@ MAKE_CATEGORIES_LOADABLE(UIView_ShelleyExtensions)
 @implementation UITextField (ShelleyExtensions)
 
 - (BOOL) placeholder:(NSString *)expectedPlaceholder{
-	//should be substring match
-	return [[self placeholder] isEqualToString:expectedPlaceholder];
+    return substringMatch([self placeholder], expectedPlaceholder);
 }
 
 - (BOOL) text:(NSString *)expectedText{
-	//should be substring match
-	return [[self text] isEqualToString:expectedText];
+    return substringMatch([self text], expectedText);
 }
 
 
