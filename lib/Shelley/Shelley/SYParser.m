@@ -196,6 +196,11 @@
             return [[[SYClassFilter alloc] initWithClass:[UIView class] includeSelf:YES] autorelease];
         else if( [firstParam isEqualToString:@"button"] )
             return [[[SYClassFilter alloc] initWithClass:[UIButton class]] autorelease];
+        else if( [firstParam isEqualToString:@"navigationButton"] )
+            return [[[SYClassFilter alloc] initWithClass:NSClassFromString(@"UINavigationButton")] autorelease];
+        else if( [firstParam isEqualToString:@"navigationItemView"] )
+            return [[[SYClassFilter alloc] initWithClass:NSClassFromString(@"UINavigationItemView")] autorelease];
+
         else if( [firstParam isEqualToString:@"textField"] )
             return [[[SYClassFilter alloc] initWithClass:[UITextField class]] autorelease];
         else if( [firstParam isEqualToString:@"tableView"] )

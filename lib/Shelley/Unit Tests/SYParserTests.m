@@ -133,6 +133,23 @@
     STAssertEquals([(SYClassFilter *)filter target], [UIButton class], nil);
 }
 
+
+- (void) testMiscellaneousShorthandClassSelectorParses {
+    SYParser *parser = [[SYParser alloc] initWithSelectorString:@"navigationButton"];
+    
+    id<SYFilter> filter = [parser nextFilter];
+    STAssertTrue([filter isKindOfClass:[SYClassFilter class]], nil);
+    STAssertEquals([(SYClassFilter *)filter target], NSClassFromString(@"UINavigationButton"), nil);
+    
+    parser = [[SYParser alloc] initWithSelectorString:@"navigationItemView"];
+    
+    filter = [parser nextFilter];
+    STAssertTrue([filter isKindOfClass:[SYClassFilter class]], nil);
+    STAssertEquals([(SYClassFilter *)filter target], NSClassFromString(@"UINavigationItemView"), nil);
+    
+}
+
+
 - (void) testFirstSelectorParses {
     SYParser *parser = [[SYParser alloc] initWithSelectorString:@"first"];
     
