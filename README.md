@@ -15,7 +15,7 @@ Frank is 'Selenium for native iOS apps'. It allows you to write automated accept
 Getting Started
 ---------------
 
-Getting started is easy. You just need to install a ruby gem, create a new target for your app in XCode, and start writing cucumber tests. For detailed instructions check out [tutorial/Tutorial.md](tutorial/Tutorial.md)
+Getting started is easy. You just need to install a ruby gem, create a new target for your app in XCode, and start writing cucumber tests. For detailed instructions check out tutorial/Tutorial.md.
 
 
 Where can I ask questions?
