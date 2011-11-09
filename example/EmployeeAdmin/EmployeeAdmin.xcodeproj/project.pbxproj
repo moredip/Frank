@@ -15,7 +15,6 @@
 		2860E32F111B888700E27156 /* MainWindow_Pad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2860E32D111B888700E27156 /* MainWindow_Pad.xib */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		D68FD3D21417DE3400538C41 /* frank_static_resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D68FD3D01417DE3400538C41 /* frank_static_resources.bundle */; };
-		D68FD3D31417DE3400538C41 /* libFrank.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D68FD3D11417DE3400538C41 /* libFrank.a */; };
 		D6A833ED11CDBF35001B8585 /* PureMVC_ObjectiveC_1_1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A833B411CDBF35001B8585 /* PureMVC_ObjectiveC_1_1.a */; };
 		D6A833EF11CDBF35001B8585 /* ApplicationFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A833BE11CDBF35001B8585 /* ApplicationFacade.m */; };
 		D6A833F011CDBF35001B8585 /* CreateUserCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A833C111CDBF35001B8585 /* CreateUserCommand.m */; };
@@ -70,7 +69,25 @@
 		D6A8368311CDC5BA001B8585 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A8368211CDC5BA001B8585 /* CFNetwork.framework */; };
 		D6A8368C11CDC755001B8585 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		D6CE615E1417DD81004EDA99 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		D6DA5EA91468C87E00525864 /* libFrank.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DA5EA41468C87400525864 /* libFrank.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D6DA5EA31468C87400525864 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D6DA5E981468C87300525864 /* Frank.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D;
+			remoteInfo = Frank;
+		};
+		D6DA5EA71468C87A00525864 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D6DA5E981468C87300525864 /* Frank.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
+			remoteInfo = Frank;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -155,6 +172,7 @@
 		D6A8351A11CDC3D3001B8585 /* EmployeeAdmin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmployeeAdmin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6A8351C11CDC3D3001B8585 /* EmployeeAdmin-Info copy.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EmployeeAdmin-Info copy.plist"; sourceTree = "<group>"; };
 		D6A8368211CDC5BA001B8585 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		D6DA5E981468C87300525864 /* Frank.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Frank.xcodeproj; path = ../../Frank.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,12 +191,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6DA5EA91468C87E00525864 /* libFrank.a in Frameworks */,
 				D6A8351311CDC3D3001B8585 /* Foundation.framework in Frameworks */,
 				D6A8351411CDC3D3001B8585 /* UIKit.framework in Frameworks */,
 				D6A8351511CDC3D3001B8585 /* CoreGraphics.framework in Frameworks */,
 				D6A8351611CDC3D3001B8585 /* PureMVC_ObjectiveC_1_1.a in Frameworks */,
 				D6A8368311CDC5BA001B8585 /* CFNetwork.framework in Frameworks */,
-				D68FD3D31417DE3400538C41 /* libFrank.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,10 +472,19 @@
 		D6A8351D11CDC54B001B8585 /* Frank */ = {
 			isa = PBXGroup;
 			children = (
+				D6DA5E981468C87300525864 /* Frank.xcodeproj */,
 				D68FD3D01417DE3400538C41 /* frank_static_resources.bundle */,
 				D68FD3D11417DE3400538C41 /* libFrank.a */,
 			);
 			name = Frank;
+			sourceTree = "<group>";
+		};
+		D6DA5E991468C87300525864 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D6DA5EA41468C87400525864 /* libFrank.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -492,6 +519,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D6DA5EA81468C87A00525864 /* PBXTargetDependency */,
 			);
 			name = "EmployeeAdmin Frankified";
 			productName = EmployeeAdmin;
@@ -515,6 +543,12 @@
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = D6DA5E991468C87300525864 /* Products */;
+					ProjectRef = D6DA5E981468C87300525864 /* Frank.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				1D6058900D05DD3D006BFB54 /* EmployeeAdmin */,
@@ -522,6 +556,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		D6DA5EA41468C87400525864 /* libFrank.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libFrank.a;
+			remoteRef = D6DA5EA31468C87400525864 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1D60588D0D05DD3D006BFB54 /* Resources */ = {
@@ -625,6 +669,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D6DA5EA81468C87A00525864 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Frank;
+			targetProxy = D6DA5EA71468C87A00525864 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {

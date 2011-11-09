@@ -139,14 +139,23 @@
     
     id<SYFilter> filter = [parser nextFilter];
     STAssertTrue([filter isKindOfClass:[SYClassFilter class]], nil);
+    STAssertNotNil([(SYClassFilter *)filter target], nil);
     STAssertEquals([(SYClassFilter *)filter target], NSClassFromString(@"UINavigationButton"), nil);
     
     parser = [[SYParser alloc] initWithSelectorString:@"navigationItemView"];
     
     filter = [parser nextFilter];
     STAssertTrue([filter isKindOfClass:[SYClassFilter class]], nil);
+    STAssertNotNil([(SYClassFilter *)filter target], nil);
     STAssertEquals([(SYClassFilter *)filter target], NSClassFromString(@"UINavigationItemView"), nil);
     
+    parser = [[SYParser alloc] initWithSelectorString:@"alertView"];
+    
+    filter = [parser nextFilter];
+    STAssertTrue([filter isKindOfClass:[SYClassFilter class]], nil);
+    STAssertNotNil([(SYClassFilter *)filter target], nil);
+    STAssertEquals([(SYClassFilter *)filter target], [UIAlertView class], nil);
+
 }
 
 

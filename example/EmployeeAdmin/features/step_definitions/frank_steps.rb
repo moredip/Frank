@@ -1,3 +1,7 @@
+Given /^I'm using Shelley$/ do
+  use_shelley_from_now_on
+end
+
 When /^I wait ([\d.]+) second(?:s)?$/ do |seconds|
   seconds = seconds.to_f
   sleep( seconds )
@@ -36,7 +40,7 @@ end
 
 When /^I scroll down (\d*)(?:st|nd|rd|th)? row(?:s)?$/ do |rows_to_scroll|
   rows_to_scroll = rows_to_scroll.to_i 
-  tables_scrolled = frankly_map( "tableView scrollDown:#{rows_to_scroll}", 'tag' )
+  tables_scrolled = frankly_map( "tableView", "scrollDownRows:", rows_to_scroll )
   raise "no table could be found to scroll" if tables_scrolled.empty?
   sleep 0.5 # give the UI a chance to animate the scrolling
 end

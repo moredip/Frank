@@ -196,6 +196,8 @@
             return [[[SYClassFilter alloc] initWithClass:[UIView class] includeSelf:YES] autorelease];
         else if( [firstParam isEqualToString:@"button"] )
             return [[[SYClassFilter alloc] initWithClass:[UIButton class]] autorelease];
+        else if( [firstParam isEqualToString:@"alertView"] )
+            return [[[SYClassFilter alloc] initWithClass:[UIAlertView class]] autorelease];
         else if( [firstParam isEqualToString:@"navigationButton"] )
             return [[[SYClassFilter alloc] initWithClass:NSClassFromString(@"UINavigationButton")] autorelease];
         else if( [firstParam isEqualToString:@"navigationItemView"] )
@@ -205,7 +207,10 @@
             return [[[SYClassFilter alloc] initWithClass:[UITextField class]] autorelease];
         else if( [firstParam isEqualToString:@"tableView"] )
             return [[[SYClassFilter alloc] initWithClass:[UITableView class]] autorelease];
+        else if( [firstParam isEqualToString:@"tableViewCell"] )
+            return [[[SYClassFilter alloc] initWithClass:[UITableViewCell class]] autorelease];
 
+        
     }else if( [[parsedSection args] count] == 1 ){
         if( [firstParam isEqualToString:@"view"] ) {
             NSString *firstArg = [[parsedSection args] objectAtIndex:0];

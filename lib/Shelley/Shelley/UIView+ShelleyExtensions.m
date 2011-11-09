@@ -36,6 +36,48 @@ BOOL substringMatch(NSString *actualString, NSString *expectedSubstring){
     return substringMatch([self text], expectedText);
 }
 
+@end
+
+@implementation UIScrollView (ShelleyExtensions)
+-(void) scrollDown:(int)offset {
+	[self setContentOffset:CGPointMake(0,offset) animated:NO];
+}
+
+-(void) scrollToBottom {
+	CGPoint bottomOffset = CGPointMake(0, [self contentSize].height);
+	[self setContentOffset: bottomOffset animated: YES];
+}
+
+@end
+
+@implementation UITableView (ShelleyExtensions)
+
+-(NSArray *)rowIndexPathList {
+	NSMutableArray *rowIndexPathList = [NSMutableArray array];
+	int numberOfSections = [self numberOfSections];
+	for(int i=0; i< numberOfSections; i++) {
+		int numberOfRowsInSection = [self numberOfRowsInSection:i];
+		for(int j=0; j< numberOfRowsInSection; j++) {
+			[rowIndexPathList addObject:[NSIndexPath indexPathForRow:j inSection:i]];
+		}
+	}
+	return rowIndexPathList;
+}
+
+-(void) scrollDownRows:(int)numberOfRows {
+	NSArray *indexPathsForVisibleRows = [self indexPathsForVisibleRows];
+	NSArray *rowIndexPathList = [self rowIndexPathList];
+	
+	NSIndexPath *indexPathForLastVisibleRow = [indexPathsForVisibleRows lastObject];
+	
+	int indexOfLastVisibleRow = [rowIndexPathList indexOfObject:indexPathForLastVisibleRow];
+	int scrollToIndex = indexOfLastVisibleRow + numberOfRows;
+	if (scrollToIndex >= rowIndexPathList.count) {
+		scrollToIndex = rowIndexPathList.count - 1;
+	}
+	NSIndexPath *scrollToIndexPath = [rowIndexPathList objectAtIndex:scrollToIndex];
+	[self scrollToRowAtIndexPath:scrollToIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+}
 
 @end
 
