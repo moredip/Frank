@@ -7,7 +7,7 @@ module FrankHelper
 
   # TODO: adding an ivar into whatever class we were mixed into is a bit of a hack. We need a FrankDriver class, or similar
   def use_shelley_from_now_on
-    @selector_engine = 'shelley'
+    @selector_engine = 'shelley_compat'
   end
 
   def touch( uiquery )

@@ -2,6 +2,7 @@ Feature: Demonstrating using Frank to test the EmployeeAdmin example app
 
 Background:
     Given I launch the app 
+    And I'm using Shelley
 
 Scenario: Add test user
     When I touch the Add User button

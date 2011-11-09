@@ -1,5 +1,6 @@
 When /^I touch the Add User button$/ do
   touch( "navigationButton" )  
+  sleep(1)
 end
 
 Then /^I should be on the Users screen$/ do
