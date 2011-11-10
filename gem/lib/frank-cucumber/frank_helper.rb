@@ -5,9 +5,12 @@ module Frank module Cucumber
 
 module FrankHelper 
 
-  # TODO: adding an ivar into whatever class we were mixed into is a bit of a hack. We need a FrankDriver class, or similar
-  def use_shelley_from_now_on
-    @selector_engine = 'shelley_compat'
+  class << self
+    # TODO: adding an ivar to the module itself is a big ugyl hack. We need a FrankDriver class, or similar
+    attr_accessor :selector_engine
+    def use_shelley_from_now_on
+      @selector_engine = 'shelley_compat'
+    end
   end
 
   def touch( uiquery )
@@ -72,7 +75,7 @@ module FrankHelper
       :method_name => method_name,
       :arguments => method_args,
     }
-    selector_engine = @selector_engine || 'uiquery' # default to UIQuery for backwards compatibility
+    selector_engine = Frank::Cucumber::FrankHelper.selector_engine || 'uiquery' # default to UIQuery for backwards compatibility
     res = post_to_uispec_server( 'map', :query => query, :operation => operation_map, :selector_engine => selector_engine )
     res = JSON.parse( res )
     if res['outcome'] != 'SUCCESS'
