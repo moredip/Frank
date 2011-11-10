@@ -28,6 +28,9 @@
 		D6710DE51406AF7500A4A8F1 /* SYArrayFilterTemplate.h in Headers */ = {isa = PBXBuildFile; fileRef = D6710DE31406AF7500A4A8F1 /* SYArrayFilterTemplate.h */; };
 		D6710DE61406AF7500A4A8F1 /* SYArrayFilterTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = D6710DE41406AF7500A4A8F1 /* SYArrayFilterTemplate.m */; };
 		D6710DE71406AF7500A4A8F1 /* SYArrayFilterTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = D6710DE41406AF7500A4A8F1 /* SYArrayFilterTemplate.m */; };
+		D672162B146D8E9C000B0398 /* SYFrankSelectorEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = D6721629146D8E9C000B0398 /* SYFrankSelectorEngine.h */; };
+		D672162C146D8E9C000B0398 /* SYFrankSelectorEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = D672162A146D8E9C000B0398 /* SYFrankSelectorEngine.m */; };
+		D672162F146D8EDB000B0398 /* SelectorEngineRegistry.h in Headers */ = {isa = PBXBuildFile; fileRef = D672162E146D8EDB000B0398 /* SelectorEngineRegistry.h */; };
 		D68761F213D409160057A375 /* SYParser.h in Headers */ = {isa = PBXBuildFile; fileRef = D68761F013D409160057A375 /* SYParser.h */; };
 		D68761F313D409160057A375 /* SYParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D68761F113D409160057A375 /* SYParser.m */; };
 		D68761F413D409160057A375 /* SYParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D68761F113D409160057A375 /* SYParser.m */; };
@@ -65,6 +68,9 @@
 		D661B51013D7EFC700BBF32D /* SYPredicateFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYPredicateFilter.m; sourceTree = "<group>"; };
 		D6710DE31406AF7500A4A8F1 /* SYArrayFilterTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SYArrayFilterTemplate.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D6710DE41406AF7500A4A8F1 /* SYArrayFilterTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SYArrayFilterTemplate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		D6721629146D8E9C000B0398 /* SYFrankSelectorEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYFrankSelectorEngine.h; sourceTree = "<group>"; };
+		D672162A146D8E9C000B0398 /* SYFrankSelectorEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYFrankSelectorEngine.m; sourceTree = "<group>"; };
+		D672162E146D8EDB000B0398 /* SelectorEngineRegistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectorEngineRegistry.h; path = ../../../src/SelectorEngineRegistry.h; sourceTree = "<group>"; };
 		D68761F013D409160057A375 /* SYParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SYParser.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D68761F113D409160057A375 /* SYParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYParser.m; sourceTree = "<group>"; };
 		D68761F513D4092A0057A375 /* SYParserTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYParserTests.h; sourceTree = "<group>"; };
@@ -167,6 +173,8 @@
 				D68761F013D409160057A375 /* SYParser.h */,
 				D68761F113D409160057A375 /* SYParser.m */,
 				D610CA6A13DA15A3008AB1F5 /* UIView+ShelleyExtensions.m */,
+				D6721629146D8E9C000B0398 /* SYFrankSelectorEngine.h */,
+				D672162A146D8E9C000B0398 /* SYFrankSelectorEngine.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -204,6 +212,7 @@
 		D6E8FF3713D3DC9200D24F43 /* Shelley */ = {
 			isa = PBXGroup;
 			children = (
+				D672162E146D8EDB000B0398 /* SelectorEngineRegistry.h */,
 				D6CF39C413D3F018000C7901 /* Classes */,
 				D6E8FF3813D3DC9300D24F43 /* Supporting Files */,
 			);
@@ -234,6 +243,8 @@
 				D64BD1471406A78900CAF9E5 /* SYNthElementFilter.h in Headers */,
 				D6710DE51406AF7500A4A8F1 /* SYArrayFilterTemplate.h in Headers */,
 				D6F9822614071DB6000E5022 /* LoadableCategory.h in Headers */,
+				D672162B146D8E9C000B0398 /* SYFrankSelectorEngine.h in Headers */,
+				D672162F146D8EDB000B0398 /* SelectorEngineRegistry.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +373,7 @@
 				D610CA6C13DA15A4008AB1F5 /* UIView+ShelleyExtensions.m in Sources */,
 				D64BD1481406A78900CAF9E5 /* SYNthElementFilter.m in Sources */,
 				D6710DE61406AF7500A4A8F1 /* SYArrayFilterTemplate.m in Sources */,
+				D672162C146D8E9C000B0398 /* SYFrankSelectorEngine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
