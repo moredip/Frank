@@ -67,16 +67,16 @@
 	NSDictionary *requestCommand = [requestBody JSONValue];
     
 	NSString *selectorEngineString = [requestCommand objectForKey:@"selector_engine"];
-	NSString *queryString = [requestCommand objectForKey:@"query"];
+	NSString *selector = [requestCommand objectForKey:@"query"];
 	NSDictionary *operationDict = [requestCommand objectForKey:@"operation"];
 	Operation *operation = [[[Operation alloc] initFromJsonRepresentation:operationDict] autorelease];
     
     NSArray *viewsToMap = nil;
     @try {
-        viewsToMap = [SelectorEngineRegistry selectViewsWithEngineNamed:selectorEngineString usingSelector:queryString];
+        viewsToMap = [SelectorEngineRegistry selectViewsWithEngineNamed:selectorEngineString usingSelector:selector];
     }	
     @catch (NSException * e) {
-		NSLog( @"Exception while using %@ to select views with '%@':\n%@", selectorEngineString, queryString, e );
+		NSLog( @"Exception while using %@ to select views with '%@':\n%@", selectorEngineString, selector, e );
 		return [self generateErrorResponseWithReason:@"invalid selector" andDetails:[e reason]];
 	}
 	
