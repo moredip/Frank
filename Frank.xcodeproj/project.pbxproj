@@ -102,6 +102,10 @@
 		D67F2B3413F5F82700A0BFF1 /* LoadableCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = D67F2B3313F5F82700A0BFF1 /* LoadableCategory.h */; };
 		D67F2B3A13F5F91700A0BFF1 /* UIView+MapKitWorkaround.m in Sources */ = {isa = PBXBuildFile; fileRef = D67F2B3813F5F91700A0BFF1 /* UIView+MapKitWorkaround.m */; };
 		D6B1056114644827000DD32F /* UIQuery+ShelleyCompatibiilityOverrides.m in Sources */ = {isa = PBXBuildFile; fileRef = D6B1055F14644827000DD32F /* UIQuery+ShelleyCompatibiilityOverrides.m */; };
+		D6BD521E146C34BF001770B1 /* SelectorEngineRegistry.h in Headers */ = {isa = PBXBuildFile; fileRef = D6BD521C146C34BF001770B1 /* SelectorEngineRegistry.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D6BD521F146C34BF001770B1 /* SelectorEngineRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = D6BD521D146C34BF001770B1 /* SelectorEngineRegistry.m */; };
+		D6BD5222146C36A3001770B1 /* UIQuerySelectorEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = D6BD5220146C36A3001770B1 /* UIQuerySelectorEngine.h */; };
+		D6BD5223146C36A3001770B1 /* UIQuerySelectorEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = D6BD5221146C36A3001770B1 /* UIQuerySelectorEngine.m */; };
 		D6D05CB311C883AA0081C5A5 /* DumpCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = D6D05CA111C883AA0081C5A5 /* DumpCommand.h */; };
 		D6D05CB411C883AA0081C5A5 /* DumpCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D05CA211C883AA0081C5A5 /* DumpCommand.m */; };
 		D6D05CB511C883AA0081C5A5 /* FrankCommandRoute.h in Headers */ = {isa = PBXBuildFile; fileRef = D6D05CA311C883AA0081C5A5 /* FrankCommandRoute.h */; };
@@ -272,6 +276,10 @@
 		D67F2B3313F5F82700A0BFF1 /* LoadableCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadableCategory.h; sourceTree = "<group>"; };
 		D67F2B3813F5F91700A0BFF1 /* UIView+MapKitWorkaround.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MapKitWorkaround.m"; sourceTree = "<group>"; };
 		D6B1055F14644827000DD32F /* UIQuery+ShelleyCompatibiilityOverrides.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIQuery+ShelleyCompatibiilityOverrides.m"; path = "src/UIQuery+ShelleyCompatibiilityOverrides.m"; sourceTree = "<group>"; };
+		D6BD521C146C34BF001770B1 /* SelectorEngineRegistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectorEngineRegistry.h; path = src/SelectorEngineRegistry.h; sourceTree = "<group>"; };
+		D6BD521D146C34BF001770B1 /* SelectorEngineRegistry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectorEngineRegistry.m; path = src/SelectorEngineRegistry.m; sourceTree = "<group>"; };
+		D6BD5220146C36A3001770B1 /* UIQuerySelectorEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIQuerySelectorEngine.h; path = src/UIQuerySelectorEngine.h; sourceTree = "<group>"; };
+		D6BD5221146C36A3001770B1 /* UIQuerySelectorEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIQuerySelectorEngine.m; path = src/UIQuerySelectorEngine.m; sourceTree = "<group>"; };
 		D6D05CA111C883AA0081C5A5 /* DumpCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DumpCommand.h; path = src/DumpCommand.h; sourceTree = "<group>"; };
 		D6D05CA211C883AA0081C5A5 /* DumpCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DumpCommand.m; path = src/DumpCommand.m; sourceTree = "<group>"; };
 		D6D05CA311C883AA0081C5A5 /* FrankCommandRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FrankCommandRoute.h; path = src/FrankCommandRoute.h; sourceTree = "<group>"; };
@@ -395,6 +403,10 @@
 				D67F2B3813F5F91700A0BFF1 /* UIView+MapKitWorkaround.m */,
 				D6F0955A144A5F4600B78FEC /* UIView+KIFAdapter.m */,
 				D6B1055F14644827000DD32F /* UIQuery+ShelleyCompatibiilityOverrides.m */,
+				D6BD521C146C34BF001770B1 /* SelectorEngineRegistry.h */,
+				D6BD521D146C34BF001770B1 /* SelectorEngineRegistry.m */,
+				D6BD5220146C36A3001770B1 /* UIQuerySelectorEngine.h */,
+				D6BD5221146C36A3001770B1 /* UIQuerySelectorEngine.m */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -604,6 +616,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6BD521E146C34BF001770B1 /* SelectorEngineRegistry.h in Headers */,
 				AA747D9F0F9514B9006C5449 /* Frank_Prefix.pch in Headers */,
 				D629926B11AB2D1F00CE0FB0 /* AsyncSocket.h in Headers */,
 				D629928111AB2D4C00CE0FB0 /* DDData.h in Headers */,
@@ -672,6 +685,7 @@
 				D6325EE01437F7180057330D /* UIInspector.h in Headers */,
 				D6325EE21437F7180057330D /* UIProxy.h in Headers */,
 				D6325EE41437F7180057330D /* WaitUntilIdle.h in Headers */,
+				D6BD5222146C36A3001770B1 /* UIQuerySelectorEngine.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -828,6 +842,8 @@
 				D6325EE51437F7180057330D /* WaitUntilIdle.m in Sources */,
 				D6F0955C144A5F4600B78FEC /* UIView+KIFAdapter.m in Sources */,
 				D6B1056114644827000DD32F /* UIQuery+ShelleyCompatibiilityOverrides.m in Sources */,
+				D6BD521F146C34BF001770B1 /* SelectorEngineRegistry.m in Sources */,
+				D6BD5223146C36A3001770B1 /* UIQuerySelectorEngine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

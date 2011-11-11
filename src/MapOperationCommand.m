@@ -8,8 +8,7 @@
 
 #import "MapOperationCommand.h"
 
-#import "UIQuery.h"
-#import "Shelley.h"
+#import "SelectorEngineRegistry.h"
 #import "JSON.h"
 #import "Operation.h"
 #import "DumpCommand.h"
@@ -63,42 +62,21 @@
 
 }
 
-- (NSArray *)selectViewsUsingUIQueryWithSelector:(NSString *)queryString{
-    NSLog( @"Using UIQuery to select views with selector: %@", queryString );
-	UIQuery *query = $( [NSMutableString stringWithString:queryString] );
-    return [query views];
-}
-
-- (NSArray *)selectViewsUsingShelleyWithSelector:(NSString *)queryString{
-    NSLog( @"Using Shelley to select views with selector: %@", queryString );
-    Shelley *shelley = [Shelley withSelectorString:queryString];
-	return [shelley selectFrom:[[UIApplication sharedApplication] keyWindow]];
-}
-
 - (NSString *)handleCommandWithRequestBody:(NSString *)requestBody {
 	
 	NSDictionary *requestCommand = [requestBody JSONValue];
     
 	NSString *selectorEngineString = [requestCommand objectForKey:@"selector_engine"];
-	NSString *queryString = [requestCommand objectForKey:@"query"];
+	NSString *selector = [requestCommand objectForKey:@"query"];
 	NSDictionary *operationDict = [requestCommand objectForKey:@"operation"];
 	Operation *operation = [[[Operation alloc] initFromJsonRepresentation:operationDict] autorelease];
     
     NSArray *viewsToMap = nil;
     @try {
-        if( [selectorEngineString isEqualToString:@"uiquery"] || selectorEngineString == nil )
-        {
-            viewsToMap = [self selectViewsUsingUIQueryWithSelector:queryString];
-        }else if( [selectorEngineString isEqualToString:@"shelley_compat"] ){
-            viewsToMap = [self selectViewsUsingShelleyWithSelector:queryString];
-        }else{
-            NSLog( @"Unrecognized selector_engine '%@'", selectorEngineString );
-			return [self generateErrorResponseWithReason:@"unrecognized selector engine" 
-											  andDetails:[NSString stringWithFormat:@"selector_engine '%@' unrecognized. Supported engines are 'uiquery' or 'shelley_compat'", selectorEngineString]];
-        }
+        viewsToMap = [SelectorEngineRegistry selectViewsWithEngineNamed:selectorEngineString usingSelector:selector];
     }	
     @catch (NSException * e) {
-		NSLog( @"Exception while using %@ to select views with '%@':\n%@", selectorEngineString, queryString, e );
+		NSLog( @"Exception while using %@ to select views with '%@':\n%@", selectorEngineString, selector, e );
 		return [self generateErrorResponseWithReason:@"invalid selector" andDetails:[e reason]];
 	}
 	
