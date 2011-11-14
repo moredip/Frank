@@ -79,5 +79,12 @@ BOOL substringMatch(NSString *actualString, NSString *expectedSubstring){
 	[self scrollToRowAtIndexPath:scrollToIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 
+-(void) scrollToBottom {
+    int numberOfSections = [self numberOfSections];
+    int numberOfRowsInSection = [self numberOfRowsInSection:numberOfSections-1];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:numberOfRowsInSection-1 inSection:numberOfSections-1];
+    [self scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+}
+
 @end
 
