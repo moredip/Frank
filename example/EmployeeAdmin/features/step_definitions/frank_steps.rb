@@ -41,6 +41,14 @@ When /^I scroll down (\d*)(?:st|nd|rd|th)? row(?:s)?$/ do |rows_to_scroll|
   sleep 0.5 # give the UI a chance to animate the scrolling
 end
 
+
+When /^I scroll to the bottom of the table$/ do
+  tables_scrolled = frankly_map( "tableView", "scrollToBottom" )
+  raise "no table could be found to scroll" if tables_scrolled.empty?
+  sleep 0.5 # give the UI a chance to animate the scrolling
+end
+
+
 Then /^the "([^\"]*)" table view cell should (not )?be selected$/ do |mark, qualifier|
   expected_to_be_selected = "not " != qualifier
 
