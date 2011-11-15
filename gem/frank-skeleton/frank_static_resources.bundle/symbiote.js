@@ -380,9 +380,10 @@ $(document).ready(function() {
 
 
 
-  function sendFlashCommand( selector ) {
+  function sendFlashCommand( selector, use_shelley ) {
     var command = {
       query: selector,
+      selector_engine: use_shelley ? 'shelley_compat' : 'uiquery',
       operation: {
         method_name: 'flash',
         arguments: []
@@ -394,7 +395,7 @@ $(document).ready(function() {
       type: "POST",
       dataType: "json",
       data: JSON.stringify( command ),
-      url: symbiote.baseUrlFor( "/map" ),
+      url: symbiote.baseUrlFor( '/map' ),
       success: function(data) {
         if( isErrorResponse( data ) ) {
           displayErrorResponse( data );
@@ -481,7 +482,11 @@ $(document).ready(function() {
   });
 
   $('#flash_button').click( function(){
-    sendFlashCommand( $("input#query").val() );
+    sendFlashCommand( $("input#query").val(), false );
+  });
+
+  $('#shelley_flash_button').click( function(){
+    sendFlashCommand( $("input#query").val(), true );
   });
 
   
