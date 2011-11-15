@@ -1,2 +1,9 @@
 require 'bundler'
 Bundler::GemHelper.install_tasks
+
+task :edit_version do
+  exec "vim #{File.dirname(__FILE__)}/lib/frank-cucumber/version.rb"
+end
+
+task :ev => :edit_version
+
