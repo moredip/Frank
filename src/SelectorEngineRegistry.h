@@ -10,7 +10,7 @@
 
 @protocol SelectorEngine <NSObject>
 
-- (NSArray *) selectViewsUsingShelleyWithSelector:(NSString *)selector;
+- (NSArray *) selectViewsWithSelector:(NSString *)selector;
 
 @end
 

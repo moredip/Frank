@@ -17,7 +17,7 @@
     [registeredInstance release];
 }
 
-- (NSArray *) selectViewsUsingShelleyWithSelector:(NSString *)selector {
+- (NSArray *) selectViewsWithSelector:(NSString *)selector {
     NSLog( @"Using UIQuery to select views with selector: %@", selector );
 	UIQuery *query = $( [NSMutableString stringWithString:selector] );
     return [query views];

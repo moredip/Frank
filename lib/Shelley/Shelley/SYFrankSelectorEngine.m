@@ -17,7 +17,7 @@
     [registeredInstance release];
 }
 
-- (NSArray *) selectViewsUsingShelleyWithSelector:(NSString *)selector {
+- (NSArray *) selectViewsWithSelector:(NSString *)selector {
     NSLog( @"Using Shelley to select views with selector: %@", selector );	
     
     Shelley *shelley = [Shelley withSelectorString:selector];

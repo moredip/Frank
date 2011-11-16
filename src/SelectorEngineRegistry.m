@@ -26,7 +26,7 @@ static NSMutableDictionary *s_engines;
         [NSException raise:@"unrecognized engine" format:@"engine named '%@' hasn't been registered with the SelectorEngineRegistry", engineName];
     }
     
-    return [engine selectViewsUsingShelleyWithSelector:selector];
+    return [engine selectViewsWithSelector:selector];
 }
 
 @end
