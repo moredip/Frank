@@ -12,6 +12,7 @@
 #import "JSON.h"
 #import "Operation.h"
 #import "DumpCommand.h"
+#import "UIQueryWebView.h"
 
 @implementation MapOperationCommand
 
