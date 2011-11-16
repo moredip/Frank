@@ -14,6 +14,7 @@
 		2860E32E111B888700E27156 /* AppDelegate_Pad.m in Sources */ = {isa = PBXBuildFile; fileRef = 2860E32C111B888700E27156 /* AppDelegate_Pad.m */; };
 		2860E32F111B888700E27156 /* MainWindow_Pad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2860E32D111B888700E27156 /* MainWindow_Pad.xib */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		D6197EEB14741D1D00C4B0AD /* libShelley.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6197EE614741C9500C4B0AD /* libShelley.a */; };
 		D68FD3D21417DE3400538C41 /* frank_static_resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D68FD3D01417DE3400538C41 /* frank_static_resources.bundle */; };
 		D6A833ED11CDBF35001B8585 /* PureMVC_ObjectiveC_1_1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A833B411CDBF35001B8585 /* PureMVC_ObjectiveC_1_1.a */; };
 		D6A833EF11CDBF35001B8585 /* ApplicationFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A833BE11CDBF35001B8585 /* ApplicationFacade.m */; };
@@ -73,6 +74,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D6197EE514741C9500C4B0AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D6197EE014741C9500C4B0AD /* Shelley.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D6E8FF3213D3DC9200D24F43;
+			remoteInfo = Shelley;
+		};
+		D6197EE714741C9500C4B0AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D6197EE014741C9500C4B0AD /* Shelley.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D6CF39AC13D3E481000C7901;
+			remoteInfo = "Unit Tests";
+		};
+		D6197EE914741D1700C4B0AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D6197EE014741C9500C4B0AD /* Shelley.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D6E8FF3113D3DC9200D24F43;
+			remoteInfo = Shelley;
+		};
 		D6DA5EA31468C87400525864 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D6DA5E981468C87300525864 /* Frank.xcodeproj */;
@@ -103,6 +125,7 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Shared/main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* EmployeeAdmin_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployeeAdmin_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* EmployeeAdmin-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "EmployeeAdmin-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		D6197EE014741C9500C4B0AD /* Shelley.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Shelley.xcodeproj; path = ../../lib/Shelley/Shelley.xcodeproj; sourceTree = "<group>"; };
 		D68FD3D01417DE3400538C41 /* frank_static_resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = frank_static_resources.bundle; path = ../../dist/frank_static_resources.bundle; sourceTree = SOURCE_ROOT; };
 		D68FD3D11417DE3400538C41 /* libFrank.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFrank.a; path = ../../dist/libFrank.a; sourceTree = SOURCE_ROOT; };
 		D6A8339F11CDBF35001B8585 /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
@@ -191,6 +214,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6197EEB14741D1D00C4B0AD /* libShelley.a in Frameworks */,
 				D6DA5EA91468C87E00525864 /* libFrank.a in Frameworks */,
 				D6A8351311CDC3D3001B8585 /* Foundation.framework in Frameworks */,
 				D6A8351411CDC3D3001B8585 /* UIKit.framework in Frameworks */,
@@ -275,6 +299,15 @@
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D6197EE114741C9500C4B0AD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D6197EE614741C9500C4B0AD /* libShelley.a */,
+				D6197EE814741C9500C4B0AD /* Unit Tests.octest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		D6A8339C11CDBF35001B8585 /* lib */ = {
@@ -472,6 +505,7 @@
 		D6A8351D11CDC54B001B8585 /* Frank */ = {
 			isa = PBXGroup;
 			children = (
+				D6197EE014741C9500C4B0AD /* Shelley.xcodeproj */,
 				D6DA5E981468C87300525864 /* Frank.xcodeproj */,
 				D68FD3D01417DE3400538C41 /* frank_static_resources.bundle */,
 				D68FD3D11417DE3400538C41 /* libFrank.a */,
@@ -519,6 +553,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D6197EEA14741D1700C4B0AD /* PBXTargetDependency */,
 				D6DA5EA81468C87A00525864 /* PBXTargetDependency */,
 			);
 			name = "EmployeeAdmin Frankified";
@@ -548,6 +583,10 @@
 					ProductGroup = D6DA5E991468C87300525864 /* Products */;
 					ProjectRef = D6DA5E981468C87300525864 /* Frank.xcodeproj */;
 				},
+				{
+					ProductGroup = D6197EE114741C9500C4B0AD /* Products */;
+					ProjectRef = D6197EE014741C9500C4B0AD /* Shelley.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -558,6 +597,20 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		D6197EE614741C9500C4B0AD /* libShelley.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libShelley.a;
+			remoteRef = D6197EE514741C9500C4B0AD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D6197EE814741C9500C4B0AD /* Unit Tests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Unit Tests.octest";
+			remoteRef = D6197EE714741C9500C4B0AD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		D6DA5EA41468C87400525864 /* libFrank.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -671,6 +724,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		D6197EEA14741D1700C4B0AD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Shelley;
+			targetProxy = D6197EE914741D1700C4B0AD /* PBXContainerItemProxy */;
+		};
 		D6DA5EA81468C87A00525864 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Frank;

@@ -94,7 +94,6 @@
 		D6325EE31437F7180057330D /* UIProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = D6325EA51437F7180057330D /* UIProxy.m */; };
 		D6325EE41437F7180057330D /* WaitUntilIdle.h in Headers */ = {isa = PBXBuildFile; fileRef = D6325EA61437F7180057330D /* WaitUntilIdle.h */; };
 		D6325EE51437F7180057330D /* WaitUntilIdle.m in Sources */ = {isa = PBXBuildFile; fileRef = D6325EA71437F7180057330D /* WaitUntilIdle.m */; };
-		D64DA8C4144B732700FB72F3 /* libShelley.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D64DA8BF144B72F400FB72F3 /* libShelley.a */; };
 		D67F2AAD13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = D67F2AAB13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.h */; };
 		D67F2AAE13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D67F2AAC13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.m */; };
 		D67F2ABF13F5F55A00A0BFF1 /* FrankLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = D67F2ABD13F5F55A00A0BFF1 /* FrankLoader.h */; };
@@ -151,30 +150,6 @@
 		D6FA01B614283C4F00576AD1 /* UIView-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D6FA01A914283C4F00576AD1 /* UIView-KIFAdditions.h */; };
 		D6FA01B714283C4F00576AD1 /* UIView-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FA01AA14283C4F00576AD1 /* UIView-KIFAdditions.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		D64DA8BE144B72F400FB72F3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D64DA8B6144B72F300FB72F3 /* Shelley.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D6E8FF3213D3DC9200D24F43;
-			remoteInfo = Shelley;
-		};
-		D64DA8C0144B72F400FB72F3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D64DA8B6144B72F300FB72F3 /* Shelley.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D6CF39AC13D3E481000C7901;
-			remoteInfo = "Unit Tests";
-		};
-		D64DA8C5144B736400FB72F3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D64DA8B6144B72F300FB72F3 /* Shelley.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D6E8FF3113D3DC9200D24F43;
-			remoteInfo = Shelley;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		4C1DD76812BADFE100E10B8C /* OrientationCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrientationCommand.m; path = src/OrientationCommand.m; sourceTree = "<group>"; };
@@ -267,7 +242,6 @@
 		D6325EA51437F7180057330D /* UIProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIProxy.m; sourceTree = "<group>"; };
 		D6325EA61437F7180057330D /* WaitUntilIdle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitUntilIdle.h; sourceTree = "<group>"; };
 		D6325EA71437F7180057330D /* WaitUntilIdle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitUntilIdle.m; sourceTree = "<group>"; };
-		D64DA8B6144B72F300FB72F3 /* Shelley.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Shelley.xcodeproj; path = lib/Shelley/Shelley.xcodeproj; sourceTree = SOURCE_ROOT; };
 		D6782D8511BC423900FD0CE1 /* frank_static_resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = frank_static_resources.bundle; sourceTree = "<group>"; };
 		D67F2AAB13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccessibilityCheckCommand.h; path = src/AccessibilityCheckCommand.h; sourceTree = "<group>"; };
 		D67F2AAC13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccessibilityCheckCommand.m; path = src/AccessibilityCheckCommand.m; sourceTree = "<group>"; };
@@ -333,7 +307,6 @@
 			files = (
 				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
 				D629938011AB2DF300CE0FB0 /* UIKit.framework in Frameworks */,
-				D64DA8C4144B732700FB72F3 /* libShelley.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,7 +395,6 @@
 		D629926711AB2CF700CE0FB0 /* 3rd Party */ = {
 			isa = PBXGroup;
 			children = (
-				D64DA8B6144B72F300FB72F3 /* Shelley.xcodeproj */,
 				D6325E661437F7180057330D /* UISpec */,
 				D6FA019D14283BEA00576AD1 /* KIF Additions */,
 				D6E7B46C11B36D42005CAA34 /* JSON */,
@@ -560,15 +532,6 @@
 			path = utils;
 			sourceTree = "<group>";
 		};
-		D64DA8B7144B72F300FB72F3 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				D64DA8BF144B72F400FB72F3 /* libShelley.a */,
-				D64DA8C1144B72F400FB72F3 /* Unit Tests.octest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		D6E7B46C11B36D42005CAA34 /* JSON */ = {
 			isa = PBXGroup;
 			children = (
@@ -704,7 +667,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				D64DA8C6144B736400FB72F3 /* PBXTargetDependency */,
 			);
 			name = Frank;
 			productName = Frank;
@@ -729,35 +691,12 @@
 			mainGroup = 0867D691FE84028FC02AAC07 /* Frank */;
 			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = D64DA8B7144B72F300FB72F3 /* Products */;
-					ProjectRef = D64DA8B6144B72F300FB72F3 /* Shelley.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				D2AAC07D0554694100DB518D /* Frank */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		D64DA8BF144B72F400FB72F3 /* libShelley.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libShelley.a;
-			remoteRef = D64DA8BE144B72F400FB72F3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D64DA8C1144B72F400FB72F3 /* Unit Tests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "Unit Tests.octest";
-			remoteRef = D64DA8C0144B72F400FB72F3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D6782DD711BC67FE00FD0CE1 /* Resources */ = {
@@ -848,14 +787,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		D64DA8C6144B736400FB72F3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Shelley;
-			targetProxy = D64DA8C5144B736400FB72F3 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1DEB921F08733DC00010E9CD /* Debug */ = {
