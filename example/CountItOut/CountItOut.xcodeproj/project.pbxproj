@@ -54,6 +54,7 @@
 		D6039387135BD17400116449 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */; };
 		D6039388135BD17400116449 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28860BE40F44EE6400985440 /* CoreData.framework */; };
 		D603945D135BD22000116449 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D603945C135BD22000116449 /* CFNetwork.framework */; };
+		D6197EF014741FA000C4B0AD /* libShelley.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6197EEF14741FA000C4B0AD /* libShelley.a */; };
 		D6FA03F114284EC300576AD1 /* frank_static_resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D6FA03EF14284EC300576AD1 /* frank_static_resources.bundle */; };
 		D6FA03F214284EC300576AD1 /* libFrank.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6FA03F014284EC300576AD1 /* libFrank.a */; };
 /* End PBXBuildFile section */
@@ -95,6 +96,7 @@
 		D603938C135BD17400116449 /* CountItOut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountItOut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D603938E135BD17400116449 /* CountItOut-Info copy.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CountItOut-Info copy.plist"; sourceTree = "<group>"; };
 		D603945C135BD22000116449 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		D6197EEF14741FA000C4B0AD /* libShelley.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libShelley.a; path = ../../lib/Shelley/build/libShelley.a; sourceTree = "<group>"; };
 		D6FA03EF14284EC300576AD1 /* frank_static_resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = frank_static_resources.bundle; path = ../../dist/frank_static_resources.bundle; sourceTree = SOURCE_ROOT; };
 		D6FA03F014284EC300576AD1 /* libFrank.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFrank.a; path = ../../dist/libFrank.a; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -121,6 +123,7 @@
 				D6039388135BD17400116449 /* CoreData.framework in Frameworks */,
 				D603945D135BD22000116449 /* CFNetwork.framework in Frameworks */,
 				D6FA03F214284EC300576AD1 /* libFrank.a in Frameworks */,
+				D6197EF014741FA000C4B0AD /* libShelley.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,6 +241,7 @@
 		D603938F135BD1A500116449 /* Frank */ = {
 			isa = PBXGroup;
 			children = (
+				D6197EEF14741FA000C4B0AD /* libShelley.a */,
 				D6FA03EF14284EC300576AD1 /* frank_static_resources.bundle */,
 				D6FA03F014284EC300576AD1 /* libFrank.a */,
 			);
@@ -448,6 +452,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../dist\"",
+					"\"$(SRCROOT)/../../lib/Shelley/build\"",
 				);
 				OTHER_CFLAGS = "-DFRANK";
 				OTHER_LDFLAGS = (
@@ -469,6 +474,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../dist\"",
+					"\"$(SRCROOT)/../../lib/Shelley/build\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
