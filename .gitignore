@@ -7,3 +7,4 @@ dist
 *.perspective
 *.perspectivev3
 xcuserdata
+.rvmrc
