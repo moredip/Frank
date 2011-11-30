@@ -2,7 +2,7 @@ module Frank module Cucumber
 
 module Launcher 
   
-  def launch_app(app_path)
+  def launch_app(app_path, sdk=nil)
     if app_path.nil?
       require 'frank-cucumber/app_bundle_locator'
       message = "APP_BUNDLE_PATH is not set. \n\nPlease set APP_BUNDLE_PATH (either an environment variable, or the ruby constant in support/env.rb) to the path of your Frankified target's iOS app bundle."
@@ -26,11 +26,12 @@ module Launcher
 
 
     require 'sim_launcher'
+    puts "app_path #{app_path}"
 
     if( ENV['USE_SIM_LAUNCHER_SERVER'] )
-      simulator = SimLauncher::Client.for_iphone_app( app_path )
+      simulator = SimLauncher::Client.for_iphone_app( app_path, sdk )
     else
-      simulator = SimLauncher::DirectClient.for_iphone_app( app_path )
+      simulator = SimLauncher::DirectClient.for_iphone_app( app_path, sdk )
     end
 
     num_timeouts = 0
