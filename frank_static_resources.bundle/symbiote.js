@@ -484,11 +484,6 @@ $(document).ready(function() {
   $('#flash_button').click( function(){
       sendFlashCommand( $("input#query").val(), $("input#selector_engine").val() );
   });
-
-  $('#shelley_flash_button').click( function(){
-    sendFlashCommand( $("input#query").val(), $("input#selector_engine").val() );
-  });
-
   
   liveView = symbiote.LiveView( uiLocator.updateBackdrop, refreshViewHeirarchy );
 
