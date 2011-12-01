@@ -87,3 +87,12 @@ Then /^the "([^\"]*)" table view cell should (not )?have a (\w*) accessory$/ do 
 
 end
 
+
+Then /^I should (not )?see a keyboard$/ do |negator|
+  keyboards = frankly_map( "view:'UIKeyboardImpl'", 'class' )
+  if negator == "not "
+    keyboards.should be_empty
+  else
+    keyboards.should_not be_empty
+  end
+end

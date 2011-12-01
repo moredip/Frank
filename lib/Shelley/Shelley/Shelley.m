@@ -48,23 +48,27 @@
     return filteredViews;
 }
 
-- (NSArray *) selectFrom:(UIView *)rootView
-{
+- (NSArray *) selectFromViews:(NSArray *)views {
     id<SYFilter> filter = [_parser nextFilter];
     id<SYFilter> prevFilter = filter;
     
     if( !filter )
         return [NSArray array];
     
-    NSArray *views = [filter applyToViews:[NSArray arrayWithObject:rootView]];
+    NSArray *filteredViews = [filter applyToViews:views];
     
     while(( filter = [_parser nextFilter] )){
         [filter setDoNotDescend:[prevFilter nextFilterShouldNotDescend]];
-        views = [self applyFilter:filter toViews:views];
+        filteredViews = [self applyFilter:filter toViews:filteredViews];
         prevFilter = filter;
     }
     
-    return views;
+    return filteredViews;    
+}
+
+- (NSArray *) selectFrom:(UIView *)rootView
+{
+    return [self selectFromViews:[NSArray arrayWithObject:rootView]];
 }
 
 @end

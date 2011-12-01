@@ -12,3 +12,10 @@ Scenario: Scrolling to the bottom of the table
 		Then I should not see "Returns"
 		When I scroll to the bottom of the table
 		Then I should see "Returns"
+
+Scenario: keyboard only found when editting
+		Given I touch "Larry Stooge"
+    Then I should not see a keyboard
+		When I touch "larry@stooges.com"
+		And I wait 3 seconds
+		Then I should see a keyboard
