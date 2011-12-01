@@ -32,11 +32,22 @@
 	[_commandDict setObject:command forKey:commandName];
 }
 
-- (NSData *) grabScreenshot {	
+- (NSData *) grabScreenshot:(BOOL)allWindows {	
+    
 	UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
 	
 	UIGraphicsBeginImageContext(keyWindow.bounds.size);
-    [keyWindow.layer renderInContext:UIGraphicsGetCurrentContext()];
+    if (allWindows)
+    {
+        for (UIWindow *w in [[UIApplication sharedApplication] windows])
+        {
+            [w.layer renderInContext:UIGraphicsGetCurrentContext()];
+        }
+    }
+    else
+    {
+        [keyWindow.layer renderInContext:UIGraphicsGetCurrentContext()];
+    }
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
 	
@@ -58,7 +69,9 @@
     
 	if( [@"screenshot" isEqualToString:[path objectAtIndex:0]] )
 	{
-		return [[[HTTPDataResponse alloc] initWithData:[self grabScreenshot]] autorelease];
+        BOOL allWindows = [path count] == 2;
+
+		return [[[HTTPDataResponse alloc] initWithData:[self grabScreenshot:allWindows]] autorelease];
 	}
 	
 	id<FrankCommand> command = [self commandForPath:path];
