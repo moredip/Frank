@@ -40,6 +40,8 @@
 		*((int *)buffer) = [number intValue];
 	}else if( !strcmp(objCType, @encode(uint)) ){
 		*((uint *)buffer) = [number unsignedIntValue];
+	}else if( !strcmp(objCType, @encode(double)) ){
+		*((double *)buffer) = [number doubleValue];        
 	}else {
 		NSLog(@"Didn't know how to convert NSNumber to type %s", objCType); 
 	}	
