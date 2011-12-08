@@ -68,14 +68,12 @@ module FrankHelper
 
     res['results']
   end
-  
-  
-  def frankly_map( query, method_name, *method_args )
+
+  def frankly_engine_map( selector_engine, query, method_name, *method_args )
     operation_map = {
       :method_name => method_name,
       :arguments => method_args,
     }
-    selector_engine = Frank::Cucumber::FrankHelper.selector_engine || 'uiquery' # default to UIQuery for backwards compatibility
     res = post_to_uispec_server( 'map', :query => query, :operation => operation_map, :selector_engine => selector_engine )
     res = JSON.parse( res )
     if res['outcome'] != 'SUCCESS'
@@ -83,6 +81,11 @@ module FrankHelper
     end
 
     res['results']
+  end
+  
+  def frankly_map( query, method_name, *method_args )
+    selector_engine = Frank::Cucumber::FrankHelper.selector_engine || 'uiquery' # default to UIQuery for backwards compatibility
+    frankly_engine_map( selector_engine, query, method_name, *method_args )
   end
 
   def frankly_dump
