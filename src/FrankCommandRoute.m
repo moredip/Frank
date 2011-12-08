@@ -32,7 +32,7 @@
 	[_commandDict setObject:command forKey:commandName];
 }
 
-- (NSData *) grabScreenshot:(BOOL)allWindows {	
+- (UIImage *) grabScreenshot:(BOOL)allWindows {	
     
 	UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
 	
@@ -51,7 +51,7 @@
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
 	
-	return UIImagePNGRepresentation(image);
+	return image;
 }
 
 #pragma mark Route implementation
@@ -63,15 +63,41 @@
 	return [_commandDict objectForKey:[path objectAtIndex:0]];
 }
 
+- (UIImage *)cropImage:(UIImage *)image toFrame:(CGRect)cropFrame
+{
+    CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], cropFrame);
+    UIImage *result = [UIImage imageWithCGImage:imageRef]; 
+    CGImageRelease(imageRef);
+    return result;
+}
+
+
 - (NSObject<HTTPResponse> *) handleRequestForPath: (NSArray *)path withConnection:(RoutingHTTPConnection *)connection{
     
 	NSLog( @"received request with path %@\nPOST DATA:\n%@", path, connection.postDataAsString );
     
 	if( [@"screenshot" isEqualToString:[path objectAtIndex:0]] )
 	{
-        BOOL allWindows = [path count] == 2;
-
-		return [[[HTTPDataResponse alloc] initWithData:[self grabScreenshot:allWindows]] autorelease];
+        BOOL allWindows = [path count] > 1;
+        UIImage *screenshot = [self grabScreenshot:allWindows];
+        
+        if ([path count] == 4)
+        {
+            NSString *stringRepresentation = [path objectAtIndex:3];
+            NSArray *parts = [stringRepresentation componentsSeparatedByString:@"."];
+            CGRect crop = CGRectZero;
+            
+            crop.origin.x = [[parts objectAtIndex:0] integerValue];
+            crop.origin.y = [[parts objectAtIndex:1] integerValue];
+            crop.size.width  = [[parts objectAtIndex:2] integerValue];
+            crop.size.height = [[parts objectAtIndex:3] integerValue];
+            
+            screenshot = [self cropImage:screenshot toFrame:crop];
+        }
+        
+        NSData *response = UIImagePNGRepresentation(screenshot);
+        
+		return [[[HTTPDataResponse alloc] initWithData:response] autorelease];
 	}
 	
 	id<FrankCommand> command = [self commandForPath:path];
