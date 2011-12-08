@@ -51,7 +51,9 @@ NSDictionary *mapObjectToPropertiesDictionary( NSObject *object ) {
 		unsigned i;
 		id objValue;
 		int intValue;
+        unsigned int uintValue;
 		long longValue;
+        long long longlongValue;
 		char *charPtrValue; 
 		unsigned char charValue;
 		short shortValue;
@@ -110,6 +112,9 @@ NSDictionary *mapObjectToPropertiesDictionary( NSObject *object ) {
 						[invocation getReturnValue:(void **)&intValue];
 						[properties setObject:[NSNumber	numberWithInt:intValue] forKey:key];
 						break;
+                    case 'I':
+						[invocation getReturnValue:(void **)&uintValue];
+						[properties setObject:[NSNumber	numberWithUnsignedInt:uintValue] forKey:key];                        
 					case 's':
 						[invocation getReturnValue:(void **)&shortValue];
 						[properties setObject:[NSNumber	numberWithShort:shortValue] forKey:key];
@@ -125,6 +130,10 @@ NSDictionary *mapObjectToPropertiesDictionary( NSObject *object ) {
 					case 'l':
 						[invocation getReturnValue:(void **)&longValue];
 						[properties setObject:[NSNumber	numberWithLong:longValue] forKey:key];
+						break;
+					case 'Q':
+						[invocation getReturnValue:(void **)&longlongValue];
+						[properties setObject:[NSNumber	numberWithLongLong:longlongValue] forKey:key];
 						break;
 					case '*':
 						[invocation getReturnValue:(void **)&charPtrValue];
