@@ -1,0 +1,10 @@
+require 'stringio'
+require 'minitest/autorun'
+require 'minitest/mock'
+require 'minitest/spec'
+include MiniTest
+require_relative '../lib/frank-cucumber/color_helper'
+require_relative '../lib/frank-cucumber/frank_helper'
+require_relative '../lib/frank-cucumber/launcher'
+include Frank::Cucumber::Launcher
+include Frank::Cucumber::FrankHelper

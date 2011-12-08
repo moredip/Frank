@@ -24,15 +24,15 @@ def create_skeleton_dir
 
   puts <<-EOS
   Frank subdirectory created.
-  Your next step is to create a Frankified target for your app, and add the libFrank.a and frank_static_resources.bundle files inside the Frank directory to that target.
+  Your next step is to create a Frankified target for your app, and add the libFrank.a, libShelley.a and frank_static_resources.bundle files inside the Frank directory to that target.
   After that, you can build the target and try executing 'cucumber' from the Frank directory to see how your initial cucumber test runs.
   EOS
 end
 
 def update_server_files
-  source_files = %w{libFrank.a frank_static_resources.bundle}.map{ |x| File.join( SOURCE_DIR, x ) }
+  source_files = %w{libFrank.a libShelley.a frank_static_resources.bundle}.map{ |x| File.join( SOURCE_DIR, x ) }
   FileUtils.cp_r( source_files, TARGET_DIR )
-  puts "All done. I've updated libFrank.a and frank_static_resources.bundle inside #{TARGET_DIR}"
+  puts "All done. I've updated libFrank.a, libShelley.a and frank_static_resources.bundle inside #{TARGET_DIR}"
 end
 
 frank_dir_already_exists = File.exists?( TARGET_DIR ) 
