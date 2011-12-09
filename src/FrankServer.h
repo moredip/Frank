@@ -13,6 +13,8 @@
 @interface FrankServer : NSObject {
 	HTTPServer *_httpServer;
 }
++ (void)setDefaultHttpPort:(NSUInteger)port;
+             
 
 - (id) initWithDefaultBundle;
 - (id) initWithStaticFrankBundleNamed:(NSString *)bundleName;

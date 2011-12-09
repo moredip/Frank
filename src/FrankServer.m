@@ -18,8 +18,13 @@
 #import "AppCommand.h"
 #import "AccessibilityCheckCommand.h"
 
+static NSUInteger __defaultPort = FRANK_SERVER_PORT;
 @implementation FrankServer
 
++ (void)setDefaultHttpPort:(NSUInteger)port
+{
+    __defaultPort = port;
+}
 - (id) initWithDefaultBundle {
 	return [self initWithStaticFrankBundleNamed: @"frank_static_resources"];
 }
@@ -48,7 +53,7 @@
 		[_httpServer setName:@"Frank UISpec server"];
 		[_httpServer setType:@"_http._tcp."];
 		[_httpServer setConnectionClass:[RoutingHTTPConnection class]];
-		[_httpServer setPort:FRANK_SERVER_PORT];
+		[_httpServer setPort:__defaultPort];
 		NSLog( @"Creating the server: %@", _httpServer );
 	}
 	return self;
