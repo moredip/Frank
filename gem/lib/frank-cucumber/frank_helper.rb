@@ -4,6 +4,8 @@ require 'json'
 module Frank module Cucumber
 
 module FrankHelper 
+  HOST = "localhost"
+  FRANK_PORT = 37265
 
   class << self
     # TODO: adding an ivar to the module itself is a big ugyl hack. We need a FrankDriver class, or similar
@@ -93,6 +95,18 @@ module FrankHelper
     puts JSON.pretty_generate(JSON.parse(res)) rescue puts res #dumping a super-deep DOM causes errors
   end
 
+  def frankly_screenshot(filename, subframe=nil, allwindows=true)
+    path = 'screenshot'
+    path += '/allwindows' if allwindows
+    path += "/frame/" + URI.escape(subframe) if (subframe != nil)
+
+    data = get_to_uispec_server( path )
+
+    open(filename, "wb") do |file|
+      file.write(data)
+    end
+  end
+
   def frankly_oriented_portrait?
     'portrait' == frankly_current_orientation
   end
@@ -175,8 +189,10 @@ module FrankHelper
     make_http_request( url, req )
   end
 
-  def frank_url_for( verb )
-    url = URI.parse "http://localhost:37265/"
+  def frank_url_for( verb , port=nil )
+    port ||= FRANK_PORT
+    
+    url = URI.parse "http://#{HOST}:#{port}/"
     url.path = '/'+verb
     url
   end
