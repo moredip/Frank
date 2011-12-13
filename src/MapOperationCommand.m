@@ -7,7 +7,7 @@
 //
 
 #import "MapOperationCommand.h"
-
+#import "UIQueryWebView.h"
 #import "UIQuery.h"
 #import "JSON.h"
 #import "Operation.h"
