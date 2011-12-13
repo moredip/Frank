@@ -42,7 +42,7 @@
     UIQuery *wrappedView;
     
     
-    if ([className isEqualToString:@"UIWebView"])
+    if ([view isKindOfClass:[UIWebView class]])
     {
         wrappedView = [UIQueryWebView withViews:[NSMutableArray
                                                  arrayWithObject:view]
