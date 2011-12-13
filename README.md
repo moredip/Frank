@@ -12,7 +12,7 @@ Learn More
 Getting Started
 ---------------
 
-Getting started is easy. You just need to install a ruby gem, create a new target for your app in XCode, and start writing cucumber tests. For detailed instructions check out tutorial/Tutorial.md.
+Getting started is easy. You just need to install a ruby gem, create a new target for your app in XCode, and start writing cucumber tests.
 
 Building from source
 ----
