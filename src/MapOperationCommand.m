@@ -33,16 +33,13 @@
 }
 
 - (id) performOperation:(Operation *)operation onView:(UIView *)view {
-
-    NSString *className = NSStringFromClass([view class]); 
     
 	if( [operation appliesToObject:view] )
 		return [operation applyToObject:view];
 	
     UIQuery *wrappedView;
-    
-    
-    if ([className isEqualToString:@"UIWebView"])
+
+    if([view isKindOfClass:[UIWebView class]])
     {
         wrappedView = [UIQueryWebView withViews:[NSMutableArray
                                                  arrayWithObject:view]
