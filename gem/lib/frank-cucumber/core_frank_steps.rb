@@ -1,4 +1,4 @@
-WAIT_TIMEOUT = ENV['WAIT_TIMEOUT'] || 240
+WAIT_TIMEOUT = ENV['WAIT_TIMEOUT'].to_i || 240
 
 require 'rspec/expectations'
 
