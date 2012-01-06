@@ -226,7 +226,6 @@ end tell
   end
   
   def press_home_on_simulator
-  puts I18n.t(:rotate_left)
     simulator_hardware_menu_press Localize.t(:home)
   end
   
