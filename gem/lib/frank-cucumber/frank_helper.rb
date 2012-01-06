@@ -1,5 +1,6 @@
 require 'net/http'
 require 'json'
+require 'frank-cucumber/frank_localize'
 
 module Frank module Cucumber
 
@@ -219,37 +220,37 @@ module FrankHelper
     %x{osascript<<APPLESCRIPT
 activate application "iPhone Simulator"
 tell application "System Events"
-	click menu item "#{menu_label}" of menu "Hardware" of menu bar of process "iPhone Simulator"
+	click menu item "#{menu_label}" of menu "#{Localize.t(:hardware)}" of menu bar of process "#{Localize.t(:iphone_simulator)}"
 end tell
   APPLESCRIPT}  
   end
   
   def press_home_on_simulator
-    simulator_hardware_menu_press "Home"
+    simulator_hardware_menu_press Localize.t(:home)
   end
   
   def rotate_simulator_left
-    simulator_hardware_menu_press "Rotate Left"
+    simulator_hardware_menu_press Localize.t(:rotate_left)
   end
 
   def rotate_simulator_right
-    simulator_hardware_menu_press "Rotate Right"
+    simulator_hardware_menu_press Localize.t(:rotate_right)
   end
 
   def shake_simulator
-    simulator_hardware_menu_press "Shake Gesture"
+    simulator_hardware_menu_press Localize.t(:shake_gesture)
   end
   
   def simulate_memory_warning
-    simulator_hardware_menu_press "Simulate Memory Warning"
+    simulator_hardware_menu_press Localize.t(:simulate_memory_warning)
   end
   
   def toggle_call_status_bar
-    simulator_hardware_menu_press "Toggle In-Call Status Bar"
+    simulator_hardware_menu_press Localize.t(:toggle_call_status_bar)
   end
   
   def simulate_hardware_keyboard
-    simulator_hardware_menu_press "Simulate Hardware Keyboard"
+    simulator_hardware_menu_press Localize.t(:simulate_hardware_keyboard)
   end
 end
 
