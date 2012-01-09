@@ -64,6 +64,9 @@
 	NSDictionary *requestCommand = [requestBody JSONValue];
     
 	NSString *selectorEngineString = [requestCommand objectForKey:@"selector_engine"];
+    if( !selectorEngineString )
+        selectorEngineString = @"uiquery"; // default to UIQuery, for compatibility with old clients
+    
 	NSString *selector = [requestCommand objectForKey:@"query"];
 	NSDictionary *operationDict = [requestCommand objectForKey:@"operation"];
 	Operation *operation = [[[Operation alloc] initFromJsonRepresentation:operationDict] autorelease];
