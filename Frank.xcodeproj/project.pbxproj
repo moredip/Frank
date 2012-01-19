@@ -14,7 +14,6 @@
 				008AFDE813B56E6D000A5C00 /* ShellScript */,
 			);
 			dependencies = (
-				008AFDE513B56E66000A5C00 /* PBXTargetDependency */,
 				008AFDE713B56E66000A5C00 /* PBXTargetDependency */,
 			);
 			name = Frank;
@@ -86,13 +85,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		008AFDE413B56E66000A5C00 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = "Frank-iphoneos";
-		};
 		008AFDE613B56E66000A5C00 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
@@ -545,7 +537,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "rm -rf ${BUILT_PRODUCTS_DIR}/lib${PRODUCT_NAME}.a\n\nlipo -create \"${BUILT_PRODUCTS_DIR}/../${BUILD_STYLE}-iphonesimulator/lib${PRODUCT_NAME}-iphonesimulator.a\" \\\n\"${BUILT_PRODUCTS_DIR}/../${BUILD_STYLE}-iphoneos/lib${PRODUCT_NAME}-iphoneos.a\" -output \\\n\"${BUILT_PRODUCTS_DIR}/lib${PRODUCT_NAME}.a\"";
+			shellScript = "xcodebuild -configuration \"${CONFIGURATION}\" -target \"Frank-iphoneos\" -sdk \"iphoneos\" ${ACTION} RUN_CLANG_STATIC_ANALYZER=NO BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\n\nrm -rf ${BUILT_PRODUCTS_DIR}/lib${PRODUCT_NAME}.a\n\nlipo -create \"${BUILT_PRODUCTS_DIR}/../${CONFIGURATION}-iphonesimulator/lib${PRODUCT_NAME}-iphonesimulator.a\" \\\n\"${BUILT_PRODUCTS_DIR}/../${CONFIGURATION}-iphoneos/lib${PRODUCT_NAME}-iphoneos.a\" -output \\\n\"${BUILT_PRODUCTS_DIR}/lib${PRODUCT_NAME}.a\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -593,11 +585,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		008AFDE513B56E66000A5C00 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D2AAC07D0554694100DB518D /* Frank-iphoneos */;
-			targetProxy = 008AFDE413B56E66000A5C00 /* PBXContainerItemProxy */;
-		};
 		008AFDE713B56E66000A5C00 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 008AFD7813B56D8B000A5C00 /* Frank-iphonesimulator */;
