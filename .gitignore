@@ -2,3 +2,10 @@ build
 Frank.xcodeproj/*.mode1v3
 Frank.xcodeproj/*.pbxuser
 Frank.xcodeproj/ThoughtWorks.mode2v3
+lib/uispec/libUISpec.a
+
+FrankWorkspace.xcworkspace/xcuserdata/olarivain.xcuserdatad/UserInterfaceState.xcuserstate
+
+FrankWorkspace.xcworkspace/xcuserdata/olarivain.xcuserdatad/xcdebugger/Breakpoints.xcbkptlist
+
+lib/uispec/libUISpec.OLD.a
