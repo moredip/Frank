@@ -15,6 +15,7 @@
 #import "DumpCommand.h"
 #import "MapOperationCommand.h"
 #import "OrientationCommand.h"
+#import "ExitCommand.h"
 #import "AppCommand.h"
 #import "AccessibilityCheckCommand.h"
 
@@ -38,6 +39,7 @@
 		[frankCommandRoute registerCommand:[[[OrientationCommand alloc]init]autorelease] withName:@"orientation"];
 		[frankCommandRoute registerCommand:[[[AccessibilityCheckCommand alloc] init]autorelease] withName:@"accessibility_check"];
 		[frankCommandRoute registerCommand:[[[AppCommand alloc] init]autorelease] withName:@"app_exec"];
+    [frankCommandRoute registerCommand:[[[ExitCommand alloc] init] autorelease] withName:@"exit"];
 		[[RequestRouter singleton] registerRoute:frankCommandRoute];
 		
 		StaticResourcesRoute *staticRoute = [[[StaticResourcesRoute alloc] initWithStaticResourceSubDir:bundleName] autorelease];
