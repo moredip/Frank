@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07AE056614C93D380023B8D0 /* ExitCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 07AE056414C93D380023B8D0 /* ExitCommand.h */; };
+		07AE056714C93D380023B8D0 /* ExitCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 07AE056514C93D380023B8D0 /* ExitCommand.m */; };
 		4C1DD76C12BADFE100E10B8C /* OrientationCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1DD76812BADFE100E10B8C /* OrientationCommand.m */; };
 		4C1DD76D12BADFE100E10B8C /* OrientationCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C1DD76912BADFE100E10B8C /* OrientationCommand.h */; };
 		4C1DD76E12BADFE100E10B8C /* AppCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1DD76A12BADFE100E10B8C /* AppCommand.m */; };
@@ -152,6 +154,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		07AE056414C93D380023B8D0 /* ExitCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExitCommand.h; path = src/ExitCommand.h; sourceTree = "<group>"; };
+		07AE056514C93D380023B8D0 /* ExitCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExitCommand.m; path = src/ExitCommand.m; sourceTree = "<group>"; };
 		4C1DD76812BADFE100E10B8C /* OrientationCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrientationCommand.m; path = src/OrientationCommand.m; sourceTree = "<group>"; };
 		4C1DD76912BADFE100E10B8C /* OrientationCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrientationCommand.h; path = src/OrientationCommand.h; sourceTree = "<group>"; };
 		4C1DD76A12BADFE100E10B8C /* AppCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppCommand.m; path = src/AppCommand.m; sourceTree = "<group>"; };
@@ -380,6 +384,8 @@
 				D6BD521D146C34BF001770B1 /* SelectorEngineRegistry.m */,
 				D6BD5220146C36A3001770B1 /* UIQuerySelectorEngine.h */,
 				D6BD5221146C36A3001770B1 /* UIQuerySelectorEngine.m */,
+				07AE056414C93D380023B8D0 /* ExitCommand.h */,
+				07AE056514C93D380023B8D0 /* ExitCommand.m */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -649,6 +655,7 @@
 				D6325EE21437F7180057330D /* UIProxy.h in Headers */,
 				D6325EE41437F7180057330D /* WaitUntilIdle.h in Headers */,
 				D6BD5222146C36A3001770B1 /* UIQuerySelectorEngine.h in Headers */,
+				07AE056614C93D380023B8D0 /* ExitCommand.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -786,6 +793,7 @@
 				D6B1056114644827000DD32F /* UIQuery+ShelleyCompatibiilityOverrides.m in Sources */,
 				D6BD521F146C34BF001770B1 /* SelectorEngineRegistry.m in Sources */,
 				D6BD5223146C36A3001770B1 /* UIQuerySelectorEngine.m in Sources */,
+				07AE056714C93D380023B8D0 /* ExitCommand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
