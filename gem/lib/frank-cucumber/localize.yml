@@ -8,6 +8,7 @@ en:
   simulate_memory_warning: Simulate Memory Warning
   toggle_in_call_status_bar: Toggle In-Call Status Bar
   simulate_hardware_keyboard: Simulate Hardware Keyboard
+  reset_contents: Reset Content and Settings...
 
 fr:
   iphone_simulator: Simulateur iOS
@@ -30,3 +31,4 @@ de:
   simulate_memory_warning: Speicherwarnhinweis simulieren
   toggle_in_call_status_bar: Status für eingeh. Anrufe ein/aus
   simulate_hardware_keyboard: Hardware-Tastatur simulieren
+  reset_contents: Inhalte und Einstellungen zurücksetzen …
