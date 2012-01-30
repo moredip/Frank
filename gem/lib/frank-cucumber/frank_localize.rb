@@ -8,6 +8,8 @@ module Frank
         case ENV['LANG']
         when /^fr_/
           :fr
+        when /^de_/
+          :de
         else
           :en
         end
