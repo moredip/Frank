@@ -276,3 +276,7 @@ end
 When /^I quit the simulator/ do
   quit_simulator 
 end
+
+When /^I reset the simulator/ do
+  simulator_reset_data
+end

@@ -19,3 +19,14 @@ fr:
   simulate_memory_warning: Simuler un avertissement de mémoire
   toggle_in_call_status_bar: Afficher/Masquer la barre d'état d'appel en cour
   simulate_hardware_keyboard: Simuler un clavier matériel
+
+de:
+  iphone_simulator: iOS-Simulator
+  hardware: Hardware
+  home: Home
+  rotate_left: Links drehen
+  rotate_right: Rechts drehen
+  shake_gesture: Schüttelgeste
+  simulate_memory_warning: Speicherwarnhinweis simulieren
+  toggle_in_call_status_bar: Status für eingeh. Anrufe ein/aus
+  simulate_hardware_keyboard: Hardware-Tastatur simulieren
