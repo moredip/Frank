@@ -218,9 +218,9 @@ def simulator_reset_data
   %x{osascript<<APPLESCRIPT
 activate application "iPhone Simulator"
 tell application "System Events"
-  click menu item "#{Localize.t(:reset_contents)}" of menu "#{Localize.t(:iphone_simulator)}" of menu bar of process "#{Localize.t(:iphone_simulator)}"
+  click menu item 5 of menu 1 of menu bar item 2 of menu bar 1 of process "#{Localize.t(:iphone_simulator)}"
   delay 0.5
-  keystroke space
+  click button 2 of window 1 of process "#{Localize.t(:iphone_simulator)}"
 end tell
   APPLESCRIPT} 
 end
