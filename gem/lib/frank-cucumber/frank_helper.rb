@@ -214,6 +214,17 @@ module FrankHelper
     APPLESCRIPT}
   end
 
+def simulator_reset_data
+  %x{osascript<<APPLESCRIPT
+activate application "iPhone Simulator"
+tell application "System Events"
+  click menu item 5 of menu 1 of menu bar item 2 of menu bar 1 of process "#{Localize.t(:iphone_simulator)}"
+  delay 0.5
+  click button 2 of window 1 of process "#{Localize.t(:iphone_simulator)}"
+end tell
+  APPLESCRIPT} 
+end
+
   #Note this needs to have "Enable access for assistive devices"
   #chcked in the Universal Access system preferences
   def simulator_hardware_menu_press( menu_label )
