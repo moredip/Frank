@@ -7,6 +7,55 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00DB779514DB48C40074BF29 /* Recordable.h in Headers */ = {isa = PBXBuildFile; fileRef = 00DB777214DB48C40074BF29 /* Recordable.h */; };
+		00DB779614DB48C40074BF29 /* Recordable.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DB777314DB48C40074BF29 /* Recordable.m */; };
+		00DB779714DB48C40074BF29 /* UIChildren.h in Headers */ = {isa = PBXBuildFile; fileRef = 00DB777414DB48C40074BF29 /* UIChildren.h */; };
+		00DB779814DB48C40074BF29 /* UIChildren.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DB777514DB48C40074BF29 /* UIChildren.m */; };
+		00DB779914DB48C40074BF29 /* UIConsoleLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 00DB777614DB48C40074BF29 /* UIConsoleLog.h */; };
+		00DB779A14DB48C40074BF29 /* UIConsoleLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DB777714DB48C40074BF29 /* UIConsoleLog.m */; };
+		00DB779B14DB48C40074BF29 /* UIDescendants.h in Headers */ = {isa = PBXBuildFile; fileRef = 00DB777814DB48C40074BF29 /* UIDescendants.h */; };
+		00DB779C14DB48C40074BF29 /* UIDescendants.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DB777914DB48C40074BF29 /* UIDescendants.m */; };
+		00DB779D14DB48C40074BF29 /* UIEvent+Synthesize.h in Headers */ = {isa = PBXBuildFile; fileRef = 00DB777A14DB48C40074BF29 /* UIEvent+Synthesize.h */; };
+		00DB779E14DB48C40074BF29 /* UIEvent+Synthesize.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DB777B14DB48C40074BF29 /* UIEvent+Synthesize.m */; };
+		00DB779F14DB48C40074BF29 /* UIExpectation.h in Headers */ = {isa = PBXBuildFile; fileRef = 00DB777C14DB48C40074BF29 /* UIExpectation.h */; };
+		00DB77A014DB48C40074BF29 /* UIExpectation.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DB777D14DB48C40074BF29 /* UIExpectation.m */; };
+		00DB77A114DB48C40074BF29 /* UIFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 00DB777E14DB48C40074BF29 /* UIFilter.h */; };
+		00DB77A214DB48C40074BF29 /* UIFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DB777F14DB48C40074BF29 /* UIFilter.m */; };
+		00DB77A314DB48C40074BF29 /* UILog.h in Headers */ = {isa = PBXBuildFile; fileRef = 00DB778014DB48C40074BF29 /* UILog.h */; };
+		00DB77A414DB48C40074BF29 /* UIMatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 00DB778114DB48C40074BF29 /* UIMatcher.h */; };
+		00DB77A514DB48C40074BF29 /* UIMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DB778214DB48C40074BF29 /* UIMatcher.m */; };
+		00DB77A614DB48C40074BF29 /* UIParents.h in Headers */ = {isa = PBXBuildFile; fileRef = 00DB778314DB48C40074BF29 /* UIParents.h */; };
+		00DB77A714DB48C40074BF29 /* UIParents.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DB778414DB48C40074BF29 /* UIParents.m */; };
+		00DB77A814DB48C40074BF29 /* UIQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = 00DB778514DB48C40074BF29 /* UIQuery.h */; };
+		00DB77A914DB48C40074BF29 /* UIQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DB778614DB48C40074BF29 /* UIQuery.m */; };
+		00DB77AA14DB48C40074BF29 /* UIQueryAll.h in Headers */ = {isa = PBXBuildFile; fileRef = 00DB778714DB48C40074BF29 /* UIQueryAll.h */; };
+		00DB77AB14DB48C40074BF29 /* UIQueryAll.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DB778814DB48C40074BF29 /* UIQueryAll.m */; };
+		00DB77AC14DB48C40074BF29 /* UIQueryExpectation.h in Headers */ = {isa = PBXBuildFile; fileRef = 00DB778914DB48C40074BF29 /* UIQueryExpectation.h */; };
+		00DB77AD14DB48C40074BF29 /* UIQueryExpectation.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DB778A14DB48C40074BF29 /* UIQueryExpectation.m */; };
+		00DB77AE14DB48C40074BF29 /* UIRedoer.h in Headers */ = {isa = PBXBuildFile; fileRef = 00DB778B14DB48C40074BF29 /* UIRedoer.h */; };
+		00DB77AF14DB48C40074BF29 /* UIRedoer.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DB778C14DB48C40074BF29 /* UIRedoer.m */; };
+		00DB77B014DB48C40074BF29 /* UITouch+Synthesize.h in Headers */ = {isa = PBXBuildFile; fileRef = 00DB778D14DB48C40074BF29 /* UITouch+Synthesize.h */; };
+		00DB77B114DB48C40074BF29 /* UITouch+Synthesize.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DB778E14DB48C40074BF29 /* UITouch+Synthesize.m */; };
+		00DB77B214DB48C40074BF29 /* UITouchPerformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 00DB778F14DB48C40074BF29 /* UITouchPerformer.h */; };
+		00DB77B314DB48C40074BF29 /* UITouchPerformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DB779014DB48C40074BF29 /* UITouchPerformer.m */; };
+		00DB77B414DB48C40074BF29 /* ViewFilterSwizzler.h in Headers */ = {isa = PBXBuildFile; fileRef = 00DB779114DB48C40074BF29 /* ViewFilterSwizzler.h */; };
+		00DB77B514DB48C40074BF29 /* ViewFilterSwizzler.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DB779214DB48C40074BF29 /* ViewFilterSwizzler.m */; };
+		00DB77B614DB48C40074BF29 /* VisibleTouch.h in Headers */ = {isa = PBXBuildFile; fileRef = 00DB779314DB48C40074BF29 /* VisibleTouch.h */; };
+		00DB77B714DB48C40074BF29 /* VisibleTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DB779414DB48C40074BF29 /* VisibleTouch.m */; };
+		00DB77C814DB48DD0074BF29 /* GraphicsServices.h in Headers */ = {isa = PBXBuildFile; fileRef = 00DB77BA14DB48DD0074BF29 /* GraphicsServices.h */; };
+		00DB77C914DB48DD0074BF29 /* GSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 00DB77BB14DB48DD0074BF29 /* GSBase.h */; };
+		00DB77CA14DB48DD0074BF29 /* GSCapability.h in Headers */ = {isa = PBXBuildFile; fileRef = 00DB77BC14DB48DD0074BF29 /* GSCapability.h */; };
+		00DB77CB14DB48DD0074BF29 /* GSColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 00DB77BD14DB48DD0074BF29 /* GSColor.h */; };
+		00DB77CC14DB48DD0074BF29 /* GSEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 00DB77BE14DB48DD0074BF29 /* GSEvent.h */; };
+		00DB77CD14DB48DD0074BF29 /* GSFont.h in Headers */ = {isa = PBXBuildFile; fileRef = 00DB77BF14DB48DD0074BF29 /* GSFont.h */; };
+		00DB77CE14DB48DD0074BF29 /* GSGeometry.h in Headers */ = {isa = PBXBuildFile; fileRef = 00DB77C014DB48DD0074BF29 /* GSGeometry.h */; };
+		00DB77CF14DB48DD0074BF29 /* GSHeartbeat.h in Headers */ = {isa = PBXBuildFile; fileRef = 00DB77C114DB48DD0074BF29 /* GSHeartbeat.h */; };
+		00DB77D014DB48DD0074BF29 /* GSHiccup.h in Headers */ = {isa = PBXBuildFile; fileRef = 00DB77C214DB48DD0074BF29 /* GSHiccup.h */; };
+		00DB77D114DB48DD0074BF29 /* GSKeyboard.h in Headers */ = {isa = PBXBuildFile; fileRef = 00DB77C314DB48DD0074BF29 /* GSKeyboard.h */; };
+		00DB77D214DB48DD0074BF29 /* GSMainScreen.h in Headers */ = {isa = PBXBuildFile; fileRef = 00DB77C414DB48DD0074BF29 /* GSMainScreen.h */; };
+		00DB77D314DB48DD0074BF29 /* GSMaps.h in Headers */ = {isa = PBXBuildFile; fileRef = 00DB77C514DB48DD0074BF29 /* GSMaps.h */; };
+		00DB77D414DB48DD0074BF29 /* GSStatusBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 00DB77C614DB48DD0074BF29 /* GSStatusBar.h */; };
+		00DB77D514DB48DD0074BF29 /* GSWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 00DB77C714DB48DD0074BF29 /* GSWindow.h */; };
 		4C1DD76C12BADFE100E10B8C /* OrientationCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1DD76812BADFE100E10B8C /* OrientationCommand.m */; };
 		4C1DD76D12BADFE100E10B8C /* OrientationCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C1DD76912BADFE100E10B8C /* OrientationCommand.h */; };
 		4C1DD76E12BADFE100E10B8C /* AppCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1DD76A12BADFE100E10B8C /* AppCommand.m */; };
@@ -46,35 +95,6 @@
 		D6325EB31437F7180057330D /* UIQueryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6325E731437F7180057330D /* UIQueryTableViewCell.m */; };
 		D6325EB41437F7180057330D /* UIQueryWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = D6325E741437F7180057330D /* UIQueryWebView.h */; };
 		D6325EB51437F7180057330D /* UIQueryWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6325E751437F7180057330D /* UIQueryWebView.m */; };
-		D6325EB61437F7180057330D /* Recordable.h in Headers */ = {isa = PBXBuildFile; fileRef = D6325E771437F7180057330D /* Recordable.h */; };
-		D6325EB71437F7180057330D /* Recordable.m in Sources */ = {isa = PBXBuildFile; fileRef = D6325E781437F7180057330D /* Recordable.m */; };
-		D6325EB81437F7180057330D /* UIChildren.h in Headers */ = {isa = PBXBuildFile; fileRef = D6325E791437F7180057330D /* UIChildren.h */; };
-		D6325EB91437F7180057330D /* UIChildren.m in Sources */ = {isa = PBXBuildFile; fileRef = D6325E7A1437F7180057330D /* UIChildren.m */; };
-		D6325EBA1437F7180057330D /* UIConsoleLog.h in Headers */ = {isa = PBXBuildFile; fileRef = D6325E7B1437F7180057330D /* UIConsoleLog.h */; };
-		D6325EBB1437F7180057330D /* UIConsoleLog.m in Sources */ = {isa = PBXBuildFile; fileRef = D6325E7C1437F7180057330D /* UIConsoleLog.m */; };
-		D6325EBC1437F7180057330D /* UIDescendants.h in Headers */ = {isa = PBXBuildFile; fileRef = D6325E7D1437F7180057330D /* UIDescendants.h */; };
-		D6325EBD1437F7180057330D /* UIDescendants.m in Sources */ = {isa = PBXBuildFile; fileRef = D6325E7E1437F7180057330D /* UIDescendants.m */; };
-		D6325EBE1437F7180057330D /* UIExpectation.h in Headers */ = {isa = PBXBuildFile; fileRef = D6325E7F1437F7180057330D /* UIExpectation.h */; };
-		D6325EBF1437F7180057330D /* UIExpectation.m in Sources */ = {isa = PBXBuildFile; fileRef = D6325E801437F7180057330D /* UIExpectation.m */; };
-		D6325EC01437F7180057330D /* UIFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = D6325E811437F7180057330D /* UIFilter.h */; };
-		D6325EC11437F7180057330D /* UIFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = D6325E821437F7180057330D /* UIFilter.m */; };
-		D6325EC21437F7180057330D /* UILog.h in Headers */ = {isa = PBXBuildFile; fileRef = D6325E831437F7180057330D /* UILog.h */; };
-		D6325EC31437F7180057330D /* UIMatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = D6325E841437F7180057330D /* UIMatcher.h */; };
-		D6325EC41437F7180057330D /* UIMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = D6325E851437F7180057330D /* UIMatcher.m */; };
-		D6325EC51437F7180057330D /* UIParents.h in Headers */ = {isa = PBXBuildFile; fileRef = D6325E861437F7180057330D /* UIParents.h */; };
-		D6325EC61437F7180057330D /* UIParents.m in Sources */ = {isa = PBXBuildFile; fileRef = D6325E871437F7180057330D /* UIParents.m */; };
-		D6325EC71437F7180057330D /* UIQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = D6325E881437F7180057330D /* UIQuery.h */; };
-		D6325EC81437F7180057330D /* UIQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = D6325E891437F7180057330D /* UIQuery.m */; };
-		D6325EC91437F7180057330D /* UIQueryAll.h in Headers */ = {isa = PBXBuildFile; fileRef = D6325E8A1437F7180057330D /* UIQueryAll.h */; };
-		D6325ECA1437F7180057330D /* UIQueryAll.m in Sources */ = {isa = PBXBuildFile; fileRef = D6325E8B1437F7180057330D /* UIQueryAll.m */; };
-		D6325ECB1437F7180057330D /* UIQueryExpectation.h in Headers */ = {isa = PBXBuildFile; fileRef = D6325E8C1437F7180057330D /* UIQueryExpectation.h */; };
-		D6325ECC1437F7180057330D /* UIQueryExpectation.m in Sources */ = {isa = PBXBuildFile; fileRef = D6325E8D1437F7180057330D /* UIQueryExpectation.m */; };
-		D6325ECD1437F7180057330D /* UIRedoer.h in Headers */ = {isa = PBXBuildFile; fileRef = D6325E8E1437F7180057330D /* UIRedoer.h */; };
-		D6325ECE1437F7180057330D /* UIRedoer.m in Sources */ = {isa = PBXBuildFile; fileRef = D6325E8F1437F7180057330D /* UIRedoer.m */; };
-		D6325ECF1437F7180057330D /* ViewFilterSwizzler.h in Headers */ = {isa = PBXBuildFile; fileRef = D6325E901437F7180057330D /* ViewFilterSwizzler.h */; };
-		D6325ED01437F7180057330D /* ViewFilterSwizzler.m in Sources */ = {isa = PBXBuildFile; fileRef = D6325E911437F7180057330D /* ViewFilterSwizzler.m */; };
-		D6325ED11437F7180057330D /* VisibleTouch.h in Headers */ = {isa = PBXBuildFile; fileRef = D6325E921437F7180057330D /* VisibleTouch.h */; };
-		D6325ED21437F7180057330D /* VisibleTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = D6325E931437F7180057330D /* VisibleTouch.m */; };
 		D6325ED31437F7180057330D /* UISpec.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D6325E941437F7180057330D /* UISpec.bundle */; };
 		D6325ED41437F7180057330D /* UISpec.h in Headers */ = {isa = PBXBuildFile; fileRef = D6325E951437F7180057330D /* UISpec.h */; };
 		D6325ED51437F7180057330D /* UISpec.m in Sources */ = {isa = PBXBuildFile; fileRef = D6325E961437F7180057330D /* UISpec.m */; };
@@ -152,6 +172,55 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		00DB777214DB48C40074BF29 /* Recordable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Recordable.h; sourceTree = "<group>"; };
+		00DB777314DB48C40074BF29 /* Recordable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Recordable.m; sourceTree = "<group>"; };
+		00DB777414DB48C40074BF29 /* UIChildren.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIChildren.h; sourceTree = "<group>"; };
+		00DB777514DB48C40074BF29 /* UIChildren.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIChildren.m; sourceTree = "<group>"; };
+		00DB777614DB48C40074BF29 /* UIConsoleLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIConsoleLog.h; sourceTree = "<group>"; };
+		00DB777714DB48C40074BF29 /* UIConsoleLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIConsoleLog.m; sourceTree = "<group>"; };
+		00DB777814DB48C40074BF29 /* UIDescendants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIDescendants.h; sourceTree = "<group>"; };
+		00DB777914DB48C40074BF29 /* UIDescendants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIDescendants.m; sourceTree = "<group>"; };
+		00DB777A14DB48C40074BF29 /* UIEvent+Synthesize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIEvent+Synthesize.h"; sourceTree = "<group>"; };
+		00DB777B14DB48C40074BF29 /* UIEvent+Synthesize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIEvent+Synthesize.m"; sourceTree = "<group>"; };
+		00DB777C14DB48C40074BF29 /* UIExpectation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIExpectation.h; sourceTree = "<group>"; };
+		00DB777D14DB48C40074BF29 /* UIExpectation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIExpectation.m; sourceTree = "<group>"; };
+		00DB777E14DB48C40074BF29 /* UIFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIFilter.h; sourceTree = "<group>"; };
+		00DB777F14DB48C40074BF29 /* UIFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIFilter.m; sourceTree = "<group>"; };
+		00DB778014DB48C40074BF29 /* UILog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UILog.h; sourceTree = "<group>"; };
+		00DB778114DB48C40074BF29 /* UIMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIMatcher.h; sourceTree = "<group>"; };
+		00DB778214DB48C40074BF29 /* UIMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIMatcher.m; sourceTree = "<group>"; };
+		00DB778314DB48C40074BF29 /* UIParents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIParents.h; sourceTree = "<group>"; };
+		00DB778414DB48C40074BF29 /* UIParents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIParents.m; sourceTree = "<group>"; };
+		00DB778514DB48C40074BF29 /* UIQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIQuery.h; sourceTree = "<group>"; };
+		00DB778614DB48C40074BF29 /* UIQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIQuery.m; sourceTree = "<group>"; };
+		00DB778714DB48C40074BF29 /* UIQueryAll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIQueryAll.h; sourceTree = "<group>"; };
+		00DB778814DB48C40074BF29 /* UIQueryAll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIQueryAll.m; sourceTree = "<group>"; };
+		00DB778914DB48C40074BF29 /* UIQueryExpectation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIQueryExpectation.h; sourceTree = "<group>"; };
+		00DB778A14DB48C40074BF29 /* UIQueryExpectation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIQueryExpectation.m; sourceTree = "<group>"; };
+		00DB778B14DB48C40074BF29 /* UIRedoer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIRedoer.h; sourceTree = "<group>"; };
+		00DB778C14DB48C40074BF29 /* UIRedoer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIRedoer.m; sourceTree = "<group>"; };
+		00DB778D14DB48C40074BF29 /* UITouch+Synthesize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITouch+Synthesize.h"; sourceTree = "<group>"; };
+		00DB778E14DB48C40074BF29 /* UITouch+Synthesize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITouch+Synthesize.m"; sourceTree = "<group>"; };
+		00DB778F14DB48C40074BF29 /* UITouchPerformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITouchPerformer.h; sourceTree = "<group>"; };
+		00DB779014DB48C40074BF29 /* UITouchPerformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITouchPerformer.m; sourceTree = "<group>"; };
+		00DB779114DB48C40074BF29 /* ViewFilterSwizzler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewFilterSwizzler.h; sourceTree = "<group>"; };
+		00DB779214DB48C40074BF29 /* ViewFilterSwizzler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewFilterSwizzler.m; sourceTree = "<group>"; };
+		00DB779314DB48C40074BF29 /* VisibleTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisibleTouch.h; sourceTree = "<group>"; };
+		00DB779414DB48C40074BF29 /* VisibleTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisibleTouch.m; sourceTree = "<group>"; };
+		00DB77BA14DB48DD0074BF29 /* GraphicsServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicsServices.h; sourceTree = "<group>"; };
+		00DB77BB14DB48DD0074BF29 /* GSBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSBase.h; sourceTree = "<group>"; };
+		00DB77BC14DB48DD0074BF29 /* GSCapability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSCapability.h; sourceTree = "<group>"; };
+		00DB77BD14DB48DD0074BF29 /* GSColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSColor.h; sourceTree = "<group>"; };
+		00DB77BE14DB48DD0074BF29 /* GSEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSEvent.h; sourceTree = "<group>"; };
+		00DB77BF14DB48DD0074BF29 /* GSFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSFont.h; sourceTree = "<group>"; };
+		00DB77C014DB48DD0074BF29 /* GSGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSGeometry.h; sourceTree = "<group>"; };
+		00DB77C114DB48DD0074BF29 /* GSHeartbeat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSHeartbeat.h; sourceTree = "<group>"; };
+		00DB77C214DB48DD0074BF29 /* GSHiccup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSHiccup.h; sourceTree = "<group>"; };
+		00DB77C314DB48DD0074BF29 /* GSKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSKeyboard.h; sourceTree = "<group>"; };
+		00DB77C414DB48DD0074BF29 /* GSMainScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSMainScreen.h; sourceTree = "<group>"; };
+		00DB77C514DB48DD0074BF29 /* GSMaps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSMaps.h; sourceTree = "<group>"; };
+		00DB77C614DB48DD0074BF29 /* GSStatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSStatusBar.h; sourceTree = "<group>"; };
+		00DB77C714DB48DD0074BF29 /* GSWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSWindow.h; sourceTree = "<group>"; };
 		4C1DD76812BADFE100E10B8C /* OrientationCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrientationCommand.m; path = src/OrientationCommand.m; sourceTree = "<group>"; };
 		4C1DD76912BADFE100E10B8C /* OrientationCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrientationCommand.h; path = src/OrientationCommand.h; sourceTree = "<group>"; };
 		4C1DD76A12BADFE100E10B8C /* AppCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppCommand.m; path = src/AppCommand.m; sourceTree = "<group>"; };
@@ -194,35 +263,6 @@
 		D6325E731437F7180057330D /* UIQueryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIQueryTableViewCell.m; sourceTree = "<group>"; };
 		D6325E741437F7180057330D /* UIQueryWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIQueryWebView.h; sourceTree = "<group>"; };
 		D6325E751437F7180057330D /* UIQueryWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIQueryWebView.m; sourceTree = "<group>"; };
-		D6325E771437F7180057330D /* Recordable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Recordable.h; sourceTree = "<group>"; };
-		D6325E781437F7180057330D /* Recordable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Recordable.m; sourceTree = "<group>"; };
-		D6325E791437F7180057330D /* UIChildren.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIChildren.h; sourceTree = "<group>"; };
-		D6325E7A1437F7180057330D /* UIChildren.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIChildren.m; sourceTree = "<group>"; };
-		D6325E7B1437F7180057330D /* UIConsoleLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIConsoleLog.h; sourceTree = "<group>"; };
-		D6325E7C1437F7180057330D /* UIConsoleLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIConsoleLog.m; sourceTree = "<group>"; };
-		D6325E7D1437F7180057330D /* UIDescendants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIDescendants.h; sourceTree = "<group>"; };
-		D6325E7E1437F7180057330D /* UIDescendants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIDescendants.m; sourceTree = "<group>"; };
-		D6325E7F1437F7180057330D /* UIExpectation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIExpectation.h; sourceTree = "<group>"; };
-		D6325E801437F7180057330D /* UIExpectation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIExpectation.m; sourceTree = "<group>"; };
-		D6325E811437F7180057330D /* UIFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIFilter.h; sourceTree = "<group>"; };
-		D6325E821437F7180057330D /* UIFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIFilter.m; sourceTree = "<group>"; };
-		D6325E831437F7180057330D /* UILog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UILog.h; sourceTree = "<group>"; };
-		D6325E841437F7180057330D /* UIMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIMatcher.h; sourceTree = "<group>"; };
-		D6325E851437F7180057330D /* UIMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIMatcher.m; sourceTree = "<group>"; };
-		D6325E861437F7180057330D /* UIParents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIParents.h; sourceTree = "<group>"; };
-		D6325E871437F7180057330D /* UIParents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIParents.m; sourceTree = "<group>"; };
-		D6325E881437F7180057330D /* UIQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIQuery.h; sourceTree = "<group>"; };
-		D6325E891437F7180057330D /* UIQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIQuery.m; sourceTree = "<group>"; };
-		D6325E8A1437F7180057330D /* UIQueryAll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIQueryAll.h; sourceTree = "<group>"; };
-		D6325E8B1437F7180057330D /* UIQueryAll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIQueryAll.m; sourceTree = "<group>"; };
-		D6325E8C1437F7180057330D /* UIQueryExpectation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIQueryExpectation.h; sourceTree = "<group>"; };
-		D6325E8D1437F7180057330D /* UIQueryExpectation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIQueryExpectation.m; sourceTree = "<group>"; };
-		D6325E8E1437F7180057330D /* UIRedoer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIRedoer.h; sourceTree = "<group>"; };
-		D6325E8F1437F7180057330D /* UIRedoer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIRedoer.m; sourceTree = "<group>"; };
-		D6325E901437F7180057330D /* ViewFilterSwizzler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewFilterSwizzler.h; sourceTree = "<group>"; };
-		D6325E911437F7180057330D /* ViewFilterSwizzler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewFilterSwizzler.m; sourceTree = "<group>"; };
-		D6325E921437F7180057330D /* VisibleTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisibleTouch.h; sourceTree = "<group>"; };
-		D6325E931437F7180057330D /* VisibleTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisibleTouch.m; sourceTree = "<group>"; };
 		D6325E941437F7180057330D /* UISpec.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UISpec.bundle; sourceTree = "<group>"; };
 		D6325E951437F7180057330D /* UISpec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISpec.h; sourceTree = "<group>"; };
 		D6325E961437F7180057330D /* UISpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UISpec.m; sourceTree = "<group>"; };
@@ -313,6 +353,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00DB77B814DB48DD0074BF29 /* Private Headers */ = {
+			isa = PBXGroup;
+			children = (
+				00DB77B914DB48DD0074BF29 /* GraphicsServices */,
+			);
+			name = "Private Headers";
+			path = "lib/UISpec/Private Headers";
+			sourceTree = SOURCE_ROOT;
+		};
+		00DB77B914DB48DD0074BF29 /* GraphicsServices */ = {
+			isa = PBXGroup;
+			children = (
+				00DB77BA14DB48DD0074BF29 /* GraphicsServices.h */,
+				00DB77BB14DB48DD0074BF29 /* GSBase.h */,
+				00DB77BC14DB48DD0074BF29 /* GSCapability.h */,
+				00DB77BD14DB48DD0074BF29 /* GSColor.h */,
+				00DB77BE14DB48DD0074BF29 /* GSEvent.h */,
+				00DB77BF14DB48DD0074BF29 /* GSFont.h */,
+				00DB77C014DB48DD0074BF29 /* GSGeometry.h */,
+				00DB77C114DB48DD0074BF29 /* GSHeartbeat.h */,
+				00DB77C214DB48DD0074BF29 /* GSHiccup.h */,
+				00DB77C314DB48DD0074BF29 /* GSKeyboard.h */,
+				00DB77C414DB48DD0074BF29 /* GSMainScreen.h */,
+				00DB77C514DB48DD0074BF29 /* GSMaps.h */,
+				00DB77C614DB48DD0074BF29 /* GSStatusBar.h */,
+				00DB77C714DB48DD0074BF29 /* GSWindow.h */,
+			);
+			path = GraphicsServices;
+			sourceTree = "<group>";
+		};
 		034768DFFF38A50411DB9C8B /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -441,6 +511,7 @@
 		D6325E661437F7180057330D /* UISpec */ = {
 			isa = PBXGroup;
 			children = (
+				00DB77B814DB48DD0074BF29 /* Private Headers */,
 				D6325E671437F7180057330D /* components */,
 				D6325E761437F7180057330D /* dsl */,
 				D6325E941437F7180057330D /* UISpec.bundle */,
@@ -476,35 +547,41 @@
 		D6325E761437F7180057330D /* dsl */ = {
 			isa = PBXGroup;
 			children = (
-				D6325E771437F7180057330D /* Recordable.h */,
-				D6325E781437F7180057330D /* Recordable.m */,
-				D6325E791437F7180057330D /* UIChildren.h */,
-				D6325E7A1437F7180057330D /* UIChildren.m */,
-				D6325E7B1437F7180057330D /* UIConsoleLog.h */,
-				D6325E7C1437F7180057330D /* UIConsoleLog.m */,
-				D6325E7D1437F7180057330D /* UIDescendants.h */,
-				D6325E7E1437F7180057330D /* UIDescendants.m */,
-				D6325E7F1437F7180057330D /* UIExpectation.h */,
-				D6325E801437F7180057330D /* UIExpectation.m */,
-				D6325E811437F7180057330D /* UIFilter.h */,
-				D6325E821437F7180057330D /* UIFilter.m */,
-				D6325E831437F7180057330D /* UILog.h */,
-				D6325E841437F7180057330D /* UIMatcher.h */,
-				D6325E851437F7180057330D /* UIMatcher.m */,
-				D6325E861437F7180057330D /* UIParents.h */,
-				D6325E871437F7180057330D /* UIParents.m */,
-				D6325E881437F7180057330D /* UIQuery.h */,
-				D6325E891437F7180057330D /* UIQuery.m */,
-				D6325E8A1437F7180057330D /* UIQueryAll.h */,
-				D6325E8B1437F7180057330D /* UIQueryAll.m */,
-				D6325E8C1437F7180057330D /* UIQueryExpectation.h */,
-				D6325E8D1437F7180057330D /* UIQueryExpectation.m */,
-				D6325E8E1437F7180057330D /* UIRedoer.h */,
-				D6325E8F1437F7180057330D /* UIRedoer.m */,
-				D6325E901437F7180057330D /* ViewFilterSwizzler.h */,
-				D6325E911437F7180057330D /* ViewFilterSwizzler.m */,
-				D6325E921437F7180057330D /* VisibleTouch.h */,
-				D6325E931437F7180057330D /* VisibleTouch.m */,
+				00DB777214DB48C40074BF29 /* Recordable.h */,
+				00DB777314DB48C40074BF29 /* Recordable.m */,
+				00DB777414DB48C40074BF29 /* UIChildren.h */,
+				00DB777514DB48C40074BF29 /* UIChildren.m */,
+				00DB777614DB48C40074BF29 /* UIConsoleLog.h */,
+				00DB777714DB48C40074BF29 /* UIConsoleLog.m */,
+				00DB777814DB48C40074BF29 /* UIDescendants.h */,
+				00DB777914DB48C40074BF29 /* UIDescendants.m */,
+				00DB777A14DB48C40074BF29 /* UIEvent+Synthesize.h */,
+				00DB777B14DB48C40074BF29 /* UIEvent+Synthesize.m */,
+				00DB777C14DB48C40074BF29 /* UIExpectation.h */,
+				00DB777D14DB48C40074BF29 /* UIExpectation.m */,
+				00DB777E14DB48C40074BF29 /* UIFilter.h */,
+				00DB777F14DB48C40074BF29 /* UIFilter.m */,
+				00DB778014DB48C40074BF29 /* UILog.h */,
+				00DB778114DB48C40074BF29 /* UIMatcher.h */,
+				00DB778214DB48C40074BF29 /* UIMatcher.m */,
+				00DB778314DB48C40074BF29 /* UIParents.h */,
+				00DB778414DB48C40074BF29 /* UIParents.m */,
+				00DB778514DB48C40074BF29 /* UIQuery.h */,
+				00DB778614DB48C40074BF29 /* UIQuery.m */,
+				00DB778714DB48C40074BF29 /* UIQueryAll.h */,
+				00DB778814DB48C40074BF29 /* UIQueryAll.m */,
+				00DB778914DB48C40074BF29 /* UIQueryExpectation.h */,
+				00DB778A14DB48C40074BF29 /* UIQueryExpectation.m */,
+				00DB778B14DB48C40074BF29 /* UIRedoer.h */,
+				00DB778C14DB48C40074BF29 /* UIRedoer.m */,
+				00DB778D14DB48C40074BF29 /* UITouch+Synthesize.h */,
+				00DB778E14DB48C40074BF29 /* UITouch+Synthesize.m */,
+				00DB778F14DB48C40074BF29 /* UITouchPerformer.h */,
+				00DB779014DB48C40074BF29 /* UITouchPerformer.m */,
+				00DB779114DB48C40074BF29 /* ViewFilterSwizzler.h */,
+				00DB779214DB48C40074BF29 /* ViewFilterSwizzler.m */,
+				00DB779314DB48C40074BF29 /* VisibleTouch.h */,
+				00DB779414DB48C40074BF29 /* VisibleTouch.m */,
 			);
 			path = dsl;
 			sourceTree = "<group>";
@@ -624,21 +701,6 @@
 				D6325EB01437F7180057330D /* UIQueryTableView.h in Headers */,
 				D6325EB21437F7180057330D /* UIQueryTableViewCell.h in Headers */,
 				D6325EB41437F7180057330D /* UIQueryWebView.h in Headers */,
-				D6325EB61437F7180057330D /* Recordable.h in Headers */,
-				D6325EB81437F7180057330D /* UIChildren.h in Headers */,
-				D6325EBA1437F7180057330D /* UIConsoleLog.h in Headers */,
-				D6325EBC1437F7180057330D /* UIDescendants.h in Headers */,
-				D6325EBE1437F7180057330D /* UIExpectation.h in Headers */,
-				D6325EC01437F7180057330D /* UIFilter.h in Headers */,
-				D6325EC21437F7180057330D /* UILog.h in Headers */,
-				D6325EC31437F7180057330D /* UIMatcher.h in Headers */,
-				D6325EC51437F7180057330D /* UIParents.h in Headers */,
-				D6325EC71437F7180057330D /* UIQuery.h in Headers */,
-				D6325EC91437F7180057330D /* UIQueryAll.h in Headers */,
-				D6325ECB1437F7180057330D /* UIQueryExpectation.h in Headers */,
-				D6325ECD1437F7180057330D /* UIRedoer.h in Headers */,
-				D6325ECF1437F7180057330D /* ViewFilterSwizzler.h in Headers */,
-				D6325ED11437F7180057330D /* VisibleTouch.h in Headers */,
 				D6325ED41437F7180057330D /* UISpec.h in Headers */,
 				D6325ED61437F7180057330D /* CallCache.h in Headers */,
 				D6325ED81437F7180057330D /* NSNumberCreator.h in Headers */,
@@ -649,6 +711,38 @@
 				D6325EE21437F7180057330D /* UIProxy.h in Headers */,
 				D6325EE41437F7180057330D /* WaitUntilIdle.h in Headers */,
 				D6BD5222146C36A3001770B1 /* UIQuerySelectorEngine.h in Headers */,
+				00DB779514DB48C40074BF29 /* Recordable.h in Headers */,
+				00DB779714DB48C40074BF29 /* UIChildren.h in Headers */,
+				00DB779914DB48C40074BF29 /* UIConsoleLog.h in Headers */,
+				00DB779B14DB48C40074BF29 /* UIDescendants.h in Headers */,
+				00DB779D14DB48C40074BF29 /* UIEvent+Synthesize.h in Headers */,
+				00DB779F14DB48C40074BF29 /* UIExpectation.h in Headers */,
+				00DB77A114DB48C40074BF29 /* UIFilter.h in Headers */,
+				00DB77A314DB48C40074BF29 /* UILog.h in Headers */,
+				00DB77A414DB48C40074BF29 /* UIMatcher.h in Headers */,
+				00DB77A614DB48C40074BF29 /* UIParents.h in Headers */,
+				00DB77A814DB48C40074BF29 /* UIQuery.h in Headers */,
+				00DB77AA14DB48C40074BF29 /* UIQueryAll.h in Headers */,
+				00DB77AC14DB48C40074BF29 /* UIQueryExpectation.h in Headers */,
+				00DB77AE14DB48C40074BF29 /* UIRedoer.h in Headers */,
+				00DB77B014DB48C40074BF29 /* UITouch+Synthesize.h in Headers */,
+				00DB77B214DB48C40074BF29 /* UITouchPerformer.h in Headers */,
+				00DB77B414DB48C40074BF29 /* ViewFilterSwizzler.h in Headers */,
+				00DB77B614DB48C40074BF29 /* VisibleTouch.h in Headers */,
+				00DB77C814DB48DD0074BF29 /* GraphicsServices.h in Headers */,
+				00DB77C914DB48DD0074BF29 /* GSBase.h in Headers */,
+				00DB77CA14DB48DD0074BF29 /* GSCapability.h in Headers */,
+				00DB77CB14DB48DD0074BF29 /* GSColor.h in Headers */,
+				00DB77CC14DB48DD0074BF29 /* GSEvent.h in Headers */,
+				00DB77CD14DB48DD0074BF29 /* GSFont.h in Headers */,
+				00DB77CE14DB48DD0074BF29 /* GSGeometry.h in Headers */,
+				00DB77CF14DB48DD0074BF29 /* GSHeartbeat.h in Headers */,
+				00DB77D014DB48DD0074BF29 /* GSHiccup.h in Headers */,
+				00DB77D114DB48DD0074BF29 /* GSKeyboard.h in Headers */,
+				00DB77D214DB48DD0074BF29 /* GSMainScreen.h in Headers */,
+				00DB77D314DB48DD0074BF29 /* GSMaps.h in Headers */,
+				00DB77D414DB48DD0074BF29 /* GSStatusBar.h in Headers */,
+				00DB77D514DB48DD0074BF29 /* GSWindow.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -759,20 +853,6 @@
 				D6325EB11437F7180057330D /* UIQueryTableView.m in Sources */,
 				D6325EB31437F7180057330D /* UIQueryTableViewCell.m in Sources */,
 				D6325EB51437F7180057330D /* UIQueryWebView.m in Sources */,
-				D6325EB71437F7180057330D /* Recordable.m in Sources */,
-				D6325EB91437F7180057330D /* UIChildren.m in Sources */,
-				D6325EBB1437F7180057330D /* UIConsoleLog.m in Sources */,
-				D6325EBD1437F7180057330D /* UIDescendants.m in Sources */,
-				D6325EBF1437F7180057330D /* UIExpectation.m in Sources */,
-				D6325EC11437F7180057330D /* UIFilter.m in Sources */,
-				D6325EC41437F7180057330D /* UIMatcher.m in Sources */,
-				D6325EC61437F7180057330D /* UIParents.m in Sources */,
-				D6325EC81437F7180057330D /* UIQuery.m in Sources */,
-				D6325ECA1437F7180057330D /* UIQueryAll.m in Sources */,
-				D6325ECC1437F7180057330D /* UIQueryExpectation.m in Sources */,
-				D6325ECE1437F7180057330D /* UIRedoer.m in Sources */,
-				D6325ED01437F7180057330D /* ViewFilterSwizzler.m in Sources */,
-				D6325ED21437F7180057330D /* VisibleTouch.m in Sources */,
 				D6325ED51437F7180057330D /* UISpec.m in Sources */,
 				D6325ED71437F7180057330D /* CallCache.m in Sources */,
 				D6325ED91437F7180057330D /* NSNumberCreator.m in Sources */,
@@ -786,6 +866,23 @@
 				D6B1056114644827000DD32F /* UIQuery+ShelleyCompatibiilityOverrides.m in Sources */,
 				D6BD521F146C34BF001770B1 /* SelectorEngineRegistry.m in Sources */,
 				D6BD5223146C36A3001770B1 /* UIQuerySelectorEngine.m in Sources */,
+				00DB779614DB48C40074BF29 /* Recordable.m in Sources */,
+				00DB779814DB48C40074BF29 /* UIChildren.m in Sources */,
+				00DB779A14DB48C40074BF29 /* UIConsoleLog.m in Sources */,
+				00DB779C14DB48C40074BF29 /* UIDescendants.m in Sources */,
+				00DB779E14DB48C40074BF29 /* UIEvent+Synthesize.m in Sources */,
+				00DB77A014DB48C40074BF29 /* UIExpectation.m in Sources */,
+				00DB77A214DB48C40074BF29 /* UIFilter.m in Sources */,
+				00DB77A514DB48C40074BF29 /* UIMatcher.m in Sources */,
+				00DB77A714DB48C40074BF29 /* UIParents.m in Sources */,
+				00DB77A914DB48C40074BF29 /* UIQuery.m in Sources */,
+				00DB77AB14DB48C40074BF29 /* UIQueryAll.m in Sources */,
+				00DB77AD14DB48C40074BF29 /* UIQueryExpectation.m in Sources */,
+				00DB77AF14DB48C40074BF29 /* UIRedoer.m in Sources */,
+				00DB77B114DB48C40074BF29 /* UITouch+Synthesize.m in Sources */,
+				00DB77B314DB48C40074BF29 /* UITouchPerformer.m in Sources */,
+				00DB77B514DB48C40074BF29 /* ViewFilterSwizzler.m in Sources */,
+				00DB77B714DB48C40074BF29 /* VisibleTouch.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -804,6 +901,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Frank_Prefix.pch;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INSTALL_PATH = /usr/local/lib;
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -824,6 +922,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Frank_Prefix.pch;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INSTALL_PATH = /usr/local/lib;
 				OTHER_LDFLAGS = (
 					"-ObjC",
