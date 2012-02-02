@@ -30,3 +30,14 @@ de:
   simulate_memory_warning: Speicherwarnhinweis simulieren
   toggle_in_call_status_bar: Status für eingeh. Anrufe ein/aus
   simulate_hardware_keyboard: Hardware-Tastatur simulieren
+
+ru:
+  iphone_simulator: Симулятор iOS
+  hardware: Аппаратура
+  home: Экран «Домой»
+  rotate_left: Повернуть влево
+  rotate_right: Повернуть вправо
+  shake_gesture: Выполнить жест встряхивания
+  simulate_memory_warning: Симулировать предупреждение о нехватке памяти
+  toggle_in_call_status_bar: Переключить на строку состояния поступающего вызова
+  simulate_hardware_keyboard: Симулировать физическую клавиатуру

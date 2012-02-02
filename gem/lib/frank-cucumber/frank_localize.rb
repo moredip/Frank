@@ -10,6 +10,8 @@ module Frank
           :fr
         when /^de_/
           :de
+        when /^ru_/
+          :ru
         else
           :en
         end
