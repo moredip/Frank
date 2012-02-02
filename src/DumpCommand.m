@@ -44,14 +44,16 @@ NSDictionary *customAttributesFor( UIView *view ) {
 
 NSDictionary *mapObjectToPropertiesDictionary( NSObject *object ) {
 	// Based on UIQuery#describe from UISpec codebase
-	
+
 	NSMutableDictionary *properties = [NSMutableDictionary dictionary];
 	Class clazz = [object class];
 	do {
 		unsigned i;
 		id objValue;
 		int intValue;
+        unsigned int uintValue;
 		long longValue;
+        long long longlongValue;
 		char *charPtrValue; 
 		unsigned char charValue;
 		short shortValue;
@@ -60,7 +62,7 @@ NSDictionary *mapObjectToPropertiesDictionary( NSObject *object ) {
 		
 		uint propertyCount = 0;
 		objc_property_t *propertyList = class_copyPropertyList(clazz, &propertyCount);
-		//NSLog(@"property count = %d", propertyCount);
+		//NSLog(@"%@ property count = %d", clazz, propertyCount);
 		for (i=0; i<propertyCount; i++) {
 			objc_property_t *thisProperty = propertyList + i;
 			const char* propertyName = property_getName(*thisProperty);
@@ -75,7 +77,7 @@ NSDictionary *mapObjectToPropertiesDictionary( NSObject *object ) {
 			}
 			
 			SEL selector = NSSelectorFromString(key);
-			if ([object respondsToSelector:selector]) {
+			if ([object respondsToSelector:selector] && [key characterAtIndex: 0] != '_') {
 				NSMethodSignature *sig = [object methodSignatureForSelector:selector];
 				//NSLog(@"sig = %@", sig);
 				NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:sig];
@@ -95,6 +97,8 @@ NSDictionary *mapObjectToPropertiesDictionary( NSObject *object ) {
 				NSString *returnType = [NSString stringWithFormat:@"%s", type];
 				const char* trimmedType = [[returnType substringToIndex:1] cStringUsingEncoding:NSASCIIStringEncoding];
 
+				//NSLog(@"return values - type: %@", returnType);
+				
 				switch(*trimmedType) {
 					case '@':
 						[invocation getReturnValue:(void **)&objValue];
@@ -108,6 +112,9 @@ NSDictionary *mapObjectToPropertiesDictionary( NSObject *object ) {
 						[invocation getReturnValue:(void **)&intValue];
 						[properties setObject:[NSNumber	numberWithInt:intValue] forKey:key];
 						break;
+                    case 'I':
+						[invocation getReturnValue:(void **)&uintValue];
+						[properties setObject:[NSNumber	numberWithUnsignedInt:uintValue] forKey:key];                        
 					case 's':
 						[invocation getReturnValue:(void **)&shortValue];
 						[properties setObject:[NSNumber	numberWithShort:shortValue] forKey:key];
@@ -123,6 +130,10 @@ NSDictionary *mapObjectToPropertiesDictionary( NSObject *object ) {
 					case 'l':
 						[invocation getReturnValue:(void **)&longValue];
 						[properties setObject:[NSNumber	numberWithLong:longValue] forKey:key];
+						break;
+					case 'Q':
+						[invocation getReturnValue:(void **)&longlongValue];
+						[properties setObject:[NSNumber	numberWithLongLong:longlongValue] forKey:key];
 						break;
 					case '*':
 						[invocation getReturnValue:(void **)&charPtrValue];
@@ -144,13 +155,26 @@ NSDictionary *mapObjectToPropertiesDictionary( NSObject *object ) {
 						void *buffer = (void *)malloc(length);
 						[invocation getReturnValue:buffer];
 						NSValue *value = [[[NSValue alloc] initWithBytes:buffer objCType:type] autorelease];
+						
+						if( CGRectEqualToRect([value CGRectValue],CGRectZero )) {
+							NSLog(@"error, no accessibilityFrame");
+							UIView *tmpView = (UIView *)object;
+							NSLog(@"frame %@, accessabilityFrame %@", NSStringFromCGRect([tmpView frame]), NSStringFromCGRect([tmpView accessibilityFrame]));
+							
+							value = [NSValue valueWithCGRect: [tmpView frame]];
+						}
 						[properties setObject:value forKey:key];
 						break;
 					}
+					default: {
+						NSLog(@"Unrecognized return type: %@", returnType);
+					}
+						
 				}
 			}
 		}
 	} while ((clazz = class_getSuperclass(clazz)) != nil);
+	//NSLog(@"%@ properties: %@", object, [properties debugDescription]);
     return properties;
 }
 

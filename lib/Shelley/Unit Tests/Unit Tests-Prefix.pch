@@ -1,0 +1,9 @@
+//
+// Prefix header for all source files of the 'Unit Tests' target in the 'Unit Tests' project
+//
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+#endif
+
+#import "SenTestCase+Extensions.h"

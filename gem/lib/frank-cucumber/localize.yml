@@ -1,0 +1,32 @@
+en:
+  iphone_simulator: iPhone Simulator
+  hardware: Hardware
+  home: Home
+  rotate_left: Rotate Left
+  rotate_right: Rotate Right
+  shake_gesture: Shake Gesture
+  simulate_memory_warning: Simulate Memory Warning
+  toggle_in_call_status_bar: Toggle In-Call Status Bar
+  simulate_hardware_keyboard: Simulate Hardware Keyboard
+
+fr:
+  iphone_simulator: Simulateur iOS
+  hardware: Matériel
+  home: Écran d’accueil
+  rotate_left: Rotation à gauche
+  rotate_right: Rotation à droite
+  shake_gesture: Secousse
+  simulate_memory_warning: Simuler un avertissement de mémoire
+  toggle_in_call_status_bar: Afficher/Masquer la barre d'état d'appel en cour
+  simulate_hardware_keyboard: Simuler un clavier matériel
+
+de:
+  iphone_simulator: iOS-Simulator
+  hardware: Hardware
+  home: Home
+  rotate_left: Links drehen
+  rotate_right: Rechts drehen
+  shake_gesture: Schüttelgeste
+  simulate_memory_warning: Speicherwarnhinweis simulieren
+  toggle_in_call_status_bar: Status für eingeh. Anrufe ein/aus
+  simulate_hardware_keyboard: Hardware-Tastatur simulieren

@@ -8,10 +8,11 @@
 
 #import "MapOperationCommand.h"
 
-#import "UIQuery.h"
+#import "SelectorEngineRegistry.h"
 #import "JSON.h"
 #import "Operation.h"
 #import "DumpCommand.h"
+#import "UIQueryWebView.h"
 
 @implementation MapOperationCommand
 
@@ -32,38 +33,55 @@
 }
 
 - (id) performOperation:(Operation *)operation onView:(UIView *)view {
-
+    
 	if( [operation appliesToObject:view] )
 		return [operation applyToObject:view];
 	
+    UIQuery *wrappedView;
+
+    if([view isKindOfClass:[UIWebView class]])
+    {
+        wrappedView = [UIQueryWebView withViews:[NSMutableArray
+                                                 arrayWithObject:view]
+                                      className:@"UIWebView"];
+    } 
+    else
+    {
 	// wrapping the view in a uiquery like this lets us perform operations like touch, flash, inspect, etc
-	UIQuery *wrappedView = [UIQuery withViews:[NSMutableArray arrayWithObject:view]
+        wrappedView = [UIQuery withViews:[NSMutableArray arrayWithObject:view]
 									className:@"UIView"];
+    }
+    
 	if( [operation appliesToObject:wrappedView] )
 		return [operation applyToObject:wrappedView];
 	
 	return nil; 
+
 }
 
 - (NSString *)handleCommandWithRequestBody:(NSString *)requestBody {
 	
 	NSDictionary *requestCommand = [requestBody JSONValue];
-	NSString *queryString = [requestCommand objectForKey:@"query"];
+    
+	NSString *selectorEngineString = [requestCommand objectForKey:@"selector_engine"];
+    if( !selectorEngineString )
+        selectorEngineString = @"uiquery"; // default to UIQuery, for compatibility with old clients
+    
+	NSString *selector = [requestCommand objectForKey:@"query"];
 	NSDictionary *operationDict = [requestCommand objectForKey:@"operation"];
 	Operation *operation = [[[Operation alloc] initFromJsonRepresentation:operationDict] autorelease];
-	
-	UIQuery *query;
-	
-	@try {
-		query = $( [NSMutableString stringWithString:queryString] );
-	}
-	@catch (NSException * e) {
-		NSLog( @"Exception while executing query '%@':\n%@", queryString, e );
+    
+    NSArray *viewsToMap = nil;
+    @try {
+        viewsToMap = [SelectorEngineRegistry selectViewsWithEngineNamed:selectorEngineString usingSelector:selector];
+    }	
+    @catch (NSException * e) {
+		NSLog( @"Exception while using %@ to select views with '%@':\n%@", selectorEngineString, selector, e );
 		return [self generateErrorResponseWithReason:@"invalid selector" andDetails:[e reason]];
 	}
 	
-	NSMutableArray *results = [NSMutableArray arrayWithCapacity:[[query views] count]];
-	for (UIView *view in [query views]) {
+    NSMutableArray *results = [NSMutableArray arrayWithCapacity:[viewsToMap count]];
+	for (UIView *view in viewsToMap) {
 		@try {
 			id result = [self performOperation:operation onView:view];
 			[results addObject:[DumpCommand jsonify:result]];

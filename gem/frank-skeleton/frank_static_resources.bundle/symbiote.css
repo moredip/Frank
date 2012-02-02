@@ -1,0 +1,127 @@
+body {
+	padding: 0px;
+	margin: 0px;
+	font-family: Georgia;
+}
+
+div#selector-test {
+  padding: 20px;
+  padding-bottom: 0px;
+  white-space: nowrap;
+}
+
+table.symbiote_shell {
+  table-layout: fixed;
+  width: 100%;
+}
+
+table.symbiote_shell td {
+ vertical-align: top;
+}
+
+div#inspect-tabs {
+  height: 800px; /*ack, wish I knew better*/
+}
+
+div#inspect-tabs li {
+  float: right;
+  font-size: 12px;
+}
+div#inspect-tabs ul {
+  background: #333;
+}
+
+a#dump_button {
+  vertical-align: middle;
+}
+
+img#loading {
+  vertical-align: middle;
+	margin-right: 6px;
+}
+
+div#refresh {
+  padding: 20px;
+  text-align:right;
+}
+
+div#dom_dump {
+  font-size:0.8em;
+}
+
+div#dom_dump .treeview .selected { 
+  font-weight: bold;
+  color: black; /*set color to black to overwrite the red color on hover, just for the selected item*/
+}
+
+div#dom_dump .treeview .hovered-in-locator { 
+  color: #aaff00;
+}
+
+div#dom_detail {
+  font-size:0.8em;
+}
+
+div#dom_detail tr.interesting td {
+  font-weight: bold;
+}
+
+h1 {
+	margin:0px;
+	padding: 0px;
+}
+
+div#header {
+	padding: 10px;
+	margin: 0px;
+	background-color: #333;
+	color: #fff;
+	height: 80px;
+}
+
+#header a {
+	color: #aaff00;
+	font-size: 20px;
+	font-weight: bold;          
+}
+
+div#accessible-views-tab div.hints{
+  font-size: 0.8em;
+  border: 1px;
+  border-style: dashed;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 10px;
+}
+
+div#accessible-views a{
+	color: #6ab23f;
+	text-decoration: none;
+  font-style: italic;
+}
+
+div#accessible-views span{
+  font-style: normal;
+  font-weight: bold;
+}
+
+div#live-view{
+  text-align: center;
+}
+
+div#ui-locator-view{
+  height: 85%;
+  text-align: center;
+}
+
+#query {
+	width: 300px;
+}
+
+ul {
+	list-style-type: none;  
+}
+
+ul.features li {
+	margin-top: 5px;
+}

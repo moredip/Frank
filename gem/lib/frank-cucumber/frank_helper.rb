@@ -1,9 +1,18 @@
 require 'net/http'
 require 'json'
+require 'frank-cucumber/frank_localize'
 
 module Frank module Cucumber
 
 module FrankHelper 
+
+  class << self
+    # TODO: adding an ivar to the module itself is a big ugyl hack. We need a FrankDriver class, or similar
+    attr_accessor :selector_engine
+    def use_shelley_from_now_on
+      @selector_engine = 'shelley_compat'
+    end
+  end
 
   def touch( uiquery )
     views_touched = frankly_map( uiquery, 'touch' )
@@ -50,7 +59,8 @@ module FrankHelper
     
     before = Time.now
     res = post_to_uispec_server( 'app_exec', :operation => operation_map )
-    logger.debug( "MAP applying #{method_name} with args:( #{method_args.inspect} ) to 'Application Delegate' took #{Time.now - before} seconds" )
+
+    #logger.debug( "MAP applying #{method_name} with args:( #{method_args.inspect} ) to 'Application Delegate' took #{Time.now - before} seconds" )
 
     res = JSON.parse( res )
     if res['outcome'] != 'SUCCESS'
@@ -64,9 +74,10 @@ module FrankHelper
   def frankly_map( query, method_name, *method_args )
     operation_map = {
       :method_name => method_name,
-      :arguments => method_args
+      :arguments => method_args,
     }
-    res = post_to_uispec_server( 'map', :query => query, :operation => operation_map )
+    selector_engine = Frank::Cucumber::FrankHelper.selector_engine || 'uiquery' # default to UIQuery for backwards compatibility
+    res = post_to_uispec_server( 'map', :query => query, :operation => operation_map, :selector_engine => selector_engine )
     res = JSON.parse( res )
     if res['outcome'] != 'SUCCESS'
       raise "frankly_map #{query} #{method_name} failed because: #{res['reason']}\n#{res['details']}"
@@ -90,7 +101,9 @@ module FrankHelper
 
   def frankly_current_orientation
     res = get_to_uispec_server( 'orientation' )
-    JSON.parse( res )['orientation']
+    orientation = JSON.parse( res )['orientation']
+    puts "orientation reported as '#{orientation}'" if $DEBUG
+    orientation
   end
 
 
@@ -107,18 +120,28 @@ module FrankHelper
         if frankly_ping
           num_consec_failures = 0
           num_consec_successes += 1
-          print (num_consec_successes == 1 ) ? "\n" : "\r"
-          print "FRANK!".slice(0,num_consec_successes)
         else
           num_consec_successes = 0
           num_consec_failures += 1
-          print (num_consec_failures == 1 ) ? "\n" : "\r"
-          print "PING FAILED" + "!"*num_consec_failures
+          if num_consec_failures >= 5 # don't show small timing errors
+            print (num_consec_failures == 5 ) ? "\n" : "\r"
+            print "PING FAILED" + "!"*num_consec_failures
+          end
         end
         STDOUT.flush
         sleep 0.2
       end
-      puts ''
+
+      if num_consec_successes < 6
+        print (num_consec_successes == 1 ) ? "\n" : "\r"
+        print "FRANK!".slice(0,num_consec_successes)
+        STDOUT.flush
+        puts ''
+      end
+
+      if num_consec_failures >= 5
+        puts ''
+      end
     end
 
     unless frankly_is_accessibility_enabled
@@ -191,43 +214,54 @@ module FrankHelper
     APPLESCRIPT}
   end
 
+def simulator_reset_data
+  %x{osascript<<APPLESCRIPT
+activate application "iPhone Simulator"
+tell application "System Events"
+  click menu item 5 of menu 1 of menu bar item 2 of menu bar 1 of process "#{Localize.t(:iphone_simulator)}"
+  delay 0.5
+  click button 2 of window 1 of process "#{Localize.t(:iphone_simulator)}"
+end tell
+  APPLESCRIPT} 
+end
+
   #Note this needs to have "Enable access for assistive devices"
   #chcked in the Universal Access system preferences
   def simulator_hardware_menu_press( menu_label )
     %x{osascript<<APPLESCRIPT
 activate application "iPhone Simulator"
 tell application "System Events"
-	click menu item "#{menu_label}" of menu "Hardware" of menu bar of process "iPhone Simulator"
+	click menu item "#{menu_label}" of menu "#{Localize.t(:hardware)}" of menu bar of process "#{Localize.t(:iphone_simulator)}"
 end tell
   APPLESCRIPT}  
   end
   
   def press_home_on_simulator
-    simulator_hardware_menu_press "Home"
+    simulator_hardware_menu_press Localize.t(:home)
   end
   
   def rotate_simulator_left
-    simulator_hardware_menu_press "Rotate Left"
+    simulator_hardware_menu_press Localize.t(:rotate_left)
   end
 
   def rotate_simulator_right
-    simulator_hardware_menu_press "Rotate Right"
+    simulator_hardware_menu_press Localize.t(:rotate_right)
   end
 
   def shake_simulator
-    simulator_hardware_menu_press "Shake Gesture"
+    simulator_hardware_menu_press Localize.t(:shake_gesture)
   end
   
   def simulate_memory_warning
-    simulator_hardware_menu_press "Simulate Memory Warning"
+    simulator_hardware_menu_press Localize.t(:simulate_memory_warning)
   end
   
   def toggle_call_status_bar
-    simulator_hardware_menu_press "Toggle In-Call Status Bar"
+    simulator_hardware_menu_press Localize.t(:toggle_call_status_bar)
   end
   
   def simulate_hardware_keyboard
-    simulator_hardware_menu_press "Simulate Hardware Keyboard"
+    simulator_hardware_menu_press Localize.t(:simulate_hardware_keyboard)
   end
 end
 

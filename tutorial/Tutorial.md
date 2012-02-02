@@ -1,3 +1,7 @@
+!!!Partially obsolete!!!
+----------
+Note that the XCode setup portion of this tutorial is now out of date. The recommended approach is to use a static library to embed Frank into your application. Check out [Frankifying your app in XCode 4](/moredip/Frank/wiki/Frankifying-your-app-in-XCode-4) for details.
+
 Tutorial - Your first Frankified App
 -------------------------
 Here are some detailed steps on how to create your first Frankified app. Screencast coming shortly. 

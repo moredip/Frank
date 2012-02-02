@@ -1,7 +1,7 @@
 Feature: Demonstrating the touchx:y: api
 
 Background:
-    Given I launch the app 
+  Given I launch the app 
 
 Scenario: Add test user
   # about where "Larry Stooge" row should be in main screen

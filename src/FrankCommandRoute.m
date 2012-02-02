@@ -53,12 +53,13 @@
 }
 
 - (NSObject<HTTPResponse> *) handleRequestForPath: (NSArray *)path withConnection:(RoutingHTTPConnection *)connection{
-	
+    
+	NSLog( @"received request with path %@\nPOST DATA:\n%@", path, connection.postDataAsString );
+    
 	if( [@"screenshot" isEqualToString:[path objectAtIndex:0]] )
 	{
 		return [[[HTTPDataResponse alloc] initWithData:[self grabScreenshot]] autorelease];
 	}
-		
 	
 	id<FrankCommand> command = [self commandForPath:path];
 	if( nil == command )

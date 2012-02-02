@@ -1,9 +1,10 @@
 When /^I touch the Add User button$/ do
   touch( "navigationButton" )  
+  sleep(1)
 end
 
 Then /^I should be on the Users screen$/ do
-  Then %q|I should see "Users"|
+  step %q|I should see "Users"|
 end
 
 Given /^test user Brian is present$/ do
