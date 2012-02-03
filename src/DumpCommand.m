@@ -38,13 +38,13 @@ NSDictionary *customAttributesFor( UIView *view ) {
 	[customAttributes setObject:[NSNumber numberWithBool:[view isOpaque]]  forKey:@"isOpaque"];
 	[customAttributes setObject:[NSNumber numberWithBool:[view isHidden]]  forKey:@"isHidden"];
 	[customAttributes setObject:[DumpCommand jsonify:[view backgroundColor]] forKey:@"backgroundColor"];
-		
+    
 	return customAttributes;
 }
 
 NSDictionary *mapObjectToPropertiesDictionary( NSObject *object ) {
 	// Based on UIQuery#describe from UISpec codebase
-
+    
 	NSMutableDictionary *properties = [NSMutableDictionary dictionary];
 	Class clazz = [object class];
 	do {
@@ -96,7 +96,7 @@ NSDictionary *mapObjectToPropertiesDictionary( NSObject *object ) {
 				const char* type = [[invocation methodSignature] methodReturnType];
 				NSString *returnType = [NSString stringWithFormat:@"%s", type];
 				const char* trimmedType = [[returnType substringToIndex:1] cStringUsingEncoding:NSASCIIStringEncoding];
-
+                
 				//NSLog(@"return values - type: %@", returnType);
 				
 				switch(*trimmedType) {
@@ -148,7 +148,7 @@ NSDictionary *mapObjectToPropertiesDictionary( NSObject *object ) {
 						else {
 							[properties setObject:[NSNumber	numberWithUnsignedChar:charValue] forKey:key];
 						}
-
+                        
 						break;
 					case '{': {
                         // find the first equals symbol in there
@@ -220,7 +220,7 @@ NSObject *jsonifyValue(NSValue *val) {
 		NSString *typeString = [NSString stringWithFormat:@"%s", [val objCType]+1]; //we use +1 to skip past the {
 		
 		NSString *valueType = [[typeString componentsSeparatedByString:@"="] objectAtIndex:0];
-
+        
 		if( [valueType isEqualToString:@"CGSize"] ){
 			CGSize rawSize;
 			[val getValue:&rawSize];
@@ -234,13 +234,13 @@ NSObject *jsonifyValue(NSValue *val) {
 			CGRect rawRect;
 			[val getValue:&rawRect];
 			NSDictionary *originDict = [NSDictionary dictionaryWithObjectsAndKeys:
-									  [NSNumber numberWithFloat:rawRect.origin.x], @"x",
-									  [NSNumber numberWithFloat:rawRect.origin.y], @"y",
-									  nil];
+                                        [NSNumber numberWithFloat:rawRect.origin.x], @"x",
+                                        [NSNumber numberWithFloat:rawRect.origin.y], @"y",
+                                        nil];
 			NSDictionary *sizeDict = [NSDictionary dictionaryWithObjectsAndKeys:
-											 [NSNumber numberWithFloat:rawRect.size.width], @"width",
-											 [NSNumber numberWithFloat:rawRect.size.height], @"height",
-											 nil];
+                                      [NSNumber numberWithFloat:rawRect.size.width], @"width",
+                                      [NSNumber numberWithFloat:rawRect.size.height], @"height",
+                                      nil];
 			
 			return [NSDictionary dictionaryWithObjectsAndKeys:
 					originDict, @"origin",
@@ -260,7 +260,7 @@ NSObject *jsonifyValue(NSValue *val) {
 NSObject *jsonifyColor(UIColor *color){
 	CGColorSpaceModel colorModel = CGColorSpaceGetModel(CGColorGetColorSpace(color.CGColor));
 	const CGFloat *colors = CGColorGetComponents(color.CGColor);
-	 
+    
 	if( kCGColorSpaceModelRGB == colorModel )
 	{
 		return [NSDictionary dictionaryWithObjectsAndKeys: 
