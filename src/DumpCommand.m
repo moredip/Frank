@@ -151,19 +151,35 @@ NSDictionary *mapObjectToPropertiesDictionary( NSObject *object ) {
 
 						break;
 					case '{': {
+                        // find the first equals symbol in there
+                        NSRange firstEqualsPosition = [returnType rangeOfString:@"="];
+                        // it's not found, we have no clue what this value is, keep on moving
+                        if(firstEqualsPosition.location == NSNotFound) {
+                            continue;
+                        }
+                        // extract the string between { and =
+                        NSRange theRange;
+                        theRange.location = 1;
+                        theRange.length = firstEqualsPosition.location - 1;
+                        NSString *concreteCType = [returnType substringWithRange: theRange];
+                        
+                        // this is not a CGRect, keep on moving
+                        if([concreteCType caseInsensitiveCompare: @"CGRect"] != NSOrderedSame) {
+                            continue;
+                        }
+                        
 						unsigned int length = [[invocation methodSignature] methodReturnLength];
 						void *buffer = (void *)malloc(length);
 						[invocation getReturnValue:buffer];
-						NSValue *value = [[[NSValue alloc] initWithBytes:buffer objCType:type] autorelease];
-						
-						if( CGRectEqualToRect([value CGRectValue],CGRectZero )) {
-							NSLog(@"error, no accessibilityFrame");
-							UIView *tmpView = (UIView *)object;
-							NSLog(@"frame %@, accessabilityFrame %@", NSStringFromCGRect([tmpView frame]), NSStringFromCGRect([tmpView accessibilityFrame]));
-							
-							value = [NSValue valueWithCGRect: [tmpView frame]];
-						}
-						[properties setObject:value forKey:key];
+						NSValue *value = [[[NSValue alloc] initWithBytes:buffer objCType:type] autorelease]; 
+                        if( CGRectEqualToRect([value CGRectValue],CGRectZero )) {
+                            NSLog(@"error, no accessibilityFrame");
+                            UIView *tmpView = (UIView *)object;
+                            NSLog(@"frame %@, accessabilityFrame %@", NSStringFromCGRect([tmpView frame]), NSStringFromCGRect([tmpView accessibilityFrame]));
+                            
+                            value = [NSValue valueWithCGRect: [tmpView frame]];
+                        }
+                        [properties setObject:value forKey:key];
 						break;
 					}
 					default: {
