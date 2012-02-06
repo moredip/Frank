@@ -39,6 +39,7 @@ end
 task :build => [:clean, :prep_dist, :build_lib, :copy_bundle]
 task :default => :build
 
+desc "compile libShelley.a and copy it into dist"
 task :build_shelley do
   sh 'cd lib/Shelley && rake build_lib'
   sh 'cp lib/Shelley/build/libShelley.a dist/'
