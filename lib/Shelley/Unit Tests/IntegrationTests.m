@@ -114,6 +114,14 @@
     [self assertArray:selectedViews containsObject:firstButton];
 }
 
+- (void) testFirstReturnsAnEmptyArrayWhenThereAreNoViewsInMatchSet {
+    Shelley *shelley = [Shelley withSelectorString:@"view marked:'I DO NOT EXIST' first"];
+    NSArray *selectedViews = [shelley selectFrom:view];
+    STAssertEquals((NSUInteger)0, selectedViews.count, nil);
+}
+
+
+
 - (void) testIndexSelectsNthViewInMatchSet {
     Shelley *shelley = [Shelley withSelectorString:@"button index:1"];
     NSArray *selectedViews = [shelley selectFrom:view];

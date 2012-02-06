@@ -21,7 +21,10 @@
 }
 
 - (NSArray *)applyToViews:(NSArray *)views {
-    return [NSArray arrayWithObject:[views objectAtIndex:_index]];
+    if( [views count] > _index )
+        return [NSArray arrayWithObject:[views objectAtIndex:_index]];
+    else
+        return [NSArray array];
 }
 
 - (void)setDoNotDescend:(BOOL)doNotDescend {
