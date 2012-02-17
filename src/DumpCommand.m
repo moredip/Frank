@@ -13,8 +13,6 @@
 #import "UIQuery.h"
 #import "JSON.h"
 
-static NSArray *skippedClasses;
-
 @interface DumpCommand()
 @property (nonatomic, readwrite, retain) NSMutableDictionary *classMapping;
 
@@ -32,17 +30,7 @@ static NSArray *skippedClasses;
 
 - (id) init {
     self = [super init];
-    if(self) {
-        
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-            // so far, the only class I've found that can't properly be serialized
-            // Using NSClassFromString to avoid import and pulling all of CoreAnimation
-            skippedClasses = [[NSArray alloc] initWithObjects: NSClassFromString(@"CALayer"), 
-                                NSClassFromString(@"UIWindowLayer"),
-                                NSClassFromString(@"MKMapView"), nil];
-        });
-        
+    if(self) {        
         // eye ball this guy to about 15 classes.
         self.classMapping = [NSMutableDictionary dictionaryWithCapacity: 15];
         [self loadClassMapping];
@@ -129,20 +117,6 @@ static NSArray *skippedClasses;
             
             // just skip nil values, we don't want to pollute the JSON tree with bullshitty empty values
             if(value == nil) {
-                continue;
-            }
-            
-            // make sure we're not trying to return a field that should be skipped
-            BOOL shouldContinue = NO;
-            // we HAVE to go through all classes, -contains: value.class won't work since we could
-            // get a subclass and equality will just return NO when we want to skip the value.
-            for(Class clazz in skippedClasses) {
-                if([value isKindOfClass: clazz]) {
-                    shouldContinue = YES;
-                    break;
-                }
-            }
-            if (shouldContinue) {
                 continue;
             }
             
