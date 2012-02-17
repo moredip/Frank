@@ -190,6 +190,16 @@ static NSArray *skippedClasses;
         value = [DumpCommand extractInstanceFromValue: (NSValue *) value];
     }
     
+    // at this point, we want only NSNumbers, NSArray, NSDictionary, NSString or NSNull,
+    if(![value isKindOfClass: NSNumber.class] && 
+        ![value isKindOfClass: NSString.class] && 
+        ![value isKindOfClass: NSArray.class] &&    
+        ![value isKindOfClass: NSDictionary.class] && 
+        ![value isKindOfClass: NSNull.class] &&
+        value != nil) {
+        return [NSString stringWithFormat:@"<%@ @%i>", [value class], value];
+    }
+    
     return value;
 }
 
