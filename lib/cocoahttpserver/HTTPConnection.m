@@ -47,6 +47,8 @@
 #define HTTP_RESPONSE                      30
 #define HTTP_FINAL_RESPONSE                45
 
+extern BOOL frankLogEnabled;
+
 // A quick note about the tags:
 // 
 // The HTTP_RESPONSE and HTTP_FINAL_RESPONSE are designated tags signalling that the response is completely sent.
@@ -1043,8 +1045,9 @@ static NSMutableArray *recentNonces;
 	// Override me for custom error handling of 404 not found responses
 	// If you simply want to add a few extra header fields, see the preprocessErrorResponse: method.
 	// You can also use preprocessErrorResponse: to add an optional HTML body.
-	
-	NSLog(@"HTTP Server: Error 404 - Not Found");
+	if(frankLogEnabled) {
+        NSLog(@"HTTP Server: Error 404 - Not Found");
+    }
 	
 	// Status Code 404 - Not Found
 	CFHTTPMessageRef response = CFHTTPMessageCreateResponse(kCFAllocatorDefault, 404, NULL, kCFHTTPVersion1_1);

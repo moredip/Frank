@@ -11,6 +11,8 @@
 
 #import <QuartzCore/QuartzCore.h>
 
+extern BOOL frankLogEnabled;
+
 @implementation FrankCommandRoute
 
 - (id) init
@@ -54,7 +56,9 @@
 
 - (NSObject<HTTPResponse> *) handleRequestForPath: (NSArray *)path withConnection:(RoutingHTTPConnection *)connection{
     
-	NSLog( @"received request with path %@\nPOST DATA:\n%@", path, connection.postDataAsString );
+    if(frankLogEnabled) {
+        NSLog( @"received request with path %@\nPOST DATA:\n%@", path, connection.postDataAsString );
+    }
     
 	if( [@"screenshot" isEqualToString:[path objectAtIndex:0]] )
 	{
@@ -66,7 +70,9 @@
 		return nil;
 	
 	NSString *response = [command handleCommandWithRequestBody:connection.postDataAsString];
-	NSLog( @"returning:\n%@", response );
+    if(frankLogEnabled) {
+        NSLog( @"returning:\n%@", response );
+    }
 	
 	NSData *browseData = [response dataUsingEncoding:NSUTF8StringEncoding];
 	return [[[HTTPDataResponse alloc] initWithData:browseData] autorelease];
