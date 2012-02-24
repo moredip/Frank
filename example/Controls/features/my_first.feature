@@ -5,7 +5,6 @@ Feature:
 
 Scenario: 
     Rotating the simulator for demonstration purposes
-Given I launch the app
 Given the device is in landscape orientation
 Given the device is in portrait orientation
 Given the device is in landscape orientation
