@@ -1,4 +1,4 @@
-WAIT_TIMEOUT = ENV['WAIT_TIMEOUT'] || 240
+WAIT_TIMEOUT = ENV['WAIT_TIMEOUT'].to_i || 240
 
 require 'rspec/expectations'
 
@@ -275,4 +275,8 @@ end
 
 When /^I quit the simulator/ do
   quit_simulator 
+end
+
+When /^I reset the simulator/ do
+  simulator_reset_data
 end

@@ -7,24 +7,44 @@
 //
 
 #import "OrientationCommand.h"
+#import "NSObject+SBJSON.h"
 
 
 @implementation OrientationCommand
 
-- (NSString *)handleCommandWithRequestBody:(NSString *)requestBody {
-	NSString *orientationDescription = nil;
-	switch ( [UIDevice currentDevice].orientation ) {
+- (NSString *)getOrientationDescriptionViaStatusBar{
+    if( UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) )
+        return @"portrait";
+    else
+        return @"landscape";
+}
+
+- (NSString *)getOrientationDescriptionViaDevice{
+    switch ( [UIDevice currentDevice].orientation ) {
 		case UIDeviceOrientationLandscapeRight:
 		case UIDeviceOrientationLandscapeLeft:
-			orientationDescription = @"landscape";
-			break;
+			return @"landscape";
 		case UIDeviceOrientationPortrait:
 		case UIDeviceOrientationPortraitUpsideDown:
-			orientationDescription = @"portrait";
-			break;
+			return @"portrait";
+        case UIDeviceOrientationFaceUp:
+            NSLog(@"Device orientation is face up");
+            //fall thru
+        case UIDeviceOrientationFaceDown:
+            NSLog(@"Device orientation is face down");
+            //fall thru
+        case UIDeviceOrientationUnknown:
+            NSLog(@"Device orientation is unknown");
+            //fall thru
 		default:
-			orientationDescription = @"flat";
+            return nil;
 	}
+}
+
+- (NSString *)handleCommandWithRequestBody:(NSString *)requestBody {    
+   	NSString *orientationDescription = [self getOrientationDescriptionViaDevice];
+    if( !orientationDescription )
+        orientationDescription = [self getOrientationDescriptionViaStatusBar];
 	
 	NSDictionary *dom = [NSDictionary dictionaryWithObject:orientationDescription forKey:@"orientation"];
 	return [dom JSONRepresentation];

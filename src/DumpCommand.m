@@ -38,13 +38,13 @@ NSDictionary *customAttributesFor( UIView *view ) {
 	[customAttributes setObject:[NSNumber numberWithBool:[view isOpaque]]  forKey:@"isOpaque"];
 	[customAttributes setObject:[NSNumber numberWithBool:[view isHidden]]  forKey:@"isHidden"];
 	[customAttributes setObject:[DumpCommand jsonify:[view backgroundColor]] forKey:@"backgroundColor"];
-		
+    
 	return customAttributes;
 }
 
 NSDictionary *mapObjectToPropertiesDictionary( NSObject *object ) {
 	// Based on UIQuery#describe from UISpec codebase
-
+    
 	NSMutableDictionary *properties = [NSMutableDictionary dictionary];
 	Class clazz = [object class];
 	do {
@@ -96,7 +96,7 @@ NSDictionary *mapObjectToPropertiesDictionary( NSObject *object ) {
 				const char* type = [[invocation methodSignature] methodReturnType];
 				NSString *returnType = [NSString stringWithFormat:@"%s", type];
 				const char* trimmedType = [[returnType substringToIndex:1] cStringUsingEncoding:NSASCIIStringEncoding];
-
+                
 				//NSLog(@"return values - type: %@", returnType);
 				
 				switch(*trimmedType) {
@@ -148,22 +148,38 @@ NSDictionary *mapObjectToPropertiesDictionary( NSObject *object ) {
 						else {
 							[properties setObject:[NSNumber	numberWithUnsignedChar:charValue] forKey:key];
 						}
-
+                        
 						break;
 					case '{': {
+                        // find the first equals symbol in there
+                        NSRange firstEqualsPosition = [returnType rangeOfString:@"="];
+                        // it's not found, we have no clue what this value is, keep on moving
+                        if(firstEqualsPosition.location == NSNotFound) {
+                            continue;
+                        }
+                        // extract the string between { and =
+                        NSRange theRange;
+                        theRange.location = 1;
+                        theRange.length = firstEqualsPosition.location - 1;
+                        NSString *concreteCType = [returnType substringWithRange: theRange];
+                        
+                        // this is not a CGRect, keep on moving
+                        if([concreteCType caseInsensitiveCompare: @"CGRect"] != NSOrderedSame) {
+                            continue;
+                        }
+                        
 						unsigned int length = [[invocation methodSignature] methodReturnLength];
 						void *buffer = (void *)malloc(length);
 						[invocation getReturnValue:buffer];
-						NSValue *value = [[[NSValue alloc] initWithBytes:buffer objCType:type] autorelease];
-						
-						if( CGRectEqualToRect([value CGRectValue],CGRectZero )) {
-							NSLog(@"error, no accessibilityFrame");
-							UIView *tmpView = (UIView *)object;
-							NSLog(@"frame %@, accessabilityFrame %@", NSStringFromCGRect([tmpView frame]), NSStringFromCGRect([tmpView accessibilityFrame]));
-							
-							value = [NSValue valueWithCGRect: [tmpView frame]];
-						}
-						[properties setObject:value forKey:key];
+						NSValue *value = [[[NSValue alloc] initWithBytes:buffer objCType:type] autorelease]; 
+                        if( CGRectEqualToRect([value CGRectValue],CGRectZero )) {
+                            NSLog(@"error, no accessibilityFrame");
+                            UIView *tmpView = (UIView *)object;
+                            NSLog(@"frame %@, accessabilityFrame %@", NSStringFromCGRect([tmpView frame]), NSStringFromCGRect([tmpView accessibilityFrame]));
+                            
+                            value = [NSValue valueWithCGRect: [tmpView frame]];
+                        }
+                        [properties setObject:value forKey:key];
 						break;
 					}
 					default: {
@@ -204,7 +220,7 @@ NSObject *jsonifyValue(NSValue *val) {
 		NSString *typeString = [NSString stringWithFormat:@"%s", [val objCType]+1]; //we use +1 to skip past the {
 		
 		NSString *valueType = [[typeString componentsSeparatedByString:@"="] objectAtIndex:0];
-
+        
 		if( [valueType isEqualToString:@"CGSize"] ){
 			CGSize rawSize;
 			[val getValue:&rawSize];
@@ -218,13 +234,13 @@ NSObject *jsonifyValue(NSValue *val) {
 			CGRect rawRect;
 			[val getValue:&rawRect];
 			NSDictionary *originDict = [NSDictionary dictionaryWithObjectsAndKeys:
-									  [NSNumber numberWithFloat:rawRect.origin.x], @"x",
-									  [NSNumber numberWithFloat:rawRect.origin.y], @"y",
-									  nil];
+                                        [NSNumber numberWithFloat:rawRect.origin.x], @"x",
+                                        [NSNumber numberWithFloat:rawRect.origin.y], @"y",
+                                        nil];
 			NSDictionary *sizeDict = [NSDictionary dictionaryWithObjectsAndKeys:
-											 [NSNumber numberWithFloat:rawRect.size.width], @"width",
-											 [NSNumber numberWithFloat:rawRect.size.height], @"height",
-											 nil];
+                                      [NSNumber numberWithFloat:rawRect.size.width], @"width",
+                                      [NSNumber numberWithFloat:rawRect.size.height], @"height",
+                                      nil];
 			
 			return [NSDictionary dictionaryWithObjectsAndKeys:
 					originDict, @"origin",
@@ -250,7 +266,7 @@ NSObject *jsonifyArray(NSArray *array){
 NSObject *jsonifyColor(UIColor *color){
 	CGColorSpaceModel colorModel = CGColorSpaceGetModel(CGColorGetColorSpace(color.CGColor));
 	const CGFloat *colors = CGColorGetComponents(color.CGColor);
-	 
+    
 	if( kCGColorSpaceModelRGB == colorModel )
 	{
 		return [NSDictionary dictionaryWithObjectsAndKeys: 
