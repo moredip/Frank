@@ -9,7 +9,7 @@
 #import "FrankCommandRoute.h"
 #import "RoutingHTTPConnection.h"
 
-#import <QuartzCore/QuartzCore.h>
+#import "UIImage+Frank.h"
 
 @implementation FrankCommandRoute
 
@@ -32,28 +32,6 @@
 	[_commandDict setObject:command forKey:commandName];
 }
 
-- (UIImage *) grabScreenshot:(BOOL)allWindows {	
-    
-	UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
-	
-	UIGraphicsBeginImageContext(keyWindow.bounds.size);
-    if (allWindows)
-    {
-        for (UIWindow *w in [[UIApplication sharedApplication] windows])
-        {
-            [w.layer renderInContext:UIGraphicsGetCurrentContext()];
-        }
-    }
-    else
-    {
-        [keyWindow.layer renderInContext:UIGraphicsGetCurrentContext()];
-    }
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-	
-	return image;
-}
-
 #pragma mark Route implementation
 
 - (id<FrankCommand>) commandForPath: (NSArray *)path{
@@ -63,14 +41,6 @@
 	return [_commandDict objectForKey:[path objectAtIndex:0]];
 }
 
-- (UIImage *)cropImage:(UIImage *)image toFrame:(CGRect)cropFrame
-{
-    CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], cropFrame);
-    UIImage *result = [UIImage imageWithCGImage:imageRef]; 
-    CGImageRelease(imageRef);
-    return result;
-}
-
 
 - (NSObject<HTTPResponse> *) handleRequestForPath: (NSArray *)path withConnection:(RoutingHTTPConnection *)connection{
     
@@ -78,21 +48,29 @@
     
 	if( [@"screenshot" isEqualToString:[path objectAtIndex:0]] )
 	{
-        BOOL allWindows = [path count] > 1;
-        UIImage *screenshot = [self grabScreenshot:allWindows];
+        BOOL allWindows = [path count] > 1 && [[path objectAtIndex:0] isEqualToString:@"allwindows"];
+        UIImage *screenshot = [UIImage imageFromApplication:allWindows];
         
         if ([path count] == 4)
         {
             NSString *stringRepresentation = [path objectAtIndex:3];
             NSArray *parts = [stringRepresentation componentsSeparatedByString:@"."];
-            CGRect crop = CGRectZero;
+            CGRect rect = CGRectZero;
             
-            crop.origin.x = [[parts objectAtIndex:0] integerValue];
-            crop.origin.y = [[parts objectAtIndex:1] integerValue];
-            crop.size.width  = [[parts objectAtIndex:2] integerValue];
-            crop.size.height = [[parts objectAtIndex:3] integerValue];
+            rect.origin.x = [[parts objectAtIndex:0] integerValue];
+            rect.origin.y = [[parts objectAtIndex:1] integerValue];
+            rect.size.width  = [[parts objectAtIndex:2] integerValue];
+            rect.size.height = [[parts objectAtIndex:3] integerValue];
             
-            screenshot = [self cropImage:screenshot toFrame:crop];
+            //
+            // Crop image or mask out an area (IE: Timestamp)
+            //
+            if ([[path objectAtIndex:2] isEqualToString:@"frame"])
+                screenshot = [screenshot imageCropedToFrame:rect];
+            else if ([[path objectAtIndex:2] isEqualToString:@"mask"])
+                screenshot = [screenshot imageMaskedAtFrame:rect];
+            else
+                NSLog(@"Unknown Operation");
         }
         
         NSData *response = UIImagePNGRepresentation(screenshot);
