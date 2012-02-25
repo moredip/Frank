@@ -8,6 +8,8 @@
 
 #import "MapOperationCommand.h"
 
+#import "ViewJSONSerializer.h"
+
 #import "SelectorEngineRegistry.h"
 #import "JSON.h"
 #import "Operation.h"
@@ -84,7 +86,7 @@
 	for (UIView *view in viewsToMap) {
 		@try {
 			id result = [self performOperation:operation onView:view];
-			[results addObject:[DumpCommand jsonify:result]];
+			[results addObject:[ViewJSONSerializer jsonify:result]];
 		}
 		@catch (NSException * e) {
 			NSLog( @"Exception while performing operation %@\n%@", operation, e );
