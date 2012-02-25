@@ -14,6 +14,4 @@
     NSMutableDictionary *classMapping;
 }
 
-+ (NSObject *) jsonify: (id<NSObject>) obj;
-
 @end
