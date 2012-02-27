@@ -11,9 +11,7 @@
 #import "FrankCommandRoute.h"
 
 @interface DumpCommand : NSObject<FrankCommand> {
-
+    NSMutableDictionary *classMapping;
 }
-
-+ (NSObject *) jsonify:(id) obj;
 
 @end
