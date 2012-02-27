@@ -3,4 +3,4 @@
 	url = https://github.com/square/KIF.git
 [submodule "lib/UISpec"]
 	path = lib/UISpec
-	url = https://github.com/moredip/UISpec
+	url = https://krakas@github.com/krakas/UISpec
