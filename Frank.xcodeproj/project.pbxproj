@@ -11,6 +11,8 @@
 		4C1DD76D12BADFE100E10B8C /* OrientationCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C1DD76912BADFE100E10B8C /* OrientationCommand.h */; };
 		4C1DD76E12BADFE100E10B8C /* AppCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1DD76A12BADFE100E10B8C /* AppCommand.m */; };
 		4C1DD76F12BADFE100E10B8C /* AppCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C1DD76B12BADFE100E10B8C /* AppCommand.h */; };
+		86123C8814F8221000266AFC /* UIImage+Frank.h in Headers */ = {isa = PBXBuildFile; fileRef = 86123C8614F8221000266AFC /* UIImage+Frank.h */; };
+		86123C8914F8221000266AFC /* UIImage+Frank.m in Sources */ = {isa = PBXBuildFile; fileRef = 86123C8714F8221000266AFC /* UIImage+Frank.m */; };
 		AA747D9F0F9514B9006C5449 /* Frank_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* Frank_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		D629926B11AB2D1F00CE0FB0 /* AsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = D629926911AB2D1F00CE0FB0 /* AsyncSocket.h */; };
@@ -156,6 +158,8 @@
 		4C1DD76912BADFE100E10B8C /* OrientationCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrientationCommand.h; path = src/OrientationCommand.h; sourceTree = "<group>"; };
 		4C1DD76A12BADFE100E10B8C /* AppCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppCommand.m; path = src/AppCommand.m; sourceTree = "<group>"; };
 		4C1DD76B12BADFE100E10B8C /* AppCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppCommand.h; path = src/AppCommand.h; sourceTree = "<group>"; };
+		86123C8614F8221000266AFC /* UIImage+Frank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Frank.h"; path = "src/UIImage+Frank.h"; sourceTree = "<group>"; };
+		86123C8714F8221000266AFC /* UIImage+Frank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Frank.m"; path = "src/UIImage+Frank.m"; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* Frank_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Frank_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libFrank.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFrank.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -347,6 +351,8 @@
 		08FB77AEFE84172EC02AAC07 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				86123C8614F8221000266AFC /* UIImage+Frank.h */,
+				86123C8714F8221000266AFC /* UIImage+Frank.m */,
 				D67F2ABD13F5F55A00A0BFF1 /* FrankLoader.h */,
 				D67F2ABE13F5F55A00A0BFF1 /* FrankLoader.m */,
 				D67F2AAB13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.h */,
@@ -649,6 +655,7 @@
 				D6325EE21437F7180057330D /* UIProxy.h in Headers */,
 				D6325EE41437F7180057330D /* WaitUntilIdle.h in Headers */,
 				D6BD5222146C36A3001770B1 /* UIQuerySelectorEngine.h in Headers */,
+				86123C8814F8221000266AFC /* UIImage+Frank.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -786,6 +793,7 @@
 				D6B1056114644827000DD32F /* UIQuery+ShelleyCompatibiilityOverrides.m in Sources */,
 				D6BD521F146C34BF001770B1 /* SelectorEngineRegistry.m in Sources */,
 				D6BD5223146C36A3001770B1 /* UIQuerySelectorEngine.m in Sources */,
+				86123C8914F8221000266AFC /* UIImage+Frank.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
