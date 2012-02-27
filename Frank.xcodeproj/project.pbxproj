@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0071264614F8956700E738ED /* ViewJSONSerializer.h in Headers */ = {isa = PBXBuildFile; fileRef = 0071264414F8956700E738ED /* ViewJSONSerializer.h */; };
+		0071264714F8956700E738ED /* ViewJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0071264514F8956700E738ED /* ViewJSONSerializer.m */; };
 		00DB779514DB48C40074BF29 /* Recordable.h in Headers */ = {isa = PBXBuildFile; fileRef = 00DB777214DB48C40074BF29 /* Recordable.h */; };
 		00DB779614DB48C40074BF29 /* Recordable.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DB777314DB48C40074BF29 /* Recordable.m */; };
 		00DB779714DB48C40074BF29 /* UIChildren.h in Headers */ = {isa = PBXBuildFile; fileRef = 00DB777414DB48C40074BF29 /* UIChildren.h */; };
@@ -172,6 +174,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0071264414F8956700E738ED /* ViewJSONSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewJSONSerializer.h; path = src/ViewJSONSerializer.h; sourceTree = "<group>"; };
+		0071264514F8956700E738ED /* ViewJSONSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewJSONSerializer.m; path = src/ViewJSONSerializer.m; sourceTree = "<group>"; };
 		00DB777214DB48C40074BF29 /* Recordable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Recordable.h; sourceTree = "<group>"; };
 		00DB777314DB48C40074BF29 /* Recordable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Recordable.m; sourceTree = "<group>"; };
 		00DB777414DB48C40074BF29 /* UIChildren.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIChildren.h; sourceTree = "<group>"; };
@@ -450,6 +454,8 @@
 				D6BD521D146C34BF001770B1 /* SelectorEngineRegistry.m */,
 				D6BD5220146C36A3001770B1 /* UIQuerySelectorEngine.h */,
 				D6BD5221146C36A3001770B1 /* UIQuerySelectorEngine.m */,
+				0071264414F8956700E738ED /* ViewJSONSerializer.h */,
+				0071264514F8956700E738ED /* ViewJSONSerializer.m */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -711,6 +717,7 @@
 				D6325EE21437F7180057330D /* UIProxy.h in Headers */,
 				D6325EE41437F7180057330D /* WaitUntilIdle.h in Headers */,
 				D6BD5222146C36A3001770B1 /* UIQuerySelectorEngine.h in Headers */,
+				0071264614F8956700E738ED /* ViewJSONSerializer.h in Headers */,
 				00DB779514DB48C40074BF29 /* Recordable.h in Headers */,
 				00DB779714DB48C40074BF29 /* UIChildren.h in Headers */,
 				00DB779914DB48C40074BF29 /* UIConsoleLog.h in Headers */,
@@ -866,6 +873,7 @@
 				D6B1056114644827000DD32F /* UIQuery+ShelleyCompatibiilityOverrides.m in Sources */,
 				D6BD521F146C34BF001770B1 /* SelectorEngineRegistry.m in Sources */,
 				D6BD5223146C36A3001770B1 /* UIQuerySelectorEngine.m in Sources */,
+				0071264714F8956700E738ED /* ViewJSONSerializer.m in Sources */,
 				00DB779614DB48C40074BF29 /* Recordable.m in Sources */,
 				00DB779814DB48C40074BF29 /* UIChildren.m in Sources */,
 				00DB779A14DB48C40074BF29 /* UIConsoleLog.m in Sources */,
