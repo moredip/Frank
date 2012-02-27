@@ -8,6 +8,7 @@
 
 #import "StaticResourcesRoute.h"
 
+extern BOOL frankLogEnabled;
 
 @implementation StaticResourcesRoute
 
@@ -31,7 +32,9 @@
 
 - (NSObject<HTTPResponse> *) handleRequestForPath: (NSArray *)path withConnection:(RoutingHTTPConnection *)connection{
 	NSString *fullPathToRequestedResource = [_staticResourceDirectoryPath stringByAppendingPathComponent: [NSString pathWithComponents:path]];
-	NSLog( @"Checking for static file at %@", fullPathToRequestedResource );
+    if(frankLogEnabled) {
+        NSLog( @"Checking for static file at %@", fullPathToRequestedResource );
+    }
 	BOOL isDir = YES;
 	if( [[NSFileManager defaultManager] fileExistsAtPath:fullPathToRequestedResource isDirectory:&isDir] && !isDir )
 		return [[HTTPFileResponse alloc] initWithFilePath:fullPathToRequestedResource];
