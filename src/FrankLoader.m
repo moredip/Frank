@@ -12,6 +12,8 @@
 
 #import <dlfcn.h>
 
+BOOL frankLogEnabled = NO;
+
 @implementation FrankLoader
 
 + (void)applicationDidBecomeActive:(NSNotification *)notification{
