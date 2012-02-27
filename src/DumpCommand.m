@@ -256,13 +256,7 @@ NSObject *jsonifyValue(NSValue *val) {
 	// we should really manually convert other types of value object, but we haven't had a need so far.
 	return @"<UNSUPPORTED VALUE TYPE>";
 }
-NSObject *jsonifyArray(NSArray *array){
-    NSMutableArray *result = [NSMutableArray arrayWithCapacity:[array count]];
-    for (id obj in array)
-        [result addObject:[DumpCommand jsonify:obj]];
-    
-    return result;
-}
+
 NSObject *jsonifyColor(UIColor *color){
 	CGColorSpaceModel colorModel = CGColorSpaceGetModel(CGColorGetColorSpace(color.CGColor));
 	const CGFloat *colors = CGColorGetComponents(color.CGColor);
@@ -305,9 +299,6 @@ NSObject *jsonifyColor(UIColor *color){
 	if ([obj isKindOfClass:[UIColor class]]){
 		return jsonifyColor((UIColor *)obj);
 	}
-    if ([obj isKindOfClass:[NSArray class]]){
-        return jsonifyArray(obj);
-    }
 	
 	return [NSString stringWithFormat:@"<%@>", NSStringFromClass([obj class])];
 }
