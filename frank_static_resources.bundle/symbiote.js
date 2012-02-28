@@ -380,10 +380,10 @@ $(document).ready(function() {
 
 
 
-  function sendFlashCommand( selector, use_shelley ) {
+  function sendFlashCommand( selector, engine ) {
     var command = {
-      query: selector,
-      selector_engine: use_shelley ? 'shelley_compat' : 'uiquery',
+	query: selector,
+	selector_engine: engine ? engine : 'uiquery' ,
       operation: {
         method_name: 'flash',
         arguments: []
@@ -482,13 +482,8 @@ $(document).ready(function() {
   });
 
   $('#flash_button').click( function(){
-    sendFlashCommand( $("input#query").val(), false );
+      sendFlashCommand( $("input#query").val(), $("input#selector_engine").val() );
   });
-
-  $('#shelley_flash_button').click( function(){
-    sendFlashCommand( $("input#query").val(), true );
-  });
-
   
   liveView = symbiote.LiveView( uiLocator.updateBackdrop, refreshViewHeirarchy );
 

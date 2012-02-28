@@ -9,7 +9,7 @@
 #import "FrankCommandRoute.h"
 #import "RoutingHTTPConnection.h"
 
-#import <QuartzCore/QuartzCore.h>
+#import "UIImage+Frank.h"
 
 extern BOOL frankLogEnabled;
 
@@ -34,17 +34,6 @@ extern BOOL frankLogEnabled;
 	[_commandDict setObject:command forKey:commandName];
 }
 
-- (NSData *) grabScreenshot {	
-	UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
-	
-	UIGraphicsBeginImageContext(keyWindow.bounds.size);
-    [keyWindow.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-	
-	return UIImagePNGRepresentation(image);
-}
-
 #pragma mark Route implementation
 
 - (id<FrankCommand>) commandForPath: (NSArray *)path{
@@ -54,6 +43,7 @@ extern BOOL frankLogEnabled;
 	return [_commandDict objectForKey:[path objectAtIndex:0]];
 }
 
+
 - (NSObject<HTTPResponse> *) handleRequestForPath: (NSArray *)path withConnection:(RoutingHTTPConnection *)connection{
     
     if(frankLogEnabled) {
@@ -62,7 +52,34 @@ extern BOOL frankLogEnabled;
     
 	if( [@"screenshot" isEqualToString:[path objectAtIndex:0]] )
 	{
-		return [[[HTTPDataResponse alloc] initWithData:[self grabScreenshot]] autorelease];
+        BOOL allWindows = [path count] > 1 && [[path objectAtIndex:0] isEqualToString:@"allwindows"];
+        UIImage *screenshot = [UIImage imageFromApplication:allWindows];
+        
+        if ([path count] == 4)
+        {
+            NSString *stringRepresentation = [path objectAtIndex:3];
+            NSArray *parts = [stringRepresentation componentsSeparatedByString:@"."];
+            CGRect rect = CGRectZero;
+            
+            rect.origin.x = [[parts objectAtIndex:0] integerValue];
+            rect.origin.y = [[parts objectAtIndex:1] integerValue];
+            rect.size.width  = [[parts objectAtIndex:2] integerValue];
+            rect.size.height = [[parts objectAtIndex:3] integerValue];
+            
+            //
+            // Crop image or mask out an area (IE: Timestamp)
+            //
+            if ([[path objectAtIndex:2] isEqualToString:@"frame"])
+                screenshot = [screenshot imageCropedToFrame:rect];
+            else if ([[path objectAtIndex:2] isEqualToString:@"mask"])
+                screenshot = [screenshot imageMaskedAtFrame:rect];
+            else
+                NSLog(@"Unknown Operation");
+        }
+        
+        NSData *response = UIImagePNGRepresentation(screenshot);
+        
+		return [[[HTTPDataResponse alloc] initWithData:response] autorelease];
 	}
 	
 	id<FrankCommand> command = [self commandForPath:path];
