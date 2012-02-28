@@ -5,6 +5,8 @@ require 'frank-cucumber/frank_localize'
 module Frank module Cucumber
 
 module FrankHelper 
+  HOST = "localhost"
+  FRANK_PORT = 37265
 
   class << self
     # TODO: adding an ivar to the module itself is a big ugyl hack. We need a FrankDriver class, or similar
@@ -69,14 +71,12 @@ module FrankHelper
 
     res['results']
   end
-  
-  
-  def frankly_map( query, method_name, *method_args )
+
+  def frankly_engine_map( selector_engine, query, method_name, *method_args )
     operation_map = {
       :method_name => method_name,
       :arguments => method_args,
     }
-    selector_engine = Frank::Cucumber::FrankHelper.selector_engine || 'uiquery' # default to UIQuery for backwards compatibility
     res = post_to_uispec_server( 'map', :query => query, :operation => operation_map, :selector_engine => selector_engine )
     res = JSON.parse( res )
     if res['outcome'] != 'SUCCESS'
@@ -85,10 +85,27 @@ module FrankHelper
 
     res['results']
   end
+  
+  def frankly_map( query, method_name, *method_args )
+    selector_engine = Frank::Cucumber::FrankHelper.selector_engine || 'uiquery' # default to UIQuery for backwards compatibility
+    frankly_engine_map( selector_engine, query, method_name, *method_args )
+  end
 
   def frankly_dump
     res = get_to_uispec_server( 'dump' )
     puts JSON.pretty_generate(JSON.parse(res)) rescue puts res #dumping a super-deep DOM causes errors
+  end
+
+  def frankly_screenshot(filename, subframe=nil, allwindows=true)
+    path = 'screenshot'
+    path += '/allwindows' if allwindows
+    path += "/frame/" + URI.escape(subframe) if (subframe != nil)
+
+    data = get_to_uispec_server( path )
+
+    open(filename, "wb") do |file|
+      file.write(data)
+    end
   end
 
   def frankly_oriented_portrait?
@@ -173,8 +190,10 @@ module FrankHelper
     make_http_request( url, req )
   end
 
-  def frank_url_for( verb )
-    url = URI.parse "http://localhost:37265/"
+  def frank_url_for( verb , port=nil )
+    port ||= FRANK_PORT
+    
+    url = URI.parse "http://#{HOST}:#{port}/"
     url.path = '/'+verb
     url
   end
