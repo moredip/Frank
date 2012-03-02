@@ -12,6 +12,8 @@ module Frank
           :de
         when /^ru_/
           :ru
+        when /^zh_/
+          :zh
         else
           :en
         end
