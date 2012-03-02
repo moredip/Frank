@@ -41,3 +41,14 @@ ru:
   simulate_memory_warning: Симулировать предупреждение о нехватке памяти
   toggle_in_call_status_bar: Переключить на строку состояния поступающего вызова
   simulate_hardware_keyboard: Симулировать физическую клавиатуру
+
+zh:
+  iphone_simulator: iOS 模拟器
+  hardware: 硬件
+  home: 首页
+  rotate_left: 向左旋转
+  rotate_right: 向右旋转
+  shake_gesture: 摇动手势
+  simulate_memory_warning: 模拟内存警告
+  toggle_in_call_status_bar: 切换呼叫状态栏
+  simulate_hardware_keyboard: 模拟硬件键盘
