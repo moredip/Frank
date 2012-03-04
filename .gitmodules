@@ -3,4 +3,4 @@
 	url = https://github.com/moredip/KIF.git
 [submodule "lib/UISpec"]
 	path = lib/UISpec
-	url = git@github.com:krakas/UISpec.git
+	url = git://github.com/UISpec.git
