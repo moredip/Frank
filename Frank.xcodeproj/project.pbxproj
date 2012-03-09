@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		001453BA1509FA94004288B7 /* UIScrollView+Frank.h in Headers */ = {isa = PBXBuildFile; fileRef = 001453B61509FA94004288B7 /* UIScrollView+Frank.h */; };
+		001453BB1509FA94004288B7 /* UIScrollView+Frank.m in Sources */ = {isa = PBXBuildFile; fileRef = 001453B71509FA94004288B7 /* UIScrollView+Frank.m */; };
+		001453BC1509FA94004288B7 /* UITableView+Frank.h in Headers */ = {isa = PBXBuildFile; fileRef = 001453B81509FA94004288B7 /* UITableView+Frank.h */; };
+		001453BD1509FA94004288B7 /* UITableView+Frank.m in Sources */ = {isa = PBXBuildFile; fileRef = 001453B91509FA94004288B7 /* UITableView+Frank.m */; };
 		0071264614F8956700E738ED /* ViewJSONSerializer.h in Headers */ = {isa = PBXBuildFile; fileRef = 0071264414F8956700E738ED /* ViewJSONSerializer.h */; };
 		0071264714F8956700E738ED /* ViewJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0071264514F8956700E738ED /* ViewJSONSerializer.m */; };
 		00DB779514DB48C40074BF29 /* Recordable.h in Headers */ = {isa = PBXBuildFile; fileRef = 00DB777214DB48C40074BF29 /* Recordable.h */; };
@@ -176,6 +180,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		001453B61509FA94004288B7 /* UIScrollView+Frank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+Frank.h"; sourceTree = "<group>"; };
+		001453B71509FA94004288B7 /* UIScrollView+Frank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+Frank.m"; sourceTree = "<group>"; };
+		001453B81509FA94004288B7 /* UITableView+Frank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+Frank.h"; sourceTree = "<group>"; };
+		001453B91509FA94004288B7 /* UITableView+Frank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+Frank.m"; sourceTree = "<group>"; };
 		0071264414F8956700E738ED /* ViewJSONSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewJSONSerializer.h; path = src/ViewJSONSerializer.h; sourceTree = "<group>"; };
 		0071264514F8956700E738ED /* ViewJSONSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewJSONSerializer.m; path = src/ViewJSONSerializer.m; sourceTree = "<group>"; };
 		00DB777214DB48C40074BF29 /* Recordable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Recordable.h; sourceTree = "<group>"; };
@@ -361,6 +369,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		001453B51509FA94004288B7 /* ViewCategories */ = {
+			isa = PBXGroup;
+			children = (
+				001453B61509FA94004288B7 /* UIScrollView+Frank.h */,
+				001453B71509FA94004288B7 /* UIScrollView+Frank.m */,
+				001453B81509FA94004288B7 /* UITableView+Frank.h */,
+				001453B91509FA94004288B7 /* UITableView+Frank.m */,
+			);
+			name = ViewCategories;
+			path = src/ViewCategories;
+			sourceTree = "<group>";
+		};
 		00DB77B814DB48DD0074BF29 /* Private Headers */ = {
 			isa = PBXGroup;
 			children = (
@@ -425,6 +445,7 @@
 		08FB77AEFE84172EC02AAC07 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				001453B51509FA94004288B7 /* ViewCategories */,
 				86123C8614F8221000266AFC /* UIImage+Frank.h */,
 				86123C8714F8221000266AFC /* UIImage+Frank.m */,
 				D67F2ABD13F5F55A00A0BFF1 /* FrankLoader.h */,
@@ -757,6 +778,8 @@
 				00DB77D414DB48DD0074BF29 /* GSStatusBar.h in Headers */,
 				00DB77D514DB48DD0074BF29 /* GSWindow.h in Headers */,
 				86123C8814F8221000266AFC /* UIImage+Frank.h in Headers */,
+				001453BA1509FA94004288B7 /* UIScrollView+Frank.h in Headers */,
+				001453BC1509FA94004288B7 /* UITableView+Frank.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -899,6 +922,8 @@
 				00DB77B514DB48C40074BF29 /* ViewFilterSwizzler.m in Sources */,
 				00DB77B714DB48C40074BF29 /* VisibleTouch.m in Sources */,
 				86123C8914F8221000266AFC /* UIImage+Frank.m in Sources */,
+				001453BB1509FA94004288B7 /* UIScrollView+Frank.m in Sources */,
+				001453BD1509FA94004288B7 /* UITableView+Frank.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
