@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		0071264614F8956700E738ED /* ViewJSONSerializer.h in Headers */ = {isa = PBXBuildFile; fileRef = 0071264414F8956700E738ED /* ViewJSONSerializer.h */; };
 		0071264714F8956700E738ED /* ViewJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0071264514F8956700E738ED /* ViewJSONSerializer.m */; };
+		00AD4A651509F2D500E3C6C7 /* UIScrollView+Frank.h in Headers */ = {isa = PBXBuildFile; fileRef = 00AD4A631509F2D500E3C6C7 /* UIScrollView+Frank.h */; };
+		00AD4A661509F2D500E3C6C7 /* UIScrollView+Frank.m in Sources */ = {isa = PBXBuildFile; fileRef = 00AD4A641509F2D500E3C6C7 /* UIScrollView+Frank.m */; };
+		00AD4A691509F5E600E3C6C7 /* UITableView+Frank.h in Headers */ = {isa = PBXBuildFile; fileRef = 00AD4A671509F5E600E3C6C7 /* UITableView+Frank.h */; };
+		00AD4A6A1509F5E600E3C6C7 /* UITableView+Frank.m in Sources */ = {isa = PBXBuildFile; fileRef = 00AD4A681509F5E600E3C6C7 /* UITableView+Frank.m */; };
 		4C1DD76C12BADFE100E10B8C /* OrientationCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1DD76812BADFE100E10B8C /* OrientationCommand.m */; };
 		4C1DD76D12BADFE100E10B8C /* OrientationCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C1DD76912BADFE100E10B8C /* OrientationCommand.h */; };
 		4C1DD76E12BADFE100E10B8C /* AppCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1DD76A12BADFE100E10B8C /* AppCommand.m */; };
@@ -158,6 +162,10 @@
 /* Begin PBXFileReference section */
 		0071264414F8956700E738ED /* ViewJSONSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewJSONSerializer.h; path = src/ViewJSONSerializer.h; sourceTree = "<group>"; };
 		0071264514F8956700E738ED /* ViewJSONSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewJSONSerializer.m; path = src/ViewJSONSerializer.m; sourceTree = "<group>"; };
+		00AD4A631509F2D500E3C6C7 /* UIScrollView+Frank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+Frank.h"; sourceTree = "<group>"; };
+		00AD4A641509F2D500E3C6C7 /* UIScrollView+Frank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+Frank.m"; sourceTree = "<group>"; };
+		00AD4A671509F5E600E3C6C7 /* UITableView+Frank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+Frank.h"; sourceTree = "<group>"; };
+		00AD4A681509F5E600E3C6C7 /* UITableView+Frank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+Frank.m"; sourceTree = "<group>"; };
 		4C1DD76812BADFE100E10B8C /* OrientationCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrientationCommand.m; path = src/OrientationCommand.m; sourceTree = "<group>"; };
 		4C1DD76912BADFE100E10B8C /* OrientationCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrientationCommand.h; path = src/OrientationCommand.h; sourceTree = "<group>"; };
 		4C1DD76A12BADFE100E10B8C /* AppCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppCommand.m; path = src/AppCommand.m; sourceTree = "<group>"; };
@@ -321,6 +329,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00AD4A611509F2C200E3C6C7 /* ViewCategories */ = {
+			isa = PBXGroup;
+			children = (
+				00AD4A631509F2D500E3C6C7 /* UIScrollView+Frank.h */,
+				00AD4A641509F2D500E3C6C7 /* UIScrollView+Frank.m */,
+				00AD4A671509F5E600E3C6C7 /* UITableView+Frank.h */,
+				00AD4A681509F5E600E3C6C7 /* UITableView+Frank.m */,
+			);
+			name = ViewCategories;
+			path = src/ViewCategories;
+			sourceTree = "<group>";
+		};
 		034768DFFF38A50411DB9C8B /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -355,6 +375,7 @@
 		08FB77AEFE84172EC02AAC07 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				00AD4A611509F2C200E3C6C7 /* ViewCategories */,
 				86123C8614F8221000266AFC /* UIImage+Frank.h */,
 				86123C8714F8221000266AFC /* UIImage+Frank.m */,
 				D67F2ABD13F5F55A00A0BFF1 /* FrankLoader.h */,
@@ -663,6 +684,8 @@
 				D6BD5222146C36A3001770B1 /* UIQuerySelectorEngine.h in Headers */,
 				0071264614F8956700E738ED /* ViewJSONSerializer.h in Headers */,
 				86123C8814F8221000266AFC /* UIImage+Frank.h in Headers */,
+				00AD4A651509F2D500E3C6C7 /* UIScrollView+Frank.h in Headers */,
+				00AD4A691509F5E600E3C6C7 /* UITableView+Frank.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -802,6 +825,8 @@
 				D6BD5223146C36A3001770B1 /* UIQuerySelectorEngine.m in Sources */,
 				0071264714F8956700E738ED /* ViewJSONSerializer.m in Sources */,
 				86123C8914F8221000266AFC /* UIImage+Frank.m in Sources */,
+				00AD4A661509F2D500E3C6C7 /* UIScrollView+Frank.m in Sources */,
+				00AD4A6A1509F5E600E3C6C7 /* UITableView+Frank.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
