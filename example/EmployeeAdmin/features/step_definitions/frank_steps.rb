@@ -89,7 +89,7 @@ end
 
 
 Then /^I should (not )?see a keyboard$/ do |negator|
-  keyboards = frankly_map( "view:'UIKeyboardImpl'", 'class' )
+  keyboards = frankly_map( "view:'UIKeyboardImpl'", 'tag' )
   if negator == "not "
     keyboards.should be_empty
   else
