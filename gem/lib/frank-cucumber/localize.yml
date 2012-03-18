@@ -52,3 +52,14 @@ zh:
   simulate_memory_warning: 模拟内存警告
   toggle_in_call_status_bar: 切换呼叫状态栏
   simulate_hardware_keyboard: 模拟硬件键盘
+
+ja:
+  iphone_simulator: iOSシミュレータ
+  hardware: ハードウェア
+  home: ホーム
+  rotate_left: 反時計回りに回転
+  rotate_right: 時計回りに回転
+  shake_gesture: シェイクジェスチャー
+  simulate_memory_warning: メモリ警告をシミュレート
+  toggle_in_call_status_bar: 着信ステータスバーを切り替える
+  simulate_hardware_keyboard: ハードウェアキーボードをシミュレート
