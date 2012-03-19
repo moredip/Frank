@@ -292,6 +292,7 @@
 		D6E8FF2913D3DC9200D24F43 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastUpgradeCheck = 0420;
 				ORGANIZATIONNAME = ThoughtWorks;
 			};
 			buildConfigurationList = D6E8FF2C13D3DC9200D24F43 /* Build configuration list for PBXProject "Shelley" */;
@@ -401,6 +402,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Unit Tests/Unit Tests-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Unit Tests/Unit Tests-Info.plist";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -421,6 +423,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Unit Tests/Unit Tests-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Unit Tests/Unit Tests-Info.plist";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -467,6 +470,7 @@
 				DSTROOT = /tmp/Shelley.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Shelley/Shelley-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -479,6 +483,7 @@
 				DSTROOT = /tmp/Shelley.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Shelley/Shelley-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
