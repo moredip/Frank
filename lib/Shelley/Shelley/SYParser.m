@@ -182,7 +182,47 @@
     [super dealloc];
 }
 
+- (id<SYFilter>) interpretSectionAsClassFilterShorthand:(SYSectionParser *)parsedSection{
+    if( ![parsedSection hasNoArgs] ){
+        return nil;
+    }
+        
+    NSString *firstParam = [[parsedSection params] objectAtIndex:0];
+ 
+ 
+    Class shorthandClass = nil;
+    if( [firstParam isEqualToString:@"view"] )
+        shorthandClass = [UIView class];
+    else if( [firstParam isEqualToString:@"button"] )
+        shorthandClass = [UIButton class];
+    else if( [firstParam isEqualToString:@"label"] )
+        shorthandClass = [UILabel class];
+    else if( [firstParam isEqualToString:@"alertView"] )
+        shorthandClass = [UIAlertView class];
+    else if( [firstParam isEqualToString:@"navigationButton"] )
+        shorthandClass = NSClassFromString(@"UINavigationButton");
+    else if( [firstParam isEqualToString:@"navigationItemView"] )
+        shorthandClass = NSClassFromString(@"UINavigationItemView");
+    else if( [firstParam isEqualToString:@"textField"] )
+        shorthandClass = [UITextView class];
+    else if( [firstParam isEqualToString:@"tableView"] )
+        shorthandClass = [UITableView class];
+    else if( [firstParam isEqualToString:@"tableViewCell"] )
+        shorthandClass = [UITableViewCell class];
+
+    if( shorthandClass )
+        return [[[SYClassFilter alloc] initWithClass:shorthandClass] autorelease];
+    else
+        return nil;
+}
+
 - (id<SYFilter>) interpretSectionIntoFilter:(SYSectionParser *)parsedSection{
+    
+    id<SYFilter> classFilter = [self interpretSectionAsClassFilterShorthand:parsedSection];
+    
+    if( classFilter )
+        return classFilter;
+    
     NSString *firstParam = [[parsedSection params] objectAtIndex:0];
     
     if( [parsedSection hasNoArgs] ){
@@ -190,27 +230,8 @@
             return [[[SYParents alloc] init] autorelease];
         if( [firstParam isEqualToString:@"first"] )
             return [[[SYNthElementFilter alloc] initWithIndex:0] autorelease];
-        else if( [firstParam isEqualToString:@"view"] )
-            return [[[SYClassFilter alloc] initWithClass:[UIView class]] autorelease];
         else if( [firstParam isEqualToString:@"descendant"] )
             return [[[SYClassFilter alloc] initWithClass:[UIView class] includeSelf:YES] autorelease];
-        else if( [firstParam isEqualToString:@"button"] )
-            return [[[SYClassFilter alloc] initWithClass:[UIButton class]] autorelease];
-        else if( [firstParam isEqualToString:@"alertView"] )
-            return [[[SYClassFilter alloc] initWithClass:[UIAlertView class]] autorelease];
-        else if( [firstParam isEqualToString:@"navigationButton"] )
-            return [[[SYClassFilter alloc] initWithClass:NSClassFromString(@"UINavigationButton")] autorelease];
-        else if( [firstParam isEqualToString:@"navigationItemView"] )
-            return [[[SYClassFilter alloc] initWithClass:NSClassFromString(@"UINavigationItemView")] autorelease];
-
-        else if( [firstParam isEqualToString:@"textField"] )
-            return [[[SYClassFilter alloc] initWithClass:[UITextField class]] autorelease];
-        else if( [firstParam isEqualToString:@"tableView"] )
-            return [[[SYClassFilter alloc] initWithClass:[UITableView class]] autorelease];
-        else if( [firstParam isEqualToString:@"tableViewCell"] )
-            return [[[SYClassFilter alloc] initWithClass:[UITableViewCell class]] autorelease];
-
-        
     }else if( [[parsedSection args] count] == 1 ){
         if( [firstParam isEqualToString:@"view"] ) {
             NSString *firstArg = [[parsedSection args] objectAtIndex:0];
