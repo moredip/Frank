@@ -204,7 +204,7 @@
     else if( [firstParam isEqualToString:@"navigationItemView"] )
         shorthandClass = NSClassFromString(@"UINavigationItemView");
     else if( [firstParam isEqualToString:@"textField"] )
-        shorthandClass = [UITextView class];
+        shorthandClass = [UITextField class];
     else if( [firstParam isEqualToString:@"tableView"] )
         shorthandClass = [UITableView class];
     else if( [firstParam isEqualToString:@"tableViewCell"] )
