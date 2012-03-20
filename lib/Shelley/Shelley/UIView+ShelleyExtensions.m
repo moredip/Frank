@@ -8,6 +8,8 @@
 
 #import "LoadableCategory.h"
 
+#import <QuartzCore/QuartzCore.h>
+
 MAKE_CATEGORIES_LOADABLE(UIView_ShelleyExtensions)
 
 BOOL substringMatch(NSString *actualString, NSString *expectedSubstring){	
@@ -22,6 +24,14 @@ BOOL substringMatch(NSString *actualString, NSString *expectedSubstring){
 
 - (BOOL) markedExactly:(NSString *)targetLabel{
     return [[self accessibilityLabel] isEqualToString:targetLabel];
+}
+
+- (BOOL) isAnimating {
+    return (self.layer.animationKeys.count > 0);
+}
+
+- (BOOL) isNotAnimating {
+    return (self.layer.animationKeys.count == 0);
 }
 
 @end
