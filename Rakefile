@@ -45,6 +45,7 @@ task :build_shelley do
   sh 'cp lib/Shelley/build/libShelley.a dist/'
 end
 
+desc "build and copy everything into the gem directories for distribution as a gem"
 task :build_for_release => [:build, :build_shelley, :copy_dist_to_gem]
 
 desc "copies contents of dist dir to the frank-cucumber gem's frank-skeleton"
