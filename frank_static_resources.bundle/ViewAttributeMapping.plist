@@ -6,6 +6,7 @@
 	<array>
 		<string>accessibilityLabel</string>
 		<string>accessibilityFrame</string>
+		<string>tag</string>
 		<string>alpha</string>
 		<string>autoresizingMask</string>
 		<string>backgroundColor</string>
