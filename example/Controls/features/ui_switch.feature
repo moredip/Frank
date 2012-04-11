@@ -18,6 +18,12 @@ Feature:
 								Then switch "the switch" should be on
 								Then I should see "Switch is on"
 
+				Scenario: Swiping the switch off
+								Given switch "the switch" should be on
+
+								When I swipe "the switch" leftwards
+								Then I should see "Switch is off"
+
 				# STILL TO DO
 				#Scenario: setting the switch declaratively
 				#Scenario: swiping the switch on
