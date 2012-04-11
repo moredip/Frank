@@ -7,24 +7,21 @@ Feature:
 								Given I launch the app
 								And I touch "UISwitch"
 
-				Scenario: Flipping the switch off and on
-								Given switch "the switch" should be on
-
-								When I touch "the switch"
-								Then switch "the switch" should be off
-								Then I should see "Switch is off"
-
-								When I touch "the switch"
-								Then switch "the switch" should be on
-								Then I should see "Switch is on"
-
-				Scenario: Swiping the switch off
+				Scenario: Swiping the switch off and on
 								Given switch "the switch" should be on
 
 								When I swipe "the switch" leftwards
 								Then I should see "Switch is off"
 
-				# STILL TO DO
-				#Scenario: setting the switch declaratively
-				#Scenario: swiping the switch on
-				#Scenario: swiping the switch off
+								When I swipe "the switch" rightwards
+								Then I should see "Switch is on"
+
+				Scenario: Swiping the switch up and down has no effect
+								Given I swipe "the switch" leftwards
+								And I should see "Switch is off"
+
+								When I swipe "the switch" upwards
+								Then I should see "Switch is off"
+
+								When I swipe "the switch" downwards
+								Then I should see "Switch is off"
