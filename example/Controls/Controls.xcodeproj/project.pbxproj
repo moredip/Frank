@@ -7,6 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49543E41153878FC001D87F1 /* image0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 49543E3C153878FC001D87F1 /* image0.jpg */; };
+		49543E42153878FC001D87F1 /* image1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 49543E3D153878FC001D87F1 /* image1.jpg */; };
+		49543E43153878FC001D87F1 /* image2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 49543E3E153878FC001D87F1 /* image2.jpg */; };
+		49543E44153878FC001D87F1 /* image3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 49543E3F153878FC001D87F1 /* image3.jpg */; };
+		49543E45153878FC001D87F1 /* image4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 49543E40153878FC001D87F1 /* image4.jpg */; };
+		49543E4615387905001D87F1 /* image0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 49543E3C153878FC001D87F1 /* image0.jpg */; };
+		49543E4715387905001D87F1 /* image1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 49543E3D153878FC001D87F1 /* image1.jpg */; };
+		49543E4815387905001D87F1 /* image2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 49543E3E153878FC001D87F1 /* image2.jpg */; };
+		49543E4915387905001D87F1 /* image3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 49543E3F153878FC001D87F1 /* image3.jpg */; };
+		49543E4A15387905001D87F1 /* image4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 49543E40153878FC001D87F1 /* image4.jpg */; };
+		49543E4D1538791E001D87F1 /* Carousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 49543E4C1538791E001D87F1 /* Carousel.m */; };
+		49543E4E1538791E001D87F1 /* Carousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 49543E4C1538791E001D87F1 /* Carousel.m */; };
+		49543E511538793B001D87F1 /* CarouselViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49543E501538793B001D87F1 /* CarouselViewController.m */; };
+		49543E521538793B001D87F1 /* CarouselViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49543E501538793B001D87F1 /* CarouselViewController.m */; };
+		49543E5415387AD8001D87F1 /* CarouselViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49543E5315387AD8001D87F1 /* CarouselViewController.xib */; };
+		49543E5515387AD8001D87F1 /* CarouselViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49543E5315387AD8001D87F1 /* CarouselViewController.xib */; };
 		C16E97E91535550200C965F5 /* libShelley.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C16E97E81535550200C965F5 /* libShelley.a */; };
 		C1C6D1EA15354EF300EAA0CF /* libFrank.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6FD77621437E46800B38060 /* libFrank.a */; };
 		D6225F9B1436D886002B04AA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6225F9A1436D886002B04AA /* UIKit.framework */; };
@@ -53,6 +69,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		49543E3C153878FC001D87F1 /* image0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = image0.jpg; path = images/image0.jpg; sourceTree = "<group>"; };
+		49543E3D153878FC001D87F1 /* image1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = image1.jpg; path = images/image1.jpg; sourceTree = "<group>"; };
+		49543E3E153878FC001D87F1 /* image2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = image2.jpg; path = images/image2.jpg; sourceTree = "<group>"; };
+		49543E3F153878FC001D87F1 /* image3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = image3.jpg; path = images/image3.jpg; sourceTree = "<group>"; };
+		49543E40153878FC001D87F1 /* image4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = image4.jpg; path = images/image4.jpg; sourceTree = "<group>"; };
+		49543E4B1538791E001D87F1 /* Carousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Carousel.h; sourceTree = "<group>"; };
+		49543E4C1538791E001D87F1 /* Carousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Carousel.m; sourceTree = "<group>"; };
+		49543E4F1538793B001D87F1 /* CarouselViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarouselViewController.h; sourceTree = "<group>"; };
+		49543E501538793B001D87F1 /* CarouselViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarouselViewController.m; sourceTree = "<group>"; };
+		49543E5315387AD8001D87F1 /* CarouselViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarouselViewController.xib; sourceTree = "<group>"; };
 		C16E97E81535550200C965F5 /* libShelley.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libShelley.a; path = "../../lib/Shelley/build/Release-iphoneos/libShelley.a"; sourceTree = "<group>"; };
 		D6225F961436D886002B04AA /* Controls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Controls.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6225F9A1436D886002B04AA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -104,9 +130,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		49543E3B153878EC001D87F1 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				49543E3C153878FC001D87F1 /* image0.jpg */,
+				49543E3D153878FC001D87F1 /* image1.jpg */,
+				49543E3E153878FC001D87F1 /* image2.jpg */,
+				49543E3F153878FC001D87F1 /* image3.jpg */,
+				49543E40153878FC001D87F1 /* image4.jpg */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		D6225F8B1436D886002B04AA = {
 			isa = PBXGroup;
 			children = (
+				49543E3B153878EC001D87F1 /* Images */,
 				C16E97E81535550200C965F5 /* libShelley.a */,
 				D6445A481437EB7A00B20F48 /* frank_static_resources.bundle */,
 				D69137DA1436E1D2003C26AC /* CFNetwork.framework */,
@@ -139,6 +178,8 @@
 		D6225FA01436D886002B04AA /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				49543E4B1538791E001D87F1 /* Carousel.h */,
+				49543E4C1538791E001D87F1 /* Carousel.m */,
 				D6225FA91436D886002B04AA /* ControlsAppDelegate.h */,
 				D6225FAA1436D886002B04AA /* ControlsAppDelegate.m */,
 				D6225FAC1436D886002B04AA /* MainWindow.xib */,
@@ -149,6 +190,9 @@
 				D69137BC1436DB00003C26AC /* UISwitchViewController.h */,
 				D69137BD1436DB00003C26AC /* UISwitchViewController.m */,
 				D69137BE1436DB00003C26AC /* UISwitchViewController.xib */,
+				49543E4F1538793B001D87F1 /* CarouselViewController.h */,
+				49543E501538793B001D87F1 /* CarouselViewController.m */,
+				49543E5315387AD8001D87F1 /* CarouselViewController.xib */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -271,6 +315,12 @@
 				D6225FAE1436D886002B04AA /* MainWindow.xib in Resources */,
 				D6225FB41436D886002B04AA /* RootViewController.xib in Resources */,
 				D69137C01436DB00003C26AC /* UISwitchViewController.xib in Resources */,
+				49543E41153878FC001D87F1 /* image0.jpg in Resources */,
+				49543E42153878FC001D87F1 /* image1.jpg in Resources */,
+				49543E43153878FC001D87F1 /* image2.jpg in Resources */,
+				49543E44153878FC001D87F1 /* image3.jpg in Resources */,
+				49543E45153878FC001D87F1 /* image4.jpg in Resources */,
+				49543E5415387AD8001D87F1 /* CarouselViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +333,12 @@
 				D69137CE1436E112003C26AC /* MainWindow.xib in Resources */,
 				D69137CF1436E112003C26AC /* RootViewController.xib in Resources */,
 				D69137D01436E112003C26AC /* UISwitchViewController.xib in Resources */,
+				49543E4615387905001D87F1 /* image0.jpg in Resources */,
+				49543E4715387905001D87F1 /* image1.jpg in Resources */,
+				49543E4815387905001D87F1 /* image2.jpg in Resources */,
+				49543E4915387905001D87F1 /* image3.jpg in Resources */,
+				49543E4A15387905001D87F1 /* image4.jpg in Resources */,
+				49543E5515387AD8001D87F1 /* CarouselViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,6 +371,8 @@
 				D6225FAB1436D886002B04AA /* ControlsAppDelegate.m in Sources */,
 				D6225FB11436D886002B04AA /* RootViewController.m in Sources */,
 				D69137BF1436DB00003C26AC /* UISwitchViewController.m in Sources */,
+				49543E4D1538791E001D87F1 /* Carousel.m in Sources */,
+				49543E511538793B001D87F1 /* CarouselViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,6 +384,8 @@
 				D69137C51436E112003C26AC /* ControlsAppDelegate.m in Sources */,
 				D69137C61436E112003C26AC /* RootViewController.m in Sources */,
 				D69137C71436E112003C26AC /* UISwitchViewController.m in Sources */,
+				49543E4E1538791E001D87F1 /* Carousel.m in Sources */,
+				49543E521538793B001D87F1 /* CarouselViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,9 +8,11 @@
 
 #import "RootViewController.h"
 #import "UISwitchViewController.h"
+#import "CarouselViewController.h"
 
 typedef enum {
     RowsUISwitch,
+    RowsCarousel,
     RowsCount
 } Rows;
 
@@ -75,6 +77,9 @@ typedef enum {
         case RowsUISwitch:
             cell.textLabel.text = @"UISwitch";
             break;
+        case RowsCarousel:
+            cell.textLabel.text = @"Carousel";
+            break;
     }
 
     // Configure the cell.
@@ -129,6 +134,9 @@ typedef enum {
     switch ([indexPath row]) {
         case RowsUISwitch:
             detailVC = [[UISwitchViewController alloc] initWithNibName:@"UISwitchViewController" bundle:nil];
+            break;
+        case RowsCarousel:
+            detailVC = [[CarouselViewController alloc] initWithNibName:@"CarouselViewController" bundle:nil];
             break;
     }
     
