@@ -157,14 +157,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		D6FA01B714283C4F00576AD4 = {
+		D6FA01B714283C4F00576AD4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D6FA01B714283C4F00576AD2 /* Shelley.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = D7E74DDAB773E391ED7E3619;
 			remoteInfo = Shelley;
 		};
-		D6FA01B714283C4F00576AD6 = {
+		D6FA01B714283C4F00576AD6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D6FA01B714283C4F00576AD2 /* Shelley.xcodeproj */;
 			proxyType = 2;
@@ -757,14 +757,14 @@
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libShelley.a;
-			remoteRef = D6FA01B714283C4F00576AD4;
+			remoteRef = D6FA01B714283C4F00576AD4 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		D6FA01B714283C4F00576AD7 /* Unit Tests.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = "Unit Tests.octest";
-			remoteRef = D6FA01B714283C4F00576AD6;
+			remoteRef = D6FA01B714283C4F00576AD6 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
