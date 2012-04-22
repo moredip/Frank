@@ -8,3 +8,4 @@ dist
 *.perspectivev3
 xcuserdata
 .rvmrc
+.idea
