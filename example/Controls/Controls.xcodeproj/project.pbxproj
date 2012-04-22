@@ -23,6 +23,8 @@
 		49543E521538793B001D87F1 /* CarouselViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49543E501538793B001D87F1 /* CarouselViewController.m */; };
 		49543E5415387AD8001D87F1 /* CarouselViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49543E5315387AD8001D87F1 /* CarouselViewController.xib */; };
 		49543E5515387AD8001D87F1 /* CarouselViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49543E5315387AD8001D87F1 /* CarouselViewController.xib */; };
+		C164121F1543BFDC00FECF23 /* EditableTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C164121E1543BFDC00FECF23 /* EditableTableViewController.m */; };
+		C16412201543BFDC00FECF23 /* EditableTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C164121E1543BFDC00FECF23 /* EditableTableViewController.m */; };
 		C16E97E91535550200C965F5 /* libShelley.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C16E97E81535550200C965F5 /* libShelley.a */; };
 		C1C6D1EA15354EF300EAA0CF /* libFrank.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6FD77621437E46800B38060 /* libFrank.a */; };
 		D6225F9B1436D886002B04AA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6225F9A1436D886002B04AA /* UIKit.framework */; };
@@ -79,6 +81,8 @@
 		49543E4F1538793B001D87F1 /* CarouselViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarouselViewController.h; sourceTree = "<group>"; };
 		49543E501538793B001D87F1 /* CarouselViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarouselViewController.m; sourceTree = "<group>"; };
 		49543E5315387AD8001D87F1 /* CarouselViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarouselViewController.xib; sourceTree = "<group>"; };
+		C164121D1543BFDC00FECF23 /* EditableTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditableTableViewController.h; sourceTree = "<group>"; };
+		C164121E1543BFDC00FECF23 /* EditableTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditableTableViewController.m; sourceTree = "<group>"; };
 		C16E97E81535550200C965F5 /* libShelley.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libShelley.a; path = "../../lib/Shelley/build/Release-iphoneos/libShelley.a"; sourceTree = "<group>"; };
 		D6225F961436D886002B04AA /* Controls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Controls.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6225F9A1436D886002B04AA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -193,6 +197,8 @@
 				49543E4F1538793B001D87F1 /* CarouselViewController.h */,
 				49543E501538793B001D87F1 /* CarouselViewController.m */,
 				49543E5315387AD8001D87F1 /* CarouselViewController.xib */,
+				C164121D1543BFDC00FECF23 /* EditableTableViewController.h */,
+				C164121E1543BFDC00FECF23 /* EditableTableViewController.m */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -373,6 +379,7 @@
 				D69137BF1436DB00003C26AC /* UISwitchViewController.m in Sources */,
 				49543E4D1538791E001D87F1 /* Carousel.m in Sources */,
 				49543E511538793B001D87F1 /* CarouselViewController.m in Sources */,
+				C164121F1543BFDC00FECF23 /* EditableTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,6 +393,7 @@
 				D69137C71436E112003C26AC /* UISwitchViewController.m in Sources */,
 				49543E4E1538791E001D87F1 /* Carousel.m in Sources */,
 				49543E521538793B001D87F1 /* CarouselViewController.m in Sources */,
+				C16412201543BFDC00FECF23 /* EditableTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -510,7 +518,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "Controls Frankified";
-				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../../lib/Shelley/**";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../../lib/Shelley/** \"${PROJECT_DIR}/../..//**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -535,7 +543,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "Controls Frankified";
-				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../../lib/Shelley/**";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../../lib/Shelley/** \"${PROJECT_DIR}/../..//**";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};

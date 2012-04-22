@@ -9,10 +9,12 @@
 #import "RootViewController.h"
 #import "UISwitchViewController.h"
 #import "CarouselViewController.h"
+#import "EditableTableViewController.h"
 
 typedef enum {
     RowsUISwitch,
     RowsCarousel,
+    RowsEditableTable,
     RowsCount
 } Rows;
 
@@ -80,6 +82,10 @@ typedef enum {
         case RowsCarousel:
             cell.textLabel.text = @"Carousel";
             break;
+        case RowsEditableTable:
+            cell.textLabel.text = @"Editable Table";
+            break;
+
     }
 
     // Configure the cell.
@@ -138,6 +144,8 @@ typedef enum {
         case RowsCarousel:
             detailVC = [[CarouselViewController alloc] initWithNibName:@"CarouselViewController" bundle:nil];
             break;
+        case RowsEditableTable:
+            detailVC = [[EditableTableViewController alloc] init];
     }
     
     [self.navigationController pushViewController:detailVC animated:YES];
