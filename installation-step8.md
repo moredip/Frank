@@ -2,7 +2,7 @@
 layout: default
 title: Step 8 - Test 'er out!
 ---
-[Previous](installation-step7.html)
+[Previous](installation-step7.html) | [Next](installation-step9.html)
 
 You are almost done at this point. 
 
@@ -18,10 +18,10 @@ inspector embedded within Frank!
 
 That means you've successfully Frankified your application. 
 
-*Congratulations! You're ready to write [Cucumber stories](user_stories.html) and automate
- your iOS testing!*
+Congratulations! You're ready to write [Cucumber stories](user_stories.html) and automate
+ your iOS testing!
 
 **\[1\]** XCode might not show the right name in the Scheme Selector. In XCode 4.3, it shows *"YourAppName Copy"* instead
 of *"YourAppName Frankified"* as it should!
 
-[Previous](installation-step7.html)
+[Previous](installation-step7.html) | [Next](installation-step9.html)
