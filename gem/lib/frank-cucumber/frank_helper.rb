@@ -8,6 +8,8 @@ module FrankHelper
   HOST = "localhost"
   FRANK_PORT = 37265
 
+  include WaitHelper
+
   class << self
     # TODO: adding an ivar to the module itself is a big ugyl hack. We need a FrankDriver class, or similar
     attr_accessor :selector_engine
@@ -21,7 +23,7 @@ module FrankHelper
     raise "could not find anything matching [#{uiquery}] to touch" if views_touched.empty?
     #TODO raise warning if views_touched.count > 1
   end
-  
+
   def element_exists( query )
     matches = frankly_map( query, 'accessibilityLabel' )
     # TODO: raise warning if matches.count > 1
@@ -45,6 +47,41 @@ module FrankHelper
   def check_view_with_mark_exists(expected_mark)
     check_element_exists( "view marked:'#{expected_mark}'" )
   end
+
+  # Waits for any of the selectors provided to match a view. Returns true
+  # as soon as we find a matching view, otherwise keeps testing until timeout.
+  # The first selector which matches is passed to a block if it was provided. 
+  def wait_for_element_to_exist(*selectors,&block)
+    wait_until(:message => "Waited for element matching any of #{selectors.join(', ')} to exist") do
+      at_least_one_exists = false
+      selectors.each do |selector|
+        if element_exists( selector )
+          at_least_one_exists = true
+          block.call(selector) if block
+        end
+      end
+      at_least_one_exists
+    end
+  end
+
+  def wait_for_element_to_not_exist(selector)
+    wait_until(:message => "Waited for element #{selector} to not exist") do
+      !element_exists(selector)
+    end
+  end
+
+  def wait_for_element_to_exist_and_then_touch_it(*selectors)
+    wait_for_element_to_exist(*selectors) do |sel| 
+      touch(sel)
+    end
+  end
+
+  def wait_for_nothing_to_be_animating( timeout = false )
+    wait_until :timeout => timeout do
+      !element_exists('view isAnimating')
+    end
+  end
+
 
   # a better name would be element_exists_and_is_not_hidden
   def element_is_not_hidden(query)
