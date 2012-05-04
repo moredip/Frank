@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C13D1EDF15542510001C5DE6 /* ControlsAppDelegate+FrankExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C13D1EDE15542510001C5DE6 /* ControlsAppDelegate+FrankExtensions.m */; };
 		D6225F9B1436D886002B04AA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6225F9A1436D886002B04AA /* UIKit.framework */; };
 		D6225F9D1436D886002B04AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6225F9C1436D886002B04AA /* Foundation.framework */; };
 		D6225F9F1436D886002B04AA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6225F9E1436D886002B04AA /* CoreGraphics.framework */; };
@@ -52,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C13D1EDE15542510001C5DE6 /* ControlsAppDelegate+FrankExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ControlsAppDelegate+FrankExtensions.m"; sourceTree = "<group>"; };
 		D6225F961436D886002B04AA /* Controls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Controls.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6225F9A1436D886002B04AA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D6225F9C1436D886002B04AA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -165,6 +167,7 @@
 		D69137C11436E0EF003C26AC /* Frank */ = {
 			isa = PBXGroup;
 			children = (
+				C13D1EDE15542510001C5DE6 /* ControlsAppDelegate+FrankExtensions.m */,
 				D6FD775D1437E46700B38060 /* Frank.xcodeproj */,
 			);
 			name = Frank;
@@ -323,6 +326,7 @@
 				D69137C51436E112003C26AC /* ControlsAppDelegate.m in Sources */,
 				D69137C61436E112003C26AC /* RootViewController.m in Sources */,
 				D69137C71436E112003C26AC /* UISwitchViewController.m in Sources */,
+				C13D1EDF15542510001C5DE6 /* ControlsAppDelegate+FrankExtensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
