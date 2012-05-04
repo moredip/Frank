@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C13D1EDF15542510001C5DE6 /* ControlsAppDelegate+FrankExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C13D1EDE15542510001C5DE6 /* ControlsAppDelegate+FrankExtensions.m */; };
+		C13D1EF815542E08001C5DE6 /* libShelley.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C13D1EF315542DF0001C5DE6 /* libShelley.a */; };
 		D6225F9B1436D886002B04AA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6225F9A1436D886002B04AA /* UIKit.framework */; };
 		D6225F9D1436D886002B04AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6225F9C1436D886002B04AA /* Foundation.framework */; };
 		D6225F9F1436D886002B04AA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6225F9E1436D886002B04AA /* CoreGraphics.framework */; };
@@ -36,6 +37,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		C13D1EF215542DF0001C5DE6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C13D1EEA15542DEF001C5DE6 /* Shelley.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D6E8FF3213D3DC9200D24F43;
+			remoteInfo = Shelley;
+		};
+		C13D1EF415542DF0001C5DE6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C13D1EEA15542DEF001C5DE6 /* Shelley.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D6CF39AC13D3E481000C7901;
+			remoteInfo = "Unit Tests";
+		};
+		C13D1EF615542E05001C5DE6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C13D1EEA15542DEF001C5DE6 /* Shelley.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D6E8FF3113D3DC9200D24F43;
+			remoteInfo = Shelley;
+		};
 		D6445A421437E65B00B20F48 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D6FD775D1437E46700B38060 /* Frank.xcodeproj */;
@@ -54,6 +76,7 @@
 
 /* Begin PBXFileReference section */
 		C13D1EDE15542510001C5DE6 /* ControlsAppDelegate+FrankExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ControlsAppDelegate+FrankExtensions.m"; sourceTree = "<group>"; };
+		C13D1EEA15542DEF001C5DE6 /* Shelley.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Shelley.xcodeproj; path = ../../lib/Shelley/Shelley.xcodeproj; sourceTree = "<group>"; };
 		D6225F961436D886002B04AA /* Controls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Controls.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6225F9A1436D886002B04AA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D6225F9C1436D886002B04AA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -94,6 +117,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D6445A471437EB5400B20F48 /* libFrank.a in Frameworks */,
+				C13D1EF815542E08001C5DE6 /* libShelley.a in Frameworks */,
 				D69137CB1436E112003C26AC /* CoreGraphics.framework in Frameworks */,
 				D69137DB1436E1D2003C26AC /* CFNetwork.framework in Frameworks */,
 				D69137C91436E112003C26AC /* UIKit.framework in Frameworks */,
@@ -104,6 +128,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C13D1EEB15542DEF001C5DE6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C13D1EF315542DF0001C5DE6 /* libShelley.a */,
+				C13D1EF515542DF0001C5DE6 /* Unit Tests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		D6225F8B1436D886002B04AA = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +200,7 @@
 		D69137C11436E0EF003C26AC /* Frank */ = {
 			isa = PBXGroup;
 			children = (
+				C13D1EEA15542DEF001C5DE6 /* Shelley.xcodeproj */,
 				C13D1EDE15542510001C5DE6 /* ControlsAppDelegate+FrankExtensions.m */,
 				D6FD775D1437E46700B38060 /* Frank.xcodeproj */,
 			);
@@ -213,6 +247,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				C13D1EF715542E05001C5DE6 /* PBXTargetDependency */,
 				D6445A431437E65B00B20F48 /* PBXTargetDependency */,
 			);
 			name = "Controls Frankified";
@@ -243,6 +278,10 @@
 					ProductGroup = D6FD775E1437E46700B38060 /* Products */;
 					ProjectRef = D6FD775D1437E46700B38060 /* Frank.xcodeproj */;
 				},
+				{
+					ProductGroup = C13D1EEB15542DEF001C5DE6 /* Products */;
+					ProjectRef = C13D1EEA15542DEF001C5DE6 /* Shelley.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -253,6 +292,20 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		C13D1EF315542DF0001C5DE6 /* libShelley.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libShelley.a;
+			remoteRef = C13D1EF215542DF0001C5DE6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C13D1EF515542DF0001C5DE6 /* Unit Tests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Unit Tests.octest";
+			remoteRef = C13D1EF415542DF0001C5DE6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		D6FD77621437E46800B38060 /* libFrank.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -333,6 +386,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		C13D1EF715542E05001C5DE6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Shelley;
+			targetProxy = C13D1EF615542E05001C5DE6 /* PBXContainerItemProxy */;
+		};
 		D6445A431437E65B00B20F48 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Frank;
