@@ -22,5 +22,4 @@ MAKE_CATEGORIES_LOADABLE(UIView_KIFAdapter)
     NSLog(@"delegating to KIF's tapAtPoint:");
     [self tapAtPoint:CGPointMake([x floatValue], [y floatValue])];
 }
-
 @end
