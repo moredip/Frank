@@ -17,6 +17,7 @@
 		86123C8914F8221000266AFC /* UIImage+Frank.m in Sources */ = {isa = PBXBuildFile; fileRef = 86123C8714F8221000266AFC /* UIImage+Frank.m */; };
 		AA747D9F0F9514B9006C5449 /* Frank_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* Frank_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		C1C6D1EE1535522300EAA0CF /* UIView+FrankGestures.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C6D1EC1535522300EAA0CF /* UIView+FrankGestures.m */; };
 		D629926B11AB2D1F00CE0FB0 /* AsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = D629926911AB2D1F00CE0FB0 /* AsyncSocket.h */; };
 		D629926C11AB2D1F00CE0FB0 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D629926A11AB2D1F00CE0FB0 /* AsyncSocket.m */; };
 		D629928111AB2D4C00CE0FB0 /* DDData.h in Headers */ = {isa = PBXBuildFile; fileRef = D629927111AB2D4C00CE0FB0 /* DDData.h */; };
@@ -155,6 +156,23 @@
 		D6FA01B714283C4F00576AD1 /* UIView-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FA01AA14283C4F00576AD1 /* UIView-KIFAdditions.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		D6FA01B714283C4F00576AD4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D6FA01B714283C4F00576AD2 /* Shelley.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D7E74DDAB773E391ED7E3619;
+			remoteInfo = Shelley;
+		};
+		D6FA01B714283C4F00576AD6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D6FA01B714283C4F00576AD2 /* Shelley.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 47E531CDDEB088A265C57800;
+			remoteInfo = "Unit Tests";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		0071264414F8956700E738ED /* ViewJSONSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewJSONSerializer.h; path = src/ViewJSONSerializer.h; sourceTree = "<group>"; };
 		0071264514F8956700E738ED /* ViewJSONSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewJSONSerializer.m; path = src/ViewJSONSerializer.m; sourceTree = "<group>"; };
@@ -166,6 +184,7 @@
 		86123C8714F8221000266AFC /* UIImage+Frank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Frank.m"; path = "src/UIImage+Frank.m"; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* Frank_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Frank_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C1C6D1EC1535522300EAA0CF /* UIView+FrankGestures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+FrankGestures.m"; path = "src/UIView+FrankGestures.m"; sourceTree = "<group>"; };
 		D2AAC07E0554694100DB518D /* libFrank.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFrank.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D629926911AB2D1F00CE0FB0 /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AsyncSocket.h; path = lib/cocoahttpserver/AsyncSocket.h; sourceTree = "<group>"; };
 		D629926A11AB2D1F00CE0FB0 /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AsyncSocket.m; path = lib/cocoahttpserver/AsyncSocket.m; sourceTree = "<group>"; };
@@ -306,6 +325,7 @@
 		D6FA01A814283C4F00576AD1 /* UITouch-KIFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITouch-KIFAdditions.m"; path = "lib/KIF/Additions/UITouch-KIFAdditions.m"; sourceTree = "<group>"; };
 		D6FA01A914283C4F00576AD1 /* UIView-KIFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView-KIFAdditions.h"; path = "lib/KIF/Additions/UIView-KIFAdditions.h"; sourceTree = "<group>"; };
 		D6FA01AA14283C4F00576AD1 /* UIView-KIFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView-KIFAdditions.m"; path = "lib/KIF/Additions/UIView-KIFAdditions.m"; sourceTree = "<group>"; };
+		D6FA01B714283C4F00576AD2 /* Shelley.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Shelley.xcodeproj; path = lib/Shelley/Shelley.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -332,6 +352,7 @@
 		0867D691FE84028FC02AAC07 /* Frank */ = {
 			isa = PBXGroup;
 			children = (
+				D6FA01B714283C4F00576AD2 /* Shelley.xcodeproj */,
 				D6782D8511BC423900FD0CE1 /* frank_static_resources.bundle */,
 				D62AEFA911B4897B00B824F3 /* cucumber */,
 				D629926711AB2CF700CE0FB0 /* 3rd Party */,
@@ -392,6 +413,7 @@
 				D6BD5221146C36A3001770B1 /* UIQuerySelectorEngine.m */,
 				0071264414F8956700E738ED /* ViewJSONSerializer.h */,
 				0071264514F8956700E738ED /* ViewJSONSerializer.m */,
+				C1C6D1EC1535522300EAA0CF /* UIView+FrankGestures.m */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -584,6 +606,15 @@
 			name = "KIF Additions";
 			sourceTree = "<group>";
 		};
+		D6FA01B714283C4F00576AD3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D6FA01B714283C4F00576AD5 /* libShelley.a */,
+				D6FA01B714283C4F00576AD7 /* Unit Tests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -708,12 +739,35 @@
 			mainGroup = 0867D691FE84028FC02AAC07 /* Frank */;
 			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = D6FA01B714283C4F00576AD3 /* Products */;
+					ProjectRef = D6FA01B714283C4F00576AD2 /* Shelley.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D2AAC07D0554694100DB518D /* Frank */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		D6FA01B714283C4F00576AD5 /* libShelley.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libShelley.a;
+			remoteRef = D6FA01B714283C4F00576AD4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D6FA01B714283C4F00576AD7 /* Unit Tests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Unit Tests.octest";
+			remoteRef = D6FA01B714283C4F00576AD6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D6782DD711BC67FE00FD0CE1 /* Resources */ = {
@@ -802,6 +856,7 @@
 				D6BD5223146C36A3001770B1 /* UIQuerySelectorEngine.m in Sources */,
 				0071264714F8956700E738ED /* ViewJSONSerializer.m in Sources */,
 				86123C8914F8221000266AFC /* UIImage+Frank.m in Sources */,
+				C1C6D1EE1535522300EAA0CF /* UIView+FrankGestures.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
