@@ -1,6 +1,6 @@
 [submodule "lib/KIF"]
 	path = lib/KIF
-	url = https://github.com/TestingWithFrank/KIF.git
+	url = https://github.com/square/KIF.git
 [submodule "lib/UISpec"]
 	path = lib/UISpec
 	url = https://github.com/moredip/UISpec
