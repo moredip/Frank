@@ -1,6 +1,7 @@
 require 'net/http'
 require 'json'
 require 'frank-cucumber/frank_localize'
+require 'frank-cucumber/wait_helper'
 
 module Frank module Cucumber
 
