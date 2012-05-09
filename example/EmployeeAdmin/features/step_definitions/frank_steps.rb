@@ -26,9 +26,18 @@ When /^I touch the "([^\"]*)" nav bar button$/ do |mark|
   touch( "navigationButton marked:'#{mark}'" )
 end
 
-When /^I touch the screen at \((\d+),(\d+)\)$/ do |x, y|
-  frankly_map( "view:'UILayoutContainerView'", "touchx:y:", x, y )
+When /^I tap "([^\"]*)"$/ do |mark|
+  frankly_map( "view marked:'#{mark}' first", "tap" )
 end
+
+When /^I tap the screen at \((\d+),(\d+)\)$/ do |x, y|
+  frankly_map( "view first", "tapAtPoint:", serialize_point(x,y) )
+end
+
+When /^I swipe "([^\"]*)" (.*)wards$/ do |mark,dir|
+  frankly_map( "label marked:'#{mark}'", "swipeInDirection:", dir )
+end
+
 
 Then /^I should see an alert view saying "([^\"]*)"$/ do |expected_mark|
   check_element_exists( "alertView view marked:'#{expected_mark}'" )
