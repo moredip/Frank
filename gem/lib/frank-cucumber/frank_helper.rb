@@ -49,6 +49,11 @@ module FrankHelper
     check_element_exists( "view marked:'#{expected_mark}'" )
   end
 
+  def check_view_with_mark_does_not_exist(expected_mark)
+    check_element_does_not_exist( "view marked:'#{expected_mark}'" )
+  end
+
+
   # Waits for any of the selectors provided to match a view. Returns true
   # as soon as we find a matching view, otherwise keeps testing until timeout.
   # The first selector which matches is passed to a block if it was provided. 
