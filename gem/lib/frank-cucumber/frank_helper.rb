@@ -1,14 +1,11 @@
-require 'net/http'
 require 'json'
+require 'frank-cucumber/gateway'
 require 'frank-cucumber/frank_localize'
 require 'frank-cucumber/wait_helper'
 
 module Frank module Cucumber
 
 module FrankHelper 
-  HOST = "localhost"
-  FRANK_PORT = 37265
-
   include WaitHelper
 
   class << self
@@ -19,6 +16,10 @@ module FrankHelper
     end
   end
 
+  def selector_engine
+    Frank::Cucumber::FrankHelper.selector_engine || 'uiquery' # default to UIQuery for backwards compatibility
+  end
+  
   def touch( uiquery )
     views_touched = frankly_map( uiquery, 'touch' )
     raise "could not find anything matching [#{uiquery}] to touch" if views_touched.empty?
@@ -97,45 +98,31 @@ module FrankHelper
   end
 
   def app_exec(method_name, *method_args)
-    operation_map = {
-      :method_name => method_name,
-      :arguments => method_args
-    }
+    operation_map = Gateway.build_operation_map(method_name,method_args)
     
-    before = Time.now
-    res = post_to_uispec_server( 'app_exec', :operation => operation_map )
+    res = frank_server.send_post( 
+      'app_exec', 
+      :operation => operation_map 
+    )
 
-    #logger.debug( "MAP applying #{method_name} with args:( #{method_args.inspect} ) to 'Application Delegate' took #{Time.now - before} seconds" )
-
-    res = JSON.parse( res )
-    if res['outcome'] != 'SUCCESS'
-      raise "app_exec #{method_name} failed because: #{res['reason']}\n#{res['details']}"
-    end
-
-    res['results']
+    return Gateway.evaluate_frankly_response( res, "app_exec #{method_name}" )
   end
 
-  def frankly_engine_map( selector_engine, query, method_name, *method_args )
-    operation_map = {
-      :method_name => method_name,
-      :arguments => method_args,
-    }
-    res = post_to_uispec_server( 'map', :query => query, :operation => operation_map, :selector_engine => selector_engine )
-    res = JSON.parse( res )
-    if res['outcome'] != 'SUCCESS'
-      raise "frankly_map #{query} #{method_name} failed because: #{res['reason']}\n#{res['details']}"
-    end
-
-    res['results']
-  end
-  
   def frankly_map( query, method_name, *method_args )
-    selector_engine = Frank::Cucumber::FrankHelper.selector_engine || 'uiquery' # default to UIQuery for backwards compatibility
-    frankly_engine_map( selector_engine, query, method_name, *method_args )
+    operation_map = Gateway.build_operation_map(method_name,method_args)
+
+    res = frank_server.send_post( 
+      'map',
+      :query => query, 
+      :operation => operation_map, 
+      :selector_engine => selector_engine
+    )
+
+    return Gateway.evaluate_frankly_response( res, "frankly_map #{query} #{method_name}" )
   end
 
   def frankly_dump
-    res = get_to_uispec_server( 'dump' )
+    res = frank_server.send_get( 'dump' )
     puts JSON.pretty_generate(JSON.parse(res)) rescue puts res #dumping a super-deep DOM causes errors
   end
 
@@ -144,7 +131,7 @@ module FrankHelper
     path += '/allwindows' if allwindows
     path += "/frame/" + URI.escape(subframe) if (subframe != nil)
 
-    data = get_to_uispec_server( path )
+    data = frank_server.send_get( path )
 
     open(filename, "wb") do |file|
       file.write(data)
@@ -160,15 +147,14 @@ module FrankHelper
   end
 
   def frankly_current_orientation
-    res = get_to_uispec_server( 'orientation' )
+    res = frank_server.send_get( 'orientation' )
     orientation = JSON.parse( res )['orientation']
     puts "orientation reported as '#{orientation}'" if $DEBUG
     orientation
   end
 
-
   def frankly_is_accessibility_enabled
-    res = get_to_uispec_server( 'accessibility_check' )
+    res = frank_server.send_get( 'accessibility_check' )
     JSON.parse( res )['accessibility_enabled'] == 'true'
   end
 
@@ -210,50 +196,15 @@ module FrankHelper
   end
   
   def frankly_ping
-    get_to_uispec_server('')
-    return true
-  rescue FrankNetworkError
-    return false
+    frank_server.ping
   end
 
-  #taken from Ian Dee's Encumber
-  def post_to_uispec_server( verb, command_hash )
-    url = frank_url_for( verb )
-    req = Net::HTTP::Post.new url.path
-    req.body = command_hash.to_json
-
-    make_http_request( url, req )
+  def frank_server
+    @_frank_server ||= Frank::Cucumber::Gateway.new
   end
+ 
 
-  def get_to_uispec_server( verb )
-    url = frank_url_for( verb )
-    req = Net::HTTP::Get.new url.path
-    make_http_request( url, req )
-  end
 
-  def frank_url_for( verb , port=nil )
-    port ||= FRANK_PORT
-    
-    url = URI.parse "http://#{HOST}:#{port}/"
-    url.path = '/'+verb
-    url
-  end
-
-  def make_http_request( url, req )
-    http = Net::HTTP.new(url.host, url.port)
-
-    begin
-      res = http.start do |sess|
-        sess.request req
-      end
-
-      res.body
-    rescue Errno::ECONNREFUSED
-      raise FrankNetworkError 
-    rescue EOFError
-      raise FrankNetworkError
-    end
-  end
   
   def start_recording
     %x{osascript<<APPLESCRIPT
@@ -331,39 +282,5 @@ end tell
   end
 end
 
-class FrankNetworkError < RuntimeError
-  OVERLY_VERBOSE_YET_HELPFUL_ERROR_MESSAGE = <<EOS
-  
-
-*********************************************
-Oh dear. Your app fell over and can't get up.
-*********************************************
-
-
-We just encountered an error while trying to talk to the Frank server embedded 
-within the app under test. This usually means that the app has just crashed, 
-either while carrying out the current step or while finishing up the previous 
-step.
-
-Here are some things you could do next:
-
-- Take a look at the app's logs to see why it crashed. You can view the logs 
-  in Console.app (a search for 'Frankified' will usually find your frankified 
-  app's output).
-
-- Launch your frankified app in the XCode debugger and then run this scenario 
-  again. You'll get lots of helpful output from XCode. Don't forget to do 
-  something to prevent cucumber from automatically re-launching your app when 
-  you run the scenario by hand. If you don't prevent the relaunch then you 
-  won't still be in the XCode debugger when the crash happens.
-
-  
-
-EOS
-
-  def initialize
-    super OVERLY_VERBOSE_YET_HELPFUL_ERROR_MESSAGE
-  end
-end
 
 end end
