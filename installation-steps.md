@@ -5,23 +5,11 @@ title: Installing Frank
 
 ## Step 1 - Turn on Accessibility features
 
-You will need to turn on the accessibilty features on both your
-desktop and the iPhone/iPad simulator. 
+You will need to turn on the accessibility features on the machine hosting your iOS simulator.  Frank leverages accessibility to automate some actions with the simulator (such as rotating the device).
 
-Frank uses accessibility labels to identify controls within your app.
-
-* **Desktop** - go to System Preferences -> Universal Access
+On the machine which will be hosting the iOS Simulator go to System Preferences -> Universal Access
 and Check “Enable access for assistive devices”.
 ![Universal Access Screenshot](images/screenshots/mac-universal-access.png)
-
-* **Simulator/Device** -  launch the settings app, select General,
-   select Accessibility, and then switch the Accessibility Inspector
-   to On. 
-![iOS Simulator Accessibility Screenshot](images/screenshots/ios-accessibility-inspector.png)
-
-In the simulator you will now have a little Accessibility Inspector
-window permanently overlayed. Annoyingly there’s nothing you can do
-about this apart from drag it to one side of the screen.
 
 ## Step 2 - Install Frank
 In a Terminal window, run:
@@ -32,18 +20,20 @@ $ gem install frank-cucumber
 
 This will download and install the [frank-cucumber gem](http://rubygems.org/gems/frank-cucumber). 
 
-**_Depending on your ruby setup you might need to run_ **
+**_Depending on your ruby setup you might need to run_**
 {%highlight bash %}
 $ sudo gem install frank-cucumber
 {% endhighlight %}
 
+We recommend using rvm to manage your ruby setup. If you use rvm there will be no need for `sudo`, and no need to mess with your system install of ruby.
+
 ## Step 3 - Run frank-skeleton
 
 At this point, you should create an [XCode project for your app](https://developer.apple.com/library/ios/#referencelibrary/GettingStarted/RoadMapiOS/Introduction/Introduction.html)
-(unless you already have a project setup!!)
+(unless you already have a project setup!)
 
-In a Terminal window, cd to your project directory (folder where the
-.xcodeproj file lives) and run frank-skeleton: 
+In a Terminal window, cd to your project directory (the folder where the
+.xcodeproj file lives) and run `frank-skeleton`: 
 
 {% highlight bash %}
 $ cd /path/to/my/awesome/app
@@ -53,11 +43,11 @@ $ frank-skeleton
 This will add a `Frank` subdirectory containing Frank's server code plus some
 initial cucumber plumbing to your app (after checking with you first!).
 
-## Step 4 - Create a Frankified target!
+## Step 4 - Create a Frankified target
 
 You need to create a seperate XCode app target for a 'Frankified'
-version of your app. This Frankified target will link the
-[Frank server component](frankly.html) into your app, so that it can be automated. 
+version of your app. This Frankified target will link in the
+[Frank server component](frankly.html) into your app as a static library enabling your app to be automated. 
 
 In XCode, switch to the Project Navigator by hitting Command-1, and
 then select your project by clicking on it. You should now see your
@@ -89,8 +79,6 @@ In the "Add to targets" section at the bottom of the dialog make sure you
 check only the Frankified target you just created, and uncheck any
 other targets. Now you can click Add.
 ![Only add to Frankified Target](./images/screenshots/xcode-add-frank-to-target.png)
-
-[Previous](installation-step4.html) | [Next](installation-step6.html) 
 
 
 ## Step 6 - Add dependencies
