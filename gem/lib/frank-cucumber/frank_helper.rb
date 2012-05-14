@@ -212,9 +212,7 @@ module FrankHelper
   def frankly_ping
     get_to_uispec_server('')
     return true
-  rescue Errno::ECONNREFUSED
-    return false
-  rescue EOFError
+  rescue FrankNetworkError
     return false
   end
 
@@ -244,11 +242,17 @@ module FrankHelper
   def make_http_request( url, req )
     http = Net::HTTP.new(url.host, url.port)
 
-    res = http.start do |sess|
-      sess.request req
-    end
+    begin
+      res = http.start do |sess|
+        sess.request req
+      end
 
-    res.body
+      res.body
+    rescue Errno::ECONNREFUSED
+      raise FrankNetworkError 
+    rescue EOFError
+      raise FrankNetworkError
+    end
   end
   
   def start_recording
@@ -327,5 +331,39 @@ end tell
   end
 end
 
+class FrankNetworkError < RuntimeError
+  OVERLY_VERBOSE_YET_HELPFUL_ERROR_MESSAGE = <<EOS
+  
+
+*********************************************
+Oh dear. Your app fell over and can't get up.
+*********************************************
+
+
+We just encountered an error while trying to talk to the Frank server embedded 
+within the app under test. This usually means that the app has just crashed, 
+either while carrying out the current step or while finishing up the previous 
+step.
+
+Here are some things you could do next:
+
+- Take a look at the app's logs to see why it crashed. You can view the logs 
+  in Console.app (a search for 'Frankified' will usually find your frankified 
+  app's output).
+
+- Launch your frankified app in the XCode debugger and then run this scenario 
+  again. You'll get lots of helpful output from XCode. Don't forget to do 
+  something to prevent cucumber from automatically re-launching your app when 
+  you run the scenario by hand. If you don't prevent the relaunch then you 
+  won't still be in the XCode debugger when the crash happens.
+
+  
+
+EOS
+
+  def initialize
+    super OVERLY_VERBOSE_YET_HELPFUL_ERROR_MESSAGE
+  end
+end
 
 end end
