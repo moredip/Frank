@@ -19,9 +19,27 @@ class Gateway
   end
 
   class << self
-    def build_operation_map( method_name, method_args )
+    def build_operation_map( method_sig, method_args )
+      num_args_according_to_method_sig = method_sig.count(':')
+
+      if num_args_according_to_method_sig != method_args.count
+        raise <<-EOS
+          
+          The method you've specified - #{method_sig} - wants #{num_args_according_to_method_sig} arguments, but you've supplied #{method_args.count} arguments.
+
+        EOS
+      end
+
+      if num_args_according_to_method_sig > 0 && !method_sig.end_with?(':')
+        raise <<-EOS
+
+          The method signature you've specified - #{method_sig} - is invalid. Objective C method signatures which take parameters must end with a :
+
+        EOS
+      end
+
       {
-        :method_name => method_name,
+        :method_name => method_sig,
         :arguments => method_args,
       }
     end
