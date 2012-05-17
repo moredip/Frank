@@ -12,7 +12,12 @@
 
 MAKE_CATEGORIES_LOADABLE(UIView_ShelleyExtensions)
 
-BOOL substringMatch(NSString *actualString, NSString *expectedSubstring){	
+BOOL substringMatch(NSString *actualString, NSString *expectedSubstring){
+    // for some reason Apple like to re-encode some spaces into non-breaking spaces, for example in the 
+    // UITextFieldLabel's accessibilityLabel. We work around that here by subbing the nbsp for a regular space
+    NSString *nonBreakingSpace = [NSString stringWithUTF8String:"\u00a0"];
+    actualString = [actualString stringByReplacingOccurrencesOfString:nonBreakingSpace withString:@" "];
+    
     return actualString && ([actualString rangeOfString:expectedSubstring].location != NSNotFound);    
 }
 
