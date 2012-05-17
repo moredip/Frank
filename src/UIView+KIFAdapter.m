@@ -11,15 +11,27 @@
 
 MAKE_CATEGORIES_LOADABLE(UIView_KIFAdapter)
 
-@implementation UIView(KIFAdapter) 
+@implementation UIView(KIFAdapter)
 
-- (void)touch{
-    NSLog(@"delegating to KIF's tap");
-    [self tap];
+- (BOOL) touchPointIfInsideWindow:(CGPoint)point{
+
+    CGPoint pointInWindowCoords = [self.window convertPoint:point fromView:self];
+    if( !CGRectContainsPoint(self.window.bounds, pointInWindowCoords) ){
+        return NO;
+    }
+
+    // delegate to KIF
+    [self tapAtPoint:point];
+    return YES;
 }
 
-- (void) touchx:(NSNumber *)x y:(NSNumber *)y {
-    NSLog(@"delegating to KIF's tapAtPoint:");
-    [self tapAtPoint:CGPointMake([x floatValue], [y floatValue])];
+- (BOOL)touch{
+    CGPoint centerPoint = CGPointMake(self.frame.size.width * 0.5f, self.frame.size.height * 0.5f);
+    return [self touchPointIfInsideWindow:centerPoint];
 }
+
+- (BOOL) touchx:(NSNumber *)x y:(NSNumber *)y {
+    return [self touchPointIfInsideWindow:CGPointMake([x floatValue], [y floatValue])];
+}
+
 @end

@@ -22,9 +22,9 @@ module FrankHelper
   end
   
   def touch( uiquery )
-    views_touched = frankly_map( uiquery, 'touch' )
-    raise "could not find anything matching [#{uiquery}] to touch" if views_touched.empty?
-    #TODO raise warning if views_touched.count > 1
+    touch_successes = frankly_map( uiquery, 'touch' )
+    raise "could not find anything matching [#{uiquery}] to touch" if touch_successes.empty?
+    raise "some views could not be touched (probably because they are not within the current viewport)" if touch_successes.include?(false)
   end
 
   def element_exists( query )

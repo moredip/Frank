@@ -11,3 +11,7 @@ Feature:
     Given I see the 1st image in the carousel
     When I page the carousel to the right
     Then I see the 2nd image in the carousel
+
+	Scenario: Trying to tap something that's not in view
+    Given I see the 1st image in the carousel
+		Then I shouldn't be able to touch the 3rd image in the carousel
