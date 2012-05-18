@@ -154,6 +154,8 @@
 		D6FA01B514283C4F00576AD1 /* UITouch-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FA01A814283C4F00576AD1 /* UITouch-KIFAdditions.m */; };
 		D6FA01B614283C4F00576AD1 /* UIView-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D6FA01A914283C4F00576AD1 /* UIView-KIFAdditions.h */; };
 		D6FA01B714283C4F00576AD1 /* UIView-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FA01AA14283C4F00576AD1 /* UIView-KIFAdditions.m */; };
+		D6FA01B714283C4F00576ADD /* FEXTappableConfirmationButton.h in Headers */ = {isa = PBXBuildFile; fileRef = D6FA01B714283C4F00576ADC /* FEXTappableConfirmationButton.h */; };
+		D6FA01B714283C4F00576ADF /* FEXTappableConfirmationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FA01B714283C4F00576ADE /* FEXTappableConfirmationButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -326,6 +328,8 @@
 		D6FA01A914283C4F00576AD1 /* UIView-KIFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView-KIFAdditions.h"; path = "lib/KIF/Additions/UIView-KIFAdditions.h"; sourceTree = "<group>"; };
 		D6FA01AA14283C4F00576AD1 /* UIView-KIFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView-KIFAdditions.m"; path = "lib/KIF/Additions/UIView-KIFAdditions.m"; sourceTree = "<group>"; };
 		D6FA01B714283C4F00576AD2 /* Shelley.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Shelley.xcodeproj; path = lib/Shelley/Shelley.xcodeproj; sourceTree = "<group>"; };
+		D6FA01B714283C4F00576ADC /* FEXTappableConfirmationButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FEXTappableConfirmationButton.h; path = src/FEXTappableConfirmationButton.h; sourceTree = "<group>"; };
+		D6FA01B714283C4F00576ADE /* FEXTappableConfirmationButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FEXTappableConfirmationButton.m; path = src/FEXTappableConfirmationButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -376,6 +380,8 @@
 		08FB77AEFE84172EC02AAC07 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				D6FA01B714283C4F00576ADE /* FEXTappableConfirmationButton.m */,
+				D6FA01B714283C4F00576ADC /* FEXTappableConfirmationButton.h */,
 				86123C8614F8221000266AFC /* UIImage+Frank.h */,
 				86123C8714F8221000266AFC /* UIImage+Frank.m */,
 				D67F2ABD13F5F55A00A0BFF1 /* FrankLoader.h */,
@@ -694,6 +700,7 @@
 				D6BD5222146C36A3001770B1 /* UIQuerySelectorEngine.h in Headers */,
 				0071264614F8956700E738ED /* ViewJSONSerializer.h in Headers */,
 				86123C8814F8221000266AFC /* UIImage+Frank.h in Headers */,
+				D6FA01B714283C4F00576ADD /* FEXTappableConfirmationButton.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -857,6 +864,7 @@
 				0071264714F8956700E738ED /* ViewJSONSerializer.m in Sources */,
 				86123C8914F8221000266AFC /* UIImage+Frank.m in Sources */,
 				C1C6D1EE1535522300EAA0CF /* UIView+FrankGestures.m in Sources */,
+				D6FA01B714283C4F00576ADF /* FEXTappableConfirmationButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
