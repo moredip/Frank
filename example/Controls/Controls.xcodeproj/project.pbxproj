@@ -536,7 +536,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "Controls Frankified";
-				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../../lib/Shelley/** \"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../..//**";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../../lib/Shelley/** \"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../..//**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -561,7 +561,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "Controls Frankified";
-				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../../lib/Shelley/** \"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../..//**";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../../lib/Shelley/** \"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../..//**";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
