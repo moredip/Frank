@@ -8,31 +8,18 @@
 
 #import "MapOperationCommand.h"
 
+#import "FranklyProtocolHelper.h"
+
 #import "ViewJSONSerializer.h"
 
 #import "SelectorEngineRegistry.h"
-#import "JSON.h"
+
 #import "Operation.h"
 #import "DumpCommand.h"
 #import "UIQueryWebView.h"
+#import "JSON.h"
 
 @implementation MapOperationCommand
-
-- (NSString *)generateErrorResponseWithReason:(NSString *)reason andDetails:(NSString *)details{
-	NSDictionary *response = [NSDictionary dictionaryWithObjectsAndKeys: 
-							  @"ERROR", @"outcome",
-							  reason, @"reason", 
-							  details, @"details",
-							  nil];
-	return [response JSONRepresentation];
-}
-- (NSString *)generateSuccessResponseWithResults:(NSArray *)results{
-	NSDictionary *response = [NSDictionary dictionaryWithObjectsAndKeys: 
-							  @"SUCCESS", @"outcome",
-							  results, @"results",
-							  nil];
-	return [response JSONRepresentation];
-}
 
 - (id) performOperation:(Operation *)operation onView:(UIView *)view {
     
@@ -79,7 +66,7 @@
     }	
     @catch (NSException * e) {
 		NSLog( @"Exception while using %@ to select views with '%@':\n%@", selectorEngineString, selector, e );
-		return [self generateErrorResponseWithReason:@"invalid selector" andDetails:[e reason]];
+		return [FranklyProtocolHelper generateErrorResponseWithReason:@"invalid selector" andDetails:[e reason]];
 	}
 	
     NSMutableArray *results = [NSMutableArray arrayWithCapacity:[viewsToMap count]];
@@ -90,12 +77,12 @@
 		}
 		@catch (NSException * e) {
 			NSLog( @"Exception while performing operation %@\n%@", operation, e );
-			return [self generateErrorResponseWithReason: [ NSString stringWithFormat:@"encountered error while attempting to perform %@ on selected elements",operation] 
+			return [FranklyProtocolHelper generateErrorResponseWithReason: [ NSString stringWithFormat:@"encountered error while attempting to perform %@ on selected elements",operation]
 											  andDetails:[e reason]];
 		}
 	}
 							   
-   return [self generateSuccessResponseWithResults: results];
+   return [FranklyProtocolHelper generateSuccessResponseWithResults: results];
 }
 
 @end
