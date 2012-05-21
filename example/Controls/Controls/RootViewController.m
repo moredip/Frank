@@ -10,11 +10,13 @@
 #import "UISwitchViewController.h"
 #import "CarouselViewController.h"
 #import "EditableTableViewController.h"
+#import "DataEntryViewController.h"
 
 typedef enum {
     RowsUISwitch,
     RowsCarousel,
     RowsEditableTable,
+    RowsDataEntry,
     RowsCount
 } Rows;
 
@@ -85,6 +87,9 @@ typedef enum {
         case RowsEditableTable:
             cell.textLabel.text = @"Editable Table";
             break;
+        case RowsDataEntry:
+            cell.textLabel.text = @"Data Entry";
+            break;
 
     }
 
@@ -136,18 +141,22 @@ typedef enum {
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UIViewController *detailVC;
-    
+
     switch ([indexPath row]) {
         case RowsUISwitch:
             detailVC = [[UISwitchViewController alloc] initWithNibName:@"UISwitchViewController" bundle:nil];
             break;
         case RowsCarousel:
-            detailVC = [[CarouselViewController alloc] initWithNibName:@"CarouselViewController" bundle:nil];
+            detailVC = [[CarouselViewController alloc] init];
             break;
         case RowsEditableTable:
             detailVC = [[EditableTableViewController alloc] init];
+            break;
+        case RowsDataEntry:
+            detailVC = [[DataEntryViewController alloc] init];
+            break;
     }
-    
+
     [self.navigationController pushViewController:detailVC animated:YES];
     [detailVC release];
 }
