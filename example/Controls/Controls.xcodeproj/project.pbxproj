@@ -28,6 +28,10 @@
 		C16E97E91535550200C965F5 /* libShelley.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C16E97E81535550200C965F5 /* libShelley.a */; };
 		C1AC878E15605FAB002B1165 /* ControlsAppDelegate+FrankExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C1AC878D15605FAB002B1165 /* ControlsAppDelegate+FrankExtensions.m */; };
 		C1C6D1EA15354EF300EAA0CF /* libFrank.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6FD77621437E46800B38060 /* libFrank.a */; };
+		C1E7C1CB1569DA9200CCBCD8 /* DataEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E7C1C91569DA9200CCBCD8 /* DataEntryViewController.m */; };
+		C1E7C1CC1569DA9200CCBCD8 /* DataEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E7C1C91569DA9200CCBCD8 /* DataEntryViewController.m */; };
+		C1E7C1CD1569DA9200CCBCD8 /* DataEntryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1E7C1CA1569DA9200CCBCD8 /* DataEntryViewController.xib */; };
+		C1E7C1CE1569DA9200CCBCD8 /* DataEntryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1E7C1CA1569DA9200CCBCD8 /* DataEntryViewController.xib */; };
 		D6225F9B1436D886002B04AA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6225F9A1436D886002B04AA /* UIKit.framework */; };
 		D6225F9D1436D886002B04AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6225F9C1436D886002B04AA /* Foundation.framework */; };
 		D6225F9F1436D886002B04AA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6225F9E1436D886002B04AA /* CoreGraphics.framework */; };
@@ -86,6 +90,9 @@
 		C164121E1543BFDC00FECF23 /* EditableTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditableTableViewController.m; sourceTree = "<group>"; };
 		C16E97E81535550200C965F5 /* libShelley.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libShelley.a; path = "../../lib/Shelley/build/Release-iphoneos/libShelley.a"; sourceTree = "<group>"; };
 		C1AC878D15605FAB002B1165 /* ControlsAppDelegate+FrankExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ControlsAppDelegate+FrankExtensions.m"; sourceTree = "<group>"; };
+		C1E7C1C81569DA9200CCBCD8 /* DataEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataEntryViewController.h; sourceTree = "<group>"; };
+		C1E7C1C91569DA9200CCBCD8 /* DataEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataEntryViewController.m; sourceTree = "<group>"; };
+		C1E7C1CA1569DA9200CCBCD8 /* DataEntryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DataEntryViewController.xib; sourceTree = "<group>"; };
 		D6225F961436D886002B04AA /* Controls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Controls.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6225F9A1436D886002B04AA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D6225F9C1436D886002B04AA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -201,6 +208,9 @@
 				49543E5315387AD8001D87F1 /* CarouselViewController.xib */,
 				C164121D1543BFDC00FECF23 /* EditableTableViewController.h */,
 				C164121E1543BFDC00FECF23 /* EditableTableViewController.m */,
+				C1E7C1C81569DA9200CCBCD8 /* DataEntryViewController.h */,
+				C1E7C1C91569DA9200CCBCD8 /* DataEntryViewController.m */,
+				C1E7C1CA1569DA9200CCBCD8 /* DataEntryViewController.xib */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -330,6 +340,7 @@
 				49543E44153878FC001D87F1 /* image3.jpg in Resources */,
 				49543E45153878FC001D87F1 /* image4.jpg in Resources */,
 				49543E5415387AD8001D87F1 /* CarouselViewController.xib in Resources */,
+				C1E7C1CD1569DA9200CCBCD8 /* DataEntryViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,6 +359,7 @@
 				49543E4915387905001D87F1 /* image3.jpg in Resources */,
 				49543E4A15387905001D87F1 /* image4.jpg in Resources */,
 				49543E5515387AD8001D87F1 /* CarouselViewController.xib in Resources */,
+				C1E7C1CE1569DA9200CCBCD8 /* DataEntryViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,6 +395,7 @@
 				49543E4D1538791E001D87F1 /* Carousel.m in Sources */,
 				49543E511538793B001D87F1 /* CarouselViewController.m in Sources */,
 				C164121F1543BFDC00FECF23 /* EditableTableViewController.m in Sources */,
+				C1E7C1CB1569DA9200CCBCD8 /* DataEntryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,6 +411,7 @@
 				49543E521538793B001D87F1 /* CarouselViewController.m in Sources */,
 				C16412201543BFDC00FECF23 /* EditableTableViewController.m in Sources */,
 				C1AC878E15605FAB002B1165 /* ControlsAppDelegate+FrankExtensions.m in Sources */,
+				C1E7C1CC1569DA9200CCBCD8 /* DataEntryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,7 +536,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "Controls Frankified";
-				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../../lib/Shelley/** \"${PROJECT_DIR}/../..//**";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../../lib/Shelley/** \"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../..//**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -547,7 +561,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "Controls Frankified";
-				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../../lib/Shelley/** \"${PROJECT_DIR}/../..//**";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../../lib/Shelley/** \"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../..//** \"${PROJECT_DIR}/../..//**";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
