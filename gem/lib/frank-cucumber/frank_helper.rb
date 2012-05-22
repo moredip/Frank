@@ -2,11 +2,13 @@ require 'json'
 require 'frank-cucumber/gateway'
 require 'frank-cucumber/host_scripting'
 require 'frank-cucumber/wait_helper'
+require 'frank-cucumber/keyboard_helper'
 
 module Frank module Cucumber
 
 module FrankHelper 
   include WaitHelper
+  include KeyboardHelper
   include HostScripting
 
   class << self
