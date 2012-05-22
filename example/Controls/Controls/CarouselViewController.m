@@ -26,10 +26,10 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
     // Initialize carousel object with frame size of images
-    Carousel *carousel = [[Carousel alloc] initWithFrame:CGRectMake(0, 0, 320, 205)];
+    Carousel *carousel = [[Carousel alloc] initWithFrame:self.view.bounds];
     
     // Add some images to carousel, we are passing autoreleased NSArray
-    [carousel setImages:[NSArray arrayWithObjects:@"image0.jpg", @"image1.jpg", @"image2.jpg", @"image3.jpg", @"image4.jpg", nil]];
+    [carousel setImages:[NSArray arrayWithObjects:@"image0.png", @"image1.png", @"image2.png", @"image3.png", @"image4.png", nil]];
     
     // Add carousel to view
     [self.view addSubview:carousel];

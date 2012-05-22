@@ -8,7 +8,7 @@ end
 
 Then /^I see the (\d+)(?:st|nd|rd|th) image in the carousel$/ do |ordinal|
   index = ordinal.to_i - 1
-  subject_image = "image#{index}.jpg"
+  subject_image = "image#{index}.png"
  
   image_frame_as_json = frankly_map("#{CAROUSEL_SELECTOR_FRAGMENT} view:'UIScrollView' view:'UIImageView' marked:'#{subject_image}'", 'accessibilityFrame').first
   left_side_of_image = image_frame_as_json["origin"]["x"]

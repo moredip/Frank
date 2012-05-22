@@ -39,7 +39,9 @@
         [slide setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0]];
         
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.frame];
+        imageView.tag = 100+i;
         [imageView setImage:[UIImage imageNamed:[self.images objectAtIndex:i]]];
+        [imageView setContentMode:UIViewContentModeScaleAspectFit];
         [slide addSubview:imageView];
         [imageView release];
         
