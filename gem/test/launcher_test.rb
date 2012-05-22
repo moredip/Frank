@@ -1,5 +1,8 @@
 require_relative 'test_helper.rb'
 
+include Frank::Cucumber::Launcher
+include Frank::Cucumber::FrankHelper
+
 def wait_for_frank_to_come_up
   # orig FrankHelper::wait_for_frank_to_come_up
   # doing nothing
