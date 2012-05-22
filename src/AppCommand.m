@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "ViewJSONSerializer.h"
 #import "AppCommand.h"
 
 #import "UIQuery.h"
@@ -24,13 +24,15 @@
 	
 	id <UIApplicationDelegate> appDelegate = [[UIApplication sharedApplication] delegate];
 	
+	id result;
+	
 	if( ![operation appliesToObject:appDelegate] )
 	{
 		return @"{ \"outcome\":\"ERROR\", \"reason\":\"operation doesn't apply\", \"details\":\"operation does not appear to be implemented in app delegate\"}";
 	}
 	
 	@try {
-		[operation applyToObject:appDelegate];
+		result = [operation applyToObject:appDelegate];
 	}
 	@catch (NSException *e) {
 		NSLog( @"Exception while applying operation to app delegate:\n%@", e );
@@ -38,7 +40,18 @@
 	}
 	
 	// ignore results for now, and just assume success
-	return @"{\"outcome\":\"SUCCESS\"}";
+    NSMutableArray *results = [NSMutableArray new];
+	[results addObject:[ViewJSONSerializer jsonify:result]];
+	
+	return [self generateSuccessResponseWithResults: results];
+}
+
+- (NSString *)generateSuccessResponseWithResults:(NSArray *)results{
+	NSDictionary *response = [NSDictionary dictionaryWithObjectsAndKeys: 
+							  @"SUCCESS", @"outcome",
+							  results, @"results",
+							  nil];
+	return [response JSONRepresentation];
 }
 
 @end
