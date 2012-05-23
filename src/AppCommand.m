@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-
 #import "AppCommand.h"
 
 #import "UIQuery.h"
 #import "JSON.h"
 #import "Operation.h"
+#import "ViewJSONSerializer.h"
+#import "FranklyProtocolHelper.h"
 
 @implementation AppCommand
 
@@ -26,19 +27,23 @@
 	
 	if( ![operation appliesToObject:appDelegate] )
 	{
-		return @"{ \"outcome\":\"ERROR\", \"reason\":\"operation doesn't apply\", \"details\":\"operation does not appear to be implemented in app delegate\"}";
+		return [FranklyProtocolHelper generateErrorResponseWithReason:@"operation doesn't apply" andDetails:@"operation does not appear to be implemented in app delegate"];
 	}
 	
+	id result;
+	
 	@try {
-		[operation applyToObject:appDelegate];
+		result = [operation applyToObject:appDelegate];
 	}
 	@catch (NSException *e) {
 		NSLog( @"Exception while applying operation to app delegate:\n%@", e );
-		return [NSString stringWithFormat:@"{ \"outcome\":\"ERROR\", \"reason\":\"exception while executing operation\", \"details\":\"%@\"}", [e reason]];
+		return [FranklyProtocolHelper generateErrorResponseWithReason:@"exception while executing operation" andDetails:[e reason]];
 	}
 	
-	// ignore results for now, and just assume success
-	return @"{\"outcome\":\"SUCCESS\"}";
+    NSMutableArray *results = [NSMutableArray new];
+	[results addObject:[ViewJSONSerializer jsonify:result]];
+	
+	return [FranklyProtocolHelper generateSuccessResponseWithResults: results];
 }
 
 @end
