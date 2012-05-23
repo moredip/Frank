@@ -41,6 +41,12 @@ BOOL substringMatch(NSString *actualString, NSString *expectedSubstring){
 
 @end
 
+@implementation UILabel (ShelleyExtensions)
+- (BOOL) text:(NSString *)expectedText{
+    return substringMatch([self text], expectedText);
+}
+@end
+
 @implementation UITextField (ShelleyExtensions)
 
 - (BOOL) placeholder:(NSString *)expectedPlaceholder{
