@@ -14,10 +14,10 @@ Scenario: Checking for elements in a table
 
 Scenario: delete with swipe
  When I swipe "Larry" leftwards
- Then I should see "Delete"
+ Then I should see the confirm deletion button
  
  When I confirm table cell deletion
- Then I should not see "Delete"
+ Then I should not see the confirm deletion button
  And I should not see "Larry"
  But I should see "Curly"
  And I should see "Moe"
@@ -25,11 +25,30 @@ Scenario: delete with swipe
 Scenario: delete with edit mode
  When I touch "Edit"
  And I touch the delete edit control for the table view cell "Moe"
- Then I should see "Delete"
+ Then I should see the confirm deletion button
 
  When I confirm table cell deletion
- Then I should not see "Delete"
-
+ Then I should not see the confirm deletion button
+ 
  And I should not see "Moe"
  But I should see "Larry"
  And I should see "Curly"
+
+Scenario: delete with swipe ends edit mode
+ When I swipe "Larry" leftwards
+ Then I should see a "Done" button
+ And I should not see an "Edit" button
+
+ When I confirm table cell deletion
+ Then I should see an "Edit" button
+ Then I should not see a "Done" button
+
+Scenario: deleting in edit mode does not end edit mode
+ When I touch "Edit"
+ Then I should see a "Done" button
+ And I should not see an "Edit" button
+
+ When I touch the delete edit control for the table view cell "Moe"
+ And I confirm table cell deletion
+ Then I should see a "Done" button
+ And I should not see an "Edit" button
