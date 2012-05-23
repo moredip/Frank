@@ -40,7 +40,6 @@
 		return [FranklyProtocolHelper generateErrorResponseWithReason:@"exception while executing operation" andDetails:[e reason]];
 	}
 	
-	// ignore results for now, and just assume success
     NSMutableArray *results = [NSMutableArray new];
 	[results addObject:[ViewJSONSerializer jsonify:result]];
 	
