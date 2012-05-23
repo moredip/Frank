@@ -12,12 +12,24 @@ Scenario: Checking for elements in a table
   And I should see "Curly"
   But I should not see "Some other name"
 
-@not_supported_by_frank_yet
-Scenario: Swipe to delete
- When I swipe "Larry" rightwards
+Scenario: delete with swipe
+ When I swipe "Larry" leftwards
  Then I should see "Delete"
  
- When I touch "Delete"
+ When I confirm table cell deletion
  Then I should not see "Delete"
  And I should not see "Larry"
+ But I should see "Curly"
+ And I should see "Moe"
 
+Scenario: delete with edit mode
+ When I touch "Edit"
+ And I touch the delete edit control for the table view cell "Moe"
+ Then I should see "Delete"
+
+ When I confirm table cell deletion
+ Then I should not see "Delete"
+
+ And I should not see "Moe"
+ But I should see "Larry"
+ And I should see "Curly"
