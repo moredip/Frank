@@ -42,6 +42,7 @@ static NSUInteger __defaultPort = FRANK_SERVER_PORT;
 		[frankCommandRoute registerCommand:[[[MapOperationCommand alloc]init]autorelease] withName:@"map"];
 		[frankCommandRoute registerCommand:[[[OrientationCommand alloc]init]autorelease] withName:@"orientation"];
 		[frankCommandRoute registerCommand:[[[AccessibilityCheckCommand alloc] init]autorelease] withName:@"accessibility_check"];
+		[frankCommandRoute registerCommand:[[[SwitchAppCommand alloc]init]autorelease] withName:@"switchToAutomationAgent"];
 		[frankCommandRoute registerCommand:[[[AppCommand alloc] init]autorelease] withName:@"app_exec"];
 		[[RequestRouter singleton] registerRoute:frankCommandRoute];
 		
