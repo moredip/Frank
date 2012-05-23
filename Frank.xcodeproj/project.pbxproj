@@ -164,6 +164,8 @@
 		D6FA01B714283C4F00576AE1 /* FranklyProtocolHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FA01B714283C4F00576AE0 /* FranklyProtocolHelper.m */; };
 		D6FA01B714283C4F00576AE3 /* FranklyProtocolHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = D6FA01B714283C4F00576AE2 /* FranklyProtocolHelper.h */; };
 		D6FA01B714283C4F00576AE5 /* KIFTestStep.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FA01B714283C4F00576AE4 /* KIFTestStep.m */; };
+		D6FA01B714283C4F00576AEB /* UITableViewCell+TappableConfirmationButton.h in Headers */ = {isa = PBXBuildFile; fileRef = D6FA01B714283C4F00576AEA /* UITableViewCell+TappableConfirmationButton.h */; };
+		D6FA01B714283C4F00576AED /* UITableViewCell+TappableConfirmationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FA01B714283C4F00576AEC /* UITableViewCell+TappableConfirmationButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -344,6 +346,8 @@
 		D6FA01B714283C4F00576AE0 /* FranklyProtocolHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FranklyProtocolHelper.m; sourceTree = "<group>"; };
 		D6FA01B714283C4F00576AE2 /* FranklyProtocolHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FranklyProtocolHelper.h; sourceTree = "<group>"; };
 		D6FA01B714283C4F00576AE4 /* KIFTestStep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KIFTestStep.m; path = lib/KIF/Classes/KIFTestStep.m; sourceTree = "<group>"; };
+		D6FA01B714283C4F00576AEA /* UITableViewCell+TappableConfirmationButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITableViewCell+TappableConfirmationButton.h"; path = "src/UITableViewCell+TappableConfirmationButton.h"; sourceTree = "<group>"; };
+		D6FA01B714283C4F00576AEC /* UITableViewCell+TappableConfirmationButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITableViewCell+TappableConfirmationButton.m"; path = "src/UITableViewCell+TappableConfirmationButton.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -394,6 +398,8 @@
 		08FB77AEFE84172EC02AAC07 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				D6FA01B714283C4F00576AEC /* UITableViewCell+TappableConfirmationButton.m */,
+				D6FA01B714283C4F00576AEA /* UITableViewCell+TappableConfirmationButton.h */,
 				C1C3CCBE156BCF3500AEE136 /* FEXTappableConfirmationButton.h */,
 				C1C3CCBF156BCF3500AEE136 /* FEXTappableConfirmationButton.m */,
 				D6FA01B714283C4F00576ADE /* KeyboardCommand.h */,
@@ -735,6 +741,7 @@
 				D6FA01B714283C4F00576ADF /* KeyboardCommand.h in Headers */,
 				D6FA01B714283C4F00576AE3 /* FranklyProtocolHelper.h in Headers */,
 				C1C3CCC0156BCF3500AEE136 /* FEXTappableConfirmationButton.h in Headers */,
+				D6FA01B714283C4F00576AEB /* UITableViewCell+TappableConfirmationButton.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -903,6 +910,7 @@
 				D6FA01B714283C4F00576AE1 /* FranklyProtocolHelper.m in Sources */,
 				D6FA01B714283C4F00576AE5 /* KIFTestStep.m in Sources */,
 				C1C3CCC1156BCF3500AEE136 /* FEXTappableConfirmationButton.m in Sources */,
+				D6FA01B714283C4F00576AED /* UITableViewCell+TappableConfirmationButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
