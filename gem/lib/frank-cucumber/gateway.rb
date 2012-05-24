@@ -4,11 +4,10 @@ require 'uri'
 module Frank module Cucumber
 
 class Gateway
-  DEFAULT_HOST = "localhost"
-  DEFAULT_PORT = 37265
+  DEFAULT_BASE_URL = "http://localhost:37265/"
 
-  def initialize( host=DEFAULT_HOST, port=DEFAULT_PORT )
-    @base_uri = URI.parse "http://#{host}:#{port}/"
+  def initialize( base_url = nil )
+    @base_url = URI.parse (base_url || DEFAULT_BASE_URL).to_s
   end
 
   def ping
@@ -72,7 +71,7 @@ class Gateway
   private
 
   def frank_url_for( verb )
-    url = @base_uri.clone
+    url = @base_url.clone
     url.path = '/'+verb
     url
   end
