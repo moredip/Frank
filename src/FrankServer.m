@@ -17,15 +17,10 @@
 #import "OrientationCommand.h"
 #import "AppCommand.h"
 #import "AccessibilityCheckCommand.h"
-#import "KeyboardCommand.h"
+#import "SwitchAppCommand.h"
 
-static NSUInteger __defaultPort = FRANK_SERVER_PORT;
 @implementation FrankServer
 
-+ (void)setDefaultHttpPort:(NSUInteger)port
-{
-    __defaultPort = port;
-}
 - (id) initWithDefaultBundle {
 	return [self initWithStaticFrankBundleNamed: @"frank_static_resources"];
 }
@@ -43,8 +38,8 @@ static NSUInteger __defaultPort = FRANK_SERVER_PORT;
 		[frankCommandRoute registerCommand:[[[MapOperationCommand alloc]init]autorelease] withName:@"map"];
 		[frankCommandRoute registerCommand:[[[OrientationCommand alloc]init]autorelease] withName:@"orientation"];
 		[frankCommandRoute registerCommand:[[[AccessibilityCheckCommand alloc] init]autorelease] withName:@"accessibility_check"];
+        [frankCommandRoute registerCommand:[[[SwitchAppCommand alloc]init]autorelease] withName:@"switchToAutomationAgent"];
 		[frankCommandRoute registerCommand:[[[AppCommand alloc] init]autorelease] withName:@"app_exec"];
-        [frankCommandRoute registerCommand:[[[KeyboardCommand alloc] init]autorelease] withName:@"type_into_keyboard"];
 		[[RequestRouter singleton] registerRoute:frankCommandRoute];
 		
 		StaticResourcesRoute *staticRoute = [[[StaticResourcesRoute alloc] initWithStaticResourceSubDir:bundleName] autorelease];
@@ -55,7 +50,7 @@ static NSUInteger __defaultPort = FRANK_SERVER_PORT;
 		[_httpServer setName:@"Frank UISpec server"];
 		[_httpServer setType:@"_http._tcp."];
 		[_httpServer setConnectionClass:[RoutingHTTPConnection class]];
-		[_httpServer setPort:__defaultPort];
+		[_httpServer setPort:FRANK_SERVER_PORT];
 		NSLog( @"Creating the server: %@", _httpServer );
 	}
 	return self;
