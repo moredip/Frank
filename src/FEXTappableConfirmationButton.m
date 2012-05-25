@@ -23,7 +23,11 @@ void FEX_confirmDeletion(id self, SEL _cmd) {
         forRowAtIndexPath:indexPath];
 
     if (shouldEndEditing) {
+<<<<<<< HEAD
         [tableView setEditing:NO animated:YES];
+=======
+//        [tableView setEditing:NO animated:YES];
+>>>>>>> f8f8b03eb8feb78191bc18bb1bfb3209b072b43e
         [tableView.delegate tableView:tableView didEndEditingRowAtIndexPath:indexPath];
     }
 }
