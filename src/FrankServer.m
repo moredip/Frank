@@ -18,6 +18,7 @@
 #import "AppCommand.h"
 #import "AccessibilityCheckCommand.h"
 #import "KeyboardCommand.h"
+#import "SwitchAppCommand.h"
 
 static NSUInteger __defaultPort = FRANK_SERVER_PORT;
 @implementation FrankServer
