@@ -5,4 +5,5 @@ end
 
 When /^I ask the app to reset to home$/ do
   app_exec 'popToRootViewController:', true
+  wait_for_nothing_to_be_animating
 end
