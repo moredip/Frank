@@ -43,20 +43,28 @@
 @synthesize classMapping;
 
 - (void) loadClassMapping {
-    NSLog(@"Loading class mapping definition from ViewAttributeMapping.plist in frank_static_resources.bundle");
-    // find path to the view mapping plist file
     NSString *staticResourceBundlePath = [[NSBundle mainBundle] pathForResource: @"frank_static_resources.bundle" ofType: nil];
     NSBundle *staticResourceBundle = [NSBundle bundleWithPath: staticResourceBundlePath];
-    NSString *classMappingPath = [staticResourceBundle pathForResource: @"ViewAttributeMapping" ofType:@"plist"];
-    
-    // abort early if not found
-    if([classMappingPath length] == 0) {
-        NSLog(@"Warning, could NOT find ViewAttributeMapping.plist in frank_static_resources.bundle");
+
+    [self loadClassMappingFromBundle:staticResourceBundle plistFile:@"ViewAttributeMapping" warnIfNotFound:YES];
+    [self loadClassMappingFromBundle:staticResourceBundle plistFile:@"UserViewAttributeMapping" warnIfNotFound:NO];
+
+    NSLog(@"Done loading view attribute mapping, found %i classes mapped.\nMapping definition:\n%@", classMapping.count, classMapping);
+}
+
+- (void)loadClassMappingFromBundle:(NSBundle *)bundle plistFile:(NSString *)fileName warnIfNotFound:(BOOL)warn {
+
+    NSString *mappingPath = [bundle pathForResource:fileName ofType:@"plist"];
+    if([mappingPath length] == 0) {
+        if (warn) {
+            NSLog(@"Warning, could NOT find %@.plist in frank_static_resources.bundle", fileName);
+        }
         return;
     }
-    
+
     // load the plist
-    NSDictionary *theClassMapping = [NSDictionary dictionaryWithContentsOfFile: classMappingPath];
+    NSLog(@"Loading class mapping definition from %@.plist in frank_static_resources.bundle", fileName);
+    NSDictionary *theClassMapping = [NSDictionary dictionaryWithContentsOfFile: mappingPath];
     // and turn all keys to Class instances and load the attributes for that class
     for(NSString *key in theClassMapping.keyEnumerator) {
         Class clazz = NSClassFromString(key);
@@ -64,18 +72,32 @@
             NSLog(@"Warning, class %@ could not be resolved, skipping.", key);
             continue;
         }
-        
+
         // abort this class if the value isn't an array
         id attributes = [theClassMapping objectForKey: key];
         if(![attributes isKindOfClass: NSArray.class]) {
             NSLog(@"Warning, attribute value for class %@ isn't an array, skipping.", key);
             continue;
         }
-        
-        [classMapping setObject: attributes forKey: clazz];
+
+        [self addAttributeMappings:attributes forClass:clazz];
     }
-    
-    NSLog(@"Done loading view attribute mapping, found %i classes mapped.\nMapping definition:\n%@", classMapping.count, classMapping);
+}
+
+- (void)addAttributeMappings:(NSArray *)attributes forClass:(Class)clazz{
+    NSArray *existingAttributes = [classMapping objectForKey:clazz] ;
+    if (existingAttributes) {
+        // This class already has a mapping.  Add new attributes to the
+        // end of the list.
+        NSMutableArray *mergedAttributes = [NSMutableArray arrayWithArray:existingAttributes];
+        for (NSString *attribute in attributes) {
+            if (![existingAttributes containsObject:attribute]) {
+                [mergedAttributes addObject:attribute];
+            }
+        }
+        attributes = mergedAttributes;
+    }
+    [classMapping setObject:attributes forKey:clazz];
 }
 
 #pragma mark - Command handling
