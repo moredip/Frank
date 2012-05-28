@@ -3,6 +3,7 @@ require 'frank-cucumber/gateway'
 require 'frank-cucumber/host_scripting'
 require 'frank-cucumber/wait_helper'
 require 'frank-cucumber/keyboard_helper'
+require 'frank-cucumber/bonjour'
 
 module Frank module Cucumber
 
@@ -13,16 +14,28 @@ module FrankHelper
 
   class << self
     # TODO: adding an ivar to the module itself is a big ugyl hack. We need a FrankDriver class, or similar
-    attr_accessor :selector_engine
+    attr_accessor :selector_engine, :server_base_url
+
     def use_shelley_from_now_on
       @selector_engine = 'shelley_compat'
+    end
+
+    def test_on_physical_device_via_bonjour
+      @server_base_url = Bonjour.new.lookup_frank_base_uri
+      raise 'could not detect running Frank server' unless @server_base_url
     end
   end
 
   def selector_engine
     Frank::Cucumber::FrankHelper.selector_engine || 'uiquery' # default to UIQuery for backwards compatibility
   end
+
+  def base_server_url
+    Frank::Cucumber::FrankHelper.server_base_url
+  end
   
+
+
   def touch( uiquery )
     touch_successes = frankly_map( uiquery, 'touch' )
     raise "could not find anything matching [#{uiquery}] to touch" if touch_successes.empty?
@@ -203,7 +216,7 @@ module FrankHelper
   end
 
   def frank_server
-    @_frank_server ||= Frank::Cucumber::Gateway.new
+    @_frank_server ||= Frank::Cucumber::Gateway.new( base_server_url )
   end
  
 end
