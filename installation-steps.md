@@ -131,7 +131,17 @@ Congratulations! You're ready to write [Cucumber stories](user_stories.html) and
 **\[1\]** XCode might not show the right name in the Scheme Selector. In XCode 4.3, it shows *"YourAppName Copy"* instead
 of *"YourAppName Frankified"* as it should!
 
-## Step 9 - Running your first Cucumber feature
+## Step 9 - exporting your frankified app's bundle location
+
+Frank needs to know where your compiled application bundle lives so that it can launch and relaunch the app during testing. Unfortunately by default Xcode 4 will save your compiled app bundle to a rather obscure location. One easy way to let Frank know where your compiled app bundle lives is to add a phase to your Frankified build which will write a little ruby configuration file containing the app bundle's location. If we save that file in the cucumber support folder then it will be read each time you execute your cucumber tests.
+
+In the Project Navigator, select your project, select the "Frankified Target" and select the "Build Phases" tab. Click the "Add Build Phase" button at the bottom right and choose "Add Run Script" from the dropdown menu. Add the following to the script contents (where it says "Type a script or drag a script file from your workspace"):
+
+{% highlight bash %}
+  echo APP_BUNDLE_PATH=\"$BUILT_PRODUCTS_DIR/$EXECUTABLE_NAME.app\" > $SRCROOT/Frank/features/support/bundle_path.rb
+{% endhighlight %}
+
+## Step 10 - Running your first Cucumber feature
 
 So, you have your app all Frankified and ready to be tested!
 Lets run our first Cucumber feature!
