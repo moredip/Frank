@@ -11,13 +11,15 @@
 #import "CarouselViewController.h"
 #import "EditableTableViewController.h"
 #import "DataEntryViewController.h"
+#import "UIProgressViewController.h"
 
 typedef enum {
     RowsUISwitch,
     RowsCarousel,
     RowsEditableTable,
     RowsDataEntry,
-    RowsCount
+    RowsUIProgressView,
+    RowsCount,
 } Rows;
 
 @implementation RootViewController
@@ -90,6 +92,9 @@ typedef enum {
         case RowsDataEntry:
             cell.textLabel.text = @"Data Entry";
             break;
+        case RowsUIProgressView:
+            cell.textLabel.text = @"UIProgressView";
+            break;
 
     }
 
@@ -154,6 +159,9 @@ typedef enum {
             break;
         case RowsDataEntry:
             detailVC = [[DataEntryViewController alloc] init];
+            break;
+        case RowsUIProgressView:
+            detailVC = [[UIProgressViewController alloc] initWithNibName:@"UIProgressViewController" bundle:nil];
             break;
     }
 
