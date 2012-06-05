@@ -9,4 +9,4 @@ Feature:
 
 				Scenario: Reading the current value of the progress view
 								Given I touch "Start" 
-								Then I wait until "progress_view"'s progress is 1
+								Then I wait until the progress of "Progress" is 1
