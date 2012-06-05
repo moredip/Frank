@@ -10,6 +10,17 @@ Then /^I should wait to see "([^"]*)"$/ do |expected_mark|
   wait_for_element_to_exist("view marked:'#{expected_mark}'")
 end
 
+Then /^I wait until the progress of "([^"]*)" is (\d+)$/ do |mark, required_value|
+  required_value = required_value.to_f
+  wait_until do 
+    progresses = frankly_map( "view:'UIProgressView' marked:'#{mark}'", 'progress' )
+    raise "no progress views found with mark '#{mark}'" if progresses.empty?
+    raise "more than one progress views found with mark '#{mark}'" if progresses.count > 1
+    required_value == progresses.first
+  end
+end
+
+
 
 When /^I type "([^"]*)" into the "([^"]*)" text field using the keyboard$/ do |text_to_type, placeholder|
   touch( "textField placeholder:'#{placeholder}'" )
