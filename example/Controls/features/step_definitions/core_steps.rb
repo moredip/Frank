@@ -11,8 +11,13 @@ Then /^I should wait to see "([^"]*)"$/ do |expected_mark|
 end
 
 Then /^I wait until the progress of "([^"]*)" is (\d+)$/ do |mark, required_value|
-  progresses = frankly_map( "view:'UIProgressView' marked:'#{mark}'", 'progress' )
-  puts progresses
+  required_value = required_value.to_f
+  wait_until do 
+    progresses = frankly_map( "view:'UIProgressView' marked:'#{mark}'", 'progress' )
+    raise "no progress views found with mark '#{mark}'" if progresses.empty?
+    raise "more than one progress views found with mark '#{mark}'" if progresses.count > 1
+    required_value == progresses.first
+  end
 end
 
 
