@@ -14,8 +14,6 @@
 	if(obj == nil || obj == [NSNull null]) {
 		return [NSNull null];
   }
-	
-  
 	if([obj isKindOfClass: NSString.class] || 
      [obj isKindOfClass: NSNumber.class]) {
 		return obj;
@@ -132,7 +130,13 @@
   }
   
   NSString *typeString = [NSString stringWithFormat:@"%s", objcType]; 
-	if([typeString hasPrefix: @"{"]){
+    
+    if( [typeString isEqualToString:@"f"] ){
+        // for some reason we sometimes see NSValues which box a float but which are not NSNumbers. I don't understand why. Re-boxing the value appears to do the trick however.
+        float rawValue;
+        [value getValue:&rawValue];
+        return [NSNumber numberWithFloat:rawValue];
+    }else if([typeString hasPrefix: @"{"]){
     // Extract Class name from the type, format is {ClassName=Blablabla}
 		NSString *valueType = [[[typeString substringFromIndex:1] componentsSeparatedByString:@"="] objectAtIndex:0];
 		// In the future we could add support for converting any generic type into a dictionary, if it is helpful to do that
