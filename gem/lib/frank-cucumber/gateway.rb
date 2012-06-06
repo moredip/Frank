@@ -7,7 +7,7 @@ class Gateway
   DEFAULT_BASE_URL = "http://localhost:37265/"
 
   def initialize( base_url = nil )
-    @base_url = URI.parse (base_url || DEFAULT_BASE_URL).to_s
+    @base_url = URI.parse (base_url || DEFAULT_BASE_URL)
   end
 
   def ping
