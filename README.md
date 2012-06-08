@@ -16,7 +16,7 @@ Getting started is easy. You just need to install a ruby gem, create a new targe
 
 Building from source
 ----
-After cloning the repo on github, run `git submodule update --init` to pull in the 3rd party submodules Frank uses, and then run `rake` to build the Frank library. You can also build the library using XCode.
+After cloning the repo on github, run `git submodule update --init --recursive` to pull in the 3rd party submodules Frank uses, and then run `rake` to build the Frank library. You can also build the library using XCode.
 
 
 Contributions welcome!
