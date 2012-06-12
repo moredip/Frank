@@ -104,6 +104,8 @@
 		D6325EE31437F7180057330D /* UIProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = D6325EA51437F7180057330D /* UIProxy.m */; };
 		D6325EE41437F7180057330D /* WaitUntilIdle.h in Headers */ = {isa = PBXBuildFile; fileRef = D6325EA61437F7180057330D /* WaitUntilIdle.h */; };
 		D6325EE51437F7180057330D /* WaitUntilIdle.m in Sources */ = {isa = PBXBuildFile; fileRef = D6325EA71437F7180057330D /* WaitUntilIdle.m */; };
+		D67725621587A57200FB4E67 /* UIWindow-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D67725601587A57200FB4E67 /* UIWindow-KIFAdditions.h */; };
+		D67725631587A57200FB4E67 /* UIWindow-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D67725611587A57200FB4E67 /* UIWindow-KIFAdditions.m */; };
 		D67F2AAD13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = D67F2AAB13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.h */; };
 		D67F2AAE13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D67F2AAC13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.m */; };
 		D67F2ABF13F5F55A00A0BFF1 /* FrankLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = D67F2ABD13F5F55A00A0BFF1 /* FrankLoader.h */; };
@@ -284,6 +286,8 @@
 		D6325EA51437F7180057330D /* UIProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIProxy.m; sourceTree = "<group>"; };
 		D6325EA61437F7180057330D /* WaitUntilIdle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitUntilIdle.h; sourceTree = "<group>"; };
 		D6325EA71437F7180057330D /* WaitUntilIdle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitUntilIdle.m; sourceTree = "<group>"; };
+		D67725601587A57200FB4E67 /* UIWindow-KIFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIWindow-KIFAdditions.h"; path = "lib/KIF/Additions/UIWindow-KIFAdditions.h"; sourceTree = "<group>"; };
+		D67725611587A57200FB4E67 /* UIWindow-KIFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIWindow-KIFAdditions.m"; path = "lib/KIF/Additions/UIWindow-KIFAdditions.m"; sourceTree = "<group>"; };
 		D6782D8511BC423900FD0CE1 /* frank_static_resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = frank_static_resources.bundle; sourceTree = "<group>"; };
 		D67F2AAB13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccessibilityCheckCommand.h; path = src/AccessibilityCheckCommand.h; sourceTree = "<group>"; };
 		D67F2AAC13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccessibilityCheckCommand.m; path = src/AccessibilityCheckCommand.m; sourceTree = "<group>"; };
@@ -632,6 +636,8 @@
 		D6FA019D14283BEA00576AD1 /* KIF Additions */ = {
 			isa = PBXGroup;
 			children = (
+				D67725601587A57200FB4E67 /* UIWindow-KIFAdditions.h */,
+				D67725611587A57200FB4E67 /* UIWindow-KIFAdditions.m */,
 				D6FA019E14283C4F00576AD1 /* CGGeometry-KIFAdditions.h */,
 				D6FA019F14283C4F00576AD1 /* CGGeometry-KIFAdditions.m */,
 				D6FA01A114283C4F00576AD1 /* UIAccessibilityElement-KIFAdditions.h */,
@@ -742,6 +748,7 @@
 				D6FA01B714283C4F00576AE3 /* FranklyProtocolHelper.h in Headers */,
 				C1C3CCC0156BCF3500AEE136 /* FEXTappableConfirmationButton.h in Headers */,
 				D6FA01B714283C4F00576AEB /* UITableViewCell+TappableConfirmationButton.h in Headers */,
+				D67725621587A57200FB4E67 /* UIWindow-KIFAdditions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -911,6 +918,7 @@
 				D6FA01B714283C4F00576AE5 /* KIFTestStep.m in Sources */,
 				C1C3CCC1156BCF3500AEE136 /* FEXTappableConfirmationButton.m in Sources */,
 				D6FA01B714283C4F00576AED /* UITableViewCell+TappableConfirmationButton.m in Sources */,
+				D67725631587A57200FB4E67 /* UIWindow-KIFAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
