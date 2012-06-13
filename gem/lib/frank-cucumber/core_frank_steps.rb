@@ -272,6 +272,7 @@ end
 
 Then /^I navigate back$/ do
   touch( "navigationItemButtonView" )
+  sleep 1
 end
 
 When /^I dump the DOM$/ do
