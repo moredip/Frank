@@ -114,7 +114,7 @@ module FrankHelper
   end
 
   def app_exec(method_name, *method_args)
-    operation_map = Gateway.build_operation_map(method_name,method_args)
+    operation_map = Gateway.build_operation_map(method_name.to_s, method_args)
     
     res = frank_server.send_post( 
       'app_exec', 
@@ -125,7 +125,7 @@ module FrankHelper
   end
 
   def frankly_map( query, method_name, *method_args )
-    operation_map = Gateway.build_operation_map(method_name,method_args)
+    operation_map = Gateway.build_operation_map(method_name.to_s, method_args)
 
     res = frank_server.send_post( 
       'map',
