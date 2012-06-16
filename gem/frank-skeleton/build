@@ -1,11 +1,10 @@
 #!/bin/sh
 BUILD_DIR=Frank/frankified_build
+APP_DIR=$BUILD_DIR/Frankified.app
 
 rm -rf $BUILD_DIR
 xcodebuild -xcconfig Frank/frankify.xcconfig install -configuration Debug -sdk iphonesimulator
 
-APP_DIR=`echo $BUILD_DIR/Applications/*.app`
-cp -r Frank/frank_static_resources.bundle $APP_DIR/frank_static_resources.bundle
+mv `echo $BUILD_DIR/Applications/*.app` $APP_DIR
 
-echo "built Frankified app"
-echo $APP_DIR
+cp -r Frank/frank_static_resources.bundle $APP_DIR/frank_static_resources.bundle
