@@ -1,0 +1,2 @@
+DSTROOT = Frank/frankified_build/
+OTHER_LDFLAGS = $(inherited) -all_load -ObjC -framework CFNetwork -lShelley -lFrank -L Frank

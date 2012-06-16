@@ -1,4 +1,4 @@
-build
+build/
 dist
 
 *.mode1v3
