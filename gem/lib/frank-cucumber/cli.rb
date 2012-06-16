@@ -4,7 +4,7 @@ module Frank
   class CLI < Thor
     include Thor::Actions
 
-    desc "skeleton", "set up your iOS app by adding a Frank subdirectory containing everything Frank needs."
+    desc "skeleton", "set up your iOS app by adding a Frank subdirectory containing everything Frank needs"
     def skeleton
       directory ".", "Frank"
       say <<-EOS
@@ -15,7 +15,8 @@ module Frank
       EOS
     end
 
-    desc "update", "updates the frank server components inside your Frank directory. These are the parts of Frank that are embedded inside your app (e.g. libFrank.a and frank_static_resources.bundle)"
+    desc "update", "updates the frank server components inside your Frank directory"
+    long_desc "This updates the parts of Frank that are embedded inside your app (e.g. libFrank.a and frank_static_resources.bundle)"
     def update
       %w{libFrank.a libShelley.a}.each do |f|
         copy_file f, File.join( 'Frank', f ), :force => true
