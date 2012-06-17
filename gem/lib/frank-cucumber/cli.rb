@@ -8,8 +8,14 @@ module Frank
       File.join( File.dirname(__FILE__), '..','..','frank-skeleton' )
     end
 
-    desc "skeleton", "set up your iOS app by adding a Frank subdirectory containing everything Frank needs"
+    # included just because the old setup script was called frank-skeleton
+    desc "skeleton", "an alias for setup"
     def skeleton
+      invoke :setup
+    end
+
+    desc "setup", "set up your iOS app by adding a Frank subdirectory containing everything Frank needs"
+    def setup
       directory ".", "Frank"
       say <<-EOS
 
@@ -31,8 +37,18 @@ module Frank
     desc "build", "builds a Frankified version of your native application"
     def build
 
-      #TODO: check for Frank dir, etc
-      
+      in_root do
+        unless File.directory? 'Frank'
+          if yes? "You don't appear to have set up a Frank directory for this project. Would you like me to set that up now? Type 'y' or 'yes' if so."
+            invoke :skeleton
+          else
+            say "OK, in that case there's not much I can do for now. Whenever you change your mind and want to get your project setup with Frank simply run `frank setup` from the root of your project directory."
+            say "Bye bye for now!"
+            exit 11
+          end
+        end
+      end
+
       app_bundle_name = "Frankified.app"
       build_output_dir = "Frank/frankified_build"
       static_bundle = 'frank_static_resources.bundle'
@@ -41,10 +57,12 @@ module Frank
 
       run "xcodebuild -xcconfig Frank/frankify.xcconfig install -configuration Debug -sdk iphonesimulator DSTROOT=#{build_output_dir} WRAPPER_NAME=#{app_bundle_name}"
 
-      FileUtils.cp_r( 
-        File.join( destination_root, 'Frank',static_bundle),
-        File.join( destination_root, build_output_dir, app_bundle_name, static_bundle ) 
-      )
+      in_root do
+        FileUtils.cp_r( 
+          File.join( 'Frank',static_bundle),
+          File.join( build_output_dir, app_bundle_name, static_bundle ) 
+        )
+      end
     end
 
   end
