@@ -86,6 +86,13 @@ module Frank
       end
     end
 
+    desc "inspect", "launch Symbiote in the browser"
+    long_desc "launch Symbiote in the browser so you can inspect the live state of your Frankified app"
+    def inspect
+      # TODO: check whether app is running (using ps or similar), and launch it if it's not
+      run 'open http://localhost:37265'
+    end
+
     private
 
     def app_bundle_name
