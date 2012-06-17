@@ -1,5 +1,6 @@
 require 'thor'
 require 'frank-cucumber/launcher'
+require 'frank-cucumber/console'
 
 module Frank
   class CLI < Thor
@@ -91,6 +92,25 @@ module Frank
     def inspect
       # TODO: check whether app is running (using ps or similar), and launch it if it's not
       run 'open http://localhost:37265'
+    end
+
+    desc 'console', "launch a ruby console connected to your Frankified app"
+    def console
+      # TODO: check whether app is running (using ps or similar), and launch it if it's not
+      
+      begin
+        require 'pry'
+      rescue LoadError
+        say 'The Frank console requires the pry gem.'
+        say 'Simply run `sudo gem install pry` (the `sudo` bit might be optional), and then try again. Thanks!'
+        exit 41 
+      end
+  
+      Frank::Cucumber::FrankHelper.use_shelley_from_now_on
+      console = Frank::Console.new
+      if console.check_for_running_app
+        console.pry
+      end
     end
 
     private
