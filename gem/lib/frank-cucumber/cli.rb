@@ -28,6 +28,25 @@ module Frank
       directory( 'frank_static_resources.bundle', 'Frank/frank_static_resources.bundle', :force => true )
     end
 
+    desc "build", "builds a Frankified version of your native application"
+    def build
+
+      #TODO: check for Frank dir, etc
+      
+      app_bundle_name = "Frankified.app"
+      build_output_dir = "Frank/frankified_build"
+      static_bundle = 'frank_static_resources.bundle'
+
+      remove_dir build_output_dir
+
+      run "xcodebuild -xcconfig Frank/frankify.xcconfig install -configuration Debug -sdk iphonesimulator DSTROOT=#{build_output_dir} WRAPPER_NAME=#{app_bundle_name}"
+
+      FileUtils.cp_r( 
+        File.join( destination_root, 'Frank',static_bundle),
+        File.join( destination_root, build_output_dir, app_bundle_name, static_bundle ) 
+      )
+    end
+
   end
 
 end
