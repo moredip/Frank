@@ -1,4 +1,5 @@
 require 'thor'
+require 'frank-cucumber/launcher'
 
 module Frank
   class CLI < Thor
@@ -34,7 +35,7 @@ module Frank
       directory( 'frank_static_resources.bundle', 'Frank/frank_static_resources.bundle', :force => true )
     end
 
-    desc "build", "builds a Frankified version of your native application"
+    desc "build", "builds a Frankified version of your native app"
     def build
 
       in_root do
@@ -49,8 +50,6 @@ module Frank
         end
       end
 
-      app_bundle_name = "Frankified.app"
-      build_output_dir = "Frank/frankified_build"
       static_bundle = 'frank_static_resources.bundle'
 
       remove_dir build_output_dir
@@ -60,12 +59,47 @@ module Frank
       in_root do
         FileUtils.cp_r( 
           File.join( 'Frank',static_bundle),
-          File.join( build_output_dir, app_bundle_name, static_bundle ) 
+          File.join( frankified_app_dir, static_bundle ) 
         )
       end
     end
 
-  end
+    desc "build_and_launch", "rebuild a Frankfied version of your app then launch"
+    def build_and_launch
+      invoke :build
+      invoke :launch
+    end
 
+    desc "launch", "open the Frankified app in the simulator"
+    def launch
+      in_root do
+        unless File.exists? frankified_app_dir
+          say "A Frankified version of the app doesn't appear to have been built. Building one now"
+          say "..."
+          invoke :build
+        end
+
+        say "LAUNCHING IN THE SIMULATOR..."
+
+        launcher = SimLauncher::DirectClient.new(frankified_app_dir, nil, nil )
+        launcher.relaunch
+      end
+    end
+
+    private
+
+    def app_bundle_name
+      "Frankified.app"
+    end
+
+    def build_output_dir
+      "Frank/frankified_build"
+    end
+
+    def frankified_app_dir
+      File.join( build_output_dir, app_bundle_name )
+    end
+
+  end
 end
 
