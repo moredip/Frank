@@ -19,12 +19,6 @@ module Frank
     desc "setup", "set up your iOS app by adding a Frank subdirectory containing everything Frank needs"
     def setup
       directory ".", "Frank"
-      say <<-EOS
-
-      Frank subdirectory created.
-      Your next step is to create a Frankified target for your app, and add the libFrank.a, libShelley.a and frank_static_resources.bundle files inside the Frank directory to that target.
-      After that, you can build the target and try executing 'cucumber' from the Frank directory to see how your initial cucumber test runs.
-      EOS
     end
 
     desc "update", "updates the frank server components inside your Frank directory"
