@@ -18,9 +18,10 @@
      [obj isKindOfClass: NSNumber.class]) {
 		return obj;
     }
+
     if([obj isKindOfClass: NSArray.class] || [obj isKindOfClass: NSSet.class]) {
-        NSMutableArray *array = [NSMutableArray arrayWithCapacity: [obj count]];
-        for(id subObject in obj) {
+        NSMutableArray *array = [NSMutableArray array];
+        for(id subObject in (id<NSFastEnumeration>) obj) {
             id subJson = [ViewJSONSerializer jsonify: subObject];
             [array addObject: subJson];
         }
