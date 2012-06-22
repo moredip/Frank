@@ -268,6 +268,7 @@ end
 
 Then /^I navigate back$/ do
   touch( "navigationItemButtonView" )
+  wait_for_nothing_to_be_animating
 end
 
 When /^I dump the DOM$/ do
