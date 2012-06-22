@@ -12,7 +12,9 @@ Gem::Specification.new do |s|
   s.summary     = %q{Use cucumber to test native iOS apps via Frank}
   s.description = %q{Use cucumber to test native iOS apps via Frank}
 
-  s.files         = `git ls-files`.split("\n")
+  git_files = `git ls-files`.split("\n")
+  symbiote_files = Dir[File.join(File.dirname(__FILE__),'frank-skeleton','frank_static_resources.bundle','**','*')]
+  s.files         = git_files+symbiote_files
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
