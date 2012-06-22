@@ -31,11 +31,6 @@ task :prep_dist do
   mkdir_p 'dist'
 end
 
-desc "copy resource bundle into dist dir"
-task :copy_bundle do
-  cp_r 'frank_static_resources.bundle', 'dist'
-end
-
 task :build => [:clean, :prep_dist, :build_lib, :copy_bundle]
 task :default => :build
 
