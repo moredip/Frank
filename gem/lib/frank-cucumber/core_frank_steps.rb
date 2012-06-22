@@ -60,7 +60,7 @@ Then /I should not see the following:/ do |table|
 end
 
 Then /^I should see an alert view titled "([^\"]*)"$/ do |expected_mark|
-  values = frankly_map( 'alertView', 'message')
+  values = frankly_map( 'alertView', 'title')
   values.should include(expected_mark)
 end
 
