@@ -6,8 +6,6 @@
 //  Copyright (c) 2012 ThoughtWorks. All rights reserved.
 //
 
-#ifdef FRANKIFIED
-
 #import "ControlsAppDelegate.h"
 
 @implementation ControlsAppDelegate (FrankExtensions)
@@ -17,5 +15,3 @@
 }
 
 @end
-
-#endif
