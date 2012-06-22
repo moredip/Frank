@@ -17,7 +17,16 @@
 	if([obj isKindOfClass: NSString.class] || 
      [obj isKindOfClass: NSNumber.class]) {
 		return obj;
-  }
+    }
+
+    if([obj isKindOfClass: NSArray.class] || [obj isKindOfClass: NSSet.class]) {
+        NSMutableArray *array = [NSMutableArray array];
+        for(id subObject in (id<NSFastEnumeration>) obj) {
+            id subJson = [ViewJSONSerializer jsonify: subObject];
+            [array addObject: subJson];
+        }
+        return array;
+    }
   
 	if( [obj isKindOfClass: NSValue.class] ) {
     return  [ViewJSONSerializer extractInstanceFromValue: (NSValue *) obj];
