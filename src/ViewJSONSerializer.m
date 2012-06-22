@@ -18,7 +18,7 @@
      [obj isKindOfClass: NSNumber.class]) {
 		return obj;
     }
-    if([obj isKindOfClass: NSArray.class]) {
+    if([obj isKindOfClass: NSArray.class] || [obj isKindOfClass: NSSet.class]) {
         NSMutableArray *array = [NSMutableArray arrayWithCapacity: [obj count]];
         for(id subObject in obj) {
             id subJson = [ViewJSONSerializer jsonify: subObject];
