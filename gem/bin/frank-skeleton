@@ -1,9 +1,19 @@
 #!/usr/bin/env ruby
 
-require 'fileutils'
+######################## ######################## ######################## 
+#
+#                             IMPORTANT NOTE
+#
+#     This script is deprecated. it's just here for backwards compatibility.
+#
+#     Users should be using the Frank::CLI-backed `frank` executable
+#
+######################## ######################## ######################## 
 
-TARGET_DIR = File.join( FileUtils.pwd, "Frank" )
-SOURCE_DIR = File.join( File.dirname(__FILE__), '..', 'frank-skeleton' )
+require 'frank-cucumber/cli'
+
+Frank::CLI.start
+
 
 command = ARGV[0]
 
@@ -15,38 +25,9 @@ end
 
 update_mode = ARGV[0] == 'update-server'
 
-def create_skeleton_dir
-  puts "I'm about to create a subdirectory called Frank which will contain the Frank server files and also your Cucumber tests. Please hit return to confirm that's what you want."
-  exit 3 unless STDIN.gets.chomp == ''
-
-  FileUtils.mkdir_p( TARGET_DIR )
-  FileUtils.cp_r( Dir.glob( SOURCE_DIR+"/*" ), TARGET_DIR )
-
-  puts <<-EOS
-  Frank subdirectory created.
-  Your next step is to create a Frankified target for your app, and add the libFrank.a, libShelley.a and frank_static_resources.bundle files inside the Frank directory to that target.
-  After that, you can build the target and try executing 'cucumber' from the Frank directory to see how your initial cucumber test runs.
-  EOS
-end
-
-def update_server_files
-  source_files = %w{libFrank.a libShelley.a frank_static_resources.bundle}.map{ |x| File.join( SOURCE_DIR, x ) }
-  FileUtils.cp_r( source_files, TARGET_DIR )
-  puts "All done. I've updated libFrank.a, libShelley.a and frank_static_resources.bundle inside #{TARGET_DIR}"
-end
-
-frank_dir_already_exists = File.exists?( TARGET_DIR ) 
-
-if frank_dir_already_exists && !update_mode
-  puts "A Frank subdirectory already exists. I don't want to mess with that. \n\nIf you want me to update the frank server code in that directory then run `frank-skeleton update-server`"
-  exit 1
-elsif !frank_dir_already_exists && update_mode
-  puts "There isn't a Frank subdirectory here for me to update.\n\nIf you want to create a new Frank subdirectory containing the Frank server code and an initial Cucumber setup then you should run `frank-skeleton` with no arguments"
-  exit 2
-end
-
+cli = Frank::CLI.new
 if update_mode
-  update_server_files
+  cli.update
 else
-  create_skeleton_dir
+  cli.skeleton
 end

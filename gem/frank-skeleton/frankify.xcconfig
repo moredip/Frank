@@ -1,0 +1,3 @@
+INSTALL_PATH = /./
+
+OTHER_LDFLAGS = $(inherited) -all_load -ObjC -framework CFNetwork -lShelley -lFrank -L Frank
