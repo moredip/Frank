@@ -176,6 +176,7 @@ Then /^I rotate to the "([^\"]*)"$/ do |direction|
 end
 
 # -- touch -- #
+# generic views
 When /^I touch "([^\"]*)"$/ do |mark|
   selector = "view marked:'#{mark}' first"
   if element_exists(selector)
@@ -195,6 +196,7 @@ When /^I touch "([^\"]*)" if exists$/ do |mark|
   end
 end
 
+# table cells
 When /^I touch the first table cell$/ do
     touch("tableViewCell first")
 end
@@ -216,10 +218,12 @@ Then /I touch the following:/ do |table|
   end
 end
 
+# buttons
 When /^I touch the button marked "([^\"]*)"$/ do |mark|
   touch( "button marked:'#{mark}'" )
 end
 
+# action sheets
 When /^I touch the "([^\"]*)" action sheet button$/ do |mark|
   touch( "actionSheet threePartButton marked:'#{mark}'" )
 end
@@ -229,6 +233,11 @@ When /^I touch the (\d*)(?:st|nd|rd|th)? action sheet button$/ do |ordinal|
   touch( "actionSheet threePartButton tag:#{ordinal}" )
 end
 
+# alert views
+When /^I touch the "([^\"]*)" alert view button$/ do |mark|
+  touch( "alertView threePartButton marked:'#{mark}'" )
+end
+                                                                     
 When /^I touch the (\d*)(?:st|nd|rd|th)? alert view button$/ do |ordinal|
   ordinal = ordinal.to_i
   touch( "alertView threePartButton tag:#{ordinal}" )
