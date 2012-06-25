@@ -66,7 +66,12 @@ module Frank
     end
 
     desc "launch", "open the Frankified app in the simulator"
+    method_option :debug, :type => :boolean, :default => false
     def launch
+      $DEBUG = options[:debug]
+
+      puts "debugging" if $DEBUG
+
       in_root do
         unless File.exists? frankified_app_dir
           say "A Frankified version of the app doesn't appear to have been built. Building one now"
