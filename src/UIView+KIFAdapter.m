@@ -9,19 +9,35 @@
 #import "LoadableCategory.h"
 #import "UIView-KIFAdditions.h"
 
+#import <objc/runtime.h>
+
 MAKE_CATEGORIES_LOADABLE(UIView_KIFAdapter)
 
 @implementation UIView(KIFAdapter)
 
 - (BOOL) touchPointIfInsideWindow:(CGPoint)point{
+    
+    Class eventsKlass = NSClassFromString(@"UIASyntheticEvents");
+    id events = class_createInstance(eventsKlass, 0);
+
+    uint numMethods = 0;
+    Method *methods = class_copyMethodList(eventsKlass, &numMethods);
+    for( int i = 0; i< numMethods; i++ ){
+        Method method = methods[i];
+        SEL sel = method_getName(method);
+        NSLog( @"%@", NSStringFromSelector(sel) );
+    }
 
     CGPoint pointInWindowCoords = [self.window convertPoint:point fromView:self];
     if( !CGRectContainsPoint(self.window.bounds, pointInWindowCoords) ){
         return NO;
     }
+    
+    
+    [events sendTap:pointInWindowCoords];
 
     // delegate to KIF
-    [self tapAtPoint:point];
+//    [self tapAtPoint:point];
     return YES;
 }
 
