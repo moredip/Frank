@@ -12,14 +12,17 @@ Gem::Specification.new do |s|
   s.summary     = %q{Use cucumber to test native iOS apps via Frank}
   s.description = %q{Use cucumber to test native iOS apps via Frank}
 
-  s.files         = `git ls-files`.split("\n")
+  git_files = `git ls-files`.split("\n")
+  symbiote_files = Dir[File.join('frank-skeleton','frank_static_resources.bundle','**','*')]
+  s.files         = git_files+symbiote_files
+  puts s.files.join("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
   s.add_dependency( "cucumber" )
   s.add_dependency( "rspec", [">=2.0"] )
-  s.add_dependency( "sim_launcher" )
+  s.add_dependency( "sim_launcher", ["=0.3.8"] ) #temporary lockdown of dependencies while I try and sort out ios-sim build issues
   s.add_dependency( "i18n" )
   s.add_dependency( "plist" )
   s.add_dependency( "json" ) # TODO: figure out how to be more permissive as to which JSON gems we allow
