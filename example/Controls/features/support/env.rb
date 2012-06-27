@@ -1,5 +1,7 @@
 require 'frank-cucumber'
 
+APP_BUNDLE_PATH="Frank/frankified_build/Frankified.app"
+
 Frank::Cucumber::FrankHelper.use_shelley_from_now_on
 
 $USING_PHYSICAL_DEVICE = !!ENV['USE_PHYSICAL_DEVICE']
