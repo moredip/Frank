@@ -11,7 +11,7 @@
 #import "UIView-KIFAdditions.h"
 
 #define NUM_POINTS_IN_SWIPE_PATH (20)
-#define BIG_DELTA (200)
+#define BIG_DELTA (100)
 #define SMALL_DELTA (5)
 
 @implementation UIView (FrankGestures)

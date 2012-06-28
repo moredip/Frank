@@ -112,6 +112,8 @@
 		D67F2AC013F5F55A00A0BFF1 /* FrankLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = D67F2ABE13F5F55A00A0BFF1 /* FrankLoader.m */; };
 		D67F2B3413F5F82700A0BFF1 /* LoadableCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = D67F2B3313F5F82700A0BFF1 /* LoadableCategory.h */; };
 		D67F2B3A13F5F91700A0BFF1 /* UIView+MapKitWorkaround.m in Sources */ = {isa = PBXBuildFile; fileRef = D67F2B3813F5F91700A0BFF1 /* UIView+MapKitWorkaround.m */; };
+		D6910142159C2AAA0066B769 /* UIView+UIAutomationBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = D6910140159C2AAA0066B769 /* UIView+UIAutomationBridge.m */; };
+		D6910145159C2B510066B769 /* UIAutomation.h in Headers */ = {isa = PBXBuildFile; fileRef = D6910144159C2B510066B769 /* UIAutomation.h */; };
 		D6B1056114644827000DD32F /* UIQuery+ShelleyCompatibiilityOverrides.m in Sources */ = {isa = PBXBuildFile; fileRef = D6B1055F14644827000DD32F /* UIQuery+ShelleyCompatibiilityOverrides.m */; };
 		D6BD521E146C34BF001770B1 /* SelectorEngineRegistry.h in Headers */ = {isa = PBXBuildFile; fileRef = D6BD521C146C34BF001770B1 /* SelectorEngineRegistry.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D6BD521F146C34BF001770B1 /* SelectorEngineRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = D6BD521D146C34BF001770B1 /* SelectorEngineRegistry.m */; };
@@ -278,6 +280,8 @@
 		D67F2ABE13F5F55A00A0BFF1 /* FrankLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FrankLoader.m; path = src/FrankLoader.m; sourceTree = "<group>"; };
 		D67F2B3313F5F82700A0BFF1 /* LoadableCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadableCategory.h; sourceTree = "<group>"; };
 		D67F2B3813F5F91700A0BFF1 /* UIView+MapKitWorkaround.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MapKitWorkaround.m"; sourceTree = "<group>"; };
+		D6910140159C2AAA0066B769 /* UIView+UIAutomationBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+UIAutomationBridge.m"; path = "src/UIView+UIAutomationBridge.m"; sourceTree = "<group>"; };
+		D6910144159C2B510066B769 /* UIAutomation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIAutomation.h; path = src/UIAutomation.h; sourceTree = "<group>"; };
 		D6B1055F14644827000DD32F /* UIQuery+ShelleyCompatibiilityOverrides.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIQuery+ShelleyCompatibiilityOverrides.m"; path = "src/UIQuery+ShelleyCompatibiilityOverrides.m"; sourceTree = "<group>"; };
 		D6BD521C146C34BF001770B1 /* SelectorEngineRegistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectorEngineRegistry.h; path = src/SelectorEngineRegistry.h; sourceTree = "<group>"; };
 		D6BD521D146C34BF001770B1 /* SelectorEngineRegistry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectorEngineRegistry.m; path = src/SelectorEngineRegistry.m; sourceTree = "<group>"; };
@@ -383,6 +387,7 @@
 		08FB77AEFE84172EC02AAC07 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				D6910144159C2B510066B769 /* UIAutomation.h */,
 				D6FA01B714283C4F00576AEC /* UITableViewCell+TappableConfirmationButton.m */,
 				D6FA01B714283C4F00576AEA /* UITableViewCell+TappableConfirmationButton.h */,
 				C1C3CCBE156BCF3500AEE136 /* FEXTappableConfirmationButton.h */,
@@ -431,6 +436,7 @@
 				0071264414F8956700E738ED /* ViewJSONSerializer.h */,
 				0071264514F8956700E738ED /* ViewJSONSerializer.m */,
 				C1C6D1EC1535522300EAA0CF /* UIView+FrankGestures.m */,
+				D6910140159C2AAA0066B769 /* UIView+UIAutomationBridge.m */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -721,6 +727,7 @@
 				C1C3CCC0156BCF3500AEE136 /* FEXTappableConfirmationButton.h in Headers */,
 				D6FA01B714283C4F00576AEB /* UITableViewCell+TappableConfirmationButton.h in Headers */,
 				D67725621587A57200FB4E67 /* UIWindow-KIFAdditions.h in Headers */,
+				D6910145159C2B510066B769 /* UIAutomation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -868,6 +875,7 @@
 				C1C3CCC1156BCF3500AEE136 /* FEXTappableConfirmationButton.m in Sources */,
 				D6FA01B714283C4F00576AED /* UITableViewCell+TappableConfirmationButton.m in Sources */,
 				D67725631587A57200FB4E67 /* UIWindow-KIFAdditions.m in Sources */,
+				D6910142159C2AAA0066B769 /* UIView+UIAutomationBridge.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -881,6 +889,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
 				DSTROOT = /tmp/Frank.dst;
+				EXCLUDED_SOURCE_FILE_NAMES = "UITouch-KIFAdditions.m";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -903,6 +912,7 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DSTROOT = /tmp/Frank.dst;
+				EXCLUDED_SOURCE_FILE_NAMES = "UITouch-KIFAdditions.m";
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Frank_Prefix.pch;
