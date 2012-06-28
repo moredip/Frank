@@ -29,13 +29,40 @@ UIASyntheticEvents *events(){
     return [NSValue valueWithCGPoint:tapPoint];
 }
 
+
+//returns what portion of the view to swipe along in the x and y axes.
+//we always include at least a small component in each axes because in the past totally 'right-angled'
+//swipes weren't detected properly. But we were using a different approach to touch simulation then,
+//so this might now be unnecessary.
+CGSize swipeRatiosForDirection(NSString *direction){
+    static const CGFloat bigRatio = 0.3, smallRatio = 0.05;
+    NSString *dir = [direction lowercaseString];
+    
+    if([dir isEqualToString:@"left"]){
+        return CGSizeMake(-bigRatio, smallRatio);
+    }else if([dir isEqualToString:@"right"]){
+        return CGSizeMake(bigRatio, smallRatio);
+    }else if([dir isEqualToString:@"up"]){
+        return CGSizeMake(smallRatio, -bigRatio);
+    }else if([dir isEqualToString:@"down"]){
+        return CGSizeMake(smallRatio, bigRatio);
+    }else{
+        [NSException raise:@"invalid swipe direction" format:@"swipe direction '%@' is invalid", direction];
+    }
+}
+
+
 #define SWIPE_DURATION (0.1)
 CGSize swipeDeltasForDirection(NSString *direction); // defined in UIView+FrankGestures.m
 
 - (NSString *) FUI_swipe:(NSString *)dir{
     CGPoint swipeStart = centerOfViewInWindowCoords(self);
-    CGSize delta = swipeDeltasForDirection(dir);
-    CGPoint swipeEnd = CGPointMake(swipeStart.x+delta.width, swipeStart.y+delta.height);
+    CGSize ratios = swipeRatiosForDirection(dir);
+    CGSize viewSize = self.bounds.size;
+    CGPoint swipeEnd = CGPointMake(
+                                   swipeStart.x+(ratios.width*viewSize.width),
+                                   swipeStart.y+(ratios.height*viewSize.height)
+                                   );
     
     NSString *swipeDescription = [NSString stringWithFormat:@"%@ => %@", NSStringFromCGPoint(swipeStart), NSStringFromCGPoint(swipeEnd)];
     
