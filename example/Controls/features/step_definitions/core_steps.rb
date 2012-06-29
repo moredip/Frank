@@ -27,4 +27,5 @@ When /^I type "([^"]*)" into the "([^"]*)" text field using the keyboard$/ do |t
   sleep(0.2) # wait for keyboard to animate in
   wait_for_nothing_to_be_animating
   type_into_keyboard( text_to_type )
+  wait_for_nothing_to_be_animating
 end
