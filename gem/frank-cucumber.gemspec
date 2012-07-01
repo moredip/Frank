@@ -30,4 +30,5 @@ Gem::Specification.new do |s|
   s.add_dependency( "thor" )
 
   s.add_development_dependency( "rr" )
+  s.add_development_dependency( "yard" )
 end
