@@ -135,18 +135,37 @@ module FrankHelper
     end
   end
 
+  # Waits for the specified selector to not match any views.
+  #
+  # Uses {WaitHelper#wait_until} to check for any matching views within a {http://sauceio.com/index.php/2011/04/how-to-lose-races-and-win-at-selenium/ spin assert} loop. 
+  # Returns as soon as no views match the specified selector.
+  # Raises an exception if there continued to be at least one view which matched the selector by the time {WaitHelper::TIMEOUT} seconds passed.
+  #
+  # @see check_element_does_not_exist
+  # @see wait_for_element_to_not_exist
   def wait_for_element_to_not_exist(selector)
     wait_until(:message => "Waited for element #{selector} to not exist") do
       !element_exists(selector)
     end
   end
 
+  # Waits for a view to exist and then send a touch command to that view. 
+  #
+  # @param selectors takes one or more selectors to use to search for a view. The first selector which is found to matches a view is the selector
+  # which is then used to send a touch command.
+  #
+  # Raises an exception if no views could be found to match any of the provided selectors within {WaitHelper::TIMEOUT} seconds.
   def wait_for_element_to_exist_and_then_touch_it(*selectors)
     wait_for_element_to_exist(*selectors) do |sel| 
       touch(sel)
     end
   end
 
+  # Waits for there to be no views which report an isAnimated property of true.
+  #
+  # @param timeout [Number] number of seconds to wait for nothing to be animating before timeout out. Defaults to {WaitHelper::TIMEOUT}
+  #
+  # Raises an exception if there were still views animating after {timeout} seconds.
   def wait_for_nothing_to_be_animating( timeout = false )
     wait_until :timeout => timeout do
       !element_exists('view isAnimating')
@@ -155,8 +174,8 @@ module FrankHelper
 
 
   # a better name would be element_exists_and_is_not_hidden
-  def element_is_not_hidden(query)
-     matches = frankly_map( query, 'isHidden' )
+  def element_is_not_hidden(selector)
+     matches = frankly_map( selector, 'isHidden' )
      matches.delete(true)
      !matches.empty?
   end
