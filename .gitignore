@@ -9,3 +9,5 @@ dist
 xcuserdata
 .rvmrc
 .idea
+
+.yardoc/
