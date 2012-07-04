@@ -9,6 +9,13 @@ module Frank module Cucumber
 
   # FrankHelper provides a core set of helper functions for use when interacting with Frank.
   #
+  # == Most helpful methods
+  # * {#touch}
+  # * {#wait_for_element_to_exist}
+  # * {#wait_for_element_to_exist_and_then_touch_it}
+  # * {#wait_for_nothing_to_be_animating}
+  # * {#app_exec}
+  #
   # == Configuring the Frank driver
   # There are some class-level facilities which configure how all Frank interactions work. For example you can specify which selector engine to use 
   # with {FrankHelper.selector_engine}. You can specify the base url which the native app's Frank server is listening on with {FrankHelper.server_base_url}.
@@ -173,15 +180,30 @@ module FrankHelper
   end
 
 
-  # a better name would be element_exists_and_is_not_hidden
+  # Checks that the specified selector matches at least one view, and that at least one of the matched 
+  # views has an isHidden property set to false
+  #
+  # a better name for this method would be element_exists_and_is_not_hidden
   def element_is_not_hidden(selector)
      matches = frankly_map( selector, 'isHidden' )
      matches.delete(true)
      !matches.empty?
   end
 
-  def app_exec(method_name, *method_args)
-    operation_map = Gateway.build_operation_map(method_name.to_s, method_args)
+
+  # Ask Frank to invoke the specified method on the app delegate of the iOS application under automation.
+  # @param method_sig [String] the method signature
+  # @param method_args the method arguments
+  #
+  # @example 
+  #   # the same as calling 
+  #   # [[[UIApplication sharedApplication] appDelegate] setServiceBaseUrl:@"http://example.com/my_api" withPort:8080]
+  #   # from your native app
+  #   app_exec( "setServiceBaseUrl:withPort:", "http://example.com/my_api", 8080 )
+  #
+  #
+  def app_exec(method_sig, *method_args)
+    operation_map = Gateway.build_operation_map(method_sig.to_s, method_args)
     
     res = frank_server.send_post( 
       'app_exec', 
@@ -191,24 +213,33 @@ module FrankHelper
     return Gateway.evaluate_frankly_response( res, "app_exec #{method_name}" )
   end
 
-  def frankly_map( query, method_name, *method_args )
+  # Ask Frank to execute an arbitrary Objective-C method on each view which matches the specified selector. 
+  #
+  # @return [Array] an array with an element for each view matched by the selector, each element in the array gives the return value from invoking the specified method on that view.
+  def frankly_map( selector, method_name, *method_args )
     operation_map = Gateway.build_operation_map(method_name.to_s, method_args)
 
     res = frank_server.send_post( 
       'map',
-      :query => query, 
+      :query => selector, 
       :operation => operation_map, 
       :selector_engine => selector_engine
     )
 
-    return Gateway.evaluate_frankly_response( res, "frankly_map #{query} #{method_name}" )
+    return Gateway.evaluate_frankly_response( res, "frankly_map #{selector} #{method_name}" )
   end
 
+  # print a JSON-formatted dump of the current view heirarchy to stdout
   def frankly_dump
     res = frank_server.send_get( 'dump' )
     puts JSON.pretty_generate(JSON.parse(res)) rescue puts res #dumping a super-deep DOM causes errors
   end
 
+  # grab a screenshot of the application under automation and save it to the specified file.
+  #
+  # @param filename [String] where to save the screenshot image file
+  # @param subframe describes which section of the screen to grab. If unspecified then the entire screen will be captured. #TODO document what format this parameter takes.
+  # @param allwindows [Boolean] If true then all UIWindows in the current UIScreen will be included in the screenshot. If false then only the main window will be captured.
   def frankly_screenshot(filename, subframe=nil, allwindows=true)
     path = 'screenshot'
     path += '/allwindows' if allwindows
@@ -221,14 +252,20 @@ module FrankHelper
     end
   end
 
+  # @return [Boolean] true if the device running the application currently in a portrait orientation
+  # @note wil return false if the device is in a flat or unknown orientation. Sometimes the iOS simulator will report this state when first launched.
   def frankly_oriented_portrait?
     'portrait' == frankly_current_orientation
   end
 
+  # @return [Boolean] true if the device running the application currently in a landscape orientation
+  # @note wil return false if the device is in a flat or unknown orientation. Sometimes the iOS simulator will report this state when first launched.
   def frankly_oriented_landscape?
     'landscape' == frankly_current_orientation
   end
 
+  # @return [String] the orientation of the device running the application under automation.
+  # @note this is a low-level API. In most cases you should use {frankly_oriented_portrait} or {frankly_oriented_landscape} instead.
   def frankly_current_orientation
     res = frank_server.send_get( 'orientation' )
     orientation = JSON.parse( res )['orientation']
@@ -236,11 +273,19 @@ module FrankHelper
     orientation
   end
 
+  # @return [Boolean] Does the device running the application have accessibility enabled.
+  # If accessibility is not enabled then a lot of Frank functionality will not work.
   def frankly_is_accessibility_enabled
     res = frank_server.send_get( 'accessibility_check' )
     JSON.parse( res )['accessibility_enabled'] == 'true'
   end
 
+  # wait for the application under automation to be ready to receive automation commands.
+  #
+  # Has some basic heuristics to cope with cases where the Frank server is intermittently available when first launching.
+  #
+  # @raise [Timeout::TimeoutError] if nothing is ready within 20 seconds
+  # @raise generic error if the device hosting the application does not appear to have accessibility enabled.
   def wait_for_frank_to_come_up
     num_consec_successes = 0
     num_consec_failures = 0
@@ -278,10 +323,13 @@ module FrankHelper
     end
   end
   
+  # Check whether Frank is able to communicate with the application under automation
   def frankly_ping
     frank_server.ping
   end
 
+  #@api private
+  #@return [Frank::Cucumber::Gateway] a gateway for sending Frank commands to the application under automation
   def frank_server
     @_frank_server ||= Frank::Cucumber::Gateway.new( base_server_url )
   end
