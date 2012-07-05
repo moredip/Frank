@@ -28,3 +28,7 @@ When /^I type "([^"]*)" into the "([^"]*)" text field using the keyboard$/ do |t
   wait_for_nothing_to_be_animating
   type_into_keyboard( text_to_type )
 end
+
+When /^I pause briefly for demonstration purposes$/ do
+  sleep 1.5
+end
