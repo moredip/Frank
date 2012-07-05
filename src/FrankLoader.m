@@ -18,7 +18,7 @@ BOOL frankLogEnabled = NO;
 @implementation FrankLoader
 
 + (void)applicationDidBecomeActive:(NSNotification *)notification{
-    [FEXTappableConfirmationButton install];
+    //[FEXTappableConfirmationButton install];
     FrankServer *server = [[FrankServer alloc] initWithDefaultBundle];
     [server startServer];
 }
