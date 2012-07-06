@@ -31,7 +31,7 @@ task :prep_dist do
   mkdir_p 'dist'
 end
 
-task :build => [:clean, :prep_dist, :build_lib, :copy_bundle]
+task :build => [:clean, :prep_dist, :build_lib, :build_shelley]
 task :default => :build
 
 desc "compile libShelley.a and copy it into dist"
