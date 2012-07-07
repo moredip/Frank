@@ -6,8 +6,11 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import "LoadableCategory.h"
+MAKE_CATEGORIES_LOADABLE(UIView_FrankGestures)
+
 #import <CoreGraphics/CoreGraphics.h>
-#import "UIView+FrankGestures.h"
+
 #import "UIView-KIFAdditions.h"
 
 #define NUM_POINTS_IN_SWIPE_PATH (20)
