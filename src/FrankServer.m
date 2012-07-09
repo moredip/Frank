@@ -18,6 +18,7 @@
 #import "AppCommand.h"
 #import "AccessibilityCheckCommand.h"
 #import "KeyboardCommand.h"
+#import "SwitchAppCommand.h"
 
 static NSUInteger __defaultPort = FRANK_SERVER_PORT;
 @implementation FrankServer
@@ -44,7 +45,8 @@ static NSUInteger __defaultPort = FRANK_SERVER_PORT;
 		[frankCommandRoute registerCommand:[[[OrientationCommand alloc]init]autorelease] withName:@"orientation"];
 		[frankCommandRoute registerCommand:[[[AccessibilityCheckCommand alloc] init]autorelease] withName:@"accessibility_check"];
 		[frankCommandRoute registerCommand:[[[AppCommand alloc] init]autorelease] withName:@"app_exec"];
-        [frankCommandRoute registerCommand:[[[KeyboardCommand alloc] init]autorelease] withName:@"type_into_keyboard"];
+		[frankCommandRoute registerCommand:[[[SwitchAppCommand alloc]init]autorelease] withName:@"switchToAutomationAgent"];
+        	[frankCommandRoute registerCommand:[[[KeyboardCommand alloc] init]autorelease] withName:@"type_into_keyboard"];
 		[[RequestRouter singleton] registerRoute:frankCommandRoute];
 		
 		StaticResourcesRoute *staticRoute = [[[StaticResourcesRoute alloc] initWithStaticResourceSubDir:bundleName] autorelease];
