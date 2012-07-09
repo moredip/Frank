@@ -34,6 +34,12 @@
                                                  arrayWithObject:view]
                                       className:@"UIWebView"];
     } 
+    else if ([view isKindOfClass:[UIWebView class]])
+    {
+        wrappedView = [UIQueryWebView withViews:[NSMutableArray
+                                                 arrayWithObject:view]
+                                      className:@"UIWebView"];
+    } 
     else
     {
 	// wrapping the view in a uiquery like this lets us perform operations like touch, flash, inspect, etc
