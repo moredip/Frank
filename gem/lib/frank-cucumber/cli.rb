@@ -30,7 +30,11 @@ module Frank
       directory( 'frank_static_resources.bundle', 'Frank/frank_static_resources.bundle', :force => true )
     end
 
+    XCODEBUILD_OPTIONS = %w{workspace scheme target}
     desc "build", "builds a Frankified version of your native app"
+    XCODEBUILD_OPTIONS.each do |option|
+      method_option option
+    end
     def build
 
       in_root do
@@ -49,7 +53,9 @@ module Frank
 
       remove_dir build_output_dir
 
-      run "xcodebuild -xcconfig Frank/frankify.xcconfig install -configuration Debug -sdk iphonesimulator DSTROOT=#{build_output_dir} WRAPPER_NAME=#{app_bundle_name}"
+      extra_opts = XCODEBUILD_OPTIONS.map{ |o| "-#{o} #{options[o]}" if options[o] }.compact.join(' ')
+
+      run "xcodebuild -xcconfig Frank/frankify.xcconfig install #{extra_opts} -configuration Debug -sdk iphonesimulator DSTROOT=#{build_output_dir} PRODUCT_NAME=#{product_name}"
 
       in_root do
         FileUtils.cp_r( 
@@ -114,8 +120,12 @@ module Frank
 
     private
 
+    def product_name
+      "Frankified"
+    end
+
     def app_bundle_name
-      "Frankified.app"
+      "#{product_name}.app"
     end
 
     def build_output_dir
