@@ -1,4 +1,4 @@
 INSTALL_PATH = /./
 
-OTHER_LDFLAGS = $(inherited) -all_load -ObjC -framework CFNetwork -lShelley -lFrank -L Frank
+OTHER_LDFLAGS = $(inherited) -all_load -ObjC -framework CFNetwork -lShelley -lFrank
 GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = FRANKIFIED
