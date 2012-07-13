@@ -55,7 +55,7 @@ module Frank
 
       extra_opts = XCODEBUILD_OPTIONS.map{ |o| "-#{o} #{options[o]}" if options[o] }.compact.join(' ')
 
-      run "xcodebuild -xcconfig Frank/frankify.xcconfig install #{extra_opts} -configuration Debug -sdk iphonesimulator DSTROOT=#{build_output_dir} APP_NAME=#{product_name} FRANK_LIBRARY_SEARCH_PATHS=#{frank_lib_directory}"
+      run "xcodebuild -xcconfig Frank/frankify.xcconfig build install #{extra_opts} -configuration Debug -sdk iphonesimulator DSTROOT=#{build_output_dir} APP_NAME=#{product_name} FRANK_LIBRARY_SEARCH_PATHS=#{frank_lib_directory}"
 
       in_root do
         FileUtils.cp_r( 
