@@ -129,7 +129,7 @@ module Frank
     end
 
     def build_output_dir
-      "Frank/frankified_build"
+      File.expand_path "Frank/frankified_build"
     end
 
     def frankified_app_dir
