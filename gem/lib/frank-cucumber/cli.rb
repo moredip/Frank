@@ -1,6 +1,12 @@
+begin 
+  require 'pry'
+rescue LoadError 
+end
+
 require 'thor'
 require 'frank-cucumber/launcher'
 require 'frank-cucumber/console'
+require 'frank-cucumber/frankifier'
 
 module Frank
   class CLI < Thor
@@ -19,6 +25,8 @@ module Frank
     desc "setup", "set up your iOS app by adding a Frank subdirectory containing everything Frank needs"
     def setup
       directory ".", "Frank"
+
+      Frankifier.frankify!( File.expand_path('.') )
     end
 
     desc "update", "updates the frank server components inside your Frank directory"

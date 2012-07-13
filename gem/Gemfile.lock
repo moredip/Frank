@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    frank-cucumber (0.9.4)
+    frank-cucumber (0.9.5.pre2)
       cucumber
       dnssd
       i18n
