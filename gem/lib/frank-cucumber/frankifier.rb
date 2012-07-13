@@ -17,8 +17,12 @@ class Frankifier
   def frankify!
     decide_on_project
     decide_on_target
-
     report_project_and_target
+    say ''
+    add_linker_flag
+    say ''
+    add_library_search_path
+    save_changes
   end
 
   private
@@ -37,7 +41,7 @@ class Frankifier
       projects[choice]
     end
 
-    @project_name = xcodeproj.basename
+    @xcodeproj_path = xcodeproj
     @project = Xcodeproj::Project.new(xcodeproj)
   end
 
@@ -58,7 +62,40 @@ class Frankifier
   end
 
   def report_project_and_target
-    puts "Frankifying target [#{@target.name}] in project #{@project_name}"
+    puts "Frankifying target [#{@target.name}] in project #{@xcodeproj_path.basename}"
+  end
+
+  def add_linker_flag
+    add_frank_entry_to_build_setting( 'OTHER_LDFLAGS', 'FRANK_LDFLAGS' )
+  end
+
+  def add_library_search_path
+    add_frank_entry_to_build_setting( 'LIBRARY_SEARCH_PATHS', 'FRANK_LIBRARY_SEARCH_PATHS' )
+  end
+
+  def add_frank_entry_to_build_setting( build_setting, entry_to_add )
+    setting_array = Array( debug_build_settings[build_setting] )
+
+    if setting_array.find{ |flag| flag.start_with? "$(FRANK_" }
+      say "It appears that your Debug configuration's #{build_setting} build setting already include some FRANK setup. Namely: #{setting_array.inspect}. I won't change anything here."
+      return
+    end
+
+    say "Adding $(inherited) and $(#{entry_to_add}) to your Debug configuration's #{build_setting} build setting ..."
+    setting_array.unshift "$(inherited)"
+    setting_array << "$(#{entry_to_add})"
+    setting_array.uniq! # mainly to avoid duplicate $(inherited) entries
+    say "... #{build_setting} is now: #{setting_array.inspect}"
+
+    debug_build_settings[build_setting] = setting_array
+  end
+
+  def debug_build_settings
+    @_debug_build_settings ||= @target.build_configuration_list.build_settings('Debug')
+  end
+
+  def save_changes
+    @project.save_as( @xcodeproj_path )
   end
 
   # TODO: send this as a pull request to thor
