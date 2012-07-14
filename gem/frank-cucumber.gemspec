@@ -28,6 +28,10 @@ Gem::Specification.new do |s|
   s.add_dependency( "json" ) # TODO: figure out how to be more permissive as to which JSON gems we allow
   s.add_dependency( "dnssd" )
   s.add_dependency( "thor" )
+  s.add_dependency( "xcodeproj" )
 
   s.add_development_dependency( "rr" )
+  s.add_development_dependency( "yard" )
+  s.add_development_dependency( "pry" )
+  s.add_development_dependency( "pry-debugger" )
 end
