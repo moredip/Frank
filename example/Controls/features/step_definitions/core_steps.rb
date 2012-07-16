@@ -29,6 +29,16 @@ When /^I type "([^"]*)" into the "([^"]*)" text field using the keyboard$/ do |t
   type_into_keyboard( text_to_type )
 end
 
+When /^I delete (\d+) characters from the "(.*?)" text field using the keyboard$/ do |num_deletes, placeholder|
+  num_deletes = num_deletes.to_i
+  text_to_type = "\b"*num_deletes
+
+  touch( "textField placeholder:'#{placeholder}'" )
+  sleep(0.2) # wait for keyboard to animate in
+  wait_for_nothing_to_be_animating
+  type_into_keyboard( text_to_type )
+end
+
 When /^I pause briefly for demonstration purposes$/ do
   sleep 1.5
 end
