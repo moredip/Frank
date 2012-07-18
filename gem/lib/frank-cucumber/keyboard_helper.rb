@@ -8,7 +8,7 @@ module KeyboardHelper
   #
   # The "/b" control character is interpreted as a request to press the 'Delete' key.
   #
-  # An implicit return is appended to the key sequence, unless you specify otherwise by passing an {:append_return => false} option.
+  # An implicit return is appended to the key sequence, unless you explicitly specify otherwise by setting the :append_return option to false.
   #
   # @example
   #   # press the X, -, Y, and z keys on the 
