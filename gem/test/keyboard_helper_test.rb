@@ -51,6 +51,16 @@ describe "frank keyboard helper" do
     the_helper.type_into_keyboard("existing newline\n")
   end
 
+  it "doesn't add a trailing newline if asked explicitly not to" do
+    the_helper.mock_frank_server.send_post.with_any_args do |endpoint,payload|
+      payload.must_equal( {:text_to_type => "text without newline"} )
+
+      successful_response
+    end
+
+    the_helper.type_into_keyboard("text without newline", :append_return => false)
+  end
+
   it 'raises an exception if the server responds negatively' do
     failure_message = <<-EOS
     { 
