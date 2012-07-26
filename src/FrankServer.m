@@ -11,6 +11,7 @@
 #import "HTTPServer.h"
 #import "RoutingHTTPConnection.h"
 #import "StaticResourcesRoute.h"
+#import "ImageCaptureRoute.h"
 #import "FrankCommandRoute.h"
 #import "DumpCommand.h"
 #import "MapOperationCommand.h"
@@ -52,6 +53,9 @@ static NSUInteger __defaultPort = FRANK_SERVER_PORT;
 		
 		StaticResourcesRoute *staticRoute = [[[StaticResourcesRoute alloc] initWithStaticResourceSubDir:bundleName] autorelease];
 		[[RequestRouter singleton] registerRoute:staticRoute];
+        
+        ImageCaptureRoute *imageCaptureCommand = [[[ImageCaptureRoute alloc] init] autorelease];
+		[[RequestRouter singleton] registerRoute:imageCaptureCommand];
 		
 		_httpServer = [[[HTTPServer alloc]init] retain];
 		
