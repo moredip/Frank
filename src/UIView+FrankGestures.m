@@ -34,6 +34,7 @@ CGSize swipeDeltasForDirection(NSString *direction){
         return CGSizeMake(SMALL_DELTA, BIG_DELTA);
     }else{
         [NSException raise:@"invalid swipe direction" format:@"swipe direction '%@' is invalid", direction];
+        return CGSizeZero; // stop compiler from whining
     }
 }
 
