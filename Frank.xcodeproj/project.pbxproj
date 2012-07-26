@@ -49,6 +49,10 @@
 		ABA9E4C815C81E7A00112290 /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA9E4C315C81E7A00112290 /* DDTTYLogger.m */; };
 		ABA9E4CD15C81E8700112290 /* ContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA9E4CA15C81E8700112290 /* ContextFilterLogFormatter.m */; };
 		ABA9E4CE15C81E8700112290 /* DispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA9E4CC15C81E8700112290 /* DispatchQueueLogFormatter.m */; };
+		C18A5EF0160D4AB400DC25F6 /* ImageCaptureRoute.h in Headers */ = {isa = PBXBuildFile; fileRef = C18A5EEE160D4AB400DC25F6 /* ImageCaptureRoute.h */; };
+		C18A5EF1160D4AB400DC25F6 /* ImageCaptureRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = C18A5EEF160D4AB400DC25F6 /* ImageCaptureRoute.m */; };
+		C18A5EF5160D4AD300DC25F6 /* UIView+ImageCapture.h in Headers */ = {isa = PBXBuildFile; fileRef = C18A5EF3160D4AD300DC25F6 /* UIView+ImageCapture.h */; };
+		C18A5EF6160D4AD300DC25F6 /* UIView+ImageCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = C18A5EF4160D4AD300DC25F6 /* UIView+ImageCapture.m */; };
 		C1AF90551569F10200AE06A1 /* KIFTestStep.h in Headers */ = {isa = PBXBuildFile; fileRef = C1AF90541569F10200AE06A1 /* KIFTestStep.h */; };
 		C1C3CCC0156BCF3500AEE136 /* FEXTappableConfirmationButton.h in Headers */ = {isa = PBXBuildFile; fileRef = C1C3CCBE156BCF3500AEE136 /* FEXTappableConfirmationButton.h */; };
 		C1C3CCC1156BCF3500AEE136 /* FEXTappableConfirmationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C3CCBF156BCF3500AEE136 /* FEXTappableConfirmationButton.m */; };
@@ -272,6 +276,10 @@
 		ABA9E4CA15C81E8700112290 /* ContextFilterLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContextFilterLogFormatter.m; sourceTree = "<group>"; };
 		ABA9E4CB15C81E8700112290 /* DispatchQueueLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DispatchQueueLogFormatter.h; sourceTree = "<group>"; };
 		ABA9E4CC15C81E8700112290 /* DispatchQueueLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DispatchQueueLogFormatter.m; sourceTree = "<group>"; };
+		C18A5EEE160D4AB400DC25F6 /* ImageCaptureRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCaptureRoute.h; sourceTree = "<group>"; };
+		C18A5EEF160D4AB400DC25F6 /* ImageCaptureRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCaptureRoute.m; sourceTree = "<group>"; };
+		C18A5EF3160D4AD300DC25F6 /* UIView+ImageCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ImageCapture.h"; sourceTree = "<group>"; };
+		C18A5EF4160D4AD300DC25F6 /* UIView+ImageCapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ImageCapture.m"; sourceTree = "<group>"; };
 		C1AF90541569F10200AE06A1 /* KIFTestStep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIFTestStep.h; sourceTree = "<group>"; };
 		C1C3CCBE156BCF3500AEE136 /* FEXTappableConfirmationButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEXTappableConfirmationButton.h; sourceTree = "<group>"; };
 		C1C3CCBF156BCF3500AEE136 /* FEXTappableConfirmationButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEXTappableConfirmationButton.m; sourceTree = "<group>"; };
@@ -614,6 +622,8 @@
 			children = (
 				D6D05CA311C883AA0081C5A5 /* FrankCommandRoute.h */,
 				D6D05CA411C883AA0081C5A5 /* FrankCommandRoute.m */,
+				C18A5EEE160D4AB400DC25F6 /* ImageCaptureRoute.h */,
+				C18A5EEF160D4AB400DC25F6 /* ImageCaptureRoute.m */,
 				D6D05CAB11C883AA0081C5A5 /* RequestRouter.h */,
 				D6D05CAC11C883AA0081C5A5 /* RequestRouter.m */,
 				D6D05CAD11C883AA0081C5A5 /* RoutingHTTPConnection.h */,
@@ -668,6 +678,8 @@
 				D6A1D27E15A8D05E00EC056C /* UIView+Frank.m */,
 				C1C6D1EC1535522300EAA0CF /* UIView+FrankGestures.m */,
 				D6F0955A144A5F4600B78FEC /* UIView+KIFAdapter.m */,
+				C18A5EF3160D4AD300DC25F6 /* UIView+ImageCapture.h */,
+				C18A5EF4160D4AD300DC25F6 /* UIView+ImageCapture.m */,
 				C9605E661606BF8E00170F88 /* UIView+MapKitWorkaround.m */,
 			);
 			name = Additions;
@@ -929,6 +941,8 @@
 				FC4EC7EC15ED1E0A00B1F119 /* NSString+Franks_SBJSON.h in Headers */,
 				C9605E641606BF2900170F88 /* KeyboardCommand.h in Headers */,
 				C9605E6A1606BFAE00170F88 /* UIImage+Frank.h in Headers */,
+				C18A5EF0160D4AB400DC25F6 /* ImageCaptureRoute.h in Headers */,
+				C18A5EF5160D4AD300DC25F6 /* UIView+ImageCapture.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1120,6 +1134,8 @@
 				C9605E651606BF2900170F88 /* KeyboardCommand.m in Sources */,
 				C9605E671606BF8E00170F88 /* UIView+MapKitWorkaround.m in Sources */,
 				C9605E6B1606BFAE00170F88 /* UIImage+Frank.m in Sources */,
+				C18A5EF1160D4AB400DC25F6 /* ImageCaptureRoute.m in Sources */,
+				C18A5EF6160D4AD300DC25F6 /* UIView+ImageCapture.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
