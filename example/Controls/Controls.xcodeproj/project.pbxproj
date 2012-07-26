@@ -29,10 +29,22 @@
 		D6225FAE1436D886002B04AA /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6225FAC1436D886002B04AA /* MainWindow.xib */; };
 		D6225FB11436D886002B04AA /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6225FB01436D886002B04AA /* RootViewController.m */; };
 		D6225FB41436D886002B04AA /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6225FB21436D886002B04AA /* RootViewController.xib */; };
+		D6453EF115C19E6B00493A8B /* libFrank.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6453EEF15C19E4200493A8B /* libFrank.a */; };
+		D6453EF315C19E7F00493A8B /* libShelley.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6453EF215C19E7F00493A8B /* libShelley.a */; };
 		D66968BD1594DDDE000163A8 /* ControlsAppDelegate+FrankExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C1AC878D15605FAB002B1165 /* ControlsAppDelegate+FrankExtensions.m */; };
 		D69137BF1436DB00003C26AC /* UISwitchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D69137BD1436DB00003C26AC /* UISwitchViewController.m */; };
 		D69137C01436DB00003C26AC /* UISwitchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D69137BE1436DB00003C26AC /* UISwitchViewController.xib */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D6453EEE15C19E4200493A8B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D6453EE715C19E4200493A8B /* Frank.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D;
+			remoteInfo = Frank;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		49543E4B1538791E001D87F1 /* Carousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Carousel.h; sourceTree = "<group>"; };
@@ -68,6 +80,8 @@
 		D6225FAF1436D886002B04AA /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		D6225FB01436D886002B04AA /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		D6225FB31436D886002B04AA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootViewController.xib; sourceTree = "<group>"; };
+		D6453EE715C19E4200493A8B /* Frank.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Frank.xcodeproj; path = ../../Frank.xcodeproj; sourceTree = "<group>"; };
+		D6453EF215C19E7F00493A8B /* libShelley.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libShelley.a; path = ../../dist/libShelley.a; sourceTree = "<group>"; };
 		D69137BC1436DB00003C26AC /* UISwitchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISwitchViewController.h; sourceTree = "<group>"; };
 		D69137BD1436DB00003C26AC /* UISwitchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UISwitchViewController.m; sourceTree = "<group>"; };
 		D69137BE1436DB00003C26AC /* UISwitchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UISwitchViewController.xib; sourceTree = "<group>"; };
@@ -79,6 +93,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6453EF315C19E7F00493A8B /* libShelley.a in Frameworks */,
+				D6453EF115C19E6B00493A8B /* libFrank.a in Frameworks */,
 				D6225F9B1436D886002B04AA /* UIKit.framework in Frameworks */,
 				D6225F9D1436D886002B04AA /* Foundation.framework in Frameworks */,
 				D6225F9F1436D886002B04AA /* CoreGraphics.framework in Frameworks */,
@@ -103,6 +119,7 @@
 		D6225F8B1436D886002B04AA = {
 			isa = PBXGroup;
 			children = (
+				D6453EF215C19E7F00493A8B /* libShelley.a */,
 				49543E3B153878EC001D87F1 /* Images */,
 				D69137DA1436E1D2003C26AC /* CFNetwork.framework */,
 				D69137C11436E0EF003C26AC /* Frank */,
@@ -171,9 +188,18 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D6453EE815C19E4200493A8B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D6453EEF15C19E4200493A8B /* libFrank.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		D69137C11436E0EF003C26AC /* Frank */ = {
 			isa = PBXGroup;
 			children = (
+				D6453EE715C19E4200493A8B /* Frank.xcodeproj */,
 				C1AC878D15605FAB002B1165 /* ControlsAppDelegate+FrankExtensions.m */,
 			);
 			name = Frank;
@@ -218,12 +244,28 @@
 			mainGroup = D6225F8B1436D886002B04AA;
 			productRefGroup = D6225F971436D886002B04AA /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = D6453EE815C19E4200493A8B /* Products */;
+					ProjectRef = D6453EE715C19E4200493A8B /* Frank.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D6225F951436D886002B04AA /* Controls */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		D6453EEF15C19E4200493A8B /* libFrank.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libFrank.a;
+			remoteRef = D6453EEE15C19E4200493A8B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D6225F941436D886002B04AA /* Resources */ = {
@@ -337,6 +379,20 @@
 				GCC_PREFIX_HEADER = "Controls/Controls-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Controls/Controls-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../dist\"",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-all_load",
+					"-ObjC",
+					"-framework",
+					CFNetwork,
+					"-lShelley",
+					"-L",
+					Frank,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -351,6 +407,20 @@
 				GCC_PREFIX_HEADER = "Controls/Controls-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Controls/Controls-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../dist\"",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-all_load",
+					"-ObjC",
+					"-framework",
+					CFNetwork,
+					"-lShelley",
+					"-L",
+					Frank,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;

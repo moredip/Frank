@@ -50,38 +50,6 @@ extern BOOL frankLogEnabled;
         NSLog( @"received request with path %@\nPOST DATA:\n%@", path, connection.postDataAsString );
     }
     
-	if( [@"screenshot" isEqualToString:[path objectAtIndex:0]] )
-	{
-        BOOL allWindows = [path count] > 1 && [[path objectAtIndex:0] isEqualToString:@"allwindows"];
-        UIImage *screenshot = [UIImage imageFromApplication:allWindows];
-        
-        if ([path count] == 4)
-        {
-            NSString *stringRepresentation = [path objectAtIndex:3];
-            NSArray *parts = [stringRepresentation componentsSeparatedByString:@"."];
-            CGRect rect = CGRectZero;
-            
-            rect.origin.x = [[parts objectAtIndex:0] integerValue];
-            rect.origin.y = [[parts objectAtIndex:1] integerValue];
-            rect.size.width  = [[parts objectAtIndex:2] integerValue];
-            rect.size.height = [[parts objectAtIndex:3] integerValue];
-            
-            //
-            // Crop image or mask out an area (IE: Timestamp)
-            //
-            if ([[path objectAtIndex:2] isEqualToString:@"frame"])
-                screenshot = [screenshot imageCropedToFrame:rect];
-            else if ([[path objectAtIndex:2] isEqualToString:@"mask"])
-                screenshot = [screenshot imageMaskedAtFrame:rect];
-            else
-                NSLog(@"Unknown Operation");
-        }
-        
-        NSData *response = UIImagePNGRepresentation(screenshot);
-        
-		return [[[HTTPDataResponse alloc] initWithData:response] autorelease];
-	}
-	
 	id<FrankCommand> command = [self commandForPath:path];
 	if( nil == command )
 		return nil;

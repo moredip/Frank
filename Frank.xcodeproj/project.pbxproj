@@ -104,6 +104,10 @@
 		D6325EE31437F7180057330D /* UIProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = D6325EA51437F7180057330D /* UIProxy.m */; };
 		D6325EE41437F7180057330D /* WaitUntilIdle.h in Headers */ = {isa = PBXBuildFile; fileRef = D6325EA61437F7180057330D /* WaitUntilIdle.h */; };
 		D6325EE51437F7180057330D /* WaitUntilIdle.m in Sources */ = {isa = PBXBuildFile; fileRef = D6325EA71437F7180057330D /* WaitUntilIdle.m */; };
+		D6453EF615C19FC000493A8B /* UIView+ImageCapture.h in Headers */ = {isa = PBXBuildFile; fileRef = D6453EF415C19FC000493A8B /* UIView+ImageCapture.h */; };
+		D6453EF715C19FC000493A8B /* UIView+ImageCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = D6453EF515C19FC000493A8B /* UIView+ImageCapture.m */; };
+		D6453EFB15C1A6D500493A8B /* ImageCaptureRoute.h in Headers */ = {isa = PBXBuildFile; fileRef = D6453EF915C1A6D400493A8B /* ImageCaptureRoute.h */; };
+		D6453EFC15C1A6D500493A8B /* ImageCaptureRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = D6453EFA15C1A6D500493A8B /* ImageCaptureRoute.m */; };
 		D67725621587A57200FB4E67 /* UIWindow-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D67725601587A57200FB4E67 /* UIWindow-KIFAdditions.h */; };
 		D67725631587A57200FB4E67 /* UIWindow-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D67725611587A57200FB4E67 /* UIWindow-KIFAdditions.m */; };
 		D67F2AAD13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = D67F2AAB13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.h */; };
@@ -270,6 +274,10 @@
 		D6325EA51437F7180057330D /* UIProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIProxy.m; sourceTree = "<group>"; };
 		D6325EA61437F7180057330D /* WaitUntilIdle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitUntilIdle.h; sourceTree = "<group>"; };
 		D6325EA71437F7180057330D /* WaitUntilIdle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitUntilIdle.m; sourceTree = "<group>"; };
+		D6453EF415C19FC000493A8B /* UIView+ImageCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+ImageCapture.h"; path = "src/UIView+ImageCapture.h"; sourceTree = "<group>"; };
+		D6453EF515C19FC000493A8B /* UIView+ImageCapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+ImageCapture.m"; path = "src/UIView+ImageCapture.m"; sourceTree = "<group>"; };
+		D6453EF915C1A6D400493A8B /* ImageCaptureRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageCaptureRoute.h; path = src/ImageCaptureRoute.h; sourceTree = "<group>"; };
+		D6453EFA15C1A6D500493A8B /* ImageCaptureRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageCaptureRoute.m; path = src/ImageCaptureRoute.m; sourceTree = "<group>"; };
 		D67725601587A57200FB4E67 /* UIWindow-KIFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIWindow-KIFAdditions.h"; path = "lib/KIF/Additions/UIWindow-KIFAdditions.h"; sourceTree = "<group>"; };
 		D67725611587A57200FB4E67 /* UIWindow-KIFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIWindow-KIFAdditions.m"; path = "lib/KIF/Additions/UIWindow-KIFAdditions.m"; sourceTree = "<group>"; };
 		D67F2AAB13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccessibilityCheckCommand.h; path = src/AccessibilityCheckCommand.h; sourceTree = "<group>"; };
@@ -432,6 +440,10 @@
 				0071264514F8956700E738ED /* ViewJSONSerializer.m */,
 				C1C6D1EC1535522300EAA0CF /* UIView+FrankGestures.m */,
 				D6A1D27E15A8D05E00EC056C /* UIView+Frank.m */,
+				D6453EF415C19FC000493A8B /* UIView+ImageCapture.h */,
+				D6453EF515C19FC000493A8B /* UIView+ImageCapture.m */,
+				D6453EF915C1A6D400493A8B /* ImageCaptureRoute.h */,
+				D6453EFA15C1A6D500493A8B /* ImageCaptureRoute.m */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -722,6 +734,8 @@
 				C1C3CCC0156BCF3500AEE136 /* FEXTappableConfirmationButton.h in Headers */,
 				D6FA01B714283C4F00576AEB /* UITableViewCell+TappableConfirmationButton.h in Headers */,
 				D67725621587A57200FB4E67 /* UIWindow-KIFAdditions.h in Headers */,
+				D6453EF615C19FC000493A8B /* UIView+ImageCapture.h in Headers */,
+				D6453EFB15C1A6D500493A8B /* ImageCaptureRoute.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -870,6 +884,8 @@
 				D6FA01B714283C4F00576AED /* UITableViewCell+TappableConfirmationButton.m in Sources */,
 				D67725631587A57200FB4E67 /* UIWindow-KIFAdditions.m in Sources */,
 				D6A1D28015A8D05E00EC056C /* UIView+Frank.m in Sources */,
+				D6453EF715C19FC000493A8B /* UIView+ImageCapture.m in Sources */,
+				D6453EFC15C1A6D500493A8B /* ImageCaptureRoute.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
