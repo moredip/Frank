@@ -7,7 +7,8 @@
 //
 
 #import "UIImage+Frank.h"
-#import <QuartzCore/QuartzCore.h>
+
+#import "UIView+ImageCapture.h"
 
 
 @implementation UIImage(Frank)
@@ -16,21 +17,10 @@
 {	
 	UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
 	
-	UIGraphicsBeginImageContext(keyWindow.bounds.size);
     if (allWindows)
-    {
-        for (UIWindow *w in [[UIApplication sharedApplication] windows])
-        {
-            [w.layer renderInContext:UIGraphicsGetCurrentContext()];
-        }
-    }
+        return [UIView captureImageOfSize:keyWindow.bounds.size fromViews:[[UIApplication sharedApplication] windows]];
     else
-    {
-        [keyWindow.layer renderInContext:UIGraphicsGetCurrentContext()];
-    }
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();	
-	return image;
+        return [keyWindow captureImage];
 }
 
 - (UIImage *)imageCropedToFrame:(CGRect)cropFrame
