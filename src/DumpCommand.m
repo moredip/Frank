@@ -110,20 +110,16 @@
 
 #pragma mark - view serialization
 - (NSDictionary *) serializeView: (UIView *) view {
-    // eye ball this array to about 20 views, should be more than enough per view.
-    // will avoid resizing the array constantly (and fuck the wasted space).
     NSMutableDictionary *serializedView = [NSMutableDictionary dictionaryWithCapacity: 20];
-    
-    // start by serializing the view's class string representation
-    Class viewClass = view.class;
-    
-    NSString *className = NSStringFromClass(viewClass);
-    [serializedView setObject: className forKey: @"class"];
+
+    [serializedView setObject:NSStringFromClass(view.class) forKey: @"class"];
+
+    // use the view's raw location in memory as a poor man's uid
+    [serializedView setObject:[NSNumber numberWithInt:(int)view] forKey:@"uid"];
     
     // iterate on all mapping definition classes looking for a (super) class of the current object
     for(Class candidate in classMapping.keyEnumerator) {
-        // no match. Next!
-        if(![viewClass isSubclassOfClass: candidate]) {
+        if(![view isKindOfClass:candidate]) {
             continue;
         }
         
