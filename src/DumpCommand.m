@@ -102,7 +102,7 @@
 
 #pragma mark - Command handling
 - (NSString *)handleCommandWithRequestBody:(NSString *)requestBody {
-    __block NSDictionary* dom;
+    __block NSDictionary* dom = nil;
     
     dispatch_sync(dispatch_get_main_queue(), ^{
         // serialize starting from root window and return json representation of it

@@ -49,7 +49,7 @@
 }
 
 - (NSString *)handleCommandWithRequestBody:(NSString *)requestBody {
-    __block NSString* response;
+    __block NSString* response = nil;
 	
     dispatch_sync(dispatch_get_main_queue(), ^{
         NSDictionary *requestCommand = [requestBody JSONValue];

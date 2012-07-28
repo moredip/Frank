@@ -25,7 +25,7 @@
 }
 
 - (NSString *)handleCommandWithRequestBody:(NSString *)requestBody {
-    __block NSDictionary* response;
+    __block NSDictionary* response = nil;
     
     dispatch_sync(dispatch_get_main_queue(), ^{
         NSString *boolString = ([self accessibilitySeemsToBeTurnedOn] ? @"true" : @"false");

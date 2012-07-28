@@ -31,7 +31,7 @@
 	}
 	
     NSMutableArray* results = [NSMutableArray new];
-    __block NSException* exn;
+    __block NSException* exn = nil;
     
     dispatch_sync(dispatch_get_main_queue(), ^{
         id result;

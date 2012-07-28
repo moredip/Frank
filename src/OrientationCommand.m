@@ -42,7 +42,7 @@
 }
 
 - (NSString *)handleCommandWithRequestBody:(NSString *)requestBody {    
-   	__block NSString *orientationDescription;
+   	__block NSString *orientationDescription = nil;
     
     dispatch_sync(dispatch_get_main_queue(), ^{
         orientationDescription = [[self getOrientationDescriptionViaDevice] retain];
