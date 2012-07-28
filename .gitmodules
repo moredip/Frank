@@ -10,3 +10,6 @@
 [submodule "symbiote"]
 	path = symbiote
 	url = https://github.com/TestingWithFrank/symbiote.git
+[submodule "lib/cocoahttpserver"]
+	path = lib/cocoahttpserver
+	url = https://github.com/robbiehanson/CocoaHTTPServer.git
