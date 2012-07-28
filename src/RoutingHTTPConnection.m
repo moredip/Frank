@@ -45,21 +45,28 @@
  * Returns whether or not the server will accept POSTs.
  * That is, whether the server will accept uploaded data for the given URI.
  **/
-- (BOOL)supportsPOST:(NSString *)path withSize:(UInt64)contentLength
+//- (BOOL)supportsPOST:(NSString *)path withSize:(UInt64)contentLength
+//{
+//	return [self.router canHandlePostForPath:path];
+//}
+- (BOOL)supportsMethod:(NSString *)method atPath:(NSString *)path
 {
-	return [self.router canHandlePostForPath:path];
+    NSLog(@"%s, %@", __func__, method);
+    return YES;
 }
 
 /**
  * This method is called to handle data read from a POST.
  * The given data is part of the POST body.
  **/
-- (void)processPostDataChunk:(NSData *)postDataChunk
+- (void)processBodyData:(NSData *)postDataChunk
 {
-	if( nil == _postData )
-		_postData = [[NSMutableData alloc] init];
-	
-	[_postData appendData:postDataChunk];
+    [_postData appendData:postDataChunk];
+}
+
+- (void)prepareForBodyWithSize:(UInt64)contentLength
+{
+    _postData = [[NSMutableData alloc] initWithCapacity:contentLength];
 }
 
 /**
@@ -69,11 +76,11 @@
  * HTTPFileResponse is a wrapper for an NSFileHandle object, and is the preferred way to send a file response.
  * HTTPDataResopnse is a wrapper for an NSData object, and may be used to send a custom response.
  **/
-- (NSObject<HTTPResponse> *)httpResponseForURI:(NSString *)path
+- (NSObject<HTTPResponse> *)httpResponseForMethod:(NSString *)method URI:(NSString *)path
 {
 	NSObject<HTTPResponse> *response = [self.router handleRequestForPath:path withConnection:self];
 	
-	postContentLength = 0;
+	requestContentLength = 0;
 	if( nil != _postData )
 	{
 		[_postData release];
