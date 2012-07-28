@@ -6,6 +6,8 @@
 //  Copyright 2010 ThoughtWorks. See NOTICE file for details.
 //
 
+#import "RoutingHTTPConnection.h"
+#import "HTTPFileResponse.h"
 #import "StaticResourcesRoute.h"
 
 extern BOOL frankLogEnabled;
@@ -37,7 +39,7 @@ extern BOOL frankLogEnabled;
     }
 	BOOL isDir = YES;
 	if( [[NSFileManager defaultManager] fileExistsAtPath:fullPathToRequestedResource isDirectory:&isDir] && !isDir )
-		return [[HTTPFileResponse alloc] initWithFilePath:fullPathToRequestedResource];
+        return [[HTTPFileResponse alloc] initWithFilePath:fullPathToRequestedResource forConnection:connection];
 	else
 		return nil;
 }
