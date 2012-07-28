@@ -45,13 +45,13 @@
  * Returns whether or not the server will accept POSTs.
  * That is, whether the server will accept uploaded data for the given URI.
  **/
-//- (BOOL)supportsPOST:(NSString *)path withSize:(UInt64)contentLength
-//{
-//	return [self.router canHandlePostForPath:path];
-//}
 - (BOOL)supportsMethod:(NSString *)method atPath:(NSString *)path
 {
-    NSLog(@"%s, %@", __func__, method);
+    if ([[method uppercaseString] isEqualToString:@"POST"]) {
+        return [self.router canHandlePostForPath:path];
+    }
+    
+    // Assume other method is "GET" and is acceptable.
     return YES;
 }
 
