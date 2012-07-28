@@ -29,8 +29,10 @@
     
     dispatch_sync(dispatch_get_main_queue(), ^{
         NSString *boolString = ([self accessibilitySeemsToBeTurnedOn] ? @"true" : @"false");
-        response = [NSDictionary dictionaryWithObject:boolString forKey:@"accessibility_enabled"];
+        response = [[NSDictionary dictionaryWithObject:boolString forKey:@"accessibility_enabled"] retain];
     });
+    
+    [response autorelease];
     
 	return [response JSONRepresentation];
 }

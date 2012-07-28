@@ -45,12 +45,14 @@
    	__block NSString *orientationDescription;
     
     dispatch_sync(dispatch_get_main_queue(), ^{
-        orientationDescription = [self getOrientationDescriptionViaDevice];
+        orientationDescription = [[self getOrientationDescriptionViaDevice] retain];
         
         if( !orientationDescription ) {
-            orientationDescription = [self getOrientationDescriptionViaStatusBar];
+            orientationDescription = [[self getOrientationDescriptionViaStatusBar] retain];
         }
     });
+    
+    [orientationDescription autorelease];
 	
 	NSDictionary *dom = [NSDictionary dictionaryWithObject:orientationDescription forKey:@"orientation"];
 	return [dom JSONRepresentation];

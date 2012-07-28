@@ -68,7 +68,7 @@
         }
         @catch (NSException * e) {
             NSLog( @"Exception while using %@ to select views with '%@':\n%@", selectorEngineString, selector, e );
-            response = [FranklyProtocolHelper generateErrorResponseWithReason:@"invalid selector" andDetails:[e reason]];
+            response = [[FranklyProtocolHelper generateErrorResponseWithReason:@"invalid selector" andDetails:[e reason]] retain];
             return;
         }
         
@@ -81,13 +81,15 @@
             @catch (NSException * e) {
                 NSLog( @"Exception while performing operation %@\n%@", operation, e );
                 NSString* message = [NSString stringWithFormat:@"encountered error while attempting to perform %@ on selected elements", operation];
-                response = [FranklyProtocolHelper generateErrorResponseWithReason:message andDetails:[e reason]];
+                response = [[FranklyProtocolHelper generateErrorResponseWithReason:message andDetails:[e reason]] retain];
                 return;
             }
         }
         
-        response = [FranklyProtocolHelper generateSuccessResponseWithResults: results];
+        response = [[FranklyProtocolHelper generateSuccessResponseWithResults: results] retain];
     });
+    
+    [response autorelease];
     
     return response;
 }

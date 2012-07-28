@@ -40,12 +40,14 @@
         }
         @catch (NSException *e) {
             NSLog( @"Exception while applying operation to app delegate:\n%@", e );
-            exn = e;
+            exn = [e retain];
             return;
         }
         
         [results addObject:[ViewJSONSerializer jsonify:result]];
     });
+    
+    [exn autorelease];
 	
     if (exn) {
         return [FranklyProtocolHelper generateErrorResponseWithReason:@"exception while executing operation" andDetails:[exn reason]];

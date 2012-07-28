@@ -55,7 +55,13 @@ extern BOOL frankLogEnabled;
 	if( [@"screenshot" isEqualToString:[path objectAtIndex:0]] )
 	{
         BOOL allWindows = [path count] > 1 && [[path objectAtIndex:0] isEqualToString:@"allwindows"];
-        UIImage *screenshot = [UIImage imageFromApplication:allWindows];
+        __block UIImage *screenshot;
+        
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            screenshot = [[UIImage imageFromApplication:allWindows] retain];
+        });
+        
+        [screenshot autorelease];
         
         if ([path count] == 4)
         {
