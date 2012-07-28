@@ -25,9 +25,13 @@
 }
 
 - (NSString *)handleCommandWithRequestBody:(NSString *)requestBody {
-	NSString *boolString = ([self accessibilitySeemsToBeTurnedOn] ? @"true" : @"false");
-	NSDictionary *response = [NSDictionary dictionaryWithObject:boolString
-														forKey:@"accessibility_enabled"];
+    __block NSDictionary* response;
+    
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        NSString *boolString = ([self accessibilitySeemsToBeTurnedOn] ? @"true" : @"false");
+        response = [NSDictionary dictionaryWithObject:boolString forKey:@"accessibility_enabled"];
+    });
+    
 	return [response JSONRepresentation];
 }
 

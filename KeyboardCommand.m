@@ -24,7 +24,11 @@
 }
 
 - (BOOL)checkForKeyboard {
- return nil != [[UIApplication sharedApplication] keyboardWindow];
+    __block BOOL result;
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        result = (nil != [[UIApplication sharedApplication] keyboardWindow]);
+    });
+    return result;
 }
 
 - (NSString *)generateKeyboardNotPresentErrorResponse {
@@ -35,6 +39,16 @@
 - (NSString *)generateFailedToEnterCharacterErrorResponse:(NSString *)characterWhichFailed {
     return [FranklyProtocolHelper generateErrorResponseWithReason:@"failed to type character"
                                                        andDetails:[NSString stringWithFormat:@"We were unable to type the character '%@'. This is probably because we couldn't find it on the keyboard. Please report this to the frank-discuss mailing list."]];
+}
+
+- (BOOL)enterCharacter:(NSString*)characterString {
+    __block BOOL result;
+    
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        result = [KIFTestStep _enterCharacter:characterString];
+    });
+    
+    return result;
 }
 
 - (NSString *)handleCommandWithRequestBody:(NSString *)requestBody {
@@ -50,7 +64,7 @@
     for (NSUInteger characterIndex = 0; characterIndex < [textToType length]; characterIndex++) {
         NSString *characterString = [textToType substringWithRange:NSMakeRange(characterIndex, 1)];
 
-        if (![KIFTestStep _enterCharacter:characterString]) {
+        if (![self enterCharacter:characterString]) {
             return [self generateFailedToEnterCharacterErrorResponse:characterString];
         }
     }

@@ -49,40 +49,47 @@
 }
 
 - (NSString *)handleCommandWithRequestBody:(NSString *)requestBody {
+    __block NSString* response;
 	
-	NSDictionary *requestCommand = [requestBody JSONValue];
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        NSDictionary *requestCommand = [requestBody JSONValue];
+        
+        NSString *selectorEngineString = [requestCommand objectForKey:@"selector_engine"];
+        if( !selectorEngineString )
+            selectorEngineString = @"uiquery"; // default to UIQuery, for compatibility with old clients
+        
+        NSString *selector = [requestCommand objectForKey:@"query"];
+        NSDictionary *operationDict = [requestCommand objectForKey:@"operation"];
+        Operation *operation = [[[Operation alloc] initFromJsonRepresentation:operationDict] autorelease];
+        
+        NSArray *viewsToMap = nil;
+        @try {
+            viewsToMap = [SelectorEngineRegistry selectViewsWithEngineNamed:selectorEngineString usingSelector:selector];
+        }
+        @catch (NSException * e) {
+            NSLog( @"Exception while using %@ to select views with '%@':\n%@", selectorEngineString, selector, e );
+            response = [FranklyProtocolHelper generateErrorResponseWithReason:@"invalid selector" andDetails:[e reason]];
+            return;
+        }
+        
+        NSMutableArray *results = [NSMutableArray arrayWithCapacity:[viewsToMap count]];
+        for (UIView *view in viewsToMap) {
+            @try {
+                id result = [self performOperation:operation onView:view];
+                [results addObject:[ViewJSONSerializer jsonify:result]];
+            }
+            @catch (NSException * e) {
+                NSLog( @"Exception while performing operation %@\n%@", operation, e );
+                NSString* message = [NSString stringWithFormat:@"encountered error while attempting to perform %@ on selected elements", operation];
+                response = [FranklyProtocolHelper generateErrorResponseWithReason:message andDetails:[e reason]];
+                return;
+            }
+        }
+        
+        response = [FranklyProtocolHelper generateSuccessResponseWithResults: results];
+    });
     
-	NSString *selectorEngineString = [requestCommand objectForKey:@"selector_engine"];
-    if( !selectorEngineString )
-        selectorEngineString = @"uiquery"; // default to UIQuery, for compatibility with old clients
-    
-	NSString *selector = [requestCommand objectForKey:@"query"];
-	NSDictionary *operationDict = [requestCommand objectForKey:@"operation"];
-	Operation *operation = [[[Operation alloc] initFromJsonRepresentation:operationDict] autorelease];
-    
-    NSArray *viewsToMap = nil;
-    @try {
-        viewsToMap = [SelectorEngineRegistry selectViewsWithEngineNamed:selectorEngineString usingSelector:selector];
-    }	
-    @catch (NSException * e) {
-		NSLog( @"Exception while using %@ to select views with '%@':\n%@", selectorEngineString, selector, e );
-		return [FranklyProtocolHelper generateErrorResponseWithReason:@"invalid selector" andDetails:[e reason]];
-	}
-	
-    NSMutableArray *results = [NSMutableArray arrayWithCapacity:[viewsToMap count]];
-	for (UIView *view in viewsToMap) {
-		@try {
-			id result = [self performOperation:operation onView:view];
-			[results addObject:[ViewJSONSerializer jsonify:result]];
-		}
-		@catch (NSException * e) {
-			NSLog( @"Exception while performing operation %@\n%@", operation, e );
-			return [FranklyProtocolHelper generateErrorResponseWithReason: [ NSString stringWithFormat:@"encountered error while attempting to perform %@ on selected elements",operation]
-											  andDetails:[e reason]];
-		}
-	}
-							   
-   return [FranklyProtocolHelper generateSuccessResponseWithResults: results];
+    return response;
 }
 
 @end
