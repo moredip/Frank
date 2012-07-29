@@ -30,19 +30,29 @@
 		return [FranklyProtocolHelper generateErrorResponseWithReason:@"operation doesn't apply" andDetails:@"operation does not appear to be implemented in app delegate"];
 	}
 	
-	id result;
+    NSMutableArray* results = [NSMutableArray new];
+    __block NSException* exn = nil;
+    
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        id result;
+        @try {
+            result = [operation applyToObject:appDelegate];
+        }
+        @catch (NSException *e) {
+            NSLog( @"Exception while applying operation to app delegate:\n%@", e );
+            exn = [e retain];
+            return;
+        }
+        
+        [results addObject:[ViewJSONSerializer jsonify:result]];
+    });
+    
+    [exn autorelease];
 	
-	@try {
-		result = [operation applyToObject:appDelegate];
-	}
-	@catch (NSException *e) {
-		NSLog( @"Exception while applying operation to app delegate:\n%@", e );
-		return [FranklyProtocolHelper generateErrorResponseWithReason:@"exception while executing operation" andDetails:[e reason]];
-	}
-	
-    NSMutableArray *results = [NSMutableArray new];
-	[results addObject:[ViewJSONSerializer jsonify:result]];
-	
+    if (exn) {
+        return [FranklyProtocolHelper generateErrorResponseWithReason:@"exception while executing operation" andDetails:[exn reason]];
+    }
+    
 	return [FranklyProtocolHelper generateSuccessResponseWithResults: results];
 }
 

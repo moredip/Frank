@@ -102,9 +102,15 @@
 
 #pragma mark - Command handling
 - (NSString *)handleCommandWithRequestBody:(NSString *)requestBody {
-    // serialize starting from root window and return json representation of it
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
-	NSDictionary *dom = [self serializeView: window];
+    __block NSDictionary* dom = nil;
+    
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        // serialize starting from root window and return json representation of it
+        UIWindow *window = [UIApplication sharedApplication].keyWindow;
+        dom = [[self serializeView: window] retain];
+    });
+    
+    [dom autorelease];
     return [dom JSONRepresentation];
 }
 

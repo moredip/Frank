@@ -13,6 +13,9 @@
 
 #import <dlfcn.h>
 
+#import "DDLog.h"
+#import "DDTTYLogger.h"
+
 BOOL frankLogEnabled = NO;
 
 @implementation FrankLoader
@@ -24,6 +27,8 @@ BOOL frankLogEnabled = NO;
 }
 
 + (void)load{
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    
     NSLog(@"Injecting Frank loader");
     
     NSAutoreleasePool *autoreleasePool = [[NSAutoreleasePool alloc] init];

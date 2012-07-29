@@ -42,9 +42,17 @@
 }
 
 - (NSString *)handleCommandWithRequestBody:(NSString *)requestBody {    
-   	NSString *orientationDescription = [self getOrientationDescriptionViaDevice];
-    if( !orientationDescription )
-        orientationDescription = [self getOrientationDescriptionViaStatusBar];
+   	__block NSString *orientationDescription = nil;
+    
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        orientationDescription = [[self getOrientationDescriptionViaDevice] retain];
+        
+        if( !orientationDescription ) {
+            orientationDescription = [[self getOrientationDescriptionViaStatusBar] retain];
+        }
+    });
+    
+    [orientationDescription autorelease];
 	
 	NSDictionary *dom = [NSDictionary dictionaryWithObject:orientationDescription forKey:@"orientation"];
 	return [dom JSONRepresentation];
