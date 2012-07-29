@@ -62,9 +62,13 @@ static RequestRouter *s_singleton;
 - (NSObject<HTTPResponse> *) handleRequestForPath:(NSString *)path withConnection:(RoutingHTTPConnection *)connection {
 	
 	NSArray *pathComponents = [self pathComponentsWithPath:path];	
-	NSObject<HTTPResponse> *response = nil;
+	__block NSObject<HTTPResponse> *response = nil;
 	for (id<Route> route in _routes) {
-		response = [route handleRequestForPath:pathComponents withConnection:connection];
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            response = [[route handleRequestForPath:pathComponents withConnection:connection] retain];
+        });
+        [response autorelease];
+        
 		if( nil != response )
 			break;
 	}
