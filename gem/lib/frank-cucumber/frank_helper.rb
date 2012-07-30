@@ -210,7 +210,7 @@ module FrankHelper
       :operation => operation_map 
     )
 
-    return Gateway.evaluate_frankly_response( res, "app_exec #{method_name}" )
+    return Gateway.evaluate_frankly_response( res, "app_exec #{method_sig}" )
   end
 
   # Ask Frank to execute an arbitrary Objective-C method on each view which matches the specified selector. 
