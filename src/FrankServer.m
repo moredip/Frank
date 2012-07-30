@@ -37,7 +37,6 @@ static NSUInteger __defaultPort = FRANK_SERVER_PORT;
 		if( ![bundleName hasSuffix:@".bundle"] )
 			bundleName = [bundleName stringByAppendingString:@".bundle"];
 		
-		
 		FrankCommandRoute *frankCommandRoute = [[[FrankCommandRoute alloc] init] autorelease];
 		[frankCommandRoute registerCommand:[[[DumpCommand alloc]init]autorelease] withName:@"dump"];
 		[frankCommandRoute registerCommand:[[[MapOperationCommand alloc]init]autorelease] withName:@"map"];
