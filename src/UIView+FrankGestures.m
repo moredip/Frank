@@ -51,7 +51,6 @@ CGSize swipeDeltasForDirection(NSString *direction){
     }
 
     [self dragAlongPathWithPoints:swipePath count:NUM_POINTS_IN_SWIPE_PATH];
-    [NSThread sleepForTimeInterval:0.5];
 }
 
 @end
