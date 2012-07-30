@@ -201,6 +201,8 @@
 		D6FA01B714283C4F00576AE5 /* KIFTestStep.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FA01B714283C4F00576AE4 /* KIFTestStep.m */; };
 		D6FA01B714283C4F00576AEB /* UITableViewCell+TappableConfirmationButton.h in Headers */ = {isa = PBXBuildFile; fileRef = D6FA01B714283C4F00576AEA /* UITableViewCell+TappableConfirmationButton.h */; };
 		D6FA01B714283C4F00576AED /* UITableViewCell+TappableConfirmationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FA01B714283C4F00576AEC /* UITableViewCell+TappableConfirmationButton.m */; };
+		D6FA01B714283C4F00576AEF /* EnginesCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FA01B714283C4F00576AEE /* EnginesCommand.m */; };
+		D6FA01B714283C4F00576AF1 /* EnginesCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = D6FA01B714283C4F00576AF0 /* EnginesCommand.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -399,6 +401,8 @@
 		D6FA01B714283C4F00576AE4 /* KIFTestStep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KIFTestStep.m; path = lib/KIF/Classes/KIFTestStep.m; sourceTree = "<group>"; };
 		D6FA01B714283C4F00576AEA /* UITableViewCell+TappableConfirmationButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITableViewCell+TappableConfirmationButton.h"; path = "src/UITableViewCell+TappableConfirmationButton.h"; sourceTree = "<group>"; };
 		D6FA01B714283C4F00576AEC /* UITableViewCell+TappableConfirmationButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITableViewCell+TappableConfirmationButton.m"; path = "src/UITableViewCell+TappableConfirmationButton.m"; sourceTree = "<group>"; };
+		D6FA01B714283C4F00576AEE /* EnginesCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnginesCommand.m; path = src/EnginesCommand.m; sourceTree = "<group>"; };
+		D6FA01B714283C4F00576AF0 /* EnginesCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnginesCommand.h; path = src/EnginesCommand.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -447,6 +451,8 @@
 		08FB77AEFE84172EC02AAC07 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				D6FA01B714283C4F00576AEE /* EnginesCommand.m */,
+				D6FA01B714283C4F00576AF0 /* EnginesCommand.h */,
 				D6FA01B714283C4F00576AEC /* UITableViewCell+TappableConfirmationButton.m */,
 				D6FA01B714283C4F00576AEA /* UITableViewCell+TappableConfirmationButton.h */,
 				C1C3CCBE156BCF3500AEE136 /* FEXTappableConfirmationButton.h */,
@@ -895,6 +901,7 @@
 				AB7947E015C4418700052B74 /* DDTTYLogger.h in Headers */,
 				AB7947E215C4418700052B74 /* ContextFilterLogFormatter.h in Headers */,
 				AB7947E415C4418700052B74 /* DispatchQueueLogFormatter.h in Headers */,
+				D6FA01B714283C4F00576AF1 /* EnginesCommand.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1058,6 +1065,7 @@
 				AB7947E115C4418700052B74 /* DDTTYLogger.m in Sources */,
 				AB7947E315C4418700052B74 /* ContextFilterLogFormatter.m in Sources */,
 				AB7947E515C4418700052B74 /* DispatchQueueLogFormatter.m in Sources */,
+				D6FA01B714283C4F00576AEF /* EnginesCommand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

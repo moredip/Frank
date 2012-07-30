@@ -20,4 +20,5 @@
 + (void) registerSelectorEngine:(id<SelectorEngine>)engine WithName:(NSString *)name;
 + (NSArray *) selectViewsWithEngineNamed:(NSString *)engineName usingSelector:(NSString *)selector;
 
++ (NSArray *)getEngineNames;
 @end

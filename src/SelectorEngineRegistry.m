@@ -29,4 +29,7 @@ static NSMutableDictionary *s_engines;
     return [engine selectViewsWithSelector:selector];
 }
 
++ (NSArray *)getEngineNames {
+    return [s_engines allKeys];
+}
 @end
