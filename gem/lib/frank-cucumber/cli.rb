@@ -87,7 +87,7 @@ module Frank
 
     desc "launch", "open the Frankified app in the simulator"
     method_option :debug, :type => :boolean, :default => false
-    method_option :idiom, :banner => 'iphone|ipad', :type => :string, :default => 'iphone'
+    method_option :idiom, :banner => 'iphone|ipad', :type => :string, :default => (ENV['FRANK_SIM_IDIOM'] || 'iphone')
     def launch
       $DEBUG = options[:debug]
       launcher = case options[:idiom].downcase
