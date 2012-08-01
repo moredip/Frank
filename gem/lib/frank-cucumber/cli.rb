@@ -22,8 +22,12 @@ module Frank
       invoke :setup
     end
 
+    WITHOUT_SERVER = "without-cocoa-http-server"
     desc "setup", "set up your iOS app by adding a Frank subdirectory containing everything Frank needs"
+    method_option WITHOUT_SERVER, :type => :boolean
     def setup
+      @without_http_server = options[WITHOUT_SERVER]
+
       directory ".", "Frank"
 
       Frankifier.frankify!( File.expand_path('.') )
