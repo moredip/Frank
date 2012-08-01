@@ -87,10 +87,18 @@ module Frank
 
     desc "launch", "open the Frankified app in the simulator"
     method_option :debug, :type => :boolean, :default => false
+    method_option :idiom, :banner => 'iphone|ipad', :type => :string, :default => 'iphone'
     def launch
       $DEBUG = options[:debug]
-
-      puts "debugging" if $DEBUG
+      launcher = case options[:idiom].downcase
+      when 'iphone'
+        SimLauncher::DirectClient.for_iphone_app( frankified_app_dir )
+      when 'ipad'
+        SimLauncher::DirectClient.for_ipad_app( frankified_app_dir )
+      else
+        say "idiom must be either iphone or ipad. You supplied '#{options[:idiom]}'", :red
+        exit 10
+      end
 
       in_root do
         unless File.exists? frankified_app_dir
@@ -101,7 +109,6 @@ module Frank
 
         say "LAUNCHING IN THE SIMULATOR..."
 
-        launcher = SimLauncher::DirectClient.new(frankified_app_dir, nil, nil )
         launcher.relaunch
       end
     end
