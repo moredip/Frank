@@ -22,8 +22,12 @@ module Frank
       invoke :setup
     end
 
+    WITHOUT_SERVER = "without-cocoa-http-server"
     desc "setup", "set up your iOS app by adding a Frank subdirectory containing everything Frank needs"
+    method_option WITHOUT_SERVER, :type => :boolean
     def setup
+      @without_http_server = options[WITHOUT_SERVER]
+
       directory ".", "Frank"
 
       Frankifier.frankify!( File.expand_path('.') )
@@ -83,10 +87,18 @@ module Frank
 
     desc "launch", "open the Frankified app in the simulator"
     method_option :debug, :type => :boolean, :default => false
+    method_option :idiom, :banner => 'iphone|ipad', :type => :string, :default => (ENV['FRANK_SIM_IDIOM'] || 'iphone')
     def launch
       $DEBUG = options[:debug]
-
-      puts "debugging" if $DEBUG
+      launcher = case options[:idiom].downcase
+      when 'iphone'
+        SimLauncher::DirectClient.for_iphone_app( frankified_app_dir )
+      when 'ipad'
+        SimLauncher::DirectClient.for_ipad_app( frankified_app_dir )
+      else
+        say "idiom must be either iphone or ipad. You supplied '#{options[:idiom]}'", :red
+        exit 10
+      end
 
       in_root do
         unless File.exists? frankified_app_dir
@@ -97,7 +109,6 @@ module Frank
 
         say "LAUNCHING IN THE SIMULATOR..."
 
-        launcher = SimLauncher::DirectClient.new(frankified_app_dir, nil, nil )
         launcher.relaunch
       end
     end
