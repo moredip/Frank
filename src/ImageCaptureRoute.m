@@ -6,7 +6,11 @@
 //  Copyright (c) 2012 Thoughtworks. All rights reserved.
 //
 
+#import "HTTPDataResponse.h"
+#import "HTTPFileResponse.h"
+
 #import "ImageCaptureRoute.h"
+#import "RoutingHTTPConnection.h"
 
 #import "UIImage+Frank.h"
 #import "UIView+ImageCapture.h"
@@ -59,10 +63,10 @@
     NSLog( @"snapshotted views to %@ in %f seconds", [self snapshotDir], delta );
 }
 
-- (HTTPDataResponse *)responseWithSnapshotOfViewWithUid:(NSString *)uid {
+- (HTTPFileResponse *)responseWithSnapshotOfViewWithUid:(NSString *)uid withConnection:(RoutingHTTPConnection *)connection {
     NSString *snapshotImagePath = [self pathForSnapshotOfViewWithUID:uid];
     if( [[NSFileManager defaultManager] fileExistsAtPath:snapshotImagePath] )
-        return [[HTTPFileResponse alloc] initWithFilePath:snapshotImagePath];
+        return [[HTTPFileResponse alloc] initWithFilePath:snapshotImagePath forConnection:connection];
    	else
    		return nil;
 }
@@ -79,7 +83,7 @@
     }
 
     if ( [path count] > 1 && [@"view-snapshot" isEqualToString:[path objectAtIndex:1]] ){
-        return [self responseWithSnapshotOfViewWithUid:[path objectAtIndex:2]];
+        return [self responseWithSnapshotOfViewWithUid:[path objectAtIndex:2] withConnection:connection];
     }
 
     BOOL allWindows = [path count] > 1 && [[path objectAtIndex:1] isEqualToString:@"allwindows"];
