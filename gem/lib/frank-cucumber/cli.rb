@@ -47,6 +47,7 @@ module Frank
     XCODEBUILD_OPTIONS.each do |option|
       method_option option
     end
+    method_option 'arch', :type => :string, :default => 'i386'
     def build
 
       in_root do
@@ -66,6 +67,7 @@ module Frank
       remove_dir build_output_dir
 
       extra_opts = XCODEBUILD_OPTIONS.map{ |o| "-#{o} #{options[o]}" if options[o] }.compact.join(' ')
+      extra_opts += " -arch #{options['arch']}"
 
       run %Q|xcodebuild -xcconfig Frank/frankify.xcconfig clean build #{extra_opts} -configuration Debug -sdk iphonesimulator DEPLOYMENT_LOCATION=YES DSTROOT="#{build_output_dir}" FRANK_LIBRARY_SEARCH_PATHS="\\"#{frank_lib_directory}\\""|
 
