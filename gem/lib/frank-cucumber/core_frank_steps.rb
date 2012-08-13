@@ -64,6 +64,11 @@ Then /^I should see an alert view titled "([^\"]*)"$/ do |expected_mark|
   values.should include(expected_mark)
 end
 
+Then /^I should see an alert view with the message "([^\"]*)"$/ do |expected_mark|
+    values = frankly_map( 'alertView', 'message')
+    values.should include(expected_mark)
+end
+
 Then /^I should not see an alert view$/ do
   check_element_does_not_exist( 'alertView' )
 end
