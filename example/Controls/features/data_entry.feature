@@ -10,3 +10,9 @@ Background:
 Scenario: Entering text into a text field
   When I type "some text" into the "Edit me" text field using the keyboard
 	Then I should see a label with the text "text entered into text field: some text"
+
+Scenario: Deleting text in a text field
+  When I type "1234567" into the "Edit me" text field using the keyboard
+	And I delete 3 characters from the "Edit me" text field using the keyboard
+	Then I should see a label with the text "text entered into text field: 1234"
+

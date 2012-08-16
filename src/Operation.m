@@ -44,7 +44,9 @@
 		*((double *)buffer) = [number doubleValue];
 	} else if ( !strcmp(objCType, @encode(char)) ) {
 		*((char*)buffer) = [number charValue];
-	}else {
+	} else if ( !strcmp(objCType, @encode(float)) ){
+		*((float *)buffer) = [number floatValue];
+	} else {
 		NSLog(@"Didn't know how to convert NSNumber to type %s", objCType); 
 	}	
 }

@@ -1,6 +1,12 @@
+begin 
+  require 'pry'
+rescue LoadError 
+end
+
 require 'thor'
 require 'frank-cucumber/launcher'
 require 'frank-cucumber/console'
+require 'frank-cucumber/frankifier'
 
 module Frank
   class CLI < Thor
@@ -16,9 +22,15 @@ module Frank
       invoke :setup
     end
 
+    WITHOUT_SERVER = "without-cocoa-http-server"
     desc "setup", "set up your iOS app by adding a Frank subdirectory containing everything Frank needs"
+    method_option WITHOUT_SERVER, :type => :boolean
     def setup
+      @without_http_server = options[WITHOUT_SERVER]
+
       directory ".", "Frank"
+
+      Frankifier.frankify!( File.expand_path('.') )
     end
 
     desc "update", "updates the frank server components inside your Frank directory"
@@ -30,7 +42,12 @@ module Frank
       directory( 'frank_static_resources.bundle', 'Frank/frank_static_resources.bundle', :force => true )
     end
 
+    XCODEBUILD_OPTIONS = %w{workspace scheme target}
     desc "build", "builds a Frankified version of your native app"
+    XCODEBUILD_OPTIONS.each do |option|
+      method_option option
+    end
+    method_option 'arch', :type => :string, :default => 'i386'
     def build
 
       in_root do
@@ -49,7 +66,12 @@ module Frank
 
       remove_dir build_output_dir
 
-      run "xcodebuild -xcconfig Frank/frankify.xcconfig install -configuration Debug -sdk iphonesimulator DSTROOT=#{build_output_dir} WRAPPER_NAME=#{app_bundle_name}"
+      extra_opts = XCODEBUILD_OPTIONS.map{ |o| "-#{o} #{options[o]}" if options[o] }.compact.join(' ')
+      extra_opts += " -arch #{options['arch']}"
+
+      run %Q|xcodebuild -xcconfig Frank/frankify.xcconfig clean build #{extra_opts} -configuration Debug -sdk iphonesimulator DEPLOYMENT_LOCATION=YES DSTROOT="#{build_output_dir}" FRANK_LIBRARY_SEARCH_PATHS="\\"#{frank_lib_directory}\\""|
+
+      FileUtils.mv( Dir.glob( "#{build_output_dir}/*.app" ).first, frankified_app_dir )
 
       in_root do
         FileUtils.cp_r( 
@@ -66,7 +88,20 @@ module Frank
     end
 
     desc "launch", "open the Frankified app in the simulator"
+    method_option :debug, :type => :boolean, :default => false
+    method_option :idiom, :banner => 'iphone|ipad', :type => :string, :default => (ENV['FRANK_SIM_IDIOM'] || 'iphone')
     def launch
+      $DEBUG = options[:debug]
+      launcher = case options[:idiom].downcase
+      when 'iphone'
+        SimLauncher::DirectClient.for_iphone_app( frankified_app_dir )
+      when 'ipad'
+        SimLauncher::DirectClient.for_ipad_app( frankified_app_dir )
+      else
+        say "idiom must be either iphone or ipad. You supplied '#{options[:idiom]}'", :red
+        exit 10
+      end
+
       in_root do
         unless File.exists? frankified_app_dir
           say "A Frankified version of the app doesn't appear to have been built. Building one now"
@@ -76,7 +111,6 @@ module Frank
 
         say "LAUNCHING IN THE SIMULATOR..."
 
-        launcher = SimLauncher::DirectClient.new(frankified_app_dir, nil, nil )
         launcher.relaunch
       end
     end
@@ -109,12 +143,20 @@ module Frank
 
     private
 
+    def product_name
+      "Frankified"
+    end
+
     def app_bundle_name
-      "Frankified.app"
+      "#{product_name}.app"
+    end
+    
+    def frank_lib_directory
+      File.expand_path "Frank"
     end
 
     def build_output_dir
-      "Frank/frankified_build"
+      File.expand_path "Frank/frankified_build"
     end
 
     def frankified_app_dir

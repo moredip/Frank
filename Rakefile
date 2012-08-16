@@ -16,6 +16,7 @@ end
 
 task :combine_libraries do
   `lipo -create -output "dist/libFrank.a" "build/Release-iphoneos/libFrank.a" "build/Release-iphonesimulator/libFrank.a"`
+  `lipo -create -output "dist/libCocoaHTTPServer.a" "build/Release-iphoneos/libCocoaHTTPServer.a" "build/Release-iphonesimulator/libCocoaHTTPServer.a"`
 end
 
 desc "Build a univeral library for both iphone and iphone simulator"
@@ -31,7 +32,7 @@ task :prep_dist do
   mkdir_p 'dist'
 end
 
-task :build => [:clean, :prep_dist, :build_lib, :copy_bundle]
+task :build => [:clean, :prep_dist, :build_lib, :build_shelley]
 task :default => :build
 
 desc "compile libShelley.a and copy it into dist"

@@ -6,6 +6,8 @@
 //  Copyright 2010 ThoughtWorks. See NOTICE file for details.
 //
 
+#import "HTTPDataResponse.h"
+
 #import "FrankCommandRoute.h"
 #import "RoutingHTTPConnection.h"
 
