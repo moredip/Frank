@@ -20,6 +20,8 @@
 		C1C3CCD2156BE39900AEE136 /* image4.png in Resources */ = {isa = PBXBuildFile; fileRef = C1C3CCD1156BE39900AEE136 /* image4.png */; };
 		C1E7C1CB1569DA9200CCBCD8 /* DataEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E7C1C91569DA9200CCBCD8 /* DataEntryViewController.m */; };
 		C1E7C1CD1569DA9200CCBCD8 /* DataEntryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1E7C1CA1569DA9200CCBCD8 /* DataEntryViewController.xib */; };
+		C1FFB28015DD443000CACB04 /* libCocoaHTTPServer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FFB26215DD42BE00CACB04 /* libCocoaHTTPServer.a */; };
+		C1FFB28215DD443A00CACB04 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FFB28115DD443A00CACB04 /* Security.framework */; };
 		D6225F9B1436D886002B04AA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6225F9A1436D886002B04AA /* UIKit.framework */; };
 		D6225F9D1436D886002B04AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6225F9C1436D886002B04AA /* Foundation.framework */; };
 		D6225F9F1436D886002B04AA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6225F9E1436D886002B04AA /* CoreGraphics.framework */; };
@@ -37,6 +39,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		C1FFB26115DD42BE00CACB04 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D6A894991597E2AF00FF117E /* Frank.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = ABA9E44115C81C2600112290;
+			remoteInfo = CocoaHTTPServer;
+		};
 		D633D67E159C2F54001EF51A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D633D676159C2F54001EF51A /* Shelley.xcodeproj */;
@@ -80,6 +89,7 @@
 		C1E7C1C81569DA9200CCBCD8 /* DataEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataEntryViewController.h; sourceTree = "<group>"; };
 		C1E7C1C91569DA9200CCBCD8 /* DataEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataEntryViewController.m; sourceTree = "<group>"; };
 		C1E7C1CA1569DA9200CCBCD8 /* DataEntryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DataEntryViewController.xib; sourceTree = "<group>"; };
+		C1FFB28115DD443A00CACB04 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D6225F961436D886002B04AA /* Controls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Controls.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6225F9A1436D886002B04AA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D6225F9C1436D886002B04AA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -107,6 +117,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1FFB28215DD443A00CACB04 /* Security.framework in Frameworks */,
+				C1FFB28015DD443000CACB04 /* libCocoaHTTPServer.a in Frameworks */,
 				D633D682159C2F61001EF51A /* libShelley.a in Frameworks */,
 				D6A894A31597E2C600FF117E /* libFrank.a in Frameworks */,
 				D6225F9B1436D886002B04AA /* UIKit.framework in Frameworks */,
@@ -133,6 +145,7 @@
 		D6225F8B1436D886002B04AA = {
 			isa = PBXGroup;
 			children = (
+				C1FFB28115DD443A00CACB04 /* Security.framework */,
 				D633D676159C2F54001EF51A /* Shelley.xcodeproj */,
 				49543E3B153878EC001D87F1 /* Images */,
 				D69137DA1436E1D2003C26AC /* CFNetwork.framework */,
@@ -224,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				D6A894A11597E2AF00FF117E /* libFrank.a */,
+				C1FFB26215DD42BE00CACB04 /* libCocoaHTTPServer.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -285,6 +299,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		C1FFB26215DD42BE00CACB04 /* libCocoaHTTPServer.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libCocoaHTTPServer.a;
+			remoteRef = C1FFB26115DD42BE00CACB04 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		D633D67F159C2F54001EF51A /* libShelley.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -415,10 +436,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(DEVELOPER_DIR)/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/Developer/Library/PrivateFrameworks\"",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Controls/Controls-Prefix.pch";
@@ -440,10 +458,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(DEVELOPER_DIR)/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/Developer/Library/PrivateFrameworks\"",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Controls/Controls-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;

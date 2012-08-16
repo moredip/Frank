@@ -17,7 +17,6 @@
 		86123C8914F8221000266AFC /* UIImage+Frank.m in Sources */ = {isa = PBXBuildFile; fileRef = 86123C8714F8221000266AFC /* UIImage+Frank.m */; };
 		AA747D9F0F9514B9006C5449 /* Frank_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* Frank_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
-		C194256915D951EF004FC314 /* libPublicAutomation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C194256815D951EF004FC314 /* libPublicAutomation.a */; };
 		AB7947A115C4412300052B74 /* HTTPAuthenticationRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = AB79477D15C4412300052B74 /* HTTPAuthenticationRequest.h */; };
 		AB7947A315C4412300052B74 /* HTTPConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = AB79477F15C4412300052B74 /* HTTPConnection.h */; };
 		AB7947A515C4412300052B74 /* HTTPLogging.h in Headers */ = {isa = PBXBuildFile; fileRef = AB79478115C4412300052B74 /* HTTPLogging.h */; };
@@ -50,29 +49,11 @@
 		ABA9E4C815C81E7A00112290 /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA9E4C315C81E7A00112290 /* DDTTYLogger.m */; };
 		ABA9E4CD15C81E8700112290 /* ContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA9E4CA15C81E8700112290 /* ContextFilterLogFormatter.m */; };
 		ABA9E4CE15C81E8700112290 /* DispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA9E4CC15C81E8700112290 /* DispatchQueueLogFormatter.m */; };
-		C1AF90551569F10200AE06A1 /* KIFTestStep.h in Headers */ = {isa = PBXBuildFile; fileRef = C1AF90541569F10200AE06A1 /* KIFTestStep.h */; };
 		C1C3CCB9156BCF1500AEE136 /* KeyboardCommand.h in Sources */ = {isa = PBXBuildFile; fileRef = D6FA01B714283C4F00576ADE /* KeyboardCommand.h */; };
 		C1C3CCBA156BCF1500AEE136 /* KeyboardCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FA01B714283C4F00576ADC /* KeyboardCommand.m */; };
 		C1C3CCC0156BCF3500AEE136 /* FEXTappableConfirmationButton.h in Headers */ = {isa = PBXBuildFile; fileRef = C1C3CCBE156BCF3500AEE136 /* FEXTappableConfirmationButton.h */; };
 		C1C3CCC1156BCF3500AEE136 /* FEXTappableConfirmationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C3CCBF156BCF3500AEE136 /* FEXTappableConfirmationButton.m */; };
-		D629926B11AB2D1F00CE0FB0 /* AsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = D629926911AB2D1F00CE0FB0 /* AsyncSocket.h */; };
-		D629926C11AB2D1F00CE0FB0 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D629926A11AB2D1F00CE0FB0 /* AsyncSocket.m */; };
-		D629928111AB2D4C00CE0FB0 /* DDData.h in Headers */ = {isa = PBXBuildFile; fileRef = D629927111AB2D4C00CE0FB0 /* DDData.h */; };
-		D629928211AB2D4C00CE0FB0 /* DDData.m in Sources */ = {isa = PBXBuildFile; fileRef = D629927211AB2D4C00CE0FB0 /* DDData.m */; };
-		D629928311AB2D4C00CE0FB0 /* DDNumber.h in Headers */ = {isa = PBXBuildFile; fileRef = D629927311AB2D4C00CE0FB0 /* DDNumber.h */; };
-		D629928411AB2D4C00CE0FB0 /* DDNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = D629927411AB2D4C00CE0FB0 /* DDNumber.m */; };
-		D629928511AB2D4C00CE0FB0 /* DDRange.h in Headers */ = {isa = PBXBuildFile; fileRef = D629927511AB2D4C00CE0FB0 /* DDRange.h */; };
-		D629928611AB2D4C00CE0FB0 /* DDRange.m in Sources */ = {isa = PBXBuildFile; fileRef = D629927611AB2D4C00CE0FB0 /* DDRange.m */; };
-		D629928711AB2D4C00CE0FB0 /* HTTPAuthenticationRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = D629927711AB2D4C00CE0FB0 /* HTTPAuthenticationRequest.h */; };
-		D629928811AB2D4C00CE0FB0 /* HTTPAuthenticationRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D629927811AB2D4C00CE0FB0 /* HTTPAuthenticationRequest.m */; };
-		D629928911AB2D4C00CE0FB0 /* HTTPConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = D629927911AB2D4C00CE0FB0 /* HTTPConnection.h */; };
-		D629928A11AB2D4C00CE0FB0 /* HTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = D629927A11AB2D4C00CE0FB0 /* HTTPConnection.m */; };
-		D629928B11AB2D4C00CE0FB0 /* HTTPResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = D629927B11AB2D4C00CE0FB0 /* HTTPResponse.h */; };
-		D629928C11AB2D4C00CE0FB0 /* HTTPResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D629927C11AB2D4C00CE0FB0 /* HTTPResponse.m */; };
-		D629928D11AB2D4C00CE0FB0 /* HTTPServer.h in Headers */ = {isa = PBXBuildFile; fileRef = D629927D11AB2D4C00CE0FB0 /* HTTPServer.h */; };
-		D629928E11AB2D4C00CE0FB0 /* HTTPServer.m in Sources */ = {isa = PBXBuildFile; fileRef = D629927E11AB2D4C00CE0FB0 /* HTTPServer.m */; };
-		D629928F11AB2D4C00CE0FB0 /* MyHTTPConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = D629927F11AB2D4C00CE0FB0 /* MyHTTPConnection.h */; };
-		D629929011AB2D4C00CE0FB0 /* MyHTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = D629928011AB2D4C00CE0FB0 /* MyHTTPConnection.m */; };
+		C1FFB27F15DD440100CACB04 /* libPublicAutomation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FFB27D15DD43A400CACB04 /* libPublicAutomation.a */; };
 		D629938011AB2DF300CE0FB0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D629937F11AB2DF300CE0FB0 /* UIKit.framework */; };
 		D6325EA81437F7180057330D /* UIQueryScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = D6325E681437F7180057330D /* UIQueryScrollView.h */; };
 		D6325EA91437F7180057330D /* UIQueryScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6325E691437F7180057330D /* UIQueryScrollView.m */; };
@@ -198,6 +179,13 @@
 			remoteGlobalIDString = ABA9E44015C81C2600112290;
 			remoteInfo = CocoaHTTPServer;
 		};
+		C1FFB27C15DD43A400CACB04 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C1FFB27515DD43A400CACB04 /* PublicAutomation.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C194253815D838BD004FC314;
+			remoteInfo = PublicAutomation;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -223,7 +211,6 @@
 		86123C8714F8221000266AFC /* UIImage+Frank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Frank.m"; path = "src/UIImage+Frank.m"; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* Frank_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Frank_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C194256815D951EF004FC314 /* libPublicAutomation.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPublicAutomation.a; path = ../TestingWithFrank/PublicAutomation/dist/libPublicAutomation.a; sourceTree = "<group>"; };
 		AB79477D15C4412300052B74 /* HTTPAuthenticationRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPAuthenticationRequest.h; path = Core/HTTPAuthenticationRequest.h; sourceTree = "<group>"; };
 		AB79477E15C4412300052B74 /* HTTPAuthenticationRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTTPAuthenticationRequest.m; path = Core/HTTPAuthenticationRequest.m; sourceTree = "<group>"; };
 		AB79477F15C4412300052B74 /* HTTPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPConnection.h; path = Core/HTTPConnection.h; sourceTree = "<group>"; };
@@ -276,9 +263,9 @@
 		ABA9E4CA15C81E8700112290 /* ContextFilterLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContextFilterLogFormatter.m; sourceTree = "<group>"; };
 		ABA9E4CB15C81E8700112290 /* DispatchQueueLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DispatchQueueLogFormatter.h; sourceTree = "<group>"; };
 		ABA9E4CC15C81E8700112290 /* DispatchQueueLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DispatchQueueLogFormatter.m; sourceTree = "<group>"; };
-		C1AF90541569F10200AE06A1 /* KIFTestStep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KIFTestStep.h; path = lib/KIF/Classes/KIFTestStep.h; sourceTree = "<group>"; };
 		C1C3CCBE156BCF3500AEE136 /* FEXTappableConfirmationButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FEXTappableConfirmationButton.h; path = src/FEXTappableConfirmationButton.h; sourceTree = "<group>"; };
 		C1C3CCBF156BCF3500AEE136 /* FEXTappableConfirmationButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FEXTappableConfirmationButton.m; path = src/FEXTappableConfirmationButton.m; sourceTree = "<group>"; };
+		C1FFB27515DD43A400CACB04 /* PublicAutomation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PublicAutomation.xcodeproj; path = lib/PublicAutomation/PublicAutomation.xcodeproj; sourceTree = "<group>"; };
 		D2AAC07E0554694100DB518D /* libFrank.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFrank.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D629937F11AB2DF300CE0FB0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D62AEFAA11B4897B00B824F3 /* env.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = env.rb; sourceTree = "<group>"; };
@@ -345,7 +332,6 @@
 		D6325EA51437F7180057330D /* UIProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIProxy.m; sourceTree = "<group>"; };
 		D6325EA61437F7180057330D /* WaitUntilIdle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitUntilIdle.h; sourceTree = "<group>"; };
 		D6325EA71437F7180057330D /* WaitUntilIdle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitUntilIdle.m; sourceTree = "<group>"; };
-		D6782D8511BC423900FD0CE1 /* frank_static_resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = frank_static_resources.bundle; sourceTree = "<group>"; };
 		D67F2AAB13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccessibilityCheckCommand.h; path = src/AccessibilityCheckCommand.h; sourceTree = "<group>"; };
 		D67F2AAC13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccessibilityCheckCommand.m; path = src/AccessibilityCheckCommand.m; sourceTree = "<group>"; };
 		D67F2ABD13F5F55A00A0BFF1 /* FrankLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FrankLoader.h; path = src/FrankLoader.h; sourceTree = "<group>"; };
@@ -413,9 +399,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1FFB27F15DD440100CACB04 /* libPublicAutomation.a in Frameworks */,
 				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
 				D629938011AB2DF300CE0FB0 /* UIKit.framework in Frameworks */,
-				C194256915D951EF004FC314 /* libPublicAutomation.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -611,20 +597,18 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		C1AF90531569F06B00AE06A1 /* KIF */ = {
+		C1FFB27615DD43A400CACB04 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D6FA01B714283C4F00576AE4 /* KIFTestStep.m */,
-				C1AF90541569F10200AE06A1 /* KIFTestStep.h */,
-				D6FA019D14283BEA00576AD1 /* KIF Additions */,
+				C1FFB27D15DD43A400CACB04 /* libPublicAutomation.a */,
 			);
-			name = KIF;
+			name = Products;
 			sourceTree = "<group>";
 		};
 		D629926711AB2CF700CE0FB0 /* 3rd Party */ = {
 			isa = PBXGroup;
 			children = (
-				C194256815D951EF004FC314 /* libPublicAutomation.a */,
+				C1FFB27515DD43A400CACB04 /* PublicAutomation.xcodeproj */,
 				D6325E661437F7180057330D /* UISpec */,
 				D6E7B46C11B36D42005CAA34 /* JSON */,
 				D629926811AB2D0500CE0FB0 /* cocoahttpserver */,
@@ -857,14 +841,6 @@
 				AB7947A815C4412300052B74 /* HTTPResponse.h in Headers */,
 				AB7947A915C4412300052B74 /* HTTPServer.h in Headers */,
 				AB7947BB15C4412300052B74 /* WebSocket.h in Headers */,
-				AB7947D515C4418700052B74 /* GCDAsyncSocket.h in Headers */,
-				AB7947D815C4418700052B74 /* DDAbstractDatabaseLogger.h in Headers */,
-				AB7947DA15C4418700052B74 /* DDASLLogger.h in Headers */,
-				AB7947DC15C4418700052B74 /* DDFileLogger.h in Headers */,
-				AB7947DE15C4418700052B74 /* DDLog.h in Headers */,
-				AB7947E015C4418700052B74 /* DDTTYLogger.h in Headers */,
-				AB7947E215C4418700052B74 /* ContextFilterLogFormatter.h in Headers */,
-				AB7947E415C4418700052B74 /* DispatchQueueLogFormatter.h in Headers */,
 				D6FA01B714283C4F00576AF1 /* EnginesCommand.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -930,6 +906,12 @@
 			mainGroup = 0867D691FE84028FC02AAC07 /* Frank */;
 			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = C1FFB27615DD43A400CACB04 /* Products */;
+					ProjectRef = C1FFB27515DD43A400CACB04 /* PublicAutomation.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D2AAC07D0554694100DB518D /* Frank */,
@@ -937,6 +919,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		C1FFB27D15DD43A400CACB04 /* libPublicAutomation.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libPublicAutomation.a;
+			remoteRef = C1FFB27C15DD43A400CACB04 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D6782DD711BC67FE00FD0CE1 /* Resources */ = {
@@ -1047,30 +1039,6 @@
 				C1C3CCC1156BCF3500AEE136 /* FEXTappableConfirmationButton.m in Sources */,
 				D6FA01B714283C4F00576AED /* UITableViewCell+TappableConfirmationButton.m in Sources */,
 				D6A1D28015A8D05E00EC056C /* UIView+Frank.m in Sources */,
-				AB79479C15C4412300052B74 /* DDData.m in Sources */,
-				AB79479E15C4412300052B74 /* DDNumber.m in Sources */,
-				AB7947A015C4412300052B74 /* DDRange.m in Sources */,
-				AB7947A215C4412300052B74 /* HTTPAuthenticationRequest.m in Sources */,
-				AB7947A415C4412300052B74 /* HTTPConnection.m in Sources */,
-				AB7947A715C4412300052B74 /* HTTPMessage.m in Sources */,
-				AB7947AA15C4412300052B74 /* HTTPServer.m in Sources */,
-				AB7947AC15C4412300052B74 /* MultipartFormDataParser.m in Sources */,
-				AB7947AE15C4412300052B74 /* MultipartMessageHeader.m in Sources */,
-				AB7947B015C4412300052B74 /* MultipartMessageHeaderField.m in Sources */,
-				AB7947B215C4412300052B74 /* HTTPAsyncFileResponse.m in Sources */,
-				AB7947B415C4412300052B74 /* HTTPDataResponse.m in Sources */,
-				AB7947B615C4412300052B74 /* HTTPDynamicFileResponse.m in Sources */,
-				AB7947B815C4412300052B74 /* HTTPFileResponse.m in Sources */,
-				AB7947BA15C4412300052B74 /* HTTPRedirectResponse.m in Sources */,
-				AB7947BC15C4412300052B74 /* WebSocket.m in Sources */,
-				AB7947D615C4418700052B74 /* GCDAsyncSocket.m in Sources */,
-				AB7947D915C4418700052B74 /* DDAbstractDatabaseLogger.m in Sources */,
-				AB7947DB15C4418700052B74 /* DDASLLogger.m in Sources */,
-				AB7947DD15C4418700052B74 /* DDFileLogger.m in Sources */,
-				AB7947DF15C4418700052B74 /* DDLog.m in Sources */,
-				AB7947E115C4418700052B74 /* DDTTYLogger.m in Sources */,
-				AB7947E315C4418700052B74 /* ContextFilterLogFormatter.m in Sources */,
-				AB7947E515C4418700052B74 /* DispatchQueueLogFormatter.m in Sources */,
 				D6FA01B714283C4F00576AEF /* EnginesCommand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1239,6 +1207,7 @@
 				ABA9E46115C81C2600112290 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
