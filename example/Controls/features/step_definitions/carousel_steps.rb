@@ -3,7 +3,8 @@ PORTRAIT_IPHONE_WIDTH = 320
 PORTRAIT_IPHONE_HEIGHT = 480
 
 When /^I page the carousel to the right$/ do
-  frankly_map( "#{CAROUSEL_SELECTOR_FRAGMENT}", 'FUI_swipe:', 'left' )
+  frankly_map( "#{CAROUSEL_SELECTOR_FRAGMENT}", 'swipeInDirection:', 'left' )
+  sleep 0.5 # wait for page to finish snapping into view
 end
 
 Then /^I see the (\d+)(?:st|nd|rd|th) image in the carousel$/ do |ordinal|

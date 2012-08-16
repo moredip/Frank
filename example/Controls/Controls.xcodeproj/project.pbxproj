@@ -34,7 +34,6 @@
 		D69137BF1436DB00003C26AC /* UISwitchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D69137BD1436DB00003C26AC /* UISwitchViewController.m */; };
 		D69137C01436DB00003C26AC /* UISwitchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D69137BE1436DB00003C26AC /* UISwitchViewController.xib */; };
 		D6A894A31597E2C600FF117E /* libFrank.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A894A11597E2AF00FF117E /* libFrank.a */; };
-		D6A894A51597E3EB00FF117E /* UIAutomation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A894A41597E3EB00FF117E /* UIAutomation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,7 +100,6 @@
 		D69137BE1436DB00003C26AC /* UISwitchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UISwitchViewController.xib; sourceTree = "<group>"; };
 		D69137DA1436E1D2003C26AC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		D6A894991597E2AF00FF117E /* Frank.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Frank.xcodeproj; path = ../../Frank.xcodeproj; sourceTree = "<group>"; };
-		D6A894A41597E3EB00FF117E /* UIAutomation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIAutomation.framework; path = Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/Developer/Library/PrivateFrameworks/UIAutomation.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +108,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D633D682159C2F61001EF51A /* libShelley.a in Frameworks */,
-				D6A894A51597E3EB00FF117E /* UIAutomation.framework in Frameworks */,
 				D6A894A31597E2C600FF117E /* libFrank.a in Frameworks */,
 				D6225F9B1436D886002B04AA /* UIKit.framework in Frameworks */,
 				D6225F9D1436D886002B04AA /* Foundation.framework in Frameworks */,
@@ -137,7 +134,6 @@
 			isa = PBXGroup;
 			children = (
 				D633D676159C2F54001EF51A /* Shelley.xcodeproj */,
-				D6A894A41597E3EB00FF117E /* UIAutomation.framework */,
 				49543E3B153878EC001D87F1 /* Images */,
 				D69137DA1436E1D2003C26AC /* CFNetwork.framework */,
 				D69137C11436E0EF003C26AC /* Frank */,

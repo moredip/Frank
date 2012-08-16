@@ -8,13 +8,8 @@
 #import "KeyboardCommand.h"
 #import "JSON.h"
 
-
-#import "KIFTestStep.h"
+#import "PublicAutomation/PublicAutomation.h"
 #import "FranklyProtocolHelper.h"
-#import "UIApplication-KIFAdditions.h"
-
-#import "UIAutomationBridge.h"
-
 
 @implementation KeyboardCommand {
 

@@ -17,12 +17,11 @@
 		86123C8914F8221000266AFC /* UIImage+Frank.m in Sources */ = {isa = PBXBuildFile; fileRef = 86123C8714F8221000266AFC /* UIImage+Frank.m */; };
 		AA747D9F0F9514B9006C5449 /* Frank_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* Frank_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
-		C1AF90551569F10200AE06A1 /* KIFTestStep.h in Headers */ = {isa = PBXBuildFile; fileRef = C1AF90541569F10200AE06A1 /* KIFTestStep.h */; };
+		C194256915D951EF004FC314 /* libPublicAutomation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C194256815D951EF004FC314 /* libPublicAutomation.a */; };
 		C1C3CCB9156BCF1500AEE136 /* KeyboardCommand.h in Sources */ = {isa = PBXBuildFile; fileRef = D6FA01B714283C4F00576ADE /* KeyboardCommand.h */; };
 		C1C3CCBA156BCF1500AEE136 /* KeyboardCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FA01B714283C4F00576ADC /* KeyboardCommand.m */; };
 		C1C3CCC0156BCF3500AEE136 /* FEXTappableConfirmationButton.h in Headers */ = {isa = PBXBuildFile; fileRef = C1C3CCBE156BCF3500AEE136 /* FEXTappableConfirmationButton.h */; };
 		C1C3CCC1156BCF3500AEE136 /* FEXTappableConfirmationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C3CCBF156BCF3500AEE136 /* FEXTappableConfirmationButton.m */; };
-		C1C6D1EE1535522300EAA0CF /* UIView+FrankGestures.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C6D1EC1535522300EAA0CF /* UIView+FrankGestures.m */; };
 		D629926B11AB2D1F00CE0FB0 /* AsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = D629926911AB2D1F00CE0FB0 /* AsyncSocket.h */; };
 		D629926C11AB2D1F00CE0FB0 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D629926A11AB2D1F00CE0FB0 /* AsyncSocket.m */; };
 		D629928111AB2D4C00CE0FB0 /* DDData.h in Headers */ = {isa = PBXBuildFile; fileRef = D629927111AB2D4C00CE0FB0 /* DDData.h */; };
@@ -104,18 +103,12 @@
 		D6325EE31437F7180057330D /* UIProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = D6325EA51437F7180057330D /* UIProxy.m */; };
 		D6325EE41437F7180057330D /* WaitUntilIdle.h in Headers */ = {isa = PBXBuildFile; fileRef = D6325EA61437F7180057330D /* WaitUntilIdle.h */; };
 		D6325EE51437F7180057330D /* WaitUntilIdle.m in Sources */ = {isa = PBXBuildFile; fileRef = D6325EA71437F7180057330D /* WaitUntilIdle.m */; };
-		D67725621587A57200FB4E67 /* UIWindow-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D67725601587A57200FB4E67 /* UIWindow-KIFAdditions.h */; };
-		D67725631587A57200FB4E67 /* UIWindow-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D67725611587A57200FB4E67 /* UIWindow-KIFAdditions.m */; };
 		D67F2AAD13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = D67F2AAB13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.h */; };
 		D67F2AAE13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D67F2AAC13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.m */; };
 		D67F2ABF13F5F55A00A0BFF1 /* FrankLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = D67F2ABD13F5F55A00A0BFF1 /* FrankLoader.h */; };
 		D67F2AC013F5F55A00A0BFF1 /* FrankLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = D67F2ABE13F5F55A00A0BFF1 /* FrankLoader.m */; };
 		D67F2B3413F5F82700A0BFF1 /* LoadableCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = D67F2B3313F5F82700A0BFF1 /* LoadableCategory.h */; };
 		D67F2B3A13F5F91700A0BFF1 /* UIView+MapKitWorkaround.m in Sources */ = {isa = PBXBuildFile; fileRef = D67F2B3813F5F91700A0BFF1 /* UIView+MapKitWorkaround.m */; };
-		D6910142159C2AAA0066B769 /* UIView+UIAutomationBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = D6910140159C2AAA0066B769 /* UIView+UIAutomationBridge.m */; };
-		D6910145159C2B510066B769 /* UIAutomation.h in Headers */ = {isa = PBXBuildFile; fileRef = D6910144159C2B510066B769 /* UIAutomation.h */; };
-		D6961C5E159D395F00FB6A03 /* UIAutomationBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = D6961C5C159D395F00FB6A03 /* UIAutomationBridge.h */; };
-		D6961C5F159D395F00FB6A03 /* UIAutomationBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = D6961C5D159D395F00FB6A03 /* UIAutomationBridge.m */; };
 		D6B1056114644827000DD32F /* UIQuery+ShelleyCompatibiilityOverrides.m in Sources */ = {isa = PBXBuildFile; fileRef = D6B1055F14644827000DD32F /* UIQuery+ShelleyCompatibiilityOverrides.m */; };
 		D6BD521E146C34BF001770B1 /* SelectorEngineRegistry.h in Headers */ = {isa = PBXBuildFile; fileRef = D6BD521C146C34BF001770B1 /* SelectorEngineRegistry.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D6BD521F146C34BF001770B1 /* SelectorEngineRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = D6BD521D146C34BF001770B1 /* SelectorEngineRegistry.m */; };
@@ -152,24 +145,11 @@
 		D6E7B48411B36D42005CAA34 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E7B47711B36D42005CAA34 /* SBJsonParser.m */; };
 		D6E7B48511B36D42005CAA34 /* SBJsonWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = D6E7B47811B36D42005CAA34 /* SBJsonWriter.h */; };
 		D6E7B48611B36D42005CAA34 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E7B47911B36D42005CAA34 /* SBJsonWriter.m */; };
-		D6F0955C144A5F4600B78FEC /* UIView+KIFAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F0955A144A5F4600B78FEC /* UIView+KIFAdapter.m */; };
-		D6FA01AB14283C4F00576AD1 /* CGGeometry-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D6FA019E14283C4F00576AD1 /* CGGeometry-KIFAdditions.h */; };
-		D6FA01AC14283C4F00576AD1 /* CGGeometry-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FA019F14283C4F00576AD1 /* CGGeometry-KIFAdditions.m */; };
-		D6FA01AE14283C4F00576AD1 /* UIAccessibilityElement-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D6FA01A114283C4F00576AD1 /* UIAccessibilityElement-KIFAdditions.h */; };
-		D6FA01AF14283C4F00576AD1 /* UIAccessibilityElement-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FA01A214283C4F00576AD1 /* UIAccessibilityElement-KIFAdditions.m */; };
-		D6FA01B014283C4F00576AD1 /* UIApplication-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D6FA01A314283C4F00576AD1 /* UIApplication-KIFAdditions.h */; };
-		D6FA01B114283C4F00576AD1 /* UIApplication-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FA01A414283C4F00576AD1 /* UIApplication-KIFAdditions.m */; };
-		D6FA01B214283C4F00576AD1 /* UIScrollView-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D6FA01A514283C4F00576AD1 /* UIScrollView-KIFAdditions.h */; };
-		D6FA01B314283C4F00576AD1 /* UIScrollView-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FA01A614283C4F00576AD1 /* UIScrollView-KIFAdditions.m */; };
-		D6FA01B414283C4F00576AD1 /* UITouch-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D6FA01A714283C4F00576AD1 /* UITouch-KIFAdditions.h */; };
-		D6FA01B514283C4F00576AD1 /* UITouch-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FA01A814283C4F00576AD1 /* UITouch-KIFAdditions.m */; };
-		D6FA01B614283C4F00576AD1 /* UIView-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D6FA01A914283C4F00576AD1 /* UIView-KIFAdditions.h */; };
-		D6FA01B714283C4F00576AD1 /* UIView-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FA01AA14283C4F00576AD1 /* UIView-KIFAdditions.m */; };
+		D6F0955C144A5F4600B78FEC /* UIView+PublicAutomation.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F0955A144A5F4600B78FEC /* UIView+PublicAutomation.m */; };
 		D6FA01B714283C4F00576ADD /* KeyboardCommand.m in Headers */ = {isa = PBXBuildFile; fileRef = D6FA01B714283C4F00576ADC /* KeyboardCommand.m */; };
 		D6FA01B714283C4F00576ADF /* KeyboardCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = D6FA01B714283C4F00576ADE /* KeyboardCommand.h */; };
 		D6FA01B714283C4F00576AE1 /* FranklyProtocolHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FA01B714283C4F00576AE0 /* FranklyProtocolHelper.m */; };
 		D6FA01B714283C4F00576AE3 /* FranklyProtocolHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = D6FA01B714283C4F00576AE2 /* FranklyProtocolHelper.h */; };
-		D6FA01B714283C4F00576AE5 /* KIFTestStep.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FA01B714283C4F00576AE4 /* KIFTestStep.m */; };
 		D6FA01B714283C4F00576AEB /* UITableViewCell+TappableConfirmationButton.h in Headers */ = {isa = PBXBuildFile; fileRef = D6FA01B714283C4F00576AEA /* UITableViewCell+TappableConfirmationButton.h */; };
 		D6FA01B714283C4F00576AED /* UITableViewCell+TappableConfirmationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FA01B714283C4F00576AEC /* UITableViewCell+TappableConfirmationButton.m */; };
 /* End PBXBuildFile section */
@@ -185,10 +165,9 @@
 		86123C8714F8221000266AFC /* UIImage+Frank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Frank.m"; path = "src/UIImage+Frank.m"; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* Frank_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Frank_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C1AF90541569F10200AE06A1 /* KIFTestStep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KIFTestStep.h; path = lib/KIF/Classes/KIFTestStep.h; sourceTree = "<group>"; };
+		C194256815D951EF004FC314 /* libPublicAutomation.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPublicAutomation.a; path = ../TestingWithFrank/PublicAutomation/dist/libPublicAutomation.a; sourceTree = "<group>"; };
 		C1C3CCBE156BCF3500AEE136 /* FEXTappableConfirmationButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FEXTappableConfirmationButton.h; path = src/FEXTappableConfirmationButton.h; sourceTree = "<group>"; };
 		C1C3CCBF156BCF3500AEE136 /* FEXTappableConfirmationButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FEXTappableConfirmationButton.m; path = src/FEXTappableConfirmationButton.m; sourceTree = "<group>"; };
-		C1C6D1EC1535522300EAA0CF /* UIView+FrankGestures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+FrankGestures.m"; path = "src/UIView+FrankGestures.m"; sourceTree = "<group>"; };
 		D2AAC07E0554694100DB518D /* libFrank.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFrank.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D629926911AB2D1F00CE0FB0 /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AsyncSocket.h; path = lib/cocoahttpserver/AsyncSocket.h; sourceTree = "<group>"; };
 		D629926A11AB2D1F00CE0FB0 /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AsyncSocket.m; path = lib/cocoahttpserver/AsyncSocket.m; sourceTree = "<group>"; };
@@ -273,8 +252,6 @@
 		D6325EA51437F7180057330D /* UIProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIProxy.m; sourceTree = "<group>"; };
 		D6325EA61437F7180057330D /* WaitUntilIdle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitUntilIdle.h; sourceTree = "<group>"; };
 		D6325EA71437F7180057330D /* WaitUntilIdle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitUntilIdle.m; sourceTree = "<group>"; };
-		D67725601587A57200FB4E67 /* UIWindow-KIFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIWindow-KIFAdditions.h"; path = "lib/KIF/Additions/UIWindow-KIFAdditions.h"; sourceTree = "<group>"; };
-		D67725611587A57200FB4E67 /* UIWindow-KIFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIWindow-KIFAdditions.m"; path = "lib/KIF/Additions/UIWindow-KIFAdditions.m"; sourceTree = "<group>"; };
 		D6782D8511BC423900FD0CE1 /* frank_static_resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = frank_static_resources.bundle; sourceTree = "<group>"; };
 		D67F2AAB13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccessibilityCheckCommand.h; path = src/AccessibilityCheckCommand.h; sourceTree = "<group>"; };
 		D67F2AAC13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccessibilityCheckCommand.m; path = src/AccessibilityCheckCommand.m; sourceTree = "<group>"; };
@@ -282,10 +259,6 @@
 		D67F2ABE13F5F55A00A0BFF1 /* FrankLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FrankLoader.m; path = src/FrankLoader.m; sourceTree = "<group>"; };
 		D67F2B3313F5F82700A0BFF1 /* LoadableCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadableCategory.h; sourceTree = "<group>"; };
 		D67F2B3813F5F91700A0BFF1 /* UIView+MapKitWorkaround.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MapKitWorkaround.m"; sourceTree = "<group>"; };
-		D6910140159C2AAA0066B769 /* UIView+UIAutomationBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+UIAutomationBridge.m"; path = "src/UIView+UIAutomationBridge.m"; sourceTree = "<group>"; };
-		D6910144159C2B510066B769 /* UIAutomation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIAutomation.h; path = src/UIAutomation.h; sourceTree = "<group>"; };
-		D6961C5C159D395F00FB6A03 /* UIAutomationBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIAutomationBridge.h; path = src/UIAutomationBridge.h; sourceTree = "<group>"; };
-		D6961C5D159D395F00FB6A03 /* UIAutomationBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIAutomationBridge.m; path = src/UIAutomationBridge.m; sourceTree = "<group>"; };
 		D6B1055F14644827000DD32F /* UIQuery+ShelleyCompatibiilityOverrides.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIQuery+ShelleyCompatibiilityOverrides.m"; path = "src/UIQuery+ShelleyCompatibiilityOverrides.m"; sourceTree = "<group>"; };
 		D6BD521C146C34BF001770B1 /* SelectorEngineRegistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectorEngineRegistry.h; path = src/SelectorEngineRegistry.h; sourceTree = "<group>"; };
 		D6BD521D146C34BF001770B1 /* SelectorEngineRegistry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectorEngineRegistry.m; path = src/SelectorEngineRegistry.m; sourceTree = "<group>"; };
@@ -322,24 +295,11 @@
 		D6E7B47711B36D42005CAA34 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
 		D6E7B47811B36D42005CAA34 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		D6E7B47911B36D42005CAA34 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
-		D6F0955A144A5F4600B78FEC /* UIView+KIFAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+KIFAdapter.m"; path = "src/UIView+KIFAdapter.m"; sourceTree = "<group>"; };
-		D6FA019E14283C4F00576AD1 /* CGGeometry-KIFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CGGeometry-KIFAdditions.h"; path = "lib/KIF/Additions/CGGeometry-KIFAdditions.h"; sourceTree = "<group>"; };
-		D6FA019F14283C4F00576AD1 /* CGGeometry-KIFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CGGeometry-KIFAdditions.m"; path = "lib/KIF/Additions/CGGeometry-KIFAdditions.m"; sourceTree = "<group>"; };
-		D6FA01A114283C4F00576AD1 /* UIAccessibilityElement-KIFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIAccessibilityElement-KIFAdditions.h"; path = "lib/KIF/Additions/UIAccessibilityElement-KIFAdditions.h"; sourceTree = "<group>"; };
-		D6FA01A214283C4F00576AD1 /* UIAccessibilityElement-KIFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIAccessibilityElement-KIFAdditions.m"; path = "lib/KIF/Additions/UIAccessibilityElement-KIFAdditions.m"; sourceTree = "<group>"; };
-		D6FA01A314283C4F00576AD1 /* UIApplication-KIFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIApplication-KIFAdditions.h"; path = "lib/KIF/Additions/UIApplication-KIFAdditions.h"; sourceTree = "<group>"; };
-		D6FA01A414283C4F00576AD1 /* UIApplication-KIFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIApplication-KIFAdditions.m"; path = "lib/KIF/Additions/UIApplication-KIFAdditions.m"; sourceTree = "<group>"; };
-		D6FA01A514283C4F00576AD1 /* UIScrollView-KIFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIScrollView-KIFAdditions.h"; path = "lib/KIF/Additions/UIScrollView-KIFAdditions.h"; sourceTree = "<group>"; };
-		D6FA01A614283C4F00576AD1 /* UIScrollView-KIFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView-KIFAdditions.m"; path = "lib/KIF/Additions/UIScrollView-KIFAdditions.m"; sourceTree = "<group>"; };
-		D6FA01A714283C4F00576AD1 /* UITouch-KIFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITouch-KIFAdditions.h"; path = "lib/KIF/Additions/UITouch-KIFAdditions.h"; sourceTree = "<group>"; };
-		D6FA01A814283C4F00576AD1 /* UITouch-KIFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITouch-KIFAdditions.m"; path = "lib/KIF/Additions/UITouch-KIFAdditions.m"; sourceTree = "<group>"; };
-		D6FA01A914283C4F00576AD1 /* UIView-KIFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView-KIFAdditions.h"; path = "lib/KIF/Additions/UIView-KIFAdditions.h"; sourceTree = "<group>"; };
-		D6FA01AA14283C4F00576AD1 /* UIView-KIFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView-KIFAdditions.m"; path = "lib/KIF/Additions/UIView-KIFAdditions.m"; sourceTree = "<group>"; };
+		D6F0955A144A5F4600B78FEC /* UIView+PublicAutomation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+PublicAutomation.m"; path = "src/UIView+PublicAutomation.m"; sourceTree = "<group>"; };
 		D6FA01B714283C4F00576ADC /* KeyboardCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardCommand.m; sourceTree = "<group>"; };
 		D6FA01B714283C4F00576ADE /* KeyboardCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardCommand.h; sourceTree = "<group>"; };
 		D6FA01B714283C4F00576AE0 /* FranklyProtocolHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FranklyProtocolHelper.m; sourceTree = "<group>"; };
 		D6FA01B714283C4F00576AE2 /* FranklyProtocolHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FranklyProtocolHelper.h; sourceTree = "<group>"; };
-		D6FA01B714283C4F00576AE4 /* KIFTestStep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KIFTestStep.m; path = lib/KIF/Classes/KIFTestStep.m; sourceTree = "<group>"; };
 		D6FA01B714283C4F00576AEA /* UITableViewCell+TappableConfirmationButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITableViewCell+TappableConfirmationButton.h"; path = "src/UITableViewCell+TappableConfirmationButton.h"; sourceTree = "<group>"; };
 		D6FA01B714283C4F00576AEC /* UITableViewCell+TappableConfirmationButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITableViewCell+TappableConfirmationButton.m"; path = "src/UITableViewCell+TappableConfirmationButton.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -351,6 +311,7 @@
 			files = (
 				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
 				D629938011AB2DF300CE0FB0 /* UIKit.framework in Frameworks */,
+				C194256915D951EF004FC314 /* libPublicAutomation.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,7 +352,6 @@
 		08FB77AEFE84172EC02AAC07 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				D6910144159C2B510066B769 /* UIAutomation.h */,
 				D6FA01B714283C4F00576AEC /* UITableViewCell+TappableConfirmationButton.m */,
 				D6FA01B714283C4F00576AEA /* UITableViewCell+TappableConfirmationButton.h */,
 				C1C3CCBE156BCF3500AEE136 /* FEXTappableConfirmationButton.h */,
@@ -431,7 +391,6 @@
 				D6D05CB111C883AA0081C5A5 /* UISpecCommandReceiver.h */,
 				D6D05CB211C883AA0081C5A5 /* UISpecCommandReceiver.m */,
 				D67F2B3813F5F91700A0BFF1 /* UIView+MapKitWorkaround.m */,
-				D6F0955A144A5F4600B78FEC /* UIView+KIFAdapter.m */,
 				D6B1055F14644827000DD32F /* UIQuery+ShelleyCompatibiilityOverrides.m */,
 				D6BD521C146C34BF001770B1 /* SelectorEngineRegistry.h */,
 				D6BD521D146C34BF001770B1 /* SelectorEngineRegistry.m */,
@@ -439,10 +398,7 @@
 				D6BD5221146C36A3001770B1 /* UIQuerySelectorEngine.m */,
 				0071264414F8956700E738ED /* ViewJSONSerializer.h */,
 				0071264514F8956700E738ED /* ViewJSONSerializer.m */,
-				C1C6D1EC1535522300EAA0CF /* UIView+FrankGestures.m */,
-				D6910140159C2AAA0066B769 /* UIView+UIAutomationBridge.m */,
-				D6961C5C159D395F00FB6A03 /* UIAutomationBridge.h */,
-				D6961C5D159D395F00FB6A03 /* UIAutomationBridge.m */,
+				D6F0955A144A5F4600B78FEC /* UIView+PublicAutomation.m */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -455,20 +411,10 @@
 			name = "Other Sources";
 			sourceTree = "<group>";
 		};
-		C1AF90531569F06B00AE06A1 /* KIF */ = {
-			isa = PBXGroup;
-			children = (
-				D6FA01B714283C4F00576AE4 /* KIFTestStep.m */,
-				C1AF90541569F10200AE06A1 /* KIFTestStep.h */,
-				D6FA019D14283BEA00576AD1 /* KIF Additions */,
-			);
-			name = KIF;
-			sourceTree = "<group>";
-		};
 		D629926711AB2CF700CE0FB0 /* 3rd Party */ = {
 			isa = PBXGroup;
 			children = (
-				C1AF90531569F06B00AE06A1 /* KIF */,
+				C194256815D951EF004FC314 /* libPublicAutomation.a */,
 				D6325E661437F7180057330D /* UISpec */,
 				D6E7B46C11B36D42005CAA34 /* JSON */,
 				D629926811AB2D0500CE0FB0 /* cocoahttpserver */,
@@ -626,27 +572,6 @@
 			path = lib/JSON;
 			sourceTree = "<group>";
 		};
-		D6FA019D14283BEA00576AD1 /* KIF Additions */ = {
-			isa = PBXGroup;
-			children = (
-				D67725601587A57200FB4E67 /* UIWindow-KIFAdditions.h */,
-				D67725611587A57200FB4E67 /* UIWindow-KIFAdditions.m */,
-				D6FA019E14283C4F00576AD1 /* CGGeometry-KIFAdditions.h */,
-				D6FA019F14283C4F00576AD1 /* CGGeometry-KIFAdditions.m */,
-				D6FA01A114283C4F00576AD1 /* UIAccessibilityElement-KIFAdditions.h */,
-				D6FA01A214283C4F00576AD1 /* UIAccessibilityElement-KIFAdditions.m */,
-				D6FA01A314283C4F00576AD1 /* UIApplication-KIFAdditions.h */,
-				D6FA01A414283C4F00576AD1 /* UIApplication-KIFAdditions.m */,
-				D6FA01A514283C4F00576AD1 /* UIScrollView-KIFAdditions.h */,
-				D6FA01A614283C4F00576AD1 /* UIScrollView-KIFAdditions.m */,
-				D6FA01A714283C4F00576AD1 /* UITouch-KIFAdditions.h */,
-				D6FA01A814283C4F00576AD1 /* UITouch-KIFAdditions.m */,
-				D6FA01A914283C4F00576AD1 /* UIView-KIFAdditions.h */,
-				D6FA01AA14283C4F00576AD1 /* UIView-KIFAdditions.m */,
-			);
-			name = "KIF Additions";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -686,12 +611,6 @@
 				D67F2AAD13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.h in Headers */,
 				D67F2ABF13F5F55A00A0BFF1 /* FrankLoader.h in Headers */,
 				D67F2B3413F5F82700A0BFF1 /* LoadableCategory.h in Headers */,
-				D6FA01AB14283C4F00576AD1 /* CGGeometry-KIFAdditions.h in Headers */,
-				D6FA01AE14283C4F00576AD1 /* UIAccessibilityElement-KIFAdditions.h in Headers */,
-				D6FA01B014283C4F00576AD1 /* UIApplication-KIFAdditions.h in Headers */,
-				D6FA01B214283C4F00576AD1 /* UIScrollView-KIFAdditions.h in Headers */,
-				D6FA01B414283C4F00576AD1 /* UITouch-KIFAdditions.h in Headers */,
-				D6FA01B614283C4F00576AD1 /* UIView-KIFAdditions.h in Headers */,
 				D6325EA81437F7180057330D /* UIQueryScrollView.h in Headers */,
 				D6325EAA1437F7180057330D /* UIQuerySearchBar.h in Headers */,
 				D6325EAC1437F7180057330D /* UIQuerySegmentedControl.h in Headers */,
@@ -727,14 +646,10 @@
 				0071264614F8956700E738ED /* ViewJSONSerializer.h in Headers */,
 				86123C8814F8221000266AFC /* UIImage+Frank.h in Headers */,
 				D6FA01B714283C4F00576ADD /* KeyboardCommand.m in Headers */,
-				C1AF90551569F10200AE06A1 /* KIFTestStep.h in Headers */,
 				D6FA01B714283C4F00576ADF /* KeyboardCommand.h in Headers */,
 				D6FA01B714283C4F00576AE3 /* FranklyProtocolHelper.h in Headers */,
 				C1C3CCC0156BCF3500AEE136 /* FEXTappableConfirmationButton.h in Headers */,
 				D6FA01B714283C4F00576AEB /* UITableViewCell+TappableConfirmationButton.h in Headers */,
-				D67725621587A57200FB4E67 /* UIWindow-KIFAdditions.h in Headers */,
-				D6910145159C2B510066B769 /* UIAutomation.h in Headers */,
-				D6961C5E159D395F00FB6A03 /* UIAutomationBridge.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -832,12 +747,6 @@
 				D67F2AAE13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.m in Sources */,
 				D67F2AC013F5F55A00A0BFF1 /* FrankLoader.m in Sources */,
 				D67F2B3A13F5F91700A0BFF1 /* UIView+MapKitWorkaround.m in Sources */,
-				D6FA01AC14283C4F00576AD1 /* CGGeometry-KIFAdditions.m in Sources */,
-				D6FA01AF14283C4F00576AD1 /* UIAccessibilityElement-KIFAdditions.m in Sources */,
-				D6FA01B114283C4F00576AD1 /* UIApplication-KIFAdditions.m in Sources */,
-				D6FA01B314283C4F00576AD1 /* UIScrollView-KIFAdditions.m in Sources */,
-				D6FA01B514283C4F00576AD1 /* UITouch-KIFAdditions.m in Sources */,
-				D6FA01B714283C4F00576AD1 /* UIView-KIFAdditions.m in Sources */,
 				D6325EA91437F7180057330D /* UIQueryScrollView.m in Sources */,
 				D6325EAB1437F7180057330D /* UIQuerySearchBar.m in Sources */,
 				D6325EAD1437F7180057330D /* UIQuerySegmentedControl.m in Sources */,
@@ -868,22 +777,17 @@
 				D6325EE11437F7180057330D /* UIInspector.m in Sources */,
 				D6325EE31437F7180057330D /* UIProxy.m in Sources */,
 				D6325EE51437F7180057330D /* WaitUntilIdle.m in Sources */,
-				D6F0955C144A5F4600B78FEC /* UIView+KIFAdapter.m in Sources */,
+				D6F0955C144A5F4600B78FEC /* UIView+PublicAutomation.m in Sources */,
 				D6B1056114644827000DD32F /* UIQuery+ShelleyCompatibiilityOverrides.m in Sources */,
 				D6BD521F146C34BF001770B1 /* SelectorEngineRegistry.m in Sources */,
 				D6BD5223146C36A3001770B1 /* UIQuerySelectorEngine.m in Sources */,
 				0071264714F8956700E738ED /* ViewJSONSerializer.m in Sources */,
 				86123C8914F8221000266AFC /* UIImage+Frank.m in Sources */,
-				C1C6D1EE1535522300EAA0CF /* UIView+FrankGestures.m in Sources */,
 				C1C3CCB9156BCF1500AEE136 /* KeyboardCommand.h in Sources */,
 				C1C3CCBA156BCF1500AEE136 /* KeyboardCommand.m in Sources */,
 				D6FA01B714283C4F00576AE1 /* FranklyProtocolHelper.m in Sources */,
-				D6FA01B714283C4F00576AE5 /* KIFTestStep.m in Sources */,
 				C1C3CCC1156BCF3500AEE136 /* FEXTappableConfirmationButton.m in Sources */,
 				D6FA01B714283C4F00576AED /* UITableViewCell+TappableConfirmationButton.m in Sources */,
-				D67725631587A57200FB4E67 /* UIWindow-KIFAdditions.m in Sources */,
-				D6910142159C2AAA0066B769 /* UIView+UIAutomationBridge.m in Sources */,
-				D6961C5F159D395F00FB6A03 /* UIAutomationBridge.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -897,20 +801,23 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
 				DSTROOT = /tmp/Frank.dst;
-				EXCLUDED_SOURCE_FILE_NAMES = "UITouch-KIFAdditions.m";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Frank_Prefix.pch;
 				INSTALL_PATH = /usr/local/lib;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../TestingWithFrank/PublicAutomation/dist\"",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
 				PRODUCT_NAME = Frank;
 				SDKROOT = iphoneos;
-				USER_HEADER_SEARCH_PATHS = lib/Shelley/Shelley;
+				USER_HEADER_SEARCH_PATHS = "lib/Shelley/Shelley ../TestingWithFrank/PublicAutomation";
 			};
 			name = Debug;
 		};
@@ -920,18 +827,21 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DSTROOT = /tmp/Frank.dst;
-				EXCLUDED_SOURCE_FILE_NAMES = "UITouch-KIFAdditions.m";
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Frank_Prefix.pch;
 				INSTALL_PATH = /usr/local/lib;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../TestingWithFrank/PublicAutomation/dist\"",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
 				PRODUCT_NAME = Frank;
 				SDKROOT = iphoneos;
-				USER_HEADER_SEARCH_PATHS = lib/Shelley/Shelley;
+				USER_HEADER_SEARCH_PATHS = "lib/Shelley/Shelley ../TestingWithFrank/PublicAutomation";
 			};
 			name = Release;
 		};
