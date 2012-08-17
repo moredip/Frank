@@ -1,6 +1,3 @@
-[submodule "lib/UISpec"]
-	path = lib/UISpec
-	url = https://github.com/moredip/UISpec
 [submodule "lib/Shelley"]
 	path = lib/Shelley
 	url = https://github.com/TestingWithFrank/Shelley.git
