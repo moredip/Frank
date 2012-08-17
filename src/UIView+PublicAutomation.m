@@ -19,6 +19,11 @@ NSString *formatCGPointVal( NSValue *val ){
 @implementation UIView(PublicAutomation)
 
 - (BOOL) touchPointIfInsideWindow:(CGPoint)point{
+    CGPoint pointInWindowCoords = [self.window convertPoint:point fromView:self];
+    if( !CGRectContainsPoint(self.window.bounds, pointInWindowCoords) ){
+        return NO;
+    }
+    
     [UIAutomationBridge tapView:self atPoint:point];
     return YES;
 }
