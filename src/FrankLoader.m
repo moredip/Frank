@@ -9,7 +9,6 @@
 #import "FrankLoader.h"
 
 #import "FrankServer.h"
-#import "FEXTappableConfirmationButton.h"
 
 #import <dlfcn.h>
 
