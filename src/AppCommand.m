@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "AppCommand.h"
 
-#import "UIQuery.h"
 #import "JSON.h"
 #import "Operation.h"
 #import "ViewJSONSerializer.h"

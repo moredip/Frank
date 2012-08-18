@@ -12,7 +12,6 @@
 
 #import "DumpCommand.h"
 
-#import "UIQuery.h"
 #import "JSON.h"
 
 @interface DumpCommand()
@@ -192,6 +191,8 @@
         value != nil) {
         return [NSString stringWithFormat:@"<%@ @%i>", [value class], value];
     }
+    
+
     
     return value;
 }
