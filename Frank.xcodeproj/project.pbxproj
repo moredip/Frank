@@ -108,6 +108,13 @@
 			remoteGlobalIDString = ABA9E44015C81C2600112290;
 			remoteInfo = CocoaHTTPServer;
 		};
+		C10AD80D15E3DC630004FD52 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C1FFB27515DD43A400CACB04 /* PublicAutomation.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = C194253715D838BD004FC314;
+			remoteInfo = PublicAutomation;
+		};
 		C1FFB27C15DD43A400CACB04 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C1FFB27515DD43A400CACB04 /* PublicAutomation.xcodeproj */;
@@ -596,6 +603,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				C10AD80E15E3DC630004FD52 /* PBXTargetDependency */,
 				ABA9E46815C81C8D00112290 /* PBXTargetDependency */,
 			);
 			name = Frank;
@@ -733,6 +741,11 @@
 			isa = PBXTargetDependency;
 			target = ABA9E44015C81C2600112290 /* CocoaHTTPServer */;
 			targetProxy = ABA9E46715C81C8D00112290 /* PBXContainerItemProxy */;
+		};
+		C10AD80E15E3DC630004FD52 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PublicAutomation;
+			targetProxy = C10AD80D15E3DC630004FD52 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
