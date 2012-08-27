@@ -49,3 +49,8 @@ task :copy_dist_to_gem do
   sh "cp -r dist/* gem/frank-skeleton/"
 end
 
+desc "create a gem and copy it to the target_dir"
+task :gem_it_up, :target_dir do |t, args|
+  sh "cd gem && gem build frank-cucumber.gemspec && cp frank-cucumber-0.9.5.pre7.gem #{args[:target_dir]}"
+end
+

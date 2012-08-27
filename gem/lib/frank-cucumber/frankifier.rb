@@ -4,14 +4,15 @@ require 'xcodeproj'
 class Frankifier
   include Thor::Shell
 
-  def self.frankify! root_dir
-    me = new(root_dir)
+  def self.frankify! root_dir, options = {}
+    me = new(root_dir, options)
     me.frankify!
     me
   end
 
-  def initialize( root_dir )
+  def initialize( root_dir, options = {} )
     @root = Pathname.new( root_dir )
+    @build_config = options[:build_config]
   end
 
   def frankify!
@@ -91,7 +92,7 @@ class Frankifier
   end
 
   def debug_build_settings
-    @_debug_build_settings ||= @target.build_configuration_list.build_settings('Debug')
+    @_debug_build_settings ||= @target.build_configuration_list.build_settings(@build_config)
   end
 
   def save_changes
