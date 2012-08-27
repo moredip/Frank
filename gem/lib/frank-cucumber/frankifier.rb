@@ -4,14 +4,15 @@ require 'xcodeproj'
 class Frankifier
   include Thor::Shell
 
-  def self.frankify! root_dir
-    me = new(root_dir)
+  def self.frankify! root_dir, options = {}
+    me = new(root_dir, options)
     me.frankify!
     me
   end
 
-  def initialize( root_dir )
+  def initialize( root_dir, options = {} )
     @root = Pathname.new( root_dir )
+    @target_build_configuration = options[:build_config]
   end
 
   def frankify!
@@ -74,7 +75,7 @@ class Frankifier
   end
 
   def add_frank_entry_to_build_setting( build_setting, entry_to_add )
-    setting_array = Array( debug_build_settings[build_setting] )
+    setting_array = Array( build_settings_to_edit[build_setting] )
 
     if setting_array.find{ |flag| flag.start_with? "$(FRANK_" }
       say "It appears that your Debug configuration's #{build_setting} build setting already include some FRANK setup. Namely: #{setting_array.inspect}. I won't change anything here."
@@ -87,11 +88,11 @@ class Frankifier
     setting_array.uniq! # mainly to avoid duplicate $(inherited) entries
     say "... #{build_setting} is now: #{setting_array.inspect}"
 
-    debug_build_settings[build_setting] = setting_array
+    build_settings_to_edit[build_setting] = setting_array
   end
 
-  def debug_build_settings
-    @_debug_build_settings ||= @target.build_configuration_list.build_settings('Debug')
+  def build_settings_to_edit
+    @_build_settings_to_edit ||= @target.build_configuration_list.build_settings(@target_build_configuration)
   end
 
   def save_changes
