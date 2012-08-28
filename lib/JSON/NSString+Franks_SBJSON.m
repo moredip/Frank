@@ -27,14 +27,14 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "NSString+SBJSON.h"
-#import "SBJsonParser.h"
+#import "NSString+Franks_SBJSON.h"
+#import "Franks_SBJsonParser.h"
 
-@implementation NSString (NSString_SBJSON)
+@implementation NSString (NSString_Franks_SBJSON)
 
 - (id)JSONFragmentValue
 {
-    SBJsonParser *jsonParser = [SBJsonParser new];    
+    Franks_SBJsonParser *jsonParser = [Franks_SBJsonParser new];    
     id repr = [jsonParser fragmentWithString:self];    
     if (!repr)
         NSLog(@"-JSONFragmentValue failed. Error trace is: %@", [jsonParser errorTrace]);
@@ -44,7 +44,7 @@
 
 - (id)JSONValue
 {
-    SBJsonParser *jsonParser = [SBJsonParser new];
+    Franks_SBJsonParser *jsonParser = [Franks_SBJsonParser new];
     id repr = [jsonParser objectWithString:self];
     if (!repr)
         NSLog(@"-JSONValue failed. Error trace is: %@", [jsonParser errorTrace]);
