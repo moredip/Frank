@@ -49,8 +49,6 @@ enum {
     EINPUT
 };
 
-@class Franks_SBJsonBase;
-@compatibility_alias SBJsonBase Franks_SBJsonBase;
 
 /**
  @brief Common base class for parsing & writing.
