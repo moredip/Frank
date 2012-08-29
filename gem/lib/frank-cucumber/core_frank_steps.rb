@@ -4,37 +4,42 @@ require 'rspec/expectations'
 
 # -- See -- #
 Then /^I wait to see "([^\"]*)"$/ do |expected_mark|
-  wait_until(:message => "waited to see view marked '#{expected_mark}'"){ 
+  quote = get_selector_quote(expected_mark)
+  wait_until(:message => "waited to see view marked #{quote}#{expected_mark}#{quote}"){
     view_with_mark_exists( expected_mark ) 
   }
 end
 
 Then /^I wait to not see "([^\"]*)"$/ do |expected_mark|
   sleep 3 # ugh, this should be removed but I'm worried it'll break existing tests
-
-  wait_until(:message => "waited to not see view marked '#{expected_mark}'"){ 
+  quote = get_selector_quote(expected_mark)
+  wait_until(:message => "waited to not see view marked #{quote}#{expected_mark}#{quote}"){
     !view_with_mark_exists( expected_mark )
   }
 end
 
 Then /^I should see a navigation bar titled "([^\"]*)"$/ do |expected_mark|
-  check_element_exists( "navigationItemView marked:'#{expected_mark}'" )
+  quote = get_selector_quote(expected_mark)
+  check_element_exists( "navigationItemView marked:#{quote}#{expected_mark}#{quote}" )
 end
 
 Then /^I wait to see a navigation bar titled "([^\"]*)"$/ do |expected_mark|
-  wait_until( :timeout => 30, :message => "waited to see a navigation bar titled '#{expected_mark}'" ) {
-    element_exists( "navigationItemView marked:'#{expected_mark}'" )
+  quote = get_selector_quote(expected_mark)
+  wait_until( :timeout => 30, :message => "waited to see a navigation bar titled #{quote}#{expected_mark}#{quote}" ) {
+    element_exists( "navigationItemView marked:#{quote}#{expected_mark}#{quote}" )
   }
 end
 
 Then /^I wait to not see a navigation bar titled "([^\"]*)"$/ do |expected_mark|
-  wait_until( :timeout => 30, :message => "waited to not see a navigation bar titled '#{expected_mark}'" ) {
-    !element_exists( "navigationItemView marked:'#{expected_mark}'" )
+  quote = get_selector_quote(expected_mark)
+  wait_until( :timeout => 30, :message => "waited to not see a navigation bar titled #{quote}#{expected_mark}#{quote}" ) {
+    !element_exists( "navigationItemView marked:#{quote}#{expected_mark}#{quote}" )
   }
 end
 
 Then /^I should see a "([^\"]*)" button$/ do |expected_mark|
-  check_element_exists("button marked:'#{expected_mark}'")
+  quote = get_selector_quote(expected_mark)
+  check_element_exists("button marked:#{quote}#{expected_mark}#{quote}")
 end
 
 Then /^I should see "([^\"]*)"$/ do |expected_mark|
@@ -42,7 +47,8 @@ Then /^I should see "([^\"]*)"$/ do |expected_mark|
 end
 
 Then /^I should not see "([^\"]*)"$/ do |expected_mark|
-  check_element_does_not_exist("view marked:'#{expected_mark}'")
+  quote = get_selector_quote(expected_mark)
+  check_element_does_not_exist("view marked:#{quote}#{expected_mark}#{quote}")
 end
 
 Then /I should see the following:/ do |table|
@@ -76,20 +82,24 @@ end
 Then /^I should see an element of class "([^\"]*)" with name "([^\"]*)" with the following labels: "([^\"]*)"$/ do |className, classLabel, listOfLabels|
 	arrayOfLabels = listOfLabels.split(',');
 	arrayOfLabels.each do |label|
-		check_element_exists("view marked:'#{classLabel}' parent view:'#{className}' descendant view marked:'#{label}'")
+    quote = get_selector_quote(label)
+		check_element_exists("view marked:'#{classLabel}' parent view:'#{className}' descendant view marked:#{quote}#{label}#{quote}")
 	end
 end
 
 Then /^I should see an element of class "([^\"]*)" with name "([^\"]*)" with a "([^\"]*)" button$/ do |className, classLabel, buttonName|
-	check_element_exists("view marked:'#{classLabel}' parent view:'#{className}' descendant button marked:'#{buttonName}'")
+  quote = get_selector_quote(buttonName)
+	check_element_exists("view marked:'#{classLabel}' parent view:'#{className}' descendant button marked:#{quote}#{buttonName}#{quote}")
 end
 
 Then /^I should not see a hidden button marked "([^\"]*)"$/ do |expected_mark|
-  element_is_not_hidden("button marked:'#{expected_mark}'").should be_false
+  quote = get_selector_quote(expected_mark)
+  element_is_not_hidden("button marked:#{quote}#{expected_mark}#{quote}").should be_false
 end
 
 Then /^I should see a nonhidden button marked "([^\"]*)"$/ do |expected_mark|
-  element_is_not_hidden("button marked:'#{expected_mark}'").should be_true
+  quote = get_selector_quote(expected_mark)
+  element_is_not_hidden("button marked:#{quote}#{expected_mark}#{quote}").should be_true
 end
 
 Then /^I should see an element of class "([^\"]*)"$/ do |className|
@@ -106,8 +116,9 @@ end
 # -- Type/Fill in -- #
 
 When /^I type "([^\"]*)" into the "([^\"]*)" text field$/ do |text_to_type, field_name|
-  text_fields_modified = frankly_map( "textField placeholder:'#{field_name}'", "setText:", text_to_type )
-  raise "could not find text fields with placeholder '#{field_name}'" if text_fields_modified.empty?
+  quote = get_selector_quote(field_name)
+  text_fields_modified = frankly_map( "textField placeholder:#{quote}#{field_name}#{quote}", "setText:", text_to_type )
+  raise "could not find text fields with placeholder #{quote}#{field_name}#{quote}" if text_fields_modified.empty?
   #TODO raise warning if text_fields_modified.count > 1
 end
 
@@ -159,7 +170,8 @@ end
 # -- touch -- #
 # generic views
 When /^I touch "([^\"]*)"$/ do |mark|
-  selector = "view marked:'#{mark}' first"
+  quote = get_selector_quote(mark)
+  selector = "view marked:#{quote}#{mark}#{quote} first"
   if element_exists(selector)
      touch( selector )
   else
@@ -170,10 +182,10 @@ end
 
 When /^I touch "([^\"]*)" if exists$/ do |mark|
   sleep 1
-  selector = "view marked:'#{mark}' first"
+  quote = get_selector_quote(mark)
+  selector = "view marked:#{quote}#{mark}#{quote} first"
   if element_exists(selector)
   	touch(selector)
-    sleep 1
   end
 end
 
@@ -183,7 +195,8 @@ When /^I touch the first table cell$/ do
 end
 
 When /^I touch the table cell marked "([^\"]*)"$/ do |mark|
-  touch("tableViewCell marked:'#{mark}'")
+  quote = get_selector_quote(mark)
+  touch("tableViewCell marked:#{quote}#{mark}#{quote}")
 end
 
 When /^I touch the (\d*)(?:st|nd|rd|th)? table cell$/ do |ordinal|
@@ -194,19 +207,22 @@ end
 Then /I touch the following:/ do |table|
   values = frankly_map( 'view', 'accessibilityLabel' )
   table.raw.each do |expected_mark|
-    touch( "view marked:'#{expected_mark}'" )
+    quote = get_selector_quote(expected_mark)
+    touch( "view marked:#{quote}#{expected_mark}#{quote}" )
     sleep 2
   end
 end
 
 # buttons
 When /^I touch the button marked "([^\"]*)"$/ do |mark|
-  touch( "button marked:'#{mark}'" )
+  quote = get_selector_quote(mark)
+  touch( "button marked:#{quote}#{mark}#{quote}" )
 end
 
 # action sheets
 When /^I touch the "([^\"]*)" action sheet button$/ do |mark|
-  touch( "actionSheet threePartButton marked:'#{mark}'" )
+  quote = get_selector_quote(mark)
+  touch( "actionSheet threePartButton marked:#{quote}#{mark}#{quote}" )
 end
 
 When /^I touch the (\d*)(?:st|nd|rd|th)? action sheet button$/ do |ordinal|
@@ -216,7 +232,8 @@ end
 
 # alert views
 When /^I touch the "([^\"]*)" alert view button$/ do |mark|
-  touch( "alertView threePartButton marked:'#{mark}'" )
+  quote = get_selector_quote(mark) 
+  touch( "alertView threePartButton marked:#{quote}#{mark}#{quote}" )
 end
                                                                      
 When /^I touch the (\d*)(?:st|nd|rd|th)? alert view button$/ do |ordinal|
@@ -227,14 +244,16 @@ end
 # -- switch -- #
 
 When /^I flip switch "([^\"]*)"$/ do |mark|
-  touch("view:'UISwitch' marked:'#{mark}'") 
+  quote = get_selector_quote(mark)
+  touch("view:'UISwitch' marked:#{quote}#{mark}#{quote}")
 end
 
 
 Then /^switch "([^\"]*)" should be (on|off)$/ do |mark,expected_state|
   expected_state = expected_state == 'on'
-
-  selector = "view:'UISwitch' marked:'#{mark}'"
+  
+  quote = get_selector_quote(mark)
+  selector = "view:'UISwitch' marked:#{quote}#{mark}#{quote}"
   switch_states = frankly_map( selector, "isOn" )
 
   switch_states.each do |switch_state|
@@ -252,7 +271,8 @@ end
 Then /^a pop\-over menu is displayed with the following:$/ do |table|
   sleep 1
   table.raw.each do |expected_mark|
-    check_element_exists "actionSheet view marked:'#{expected_mark}'"
+    quote = get_selector_quote(expected_mark)
+    check_element_exists "actionSheet view marked:#{quote}#{expected_mark}#{quote}"
   end
 end
 
