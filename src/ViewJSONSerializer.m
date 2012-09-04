@@ -27,6 +27,21 @@
     }
     return array;
   }
+  
+  if([obj isKindOfClass: NSDictionary.class]) {
+    NSMutableDictionary *jsonDictionary = [NSMutableDictionary dictionary];
+    
+    NSDictionary *theDictionary = (NSDictionary *) obj;
+    for(id key in [[theDictionary allKeys] copy]) {
+      id value = [theDictionary objectForKey: key];
+      
+      id subJson = [ViewJSONSerializer jsonify: value];
+      if(subJson != nil) {
+        [jsonDictionary setObject: subJson forKey: key];
+      }
+    }
+    return jsonDictionary;
+  }
 
   
 	if( [obj isKindOfClass: NSValue.class] ) {
