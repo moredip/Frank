@@ -15,6 +15,8 @@
 		4C1DD76F12BADFE100E10B8C /* AppCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C1DD76B12BADFE100E10B8C /* AppCommand.h */; };
 		86123C8814F8221000266AFC /* UIImage+Frank.h in Headers */ = {isa = PBXBuildFile; fileRef = 86123C8614F8221000266AFC /* UIImage+Frank.h */; };
 		86123C8914F8221000266AFC /* UIImage+Frank.m in Sources */ = {isa = PBXBuildFile; fileRef = 86123C8714F8221000266AFC /* UIImage+Frank.m */; };
+		A91F3AA615F6E456003F434F /* ExitCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = A91F3AA415F6E456003F434F /* ExitCommand.h */; };
+		A91F3AA715F6E456003F434F /* ExitCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = A91F3AA515F6E456003F434F /* ExitCommand.m */; };
 		AA747D9F0F9514B9006C5449 /* Frank_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* Frank_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		AB7947A115C4412300052B74 /* HTTPAuthenticationRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = AB79477D15C4412300052B74 /* HTTPAuthenticationRequest.h */; };
@@ -218,6 +220,8 @@
 		4C1DD76B12BADFE100E10B8C /* AppCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppCommand.h; path = src/AppCommand.h; sourceTree = "<group>"; };
 		86123C8614F8221000266AFC /* UIImage+Frank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Frank.h"; path = "src/UIImage+Frank.h"; sourceTree = "<group>"; };
 		86123C8714F8221000266AFC /* UIImage+Frank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Frank.m"; path = "src/UIImage+Frank.m"; sourceTree = "<group>"; };
+		A91F3AA415F6E456003F434F /* ExitCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExitCommand.h; path = src/ExitCommand.h; sourceTree = "<group>"; };
+		A91F3AA515F6E456003F434F /* ExitCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExitCommand.m; path = src/ExitCommand.m; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* Frank_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Frank_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AB79477D15C4412300052B74 /* HTTPAuthenticationRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPAuthenticationRequest.h; path = Core/HTTPAuthenticationRequest.h; sourceTree = "<group>"; };
@@ -467,6 +471,8 @@
 		08FB77AEFE84172EC02AAC07 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				A91F3AA415F6E456003F434F /* ExitCommand.h */,
+				A91F3AA515F6E456003F434F /* ExitCommand.m */,
 				D6FA01B714283C4F00576AEE /* EnginesCommand.m */,
 				D6FA01B714283C4F00576AF0 /* EnginesCommand.h */,
 				D6FA01B714283C4F00576AEC /* UITableViewCell+TappableConfirmationButton.m */,
@@ -907,6 +913,7 @@
 				AB7947E215C4418700052B74 /* ContextFilterLogFormatter.h in Headers */,
 				AB7947E415C4418700052B74 /* DispatchQueueLogFormatter.h in Headers */,
 				D6FA01B714283C4F00576AF1 /* EnginesCommand.h in Headers */,
+				A91F3AA615F6E456003F434F /* ExitCommand.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1122,6 +1129,7 @@
 				AB7947E315C4418700052B74 /* ContextFilterLogFormatter.m in Sources */,
 				AB7947E515C4418700052B74 /* DispatchQueueLogFormatter.m in Sources */,
 				D6FA01B714283C4F00576AEF /* EnginesCommand.m in Sources */,
+				A91F3AA715F6E456003F434F /* ExitCommand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1281,6 +1289,7 @@
 				ABA9E46115C81C2600112290 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
