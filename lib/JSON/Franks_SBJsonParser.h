@@ -28,14 +28,14 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "SBJsonBase.h"
+#import "Franks_SBJsonBase.h"
 
 /**
   @brief Options for the parser class.
  
  This exists so the SBJSON facade can implement the options in the parser without having to re-declare them.
  */
-@protocol SBJsonParser
+@protocol Franks_SBJsonParser
 
 /**
  @brief Return the object represented by the given string.
@@ -48,10 +48,6 @@
 - (id)objectWithString:(NSString *)repr;
 
 @end
-
-@class Franks_SBJsonParser;
-@compatibility_alias SBJsonParser Franks_SBJsonParser;
-
 
 
 /**
@@ -75,7 +71,7 @@
  as we can thus avoid any loss of precision. (JSON allows ridiculously large numbers.)
  
  */
-@interface SBJsonParser : SBJsonBase <SBJsonParser> {
+@interface Franks_SBJsonParser : Franks_SBJsonBase <Franks_SBJsonParser> {
     
 @private
     const char *c;
@@ -84,7 +80,7 @@
 @end
 
 // don't use - exists for backwards compatibility with 2.1.x only. Will be removed in 2.3.
-@interface SBJsonParser (Private)
+@interface Franks_SBJsonParser (Private)
 - (id)fragmentWithString:(id)repr;
 @end
 

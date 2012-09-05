@@ -22,6 +22,7 @@
 		C1E7C1CD1569DA9200CCBCD8 /* DataEntryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1E7C1CA1569DA9200CCBCD8 /* DataEntryViewController.xib */; };
 		C1FFB28015DD443000CACB04 /* libCocoaHTTPServer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FFB26215DD42BE00CACB04 /* libCocoaHTTPServer.a */; };
 		C1FFB28215DD443A00CACB04 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FFB28115DD443A00CACB04 /* Security.framework */; };
+		C1E8A77715F3B418001083B5 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1E8A77515F3B418001083B5 /* MainWindow-iPad.xib */; };
 		D6225F9B1436D886002B04AA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6225F9A1436D886002B04AA /* UIKit.framework */; };
 		D6225F9D1436D886002B04AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6225F9C1436D886002B04AA /* Foundation.framework */; };
 		D6225F9F1436D886002B04AA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6225F9E1436D886002B04AA /* CoreGraphics.framework */; };
@@ -97,6 +98,7 @@
 		C1E7C1C91569DA9200CCBCD8 /* DataEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataEntryViewController.m; sourceTree = "<group>"; };
 		C1E7C1CA1569DA9200CCBCD8 /* DataEntryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DataEntryViewController.xib; sourceTree = "<group>"; };
 		C1FFB28115DD443A00CACB04 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		C1E8A77615F3B418001083B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "iPad/en.lproj/MainWindow-iPad.xib"; sourceTree = "<group>"; };
 		D6225F961436D886002B04AA /* Controls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Controls.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6225F9A1436D886002B04AA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D6225F9C1436D886002B04AA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -149,6 +151,14 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
+		C1E8A77415F3B417001083B5 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				C1E8A77515F3B418001083B5 /* MainWindow-iPad.xib */,
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
 		D6225F8B1436D886002B04AA = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +195,7 @@
 		D6225FA01436D886002B04AA /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				C1E8A77415F3B417001083B5 /* iPad */,
 				49543E4B1538791E001D87F1 /* Carousel.h */,
 				49543E4C1538791E001D87F1 /* Carousel.m */,
 				D6225FA91436D886002B04AA /* ControlsAppDelegate.h */,
@@ -354,6 +365,7 @@
 				C1C3CCCF156BE36600AEE136 /* image3.png in Resources */,
 				C1C3CCD2156BE39900AEE136 /* image4.png in Resources */,
 				9C60AD56157C97FB008EE16A /* UIProgressViewController.xib in Resources */,
+				C1E8A77715F3B418001083B5 /* MainWindow-iPad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,6 +400,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		C1E8A77515F3B418001083B5 /* MainWindow-iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C1E8A77615F3B418001083B5 /* en */,
+			);
+			name = "MainWindow-iPad.xib";
+			sourceTree = "<group>";
+		};
 		D6225FA31436D886002B04AA /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -458,13 +478,17 @@
 				GCC_PREFIX_HEADER = "Controls/Controls-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Controls/Controls-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRANK_LIBRARY_SEARCH_PATHS)",
+				);
 				OTHER_LDFLAGS = (
-					"-all_load",
-					"-ObjC",
-					"-framework",
-					CFNetwork,
+					"$(inherited)",
+					"$(FRANK_LDFLAGS)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -479,13 +503,9 @@
 				GCC_PREFIX_HEADER = "Controls/Controls-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Controls/Controls-Info.plist";
-				OTHER_LDFLAGS = (
-					"-all_load",
-					"-ObjC",
-					"-framework",
-					CFNetwork,
-				);
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};

@@ -48,4 +48,3 @@ desc "copies contents of dist dir to the frank-cucumber gem's frank-skeleton"
 task :copy_dist_to_gem do
   sh "cp -r dist/* gem/frank-skeleton/"
 end
-

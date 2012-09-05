@@ -7,7 +7,7 @@
 //
 
 #import "OrientationCommand.h"
-#import "NSObject+SBJSON.h"
+#import "NSObject+Franks_SBJSON.h"
 
 
 @implementation OrientationCommand
