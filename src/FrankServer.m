@@ -47,7 +47,7 @@ static NSUInteger __defaultPort = FRANK_SERVER_PORT;
 		[frankCommandRoute registerCommand:[[[AppCommand alloc] init]autorelease] withName:@"app_exec"];
         [frankCommandRoute registerCommand:[[[KeyboardCommand alloc] init]autorelease] withName:@"type_into_keyboard"];
         [frankCommandRoute registerCommand:[[[EnginesCommand alloc] init]autorelease] withName:@"engines"];
-    [frankCommandRoute registerCommand:[[[ExitCommand alloc] init] autorelease] withName:@"exit"];
+        [frankCommandRoute registerCommand:[[[ExitCommand alloc] init] autorelease] withName:@"exit"];
 		[[RequestRouter singleton] registerRoute:frankCommandRoute];
 		
 		StaticResourcesRoute *staticRoute = [[[StaticResourcesRoute alloc] initWithStaticResourceSubDir:bundleName] autorelease];
