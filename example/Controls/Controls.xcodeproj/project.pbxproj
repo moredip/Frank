@@ -20,9 +20,9 @@
 		C1C3CCD2156BE39900AEE136 /* image4.png in Resources */ = {isa = PBXBuildFile; fileRef = C1C3CCD1156BE39900AEE136 /* image4.png */; };
 		C1E7C1CB1569DA9200CCBCD8 /* DataEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E7C1C91569DA9200CCBCD8 /* DataEntryViewController.m */; };
 		C1E7C1CD1569DA9200CCBCD8 /* DataEntryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1E7C1CA1569DA9200CCBCD8 /* DataEntryViewController.xib */; };
+		C1E8A77715F3B418001083B5 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1E8A77515F3B418001083B5 /* MainWindow-iPad.xib */; };
 		C1FFB28015DD443000CACB04 /* libCocoaHTTPServer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FFB26215DD42BE00CACB04 /* libCocoaHTTPServer.a */; };
 		C1FFB28215DD443A00CACB04 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FFB28115DD443A00CACB04 /* Security.framework */; };
-		C1E8A77715F3B418001083B5 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1E8A77515F3B418001083B5 /* MainWindow-iPad.xib */; };
 		D6225F9B1436D886002B04AA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6225F9A1436D886002B04AA /* UIKit.framework */; };
 		D6225F9D1436D886002B04AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6225F9C1436D886002B04AA /* Foundation.framework */; };
 		D6225F9F1436D886002B04AA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6225F9E1436D886002B04AA /* CoreGraphics.framework */; };
@@ -97,8 +97,8 @@
 		C1E7C1C81569DA9200CCBCD8 /* DataEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataEntryViewController.h; sourceTree = "<group>"; };
 		C1E7C1C91569DA9200CCBCD8 /* DataEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataEntryViewController.m; sourceTree = "<group>"; };
 		C1E7C1CA1569DA9200CCBCD8 /* DataEntryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DataEntryViewController.xib; sourceTree = "<group>"; };
-		C1FFB28115DD443A00CACB04 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		C1E8A77615F3B418001083B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "iPad/en.lproj/MainWindow-iPad.xib"; sourceTree = "<group>"; };
+		C1FFB28115DD443A00CACB04 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D6225F961436D886002B04AA /* Controls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Controls.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6225F9A1436D886002B04AA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D6225F9C1436D886002B04AA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -484,8 +484,10 @@
 					"$(FRANK_LIBRARY_SEARCH_PATHS)",
 				);
 				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"$(FRANK_LDFLAGS)",
+					"-all_load",
+					"-ObjC",
+					"-framework",
+					CFNetwork,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -504,6 +506,12 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Controls/Controls-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+					"-framework",
+					CFNetwork,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
