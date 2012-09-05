@@ -65,6 +65,7 @@ static RequestRouter *s_singleton;
 	__block NSObject<HTTPResponse> *response = nil;
 	for (id<Route> route in _routes) {
         dispatch_sync(dispatch_get_main_queue(), ^{
+            
             response = [[route handleRequestForPath:pathComponents withConnection:connection] retain];
         });
         [response autorelease];
