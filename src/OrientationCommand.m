@@ -108,7 +108,7 @@
 
     [UIAutomationBridge setOrientation:requestedOrientation];
     
-    return nil;
+    return [FranklyProtocolHelper generateSuccessResponseWithoutResults];
 }
 
 - (NSString *)handleCommandWithRequestBody:(NSString *)requestBody {
