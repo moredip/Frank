@@ -273,6 +273,16 @@ module FrankHelper
     orientation
   end
 
+
+  # set the device orientation
+  # @param orientation can be 'landscape','landscape_left','landscape_right','portrait', or 'portrait_upside_down'
+  def frankly_set_orientation(orientation)
+    orientation = orientation.to_s
+    orientation = 'landscape_left' if orientation == 'landscape' 
+    res = frank_server.send_post( 'orientation',  orientation )
+    return Gateway.evaluate_frankly_response( res, "set_orientation #{orientation}" )
+  end
+
   # @return [Boolean] Does the device running the application have accessibility enabled.
   # If accessibility is not enabled then a lot of Frank functionality will not work.
   def frankly_is_accessibility_enabled
