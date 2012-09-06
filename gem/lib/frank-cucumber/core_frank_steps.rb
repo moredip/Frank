@@ -132,32 +132,8 @@ When /^I enter the text "([^\\"]*)" from keyboard to the textfield "([^\\"]*)"$/
 end
 
 # -- Rotate -- #
-Given /^the device is in (a )?landscape orientation$/ do |ignored|
-  # for some reason the simulator sometimes starts of reporting its orientation as 'flat'. Workaround for this is to rotate the device then wait a bit
-  if 'flat' == frankly_current_orientation
-    rotate_simulator_right
-    sleep 1
-  end 
-  
-  unless frankly_oriented_landscape?
-    rotate_simulator_left
-    sleep 1
-    raise "expected orientation to be landscape after rotating left, but it is #{frankly_current_orientation}" unless frankly_oriented_landscape?
-  end
-end
-
-Given /^the device is in (a )?portrait orientation$/ do |ignored|
-  # for some reason the simulator sometimes starts of reporting its orientation as 'flat'. Workaround for this is to rotate the device then wait a bit
-  if 'flat' == frankly_current_orientation
-    rotate_simulator_right
-    sleep 1
-  end 
-
-  unless frankly_oriented_portrait?
-    rotate_simulator_left
-    sleep 1
-    raise "Expected orientation to be portrait after rotating left, but it is #{frankly_current_orientation}" unless frankly_oriented_portrait?
-  end
+Given /^the device is in (a )?(landscape|portrait) orientation$/ do |_,orientation|
+  frankly_set_orientation orientation
 end
 
 When /^I simulate a memory warning$/ do

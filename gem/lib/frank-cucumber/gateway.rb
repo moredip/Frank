@@ -54,10 +54,12 @@ class Gateway
   end
 
   #taken from Ian Dee's Encumber
-  def send_post( verb, command_hash )
+  def send_post( verb, command )
+    command = command.to_json unless command.is_a? String
+
     url = frank_url_for( verb )
     req = Net::HTTP::Post.new url.path
-    req.body = command_hash.to_json
+    req.body = command
 
     make_http_request( url, req )
   end
