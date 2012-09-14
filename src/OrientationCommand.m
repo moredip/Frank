@@ -40,7 +40,7 @@
 		case UIDeviceOrientationLandscapeRight:
             return [self representOrientation:@"landscape" withDetailedOrientation:@"landscape_right"];
 		case UIDeviceOrientationLandscapeLeft:
-            return [self representOrientation:@"landscape" withDetailedOrientation:@"landscape_right"];
+            return [self representOrientation:@"landscape" withDetailedOrientation:@"landscape_left"];
 		case UIDeviceOrientationPortrait:
             return [self representOrientation:@"portrait" withDetailedOrientation:@"portrait"];
 		case UIDeviceOrientationPortraitUpsideDown:
