@@ -19,8 +19,6 @@ MAKE_CATEGORIES_LOADABLE(UIView_FrankGestures)
 
 @implementation UIView (FrankGestures)
 
-CGSize swipeDeltasForDirection(NSString *direction);
-
 CGSize swipeDeltasForDirection(NSString *direction, int pixels){
     NSString *dir = [direction lowercaseString];
 
