@@ -282,8 +282,6 @@
 		C1C6D1EC1535522300EAA0CF /* UIView+FrankGestures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+FrankGestures.m"; path = "src/UIView+FrankGestures.m"; sourceTree = "<group>"; };
 		D2AAC07E0554694100DB518D /* libFrank.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFrank.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D629937F11AB2DF300CE0FB0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		D62AEFAA11B4897B00B824F3 /* env.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = env.rb; sourceTree = "<group>"; };
-		D62AEFAB11B4897B00B824F3 /* frank_helper.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = frank_helper.rb; sourceTree = "<group>"; };
 		D6325E681437F7180057330D /* UIQueryScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIQueryScrollView.h; sourceTree = "<group>"; };
 		D6325E691437F7180057330D /* UIQueryScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIQueryScrollView.m; sourceTree = "<group>"; };
 		D6325E6A1437F7180057330D /* UIQuerySearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIQuerySearchBar.h; sourceTree = "<group>"; };
@@ -448,7 +446,6 @@
 		0867D691FE84028FC02AAC07 /* Frank */ = {
 			isa = PBXGroup;
 			children = (
-				D62AEFA911B4897B00B824F3 /* cucumber */,
 				D629926711AB2CF700CE0FB0 /* 3rd Party */,
 				08FB77AEFE84172EC02AAC07 /* src */,
 				32C88DFF0371C24200C91783 /* Other Sources */,
@@ -673,15 +670,6 @@
 			);
 			name = cocoahttpserver;
 			path = lib/cocoahttpserver;
-			sourceTree = "<group>";
-		};
-		D62AEFA911B4897B00B824F3 /* cucumber */ = {
-			isa = PBXGroup;
-			children = (
-				D62AEFAA11B4897B00B824F3 /* env.rb */,
-				D62AEFAB11B4897B00B824F3 /* frank_helper.rb */,
-			);
-			path = cucumber;
 			sourceTree = "<group>";
 		};
 		D6325E661437F7180057330D /* UISpec */ = {
