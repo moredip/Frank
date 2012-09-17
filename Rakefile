@@ -6,12 +6,12 @@ end
 
 desc "Build the arm library"
 task :build_iphone_lib do
-  sh "xcodebuild -workspace Frank.xcodeproj/project.xcworkspace -scheme Frank -configuration Release -sdk iphoneos#{discover_latest_sdk_version} BUILD_DIR=build clean build"
+  sh "xcodebuild -workspace Frank.xcworkspace -scheme Frank -configuration Release -sdk iphoneos#{discover_latest_sdk_version} BUILD_DIR=build clean build"
 end
 
 desc "Build the i386 library"
 task :build_simulator_lib do
-  sh "xcodebuild -workspace Frank.xcodeproj/project.xcworkspace -scheme Frank -configuration Release -sdk iphonesimulator#{discover_latest_sdk_version} BUILD_DIR=build clean build"
+  sh "xcodebuild -workspace Frank.xcworkspace -scheme Frank -configuration Release -sdk iphonesimulator#{discover_latest_sdk_version} BUILD_DIR=build clean build"
 end
 
 task :combine_libraries do
