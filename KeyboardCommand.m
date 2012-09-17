@@ -34,7 +34,7 @@
 
 - (NSString *)generateFailedToEnterCharacterErrorResponse:(NSString *)characterWhichFailed {
     return [FranklyProtocolHelper generateErrorResponseWithReason:@"failed to type character"
-                                                       andDetails:[NSString stringWithFormat:@"We were unable to type the character '%@'. This is probably because we couldn't find it on the keyboard. Please report this to the frank-discuss mailing list."]];
+                                                       andDetails:[NSString stringWithFormat:@"We were unable to type the character '%@'. This is probably because we couldn't find it on the keyboard. Please report this to the frank-discuss mailing list.", characterWhichFailed]];
 }
 
 - (NSString *)handleCommandWithRequestBody:(NSString *)requestBody {
