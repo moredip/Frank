@@ -7,4 +7,7 @@
    <FileRef
       location = "group:lib/Shelley/Shelley.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:example/Controls/Controls.xcodeproj">
+   </FileRef>
 </Workspace>
