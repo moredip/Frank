@@ -10,4 +10,10 @@
    <FileRef
       location = "group:example/Controls/Controls.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:example/CountItOut/CountItOut.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:example/EmployeeAdmin/EmployeeAdmin.xcodeproj">
+   </FileRef>
 </Workspace>
