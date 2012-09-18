@@ -25,11 +25,13 @@ task :build_lib => [:build_iphone_lib,:build_simulator_lib,:combine_libraries]
 desc "clean build artifacts"
 task :clean do
   rm_rf 'dist'
+  rm_rf 'build'
 end
 
 desc "create dist directory"
 task :prep_dist do
   mkdir_p 'dist'
+  mkdir_p 'build'
 end
 
 task :build => [:clean, :prep_dist, :build_lib, :build_shelley]
