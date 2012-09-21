@@ -39,7 +39,12 @@ task :prep_dist do
   mkdir_p "#{build_dir}"
 end
 
-task :build => [:clean, :prep_dist, :build_lib]
+desc "Package symbiote resource bundle"
+task :bundle_resources do
+  sh "cp -r symbiote/bundle dist/frank_static_resources.bundle"
+end
+
+task :build => [:clean, :prep_dist, :build_lib, :bundle_resources]
 task :default => :build
 
 desc "build and copy everything into the gem directories for distribution as a gem"
