@@ -2,6 +2,7 @@ require 'bundler'
 require 'rake/testtask'
 Bundler::GemHelper.install_tasks
 
+desc 'open up version.rb'
 task :edit_version do
   exec "vim #{File.dirname(__FILE__)}/lib/frank-cucumber/version.rb"
 end
