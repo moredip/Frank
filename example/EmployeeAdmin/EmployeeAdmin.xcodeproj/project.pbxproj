@@ -14,6 +14,8 @@
 		2860E32E111B888700E27156 /* AppDelegate_Pad.m in Sources */ = {isa = PBXBuildFile; fileRef = 2860E32C111B888700E27156 /* AppDelegate_Pad.m */; };
 		2860E32F111B888700E27156 /* MainWindow_Pad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2860E32D111B888700E27156 /* MainWindow_Pad.xib */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		C9F072DE160C312100418A5E /* libCocoaHTTPServer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C95979961608508E00399B16 /* libCocoaHTTPServer.a */; };
+		C9F072E0160C31AA00418A5E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F072DF160C31AA00418A5E /* Security.framework */; };
 		D6197EEB14741D1D00C4B0AD /* libShelley.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6197EE614741C9500C4B0AD /* libShelley.a */; };
 		D68FD3D21417DE3400538C41 /* frank_static_resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D68FD3D01417DE3400538C41 /* frank_static_resources.bundle */; };
 		D6A833ED11CDBF35001B8585 /* PureMVC_ObjectiveC_1_1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A833B411CDBF35001B8585 /* PureMVC_ObjectiveC_1_1.a */; };
@@ -132,6 +134,7 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Shared/main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* EmployeeAdmin_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployeeAdmin_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* EmployeeAdmin-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "EmployeeAdmin-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		C9F072DF160C31AA00418A5E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D6197EE014741C9500C4B0AD /* Shelley.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Shelley.xcodeproj; path = ../../lib/Shelley/Shelley.xcodeproj; sourceTree = "<group>"; };
 		D68FD3D01417DE3400538C41 /* frank_static_resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = frank_static_resources.bundle; path = ../../dist/frank_static_resources.bundle; sourceTree = SOURCE_ROOT; };
 		D68FD3D11417DE3400538C41 /* libFrank.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFrank.a; path = ../../dist/libFrank.a; sourceTree = SOURCE_ROOT; };
@@ -221,6 +224,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9F072E0160C31AA00418A5E /* Security.framework in Frameworks */,
+				C9F072DE160C312100418A5E /* libCocoaHTTPServer.a in Frameworks */,
 				D6197EEB14741D1D00C4B0AD /* libShelley.a in Frameworks */,
 				D6DA5EA91468C87E00525864 /* libFrank.a in Frameworks */,
 				D6A8351311CDC3D3001B8585 /* Foundation.framework in Frameworks */,
@@ -277,6 +282,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				C9F072DF160C31AA00418A5E /* Security.framework */,
 				D6A8351D11CDC54B001B8585 /* Frank */,
 				2860E32A111B888700E27156 /* iPad */,
 				2860E324111B887F00E27156 /* iPhone */,
