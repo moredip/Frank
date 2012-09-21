@@ -32,6 +32,7 @@
 		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
 		C959797F16084D2000399B16 /* libShelley.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C959797E16084D2000399B16 /* libShelley.a */; };
 		C959798116084D4B00399B16 /* libCocoaHTTPServer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C959798016084D4B00399B16 /* libCocoaHTTPServer.a */; };
+		C9F072E2160C31B500418A5E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F072E1160C31B500418A5E /* Security.framework */; };
 		D6039370135BD17400116449 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
 		D6039371135BD17400116449 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E55F0DE3E45000AC0155 /* RootViewController.xib */; };
 		D6039372135BD17400116449 /* NewCounterSelectType.xib in Resources */ = {isa = PBXBuildFile; fileRef = 057148161080112B00CC18A7 /* NewCounterSelectType.xib */; };
@@ -96,6 +97,7 @@
 		8D1107310486CEB800E47090 /* CountItOut-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CountItOut-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		C959797E16084D2000399B16 /* libShelley.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libShelley.a; path = ../../dist/libShelley.a; sourceTree = "<group>"; };
 		C959798016084D4B00399B16 /* libCocoaHTTPServer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCocoaHTTPServer.a; path = ../../dist/libCocoaHTTPServer.a; sourceTree = "<group>"; };
+		C9F072E1160C31B500418A5E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D603938C135BD17400116449 /* CountItOut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountItOut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D603938E135BD17400116449 /* CountItOut-Info copy.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CountItOut-Info copy.plist"; sourceTree = "<group>"; };
 		D603945C135BD22000116449 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -119,6 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9F072E2160C31B500418A5E /* Security.framework in Frameworks */,
 				D6039385135BD17400116449 /* Foundation.framework in Frameworks */,
 				D6039386135BD17400116449 /* UIKit.framework in Frameworks */,
 				D6039387135BD17400116449 /* CoreGraphics.framework in Frameworks */,
@@ -200,6 +203,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				C9F072E1160C31B500418A5E /* Security.framework */,
 				D603938F135BD1A500116449 /* Frank */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
