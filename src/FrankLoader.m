@@ -9,7 +9,6 @@
 #import "FrankLoader.h"
 
 #import "FrankServer.h"
-#import "FEXTappableConfirmationButton.h"
 
 #import <dlfcn.h>
 
@@ -21,7 +20,6 @@ BOOL frankLogEnabled = NO;
 @implementation FrankLoader
 
 + (void)applicationDidBecomeActive:(NSNotification *)notification{
-    [FEXTappableConfirmationButton install];
     FrankServer *server = [[FrankServer alloc] initWithDefaultBundle];
     [server startServer];
 }
