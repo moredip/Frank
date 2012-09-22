@@ -27,6 +27,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C194253715D838BD004FC314"
+               BuildableName = "libPublicAutomation.a"
+               BlueprintName = "PublicAutomation"
+               ReferencedContainer = "container:lib/PublicAutomation/PublicAutomation.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "D2AAC07D0554694100DB518D"
                BuildableName = "libFrank.a"
                BlueprintName = "Frank"
