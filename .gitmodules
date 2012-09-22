@@ -13,3 +13,6 @@
 [submodule "lib/cocoahttpserver"]
 	path = lib/cocoahttpserver
 	url = https://github.com/robbiehanson/CocoaHTTPServer.git
+[submodule "lib/PublicAutomation"]
+	path = lib/PublicAutomation
+	url = https://github.com/TestingWithFrank/PublicAutomation.git
