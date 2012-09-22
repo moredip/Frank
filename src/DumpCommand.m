@@ -12,7 +12,6 @@
 
 #import "DumpCommand.h"
 
-#import "UIQuery.h"
 #import "JSON.h"
 
 @interface DumpCommand()
