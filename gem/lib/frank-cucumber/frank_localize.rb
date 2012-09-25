@@ -16,6 +16,8 @@ module Frank
           :zh
         when /^ja_/
           :ja
+        when /^es_/
+          :es
         else
           :en
         end
