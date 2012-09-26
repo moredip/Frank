@@ -113,6 +113,13 @@
 			remoteGlobalIDString = ABA9E44015C81C2600112290;
 			remoteInfo = CocoaHTTPServer;
 		};
+		C127EF0F1612BCD400EA121C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C18A5F16160D528C00DC25F6 /* PublicAutomation.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C194253815D838BD004FC314;
+			remoteInfo = PublicAutomation;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -194,7 +201,7 @@
 		C18A5EEF160D4AB400DC25F6 /* ImageCaptureRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCaptureRoute.m; sourceTree = "<group>"; };
 		C18A5EF3160D4AD300DC25F6 /* UIView+ImageCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ImageCapture.h"; sourceTree = "<group>"; };
 		C18A5EF4160D4AD300DC25F6 /* UIView+ImageCapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ImageCapture.m"; sourceTree = "<group>"; };
-		C18A5F16160D528C00DC25F6 /* PublicAutomation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = file; name = PublicAutomation.xcodeproj; path = PublicAutomation/PublicAutomation.xcodeproj; sourceTree = "<group>"; };
+		C18A5F16160D528C00DC25F6 /* PublicAutomation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PublicAutomation.xcodeproj; path = PublicAutomation/PublicAutomation.xcodeproj; sourceTree = "<group>"; };
 		C18A5F1D160D547A00DC25F6 /* UIView+PublicAutomation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PublicAutomation.m"; sourceTree = "<group>"; };
 		C18A5F20160D572300DC25F6 /* libPublicAutomation.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPublicAutomation.a; path = "lib/PublicAutomation/build/Release-iphoneos/libPublicAutomation.a"; sourceTree = "<group>"; };
 		C9605E621606BF2900170F88 /* KeyboardCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardCommand.h; sourceTree = "<group>"; };
@@ -403,6 +410,14 @@
 				ABA9E4CC15C81E8700112290 /* DispatchQueueLogFormatter.m */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C127EF0C1612BCD400EA121C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C127EF101612BCD400EA121C /* libPublicAutomation.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		C9605E6F1606C42200170F88 /* Commands */ = {
@@ -648,6 +663,12 @@
 			mainGroup = 0867D691FE84028FC02AAC07 /* Frank */;
 			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = C127EF0C1612BCD400EA121C /* Products */;
+					ProjectRef = C18A5F16160D528C00DC25F6 /* PublicAutomation.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D2AAC07D0554694100DB518D /* Frank */,
@@ -655,6 +676,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		C127EF101612BCD400EA121C /* libPublicAutomation.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libPublicAutomation.a;
+			remoteRef = C127EF0F1612BCD400EA121C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D6782DD711BC67FE00FD0CE1 /* Resources */ = {

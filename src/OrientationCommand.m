@@ -9,7 +9,7 @@
 #import "OrientationCommand.h"
 #import "NSObject+Franks_SBJSON.h"
 
-#import "PublicAutomation/PublicAutomation.h"
+#import <PublicAutomation/UIAutomationBridge.h>
 #import "FranklyProtocolHelper.h"
 
 
