@@ -9,6 +9,10 @@ Scenario:
 Given I launch the app
 
 Given the device is in landscape orientation
+And I pause briefly for demonstration purposes
 Given the device is in portrait orientation
+And I pause briefly for demonstration purposes
 Given the device is in landscape orientation
+And I pause briefly for demonstration purposes
 Given the device is in portrait orientation
+And I pause briefly for demonstration purposes
