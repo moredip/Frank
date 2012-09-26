@@ -30,6 +30,9 @@
 		2899E5600DE3E45000AC0155 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E55F0DE3E45000AC0155 /* RootViewController.xib */; };
 		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
 		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
+		C959797F16084D2000399B16 /* libShelley.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C959797E16084D2000399B16 /* libShelley.a */; };
+		C959798116084D4B00399B16 /* libCocoaHTTPServer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C959798016084D4B00399B16 /* libCocoaHTTPServer.a */; };
+		C9F072E2160C31B500418A5E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F072E1160C31B500418A5E /* Security.framework */; };
 		D6039370135BD17400116449 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
 		D6039371135BD17400116449 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E55F0DE3E45000AC0155 /* RootViewController.xib */; };
 		D6039372135BD17400116449 /* NewCounterSelectType.xib in Resources */ = {isa = PBXBuildFile; fileRef = 057148161080112B00CC18A7 /* NewCounterSelectType.xib */; };
@@ -54,7 +57,6 @@
 		D6039387135BD17400116449 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */; };
 		D6039388135BD17400116449 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28860BE40F44EE6400985440 /* CoreData.framework */; };
 		D603945D135BD22000116449 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D603945C135BD22000116449 /* CFNetwork.framework */; };
-		D6197EF014741FA000C4B0AD /* libShelley.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6197EEF14741FA000C4B0AD /* libShelley.a */; };
 		D6FA03F114284EC300576AD1 /* frank_static_resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D6FA03EF14284EC300576AD1 /* frank_static_resources.bundle */; };
 		D6FA03F214284EC300576AD1 /* libFrank.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6FA03F014284EC300576AD1 /* libFrank.a */; };
 /* End PBXBuildFile section */
@@ -93,10 +95,12 @@
 		28C286E00D94DF7D0034E888 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* CountItOut-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CountItOut-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		C959797E16084D2000399B16 /* libShelley.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libShelley.a; path = ../../dist/libShelley.a; sourceTree = "<group>"; };
+		C959798016084D4B00399B16 /* libCocoaHTTPServer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCocoaHTTPServer.a; path = ../../dist/libCocoaHTTPServer.a; sourceTree = "<group>"; };
+		C9F072E1160C31B500418A5E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D603938C135BD17400116449 /* CountItOut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountItOut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D603938E135BD17400116449 /* CountItOut-Info copy.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CountItOut-Info copy.plist"; sourceTree = "<group>"; };
 		D603945C135BD22000116449 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		D6197EEF14741FA000C4B0AD /* libShelley.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libShelley.a; path = ../../lib/Shelley/build/libShelley.a; sourceTree = "<group>"; };
 		D6FA03EF14284EC300576AD1 /* frank_static_resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = frank_static_resources.bundle; path = ../../dist/frank_static_resources.bundle; sourceTree = SOURCE_ROOT; };
 		D6FA03F014284EC300576AD1 /* libFrank.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFrank.a; path = ../../dist/libFrank.a; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -117,13 +121,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9F072E2160C31B500418A5E /* Security.framework in Frameworks */,
 				D6039385135BD17400116449 /* Foundation.framework in Frameworks */,
 				D6039386135BD17400116449 /* UIKit.framework in Frameworks */,
 				D6039387135BD17400116449 /* CoreGraphics.framework in Frameworks */,
 				D6039388135BD17400116449 /* CoreData.framework in Frameworks */,
 				D603945D135BD22000116449 /* CFNetwork.framework in Frameworks */,
 				D6FA03F214284EC300576AD1 /* libFrank.a in Frameworks */,
-				D6197EF014741FA000C4B0AD /* libShelley.a in Frameworks */,
+				C959797F16084D2000399B16 /* libShelley.a in Frameworks */,
+				C959798116084D4B00399B16 /* libCocoaHTTPServer.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,13 +203,13 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				C9F072E1160C31B500418A5E /* Security.framework */,
 				D603938F135BD1A500116449 /* Frank */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				D603945C135BD22000116449 /* CFNetwork.framework */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -230,6 +236,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D603945C135BD22000116449 /* CFNetwork.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */,
@@ -241,9 +248,10 @@
 		D603938F135BD1A500116449 /* Frank */ = {
 			isa = PBXGroup;
 			children = (
-				D6197EEF14741FA000C4B0AD /* libShelley.a */,
 				D6FA03EF14284EC300576AD1 /* frank_static_resources.bundle */,
+				C959797E16084D2000399B16 /* libShelley.a */,
 				D6FA03F014284EC300576AD1 /* libFrank.a */,
+				C959798016084D4B00399B16 /* libCocoaHTTPServer.a */,
 			);
 			name = Frank;
 			sourceTree = "<group>";
@@ -415,12 +423,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Adam Schepis";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C7DCF5CB-F714-4FB8-8991-7A1648F9A60D";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -429,13 +438,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Adam Schepis";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C7DCF5CB-F714-4FB8-8991-7A1648F9A60D";
-				SDKROOT = iphoneos3.1;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
@@ -452,7 +462,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../dist\"",
-					"\"$(SRCROOT)/../../lib/Shelley/build\"",
 				);
 				OTHER_CFLAGS = "-DFRANK";
 				OTHER_LDFLAGS = (
@@ -474,7 +483,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../dist\"",
-					"\"$(SRCROOT)/../../lib/Shelley/build\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",

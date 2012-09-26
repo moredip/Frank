@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:Frank.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:lib/Shelley/Shelley.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:example/Controls/Controls.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:example/CountItOut/CountItOut.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:example/EmployeeAdmin/EmployeeAdmin.xcodeproj">
+   </FileRef>
+</Workspace>
