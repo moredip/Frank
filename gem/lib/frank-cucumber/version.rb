@@ -1,5 +1,5 @@
 module Frank
   module Cucumber
-    VERSION = "0.9.6.pre1"
+    VERSION = "1.0.0.pre1"
   end
 end
