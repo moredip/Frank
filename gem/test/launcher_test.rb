@@ -9,6 +9,11 @@ def wait_for_frank_to_come_up
 end
 
 describe "frank cucumber launcher" do
+  DUMMY_APP_PATH = '/tmp/dummy_app_path'
+
+  before do
+    `mkdir -p #{DUMMY_APP_PATH}`
+  end
 
   describe "when the path is wrong" do
   
@@ -27,6 +32,12 @@ describe "frank cucumber launcher" do
           e.message.must_match "suggestion_1"
         end
     end
+
+    it "throws exception when app path doesn't exist" do
+      assert_raises(RuntimeError) do
+        enforce('/foo/bar/baz/not/a/real/path')
+      end
+    end
   end
 
   describe "when starting the simulator with the specified params" do
@@ -37,7 +48,7 @@ describe "frank cucumber launcher" do
     end
     
     it 'selects iphone mode by default' do
-      launch_app('test_path', 'X.Y')
+      launch_app(DUMMY_APP_PATH, 'X.Y')
       @version.must_equal 'iphone'
     end
 
