@@ -24,6 +24,10 @@ module Launcher
       end
       raise "\n\n"+("="*80)+"\n"+message+"\n"+("="*80)+"\n\n"
     end
+
+    if app_path_problem = SimLauncher.check_app_path(app_path)
+      raise "\n\n"+("="*80)+"\n"+app_path_problem+"\n"+("="*80)+"\n\n"
+    end
   end
 
   def launch_app(app_path, sdk = nil, version = 'iphone')
