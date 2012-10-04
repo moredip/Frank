@@ -10,9 +10,9 @@
 
 @interface MKMapView (FrankScrolling)
 
-- (void) setVisibleMapRectAtX: (double) x
-                            y: (double) y
-                        width: (double) width
-                       height: (double) height;
+- (void) frank_setVisibleMapRectAtX: (double) x
+                                  y: (double) y
+                              width: (double) width
+                             height: (double) height;
 
 @end

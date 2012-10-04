@@ -10,20 +10,30 @@
 
 @implementation UIScrollView (FrankScrolling)
 
-- (void) scrollToTop {
+- (void) frank_scrollToTop {
     [self setContentOffset: CGPointZero];
     
-    // force call to delegate, in case implementors rely on this behavior
-    if([self.delegate respondsToSelector: @selector(scrollViewDidScroll:)]) {
-        [self.delegate scrollViewDidScroll: self];
-    }
+    [self frank_forceDelegateCallOnScroll];
 }
 
-- (void) setContentOffsetX: (NSInteger) x
+- (void) frank_scrollToBottom {
+    CGPoint maxContentOffset = CGPointZero;
+    maxContentOffset.y = self.contentSize.height - self.frame.size.height;
+    [self setContentOffset: maxContentOffset];
+    
+    [self frank_forceDelegateCallOnScroll];
+}
+
+
+- (void) frank_setContentOffsetX: (NSInteger) x
                          y: (NSInteger) y {
     CGPoint point = CGPointMake(x, y);
     [self setContentOffset: point animated: NO];
     
+    [self frank_forceDelegateCallOnScroll];
+}
+
+- (void) frank_forceDelegateCallOnScroll {
     // force call to delegate, in case implementors rely on this behavior
     if([self.delegate respondsToSelector: @selector(scrollViewDidScroll:)]) {
         [self.delegate scrollViewDidScroll: self];
@@ -35,16 +45,13 @@
 
 @implementation UITableView (FrankScrolling)
 
-- (void) scrollToRow: (NSInteger) row inSection: (NSInteger) section {
+- (void) frank_scrollToRow: (NSInteger) row inSection: (NSInteger) section {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow: row inSection: section];
     [self scrollToRowAtIndexPath: indexPath
                 atScrollPosition: UITableViewScrollPositionNone
                         animated: NO];
     
-    // force call to delegate, in case implementors rely on this behavior
-    if([self.delegate respondsToSelector: @selector(scrollViewDidScroll:)]) {
-        [self.delegate scrollViewDidScroll: self];
-    }
+    [self frank_forceDelegateCallOnScroll];
 }
 
 @end

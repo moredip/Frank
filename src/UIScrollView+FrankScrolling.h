@@ -10,13 +10,14 @@
 
 @interface UIScrollView (FrankScrolling)
 
-- (void) scrollToTop;
-- (void) setContentOffsetX: (NSInteger) x y: (NSInteger) y;
+- (void) frank_scrollToTop;
+- (void) frank_scrollToBottom;
+- (void) frank_setContentOffsetX: (NSInteger) x y: (NSInteger) y;
 
 @end
 
 @interface UITableView (FrankScrolling)
 
-- (void) scrollToRow: (NSInteger) row inSection: (NSInteger) section;
+- (void) frank_scrollToRow: (NSInteger) row inSection: (NSInteger) section;
 
 @end
