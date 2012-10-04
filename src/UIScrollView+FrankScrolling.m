@@ -21,3 +21,15 @@
 }
 
 @end
+
+
+@implementation UITableView (FrankScrolling)
+
+- (void) scrollToRow: (NSInteger) row inSection: (NSInteger) section {
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow: row inSection: section];
+    [self scrollToRowAtIndexPath: indexPath
+                atScrollPosition: UITableViewScrollPositionNone
+                        animated: NO];
+}
+
+@end
