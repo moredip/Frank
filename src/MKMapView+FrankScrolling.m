@@ -10,10 +10,10 @@
 
 @implementation MKMapView (FrankScrolling)
 
-- (void) setVisibleMapRectAtX: (double) x
-                            y: (double) y
-                        width: (double) width
-                       height: (double) height {
+- (void) frank_setVisibleMapRectAtX: (double) x
+                                  y: (double) y
+                              width: (double) width
+                             height: (double) height {
     MKMapRect mapRect = MKMapRectMake(x, y, width, height);
     [self setVisibleMapRect: mapRect];
 }
