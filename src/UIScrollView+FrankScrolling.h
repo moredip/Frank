@@ -14,3 +14,9 @@
 - (void) setContentOffsetX: (NSInteger) x y: (NSInteger) y;
 
 @end
+
+@interface UITableView (FrankScrolling)
+
+- (void) scrollToRow: (NSInteger) row inSection: (NSInteger) section;
+
+@end
