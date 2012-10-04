@@ -12,12 +12,22 @@
 
 - (void) scrollToTop {
     [self setContentOffset: CGPointZero];
+    
+    // force call to delegate, in case implementors rely on this behavior
+    if([self.delegate respondsToSelector: @selector(scrollViewDidScroll:)]) {
+        [self.delegate scrollViewDidScroll: self];
+    }
 }
 
 - (void) setContentOffsetX: (NSInteger) x
                          y: (NSInteger) y {
     CGPoint point = CGPointMake(x, y);
     [self setContentOffset: point animated: NO];
+    
+    // force call to delegate, in case implementors rely on this behavior
+    if([self.delegate respondsToSelector: @selector(scrollViewDidScroll:)]) {
+        [self.delegate scrollViewDidScroll: self];
+    }
 }
 
 @end
@@ -30,6 +40,11 @@
     [self scrollToRowAtIndexPath: indexPath
                 atScrollPosition: UITableViewScrollPositionNone
                         animated: NO];
+    
+    // force call to delegate, in case implementors rely on this behavior
+    if([self.delegate respondsToSelector: @selector(scrollViewDidScroll:)]) {
+        [self.delegate scrollViewDidScroll: self];
+    }
 }
 
 @end
