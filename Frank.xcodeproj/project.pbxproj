@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		0071264614F8956700E738ED /* ViewJSONSerializer.h in Headers */ = {isa = PBXBuildFile; fileRef = 0071264414F8956700E738ED /* ViewJSONSerializer.h */; };
 		0071264714F8956700E738ED /* ViewJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0071264514F8956700E738ED /* ViewJSONSerializer.m */; };
+		00E864BB161D6E6400E01209 /* UIScrollView+FrankScrolling.h in Headers */ = {isa = PBXBuildFile; fileRef = 00E864B9161D6E6400E01209 /* UIScrollView+FrankScrolling.h */; };
+		00E864BC161D6E6400E01209 /* UIScrollView+FrankScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E864BA161D6E6400E01209 /* UIScrollView+FrankScrolling.m */; };
+		00E864C2161D6F8700E01209 /* MKMapView+FrankScrolling.h in Headers */ = {isa = PBXBuildFile; fileRef = 00E864C0161D6F8700E01209 /* MKMapView+FrankScrolling.h */; };
+		00E864C3161D6F8700E01209 /* MKMapView+FrankScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E864C1161D6F8700E01209 /* MKMapView+FrankScrolling.m */; };
+		00E864C5161D708B00E01209 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00E864C4161D708B00E01209 /* MapKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		4C1DD76C12BADFE100E10B8C /* OrientationCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1DD76812BADFE100E10B8C /* OrientationCommand.m */; };
 		4C1DD76D12BADFE100E10B8C /* OrientationCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C1DD76912BADFE100E10B8C /* OrientationCommand.h */; };
 		4C1DD76E12BADFE100E10B8C /* AppCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1DD76A12BADFE100E10B8C /* AppCommand.m */; };
@@ -212,6 +217,11 @@
 /* Begin PBXFileReference section */
 		0071264414F8956700E738ED /* ViewJSONSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewJSONSerializer.h; sourceTree = "<group>"; };
 		0071264514F8956700E738ED /* ViewJSONSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewJSONSerializer.m; sourceTree = "<group>"; };
+		00E864B9161D6E6400E01209 /* UIScrollView+FrankScrolling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+FrankScrolling.h"; sourceTree = "<group>"; };
+		00E864BA161D6E6400E01209 /* UIScrollView+FrankScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+FrankScrolling.m"; sourceTree = "<group>"; };
+		00E864C0161D6F8700E01209 /* MKMapView+FrankScrolling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+FrankScrolling.h"; sourceTree = "<group>"; };
+		00E864C1161D6F8700E01209 /* MKMapView+FrankScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+FrankScrolling.m"; sourceTree = "<group>"; };
+		00E864C4161D708B00E01209 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		4C1DD76812BADFE100E10B8C /* OrientationCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrientationCommand.m; sourceTree = "<group>"; };
 		4C1DD76912BADFE100E10B8C /* OrientationCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrientationCommand.h; sourceTree = "<group>"; };
 		4C1DD76A12BADFE100E10B8C /* AppCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppCommand.m; sourceTree = "<group>"; };
@@ -426,6 +436,7 @@
 			files = (
 				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
 				D629938011AB2DF300CE0FB0 /* UIKit.framework in Frameworks */,
+				00E864C5161D708B00E01209 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,6 +455,7 @@
 		0867D691FE84028FC02AAC07 /* Frank */ = {
 			isa = PBXGroup;
 			children = (
+				00E864C4161D708B00E01209 /* MapKit.framework */,
 				08FB77AEFE84172EC02AAC07 /* src */,
 				D629926711AB2CF700CE0FB0 /* lib */,
 				0867D69AFE84028FC02AAC07 /* Frameworks */,
@@ -669,6 +681,10 @@
 				C1C6D1EC1535522300EAA0CF /* UIView+FrankGestures.m */,
 				D6F0955A144A5F4600B78FEC /* UIView+KIFAdapter.m */,
 				C9605E661606BF8E00170F88 /* UIView+MapKitWorkaround.m */,
+				00E864B9161D6E6400E01209 /* UIScrollView+FrankScrolling.h */,
+				00E864BA161D6E6400E01209 /* UIScrollView+FrankScrolling.m */,
+				00E864C0161D6F8700E01209 /* MKMapView+FrankScrolling.h */,
+				00E864C1161D6F8700E01209 /* MKMapView+FrankScrolling.m */,
 			);
 			name = Additions;
 			sourceTree = "<group>";
@@ -929,6 +945,8 @@
 				FC4EC7EC15ED1E0A00B1F119 /* NSString+Franks_SBJSON.h in Headers */,
 				C9605E641606BF2900170F88 /* KeyboardCommand.h in Headers */,
 				C9605E6A1606BFAE00170F88 /* UIImage+Frank.h in Headers */,
+				00E864BB161D6E6400E01209 /* UIScrollView+FrankScrolling.h in Headers */,
+				00E864C2161D6F8700E01209 /* MKMapView+FrankScrolling.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1120,6 +1138,8 @@
 				C9605E651606BF2900170F88 /* KeyboardCommand.m in Sources */,
 				C9605E671606BF8E00170F88 /* UIView+MapKitWorkaround.m in Sources */,
 				C9605E6B1606BFAE00170F88 /* UIImage+Frank.m in Sources */,
+				00E864BC161D6E6400E01209 /* UIScrollView+FrankScrolling.m in Sources */,
+				00E864C3161D6F8700E01209 /* MKMapView+FrankScrolling.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
