@@ -17,7 +17,14 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        _names = [[NSMutableArray alloc] initWithObjects:@"Larry",@"Curly",@"Moe",nil];
+        _names = [[NSMutableArray alloc] initWithObjects:
+                  @"First Row",
+                  @"Larry",@"Curly",@"Moe",
+                  @"Tom",@"Dick",@"Harry",
+                  @"Foo",@"Bar",@"Baz",
+                  @"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",
+                  @"Last Row",
+                  nil];
         // Custom initialization
     }
     return self;
