@@ -52,3 +52,14 @@ Scenario: deleting in edit mode does not end edit mode
  And I confirm table cell deletion
  Then I should see a "Done" button
  And I should not see an "Edit" button
+
+Scenario: scrolling up and down and all around
+ When I scroll the table to the bottom
+ Then I should see "Last Row"
+ 
+ When I scroll the table to the 3rd row
+ Then I should see "Curly"
+ But I should not see "Larry"
+ 
+ When I scroll the table to the top
+ Then I should see "First Row"
