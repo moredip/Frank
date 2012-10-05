@@ -63,3 +63,14 @@ ja:
   simulate_memory_warning: メモリ警告をシミュレート
   toggle_in_call_status_bar: 着信ステータスバーを切り替える
   simulate_hardware_keyboard: ハードウェアキーボードをシミュレート
+
+es:
+  iphone_simulator: Simulador iOS
+  hardware: Hardware
+  home: Inicio
+  rotate_left: Girar a la izquierda
+  rotate_right: Girar a la derecha
+  shake_gesture: Agitar
+  simulate_memory_warning: Simular aviso de memoria
+  toggle_in_call_status_bar: Activar/Desactivar barra de estado durante llamada
+  simulate_hardware_keyboard: Simular teclado físico
