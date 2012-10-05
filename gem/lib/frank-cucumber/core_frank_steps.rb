@@ -265,7 +265,7 @@ end
 When /^I scroll the "([^\"]*)" scroll view to (\d*),(\d*)$/ do |mark, x, y|
     selector = "view:'UIScrollView' marked:'#{mark}'"
     if element_exists(selector)
-        frankly_map(selector, "frank_setContentOffsetX:y:", x.to_i, y.to_i)
+        frankly_map(selector, "FEX_setContentOffsetX:y:", x.to_i, y.to_i)
     else
         raise "Could not find UIScrollView [#{mark}], it does not exist."
     end
@@ -274,7 +274,7 @@ end
 When /^I scroll the "([^\"]*)" scroll view to the top$/ do |mark|
     selector = "view:'UIScrollView' marked:'#{mark}'"
     if element_exists(selector)
-        frankly_map(selector, "frank_scrollToTop")
+        frankly_map(selector, "FEX_scrollToTop")
     else
         raise "Could not find UIScrollView [#{mark}], it does not exist."
     end
@@ -283,7 +283,7 @@ end
 When /^I scroll the "([^\"]*)" scroll view to the bottom$/ do |mark|
     selector = "view:'UIScrollView' marked:'#{mark}'"
     if element_exists(selector)
-        frankly_map(selector, "frank_scrollToBottom")
+        frankly_map(selector, "FEX_scrollToBottom")
         else
         raise "Could not find UIScrollView [#{mark}], it does not exist."
     end
@@ -293,7 +293,7 @@ end
 When /^I scroll the "([^\"]*)" table to the row (\d*) in section (\d*)$/ do |mark, row, section|
     selector = "tableView marked:'#{mark}'"
     if element_exists(selector)
-        frankly_map(selector, "frank_scrollToRow:inSection:", row.to_i, section.to_i)
+        frankly_map(selector, "FEX_scrollToRow:inSection:", row.to_i, section.to_i)
     else
         raise "Could not find UITableView [#{mark}], it does not exist."
     end
@@ -303,7 +303,7 @@ end
 When /^I scroll the "([^\"]*)" map view to (\d*),(\d*),(\d*),(\d*)$/ do |mark, x, y, width, height|
     selector = "tableView marked:'#{mark}'"
     if element_exists(selector)
-        frankly_map(selector, "frank_setVisibleMapRectAtX:y:width:height:", x.to_i, y.to_i, width.to_i, height.to_i)
+        frankly_map(selector, "FEX_setVisibleMapRectAtX:y:width:height:", x.to_i, y.to_i, width.to_i, height.to_i)
         else
         raise "Could not find UITableView [#{mark}], it does not exist."
     end
