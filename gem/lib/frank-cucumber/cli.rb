@@ -73,6 +73,8 @@ module Frank
 
       FileUtils.mv( Dir.glob( "#{build_output_dir}/*.app" ).first, frankified_app_dir )
 
+      fix_frankified_apps_bundle_identifier
+
       in_root do
         FileUtils.cp_r( 
           File.join( 'Frank',static_bundle),
@@ -161,6 +163,20 @@ module Frank
 
     def frankified_app_dir
       File.join( build_output_dir, app_bundle_name )
+    end
+
+    def fix_frankified_apps_bundle_identifier
+      # as of iOS 6 the iOS Simulator locks up with a black screen if you try and launch an app which has the same
+      # bundle identifier as a previously installed app but which is in fact a different app. This impacts us because our 
+      # Frankified app is different but has the same bundle identifier as the standard non-Frankified app which most users
+      # will want to have installed in the simulator as well. 
+      #
+      # We work around this by modifying the Frankified app's bundle identifier inside its Info.plist.
+      inside frankified_app_dir do
+        existing_bundle_identifier = `/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' Info.plist`.chomp
+        new_bundle_identifier = existing_bundle_identifier + '.frankified'
+        run %Q|/usr/libexec/PlistBuddy -c 'Set :CFBundleIdentifier #{new_bundle_identifier}' Info.plist|
+      end
     end
 
   end
