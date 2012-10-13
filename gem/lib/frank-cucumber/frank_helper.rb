@@ -3,6 +3,7 @@ require 'frank-cucumber/gateway'
 require 'frank-cucumber/host_scripting'
 require 'frank-cucumber/wait_helper'
 require 'frank-cucumber/keyboard_helper'
+require 'frank-cucumber/scroll_helper'
 require 'frank-cucumber/bonjour'
 
 module Frank module Cucumber
@@ -24,6 +25,7 @@ module Frank module Cucumber
 module FrankHelper 
   include WaitHelper
   include KeyboardHelper
+  include ScrollHelper
   include HostScripting
 
   # @!attribute [rw] selector_engine
