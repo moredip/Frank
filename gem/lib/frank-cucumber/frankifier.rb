@@ -19,10 +19,15 @@ class Frankifier
     decide_on_project
     decide_on_target
     report_project_and_target
+
+    check_target_build_configuration_is_valid!
+
     say ''
     add_linker_flag
+
     say ''
     add_library_search_path
+
     save_changes
   end
 
@@ -78,17 +83,30 @@ class Frankifier
     setting_array = Array( build_settings_to_edit[build_setting] )
 
     if setting_array.find{ |flag| flag.start_with? "$(FRANK_" }
-      say "It appears that your Debug configuration's #{build_setting} build setting already include some FRANK setup. Namely: #{setting_array.inspect}. I won't change anything here."
+      say "It appears that your '#{@target_build_configuration}' configuration's #{build_setting} build setting already include some FRANK setup. Namely: #{setting_array.inspect}. I won't change anything here."
       return
     end
 
-    say "Adding $(inherited) and $(#{entry_to_add}) to your Debug configuration's #{build_setting} build setting ..."
+    say "Adding $(inherited) and $(#{entry_to_add}) to your '#{@target_build_configuration}' configuration's #{build_setting} build setting ..."
     setting_array.unshift "$(inherited)"
     setting_array << "$(#{entry_to_add})"
     setting_array.uniq! # mainly to avoid duplicate $(inherited) entries
     say "... #{build_setting} is now: #{setting_array.inspect}"
 
     build_settings_to_edit[build_setting] = setting_array
+  end
+
+  def check_target_build_configuration_is_valid!
+    unless @target.build_configuration_list.build_configurations.object_named @target_build_configuration 
+      say %Q|I'm trying to Frankify the '#{@target_build_configuration}' build configuration, but I don't see it that build configuration in your XCode target. Here's a list of the build configurations I see:|
+      @target.build_configuration_list.build_configurations.each do |bc| 
+        say "  '#{bc.name}'"
+      end
+      say ''
+      say %Q|Please specify one of those build configurations using the --build_configuration flag|
+      exit
+    end
+    
   end
 
   def build_settings_to_edit
