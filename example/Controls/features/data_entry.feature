@@ -16,3 +16,7 @@ Scenario: Deleting text in a text field
 	And I delete 3 characters from the "Edit me" text field using the keyboard
 	Then I should see a label with the text "text entered into text field: 1234"
 
+Scenario: Using the Email keyboard
+  When I elect to use the Email keyboard
+  When I type "foo@example.com" into the "Edit me" text field using the keyboard
+	Then I should see a label with the text "text entered into text field: foo@example.com"

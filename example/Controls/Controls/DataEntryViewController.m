@@ -11,6 +11,7 @@
 @interface DataEntryViewController ()
 @property (retain, nonatomic) IBOutlet UILabel *outputLabel;
 @property (retain, nonatomic) IBOutlet UITextField *theTextField;
+@property (retain, nonatomic) IBOutlet UISegmentedControl *keyboardSelector;
 
 @end
 
@@ -37,6 +38,7 @@
 {
     [self setOutputLabel:nil];
     [self setTheTextField:nil];
+    [self setKeyboardSelector:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -56,11 +58,26 @@
     return YES;
 }
 
+- (IBAction)keyboardSelectorValueDidChange:(UISegmentedControl *)selector {
+    switch(selector.selectedSegmentIndex){
+        case 0:
+            theTextField.keyboardType = UIKeyboardTypeDefault;
+            break;
+        case 1:
+            theTextField.keyboardType = UIKeyboardTypeEmailAddress;
+            break;
+        default:
+            assert(false);
+    }
+    [theTextField resignFirstResponder];
+}
+
 
 - (void)dealloc {
     [outputLabel release];
     [theTextField release];
 
+    [_keyboardSelector release];
     [super dealloc];
 }
 @end
