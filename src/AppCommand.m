@@ -9,16 +9,16 @@
 #import <Foundation/Foundation.h>
 #import "AppCommand.h"
 
-#import "JSON.h"
 #import "Operation.h"
 #import "ViewJSONSerializer.h"
 #import "FranklyProtocolHelper.h"
+#import "JSON.h"
 
 @implementation AppCommand
 
 - (NSString *)handleCommandWithRequestBody:(NSString *)requestBody {
 	
-	NSDictionary *requestCommand = [requestBody JSONValue];
+	NSDictionary *requestCommand = FROM_JSON(requestBody);
 	NSDictionary *operationDict = [requestCommand objectForKey:@"operation"];
 	Operation *operation = [[[Operation alloc] initFromJsonRepresentation:operationDict] autorelease];
 	

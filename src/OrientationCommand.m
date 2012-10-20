@@ -7,10 +7,10 @@
 //
 
 #import "OrientationCommand.h"
-#import "NSObject+Franks_SBJSON.h"
 
 #import <PublicAutomation/UIAutomationBridge.h>
 #import "FranklyProtocolHelper.h"
+#import "JSON.h"
 
 
 @implementation OrientationCommand
@@ -84,7 +84,7 @@
     if( !orientationDescription )
         orientationDescription = [self getOrientationRepresentationViaDevice];
 	
-	return [orientationDescription JSONRepresentation];
+	return TO_JSON(orientationDescription);
 }
 
 - (NSString *)handlePost:(NSString *)requestBody{
