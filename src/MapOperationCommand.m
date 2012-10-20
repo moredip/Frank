@@ -11,12 +11,12 @@
 #import "FranklyProtocolHelper.h"
 
 #import "ViewJSONSerializer.h"
+#import "JSON.h"
 
 #import "SelectorEngineRegistry.h"
 
 #import "Operation.h"
 #import "DumpCommand.h"
-#import "JSON.h"
 
 @implementation MapOperationCommand
 
@@ -29,8 +29,7 @@
 }
 
 - (NSString *)handleCommandWithRequestBody:(NSString *)requestBody {
-	
-	NSDictionary *requestCommand = [requestBody JSONValue];
+	NSDictionary *requestCommand = FROM_JSON(requestBody);
     
 	NSString *selectorEngineString = [requestCommand objectForKey:@"selector_engine"];
     if( !selectorEngineString )

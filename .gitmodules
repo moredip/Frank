@@ -13,3 +13,6 @@
 [submodule "lib/PublicAutomation"]
 	path = lib/PublicAutomation
 	url = https://github.com/TestingWithFrank/PublicAutomation.git
+[submodule "lib/AnyJSON"]
+	path = lib/AnyJSON
+	url = https://github.com/mattt/AnyJSON.git

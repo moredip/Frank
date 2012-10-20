@@ -6,6 +6,7 @@
 
 
 #import "FranklyProtocolHelper.h"
+
 #import "JSON.h"
 
 
@@ -19,14 +20,14 @@
 							  reason, @"reason",
 							  details, @"details",
 							  nil];
-	return [response JSONRepresentation];
+	return TO_JSON(response);
 }
 
 + (NSString *)generateSuccessResponseWithoutResults{
     NSDictionary *response = [NSDictionary dictionaryWithObjectsAndKeys:
     							  @"SUCCESS", @"outcome",
     							  nil];
-    	return [response JSONRepresentation];
+	return TO_JSON(response);
 }
 
 + (NSString *)generateSuccessResponseWithResults:(NSArray *)results{
@@ -34,7 +35,7 @@
 							  @"SUCCESS", @"outcome",
 							  results, @"results",
 							  nil];
-	return [response JSONRepresentation];
+	return TO_JSON(response);
 }
 
 @end

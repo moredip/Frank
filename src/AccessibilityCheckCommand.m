@@ -9,7 +9,6 @@
 #import "AccessibilityCheckCommand.h"
 #import "JSON.h"
 
-
 @implementation AccessibilityCheckCommand
 
 - (BOOL) accessibilitySeemsToBeTurnedOn {
@@ -28,7 +27,7 @@
 	NSString *boolString = ([self accessibilitySeemsToBeTurnedOn] ? @"true" : @"false");
 	NSDictionary *response = [NSDictionary dictionaryWithObject:boolString
 														forKey:@"accessibility_enabled"];
-	return [response JSONRepresentation];
+	return TO_JSON(response);
 }
 
 @end

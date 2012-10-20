@@ -9,10 +9,9 @@
 #import "objc/runtime.h"
 
 #import "ViewJSONSerializer.h"
+#import "JSON.h"
 
 #import "DumpCommand.h"
-
-#import "JSON.h"
 
 @interface DumpCommand()
 @property (nonatomic, readwrite, retain) NSMutableDictionary *classMapping;
@@ -104,7 +103,7 @@
     // serialize starting from root window and return json representation of it
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
 	NSDictionary *dom = [self serializeView: window];
-    return [dom JSONRepresentation];
+    return TO_JSON(dom);
 }
 
 #pragma mark - view serialization
@@ -185,7 +184,7 @@
         ![value isKindOfClass: NSDictionary.class] && 
         ![value isKindOfClass: NSNull.class] &&
         value != nil) {
-        return [NSString stringWithFormat:@"<%@ @%i>", [value class], value];
+        return [NSString stringWithFormat:@"<%@ @%i>", [value class], (int)value];
     }
     
     return value;

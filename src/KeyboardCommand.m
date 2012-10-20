@@ -22,7 +22,7 @@
 
 - (NSString *)handleCommandWithRequestBody:(NSString *)requestBody {
 
-    NSDictionary *requestCommand = [requestBody JSONValue];
+    NSDictionary *requestCommand = FROM_JSON(requestBody);
 	NSString *textToType = [requestCommand objectForKey:@"text_to_type"];
 
     if( ![UIAutomationBridge checkForKeyboard] ){
