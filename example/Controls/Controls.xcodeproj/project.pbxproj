@@ -13,6 +13,8 @@
 		9C60AD54157C97FB008EE16A /* UIProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C60AD52157C97FB008EE16A /* UIProgressViewController.m */; };
 		9C60AD56157C97FB008EE16A /* UIProgressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C60AD53157C97FB008EE16A /* UIProgressViewController.xib */; };
 		C164121F1543BFDC00FECF23 /* EditableTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C164121E1543BFDC00FECF23 /* EditableTableViewController.m */; };
+		C177A4D216323CD60081DF77 /* ViewPropertiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C177A4D016323CD50081DF77 /* ViewPropertiesViewController.m */; };
+		C177A4D316323CD60081DF77 /* ViewPropertiesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C177A4D116323CD50081DF77 /* ViewPropertiesViewController.xib */; };
 		C1C3CCC6156BE29D00AEE136 /* image0.png in Resources */ = {isa = PBXBuildFile; fileRef = C1C3CCC5156BE29D00AEE136 /* image0.png */; };
 		C1C3CCC9156BE30200AEE136 /* image1.png in Resources */ = {isa = PBXBuildFile; fileRef = C1C3CCC8156BE30200AEE136 /* image1.png */; };
 		C1C3CCCC156BE33800AEE136 /* image2.png in Resources */ = {isa = PBXBuildFile; fileRef = C1C3CCCB156BE33800AEE136 /* image2.png */; };
@@ -46,6 +48,9 @@
 		9C60AD53157C97FB008EE16A /* UIProgressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UIProgressViewController.xib; sourceTree = "<group>"; };
 		C164121D1543BFDC00FECF23 /* EditableTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditableTableViewController.h; sourceTree = "<group>"; };
 		C164121E1543BFDC00FECF23 /* EditableTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditableTableViewController.m; sourceTree = "<group>"; };
+		C177A4CF16323CD50081DF77 /* ViewPropertiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewPropertiesViewController.h; sourceTree = "<group>"; };
+		C177A4D016323CD50081DF77 /* ViewPropertiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewPropertiesViewController.m; sourceTree = "<group>"; };
+		C177A4D116323CD50081DF77 /* ViewPropertiesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewPropertiesViewController.xib; sourceTree = "<group>"; };
 		C1AC878D15605FAB002B1165 /* ControlsAppDelegate+FrankExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ControlsAppDelegate+FrankExtensions.m"; sourceTree = "<group>"; };
 		C1C3CCC5156BE29D00AEE136 /* image0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = image0.png; path = images/image0.png; sourceTree = "<group>"; };
 		C1C3CCC8156BE30200AEE136 /* image1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = image1.png; path = images/image1.png; sourceTree = "<group>"; };
@@ -165,6 +170,9 @@
 				9C60AD51157C97FB008EE16A /* UIProgressViewController.h */,
 				9C60AD52157C97FB008EE16A /* UIProgressViewController.m */,
 				9C60AD53157C97FB008EE16A /* UIProgressViewController.xib */,
+				C177A4CF16323CD50081DF77 /* ViewPropertiesViewController.h */,
+				C177A4D016323CD50081DF77 /* ViewPropertiesViewController.m */,
+				C177A4D116323CD50081DF77 /* ViewPropertiesViewController.xib */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -252,6 +260,7 @@
 				C1C3CCD2156BE39900AEE136 /* image4.png in Resources */,
 				9C60AD56157C97FB008EE16A /* UIProgressViewController.xib in Resources */,
 				C1E8A77715F3B418001083B5 /* MainWindow-iPad.xib in Resources */,
+				C177A4D316323CD60081DF77 /* ViewPropertiesViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +281,7 @@
 				C1E7C1CB1569DA9200CCBCD8 /* DataEntryViewController.m in Sources */,
 				9C60AD54157C97FB008EE16A /* UIProgressViewController.m in Sources */,
 				D66968BD1594DDDE000163A8 /* ControlsAppDelegate+FrankExtensions.m in Sources */,
+				C177A4D216323CD60081DF77 /* ViewPropertiesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

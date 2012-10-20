@@ -10,6 +10,19 @@ Then /^I should wait to see "([^"]*)"$/ do |expected_mark|
   wait_for_element_to_exist("view marked:'#{expected_mark}'")
 end
 
+Then /^I should see "(.*?)" even though it is hidden$/ do |expected_mark| 
+  check_element_exists("view marked:'#{expected_mark}'")
+end
+
+
+Then /^there should be a hidden view "(.*?)"$/ do |expected_mark|
+  wait_for_element_to_exist("view marked:'#{expected_mark}' isHidden")
+end
+
+Then /^there should not be any hidden views$/ do
+  frankly_map("view isHidden",'tag').should be_empty
+end
+
 Then /^I wait until the progress of "([^"]*)" is (\d+)$/ do |mark, required_value|
   required_value = required_value.to_f
   wait_until do 
