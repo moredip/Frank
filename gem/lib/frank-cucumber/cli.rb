@@ -176,6 +176,7 @@ module Frank
         existing_bundle_identifier = `/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' Info.plist`.chomp
         new_bundle_identifier = existing_bundle_identifier + '.frankified'
         run %Q|/usr/libexec/PlistBuddy -c 'Set :CFBundleIdentifier #{new_bundle_identifier}' Info.plist|
+        run %Q|/usr/libexec/PlistBuddy -c 'Set :CFBundleDisplayName Frankified' Info.plist|
       end
     end
 
