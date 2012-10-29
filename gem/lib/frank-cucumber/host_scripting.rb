@@ -6,20 +6,20 @@ module HostScripting
   
   def start_recording
     %x{osascript<<APPLESCRIPT
-	tell application "QuickTime Player"
-	set sr to new screen recording
-	  tell sr to start
-	end tell
+  tell application "QuickTime Player"
+  set sr to new screen recording
+    tell sr to start
+  end tell
   APPLESCRIPT}
   
   end
 
   def stop_recording
     %x{osascript<<APPLESCRIPT
-	tell application "QuickTime Player"
-	  set sr to (document 1)
-	  tell sr to stop
-	end tell
+  tell application "QuickTime Player"
+    set sr to (document 1)
+    tell sr to stop
+  end tell
   APPLESCRIPT}  
   end
   
@@ -46,7 +46,7 @@ end
     %x{osascript<<APPLESCRIPT
 activate application "iPhone Simulator"
 tell application "System Events"
-	click menu item "#{menu_label}" of menu "#{Localize.t(:hardware)}" of menu bar of process "#{Localize.t(:iphone_simulator)}"
+  click menu item "#{menu_label}" of menu "#{Localize.t(:hardware)}" of menu bar of process "#{Localize.t(:iphone_simulator)}"
 end tell
   APPLESCRIPT}  
   end
@@ -77,6 +77,36 @@ end tell
   
   def simulate_hardware_keyboard
     simulator_hardware_menu_press Localize.t(:simulate_hardware_keyboard)
+  end
+
+  def set_custom_location( latitude, longitude )
+    %x{osascript<<APPLESCRIPT
+      activate application "iPhone Simulator"
+      tell application "System Events"
+        tell process "#{Localize.t(:iphone_simulator)}"
+          tell menu bar 1
+            tell menu bar item "#{Localize.t(:debug)}"
+              tell menu "#{Localize.t(:debug)}"
+                tell menu item "#{Localize.t(:location)}"
+                  tell menu "#{Localize.t(:location)}"
+                    click menu item "#{Localize.t(:custom_location)}"
+                  end tell
+                end tell
+              end tell
+            end tell
+          end tell
+          tell window 1
+            tell text field 1
+              set value to "#{latitude}"
+            end tell
+            tell text field 2
+              set value to "#{longitude}"
+            end tell
+            click button "OK"
+          end tell
+        end tell
+      end tell
+    APPLESCRIPT}  
   end
 end 
 
