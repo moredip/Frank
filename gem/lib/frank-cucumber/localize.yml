@@ -1,9 +1,6 @@
 en:
-  iphone_simulator: iOS Simulator
+  iphone_simulator: iPhone Simulator
   hardware: Hardware
-  debug: Debug
-  location: Location
-  custom_location: Custom Location…
   home: Home
   rotate_left: Rotate Left
   rotate_right: Rotate Right
