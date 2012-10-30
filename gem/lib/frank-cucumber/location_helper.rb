@@ -13,7 +13,7 @@ module Frank
           :latitude => options[:latitude],
           :longitude => options[:longitude]
         )
-        Frank::Cucumber::Gateway.evaluate_frankly_response( res, "setting the location to #{options[latitude]}, #{options[:longitude]}" )
+        Frank::Cucumber::Gateway.evaluate_frankly_response( res, "setting the location to #{options[:latitude]}, #{options[:longitude]}" )
       end
     end
   end
