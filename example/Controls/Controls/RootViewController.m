@@ -13,6 +13,7 @@
 #import "DataEntryViewController.h"
 #import "UIProgressViewController.h"
 #import "ViewPropertiesViewController.h"
+#import "LocationViewController.h"
 
 typedef enum {
     RowsUISwitch,
@@ -21,6 +22,7 @@ typedef enum {
     RowsDataEntry,
     RowsUIProgressView,
     RowsViewProperties,
+    RowsLocation,
     RowsCount,
 } Rows;
 
@@ -99,6 +101,9 @@ typedef enum {
         case RowsViewProperties:
             cell.textLabel.text = @"View Properties";
             break;
+        case RowsLocation:
+            cell.textLabel.text = @"Location";
+            break;
 
     }
 
@@ -169,8 +174,11 @@ typedef enum {
             break;
         case RowsViewProperties:
             detailVC = [[ViewPropertiesViewController alloc] initWithNibName:@"ViewPropertiesViewController" bundle:nil];
-
             break;
+        case RowsLocation:
+            detailVC = [[LocationViewController alloc] initWithNibName:@"LocationViewController" bundle:nil];
+            break;
+
     }
 
     [self.navigationController pushViewController:detailVC animated:YES];
