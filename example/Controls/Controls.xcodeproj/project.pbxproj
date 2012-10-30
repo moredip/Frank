@@ -20,6 +20,9 @@
 		C1C3CCCC156BE33800AEE136 /* image2.png in Resources */ = {isa = PBXBuildFile; fileRef = C1C3CCCB156BE33800AEE136 /* image2.png */; };
 		C1C3CCCF156BE36600AEE136 /* image3.png in Resources */ = {isa = PBXBuildFile; fileRef = C1C3CCCE156BE36600AEE136 /* image3.png */; };
 		C1C3CCD2156BE39900AEE136 /* image4.png in Resources */ = {isa = PBXBuildFile; fileRef = C1C3CCD1156BE39900AEE136 /* image4.png */; };
+		C1CE57C416402BC60027BCAC /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CE57C216402BC60027BCAC /* LocationViewController.m */; };
+		C1CE57C516402BC60027BCAC /* LocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1CE57C316402BC60027BCAC /* LocationViewController.xib */; };
+		C1CE57C8164031600027BCAC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1CE57C7164031600027BCAC /* CoreLocation.framework */; };
 		C1E7C1CB1569DA9200CCBCD8 /* DataEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E7C1C91569DA9200CCBCD8 /* DataEntryViewController.m */; };
 		C1E7C1CD1569DA9200CCBCD8 /* DataEntryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1E7C1CA1569DA9200CCBCD8 /* DataEntryViewController.xib */; };
 		C1E8A77715F3B418001083B5 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1E8A77515F3B418001083B5 /* MainWindow-iPad.xib */; };
@@ -57,6 +60,10 @@
 		C1C3CCCB156BE33800AEE136 /* image2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = image2.png; path = images/image2.png; sourceTree = "<group>"; };
 		C1C3CCCE156BE36600AEE136 /* image3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = image3.png; path = images/image3.png; sourceTree = "<group>"; };
 		C1C3CCD1156BE39900AEE136 /* image4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = image4.png; path = images/image4.png; sourceTree = "<group>"; };
+		C1CE57C116402BC60027BCAC /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
+		C1CE57C216402BC60027BCAC /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
+		C1CE57C316402BC60027BCAC /* LocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationViewController.xib; sourceTree = "<group>"; };
+		C1CE57C7164031600027BCAC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C1E7C1C81569DA9200CCBCD8 /* DataEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataEntryViewController.h; sourceTree = "<group>"; };
 		C1E7C1C91569DA9200CCBCD8 /* DataEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataEntryViewController.m; sourceTree = "<group>"; };
 		C1E7C1CA1569DA9200CCBCD8 /* DataEntryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DataEntryViewController.xib; sourceTree = "<group>"; };
@@ -85,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1CE57C8164031600027BCAC /* CoreLocation.framework in Frameworks */,
 				D6225F9B1436D886002B04AA /* UIKit.framework in Frameworks */,
 				D6225F9D1436D886002B04AA /* Foundation.framework in Frameworks */,
 				D6225F9F1436D886002B04AA /* CoreGraphics.framework in Frameworks */,
@@ -136,6 +144,7 @@
 		D6225F991436D886002B04AA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C1CE57C7164031600027BCAC /* CoreLocation.framework */,
 				D6225F9A1436D886002B04AA /* UIKit.framework */,
 				D6225F9C1436D886002B04AA /* Foundation.framework */,
 				D6225F9E1436D886002B04AA /* CoreGraphics.framework */,
@@ -173,6 +182,9 @@
 				C177A4CF16323CD50081DF77 /* ViewPropertiesViewController.h */,
 				C177A4D016323CD50081DF77 /* ViewPropertiesViewController.m */,
 				C177A4D116323CD50081DF77 /* ViewPropertiesViewController.xib */,
+				C1CE57C116402BC60027BCAC /* LocationViewController.h */,
+				C1CE57C216402BC60027BCAC /* LocationViewController.m */,
+				C1CE57C316402BC60027BCAC /* LocationViewController.xib */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -261,6 +273,7 @@
 				9C60AD56157C97FB008EE16A /* UIProgressViewController.xib in Resources */,
 				C1E8A77715F3B418001083B5 /* MainWindow-iPad.xib in Resources */,
 				C177A4D316323CD60081DF77 /* ViewPropertiesViewController.xib in Resources */,
+				C1CE57C516402BC60027BCAC /* LocationViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +295,7 @@
 				9C60AD54157C97FB008EE16A /* UIProgressViewController.m in Sources */,
 				D66968BD1594DDDE000163A8 /* ControlsAppDelegate+FrankExtensions.m in Sources */,
 				C177A4D216323CD60081DF77 /* ViewPropertiesViewController.m in Sources */,
+				C1CE57C416402BC60027BCAC /* LocationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
