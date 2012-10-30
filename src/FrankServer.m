@@ -16,6 +16,7 @@
 #import "DumpCommand.h"
 #import "MapOperationCommand.h"
 #import "OrientationCommand.h"
+#import "LocationCommand.h"
 #import "ExitCommand.h"
 #import "AppCommand.h"
 #import "AccessibilityCheckCommand.h"
@@ -44,6 +45,7 @@ static NSUInteger __defaultPort = FRANK_SERVER_PORT;
 		[frankCommandRoute registerCommand:[[[DumpCommand alloc]init]autorelease] withName:@"dump"];
 		[frankCommandRoute registerCommand:[[[MapOperationCommand alloc]init]autorelease] withName:@"map"];
 		[frankCommandRoute registerCommand:[[[OrientationCommand alloc]init]autorelease] withName:@"orientation"];
+        [frankCommandRoute registerCommand:[[[LocationCommand alloc]init]autorelease] withName:@"location"];
 		[frankCommandRoute registerCommand:[[[AccessibilityCheckCommand alloc] init]autorelease] withName:@"accessibility_check"];
 		[frankCommandRoute registerCommand:[[[AppCommand alloc] init]autorelease] withName:@"app_exec"];
         [frankCommandRoute registerCommand:[[[KeyboardCommand alloc] init]autorelease] withName:@"type_into_keyboard"];
