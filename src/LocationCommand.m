@@ -23,7 +23,11 @@
                                                            andDetails:[NSString stringWithFormat:@"you have to provide both longitude and latitude"]];
     }
     
-    [UIAutomationBridge setLocation:requestCommand];
+    CGPoint locationAsPoint = CGPointMake([[requestCommand objectForKey:@"latitude"] floatValue],[[requestCommand objectForKey:@"longitude"] floatValue]);
+    
+    NSLog(@"simulating location of %f,%f",locationAsPoint.x, locationAsPoint.y);
+    
+    [UIAutomationBridge setLocation:locationAsPoint];
     
     return [FranklyProtocolHelper generateSuccessResponseWithoutResults];
 }
