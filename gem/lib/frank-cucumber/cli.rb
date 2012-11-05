@@ -80,7 +80,9 @@ module Frank
 
       run %Q|xcodebuild -xcconfig Frank/frankify.xcconfig #{build_steps} #{extra_opts} -configuration Debug -sdk iphonesimulator DEPLOYMENT_LOCATION=YES DSTROOT="#{build_output_dir}" FRANK_LIBRARY_SEARCH_PATHS="\\"#{frank_lib_directory}\\""|
 
-      FileUtils.mv( Dir.glob( "#{build_output_dir}/*.app" ).first, frankified_app_dir )
+      app = Dir.glob("#{build_output_dir}/*.app").delete_if { |x| x =~ /\/#{app_bundle_name}$/ }
+      app = app.first
+      FileUtils.cp_r("#{app}/.", frankified_app_dir)
 
       fix_frankified_apps_bundle_identifier
 
