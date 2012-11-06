@@ -48,7 +48,9 @@ module Frank
       method_option option
     end
     method_option 'arch', :type => :string, :default => 'i386'
+    method_option :noclean, :type => :boolean, :default => false, :aliases => '--nc', :desc => "Don't clean the build directory before building"
     def build
+      clean = !options['noclean']
 
       in_root do
         unless File.directory? 'Frank'
@@ -64,14 +66,23 @@ module Frank
 
       static_bundle = 'frank_static_resources.bundle'
 
-      remove_dir build_output_dir
+      if clean
+        remove_dir build_output_dir
+      end
+
+      build_steps = 'build'
+      if clean
+        build_steps = 'clean ' + build_steps
+      end
 
       extra_opts = XCODEBUILD_OPTIONS.map{ |o| "-#{o} #{options[o]}" if options[o] }.compact.join(' ')
       extra_opts += " -arch #{options['arch']}"
 
-      run %Q|xcodebuild -xcconfig Frank/frankify.xcconfig clean build #{extra_opts} -configuration Debug -sdk iphonesimulator DEPLOYMENT_LOCATION=YES DSTROOT="#{build_output_dir}" FRANK_LIBRARY_SEARCH_PATHS="\\"#{frank_lib_directory}\\""|
+      run %Q|xcodebuild -xcconfig Frank/frankify.xcconfig #{build_steps} #{extra_opts} -configuration Debug -sdk iphonesimulator DEPLOYMENT_LOCATION=YES DSTROOT="#{build_output_dir}" FRANK_LIBRARY_SEARCH_PATHS="\\"#{frank_lib_directory}\\""|
 
-      FileUtils.mv( Dir.glob( "#{build_output_dir}/*.app" ).first, frankified_app_dir )
+      app = Dir.glob("#{build_output_dir}/*.app").delete_if { |x| x =~ /\/#{app_bundle_name}$/ }
+      app = app.first
+      FileUtils.cp_r("#{app}/.", frankified_app_dir)
 
       fix_frankified_apps_bundle_identifier
 
