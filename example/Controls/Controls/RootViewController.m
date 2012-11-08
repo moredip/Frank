@@ -14,6 +14,7 @@
 #import "UIProgressViewController.h"
 #import "ViewPropertiesViewController.h"
 #import "LocationViewController.h"
+#import "SampleTableViewController.h"
 
 typedef enum {
     RowsUISwitch,
@@ -23,6 +24,7 @@ typedef enum {
     RowsUIProgressView,
     RowsViewProperties,
     RowsLocation,
+    RowsSampleTable,
     RowsCount,
 } Rows;
 
@@ -104,7 +106,9 @@ typedef enum {
         case RowsLocation:
             cell.textLabel.text = @"Location";
             break;
-
+        case RowsSampleTable:
+            cell.textLabel.text = @"Sample Table";
+            break;
     }
 
     // Configure the cell.
@@ -177,6 +181,9 @@ typedef enum {
             break;
         case RowsLocation:
             detailVC = [[LocationViewController alloc] initWithNibName:@"LocationViewController" bundle:nil];
+            break;
+        case RowsSampleTable:
+            detailVC = [[SampleTableViewController alloc] init];
             break;
 
     }
