@@ -10,6 +10,7 @@
 		49543E4D1538791E001D87F1 /* Carousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 49543E4C1538791E001D87F1 /* Carousel.m */; };
 		49543E511538793B001D87F1 /* CarouselViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49543E501538793B001D87F1 /* CarouselViewController.m */; };
 		49543E5415387AD8001D87F1 /* CarouselViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49543E5315387AD8001D87F1 /* CarouselViewController.xib */; };
+		529777D9164C63CC009726F3 /* SampleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 529777D8164C63CC009726F3 /* SampleTableViewController.m */; };
 		9C60AD54157C97FB008EE16A /* UIProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C60AD52157C97FB008EE16A /* UIProgressViewController.m */; };
 		9C60AD56157C97FB008EE16A /* UIProgressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C60AD53157C97FB008EE16A /* UIProgressViewController.xib */; };
 		C164121F1543BFDC00FECF23 /* EditableTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C164121E1543BFDC00FECF23 /* EditableTableViewController.m */; };
@@ -46,6 +47,8 @@
 		49543E4F1538793B001D87F1 /* CarouselViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarouselViewController.h; sourceTree = "<group>"; };
 		49543E501538793B001D87F1 /* CarouselViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarouselViewController.m; sourceTree = "<group>"; };
 		49543E5315387AD8001D87F1 /* CarouselViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarouselViewController.xib; sourceTree = "<group>"; };
+		529777D7164C63CC009726F3 /* SampleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleTableViewController.h; sourceTree = "<group>"; };
+		529777D8164C63CC009726F3 /* SampleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleTableViewController.m; sourceTree = "<group>"; };
 		9C60AD51157C97FB008EE16A /* UIProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIProgressViewController.h; sourceTree = "<group>"; };
 		9C60AD52157C97FB008EE16A /* UIProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIProgressViewController.m; sourceTree = "<group>"; };
 		9C60AD53157C97FB008EE16A /* UIProgressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UIProgressViewController.xib; sourceTree = "<group>"; };
@@ -185,6 +188,8 @@
 				C1CE57C116402BC60027BCAC /* LocationViewController.h */,
 				C1CE57C216402BC60027BCAC /* LocationViewController.m */,
 				C1CE57C316402BC60027BCAC /* LocationViewController.xib */,
+				529777D7164C63CC009726F3 /* SampleTableViewController.h */,
+				529777D8164C63CC009726F3 /* SampleTableViewController.m */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -296,6 +301,7 @@
 				D66968BD1594DDDE000163A8 /* ControlsAppDelegate+FrankExtensions.m in Sources */,
 				C177A4D216323CD60081DF77 /* ViewPropertiesViewController.m in Sources */,
 				C1CE57C416402BC60027BCAC /* LocationViewController.m in Sources */,
+				529777D9164C63CC009726F3 /* SampleTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
