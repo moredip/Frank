@@ -24,7 +24,7 @@ typedef enum {
     RowsUIProgressView,
     RowsViewProperties,
     RowsLocation,
-    RowsSampleTable,
+    RowsEmptyTable,
     RowsCount,
 } Rows;
 
@@ -106,8 +106,8 @@ typedef enum {
         case RowsLocation:
             cell.textLabel.text = @"Location";
             break;
-        case RowsSampleTable:
-            cell.textLabel.text = @"Sample Table";
+        case RowsEmptyTable:
+            cell.textLabel.text = @"Empty Table";
             break;
     }
 
@@ -182,7 +182,7 @@ typedef enum {
         case RowsLocation:
             detailVC = [[LocationViewController alloc] initWithNibName:@"LocationViewController" bundle:nil];
             break;
-        case RowsSampleTable:
+        case RowsEmptyTable:
             detailVC = [[SampleTableViewController alloc] init];
             break;
 

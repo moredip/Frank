@@ -35,10 +35,12 @@
     
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
     headerView.backgroundColor = [UIColor redColor];
+    headerView.accessibilityLabel = @"table header";
     self.tableView.tableHeaderView = headerView;
 
     UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
     footerView.backgroundColor = [UIColor blueColor];
+    footerView.accessibilityLabel = @"table footer";
     self.tableView.tableFooterView = footerView;
     
 }
@@ -53,14 +55,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
     return 0;
 }
