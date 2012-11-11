@@ -21,7 +21,9 @@
     
   if([obj isKindOfClass: NSArray.class] || [obj isKindOfClass: NSSet.class]) {
     NSMutableArray *array = [NSMutableArray array];
-    for(id subObject in (id<NSFastEnumeration>) obj) {
+    
+    id<NSFastEnumeration> theArray = (id<NSFastEnumeration>) [(NSObject *)obj copy];
+    for(id subObject in theArray) {
       id subJson = [ViewJSONSerializer jsonify: subObject];
       [array addObject: subJson];
     }
@@ -31,8 +33,8 @@
   if([obj isKindOfClass: NSDictionary.class]) {
     NSMutableDictionary *jsonDictionary = [NSMutableDictionary dictionary];
     
-    NSDictionary *theDictionary = (NSDictionary *) obj;
-    for(id key in [[theDictionary allKeys] copy]) {
+    NSDictionary *theDictionary = [(NSDictionary *) obj copy];
+    for(id key in [theDictionary allKeys]) {
       id value = [theDictionary objectForKey: key];
       
       id subJson = [ViewJSONSerializer jsonify: value];
