@@ -17,6 +17,25 @@ extern BOOL frankLogEnabled;
 
 @implementation FrankCommandRoute
 
+
+#pragma mark singleton implementation
+
+static FrankCommandRoute *s_singleton;
+
++ (void)initialize
+{
+    static BOOL initialized = NO;
+    if(!initialized)
+    {
+        initialized = YES;
+        s_singleton = [[FrankCommandRoute alloc] init];
+    }
+}
+
++ (FrankCommandRoute *) singleton{
+	return s_singleton;
+}
+
 - (id) init
 {
 	self = [super init];
