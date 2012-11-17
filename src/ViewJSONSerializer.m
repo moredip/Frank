@@ -49,19 +49,25 @@
 	if( [obj isKindOfClass: NSValue.class] ) {
     return  [ViewJSONSerializer extractInstanceFromValue: (NSValue *) obj];
 	}
-  
+
+#if TARGET_OS_IPHONE
 	if ([obj isKindOfClass: UIColor.class]) {
 		return [ViewJSONSerializer extractInstanceFromColor: (UIColor *) obj];
 	}
+#else
+    if ([obj isKindOfClass: NSColor.class]) {
+		return [ViewJSONSerializer extractInstanceFromColor: (NSColor *) obj];
+	}
+#endif
 	
 	return [NSString stringWithFormat:@"<%@>", NSStringFromClass(obj.class)];
 }
 
 #pragma mark - Special conversions
 #pragma mark UIColor
-+ (id) extractInstanceFromColor: (UIColor *) color {
-  CGColorSpaceModel colorModel = CGColorSpaceGetModel(CGColorGetColorSpace(color.CGColor));
-  const CGFloat *colors = CGColorGetComponents(color.CGColor);
++ (id) extractInstanceFromColor: (id) color {
+  CGColorSpaceModel colorModel = CGColorSpaceGetModel(CGColorGetColorSpace([color CGColor]));
+  const CGFloat *colors = CGColorGetComponents([color CGColor]);
   
   id value = nil;
   // so far, only RGB and monochrome color spaces are supported. Adding CMYK and other fancy pants
@@ -91,16 +97,16 @@
   return value;
 }
 
-+ (id) extractInstanceFromFont: (UIFont *) font {
++ (id) extractInstanceFromFont: (id) font {
   if(font == nil) {
     return nil;
   }
   NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithCapacity: 4];
   
   // grab font name, family and size
-  [dictionary setObject: font.fontName forKey: @"fontName"];
-  [dictionary setObject: font.familyName forKey: @"familyName"];
-  NSNumber *pointSize = [NSNumber numberWithFloat: font.pointSize];
+  [dictionary setObject: [font fontName] forKey: @"fontName"];
+  [dictionary setObject: [font familyName] forKey: @"familyName"];
+  NSNumber *pointSize = [NSNumber numberWithFloat: [font pointSize]];
   [dictionary setObject: pointSize  forKey: @"pointSize"];
   
   return dictionary;

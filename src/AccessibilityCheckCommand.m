@@ -11,6 +11,8 @@
 
 @implementation AccessibilityCheckCommand
 
+#if TARGET_OS_IPHONE
+
 - (BOOL) accessibilitySeemsToBeTurnedOn {
 	UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
 	NSString *origAccessibilityLabel = [keyWindow accessibilityLabel];
@@ -22,6 +24,14 @@
 	
 	return setSucceeded;
 }
+
+#else
+
+- (BOOL) accessibilitySeemsToBeTurnedOn {
+    return AXAPIEnabled();
+}
+
+#endif // TARGET_OS_IPHONE
 
 - (NSString *)handleCommandWithRequestBody:(NSString *)requestBody {
 	NSString *boolString = ([self accessibilitySeemsToBeTurnedOn] ? @"true" : @"false");
