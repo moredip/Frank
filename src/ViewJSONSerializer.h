@@ -12,6 +12,6 @@
 + (NSObject *) jsonify: (id<NSObject>) obj;
 
 + (id) extractInstanceFromValue: (NSValue *) value;
-+ (id) extractInstanceFromColor: (UIColor *) color;
-+ (id) extractInstanceFromFont: (UIFont *) font;
++ (id) extractInstanceFromColor: (id) color;
++ (id) extractInstanceFromFont: (id) font;
 @end
