@@ -65,7 +65,7 @@
 
 #pragma mark - Special conversions
 #pragma mark UIColor
-+ (id) extractInstanceFromColor: (id) color {
++ (id) extractInstanceFromColor: (FrankColor *) color {
   CGColorSpaceModel colorModel = CGColorSpaceGetModel(CGColorGetColorSpace([color CGColor]));
   const CGFloat *colors = CGColorGetComponents([color CGColor]);
   
@@ -97,16 +97,16 @@
   return value;
 }
 
-+ (id) extractInstanceFromFont: (id) font {
++ (id) extractInstanceFromFont: (FrankFont *) font {
   if(font == nil) {
     return nil;
   }
   NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithCapacity: 4];
   
   // grab font name, family and size
-  [dictionary setObject: [font fontName] forKey: @"fontName"];
-  [dictionary setObject: [font familyName] forKey: @"familyName"];
-  NSNumber *pointSize = [NSNumber numberWithFloat: [font pointSize]];
+  [dictionary setObject: font.fontName forKey: @"fontName"];
+  [dictionary setObject: font.familyName forKey: @"familyName"];
+  NSNumber *pointSize = [NSNumber numberWithFloat: font.pointSize];
   [dictionary setObject: pointSize  forKey: @"pointSize"];
   
   return dictionary;

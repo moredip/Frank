@@ -8,10 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
+#if TARGET_OS_IPHONE
+#define FrankColor UIColor
+#define FrankFont  UIFont
+#else
+#define FrankColor NSColor
+#define FrankFont  NSFont
+#endif
+
 @interface ViewJSONSerializer : NSObject
 + (NSObject *) jsonify: (id<NSObject>) obj;
 
 + (id) extractInstanceFromValue: (NSValue *) value;
-+ (id) extractInstanceFromColor: (id) color;
-+ (id) extractInstanceFromFont: (id) font;
++ (id) extractInstanceFromColor: (FrankColor *) color;
++ (id) extractInstanceFromFont: (FrankFont *) font;
 @end
