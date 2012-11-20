@@ -14,15 +14,15 @@
 #import "DumpCommand.h"
 
 #if TARGET_OS_IPHONE
-#define serializeViewType UIView
+#define FrankSerializeViewType UIView
 #else
-#define serializeViewType NSObject
+#define FrankSerializeViewType NSObject
 #endif
 
 @interface DumpCommand()
 @property (nonatomic, readwrite, retain) NSMutableDictionary *classMapping;
 
-- (NSDictionary *) serializeView: (serializeViewType *) view;
+- (NSDictionary *) serializeView: (FrankSerializeViewType *) view;
 - (id) valueForAttribute: (NSString *) attribute onObject: (NSObject *) object;
 - (void) loadClassMapping;
 @end
@@ -125,7 +125,7 @@
 }
 
 #pragma mark - view serialization
-- (NSDictionary *) serializeView: (serializeViewType *) view {
+- (NSDictionary *) serializeView: (FrankSerializeViewType *) view {
     NSMutableDictionary *serializedView = [NSMutableDictionary dictionaryWithCapacity: 20];
 
     [serializedView setObject:NSStringFromClass(view.class) forKey: @"class"];
