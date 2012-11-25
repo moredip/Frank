@@ -21,6 +21,8 @@
 	NSMutableDictionary *_commandDict;
 }
 
++ (FrankCommandRoute *) singleton;
+
 -(void) registerCommand: (id<FrankCommand>)command withName:(NSString *)commandName;
 
 @end

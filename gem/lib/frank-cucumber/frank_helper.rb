@@ -49,6 +49,15 @@ module FrankHelper
       raise 'could not detect running Frank server' unless @server_base_url
     end
   end
+  
+  # Get the correct quote for the selector
+  def get_selector_quote(selector)
+    if selector.index("'") == nil
+      return "'"
+    else
+      return '"'
+    end
+  end
 
   #@api private
   #@return [:String] convient shorthand for {Frank::Cucumber::FrankHelper.selector_engine}, defaulting to 'uiquery'
@@ -107,7 +116,8 @@ module FrankHelper
   # @return [Boolean]
   # @see #check_view_with_mark_exists
   def view_with_mark_exists(expected_mark)
-    element_exists( "view marked:'#{expected_mark}'" )
+    quote = get_selector_quote(expected_mark)
+    element_exists( "view marked:#{quote}#{expected_mark}#{quote}" )
   end
 
   # Assert whether there are any views in the current view heirarchy which contain the specified accessibility label.
@@ -115,7 +125,8 @@ module FrankHelper
   # @raise an rspec exception if the assertion fails
   # @see #view_with_mark_exists
   def check_view_with_mark_exists(expected_mark)
-    check_element_exists( "view marked:'#{expected_mark}'" )
+    quote = get_selector_quote(expected_mark)
+    check_element_exists( "view marked:#{quote}#{expected_mark}#{quote}" )
   end
 
   # Assert whether there are no views in the current view heirarchy which contain the specified accessibility label.
@@ -123,7 +134,8 @@ module FrankHelper
   # @raise an rspec exception if the assertion fails
   # @see #view_with_mark_exists, #check_view_with_mark_exists
   def check_view_with_mark_does_not_exist(expected_mark)
-    check_element_does_not_exist( "view marked:'#{expected_mark}'" )
+    quote = get_selector_quote(expected_mark)
+    check_element_does_not_exist( "view marked:#{quote}#{expected_mark}#{quote}" )
   end
 
 
@@ -239,7 +251,6 @@ module FrankHelper
   # @return [Array] an array with an element for each view matched by the selector, each element in the array gives the return value from invoking the specified method on that view.
   def frankly_map( selector, method_name, *method_args )
     operation_map = Gateway.build_operation_map(method_name.to_s, method_args)
-
     res = frank_server.send_post( 
       'map',
       :query => selector, 
