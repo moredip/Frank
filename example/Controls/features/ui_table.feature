@@ -63,3 +63,13 @@ Scenario: scrolling up and down and all around
  
  When I scroll the table to the top
  Then I should see "First Row"
+
+Scenario: rearranging rows
+ Then the "Larry" row should be above the "Moe" row
+ And the "Larry" row should be above the "Tom" row
+
+ When I put the table in edit mode
+ And I drag the "Larry" row down to the "Moe" row
+
+ Then the "Moe" row should be above the "Larry" row
+ And the "Larry" row should be above the "Tom" row

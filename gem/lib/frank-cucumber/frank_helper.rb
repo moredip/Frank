@@ -194,6 +194,23 @@ module FrankHelper
      !matches.empty?
   end
 
+  def accessibility_frame(selector)
+    frames = frankly_map( selector, 'accessibilityFrame' )
+    raise "the supplied selector [#{selector}] did not match any views" if frames.empty?
+    raise "the supplied selector [#{selector}] matched more than one views (#{frames.count} views matched)" if frames.count > 1
+    Rect.from_api_repr( frames.first )
+  end
+
+  def drag_with_initial_delay(args)
+    from, to = args.values_at(:from,:to)
+    raise ArgumentError.new('must specify a :from parameter') if from.nil?
+    raise ArgumentError.new('must specify a :to parameter') if to.nil?
+
+    dest_frame = accessibility_frame(to)
+
+    frankly_map( from, 'FEX_dragWithInitialDelayToX:y:', dest_frame.center.x, dest_frame.center.y )
+  end
+
 
   # Ask Frank to invoke the specified method on the app delegate of the iOS application under automation.
   # @param method_sig [String] the method signature
