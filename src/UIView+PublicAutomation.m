@@ -47,5 +47,10 @@ NSString *formatCGPointVal( NSValue *val ){
     return [NSString stringWithFormat:@"%@ => %@", formatCGPointVal([swipeExtremes objectAtIndex:0]),formatCGPointVal([swipeExtremes objectAtIndex:1])];
 }
 
+- (BOOL) FEX_dragWithInitialDelayToX:(CGFloat)x y:(CGFloat)y {
+    [UIAutomationBridge dragViewWithInitialDelay:self toPoint:CGPointMake(x,y)];
+    return YES;
+}
+
 
 @end

@@ -1,3 +1,4 @@
+require 'frank-cucumber/rect'
 require 'frank-cucumber/color_helper'
 require 'frank-cucumber/frank_helper'
 require 'frank-cucumber/launcher'
