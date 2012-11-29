@@ -15,8 +15,8 @@ module Frank module Cucumber
 
     def center
       OpenStruct.new( 
-                     x: @x.to_f + (@width.to_f/2),
-                     y: @y.to_f + (@height.to_f/2)
+                     :x => @x.to_f + (@width.to_f/2),
+                     :y => @y.to_f + (@height.to_f/2)
                     )
     end
   end
