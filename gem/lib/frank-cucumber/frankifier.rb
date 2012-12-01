@@ -97,7 +97,7 @@ class Frankifier
   end
 
   def check_target_build_configuration_is_valid!
-    unless @target.build_configuration_list.build_configurations.object_named @target_build_configuration 
+    unless @target.build_configuration_list.build_settings(@target_build_configuration) 
       say %Q|I'm trying to Frankify the '#{@target_build_configuration}' build configuration, but I don't see it that build configuration in your XCode target. Here's a list of the build configurations I see:|
       @target.build_configuration_list.build_configurations.each do |bc| 
         say "  '#{bc.name}'"
