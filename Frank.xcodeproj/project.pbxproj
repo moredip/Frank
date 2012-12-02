@@ -11,6 +11,55 @@
 		0071264714F8956700E738ED /* ViewJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0071264514F8956700E738ED /* ViewJSONSerializer.m */; };
 		00E864BC161D6E6400E01209 /* UIScrollView+FrankScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E864BA161D6E6400E01209 /* UIScrollView+FrankScrolling.m */; };
 		00E864C5161D708B00E01209 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00E864C4161D708B00E01209 /* MapKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		30228E201642161200B1F9E7 /* AccessibilityCheckCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D67F2AAC13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.m */; };
+		30228E221642161200B1F9E7 /* AppCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1DD76A12BADFE100E10B8C /* AppCommand.m */; };
+		30228E241642161200B1F9E7 /* DumpCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D05CA211C883AA0081C5A5 /* DumpCommand.m */; };
+		30228E261642161200B1F9E7 /* EnginesCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FA01B714283C4F00576AEE /* EnginesCommand.m */; };
+		30228E281642161200B1F9E7 /* ExitCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = A91F3AA515F6E456003F434F /* ExitCommand.m */; };
+		30228E2A16421C4400B1F9E7 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30228E2916421C4400B1F9E7 /* Cocoa.framework */; };
+		302B80411646DE02000F9861 /* NSImage+Frank.h in Headers */ = {isa = PBXBuildFile; fileRef = 302B803F1646DE02000F9861 /* NSImage+Frank.h */; };
+		302B80421646DE02000F9861 /* NSImage+Frank.m in Sources */ = {isa = PBXBuildFile; fileRef = 302B80401646DE02000F9861 /* NSImage+Frank.m */; };
+		30412D30165333E300719CD2 /* NSView+FrankImageCapture.h in Headers */ = {isa = PBXBuildFile; fileRef = 30412D2E165333E300719CD2 /* NSView+FrankImageCapture.h */; };
+		30412D31165333E300719CD2 /* NSView+FrankImageCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 30412D2F165333E300719CD2 /* NSView+FrankImageCapture.m */; };
+		305CA784164205F800C4ACE5 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7947C115C4418700052B74 /* GCDAsyncSocket.m */; };
+		305CA785164205F800C4ACE5 /* HTTPAuthenticationRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = AB79477E15C4412300052B74 /* HTTPAuthenticationRequest.m */; };
+		305CA786164205F800C4ACE5 /* HTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = AB79478015C4412300052B74 /* HTTPConnection.m */; };
+		305CA787164205F800C4ACE5 /* HTTPMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = AB79478315C4412300052B74 /* HTTPMessage.m */; };
+		305CA788164205F800C4ACE5 /* HTTPServer.m in Sources */ = {isa = PBXBuildFile; fileRef = AB79478615C4412300052B74 /* HTTPServer.m */; };
+		305CA789164205F800C4ACE5 /* WebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = AB79479A15C4412300052B74 /* WebSocket.m */; };
+		305CA78A164205F800C4ACE5 /* DDData.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA9E49A15C81E0100112290 /* DDData.m */; };
+		305CA78B164205F800C4ACE5 /* DDNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA9E49C15C81E0100112290 /* DDNumber.m */; };
+		305CA78C164205F800C4ACE5 /* DDRange.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA9E49E15C81E0100112290 /* DDRange.m */; };
+		305CA78D164205F800C4ACE5 /* MultipartFormDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA9E4A315C81E2300112290 /* MultipartFormDataParser.m */; };
+		305CA78E164205F800C4ACE5 /* MultipartMessageHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA9E4A515C81E2300112290 /* MultipartMessageHeader.m */; };
+		305CA78F164205F800C4ACE5 /* MultipartMessageHeaderField.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA9E4A715C81E2300112290 /* MultipartMessageHeaderField.m */; };
+		305CA790164205F800C4ACE5 /* HTTPAsyncFileResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA9E4AC15C81E4100112290 /* HTTPAsyncFileResponse.m */; };
+		305CA791164205F800C4ACE5 /* HTTPDataResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA9E4AE15C81E4100112290 /* HTTPDataResponse.m */; };
+		305CA792164205F800C4ACE5 /* HTTPDynamicFileResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA9E4B015C81E4100112290 /* HTTPDynamicFileResponse.m */; };
+		305CA793164205F800C4ACE5 /* HTTPFileResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA9E4B215C81E4100112290 /* HTTPFileResponse.m */; };
+		305CA794164205F800C4ACE5 /* HTTPRedirectResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA9E4B415C81E4100112290 /* HTTPRedirectResponse.m */; };
+		305CA795164205F800C4ACE5 /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA9E4BB15C81E7900112290 /* DDAbstractDatabaseLogger.m */; };
+		305CA796164205F800C4ACE5 /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA9E4BD15C81E7900112290 /* DDASLLogger.m */; };
+		305CA797164205F800C4ACE5 /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA9E4BF15C81E7A00112290 /* DDFileLogger.m */; };
+		305CA798164205F800C4ACE5 /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA9E4C115C81E7A00112290 /* DDLog.m */; };
+		305CA799164205F800C4ACE5 /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA9E4C315C81E7A00112290 /* DDTTYLogger.m */; };
+		305CA79A164205F800C4ACE5 /* ContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA9E4CA15C81E8700112290 /* ContextFilterLogFormatter.m */; };
+		305CA79B164205F800C4ACE5 /* DispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA9E4CC15C81E8700112290 /* DispatchQueueLogFormatter.m */; };
+		305CA7A41642063E00C4ACE5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 305CA7A31642063E00C4ACE5 /* Foundation.framework */; };
+		306249F51644E67400E8C20A /* FrankLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = D67F2ABE13F5F55A00A0BFF1 /* FrankLoader.m */; };
+		306249F71644E67400E8C20A /* FrankServer.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D05CA611C883AA0081C5A5 /* FrankServer.m */; };
+		306249F91644E68C00E8C20A /* FrankCommandRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D05CA411C883AA0081C5A5 /* FrankCommandRoute.m */; };
+		306249FB1644E68C00E8C20A /* ImageCaptureRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = C18A5EEF160D4AB400DC25F6 /* ImageCaptureRoute.m */; };
+		306249FD1644E68C00E8C20A /* RequestRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D05CAC11C883AA0081C5A5 /* RequestRouter.m */; };
+		306249FF1644E68C00E8C20A /* RoutingHTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D05CAE11C883AA0081C5A5 /* RoutingHTTPConnection.m */; };
+		30624A011644E68C00E8C20A /* StaticResourcesRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D05CB011C883AA0081C5A5 /* StaticResourcesRoute.m */; };
+		30726499165812FB00815A1A /* FranklyProtocolHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FA01B714283C4F00576AE0 /* FranklyProtocolHelper.m */; };
+		3072649B165812FB00815A1A /* Operation.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D79B5C11D7FB8B003E0E60 /* Operation.m */; };
+		3072649D165812FB00815A1A /* SelectorEngineRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = D6BD521D146C34BF001770B1 /* SelectorEngineRegistry.m */; };
+		3072649F165812FB00815A1A /* ViewJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0071264514F8956700E738ED /* ViewJSONSerializer.m */; };
+		30AC65A4165C39FF00DEB0AB /* FrankMac-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 30AC65A3165C39FF00DEB0AB /* FrankMac-Prefix.pch */; };
+		30AC65A7165C3A4D00DEB0AB /* OSXKeyboardCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 30AC65A5165C3A4D00DEB0AB /* OSXKeyboardCommand.h */; };
+		30AC65A8165C3A4D00DEB0AB /* OSXKeyboardCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 30AC65A6165C3A4D00DEB0AB /* OSXKeyboardCommand.m */; };
 		4C1DD76C12BADFE100E10B8C /* OrientationCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1DD76812BADFE100E10B8C /* OrientationCommand.m */; };
 		4C1DD76D12BADFE100E10B8C /* OrientationCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C1DD76912BADFE100E10B8C /* OrientationCommand.h */; };
 		4C1DD76E12BADFE100E10B8C /* AppCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1DD76A12BADFE100E10B8C /* AppCommand.m */; };
@@ -62,8 +111,8 @@
 		C18A5F17160D528C00DC25F6 /* PublicAutomation.xcodeproj in Resources */ = {isa = PBXBuildFile; fileRef = C18A5F16160D528C00DC25F6 /* PublicAutomation.xcodeproj */; };
 		C18A5F1E160D547A00DC25F6 /* UIView+PublicAutomation.m in Sources */ = {isa = PBXBuildFile; fileRef = C18A5F1D160D547A00DC25F6 /* UIView+PublicAutomation.m */; };
 		C18A5F21160D572300DC25F6 /* libPublicAutomation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C18A5F20160D572300DC25F6 /* libPublicAutomation.a */; };
-		C9605E641606BF2900170F88 /* KeyboardCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = C9605E621606BF2900170F88 /* KeyboardCommand.h */; };
-		C9605E651606BF2900170F88 /* KeyboardCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = C9605E631606BF2900170F88 /* KeyboardCommand.m */; };
+		C9605E641606BF2900170F88 /* IOSKeyboardCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = C9605E621606BF2900170F88 /* IOSKeyboardCommand.h */; };
+		C9605E651606BF2900170F88 /* IOSKeyboardCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = C9605E631606BF2900170F88 /* IOSKeyboardCommand.m */; };
 		C9605E671606BF8E00170F88 /* UIView+MapKitWorkaround.m in Sources */ = {isa = PBXBuildFile; fileRef = C9605E661606BF8E00170F88 /* UIView+MapKitWorkaround.m */; };
 		C9605E6A1606BFAE00170F88 /* UIImage+Frank.h in Headers */ = {isa = PBXBuildFile; fileRef = C9605E681606BFAE00170F88 /* UIImage+Frank.h */; };
 		C9605E6B1606BFAE00170F88 /* UIImage+Frank.m in Sources */ = {isa = PBXBuildFile; fileRef = C9605E691606BFAE00170F88 /* UIImage+Frank.m */; };
@@ -99,6 +148,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		30228E1D1642146F00B1F9E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 305CA782164205F800C4ACE5;
+			remoteInfo = CocoaHTTPServerMac;
+		};
 		ABA9E46715C81C8D00112290 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
@@ -116,6 +172,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		305CA79E164205F800C4ACE5 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ABA9E43F15C81C2600112290 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -132,6 +197,21 @@
 		0071264514F8956700E738ED /* ViewJSONSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewJSONSerializer.m; sourceTree = "<group>"; };
 		00E864BA161D6E6400E01209 /* UIScrollView+FrankScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+FrankScrolling.m"; sourceTree = "<group>"; };
 		00E864C4161D708B00E01209 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		30228E2916421C4400B1F9E7 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		302B803F1646DE02000F9861 /* NSImage+Frank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+Frank.h"; sourceTree = "<group>"; };
+		302B80401646DE02000F9861 /* NSImage+Frank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+Frank.m"; sourceTree = "<group>"; };
+		30412D2E165333E300719CD2 /* NSView+FrankImageCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+FrankImageCapture.h"; sourceTree = "<group>"; };
+		30412D2F165333E300719CD2 /* NSView+FrankImageCapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+FrankImageCapture.m"; sourceTree = "<group>"; };
+		305CA7721642059400C4ACE5 /* libFrankMac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFrankMac.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		305CA7731642059400C4ACE5 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		305CA7761642059400C4ACE5 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		305CA7771642059400C4ACE5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		305CA7781642059400C4ACE5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		305CA7A2164205F800C4ACE5 /* libCocoaHTTPServerMac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCocoaHTTPServerMac.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		305CA7A31642063E00C4ACE5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		30AC65A3165C39FF00DEB0AB /* FrankMac-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FrankMac-Prefix.pch"; sourceTree = "<group>"; };
+		30AC65A5165C3A4D00DEB0AB /* OSXKeyboardCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSXKeyboardCommand.h; sourceTree = "<group>"; };
+		30AC65A6165C3A4D00DEB0AB /* OSXKeyboardCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSXKeyboardCommand.m; sourceTree = "<group>"; };
 		4C1DD76812BADFE100E10B8C /* OrientationCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrientationCommand.m; sourceTree = "<group>"; };
 		4C1DD76912BADFE100E10B8C /* OrientationCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrientationCommand.h; sourceTree = "<group>"; };
 		4C1DD76A12BADFE100E10B8C /* AppCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppCommand.m; sourceTree = "<group>"; };
@@ -204,8 +284,8 @@
 		C18A5F16160D528C00DC25F6 /* PublicAutomation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PublicAutomation.xcodeproj; path = PublicAutomation/PublicAutomation.xcodeproj; sourceTree = "<group>"; };
 		C18A5F1D160D547A00DC25F6 /* UIView+PublicAutomation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PublicAutomation.m"; sourceTree = "<group>"; };
 		C18A5F20160D572300DC25F6 /* libPublicAutomation.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPublicAutomation.a; path = "lib/PublicAutomation/build/Release-iphoneos/libPublicAutomation.a"; sourceTree = "<group>"; };
-		C9605E621606BF2900170F88 /* KeyboardCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardCommand.h; sourceTree = "<group>"; };
-		C9605E631606BF2900170F88 /* KeyboardCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardCommand.m; sourceTree = "<group>"; };
+		C9605E621606BF2900170F88 /* IOSKeyboardCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSKeyboardCommand.h; sourceTree = "<group>"; };
+		C9605E631606BF2900170F88 /* IOSKeyboardCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IOSKeyboardCommand.m; sourceTree = "<group>"; };
 		C9605E661606BF8E00170F88 /* UIView+MapKitWorkaround.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MapKitWorkaround.m"; sourceTree = "<group>"; };
 		C9605E681606BFAE00170F88 /* UIImage+Frank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Frank.h"; sourceTree = "<group>"; };
 		C9605E691606BFAE00170F88 /* UIImage+Frank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Frank.m"; sourceTree = "<group>"; };
@@ -242,6 +322,22 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		305CA76F1642059400C4ACE5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30228E2A16421C4400B1F9E7 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		305CA79C164205F800C4ACE5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				305CA7A41642063E00C4ACE5 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ABA9E43E15C81C2600112290 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -269,6 +365,8 @@
 			children = (
 				D2AAC07E0554694100DB518D /* libFrank.a */,
 				ABA9E44115C81C2600112290 /* libCocoaHTTPServer.a */,
+				305CA7721642059400C4ACE5 /* libFrankMac.a */,
+				305CA7A2164205F800C4ACE5 /* libCocoaHTTPServerMac.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -276,6 +374,8 @@
 		0867D691FE84028FC02AAC07 /* Frank */ = {
 			isa = PBXGroup;
 			children = (
+				30228E2916421C4400B1F9E7 /* Cocoa.framework */,
+				305CA7A31642063E00C4ACE5 /* Foundation.framework */,
 				C18A5F20160D572300DC25F6 /* libPublicAutomation.a */,
 				00E864C4161D708B00E01209 /* MapKit.framework */,
 				08FB77AEFE84172EC02AAC07 /* src */,
@@ -292,6 +392,8 @@
 				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
 				D629937F11AB2DF300CE0FB0 /* UIKit.framework */,
 				ABA9E45015C81C2600112290 /* SenTestingKit.framework */,
+				305CA7731642059400C4ACE5 /* Cocoa.framework */,
+				305CA7751642059400C4ACE5 /* Other Frameworks */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -306,6 +408,16 @@
 				C9605E711606C52200170F88 /* Selectors */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		305CA7751642059400C4ACE5 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				305CA7761642059400C4ACE5 /* AppKit.framework */,
+				305CA7771642059400C4ACE5 /* CoreData.framework */,
+				305CA7781642059400C4ACE5 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
 		AB79477615C4412300052B74 /* Categories */ = {
@@ -431,14 +543,16 @@
 				D6FA01B714283C4F00576AEE /* EnginesCommand.m */,
 				A91F3AA415F6E456003F434F /* ExitCommand.h */,
 				A91F3AA515F6E456003F434F /* ExitCommand.m */,
-				C9605E621606BF2900170F88 /* KeyboardCommand.h */,
-				C9605E631606BF2900170F88 /* KeyboardCommand.m */,
+				C9605E621606BF2900170F88 /* IOSKeyboardCommand.h */,
+				C9605E631606BF2900170F88 /* IOSKeyboardCommand.m */,
+				9B3E52AD163FB98300EB24C2 /* LocationCommand.h */,
+				9B3E52AE163FB98300EB24C2 /* LocationCommand.m */,
 				D6D05CA711C883AA0081C5A5 /* MapOperationCommand.h */,
 				D6D05CA811C883AA0081C5A5 /* MapOperationCommand.m */,
 				4C1DD76912BADFE100E10B8C /* OrientationCommand.h */,
 				4C1DD76812BADFE100E10B8C /* OrientationCommand.m */,
-				9B3E52AD163FB98300EB24C2 /* LocationCommand.h */,
-				9B3E52AE163FB98300EB24C2 /* LocationCommand.m */,
+				30AC65A5165C3A4D00DEB0AB /* OSXKeyboardCommand.h */,
+				30AC65A6165C3A4D00DEB0AB /* OSXKeyboardCommand.m */,
 			);
 			name = Commands;
 			sourceTree = "<group>";
@@ -479,6 +593,7 @@
 			isa = PBXGroup;
 			children = (
 				AA747D9E0F9514B9006C5449 /* Frank_Prefix.pch */,
+				30AC65A3165C39FF00DEB0AB /* FrankMac-Prefix.pch */,
 				D67F2ABD13F5F55A00A0BFF1 /* FrankLoader.h */,
 				D67F2ABE13F5F55A00A0BFF1 /* FrankLoader.m */,
 				D6D05CA511C883AA0081C5A5 /* FrankServer.h */,
@@ -499,6 +614,10 @@
 				C18A5F1D160D547A00DC25F6 /* UIView+PublicAutomation.m */,
 				00E864BA161D6E6400E01209 /* UIScrollView+FrankScrolling.m */,
 				C177A4CE163234B60081DF77 /* JSON.h */,
+				302B803F1646DE02000F9861 /* NSImage+Frank.h */,
+				302B80401646DE02000F9861 /* NSImage+Frank.m */,
+				30412D2E165333E300719CD2 /* NSView+FrankImageCapture.h */,
+				30412D2F165333E300719CD2 /* NSView+FrankImageCapture.m */,
 			);
 			name = Additions;
 			sourceTree = "<group>";
@@ -540,6 +659,17 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		305CA7701642059400C4ACE5 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				302B80411646DE02000F9861 /* NSImage+Frank.h in Headers */,
+				30412D30165333E300719CD2 /* NSView+FrankImageCapture.h in Headers */,
+				30AC65A4165C39FF00DEB0AB /* FrankMac-Prefix.pch in Headers */,
+				30AC65A7165C3A4D00DEB0AB /* OSXKeyboardCommand.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2AAC07A0554694100DB518D /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -570,7 +700,7 @@
 				AB7947BB15C4412300052B74 /* WebSocket.h in Headers */,
 				D6FA01B714283C4F00576AF1 /* EnginesCommand.h in Headers */,
 				A91F3AA615F6E456003F434F /* ExitCommand.h in Headers */,
-				C9605E641606BF2900170F88 /* KeyboardCommand.h in Headers */,
+				C9605E641606BF2900170F88 /* IOSKeyboardCommand.h in Headers */,
 				C9605E6A1606BFAE00170F88 /* UIImage+Frank.h in Headers */,
 				C18A5EF0160D4AB400DC25F6 /* ImageCaptureRoute.h in Headers */,
 				C18A5EF5160D4AD300DC25F6 /* UIView+ImageCapture.h in Headers */,
@@ -582,6 +712,41 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		305CA7711642059400C4ACE5 /* FrankMac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 305CA77F1642059400C4ACE5 /* Build configuration list for PBXNativeTarget "FrankMac" */;
+			buildPhases = (
+				305CA76E1642059400C4ACE5 /* Sources */,
+				305CA76F1642059400C4ACE5 /* Frameworks */,
+				305CA7701642059400C4ACE5 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				30228E1E1642146F00B1F9E7 /* PBXTargetDependency */,
+			);
+			name = FrankMac;
+			productName = FrankMac;
+			productReference = 305CA7721642059400C4ACE5 /* libFrankMac.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		305CA782164205F800C4ACE5 /* CocoaHTTPServerMac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 305CA79F164205F800C4ACE5 /* Build configuration list for PBXNativeTarget "CocoaHTTPServerMac" */;
+			buildPhases = (
+				305CA783164205F800C4ACE5 /* Sources */,
+				305CA79C164205F800C4ACE5 /* Frameworks */,
+				305CA79E164205F800C4ACE5 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CocoaHTTPServerMac;
+			productName = CocoaHTTPServer;
+			productReference = 305CA7A2164205F800C4ACE5 /* libCocoaHTTPServerMac.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		ABA9E44015C81C2600112290 /* CocoaHTTPServer */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = ABA9E46415C81C2600112290 /* Build configuration list for PBXNativeTarget "CocoaHTTPServer" */;
@@ -624,7 +789,7 @@
 		0867D690FE84028FC02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0450;
 			};
 			buildConfigurationList = 1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "Frank" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -650,6 +815,8 @@
 			targets = (
 				D2AAC07D0554694100DB518D /* Frank */,
 				ABA9E44015C81C2600112290 /* CocoaHTTPServer */,
+				305CA7711642059400C4ACE5 /* FrankMac */,
+				305CA782164205F800C4ACE5 /* CocoaHTTPServerMac */,
 			);
 		};
 /* End PBXProject section */
@@ -676,6 +843,63 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		305CA76E1642059400C4ACE5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				302B80421646DE02000F9861 /* NSImage+Frank.m in Sources */,
+				30412D31165333E300719CD2 /* NSView+FrankImageCapture.m in Sources */,
+				306249F51644E67400E8C20A /* FrankLoader.m in Sources */,
+				306249F71644E67400E8C20A /* FrankServer.m in Sources */,
+				30228E201642161200B1F9E7 /* AccessibilityCheckCommand.m in Sources */,
+				30228E221642161200B1F9E7 /* AppCommand.m in Sources */,
+				30228E241642161200B1F9E7 /* DumpCommand.m in Sources */,
+				30228E261642161200B1F9E7 /* EnginesCommand.m in Sources */,
+				30228E281642161200B1F9E7 /* ExitCommand.m in Sources */,
+				30AC65A8165C3A4D00DEB0AB /* OSXKeyboardCommand.m in Sources */,
+				306249F91644E68C00E8C20A /* FrankCommandRoute.m in Sources */,
+				306249FB1644E68C00E8C20A /* ImageCaptureRoute.m in Sources */,
+				306249FD1644E68C00E8C20A /* RequestRouter.m in Sources */,
+				306249FF1644E68C00E8C20A /* RoutingHTTPConnection.m in Sources */,
+				30624A011644E68C00E8C20A /* StaticResourcesRoute.m in Sources */,
+				30726499165812FB00815A1A /* FranklyProtocolHelper.m in Sources */,
+				3072649B165812FB00815A1A /* Operation.m in Sources */,
+				3072649D165812FB00815A1A /* SelectorEngineRegistry.m in Sources */,
+				3072649F165812FB00815A1A /* ViewJSONSerializer.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		305CA783164205F800C4ACE5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				305CA784164205F800C4ACE5 /* GCDAsyncSocket.m in Sources */,
+				305CA785164205F800C4ACE5 /* HTTPAuthenticationRequest.m in Sources */,
+				305CA786164205F800C4ACE5 /* HTTPConnection.m in Sources */,
+				305CA787164205F800C4ACE5 /* HTTPMessage.m in Sources */,
+				305CA788164205F800C4ACE5 /* HTTPServer.m in Sources */,
+				305CA789164205F800C4ACE5 /* WebSocket.m in Sources */,
+				305CA78A164205F800C4ACE5 /* DDData.m in Sources */,
+				305CA78B164205F800C4ACE5 /* DDNumber.m in Sources */,
+				305CA78C164205F800C4ACE5 /* DDRange.m in Sources */,
+				305CA78D164205F800C4ACE5 /* MultipartFormDataParser.m in Sources */,
+				305CA78E164205F800C4ACE5 /* MultipartMessageHeader.m in Sources */,
+				305CA78F164205F800C4ACE5 /* MultipartMessageHeaderField.m in Sources */,
+				305CA790164205F800C4ACE5 /* HTTPAsyncFileResponse.m in Sources */,
+				305CA791164205F800C4ACE5 /* HTTPDataResponse.m in Sources */,
+				305CA792164205F800C4ACE5 /* HTTPDynamicFileResponse.m in Sources */,
+				305CA793164205F800C4ACE5 /* HTTPFileResponse.m in Sources */,
+				305CA794164205F800C4ACE5 /* HTTPRedirectResponse.m in Sources */,
+				305CA795164205F800C4ACE5 /* DDAbstractDatabaseLogger.m in Sources */,
+				305CA796164205F800C4ACE5 /* DDASLLogger.m in Sources */,
+				305CA797164205F800C4ACE5 /* DDFileLogger.m in Sources */,
+				305CA798164205F800C4ACE5 /* DDLog.m in Sources */,
+				305CA799164205F800C4ACE5 /* DDTTYLogger.m in Sources */,
+				305CA79A164205F800C4ACE5 /* ContextFilterLogFormatter.m in Sources */,
+				305CA79B164205F800C4ACE5 /* DispatchQueueLogFormatter.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ABA9E43D15C81C2600112290 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -729,7 +953,7 @@
 				D6A1D28015A8D05E00EC056C /* UIView+Frank.m in Sources */,
 				D6FA01B714283C4F00576AEF /* EnginesCommand.m in Sources */,
 				A91F3AA715F6E456003F434F /* ExitCommand.m in Sources */,
-				C9605E651606BF2900170F88 /* KeyboardCommand.m in Sources */,
+				C9605E651606BF2900170F88 /* IOSKeyboardCommand.m in Sources */,
 				C9605E671606BF8E00170F88 /* UIView+MapKitWorkaround.m in Sources */,
 				C9605E6B1606BFAE00170F88 /* UIImage+Frank.m in Sources */,
 				C18A5EF1160D4AB400DC25F6 /* ImageCaptureRoute.m in Sources */,
@@ -744,6 +968,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		30228E1E1642146F00B1F9E7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 305CA782164205F800C4ACE5 /* CocoaHTTPServerMac */;
+			targetProxy = 30228E1D1642146F00B1F9E7 /* PBXContainerItemProxy */;
+		};
 		ABA9E46815C81C8D00112290 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = ABA9E44015C81C2600112290 /* CocoaHTTPServer */;
@@ -833,6 +1062,123 @@
 			};
 			name = Release;
 		};
+		305CA7801642059400C4ACE5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "src/FrankMac-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		305CA7811642059400C4ACE5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "src/FrankMac-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		305CA7A0164205F800C4ACE5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/CocoaHTTPServer.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = CocoaHTTPServerMac;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = x86_64;
+			};
+			name = Debug;
+		};
+		305CA7A1164205F800C4ACE5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DSTROOT = /tmp/CocoaHTTPServer.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = CocoaHTTPServerMac;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = x86_64;
+			};
+			name = Release;
+		};
 		ABA9E46015C81C2600112290 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -895,6 +1241,24 @@
 			buildConfigurations = (
 				1DEB922308733DC00010E9CD /* Debug */,
 				1DEB922408733DC00010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		305CA77F1642059400C4ACE5 /* Build configuration list for PBXNativeTarget "FrankMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				305CA7801642059400C4ACE5 /* Debug */,
+				305CA7811642059400C4ACE5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		305CA79F164205F800C4ACE5 /* Build configuration list for PBXNativeTarget "CocoaHTTPServerMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				305CA7A0164205F800C4ACE5 /* Debug */,
+				305CA7A1164205F800C4ACE5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

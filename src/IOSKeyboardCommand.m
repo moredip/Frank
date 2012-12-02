@@ -5,13 +5,13 @@
 //
 
 
-#import "KeyboardCommand.h"
+#import "IOSKeyboardCommand.h"
 #import "JSON.h"
-
 #import <PublicAutomation/UIAutomationBridge.h>
+
 #import "FranklyProtocolHelper.h"
 
-@implementation KeyboardCommand {
+@implementation IOSKeyboardCommand {
 
 }
 
@@ -30,7 +30,6 @@
     }
     
     [UIAutomationBridge typeIntoKeyboard:textToType];
-
 
 	return [FranklyProtocolHelper generateSuccessResponseWithoutResults];
 }
