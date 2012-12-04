@@ -9,5 +9,5 @@
 #import "FrankCommandRoute.h"
 
 
-@interface KeyboardCommand : NSObject<FrankCommand>
+@interface IOSKeyboardCommand : NSObject<FrankCommand>
 @end

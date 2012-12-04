@@ -11,7 +11,11 @@
 #import "FrankCommandRoute.h"
 #import "RoutingHTTPConnection.h"
 
+#if TARGET_OS_IPHONE
 #import "UIImage+Frank.h"
+#else
+#import "NSImage+Frank.h"
+#endif
 
 extern BOOL frankLogEnabled;
 
