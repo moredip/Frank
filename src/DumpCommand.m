@@ -20,7 +20,6 @@
 #endif
 
 @interface DumpCommand()
-@property (nonatomic, readwrite, retain) NSMutableDictionary *classMapping;
 
 - (NSDictionary *) serializeView: (FrankSerializeViewType *) view;
 - (id) valueForAttribute: (NSString *) attribute onObject: (NSObject *) object;
@@ -31,20 +30,17 @@
 
 - (id) init {
     self = [super init];
-    if(self) {        
-        // eye ball this guy to about 15 classes.
-        self.classMapping = [NSMutableDictionary dictionaryWithCapacity: 15];
+    if(self) {
+        classMapping = [[NSMutableDictionary alloc] init];
         [self loadClassMapping];
     }
     return self;
 }
 
 - (void) dealloc {
-    self.classMapping = nil;
+    [classMapping release];
     [super dealloc];
 }
-
-@synthesize classMapping;
 
 - (void) loadClassMapping {
     NSString *staticResourceBundlePath = [[NSBundle mainBundle] pathForResource: @"frank_static_resources.bundle" ofType: nil];
@@ -96,7 +92,7 @@
 }
 
 - (void)addAttributeMappings:(NSArray *)attributes forClass:(Class)clazz{
-    NSArray *existingAttributes = [classMapping objectForKey:clazz] ;
+    NSArray *existingAttributes = [classMapping objectForKey:NSStringFromClass(clazz)];
     if (existingAttributes) {
         // This class already has a mapping.  Add new attributes to the
         // end of the list.
@@ -134,13 +130,14 @@
     [serializedView setObject:[NSNumber numberWithInt:(int)view] forKey:@"uid"];
     
     // iterate on all mapping definition classes looking for a (super) class of the current object
-    for(Class candidate in classMapping.keyEnumerator) {
+    for(NSString *key in classMapping.keyEnumerator) {
+        Class candidate = NSClassFromString(key);
         if(![view isKindOfClass:candidate]) {
             continue;
         }
         
         // now, serialize all defined attributes on the view, if possible
-        NSArray *attributes = [classMapping objectForKey:candidate];
+        NSArray *attributes = [classMapping objectForKey:key];
         for(NSString *attribute in attributes) {
             // fetch the value for that attribute and add it to the dictionary.
             // note: valueForAttribute is NOT nil safe (i.e. returns nil if value couldn't be extracted
