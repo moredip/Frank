@@ -14,14 +14,19 @@
 #import "ImageCaptureRoute.h"
 #import "FrankCommandRoute.h"
 #import "DumpCommand.h"
-#import "MapOperationCommand.h"
-#import "OrientationCommand.h"
-#import "LocationCommand.h"
 #import "ExitCommand.h"
 #import "AppCommand.h"
 #import "AccessibilityCheckCommand.h"
-#import "KeyboardCommand.h"
 #import "EnginesCommand.h"
+
+#if TARGET_OS_IPHONE
+#import "MapOperationCommand.h"
+#import "OrientationCommand.h"
+#import "LocationCommand.h"
+#import "IOSKeyboardCommand.h"
+#else
+#import "OSXKeyboardCommand.h"
+#endif
 
 static NSUInteger __defaultPort = FRANK_SERVER_PORT;
 @implementation FrankServer
@@ -43,14 +48,20 @@ static NSUInteger __defaultPort = FRANK_SERVER_PORT;
 		
 		FrankCommandRoute *frankCommandRoute = [FrankCommandRoute singleton];
 		[frankCommandRoute registerCommand:[[[DumpCommand alloc]init]autorelease] withName:@"dump"];
-		[frankCommandRoute registerCommand:[[[MapOperationCommand alloc]init]autorelease] withName:@"map"];
-		[frankCommandRoute registerCommand:[[[OrientationCommand alloc]init]autorelease] withName:@"orientation"];
-        [frankCommandRoute registerCommand:[[[LocationCommand alloc]init]autorelease] withName:@"location"];
 		[frankCommandRoute registerCommand:[[[AccessibilityCheckCommand alloc] init]autorelease] withName:@"accessibility_check"];
 		[frankCommandRoute registerCommand:[[[AppCommand alloc] init]autorelease] withName:@"app_exec"];
-        [frankCommandRoute registerCommand:[[[KeyboardCommand alloc] init]autorelease] withName:@"type_into_keyboard"];
         [frankCommandRoute registerCommand:[[[EnginesCommand alloc] init]autorelease] withName:@"engines"];
         [frankCommandRoute registerCommand:[[[ExitCommand alloc] init] autorelease] withName:@"exit"];
+        
+#if TARGET_OS_IPHONE
+        [frankCommandRoute registerCommand:[[[MapOperationCommand alloc]init]autorelease] withName:@"map"];
+        [frankCommandRoute registerCommand:[[[OrientationCommand alloc]init]autorelease] withName:@"orientation"];
+        [frankCommandRoute registerCommand:[[[LocationCommand alloc]init]autorelease] withName:@"location"];
+        [frankCommandRoute registerCommand:[[[IOSKeyboardCommand alloc] init]autorelease] withName:@"type_into_keyboard"];
+#else
+        [frankCommandRoute registerCommand:[[[OSXKeyboardCommand alloc] init]autorelease] withName:@"type_into_keyboard"];
+#endif
+        
 		[[RequestRouter singleton] registerRoute:frankCommandRoute];
 		
 		StaticResourcesRoute *staticRoute = [[[StaticResourcesRoute alloc] initWithStaticResourceSubDir:bundleName] autorelease];

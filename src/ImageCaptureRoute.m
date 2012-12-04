@@ -12,8 +12,13 @@
 #import "ImageCaptureRoute.h"
 #import "RoutingHTTPConnection.h"
 
+#if TARGET_OS_IPHONE
 #import "UIImage+Frank.h"
 #import "UIView+ImageCapture.h"
+#else
+#import "NSImage+Frank.h"
+#import "NSView+FrankImageCapture.h"
+#endif
 #import "FranklyProtocolHelper.h"
 
 @implementation ImageCaptureRoute
@@ -32,6 +37,7 @@
     return [[self snapshotDir] stringByAppendingPathComponent:filename];
 }
 
+#if TARGET_OS_IPHONE
 - (void) snapshotView:(UIView *)view{
     UIImage *image = [view captureImage];
     NSData *imgData = UIImagePNGRepresentation(image);
@@ -39,10 +45,19 @@
     NSString *viewUID = [NSString stringWithFormat:@"%i",(int)view];
     [imgData writeToFile:[self pathForSnapshotOfViewWithUID:viewUID] atomically:NO];
 }
+#else
+- (void) snapshotView:(NSView *)view{
+    NSImage *image = [view captureImage];
+    NSData *imgData = [[[image representations] objectAtIndex:0] representationUsingType:NSPNGFileType properties:nil];
+    
+    NSString *viewUID = [NSString stringWithFormat:@"%lu",(uintptr_t)view];
+    [imgData writeToFile:[self pathForSnapshotOfViewWithUID:viewUID] atomically:NO];
+}
+#endif
 
-- (void) snapshotViewAndSubviews:(UIView *)view{
+- (void) snapshotViewAndSubviews:(id)view{
     [self snapshotView:view];
-    for (UIView *subview in [view subviews]){
+    for (id subview in [view subviews]){
         [self snapshotViewAndSubviews:subview];
     }    
 }
@@ -56,9 +71,17 @@
     CFAbsoluteTime before = CFAbsoluteTimeGetCurrent();
     
     [self prepSnapshotDir];
+    
+#if TARGET_OS_IPHONE
     for (UIWindow *window in [[UIApplication sharedApplication] windows]) {
         [self snapshotViewAndSubviews:window];
     }
+#else
+    for (NSWindow *window in [[NSApplication sharedApplication] windows]) {
+        [self snapshotViewAndSubviews: [window contentView]];
+    }
+#endif
+    
     CFAbsoluteTime delta = CFAbsoluteTimeGetCurrent() - before;
     NSLog( @"snapshotted views to %@ in %f seconds", [self snapshotDir], delta );
 }
@@ -87,7 +110,12 @@
     }
 
     BOOL allWindows = [path count] > 1 && [[path objectAtIndex:1] isEqualToString:@"allwindows"];
+    
+#if TARGET_OS_IPHONE
     UIImage *screenshot = [UIImage imageFromApplication:allWindows];
+#else
+    NSImage *screenshot = [NSImage imageFromApplication:allWindows];
+#endif
     
     if ([path count] == 4)
     {
@@ -111,7 +139,11 @@
             NSLog(@"Unknown Operation");
     }
     
+#if TARGET_OS_IPHONE
     NSData *response = UIImagePNGRepresentation(screenshot);
+#else
+    NSData *response = [[[screenshot representations] objectAtIndex:0] representationUsingType:NSPNGFileType properties:nil];
+#endif
     
     return [[[HTTPDataResponse alloc] initWithData:response] autorelease];
 }

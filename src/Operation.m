@@ -55,8 +55,13 @@
 	NSMethodSignature *signature = [target methodSignatureForSelector:_selector];
 	NSUInteger requiredNumberOfArguments = signature.numberOfArguments - 2; // Indices 0 and 1 indicate the hidden arguments self and _cmd, respectively
 	if( requiredNumberOfArguments != [_arguments count] )
-		[NSException raise:@"wrong number of arguments" 
+#if TARGET_OS_IPHONE
+		[NSException raise:@"wrong number of arguments"
 					format:@"%@ takes %i arguments, but %i were supplied", NSStringFromSelector(_selector), requiredNumberOfArguments, [_arguments count] ];
+#else
+        [NSException raise:@"wrong number of arguments"
+                    format:@"%@ takes %lu arguments, but %lu were supplied", NSStringFromSelector(_selector), requiredNumberOfArguments, [_arguments count] ];
+#endif
 	
 	NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
 	[invocation setSelector:_selector];

@@ -22,7 +22,11 @@
 	NSDictionary *operationDict = [requestCommand objectForKey:@"operation"];
 	Operation *operation = [[[Operation alloc] initFromJsonRepresentation:operationDict] autorelease];
 	
-	id <UIApplicationDelegate> appDelegate = [[UIApplication sharedApplication] delegate];
+#if TARGET_OS_IPHONE
+    id <UIApplicationDelegate> appDelegate = [[UIApplication sharedApplication] delegate];
+#else
+    id <NSApplicationDelegate> appDelegate = [[NSApplication sharedApplication] delegate];
+#endif
 	
 	if( ![operation appliesToObject:appDelegate] )
 	{
