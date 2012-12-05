@@ -23,7 +23,7 @@ Scenario: delete with swipe
  And I should see "Moe"
 
 Scenario: delete with edit mode
- When I touch "Edit"
+ When I put the table in edit mode
  And I touch the delete edit control for the table view cell "Moe"
  Then I should see the confirm deletion button
 
@@ -44,7 +44,7 @@ Scenario: delete with swipe ends edit mode
  Then I should not see a "Done" button
 
 Scenario: deleting in edit mode does not end edit mode
- When I touch "Edit"
+ When I put the table in edit mode
  Then I should see a "Done" button
  And I should not see an "Edit" button
 

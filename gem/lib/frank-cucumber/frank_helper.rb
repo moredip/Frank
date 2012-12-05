@@ -103,12 +103,20 @@ module FrankHelper
     element_exists( selector ).should be_true
   end
 
+  def check_element_exists_and_is_visible( selector )
+    element_is_not_hidden( selector ).should be_true
+  end
+
   # Assert whether there are no views in the current view heirarchy which match the specified selector.
   # @param [String] selector a view selector.
   # @raise an rspec exception if the assertion fails
   # @see #element_exists, #check_element_exists
   def check_element_does_not_exist( selector )
     element_exists( selector ).should be_false
+  end
+
+  def check_element_does_not_exist_or_is_not_visible( selector )
+    element_is_not_hidden( selector ).should be_false
   end
 
   # Indicate whether there are any views in the current view heirarchy which contain the specified accessibility label.
@@ -201,8 +209,8 @@ module FrankHelper
   #
   # a better name for this method would be element_exists_and_is_not_hidden
   def element_is_not_hidden(selector)
-     matches = frankly_map( selector, 'isHidden' )
-     matches.delete(true)
+     matches = frankly_map( selector, 'FEX_isVisible' )
+     matches.delete(false)
      !matches.empty?
   end
 
