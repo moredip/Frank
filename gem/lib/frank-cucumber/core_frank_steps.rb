@@ -48,7 +48,7 @@ end
 
 Then /^I should not see "([^\"]*)"$/ do |expected_mark|
   quote = get_selector_quote(expected_mark)
-  check_element_does_not_exist("view marked:#{quote}#{expected_mark}#{quote}")
+  check_element_does_not_exist_or_is_not_visible("view marked:#{quote}#{expected_mark}#{quote}")
 end
 
 Then /I should see the following:/ do |table|

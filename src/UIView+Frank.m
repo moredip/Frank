@@ -35,4 +35,15 @@ MAKE_CATEGORIES_LOADABLE(UIView_Frank)
     [originalBackgroundColor release];
 }
 
+- (BOOL) FEX_isVisible{
+    if( [self isHidden] )
+        return false;
+    
+    if( [self superview] ){
+        return [[self superview] FEX_isVisible];
+    }else{
+        return true;
+    }
+}
+
 @end
