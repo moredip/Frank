@@ -19,6 +19,7 @@
 		30228E2A16421C4400B1F9E7 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30228E2916421C4400B1F9E7 /* Cocoa.framework */; };
 		302B80411646DE02000F9861 /* NSImage+Frank.h in Headers */ = {isa = PBXBuildFile; fileRef = 302B803F1646DE02000F9861 /* NSImage+Frank.h */; };
 		302B80421646DE02000F9861 /* NSImage+Frank.m in Sources */ = {isa = PBXBuildFile; fileRef = 302B80401646DE02000F9861 /* NSImage+Frank.m */; };
+		303A751316702D3D00B93673 /* NSObject+FrankAutomation.m in Sources */ = {isa = PBXBuildFile; fileRef = 303A751116702D3D00B93673 /* NSObject+FrankAutomation.m */; };
 		30412D30165333E300719CD2 /* NSView+FrankImageCapture.h in Headers */ = {isa = PBXBuildFile; fileRef = 30412D2E165333E300719CD2 /* NSView+FrankImageCapture.h */; };
 		30412D31165333E300719CD2 /* NSView+FrankImageCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 30412D2F165333E300719CD2 /* NSView+FrankImageCapture.m */; };
 		305CA784164205F800C4ACE5 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7947C115C4418700052B74 /* GCDAsyncSocket.m */; };
@@ -200,6 +201,7 @@
 		30228E2916421C4400B1F9E7 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		302B803F1646DE02000F9861 /* NSImage+Frank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+Frank.h"; sourceTree = "<group>"; };
 		302B80401646DE02000F9861 /* NSImage+Frank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+Frank.m"; sourceTree = "<group>"; };
+		303A751116702D3D00B93673 /* NSObject+FrankAutomation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+FrankAutomation.m"; sourceTree = "<group>"; };
 		30412D2E165333E300719CD2 /* NSView+FrankImageCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+FrankImageCapture.h"; sourceTree = "<group>"; };
 		30412D2F165333E300719CD2 /* NSView+FrankImageCapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+FrankImageCapture.m"; sourceTree = "<group>"; };
 		305CA7721642059400C4ACE5 /* libFrankMac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFrankMac.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -616,6 +618,7 @@
 				C177A4CE163234B60081DF77 /* JSON.h */,
 				302B803F1646DE02000F9861 /* NSImage+Frank.h */,
 				302B80401646DE02000F9861 /* NSImage+Frank.m */,
+				303A751116702D3D00B93673 /* NSObject+FrankAutomation.m */,
 				30412D2E165333E300719CD2 /* NSView+FrankImageCapture.h */,
 				30412D2F165333E300719CD2 /* NSView+FrankImageCapture.m */,
 			);
@@ -848,6 +851,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				302B80421646DE02000F9861 /* NSImage+Frank.m in Sources */,
+				303A751316702D3D00B93673 /* NSObject+FrankAutomation.m in Sources */,
 				30412D31165333E300719CD2 /* NSView+FrankImageCapture.m in Sources */,
 				306249F51644E67400E8C20A /* FrankLoader.m in Sources */,
 				306249F71644E67400E8C20A /* FrankServer.m in Sources */,
