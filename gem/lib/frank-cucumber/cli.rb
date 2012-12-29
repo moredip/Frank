@@ -75,7 +75,7 @@ module Frank
         build_steps = 'clean ' + build_steps
       end
 
-      extra_opts = XCODEBUILD_OPTIONS.map{ |o| "-#{o} #{options[o]}" if options[o] }.compact.join(' ')
+      extra_opts = XCODEBUILD_OPTIONS.map{ |o| "-#{o} \"#{options[o]}\"" if options[o] }.compact.join(' ')
       extra_opts += " -arch #{options['arch']}"
 
       run %Q|xcodebuild -xcconfig Frank/frankify.xcconfig #{build_steps} #{extra_opts} -configuration Debug -sdk iphonesimulator DEPLOYMENT_LOCATION=YES DSTROOT="#{build_output_dir}" FRANK_LIBRARY_SEARCH_PATHS="\\"#{frank_lib_directory}\\""|
