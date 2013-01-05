@@ -13,6 +13,7 @@ class Frankifier
   def initialize( root_dir, options = {} )
     @root = Pathname.new( root_dir )
     @target_build_configuration = options[:build_config]
+    @configuration = options[:frank_config]
   end
 
   def frankify!
@@ -33,18 +34,26 @@ class Frankifier
 
   private
   def decide_on_project
-    projects = Pathname.glob( @root+'*.xcodeproj' )
-    xcodeproj = case projects.size
-    when 0
-      raise "There are no .xcodeproj files in this directory. Please move to your root project directory and try again."
-    when 1
-      projects.first
+    if @configuration && @configuration.xcode.project
+      if File.exists? @configuration.xcode.project
+        xcodeproj = Pathname.new(@configuration.xcode.project)
+      else
+        raise "The specified xcodeproj at '#{@configuration.xcode.project}' does not appear to exist."
+      end
     else
-      choice = ask_menu(
-        "I found more than one .xcodeproj. Which is the main app project that you wish to Frankify?", 
-        projects.map(&:basename)
-      )
-      projects[choice]
+      projects = Pathname.glob( @root+'*.xcodeproj' )
+      xcodeproj = case projects.size
+      when 0
+        raise "There are no .xcodeproj files in this directory. Please move to your root project directory and try again."
+      when 1
+        projects.first
+      else
+        choice = ask_menu(
+          "I found more than one .xcodeproj. Which is the main app project that you wish to Frankify?", 
+          projects.map(&:basename)
+        )
+        projects[choice]
+      end
     end
 
     @xcodeproj_path = xcodeproj
@@ -53,17 +62,25 @@ class Frankifier
 
   def decide_on_target
     targets = @project.targets
-    @target = case targets.size
-    when 0
-      raise "Sorry, this project appears to contain no targets. Nothing I can do here."
-    when 1
-      targets.first
+
+    if @configuration && @configuration.xcode.target
+      @target = targets.find{ |target| target.name == @configuration.xcode.target }
+      if @target.nil?
+        raise "Sorry, the project does not appear to contain the specified target named '#{@configuration.xcode.target}'. Nothing I can do here."
+      end
     else
-      choice = ask_menu(
-        "I found more than one target in this project. Which is the main app target that you wish to Frankify?", 
-        targets.map(&:name)
-      )
-      targets.to_a[choice]
+      @target = case targets.size
+      when 0
+        raise "Sorry, this project appears to contain no targets. Nothing I can do here."
+      when 1
+        targets.first
+      else
+        choice = ask_menu(
+          "I found more than one target in this project. Which is the main app target that you wish to Frankify?", 
+          targets.map(&:name)
+        )
+        targets.to_a[choice]
+      end
     end
   end
 

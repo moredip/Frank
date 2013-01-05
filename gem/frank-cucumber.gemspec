@@ -29,6 +29,8 @@ Gem::Specification.new do |s|
   s.add_dependency( "dnssd" )
   s.add_dependency( "thor" )
   s.add_dependency( "xcodeproj" )
+  s.add_dependency( "recursive-open-struct" )
+  s.add_dependency( "activesupport" )
 
   s.add_development_dependency( "rr" )
   s.add_development_dependency( "yard" )

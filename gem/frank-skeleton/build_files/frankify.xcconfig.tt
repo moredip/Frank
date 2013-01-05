@@ -1,0 +1,7 @@
+INSTALL_PATH = /./
+
+<%=
+  configuration.xcode.build_settings.join "\n"
+%>
+FRANK_LDFLAGS = -all_load -ObjC -framework CFNetwork -framework Security -lShelley <%= @without_http_server ? "" : "-lCocoaHTTPServer" %> -lFrank
+GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = FRANKIFIED

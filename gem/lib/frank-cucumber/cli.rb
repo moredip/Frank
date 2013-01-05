@@ -4,8 +4,10 @@ rescue LoadError
 end
 
 require 'thor'
+require 'tmpdir'
 require 'frank-cucumber/launcher'
 require 'frank-cucumber/console'
+require 'frank-cucumber/configuration'
 require 'frank-cucumber/frankifier'
 
 module Frank
@@ -27,19 +29,90 @@ module Frank
     method_option WITHOUT_SERVER, :type => :boolean
     method_option :build_configuration, :aliases=>'--conf', :type=>:string, :default => 'Debug'
     def setup
-      @without_http_server = options[WITHOUT_SERVER]
-      directory ".", "Frank"
+      @without_http_server = options[WITHOUT_SERVER] || configuration.xcode.without_http_server
 
-      Frankifier.frankify!( File.expand_path('.'), :build_config => options[:build_configuration] )
+      locations = configuration.locations
+
+      directory "./features", locations.features
+
+      if configuration.create_build_files_directory?
+        copy_build_files = configuration.copy_build_files
+        build_files_source_path = Pathname.new('./build_files')
+        if copy_build_files.bundle
+          directory build_files_source_path.join('frank_static_resources.bundle'), 
+                    File.join(locations.build_files, 'frank_static_resources.bundle')
+        else
+          remove_dir File.join(locations.build_files, 'frank_static_resources.bundle') if File.join(locations.build_files, 'frank_static_resources.bundle')
+        end
+
+        if copy_build_files.libraries
+          %w{libFrank.a libShelley.a}.each do |library|
+            copy_file build_files_source_path.join(library), 
+                      File.join(locations.build_files, library)
+          end
+
+          if @without_http_server
+            remove_file File.join(locations.build_files, 'libCocoaHTTPServer.a') if File.exists?(File.join(locations.build_files, 'libCocoaHTTPServer.a'))
+          else
+            copy_file build_files_source_path.join('libCocoaHTTPServer.a'), 
+                      File.join(locations.build_files, 'libCocoaHTTPServer.a')
+          end
+        else
+          %w{libFrank.a libShelley.a libCocoaHTTPServer.a}.each do |library|
+            remove_file File.join(locations.build_files, library) if File.exists?(File.join(locations.build_files, library))
+          end
+        end
+
+        if copy_build_files.xcconfig
+          template build_files_source_path.join('frankify.xcconfig.tt'), 
+                   File.join(locations.build_files, 'frankify.xcconfig')
+        else
+          remove_file File.join(locations.build_files, 'frankify.xcconfig') if File.exists?(File.join(locations.build_files, 'frankify.xcconfig'))
+        end
+      else
+        if locations.features != locations.build_files
+          remove_dir locations.build_files if File.exists?(locations.build_files)
+        end
+      end
+
+      Frankifier.frankify!( locations.root, :build_config => options[:build_configuration], :frank_config => configuration )
     end
 
     desc "update", "updates the frank server components inside your Frank directory"
     long_desc "This updates the parts of Frank that are embedded inside your app (e.g. libFrank.a and frank_static_resources.bundle)"
     def update
-      %w{libFrank.a libShelley.a}.each do |f|
-        copy_file f, File.join( 'Frank', f ), :force => true
+      copy_build_files = configuration.copy_build_files
+      locations = configuration.locations
+      build_files_source_path = Pathname.new('./build_files')
+
+      if configuration.create_build_files_directory?
+        if copy_build_files.libraries
+          %w{libFrank.a libShelley.a}.each do |f|
+            copy_file build_files_source_path.join(f), 
+                      File.join( configuration.locations.build_files, f ), :force => true
+          end
+
+          if configuration.xcode.without_http_server
+            remove_file File.join(locations.build_files, 'libCocoaHTTPServer.a') if File.exists?(File.join(locations.build_files, 'libCocoaHTTPServer.a'))
+          else
+            copy_file build_files_source_path.join('libCocoaHTTPServer.a'), 
+                      File.join(locations.build_files, 'libCocoaHTTPServer.a'), :force => true
+          end
+        else
+          %w{libFrank.a libShelley.a libCocoaHTTPServer.a}.each do |library|
+            remove_file File.join(locations.build_files, library) if File.exists?(File.join(locations.build_files, library))
+          end
+        end
+
+        if copy_build_files.bundle
+          directory build_files_source_path.join('frank_static_resources.bundle'), 
+                    File.join(locations.build_files, 'frank_static_resources.bundle'), :force => true
+        else
+          remove_file File.join(locations.build_files, 'frankify.xcconfig') if File.exists?(File.join(locations.build_files, 'frankify.xcconfig'))
+        end
+      else
+        remove_dir locations.build_files if File.exists?(locations.build_files)
       end
-      directory( 'frank_static_resources.bundle', 'Frank/frank_static_resources.bundle', :force => true )
     end
 
     XCODEBUILD_OPTIONS = %w{workspace scheme target}
@@ -53,8 +126,8 @@ module Frank
       clean = !options['noclean']
 
       in_root do
-        unless File.directory? 'Frank'
-          if yes? "You don't appear to have set up a Frank directory for this project. Would you like me to set that up now? Type 'y' or 'yes' if so."
+        unless File.directory? configuration.locations.features
+          if yes? "You don't appear to have set up the Frank directory (#{configuration.locations.features}) for this project. Would you like me to set that up now? Type 'y' or 'yes' if so."
             invoke :skeleton
           else
             say "OK, in that case there's not much I can do for now. Whenever you change your mind and want to get your project setup with Frank simply run `frank setup` from the root of your project directory."
@@ -63,8 +136,6 @@ module Frank
           end
         end
       end
-
-      static_bundle = 'frank_static_resources.bundle'
 
       if clean
         remove_dir build_output_dir
@@ -75,21 +146,32 @@ module Frank
         build_steps = 'clean ' + build_steps
       end
 
-      extra_opts = XCODEBUILD_OPTIONS.map{ |o| "-#{o} \"#{options[o]}\"" if options[o] }.compact.join(' ')
+      modified_options = options.dup
+      if configuration.xcode.workspace && modified_options['workspace'].nil?
+        modified_options['workspace'] = configuration.xcode.workspace
+      end
+
+      if configuration.xcode.scheme && modified_options['scheme'].nil?
+        modified_options['scheme'] = configuration.xcode.scheme
+      end
+
+      extra_opts = XCODEBUILD_OPTIONS.map{ |o| "-#{o} \"#{modified_options[o]}\"" if modified_options[o] }.compact.join(' ')
       extra_opts += " -arch #{options['arch']}"
 
-      run %Q|xcodebuild -xcconfig Frank/frankify.xcconfig #{build_steps} #{extra_opts} -configuration Debug -sdk iphonesimulator DEPLOYMENT_LOCATION=YES DSTROOT="#{build_output_dir}" FRANK_LIBRARY_SEARCH_PATHS="\\"#{frank_lib_directory}\\""|
+      run %Q|xcodebuild -xcconfig #{xconfig_path} #{build_steps} #{extra_opts} -configuration Debug -sdk iphonesimulator DEPLOYMENT_LOCATION=YES DSTROOT="#{build_output_dir}" FRANK_LIBRARY_SEARCH_PATHS="\\"#{frank_lib_directory}\\""|
 
+      FileUtils.mkdir_p(build_output_dir) # Directory may not exist yet
       app = Dir.glob("#{build_output_dir}/*.app").delete_if { |x| x =~ /\/#{app_bundle_name}$/ }
       app = app.first
+
       FileUtils.cp_r("#{app}/.", frankified_app_dir)
 
       fix_frankified_apps_bundle_identifier
 
       in_root do
         FileUtils.cp_r( 
-          File.join( 'Frank',static_bundle),
-          File.join( frankified_app_dir, static_bundle ) 
+          static_bundle_path,
+          File.join( frankified_app_dir, 'frank_static_resources.bundle' ) 
         )
       end
     end
@@ -156,6 +238,29 @@ module Frank
 
     private
 
+    def configuration
+      @configuration ||= Frank::Configuration.new
+    end
+
+    def xconfig_path
+      if configuration.copy_build_files.xconfig
+        File.join(configuration.locations.build_files, 'frankify.xcconfig')
+      else
+        # Copy the config (with template processed) into a temporary directory
+        temp_config_path = File.join(Dir.tmpdir, 'frankify.xcconfig')
+        template File.join('./build_files', 'frankify.xcconfig.tt'), temp_config_path, :force => true
+        temp_config_path
+      end
+    end
+
+    def static_bundle_path
+      if configuration.copy_build_files.xconfig
+        File.join(configuration.locations.build_files, 'frank_static_resources.bundle')
+      else
+        File.join(self.class.source_root, 'build_files', 'frank_static_resources.bundle')
+      end
+    end
+
     def product_name
       "Frankified"
     end
@@ -165,11 +270,15 @@ module Frank
     end
     
     def frank_lib_directory
-      File.expand_path "Frank"
+      if configuration.copy_build_files.libraries
+        configuration.locations.build_files
+      else
+        File.join(self.class.source_root, 'build_files')
+      end
     end
 
     def build_output_dir
-      File.expand_path "Frank/frankified_build"
+      File.join(configuration.locations.build_files, "frankified_build")
     end
 
     def frankified_app_dir
