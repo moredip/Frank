@@ -48,7 +48,7 @@ task :build => [:clean, :prep_dist, :build_lib, :bundle_resources]
 task :default => :build
 
 desc "build and copy everything into the gem directories for distribution as a gem"
-task :build_for_release => [:build, :build_shelley, :copy_dist_to_gem]
+task :build_for_release => [:build, :copy_dist_to_gem]
 
 desc "copies contents of dist dir to the frank-cucumber gem's frank-skeleton"
 task :copy_dist_to_gem do
