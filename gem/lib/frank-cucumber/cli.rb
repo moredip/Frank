@@ -29,7 +29,7 @@ module Frank
     method_option WITHOUT_SERVER, :type => :boolean
     method_option :build_configuration, :aliases=>'--conf', :type=>:string, :default => 'Debug'
     def setup
-      @without_http_server = options[WITHOUT_SERVER] || configuration.xcode.without_http_server
+      @without_http_server = options[WITHOUT_SERVER] || configuration.xcode.without_cocoa_http_server
 
       locations = configuration.locations
 
@@ -79,20 +79,30 @@ module Frank
     end
 
     desc "update", "updates the frank server components inside your Frank directory"
+    method_option WITHOUT_SERVER, :type => :boolean
     long_desc "This updates the parts of Frank that are embedded inside your app (e.g. libFrank.a and frank_static_resources.bundle)"
     def update
+      @without_http_server = options[WITHOUT_SERVER] || configuration.xcode.without_cocoa_http_server
+
       copy_build_files = configuration.copy_build_files
       locations = configuration.locations
       build_files_source_path = Pathname.new('./build_files')
 
       if configuration.create_build_files_directory?
+        if copy_build_files.bundle
+          directory build_files_source_path.join('frank_static_resources.bundle'), 
+                    File.join(locations.build_files, 'frank_static_resources.bundle'), :force => true
+        else
+          remove_file File.join(locations.build_files, 'frankify.xcconfig') if File.exists?(File.join(locations.build_files, 'frankify.xcconfig'))
+        end
+
         if copy_build_files.libraries
           %w{libFrank.a libShelley.a}.each do |f|
             copy_file build_files_source_path.join(f), 
                       File.join( configuration.locations.build_files, f ), :force => true
           end
 
-          if configuration.xcode.without_http_server
+          if @without_http_server
             remove_file File.join(locations.build_files, 'libCocoaHTTPServer.a') if File.exists?(File.join(locations.build_files, 'libCocoaHTTPServer.a'))
           else
             copy_file build_files_source_path.join('libCocoaHTTPServer.a'), 
@@ -104,9 +114,9 @@ module Frank
           end
         end
 
-        if copy_build_files.bundle
-          directory build_files_source_path.join('frank_static_resources.bundle'), 
-                    File.join(locations.build_files, 'frank_static_resources.bundle'), :force => true
+        if copy_build_files.xcconfig
+          template build_files_source_path.join('frankify.xcconfig.tt'), 
+                   File.join(locations.build_files, 'frankify.xcconfig')
         else
           remove_file File.join(locations.build_files, 'frankify.xcconfig') if File.exists?(File.join(locations.build_files, 'frankify.xcconfig'))
         end

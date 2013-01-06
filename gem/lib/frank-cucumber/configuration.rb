@@ -16,7 +16,7 @@ module Frank
           'build_files' => 'Frank'
         },
         'xcode' => {
-          'without_http_server' => false,
+          'without_cocoa_http_server' => false,
           'build_settings' => {},
           'project' => false,
           'target' => false,
