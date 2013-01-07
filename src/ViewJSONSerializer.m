@@ -8,11 +8,7 @@
 
 #import "ViewJSONSerializer.h"
 
-#if CGFLOAT_IS_DOUBLE
-#define PSEUDO_INF	[NSNumber numberWithDouble:CGFLOAT_MAX]
-#else
-#define PSEUDO_INF	[NSNumber numberWithFloat:CGFLOAT_MAX]
-#endif
+#define PSEUDO_INF	@"inf"
 
 @implementation ViewJSONSerializer
 #pragma mark - generic JSON conversion
