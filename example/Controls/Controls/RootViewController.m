@@ -15,6 +15,7 @@
 #import "ViewPropertiesViewController.h"
 #import "LocationViewController.h"
 #import "SampleTableViewController.h"
+#import "AlertViewController.h"
 
 typedef enum {
     RowsUISwitch,
@@ -25,6 +26,7 @@ typedef enum {
     RowsViewProperties,
     RowsLocation,
     RowsEmptyTable,
+    RowsUIAlertView,
     RowsCount,
 } Rows;
 
@@ -109,6 +111,9 @@ typedef enum {
         case RowsEmptyTable:
             cell.textLabel.text = @"Empty Table";
             break;
+        case RowsUIAlertView:
+            cell.textLabel.text = @"UIAlertView";
+            break;
     }
 
     // Configure the cell.
@@ -184,6 +189,9 @@ typedef enum {
             break;
         case RowsEmptyTable:
             detailVC = [[SampleTableViewController alloc] init];
+            break;
+        case RowsUIAlertView:
+            detailVC = [[AlertViewController alloc] initWithNibName:@"AlertViewController" bundle:nil];
             break;
 
     }
