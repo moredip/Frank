@@ -146,7 +146,6 @@
 	if(strcmp(@encode(CGRect), objcType) == 0) {
 		CGRect rawRect = [value CGRectValue];
 		
-		
 		return [NSDictionary dictionaryWithObjectsAndKeys:
 				convertCGPoint(rawRect.origin), @"origin",
 				convertCGSize(rawRect.size), @"size",
@@ -162,6 +161,7 @@
 	
 	if(strcmp(@encode(CGPoint), objcType) == 0) {
 		CGPoint point = [value CGPointValue];
+		
 		return convertCGPoint(point);
 	}
 	
