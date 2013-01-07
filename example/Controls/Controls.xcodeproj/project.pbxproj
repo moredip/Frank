@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1542BFE3169B74EE00573367 /* AlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1542BFE1169B74EE00573367 /* AlertViewController.m */; };
+		1542BFE4169B74EE00573367 /* AlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1542BFE2169B74EE00573367 /* AlertViewController.xib */; };
 		49543E4D1538791E001D87F1 /* Carousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 49543E4C1538791E001D87F1 /* Carousel.m */; };
 		49543E511538793B001D87F1 /* CarouselViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49543E501538793B001D87F1 /* CarouselViewController.m */; };
 		49543E5415387AD8001D87F1 /* CarouselViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49543E5315387AD8001D87F1 /* CarouselViewController.xib */; };
@@ -42,6 +44,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1542BFE0169B74EE00573367 /* AlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewController.h; sourceTree = "<group>"; };
+		1542BFE1169B74EE00573367 /* AlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewController.m; sourceTree = "<group>"; };
+		1542BFE2169B74EE00573367 /* AlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertViewController.xib; sourceTree = "<group>"; };
 		49543E4B1538791E001D87F1 /* Carousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Carousel.h; sourceTree = "<group>"; };
 		49543E4C1538791E001D87F1 /* Carousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Carousel.m; sourceTree = "<group>"; };
 		49543E4F1538793B001D87F1 /* CarouselViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarouselViewController.h; sourceTree = "<group>"; };
@@ -190,6 +195,9 @@
 				C1CE57C316402BC60027BCAC /* LocationViewController.xib */,
 				529777D7164C63CC009726F3 /* SampleTableViewController.h */,
 				529777D8164C63CC009726F3 /* SampleTableViewController.m */,
+				1542BFE0169B74EE00573367 /* AlertViewController.h */,
+				1542BFE1169B74EE00573367 /* AlertViewController.m */,
+				1542BFE2169B74EE00573367 /* AlertViewController.xib */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -279,6 +287,7 @@
 				C1E8A77715F3B418001083B5 /* MainWindow-iPad.xib in Resources */,
 				C177A4D316323CD60081DF77 /* ViewPropertiesViewController.xib in Resources */,
 				C1CE57C516402BC60027BCAC /* LocationViewController.xib in Resources */,
+				1542BFE4169B74EE00573367 /* AlertViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +311,7 @@
 				C177A4D216323CD60081DF77 /* ViewPropertiesViewController.m in Sources */,
 				C1CE57C416402BC60027BCAC /* LocationViewController.m in Sources */,
 				529777D9164C63CC009726F3 /* SampleTableViewController.m in Sources */,
+				1542BFE3169B74EE00573367 /* AlertViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
