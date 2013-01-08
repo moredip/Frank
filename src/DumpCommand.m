@@ -184,18 +184,33 @@
 
 #pragma mark - Extracting an attribute
 - (id) valueForAttribute: (NSString *) attribute onObject: (NSObject *) object {
-    // just make sure the input is sane and we're not taking the app down
-    SEL selector = NSSelectorFromString(attribute);
-    if(![object respondsToSelector: selector]) {
-        NSLog(@"DumpCommand.m: Warning \"%@\" does not respond to \"%@\".", object.class, attribute);
-        // TODO maybe we could remove that attribute from the classMapping since it doens't respond to selector?
-        // if we decide to do, this check will have to move to -serializeView: since we've lost knowledge of the 
-        // class mapping defining this attribute
-        return  nil;
-    }
-    
-    // use KVC to get value for attribute
-    id value = [object valueForKey: attribute];
+	
+	id value;
+	
+	// Just make sure the input is sane and we're not taking the app down
+	@try {
+		// Use KVC to get value for attribute, Raises NSUndefinedKeyException if key is not found
+		value = [object valueForKey: attribute];
+	}
+	@catch (NSException *exception) {
+		NSLog(@"DumpCommand.m: Warning \"%@\" does not have a value for the key \"%@\".", object.class, attribute);
+	}
+	@finally {
+		// Value can be retrieved via key or selector which are not alway identical, apple frequently overides getters for booleans an prefaces them with is
+		if (!value) {
+			SEL selector = NSSelectorFromString(attribute);
+			if(![object respondsToSelector: selector]) {
+				NSLog(@"DumpCommand.m: Warning \"%@\" does not respond to \"%@\".", object.class, attribute);
+				// TODO maybe we could remove that attribute from the classMapping since it doens't respond to selector?
+				// if we decide to do, this check will have to move to -serializeView: since we've lost knowledge of the
+				// class mapping defining this attribute
+				return  nil;
+			}
+			else {
+				value = [object performSelector:selector];
+			}
+		}
+	}
     
     // apply special treatment for special cases: UIColor, UIFont, NSValue, add more as appropriate
 #if TARGET_OS_IPHONE
