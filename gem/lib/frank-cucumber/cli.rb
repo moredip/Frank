@@ -31,51 +31,13 @@ module Frank
     def setup
       @without_http_server = options[WITHOUT_SERVER] || configuration.xcode.without_cocoa_http_server
 
-      locations = configuration.locations
+      # Copy features directory
+      directory "./features", configuration.locations.features
 
-      directory "./features", locations.features
+      # Copy build files, based on configuration
+      copy_build_file_paths build_file_paths_to_copy(@without_http_server)
 
-      if configuration.create_build_files_directory?
-        copy_build_files = configuration.copy_build_files
-        build_files_source_path = Pathname.new('./build_files')
-        if copy_build_files.bundle
-          directory build_files_source_path.join('frank_static_resources.bundle'), 
-                    File.join(locations.build_files, 'frank_static_resources.bundle')
-        else
-          remove_dir File.join(locations.build_files, 'frank_static_resources.bundle') if File.join(locations.build_files, 'frank_static_resources.bundle')
-        end
-
-        if copy_build_files.libraries
-          %w{libFrank.a libShelley.a}.each do |library|
-            copy_file build_files_source_path.join(library), 
-                      File.join(locations.build_files, library)
-          end
-
-          if @without_http_server
-            remove_file File.join(locations.build_files, 'libCocoaHTTPServer.a') if File.exists?(File.join(locations.build_files, 'libCocoaHTTPServer.a'))
-          else
-            copy_file build_files_source_path.join('libCocoaHTTPServer.a'), 
-                      File.join(locations.build_files, 'libCocoaHTTPServer.a')
-          end
-        else
-          %w{libFrank.a libShelley.a libCocoaHTTPServer.a}.each do |library|
-            remove_file File.join(locations.build_files, library) if File.exists?(File.join(locations.build_files, library))
-          end
-        end
-
-        if copy_build_files.xcconfig
-          template build_files_source_path.join('frankify.xcconfig.tt'), 
-                   File.join(locations.build_files, 'frankify.xcconfig')
-        else
-          remove_file File.join(locations.build_files, 'frankify.xcconfig') if File.exists?(File.join(locations.build_files, 'frankify.xcconfig'))
-        end
-      else
-        if locations.features != locations.build_files
-          remove_dir locations.build_files if File.exists?(locations.build_files)
-        end
-      end
-
-      Frankifier.frankify!( locations.root, :build_config => options[:build_configuration], :frank_config => configuration )
+      Frankifier.frankify!( configuration.locations.root, :build_config => options[:build_configuration], :frank_config => configuration )
     end
 
     desc "update", "updates the frank server components inside your Frank directory"
@@ -84,45 +46,8 @@ module Frank
     def update
       @without_http_server = options[WITHOUT_SERVER] || configuration.xcode.without_cocoa_http_server
 
-      copy_build_files = configuration.copy_build_files
-      locations = configuration.locations
-      build_files_source_path = Pathname.new('./build_files')
-
-      if configuration.create_build_files_directory?
-        if copy_build_files.bundle
-          directory build_files_source_path.join('frank_static_resources.bundle'), 
-                    File.join(locations.build_files, 'frank_static_resources.bundle'), :force => true
-        else
-          remove_file File.join(locations.build_files, 'frankify.xcconfig') if File.exists?(File.join(locations.build_files, 'frankify.xcconfig'))
-        end
-
-        if copy_build_files.libraries
-          %w{libFrank.a libShelley.a}.each do |f|
-            copy_file build_files_source_path.join(f), 
-                      File.join( configuration.locations.build_files, f ), :force => true
-          end
-
-          if @without_http_server
-            remove_file File.join(locations.build_files, 'libCocoaHTTPServer.a') if File.exists?(File.join(locations.build_files, 'libCocoaHTTPServer.a'))
-          else
-            copy_file build_files_source_path.join('libCocoaHTTPServer.a'), 
-                      File.join(locations.build_files, 'libCocoaHTTPServer.a'), :force => true
-          end
-        else
-          %w{libFrank.a libShelley.a libCocoaHTTPServer.a}.each do |library|
-            remove_file File.join(locations.build_files, library) if File.exists?(File.join(locations.build_files, library))
-          end
-        end
-
-        if copy_build_files.xcconfig
-          template build_files_source_path.join('frankify.xcconfig.tt'), 
-                   File.join(locations.build_files, 'frankify.xcconfig')
-        else
-          remove_file File.join(locations.build_files, 'frankify.xcconfig') if File.exists?(File.join(locations.build_files, 'frankify.xcconfig'))
-        end
-      else
-        remove_dir locations.build_files if File.exists?(locations.build_files)
-      end
+      # Copy build files, forcing the copy when there is a conflict:
+      copy_build_file_paths build_file_paths_to_copy(@without_http_server), true
     end
 
     XCODEBUILD_OPTIONS = %w{workspace scheme target}
@@ -250,6 +175,51 @@ module Frank
 
     def configuration
       @configuration ||= Frank::Configuration.new
+    end
+
+    def build_file_paths_to_copy(without_http_server=false)
+      if configuration.create_build_files_directory?
+        copy_build_files = configuration.copy_build_files
+
+        {
+          'frank_static_resources.bundle/' => copy_build_files.bundle,
+          'libFrank.a' => copy_build_files.libraries,
+          'libShelley.a' => copy_build_files.libraries,
+          'libCocoaHTTPServer.a' => copy_build_files.libraries && !without_http_server,
+          'frankify.xcconfig.tt' => copy_build_files.xcconfig
+        }
+      else
+        false
+      end
+    end
+
+    def copy_build_file_paths(paths, force_copy=false)
+      locations = configuration.locations
+
+      if paths
+        paths.each do |path, copy_or_subpaths|
+          source_path = File.join('./build_files', path)
+          destination_path = locations.build_files.join(path)
+          if copy_or_subpaths
+            force = force_copy && path !~ /\.xcconfig/ # We don't want to force an override of the xcconfig
+            if path =~ /\/$/
+              # Treat as a directory
+              directory source_path, destination_path
+            elsif path =~ /\.tt$/
+              # Treat as template
+              template source_path, destination_path.to_s.gsub(/\.tt$/, '')
+            else
+              # Treat as normal file
+              copy_file source_path, destination_path
+            end
+          else
+            # Don't copy path, remove it instead (remove_file works for directories too)
+            remove_file destination_path if File.exists? destination_path
+          end
+        end
+      else
+        remove_dir locations.build_files if File.exists? locations.build_files
+      end
     end
 
     def xconfig_path

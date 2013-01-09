@@ -48,9 +48,9 @@ module Frank
 
     def locations
       unless @locations
-        expanded_locations = {'root' => @root_directory}
+        expanded_locations = {'root' => Pathname.new(@root_directory)}
         @configuration.locations.marshal_dump.each do |location_type, location|
-          expanded_locations[location_type] = expand_path(location)
+          expanded_locations[location_type] = Pathname.new(expand_path(location))
         end
 
         @locations = RecursiveOpenStruct.new(expanded_locations)
