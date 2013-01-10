@@ -28,6 +28,7 @@ module FrankHelper
   include WaitHelper
   include KeyboardHelper
   include ScrollHelper
+  include GestureHelper
   include HostScripting
   include LocationHelper
 
