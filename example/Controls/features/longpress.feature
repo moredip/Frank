@@ -12,6 +12,6 @@ Feature:
 		Then I should see "YES" 
 
 	Scenario: Long touch the main view at a specific point
-		When I press and hold "Long Touch View" at x "60" y "40"
+		When I long press "Long Touch View" at x "60" y "40"
 		Then I should see "YES"
 		And I should see "{60, 40}"
