@@ -15,6 +15,7 @@
 #import "ViewPropertiesViewController.h"
 #import "LocationViewController.h"
 #import "SampleTableViewController.h"
+#import "LongTouchViewController.h"
 
 typedef enum {
     RowsUISwitch,
@@ -24,6 +25,7 @@ typedef enum {
     RowsUIProgressView,
     RowsViewProperties,
     RowsLocation,
+	RowsLongPress,
     RowsEmptyTable,
     RowsCount,
 } Rows;
@@ -106,6 +108,9 @@ typedef enum {
         case RowsLocation:
             cell.textLabel.text = @"Location";
             break;
+		case RowsLongPress:
+			cell.textLabel.text = @"Long Press";
+			break;
         case RowsEmptyTable:
             cell.textLabel.text = @"Empty Table";
             break;
@@ -182,6 +187,9 @@ typedef enum {
         case RowsLocation:
             detailVC = [[LocationViewController alloc] initWithNibName:@"LocationViewController" bundle:nil];
             break;
+		case RowsLongPress:
+			detailVC = [[LongTouchViewController alloc] initWithNibName:@"LongTouchViewController" bundle:nil];
+			break;
         case RowsEmptyTable:
             detailVC = [[SampleTableViewController alloc] init];
             break;
