@@ -11,8 +11,8 @@ module Frank
 			#
 			# @raise an expection if no views matched the selector
 			# @raise an expection if no views which matched the selector could be touched
-			def tap_and_hold ( selector, duration = 1 )
-				touch_successes = frankly_map ( selector, "touchAndHold:", duration )
+			def tap_and_hold( selector, duration = 1 )
+				touch_successes = frankly_map( selector, "touchAndHold:", duration )
 				raise "Could not find anything matching [#{selector}] to touch" if touch_successes.empty?
 			    raise "Some views could not be touched (probably because they are not within the current viewport)" if touch_successes.include?(false)
 			end
@@ -28,8 +28,8 @@ module Frank
 			#
 			# @raise an expection if no views matched the selector
 			# @raise an expection if no views which matched the selector could be touched
-			def tap_and_hold_point ( selector, x, y, duration = 1 )
-				touch_successes = frankly_map ( selector, "touchAndHold:x:y:", duration, x, y )
+			def tap_and_hold_point( selector, x, y, duration = 1 )
+				touch_successes = frankly_map( selector, "touchAndHold:x:y:", duration, x, y )
 				raise "Could not find anything matching [#{selector}] to touch" if touch_successes.empty?
 			    raise "Some views could not be touched (probably because they are not within the current viewport)" if touch_successes.include?(false)
 			end
