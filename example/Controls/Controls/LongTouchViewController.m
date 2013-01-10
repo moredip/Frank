@@ -29,8 +29,6 @@
 	[self resetValues];
 	
 	self.view.accessibilityLabel = @"Long Touch View";
-	_longTouchTriggered.accessibilityLabel = @"Touch triggered";
-	_touchLocation.accessibilityLabel = @"Touch Location";	
 }
 
 - (void)didReceiveMemoryWarning
