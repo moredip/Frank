@@ -45,18 +45,30 @@ NSString *formatCGPointVal( NSValue *val ){
 #pragma mark - Touch Gestures
 
 //Double Tap
-//- (BOOL)doubleTapPointIfInsideWindow:(CGPoint)point {
-//
-//}
-//
-//- (BOOL)doubleTap {
-//	
-//}
-//
-//- (BOOL)doubleTapx:(NSNumber *)x y:(NSNumber *)y {
-//	
-//}
-//
+- (BOOL)doubleTapPointIfInsideWindow:(CGPoint)point {
+	CGPoint pointInWindowCoords = [self.window convertPoint:point fromView:self];
+	if (!(CGRectContainsPoint(self.window.bounds, pointInWindowCoords))) {
+		return NO;
+	}
+	
+	[UIAutomationBridge doubleTapView:self atPoint:point];
+	return YES;
+}
+
+- (BOOL)doubleTap {
+	CGPoint centerPoint = CGPointMake(self.frame.size.width * 0.5f, self.frame.size.height * 0.5f);
+    return [self doubleTapPointIfInsideWindow:centerPoint];
+}
+
+- (BOOL)doubleTapx:(NSNumber *)x y:(NSNumber *)y {
+	if (CGFLOAT_IS_DOUBLE)
+	{
+		return [self doubleTapPointIfInsideWindow:CGPointMake([x doubleValue], [y doubleValue])];
+	}
+	
+	return [self doubleTapPointIfInsideWindow:CGPointMake([x floatValue], [y floatValue])];
+}
+
 ////Tap With Options
 //- (BOOL)tapWithOptions:(NSDictionary *)options pointIfInsideWindow:(CGPoint)point {
 //	
