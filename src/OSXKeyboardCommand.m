@@ -14,9 +14,9 @@
 
 - (void) synthesizeNSEventForString:(NSString *)aString
 {
-    NSWindow *keyWindow = [[NSApplication sharedApplication] keyWindow];
+    NSWindow *mainWindow = [[NSApplication sharedApplication] mainWindow];
     
-    if (keyWindow != nil)
+    if (mainWindow != nil)
     {
         for (NSUInteger charIndex = 0; charIndex < [aString length]; ++charIndex)
         {
@@ -26,7 +26,7 @@
                                               location:NSMakePoint(0, 0)
                                          modifierFlags:0
                                              timestamp:0
-                                          windowNumber:[keyWindow windowNumber]
+                                          windowNumber:[mainWindow windowNumber]
                                                context:nil
                                             characters:eventChar
                            charactersIgnoringModifiers:nil
@@ -39,7 +39,7 @@
                                              location:NSMakePoint(0, 0)
                                         modifierFlags:0
                                             timestamp:0
-                                         windowNumber:[keyWindow windowNumber]
+                                         windowNumber:[mainWindow windowNumber]
                                               context:nil
                                            characters:eventChar
                           charactersIgnoringModifiers:nil

@@ -18,6 +18,7 @@
 #import "AppCommand.h"
 #import "AccessibilityCheckCommand.h"
 #import "EnginesCommand.h"
+#import "SuccessCommand.h"
 
 #if TARGET_OS_IPHONE
 #import "MapOperationCommand.h"
@@ -59,6 +60,9 @@ static NSUInteger __defaultPort = FRANK_SERVER_PORT;
         [frankCommandRoute registerCommand:[[[LocationCommand alloc]init]autorelease] withName:@"location"];
         [frankCommandRoute registerCommand:[[[IOSKeyboardCommand alloc] init]autorelease] withName:@"type_into_keyboard"];
 #else
+        [frankCommandRoute registerCommand:[[[SuccessCommand alloc]init]autorelease] withName:@"map"];
+        [frankCommandRoute registerCommand:[[[SuccessCommand alloc]init]autorelease] withName:@"orientation"];
+        [frankCommandRoute registerCommand:[[[SuccessCommand alloc]init]autorelease] withName:@"location"];
         [frankCommandRoute registerCommand:[[[OSXKeyboardCommand alloc] init]autorelease] withName:@"type_into_keyboard"];
 #endif
         

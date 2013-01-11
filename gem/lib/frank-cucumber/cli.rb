@@ -1,12 +1,13 @@
-begin 
+begin
   require 'pry'
-rescue LoadError 
+rescue LoadError
 end
 
 require 'thor'
 require 'frank-cucumber/launcher'
 require 'frank-cucumber/console'
 require 'frank-cucumber/frankifier'
+require 'frank-cucumber/mac_launcher'
 
 module Frank
   class CLI < Thor
@@ -36,7 +37,7 @@ module Frank
     desc "update", "updates the frank server components inside your Frank directory"
     long_desc "This updates the parts of Frank that are embedded inside your app (e.g. libFrank.a and frank_static_resources.bundle)"
     def update
-      %w{libFrank.a libShelley.a}.each do |f|
+      %w{libFrank.a libCocoaHTTPServer.a libShelley.a libFrankMac.a libCocoaHTTPServerMac.a}.each do |f|
         copy_file f, File.join( 'Frank', f ), :force => true
       end
       directory( 'frank_static_resources.bundle', 'Frank/frank_static_resources.bundle', :force => true )
@@ -48,6 +49,7 @@ module Frank
       method_option option
     end
     method_option 'arch', :type => :string, :default => 'i386'
+    method_option 'mac', :type => :boolean, :default => false
     method_option :noclean, :type => :boolean, :default => false, :aliases => '--nc', :desc => "Don't clean the build directory before building"
     def build
       clean = !options['noclean']
@@ -76,21 +78,35 @@ module Frank
       end
 
       extra_opts = XCODEBUILD_OPTIONS.map{ |o| "-#{o} \"#{options[o]}\"" if options[o] }.compact.join(' ')
-      extra_opts += " -arch #{options['arch']}"
 
-      run %Q|xcodebuild -xcconfig Frank/frankify.xcconfig #{build_steps} #{extra_opts} -configuration Debug -sdk iphonesimulator DEPLOYMENT_LOCATION=YES DSTROOT="#{build_output_dir}" FRANK_LIBRARY_SEARCH_PATHS="\\"#{frank_lib_directory}\\""|
+      if options['mac']
+        run %Q|xcodebuild -xcconfig Frank/frankify.xcconfig #{build_steps} #{extra_opts} -configuration Debug DEPLOYMENT_LOCATION=YES DSTROOT="#{build_output_dir}" FRANK_LIBRARY_SEARCH_PATHS="\\"#{frank_lib_directory}\\""|
+      else
+        extra_opts += " -arch #{options['arch']}"
+
+        run %Q|xcodebuild -xcconfig Frank/frankify.xcconfig #{build_steps} #{extra_opts} -configuration Debug -sdk iphonesimulator DEPLOYMENT_LOCATION=YES DSTROOT="#{build_output_dir}" FRANK_LIBRARY_SEARCH_PATHS="\\"#{frank_lib_directory}\\""|
+      end
 
       app = Dir.glob("#{build_output_dir}/*.app").delete_if { |x| x =~ /\/#{app_bundle_name}$/ }
       app = app.first
       FileUtils.cp_r("#{app}/.", frankified_app_dir)
 
-      fix_frankified_apps_bundle_identifier
+      if options['mac']
+        in_root do
+          FileUtils.cp_r(
+            File.join( 'Frank',static_bundle),
+            File.join( frankified_app_dir, "Contents", "Resources", static_bundle )
+          )
+        end
+      else
+        fix_frankified_apps_bundle_identifier
 
-      in_root do
-        FileUtils.cp_r( 
-          File.join( 'Frank',static_bundle),
-          File.join( frankified_app_dir, static_bundle ) 
-        )
+        in_root do
+          FileUtils.cp_r(
+            File.join( 'Frank',static_bundle),
+            File.join( frankified_app_dir, static_bundle )
+          )
+        end
       end
     end
 
@@ -102,7 +118,7 @@ module Frank
 
     desc "launch", "open the Frankified app in the simulator"
     method_option :debug, :type => :boolean, :default => false
-    method_option :idiom, :banner => 'iphone|ipad', :type => :string, :default => (ENV['FRANK_SIM_IDIOM'] || 'iphone')
+    method_option :idiom, :banner => 'iphone|ipad|mac', :type => :string, :default => (ENV['FRANK_SIM_IDIOM'] || 'iphone')
     def launch
       $DEBUG = options[:debug]
       launcher = case options[:idiom].downcase
@@ -110,8 +126,10 @@ module Frank
         SimLauncher::DirectClient.for_iphone_app( frankified_app_dir )
       when 'ipad'
         SimLauncher::DirectClient.for_ipad_app( frankified_app_dir )
+      when 'mac'
+        Frank::MacLauncher.new( frankified_app_dir )
       else
-        say "idiom must be either iphone or ipad. You supplied '#{options[:idiom]}'", :red
+        say "idiom must be either iphone, ipad, or mac. You supplied '#{options[:idiom]}'", :red
         exit 10
       end
 
@@ -138,15 +156,15 @@ module Frank
     desc 'console', "launch a ruby console connected to your Frankified app"
     def console
       # TODO: check whether app is running (using ps or similar), and launch it if it's not
-      
+
       begin
         require 'pry'
       rescue LoadError
         say 'The Frank console requires the pry gem.'
         say 'Simply run `sudo gem install pry` (the `sudo` bit might be optional), and then try again. Thanks!'
-        exit 41 
+        exit 41
       end
-  
+
       Frank::Cucumber::FrankHelper.use_shelley_from_now_on
       console = Frank::Console.new
       if console.check_for_running_app
@@ -163,7 +181,7 @@ module Frank
     def app_bundle_name
       "#{product_name}.app"
     end
-    
+
     def frank_lib_directory
       File.expand_path "Frank"
     end
@@ -178,9 +196,9 @@ module Frank
 
     def fix_frankified_apps_bundle_identifier
       # as of iOS 6 the iOS Simulator locks up with a black screen if you try and launch an app which has the same
-      # bundle identifier as a previously installed app but which is in fact a different app. This impacts us because our 
+      # bundle identifier as a previously installed app but which is in fact a different app. This impacts us because our
       # Frankified app is different but has the same bundle identifier as the standard non-Frankified app which most users
-      # will want to have installed in the simulator as well. 
+      # will want to have installed in the simulator as well.
       #
       # We work around this by modifying the Frankified app's bundle identifier inside its Info.plist.
       inside frankified_app_dir do

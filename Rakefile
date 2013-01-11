@@ -1,6 +1,12 @@
-def discover_latest_sdk_version
+def discover_latest_ios_sdk_version
   latest_iphone_sdk = `xcodebuild -showsdks | grep -o "iphoneos.*$"`.chomp
   version_part = latest_iphone_sdk[/iphoneos(.*)/,1]
+  version_part
+end
+
+def discover_latest_osx_sdk_version
+  latest_osx_sdk = `xcodebuild -showsdks | grep -o "iphoneos.*$"`.chomp
+  version_part = latest_osx_sdk[/macosx(.*)/,1]
   version_part
 end
 
@@ -10,12 +16,18 @@ end
 
 desc "Build the arm library"
 task :build_iphone_lib do
-  sh "xcodebuild -workspace Frank.xcworkspace -scheme Frank -configuration Release -sdk iphoneos#{discover_latest_sdk_version} BUILD_DIR=\"#{build_dir}\" clean build"
+  sh "xcodebuild -workspace Frank.xcworkspace -scheme Frank -configuration Release -sdk iphoneos#{discover_latest_ios_sdk_version} BUILD_DIR=\"#{build_dir}\" clean build"
 end
 
 desc "Build the i386 library"
 task :build_simulator_lib do
-  sh "xcodebuild -workspace Frank.xcworkspace -scheme Frank -configuration Release -sdk iphonesimulator#{discover_latest_sdk_version} BUILD_DIR=\"#{build_dir}\" clean build"
+  sh "xcodebuild -workspace Frank.xcworkspace -scheme Frank -configuration Release -sdk iphonesimulator#{discover_latest_ios_sdk_version} BUILD_DIR=\"#{build_dir}\" clean build"
+end
+
+desc "Build the Mac library"
+task :build_mac_lib do
+  sh "xcodebuild -workspace Frank.xcworkspace -scheme FrankMac -configuration Release -sdk macosx#{discover_latest_osx_sdk_version} BUILD_DIR=\"#{build_dir}\" clean build"
+  sh "cp #{build_dir}/Release/*Mac.a dist"
 end
 
 task :combine_libraries do
@@ -25,7 +37,7 @@ task :combine_libraries do
 end
 
 desc "Build a univeral library for both iphone and iphone simulator"
-task :build_lib => [:build_iphone_lib, :build_simulator_lib, :combine_libraries]
+task :build_lib => [:build_iphone_lib, :build_simulator_lib, :combine_libraries, :build_mac_lib]
 
 desc "clean build artifacts"
 task :clean do

@@ -13,7 +13,7 @@
 
 + (NSImage *) imageFromApplication:(BOOL)allWindows
 {
-    NSWindow* keyWindow = [[NSApplication sharedApplication] keyWindow];
+    NSWindow* mainWindow = [[NSApplication sharedApplication] mainWindow];
     
     if (allWindows){
         NSMutableArray *views = [NSMutableArray array];
@@ -22,10 +22,10 @@
             [views addObject:[window contentView]];
         }
         
-        return [NSView captureImageOfSize:keyWindow.frame.size fromViews:views];
+        return [NSView captureImageOfSize:mainWindow.frame.size fromViews:views];
     }
     else{
-        return [[keyWindow contentView] captureImage];
+        return [[mainWindow contentView] captureImage];
     }
 }
 

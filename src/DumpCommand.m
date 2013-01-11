@@ -109,14 +109,15 @@
 
 #pragma mark - Command handling
 - (NSString *)handleCommandWithRequestBody:(NSString *)requestBody {
-    // serialize starting from root window and return json representation of it
 #if TARGET_OS_IPHONE
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    // serialize starting from root window and return json representation of it
+    UIWindow *root = [UIApplication sharedApplication].keyWindow;
 #else
-    NSWindow *window = [[NSApplication sharedApplication] keyWindow];
+    // OS X apps can have multiple windows, so the application object is the root.
+    NSApplication *root = [NSApplication sharedApplication];
 #endif
     
-	NSDictionary *dom = [self serializeView: window];
+	NSDictionary *dom = [self serializeView: root];
     return TO_JSON(dom);
 }
 
@@ -148,6 +149,18 @@
                 continue;
             }
             
+#if !TARGET_OS_IPHONE
+            if ([attribute isEqualToString:@"FEX_accessibilityDescription"]) {
+                attribute = @"accessibilityDescription";
+            }
+            else if ([attribute isEqualToString:@"FEX_accessibilityLabel"]) {
+                attribute = @"accessibilityLabel";
+            }
+            else if ([attribute isEqualToString:@"FEX_accessibilityFrame"]) {
+                attribute = @"accessibilityFrame";
+            }
+#endif
+            
             [serializedView setObject:value forKey:attribute];
         }
     }
@@ -162,10 +175,44 @@
         [serializedSubviews addObject: serializedSubview];
     }
 #else
-    if ([[view class] isKindOfClass: [NSWindow class]])
+    if ([view isKindOfClass: [NSApplication class]])
+    {
+        NSMutableArray *serializedSubviews = [NSMutableArray array];
+        for (NSWindow* window in [((NSApplication*) view) windows])
+        {
+            [serializedSubviews addObject: [self serializeView: window]];
+        }
+        
+        [serializedSubviews addObject: [self serializeView: [((NSApplication*) view) mainMenu]]];
+        
+        [serializedView setObject: serializedSubviews forKey: @"subviews"];
+    }
+    else if ([view isKindOfClass: [NSWindow class]])
     {
         NSArray *serializedSubview = [NSArray arrayWithObject: [self serializeView: [((NSWindow *) view) contentView]]];
         [serializedView setObject: serializedSubview forKey: @"subviews"];
+    }
+    else if ([view isKindOfClass: [NSMenu class]])
+    {
+        NSMutableArray *serializedSubviews = [NSMutableArray array];
+        for (NSMenuItem* item in [((NSMenu*) view) itemArray])
+        {
+            [serializedSubviews addObject: [self serializeView: item]];
+        }
+        
+        [serializedView setObject: serializedSubviews forKey: @"subviews"];
+    }
+    else if ([view isKindOfClass: [NSMenuItem class]])
+    {
+        NSMutableArray *serializedSubviews = [NSMutableArray array];
+        NSMenu* submenu = [((NSMenuItem*) view) submenu];
+        
+        if (submenu != nil)
+        {
+            [serializedSubviews addObject: [self serializeView: submenu]];
+        }
+        
+        [serializedView setObject: serializedSubviews forKey: @"subviews"];
     }
     else
     {
@@ -176,6 +223,8 @@
         {
             [serializedSubviews addObject: [self serializeView: subview]];
         }
+        
+        [serializedView setObject: serializedSubviews forKey: @"subviews"];
     }
 #endif
     

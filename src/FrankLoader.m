@@ -53,9 +53,15 @@ BOOL frankLogEnabled = NO;
     
     [autoreleasePool drain];
     
+#if TARGET_OS_IPHONE
+    NSString *notificationName = @"UIApplicationDidBecomeActiveNotification";
+#else
+    NSString *notificationName = NSApplicationDidFinishLaunchingNotification;
+#endif
+    
     [[NSNotificationCenter defaultCenter] addObserver:[self class] 
                                              selector:@selector(applicationDidBecomeActive:) 
-                                                 name:@"UIApplicationDidBecomeActiveNotification" 
+                                                 name:notificationName
                                                object:nil];
 }
 
