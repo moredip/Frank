@@ -9,24 +9,31 @@
 #import <Foundation/Foundation.h>
 
 #import "LoadableCategory.h"
-MAKE_CATEGORIES_LOADABLE(NSVObject_FrankAutomation)
+MAKE_CATEGORIES_LOADABLE(NSObject_FrankAutomation)
 
 @implementation NSObject (FrankAutomation)
 
 - (NSString *) FEX_accessibilityLabel {
     NSString* returnValue = nil;
     
-    NSArray *candidateAttributes = @[ NSAccessibilityDescriptionAttribute,
-                                      NSAccessibilityTitleAttribute,
-                                      NSAccessibilityValueAttribute ];
-    
-    for (NSString *candidteAttribute in candidateAttributes)
+    if ([self respondsToSelector: @selector(accessibilityAttributeNames)] &&
+        [self respondsToSelector: @selector(accessibilityAttributeValue:)])
     {
-        id value = [self accessibilityAttributeValue: candidteAttribute];
+        NSArray *candidateAttributes = @[ NSAccessibilityDescriptionAttribute,
+                                          NSAccessibilityTitleAttribute,
+                                          NSAccessibilityValueAttribute ];
         
-        if ([value isKindOfClass: [NSString class]]) {
-            returnValue = value;
-            break;
+        for (NSString *candidateAttribute in candidateAttributes)
+        {
+            if ([[self accessibilityAttributeNames] containsObject: candidateAttribute])
+            {
+                id value = [self accessibilityAttributeValue: candidateAttribute];
+                
+                if ([value isKindOfClass: [NSString class]]) {
+                    returnValue = value;
+                    break;
+                }
+            }
         }
     }
     
@@ -35,10 +42,24 @@ MAKE_CATEGORIES_LOADABLE(NSVObject_FrankAutomation)
 
 - (CGRect) FEX_accessibilityFrame {
     NSPoint origin = NSZeroPoint;
-    NSSize size   = NSZeroSize;
+    NSSize  size   = NSZeroSize;
     
-    NSValue *originValue = [self accessibilityAttributeValue: NSAccessibilityPositionAttribute];
-    NSValue *sizeValue = [self accessibilityAttributeValue: NSAccessibilitySizeAttribute];
+    NSValue *originValue = nil;
+    NSValue *sizeValue   = nil;
+    
+    if ([self respondsToSelector: @selector(accessibilityAttributeNames)] &&
+        [self respondsToSelector: @selector(accessibilityAttributeValue:)])
+    {
+        if ([[self accessibilityAttributeNames] containsObject: NSAccessibilityPositionAttribute])
+        {
+            [self accessibilityAttributeValue: NSAccessibilityPositionAttribute];
+        }
+        
+        if ([[self accessibilityAttributeNames] containsObject: NSAccessibilitySizeAttribute])
+        {
+            [self accessibilityAttributeValue: NSAccessibilitySizeAttribute];
+        }
+    }
     
     if (originValue != nil) {
         origin = [originValue pointValue];

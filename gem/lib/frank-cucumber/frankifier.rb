@@ -41,7 +41,7 @@ class Frankifier
       projects.first
     else
       choice = ask_menu(
-        "I found more than one .xcodeproj. Which is the main app project that you wish to Frankify?", 
+        "I found more than one .xcodeproj. Which is the main app project that you wish to Frankify?",
         projects.map(&:basename)
       )
       projects[choice]
@@ -60,7 +60,7 @@ class Frankifier
       targets.first
     else
       choice = ask_menu(
-        "I found more than one target in this project. Which is the main app target that you wish to Frankify?", 
+        "I found more than one target in this project. Which is the main app target that you wish to Frankify?",
         targets.map(&:name)
       )
       targets.to_a[choice]
@@ -71,8 +71,19 @@ class Frankifier
     puts "Frankifying target [#{@target.name}] in project #{@xcodeproj_path.basename}"
   end
 
+  def target_is_mac
+    settings = @target.build_configurations.first.build_settings['SDKROOT'] \
+      || @project.build_configurations.first.build_settings['SDKROOT']
+
+    return settings.include? 'macosx'
+  end
+
   def add_linker_flag
-    add_frank_entry_to_build_setting( 'OTHER_LDFLAGS', 'FRANK_LDFLAGS' )
+    if target_is_mac
+      add_frank_entry_to_build_setting( 'OTHER_LDFLAGS', 'FRANK_MAC_LDFLAGS' )
+    else
+      add_frank_entry_to_build_setting( 'OTHER_LDFLAGS', 'FRANK_LDFLAGS' )
+    end
   end
 
   def add_library_search_path
@@ -97,16 +108,16 @@ class Frankifier
   end
 
   def check_target_build_configuration_is_valid!
-    unless @target.build_configuration_list.build_settings(@target_build_configuration) 
+    unless @target.build_configuration_list.build_settings(@target_build_configuration)
       say %Q|I'm trying to Frankify the '#{@target_build_configuration}' build configuration, but I don't see it that build configuration in your XCode target. Here's a list of the build configurations I see:|
-      @target.build_configuration_list.build_configurations.each do |bc| 
+      @target.build_configuration_list.build_configurations.each do |bc|
         say "  '#{bc.name}'"
       end
       say ''
       say %Q|Please specify one of those build configurations using the --build_configuration flag|
       exit
     end
-    
+
   end
 
   def build_settings_to_edit
@@ -121,7 +132,7 @@ class Frankifier
   def ask_menu message, options
     option_lines = options.each_with_index.map{ |o,i| "#{i+1}: #{o}" }
     full_message = ([message,'']+option_lines+[">"]).join("\n")
-    
+
     allowed_range = (1..options.length)
     valid_choice = nil
     until valid_choice
