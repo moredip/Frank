@@ -17,7 +17,7 @@ module Frank
         },
         'xcode' => {
           'without_cocoa_http_server' => false,
-          'build_settings' => {},
+          'build_settings' => '',
           'project' => false,
           'target' => false,
           'workspace' => false,
@@ -62,7 +62,11 @@ module Frank
     def xcode
       unless @xcode
         xcode_settings = @configuration.xcode.marshal_dump
-        xcode_settings[:build_settings] = xcode_settings[:build_settings].map{ |setting, value| "#{setting}=#{value} " }
+        unless xcode_settings[:build_settings].empty?
+          xcode_settings[:build_settings] = ["// Settings from .frankrc xcode.build_settings:",
+                                             xcode_settings[:build_settings].gsub(/[\r\n]+$/, ''), 
+                                             "// End of .frankrc xcode.build_settings\n"].join "\n"
+        end
         xcode_settings[:project] = expand_path(xcode_settings[:project]) if xcode_settings[:project]
         xcode_settings[:workspace] = expand_path(xcode_settings[:workspace]) if xcode_settings[:workspace]
 
