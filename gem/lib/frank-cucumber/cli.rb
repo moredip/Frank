@@ -81,14 +81,9 @@ module Frank
         build_steps = 'clean ' + build_steps
       end
 
-      modified_options = options.dup
-      if configuration.xcode.workspace && modified_options['workspace'].nil?
-        modified_options['workspace'] = configuration.xcode.workspace
-      end
-
-      if configuration.xcode.scheme && modified_options['scheme'].nil?
-        modified_options['scheme'] = configuration.xcode.scheme
-      end
+      modified_options = options.dup # options are frozen so we need to work with a duplicate
+      modified_options['workspace'] ||= configuration.xcode.workspace
+      modified_options['scheme'] ||= configuration.xcode.scheme
 
       extra_opts = XCODEBUILD_OPTIONS.map{ |o| "-#{o} \"#{modified_options[o]}\"" if modified_options[o] }.compact.join(' ')
       extra_opts += " -arch #{options['arch']}"
