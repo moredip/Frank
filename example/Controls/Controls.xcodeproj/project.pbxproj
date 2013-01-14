@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03FF0B7E169F3FB1007131E5 /* LongTouchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03FF0B7C169F3FB1007131E5 /* LongTouchViewController.m */; };
+		03FF0B7F169F3FB1007131E5 /* LongTouchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03FF0B7D169F3FB1007131E5 /* LongTouchViewController.xib */; };
+		03FF0B84169F5069007131E5 /* DoubleTapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03FF0B82169F5069007131E5 /* DoubleTapViewController.m */; };
+		03FF0B85169F5069007131E5 /* DoubleTapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03FF0B83169F5069007131E5 /* DoubleTapViewController.xib */; };
 		49543E4D1538791E001D87F1 /* Carousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 49543E4C1538791E001D87F1 /* Carousel.m */; };
 		49543E511538793B001D87F1 /* CarouselViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49543E501538793B001D87F1 /* CarouselViewController.m */; };
 		49543E5415387AD8001D87F1 /* CarouselViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49543E5315387AD8001D87F1 /* CarouselViewController.xib */; };
@@ -42,6 +46,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		03FF0B7B169F3FB1007131E5 /* LongTouchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LongTouchViewController.h; sourceTree = "<group>"; };
+		03FF0B7C169F3FB1007131E5 /* LongTouchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LongTouchViewController.m; sourceTree = "<group>"; };
+		03FF0B7D169F3FB1007131E5 /* LongTouchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LongTouchViewController.xib; sourceTree = "<group>"; };
+		03FF0B81169F5069007131E5 /* DoubleTapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubleTapViewController.h; sourceTree = "<group>"; };
+		03FF0B82169F5069007131E5 /* DoubleTapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubleTapViewController.m; sourceTree = "<group>"; };
+		03FF0B83169F5069007131E5 /* DoubleTapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoubleTapViewController.xib; sourceTree = "<group>"; };
 		49543E4B1538791E001D87F1 /* Carousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Carousel.h; sourceTree = "<group>"; };
 		49543E4C1538791E001D87F1 /* Carousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Carousel.m; sourceTree = "<group>"; };
 		49543E4F1538793B001D87F1 /* CarouselViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarouselViewController.h; sourceTree = "<group>"; };
@@ -179,6 +189,12 @@
 				C1E7C1C81569DA9200CCBCD8 /* DataEntryViewController.h */,
 				C1E7C1C91569DA9200CCBCD8 /* DataEntryViewController.m */,
 				C1E7C1CA1569DA9200CCBCD8 /* DataEntryViewController.xib */,
+				03FF0B7B169F3FB1007131E5 /* LongTouchViewController.h */,
+				03FF0B7C169F3FB1007131E5 /* LongTouchViewController.m */,
+				03FF0B7D169F3FB1007131E5 /* LongTouchViewController.xib */,
+				03FF0B81169F5069007131E5 /* DoubleTapViewController.h */,
+				03FF0B82169F5069007131E5 /* DoubleTapViewController.m */,
+				03FF0B83169F5069007131E5 /* DoubleTapViewController.xib */,
 				9C60AD51157C97FB008EE16A /* UIProgressViewController.h */,
 				9C60AD52157C97FB008EE16A /* UIProgressViewController.m */,
 				9C60AD53157C97FB008EE16A /* UIProgressViewController.xib */,
@@ -279,6 +295,8 @@
 				C1E8A77715F3B418001083B5 /* MainWindow-iPad.xib in Resources */,
 				C177A4D316323CD60081DF77 /* ViewPropertiesViewController.xib in Resources */,
 				C1CE57C516402BC60027BCAC /* LocationViewController.xib in Resources */,
+				03FF0B7F169F3FB1007131E5 /* LongTouchViewController.xib in Resources */,
+				03FF0B85169F5069007131E5 /* DoubleTapViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +320,8 @@
 				C177A4D216323CD60081DF77 /* ViewPropertiesViewController.m in Sources */,
 				C1CE57C416402BC60027BCAC /* LocationViewController.m in Sources */,
 				529777D9164C63CC009726F3 /* SampleTableViewController.m in Sources */,
+				03FF0B7E169F3FB1007131E5 /* LongTouchViewController.m in Sources */,
+				03FF0B84169F5069007131E5 /* DoubleTapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
