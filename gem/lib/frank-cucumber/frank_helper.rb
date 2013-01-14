@@ -4,6 +4,7 @@ require 'frank-cucumber/host_scripting'
 require 'frank-cucumber/wait_helper'
 require 'frank-cucumber/keyboard_helper'
 require 'frank-cucumber/scroll_helper'
+require 'frank-cucumber/gesture_helper'
 require 'frank-cucumber/location_helper'
 require 'frank-cucumber/bonjour'
 
@@ -27,6 +28,7 @@ module FrankHelper
   include WaitHelper
   include KeyboardHelper
   include ScrollHelper
+  include GestureHelper
   include HostScripting
   include LocationHelper
 
