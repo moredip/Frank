@@ -20,7 +20,7 @@ When /^I drag the "(.*?)" row down to the "(.*?)" row$/ do |drag_row_mark, dest_
   drag_target_selector = %Q|tableViewCell label marked:'#{drag_row_mark}' parent tableViewCell view:'UITableViewCellReorderControl'|
   drag_dest_selector = %Q|tableViewCell label marked:'#{dest_row_mark}' parent tableViewCell view:'UITableViewCellReorderControl'|
 
-  drag_with_initial_delay( {"from" => drag_target_selector,  "to" => drag_dest_selector} )
+  drag_with_initial_delay( {:from => drag_target_selector,  :to => drag_dest_selector} )
 end
 
 Then /^the "(.*?)" row should be above the "(.*?)" row$/ do |high_row_mark, low_row_mark|
