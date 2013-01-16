@@ -11,6 +11,8 @@
 		03FF0B7F169F3FB1007131E5 /* LongTouchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03FF0B7D169F3FB1007131E5 /* LongTouchViewController.xib */; };
 		03FF0B84169F5069007131E5 /* DoubleTapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03FF0B82169F5069007131E5 /* DoubleTapViewController.m */; };
 		03FF0B85169F5069007131E5 /* DoubleTapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03FF0B83169F5069007131E5 /* DoubleTapViewController.xib */; };
+		1542BFE3169B74EE00573367 /* AlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1542BFE1169B74EE00573367 /* AlertViewController.m */; };
+		1542BFE4169B74EE00573367 /* AlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1542BFE2169B74EE00573367 /* AlertViewController.xib */; };
 		49543E4D1538791E001D87F1 /* Carousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 49543E4C1538791E001D87F1 /* Carousel.m */; };
 		49543E511538793B001D87F1 /* CarouselViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49543E501538793B001D87F1 /* CarouselViewController.m */; };
 		49543E5415387AD8001D87F1 /* CarouselViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49543E5315387AD8001D87F1 /* CarouselViewController.xib */; };
@@ -52,6 +54,9 @@
 		03FF0B81169F5069007131E5 /* DoubleTapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubleTapViewController.h; sourceTree = "<group>"; };
 		03FF0B82169F5069007131E5 /* DoubleTapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubleTapViewController.m; sourceTree = "<group>"; };
 		03FF0B83169F5069007131E5 /* DoubleTapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoubleTapViewController.xib; sourceTree = "<group>"; };
+		1542BFE0169B74EE00573367 /* AlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewController.h; sourceTree = "<group>"; };
+		1542BFE1169B74EE00573367 /* AlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewController.m; sourceTree = "<group>"; };
+		1542BFE2169B74EE00573367 /* AlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertViewController.xib; sourceTree = "<group>"; };
 		49543E4B1538791E001D87F1 /* Carousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Carousel.h; sourceTree = "<group>"; };
 		49543E4C1538791E001D87F1 /* Carousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Carousel.m; sourceTree = "<group>"; };
 		49543E4F1538793B001D87F1 /* CarouselViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarouselViewController.h; sourceTree = "<group>"; };
@@ -206,6 +211,9 @@
 				C1CE57C316402BC60027BCAC /* LocationViewController.xib */,
 				529777D7164C63CC009726F3 /* SampleTableViewController.h */,
 				529777D8164C63CC009726F3 /* SampleTableViewController.m */,
+				1542BFE0169B74EE00573367 /* AlertViewController.h */,
+				1542BFE1169B74EE00573367 /* AlertViewController.m */,
+				1542BFE2169B74EE00573367 /* AlertViewController.xib */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -297,6 +305,7 @@
 				C1CE57C516402BC60027BCAC /* LocationViewController.xib in Resources */,
 				03FF0B7F169F3FB1007131E5 /* LongTouchViewController.xib in Resources */,
 				03FF0B85169F5069007131E5 /* DoubleTapViewController.xib in Resources */,
+				1542BFE4169B74EE00573367 /* AlertViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,6 +331,7 @@
 				529777D9164C63CC009726F3 /* SampleTableViewController.m in Sources */,
 				03FF0B7E169F3FB1007131E5 /* LongTouchViewController.m in Sources */,
 				03FF0B84169F5069007131E5 /* DoubleTapViewController.m in Sources */,
+				1542BFE3169B74EE00573367 /* AlertViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
