@@ -13,5 +13,6 @@ Scenario: Showing the Alert View
 
 Scenario: Showing the Alert View in landscape mode
 	Given the device is in landscape orientation
+  And I wait for nothing to be animating
 	When I touch "Show UIAlertView"
 	Then I should see "AlertView Title"

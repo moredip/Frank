@@ -2,6 +2,10 @@ When /^I swipe "([^"]*)" (left|right|up|down)wards$/ do |mark,direction|
   frankly_map( "view marked:'#{mark}'", 'swipeInDirection:', direction )
 end
 
+When /^I wait for nothing to be animating$/ do
+  wait_for_nothing_to_be_animating
+end
+
 Then /^I should see a label with the text "([^"]*)"$/ do |expected_text|
   check_element_exists( "view:'UILabel' text:'#{expected_text}'" )
 end
@@ -13,7 +17,6 @@ end
 Then /^I should see "(.*?)" even though it is hidden$/ do |expected_mark| 
   check_element_exists("view marked:'#{expected_mark}'")
 end
-
 
 Then /^there should be a hidden view "(.*?)"$/ do |expected_mark|
   wait_for_element_to_exist("view marked:'#{expected_mark}' isHidden")
