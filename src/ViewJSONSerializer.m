@@ -138,8 +138,8 @@
 	
 	NSDictionary * (^convertCGSize)(CGSize) = ^(CGSize size) {
 		return [NSDictionary dictionaryWithObjectsAndKeys:
-				(isinf(size.width)) ? [NSNumber numberWithDouble:CGFLOAT_MAX] : [NSNumber numberWithFloat:size.width], @"width",
-				(isinf(size.height)) ? [NSNumber numberWithDouble:CGFLOAT_MAX] : [NSNumber numberWithFloat:size.height], @"height",
+				(isinf(size.width)) ? PSEUDO_INF : [NSNumber numberWithFloat:size.width], @"width",
+				(isinf(size.height)) ? PSEUDO_INF : [NSNumber numberWithFloat:size.height], @"height",
 				nil];
 	};
 	
