@@ -38,17 +38,21 @@ module Frank
       # Copy build files, based on configuration
       copy_build_file_paths build_file_paths_to_copy(@without_http_server)
 
-      Frankifier.frankify!( configuration.locations.root, :build_config => build_configuration, :frank_config => configuration )
+      frankify_app build_configuration
     end
 
     desc "update", "updates the frank server components inside your Frank directory"
     method_option WITHOUT_SERVER, :type => :boolean
+    method_option :build_configuration, :aliases => '--conf', :type => :string
     long_desc "This updates the parts of Frank that are embedded inside your app (e.g. libFrank.a and frank_static_resources.bundle)"
     def update
+      build_configuration = options[:build_configuration] || configuration.xcode.configuration
       @without_http_server = options[WITHOUT_SERVER] || configuration.xcode.without_cocoa_http_server
 
       # Copy build files, forcing the copy when there is a conflict:
       copy_build_file_paths build_file_paths_to_copy(@without_http_server), true
+
+      frankify_app build_configuration
     end
 
     XCODEBUILD_OPTIONS = %w{workspace scheme target}
@@ -218,6 +222,10 @@ module Frank
       else
         remove_dir locations.build_files if File.exists? locations.build_files
       end
+    end
+
+    def frankify_app(build_configuration)
+      Frankifier.frankify!( configuration.locations.root, :build_config => build_configuration, :frank_config => configuration )
     end
 
     def xconfig_path
