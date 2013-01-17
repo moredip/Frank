@@ -79,6 +79,15 @@ module Frank
         end
       end
 
+      if configuration.xcode.configuration && configuration.xcode.project && configuration.xcode.target
+        # We have enough information to automatically frankify the project, so lets
+        # do so to make sure the project is up to scratch for the configuration
+        # we are about to build
+        say 'Sufficient configuration information provided to automatically Frankify target.'
+        frankify_app build_configuration
+        say ''
+      end
+
       if clean
         remove_dir build_output_dir
       end
