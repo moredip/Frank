@@ -21,7 +21,8 @@ module Frank
           'project' => false,
           'target' => false,
           'workspace' => false,
-          'scheme' => false
+          'scheme' => false,
+          'configuration' => 'Debug'
         }
       }
     end

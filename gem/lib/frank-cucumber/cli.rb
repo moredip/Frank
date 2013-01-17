@@ -27,8 +27,9 @@ module Frank
     WITHOUT_SERVER = "without-cocoa-http-server"
     desc "setup", "set up your iOS app by adding a Frank subdirectory containing everything Frank needs"
     method_option WITHOUT_SERVER, :type => :boolean
-    method_option :build_configuration, :aliases=>'--conf', :type=>:string, :default => 'Debug'
+    method_option :build_configuration, :aliases => '--conf', :type => :string
     def setup
+      build_configuration = options[:build_configuration] || configuration.xcode.configuration
       @without_http_server = options[WITHOUT_SERVER] || configuration.xcode.without_cocoa_http_server
 
       # Copy features directory
@@ -37,7 +38,7 @@ module Frank
       # Copy build files, based on configuration
       copy_build_file_paths build_file_paths_to_copy(@without_http_server)
 
-      Frankifier.frankify!( configuration.locations.root, :build_config => options[:build_configuration], :frank_config => configuration )
+      Frankifier.frankify!( configuration.locations.root, :build_config => build_configuration, :frank_config => configuration )
     end
 
     desc "update", "updates the frank server components inside your Frank directory"
@@ -57,7 +58,9 @@ module Frank
     end
     method_option 'arch', :type => :string, :default => 'i386'
     method_option :noclean, :type => :boolean, :default => false, :aliases => '--nc', :desc => "Don't clean the build directory before building"
+    method_option :build_configuration, :aliases => '--conf', :type => :string
     def build
+      build_configuration = options[:build_configuration] || configuration.xcode.configuration
       clean = !options['noclean']
 
       in_root do
@@ -88,7 +91,7 @@ module Frank
       extra_opts = XCODEBUILD_OPTIONS.map{ |o| "-#{o} \"#{modified_options[o]}\"" if modified_options[o] }.compact.join(' ')
       extra_opts += " -arch #{options['arch']}"
 
-      run %Q|xcodebuild -xcconfig #{xconfig_path} #{build_steps} #{extra_opts} -configuration Debug -sdk iphonesimulator DEPLOYMENT_LOCATION=YES DSTROOT="#{build_output_dir}" FRANK_LIBRARY_SEARCH_PATHS="\\"#{frank_lib_directory}\\""|
+      run %Q|xcodebuild -xcconfig #{xconfig_path} #{build_steps} #{extra_opts} -configuration "#{build_configuration}" -sdk iphonesimulator DEPLOYMENT_LOCATION=YES DSTROOT="#{build_output_dir}" FRANK_LIBRARY_SEARCH_PATHS="\\"#{frank_lib_directory}\\""|
 
       FileUtils.mkdir_p(build_output_dir) # Directory may not exist yet
       app = Dir.glob("#{build_output_dir}/*.app").delete_if { |x| x =~ /\/#{app_bundle_name}$/ }
