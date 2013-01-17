@@ -24,11 +24,22 @@ module Frank
     end
 
     WITHOUT_SERVER = "without-cocoa-http-server"
+    WITHOUT_ASYNC_SOCKET = "without-cocoa-async-socket"
+    WITHOUT_LUMBERJACK = "without-cocoa-lumberjack"
     desc "setup", "set up your iOS app by adding a Frank subdirectory containing everything Frank needs"
     method_option WITHOUT_SERVER, :type => :boolean
+    method_option WITHOUT_ASYNC_SOCKET, :type => :boolean
+    method_option WITHOUT_LUMBERJACK, :type => :boolean
     method_option :build_configuration, :aliases=>'--conf', :type=>:string, :default => 'Debug'
     def setup
-      @without_http_server = options[WITHOUT_SERVER]
+      @libs = %w(Shelley CocoaAsyncSocket CocoaLumberjack CocoaHTTPServer Frank)
+      @libsMac = %w(CocoaAsyncSocketMac CocoaLumberjackMac CocoaHTTPServerMac FrankMac)
+      @libs -= %w(CocoaHTTPServer) if options[WITHOUT_SERVER]
+      @libsMac -= %w(CocoaHTTPServerMac) if options[WITHOUT_SERVER]
+      @libs -= %w(CocoaAsyncSocket) if options[WITHOUT_ASYNC_SOCKET]
+      @libsMac -= %w(CocoaAsyncSocketMac) if options[WITHOUT_ASYNC_SOCKET]
+      @libs -= %w(CocoaLumberjack) if options[WITHOUT_LUMBERJACK]
+      @libsMac -= %w(CocoaLumberjackMac) if options[WITHOUT_LUMBERJACK]
       directory ".", "Frank"
 
       Frankifier.frankify!( File.expand_path('.'), :build_config => options[:build_configuration] )
@@ -37,7 +48,7 @@ module Frank
     desc "update", "updates the frank server components inside your Frank directory"
     long_desc "This updates the parts of Frank that are embedded inside your app (e.g. libFrank.a and frank_static_resources.bundle)"
     def update
-      %w{libFrank.a libCocoaHTTPServer.a libShelley.a libFrankMac.a libCocoaHTTPServerMac.a}.each do |f|
+      %w{libFrank.a libCocoaAsyncSocket.a libCocoaLumberjack.a libCocoaHTTPServer.a libShelley.a libFrankMac.a libCocoaAsyncSocketMac.a libCocoaLumberjackMac.a libCocoaHTTPServerMac.a}.each do |f|
         copy_file f, File.join( 'Frank', f ), :force => true
       end
       directory( 'frank_static_resources.bundle', 'Frank/frank_static_resources.bundle', :force => true )
