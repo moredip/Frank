@@ -28,7 +28,7 @@ MAKE_CATEGORIES_LOADABLE(NSObject_FrankAutomation)
             if ([[self accessibilityAttributeNames] containsObject: candidateAttribute])
             {
                 id value = [self accessibilityAttributeValue: candidateAttribute];
-                
+                                
                 if ([value isKindOfClass: [NSString class]]) {
                     returnValue = value;
                     break;
@@ -52,12 +52,12 @@ MAKE_CATEGORIES_LOADABLE(NSObject_FrankAutomation)
     {
         if ([[self accessibilityAttributeNames] containsObject: NSAccessibilityPositionAttribute])
         {
-            [self accessibilityAttributeValue: NSAccessibilityPositionAttribute];
+            originValue = [self accessibilityAttributeValue: NSAccessibilityPositionAttribute];
         }
         
         if ([[self accessibilityAttributeNames] containsObject: NSAccessibilitySizeAttribute])
         {
-            [self accessibilityAttributeValue: NSAccessibilitySizeAttribute];
+            sizeValue = [self accessibilityAttributeValue: NSAccessibilitySizeAttribute];
         }
     }
     
@@ -71,6 +71,79 @@ MAKE_CATEGORIES_LOADABLE(NSObject_FrankAutomation)
     }
     
     return CGRectMake(origin.x, origin.y, size.width, size.height);
+}
+
+- (BOOL) FEX_performAccessibilityAction: (NSString*) anAction
+{
+    BOOL returnValue = NO;
+    
+    if ([[self accessibilityActionNames] containsObject: anAction])
+    {
+        [self accessibilityPerformAction: anAction];
+        returnValue = YES;
+    }
+    
+    return returnValue;
+}
+
+- (BOOL) FEX_press
+{
+    return [self FEX_performAccessibilityAction: NSAccessibilityPressAction];
+}
+
+- (BOOL) FEX_raise
+{
+    return [self FEX_performAccessibilityAction: NSAccessibilityRaiseAction];
+}
+
+@end
+
+@implementation NSApplication (FrankAutomation)
+
+- (BOOL) FEX_raise
+{
+    [self activateIgnoringOtherApps: YES];
+    return YES;
+}
+
+@end
+
+@implementation NSControl (FrankAutomation)
+
+- (NSString*) FEX_accessibilityLabel
+{
+    NSString* returnValue = [[self cell] FEX_accessibilityLabel];
+    
+    if (returnValue == nil)
+    {
+        returnValue = [super FEX_accessibilityLabel];
+    }
+    
+    return returnValue;
+}
+
+- (CGRect) FEX_accessibilityFrame
+{
+    CGRect returnValue = [[self cell] FEX_accessibilityFrame];
+    
+    if (NSEqualRects(returnValue, NSZeroRect))
+    {
+        returnValue = [super FEX_accessibilityFrame];
+    }
+    
+    return returnValue;
+}
+
+- (BOOL) FEX_performAccessibilityAction: (NSString*) anAction
+{
+    BOOL returnValue = [[self cell] FEX_performAccessibilityAction: anAction];
+    
+    if (returnValue == NO)
+    {
+        returnValue = [super FEX_performAccessibilityAction: anAction];
+    }
+    
+    return returnValue;
 }
 
 @end
