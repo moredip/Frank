@@ -44,8 +44,7 @@ end
 
 When /^I type "([^"]*)" into the "([^"]*)" text field using the keyboard$/ do |text_to_type, placeholder|
   touch( "textField placeholder:'#{placeholder}'" )
-  sleep(0.2) # wait for keyboard to animate in
-  wait_for_nothing_to_be_animating
+  sleep(0.5) # wait for keyboard to animate in
   type_into_keyboard( text_to_type )
 end
 

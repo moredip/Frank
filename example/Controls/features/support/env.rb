@@ -14,8 +14,8 @@ if $USING_PHYSICAL_DEVICE
   end
 end
 
-# ensure app is initially launched
-if !$USING_PHYSICAL_DEVICE
+if !$USING_PHYSICAL_DEVICE && !ENV['DONT_INITIALLY_LAUNCH']
+  # ensure app is initially launched
   launcher = Object.new.extend(Frank::Cucumber::FrankHelper).extend(Frank::Cucumber::Launcher)
   launcher.launch_app APP_BUNDLE_PATH 
 end

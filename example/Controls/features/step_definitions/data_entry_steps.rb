@@ -1,6 +1,7 @@
 Given /^I am on a fresh Data Entry screen$/ do
   step "I ask the app to reset to home"
   touch "view marked:'Data Entry'"
+  sleep 0.1
   wait_for_nothing_to_be_animating
 end
 
