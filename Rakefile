@@ -37,7 +37,10 @@ task :combine_libraries do
 end
 
 desc "Build a univeral library for both iphone and iphone simulator"
-task :build_lib => [:build_iphone_lib, :build_simulator_lib, :combine_libraries, :build_mac_lib]
+task :build_ios_lib => [:build_iphone_lib, :build_simulator_lib, :combine_libraries]
+
+desc "Build both universal iOS lib and OS X lib"
+task :build_lib => [:build_ios_lib, :build_mac_lib]
 
 desc "clean build artifacts"
 task :clean do
@@ -57,10 +60,12 @@ task :bundle_resources do
 end
 
 task :build => [:clean, :prep_dist, :build_lib, :bundle_resources]
+task :build_ios_only => [:clean, :prep_dist, :build_ios_lib, :bundle_resources]
+
 task :default => :build
 
 desc "build and copy everything into the gem directories for distribution as a gem"
-task :build_for_release => [:build, :build_shelley, :copy_dist_to_gem]
+task :build_for_release => [:build, :copy_dist_to_gem]
 
 desc "copies contents of dist dir to the frank-cucumber gem's frank-skeleton"
 task :copy_dist_to_gem do
