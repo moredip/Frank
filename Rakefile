@@ -33,6 +33,8 @@ end
 task :combine_libraries do
   `lipo -create -output "dist/libFrank.a" "#{build_dir}/Release-iphoneos/libFrank.a" "#{build_dir}/Release-iphonesimulator/libFrank.a"`
   `lipo -create -output "dist/libCocoaHTTPServer.a" "#{build_dir}/Release-iphoneos/libCocoaHTTPServer.a" "#{build_dir}/Release-iphonesimulator/libCocoaHTTPServer.a"`
+  `lipo -create -output "dist/libCocoaAsyncSocket.a" "#{build_dir}/Release-iphoneos/libCocoaAsyncSocket.a" "#{build_dir}/Release-iphonesimulator/libCocoaAsyncSocket.a"`
+  `lipo -create -output "dist/libCocoaLumberjack.a" "#{build_dir}/Release-iphoneos/libCocoaLumberjack.a" "#{build_dir}/Release-iphonesimulator/libCocoaLumberjack.a"`
   `lipo -create -output "dist/libShelley.a" "#{build_dir}/Release-iphoneos/libShelley.a" "#{build_dir}/Release-iphonesimulator/libShelley.a"`
 end
 
