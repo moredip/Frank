@@ -124,7 +124,7 @@
 	
 	// Numbers just passthrough
 	if([value isKindOfClass: NSNumber.class]) {
-		if(isinf([value doubleValue])) return PSEUDO_INF;
+		if(isinf([(NSNumber*) value doubleValue])) return PSEUDO_INF;
 		return value;
 	}
 	
@@ -144,7 +144,11 @@
 	};
 	
 	if(strcmp(@encode(CGRect), objcType) == 0) {
+#if TARGET_OS_IPHONE
 		CGRect rawRect = [value CGRectValue];
+#else
+        CGRect rawRect = [value rectValue];
+#endif
 		
 		return [NSDictionary dictionaryWithObjectsAndKeys:
 				convertCGPoint(rawRect.origin), @"origin",
@@ -154,13 +158,21 @@
 	
 	
 	if(strcmp(@encode(CGSize), objcType) == 0) {
+#if TARGET_OS_IPHONE
 		CGSize rawSize = [value CGSizeValue];
+#else
+        CGSize rawSize = [value sizeValue];
+#endif
 		
 		return convertCGSize(rawSize);
 	}
 	
 	if(strcmp(@encode(CGPoint), objcType) == 0) {
+#if TARGET_OS_IPHONE
 		CGPoint point = [value CGPointValue];
+#else
+        CGPoint point = [value pointValue];
+#endif
 		
 		return convertCGPoint(point);
 	}

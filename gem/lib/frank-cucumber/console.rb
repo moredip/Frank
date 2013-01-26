@@ -1,11 +1,12 @@
 require 'frank-cucumber/frank_helper'
+require 'frank-cucumber/frank_mac_helper'
 require 'frank-cucumber/launcher'
 
 module Frank
   class Console
     include Frank::Cucumber::FrankHelper
     include Frank::Cucumber::Launcher
-    
+
     def check_for_running_app
       print 'connecting to app...'
       begin
