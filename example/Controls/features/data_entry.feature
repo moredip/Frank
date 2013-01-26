@@ -6,15 +6,8 @@ Feature:
 Background:
 	Given I am on a fresh Data Entry screen
 
-Scenario: Entering text into a text field in landscape
-	Given the device is in landscape orientation
-	And I wait for nothing to be animating
+Scenario: Entering basic text into a text field 
 	Then I should be able to enter "some text" correctly using the keyboard
-
-Scenario: Entering text into a text field in portrait
-  Given the device is in portrait orientation
-  And I wait for nothing to be animating
-  Then I should be able to enter "some text" correctly using the keyboard
 
 Scenario: Deleting text in a text field
   When I type "1234567" into the "Edit me" text field using the keyboard
