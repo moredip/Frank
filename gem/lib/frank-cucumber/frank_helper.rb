@@ -85,6 +85,7 @@ module FrankHelper
     touch_successes = frankly_map( selector, 'touch' )
     raise "could not find anything matching [#{selector}] to touch" if touch_successes.empty?
     raise "some views could not be touched (probably because they are not within the current viewport)" if touch_successes.include?(false)
+    touch_successes
   end
   
   # Indicate whether there are any views in the current view heirarchy which match the specified selector.
