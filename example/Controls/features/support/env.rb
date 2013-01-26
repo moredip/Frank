@@ -1,6 +1,6 @@
 require 'frank-cucumber'
 
-APP_BUNDLE_PATH="Frank/frankified_build/Frankified.app"
+APP_BUNDLE_PATH= ENV['APP_BUNDLE_PATH'] || "Frank/frankified_build/Frankified.app"
 
 Frank::Cucumber::FrankHelper.use_shelley_from_now_on
 
@@ -14,3 +14,8 @@ if $USING_PHYSICAL_DEVICE
   end
 end
 
+# ensure app is initially launched
+if !$USING_PHYSICAL_DEVICE
+  launcher = Object.new.extend(Frank::Cucumber::FrankHelper).extend(Frank::Cucumber::Launcher)
+  launcher.launch_app APP_BUNDLE_PATH 
+end
