@@ -1,3 +1,7 @@
+Given /^this scenario is MARKED PENDING (.*)$/ do |reason|
+  pending reason
+end
+
 When /^I swipe "([^"]*)" (left|right|up|down)wards$/ do |mark,direction|
   frankly_map( "view marked:'#{mark}'", 'swipeInDirection:', direction )
 end

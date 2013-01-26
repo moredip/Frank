@@ -12,6 +12,7 @@
 @property (retain, nonatomic) IBOutlet UILabel *outputLabel;
 @property (retain, nonatomic) IBOutlet UITextField *theTextField;
 @property (retain, nonatomic) IBOutlet UISegmentedControl *keyboardSelector;
+@property (retain, nonatomic) IBOutlet UISwitch *capitalizationSwitch;
 
 @end
 
@@ -39,6 +40,7 @@
     [self setOutputLabel:nil];
     [self setTheTextField:nil];
     [self setKeyboardSelector:nil];
+    [self setCapitalizationSwitch:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -71,6 +73,10 @@
     }
     [theTextField resignFirstResponder];
 }
+- (IBAction)capitalizationSwitchDidChange:(UISwitch *)capSwitch {
+    theTextField.autocapitalizationType = (capSwitch.on ? UITextAutocapitalizationTypeWords : UITextAutocapitalizationTypeNone);
+    [theTextField resignFirstResponder];
+}
 
 
 - (void)dealloc {
@@ -78,6 +84,7 @@
     [theTextField release];
 
     [_keyboardSelector release];
+    [_capitalizationSwitch release];
     [super dealloc];
 }
 @end
