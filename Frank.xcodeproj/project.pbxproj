@@ -66,6 +66,7 @@
 		30C544B2167E4D9E0034F49C /* SuccessCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 30C544AF167E4D9E0034F49C /* SuccessCommand.h */; };
 		30C544B3167E4D9E0034F49C /* SuccessCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C544B0167E4D9E0034F49C /* SuccessCommand.m */; };
 		30C544B4167E4D9E0034F49C /* SuccessCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C544B0167E4D9E0034F49C /* SuccessCommand.m */; };
+		30C9352716A5261800A4BFD1 /* MapOperationCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D05CA811C883AA0081C5A5 /* MapOperationCommand.m */; };
 		4C1DD76C12BADFE100E10B8C /* OrientationCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1DD76812BADFE100E10B8C /* OrientationCommand.m */; };
 		4C1DD76D12BADFE100E10B8C /* OrientationCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C1DD76912BADFE100E10B8C /* OrientationCommand.h */; };
 		4C1DD76E12BADFE100E10B8C /* AppCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1DD76A12BADFE100E10B8C /* AppCommand.m */; };
@@ -873,6 +874,7 @@
 				30228E241642161200B1F9E7 /* DumpCommand.m in Sources */,
 				30228E261642161200B1F9E7 /* EnginesCommand.m in Sources */,
 				30228E281642161200B1F9E7 /* ExitCommand.m in Sources */,
+				30C9352716A5261800A4BFD1 /* MapOperationCommand.m in Sources */,
 				30AC65A8165C3A4D00DEB0AB /* OSXKeyboardCommand.m in Sources */,
 				306249F91644E68C00E8C20A /* FrankCommandRoute.m in Sources */,
 				306249FB1644E68C00E8C20A /* ImageCaptureRoute.m in Sources */,

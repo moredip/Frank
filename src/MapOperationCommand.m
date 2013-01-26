@@ -18,9 +18,16 @@
 #import "Operation.h"
 #import "DumpCommand.h"
 
+#if TARGET_OS_IPHONE
+#define FrankMapViewType UIView
+#else
+#define FrankMapViewType NSView
+#endif
+
+
 @implementation MapOperationCommand
 
-- (id) performOperation:(Operation *)operation onView:(UIView *)view {
+- (id) performOperation:(Operation *)operation onView:(FrankMapViewType *)view {
     
 	if( [operation appliesToObject:view] )
 		return [operation applyToObject:view];
@@ -49,7 +56,7 @@
 	}
 	
     NSMutableArray *results = [NSMutableArray arrayWithCapacity:[viewsToMap count]];
-	for (UIView *view in viewsToMap) {
+	for (FrankMapViewType *view in viewsToMap) {
 		@try {
 			id result = [self performOperation:operation onView:view];
 			[results addObject:[ViewJSONSerializer jsonify:result]];
