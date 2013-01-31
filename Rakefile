@@ -1,35 +1,28 @@
 require File.expand_path( '../gem/lib/frank-cucumber/version', __FILE__ )
 PRODUCT_VERSION=Frank::Cucumber::VERSION
 
-def discover_latest_ios_sdk_version
-  latest_iphone_sdk = `xcodebuild -showsdks | grep -o "iphoneos.*$"`.chomp
-  version_part = latest_iphone_sdk[/iphoneos(.*)/,1]
-  version_part
-end
-
-def discover_latest_osx_sdk_version
-  latest_osx_sdk = `xcodebuild -showsdks | grep -o "iphoneos.*$"`.chomp
-  version_part = latest_osx_sdk[/macosx(.*)/,1]
-  version_part
+def discover_latest_sdk_for(platform)
+  `xcodebuild -showsdks | grep -o "#{platform}.*$" | sort | tail -n 1`.chomp
 end
 
 def build_dir
-  File.expand_path 'build'
+  File.expand_path( '../build', __FILE__ )
 end
 
 def build_library(scheme, sdk)
-  preprocessor_flag = %Q|GCC_PREPROCESSOR_DEFINITIONS='$GCC_PREPROCESSOR_DEFINITIONS FRANK_PRODUCT_VERSION=\"#{PRODUCT_VERSION}\"'|
+  puts "building #{{scheme:scheme,sdk:sdk}}"
+  preprocessor_flag = %Q|GCC_PREPROCESSOR_DEFINITIONS='$(inherited) SHELLEY_PRODUCT_VERSION=\"#{PRODUCT_VERSION}\" FRANK_PRODUCT_VERSION=\"#{PRODUCT_VERSION}\"'|
   sh "xcodebuild -workspace Frank.xcworkspace -scheme #{scheme} -configuration Release -sdk #{sdk} BUILD_DIR=\"#{build_dir}\" #{preprocessor_flag} clean build"
 end
 
 desc "Build the Mac library"
 task :build_mac_lib do
-  build_library('FrankMac','macosx'+discover_latest_osx_sdk_version)
+  build_library('FrankMac', discover_latest_sdk_for('macosx'))
   sh "cp #{build_dir}/Release/*Mac.a dist"
 end
 
 def build_ios_library(platform)
-  build_library('Frank',platform+discover_latest_ios_sdk_version)
+  build_library('Frank',discover_latest_sdk_for(platform))
 end
 
 desc "Build the arm library"
