@@ -29,6 +29,15 @@
 #import "OSXKeyboardCommand.h"
 #endif
 
+#ifndef FRANK_PRODUCT_VERSION
+#define FRANK_PRODUCT_VERSION UNKNOWN
+#endif
+
+#define xstr(s) str(s)
+#define str(s) #s
+#define VERSIONED_NAME "Frank iOS Server " xstr(FRANK_PRODUCT_VERSION)
+const unsigned char frank_what_string[] = "@(#)" VERSIONED_NAME "\n";
+
 static NSUInteger __defaultPort = FRANK_SERVER_PORT;
 @implementation FrankServer
 
@@ -85,6 +94,7 @@ static NSUInteger __defaultPort = FRANK_SERVER_PORT;
 }
 
 - (BOOL) startServer{
+    NSLog( @"Starting server %s", VERSIONED_NAME );
 	NSError *error;
 	if( ![_httpServer start:&error] ) {
 		NSLog(@"Error starting HTTP Server:");// %@", error);
