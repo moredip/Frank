@@ -10,10 +10,9 @@ task :check_lib_versions do
   puts "GEM VERSION:     #{Frank::Cucumber::VERSION}"
   unless lib_version == Frank::Cucumber::VERSION
     raise <<-EOS
-      static lib version doesn't match gem version
 
-      LIBRARY VERSION: #{lib_version}
-      GEM VERSION:     #{Frank::Cucumber::VERSION}
+      RUH ROH.
+      static lib version doesn't match gem version.
 
       to fix this:
       (cd .. && rake build_for_release)
