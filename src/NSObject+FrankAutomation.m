@@ -86,7 +86,7 @@ MAKE_CATEGORIES_LOADABLE(NSObject_FrankAutomation)
     return returnValue;
 }
 
-- (BOOL) FEX_press
+- (BOOL) FEX_simulateClick
 {
     return [self FEX_performAccessibilityAction: NSAccessibilityPressAction];
 }
