@@ -7,6 +7,7 @@
 //
 
 #import "RoutingHTTPConnection.h"
+#import "HTTPMessage.h"
 
 #import "RequestRouter.h"
 
@@ -88,6 +89,27 @@
 	}
 	
 	return response;
+}
+
+/**
+ * This method is called immediately prior to sending the response headers (for an error).
+ * This method adds standard header fields, and then converts the response to an NSData object.
+ **/
+- (NSData *)preprocessErrorResponse:(HTTPMessage *)response;
+{
+    if ([response statusCode] == 404)
+    {
+        NSString *msg = @"<html><body>Error 404 - Not Found</body></html>";
+        NSData *msgData = [msg dataUsingEncoding:NSUTF8StringEncoding];
+
+        [response setBody:msgData];
+
+        NSString *contentLengthStr = [NSString stringWithFormat:@"%lu", (unsigned long)[msgData length]];
+        [response setHeaderField:@"Content-Length" value:contentLengthStr];
+        return [response messageData];
+    }else{
+        return [super preprocessErrorResponse:response];
+    }
 }
 
 @end
