@@ -4,8 +4,8 @@ module Frank module Cucumber
 
 module FrankHelper
 
-  def press( selector )
-    touch_successes = frankly_map( selector, 'FEX_press' )
+  def simulate_click( selector )
+    touch_successes = frankly_map( selector, 'FEX_simulateClick' )
     raise "could not find anything matching [#{selector}] to press" if touch_successes == nil or touch_successes.empty?
     raise "some objects do not support the press action" if touch_successes.include?(false)
   end
