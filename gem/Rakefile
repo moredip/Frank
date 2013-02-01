@@ -2,6 +2,27 @@ require 'bundler'
 require 'rake/testtask'
 Bundler::GemHelper.install_tasks
 
+desc 'check that the static libraries shipping with the gem have the same version number as the gem itself'
+task :check_lib_versions do
+  lib_path = File.expand_path( '../frank-skeleton/libFrank.a', __FILE__)
+  lib_version = `what #{lib_path}`.chomp.split("\n").last.split(" ").last
+  puts "LIBRARY VERSION: #{lib_version}"
+  puts "GEM VERSION:     #{Frank::Cucumber::VERSION}"
+  unless lib_version == Frank::Cucumber::VERSION
+    raise <<-EOS
+      static lib version doesn't match gem version
+
+      LIBRARY VERSION: #{lib_version}
+      GEM VERSION:     #{Frank::Cucumber::VERSION}
+
+      to fix this:
+      (cd .. && rake build_for_release)
+    EOS
+  end
+end
+
+task :build => :check_lib_versions
+
 desc 'open up version.rb'
 task :edit_version do
   exec "vim #{File.dirname(__FILE__)}/lib/frank-cucumber/version.rb"
