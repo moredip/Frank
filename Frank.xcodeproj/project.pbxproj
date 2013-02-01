@@ -115,6 +115,10 @@
 		ABA9E4B915C81E4100112290 /* HTTPRedirectResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA9E4B415C81E4100112290 /* HTTPRedirectResponse.m */; };
 		C177A4CC1632319A0081DF77 /* AnyJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = C177A4CA1632319A0081DF77 /* AnyJSON.h */; };
 		C177A4CD1632319A0081DF77 /* AnyJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = C177A4CB1632319A0081DF77 /* AnyJSON.m */; };
+		C189EF1E16BB5A8100F8236D /* VersionCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = C189EF1C16BB5A8000F8236D /* VersionCommand.h */; };
+		C189EF1F16BB5A8100F8236D /* VersionCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = C189EF1C16BB5A8000F8236D /* VersionCommand.h */; };
+		C189EF2016BB5A8100F8236D /* VersionCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = C189EF1D16BB5A8000F8236D /* VersionCommand.m */; };
+		C189EF2116BB5A8100F8236D /* VersionCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = C189EF1D16BB5A8000F8236D /* VersionCommand.m */; };
 		C18A5EF0160D4AB400DC25F6 /* ImageCaptureRoute.h in Headers */ = {isa = PBXBuildFile; fileRef = C18A5EEE160D4AB400DC25F6 /* ImageCaptureRoute.h */; };
 		C18A5EF1160D4AB400DC25F6 /* ImageCaptureRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = C18A5EEF160D4AB400DC25F6 /* ImageCaptureRoute.m */; };
 		C18A5EF5160D4AD300DC25F6 /* UIView+ImageCapture.h in Headers */ = {isa = PBXBuildFile; fileRef = C18A5EF3160D4AD300DC25F6 /* UIView+ImageCapture.h */; };
@@ -360,6 +364,8 @@
 		C177A4CA1632319A0081DF77 /* AnyJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnyJSON.h; path = AnyJSON/AnyJSON.h; sourceTree = "<group>"; };
 		C177A4CB1632319A0081DF77 /* AnyJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnyJSON.m; path = AnyJSON/AnyJSON.m; sourceTree = "<group>"; };
 		C177A4CE163234B60081DF77 /* JSON.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		C189EF1C16BB5A8000F8236D /* VersionCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionCommand.h; sourceTree = "<group>"; };
+		C189EF1D16BB5A8000F8236D /* VersionCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionCommand.m; sourceTree = "<group>"; };
 		C18A5EEE160D4AB400DC25F6 /* ImageCaptureRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCaptureRoute.h; sourceTree = "<group>"; };
 		C18A5EEF160D4AB400DC25F6 /* ImageCaptureRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCaptureRoute.m; sourceTree = "<group>"; };
 		C18A5EF3160D4AD300DC25F6 /* UIView+ImageCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ImageCapture.h"; sourceTree = "<group>"; };
@@ -673,6 +679,8 @@
 				30AC65A6165C3A4D00DEB0AB /* OSXKeyboardCommand.m */,
 				30C544AF167E4D9E0034F49C /* SuccessCommand.h */,
 				30C544B0167E4D9E0034F49C /* SuccessCommand.m */,
+				C189EF1C16BB5A8000F8236D /* VersionCommand.h */,
+				C189EF1D16BB5A8000F8236D /* VersionCommand.m */,
 			);
 			name = Commands;
 			sourceTree = "<group>";
@@ -790,6 +798,7 @@
 				30AC65A4165C39FF00DEB0AB /* FrankMac-Prefix.pch in Headers */,
 				30AC65A7165C3A4D00DEB0AB /* OSXKeyboardCommand.h in Headers */,
 				30C544B2167E4D9E0034F49C /* SuccessCommand.h in Headers */,
+				C189EF1F16BB5A8100F8236D /* VersionCommand.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -830,6 +839,7 @@
 				C177A4CC1632319A0081DF77 /* AnyJSON.h in Headers */,
 				9B3E52AF163FB98300EB24C2 /* LocationCommand.h in Headers */,
 				30C544B1167E4D9E0034F49C /* SuccessCommand.h in Headers */,
+				C189EF1E16BB5A8100F8236D /* VersionCommand.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1071,6 +1081,7 @@
 				3072649F165812FB00815A1A /* ViewJSONSerializer.m in Sources */,
 				30C544B4167E4D9E0034F49C /* SuccessCommand.m in Sources */,
 				304A0C821699105600150BE8 /* NSApplication+FrankAutomation.m in Sources */,
+				C189EF2116BB5A8100F8236D /* VersionCommand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1196,6 +1207,7 @@
 				C177A4CD1632319A0081DF77 /* AnyJSON.m in Sources */,
 				9B3E52B0163FB98300EB24C2 /* LocationCommand.m in Sources */,
 				30C544B3167E4D9E0034F49C /* SuccessCommand.m in Sources */,
+				C189EF2016BB5A8100F8236D /* VersionCommand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

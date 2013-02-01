@@ -18,6 +18,7 @@
 #import "AppCommand.h"
 #import "AccessibilityCheckCommand.h"
 #import "EnginesCommand.h"
+#import "VersionCommand.h"
 #import "SuccessCommand.h"
 #import "MapOperationCommand.h"
 
@@ -50,7 +51,7 @@ static NSUInteger __defaultPort = FRANK_SERVER_PORT;
 }
 
 - (id) initWithStaticFrankBundleNamed:(NSString *)bundleName
-{
+{    
 	self = [super init];
 	if (self != nil) {
 		if( ![bundleName hasSuffix:@".bundle"] )
@@ -61,6 +62,7 @@ static NSUInteger __defaultPort = FRANK_SERVER_PORT;
 		[frankCommandRoute registerCommand:[[[AccessibilityCheckCommand alloc] init]autorelease] withName:@"accessibility_check"];
 		[frankCommandRoute registerCommand:[[[AppCommand alloc] init]autorelease] withName:@"app_exec"];
         [frankCommandRoute registerCommand:[[[EnginesCommand alloc] init]autorelease] withName:@"engines"];
+        [frankCommandRoute registerCommand:[[[VersionCommand alloc] initWithVersion:[NSString stringWithFormat:@"%s",xstr(FRANK_PRODUCT_VERSION)]]autorelease] withName:@"version"];
         [frankCommandRoute registerCommand:[[[ExitCommand alloc] init] autorelease] withName:@"exit"];
         [frankCommandRoute registerCommand:[[[MapOperationCommand alloc]init]autorelease] withName:@"map"];
         
