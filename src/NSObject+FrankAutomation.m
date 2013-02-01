@@ -40,7 +40,8 @@ MAKE_CATEGORIES_LOADABLE(NSObject_FrankAutomation)
     return [[returnValue copy] autorelease];
 }
 
-- (CGRect) FEX_accessibilityFrame {
+- (CGRect) FEX_accessibilityFrame
+{
     NSPoint origin = NSZeroPoint;
     NSSize  size   = NSZeroSize;
     
@@ -144,6 +145,22 @@ MAKE_CATEGORIES_LOADABLE(NSObject_FrankAutomation)
     }
     
     return returnValue;
+}
+
+@end
+
+@implementation NSMenuItem (FrankAutomation)
+
+- (NSString*) FEX_accessibilityLabel
+{
+    return [self title];
+}
+
+- (BOOL) FEX_simulateClick
+{
+    [[self menu] performActionForItemAtIndex: [[self menu] indexOfItem: self]];
+    
+    return YES;
 }
 
 @end
