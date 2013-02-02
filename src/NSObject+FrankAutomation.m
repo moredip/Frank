@@ -97,6 +97,41 @@ MAKE_CATEGORIES_LOADABLE(NSObject_FrankAutomation)
     return [self FEX_performAccessibilityAction: NSAccessibilityRaiseAction];
 }
 
+- (BOOL) FEX_cancel
+{
+    return [self FEX_performAccessibilityAction: NSAccessibilityCancelAction];
+}
+
+- (BOOL) FEX_confirm
+{
+    return [self FEX_performAccessibilityAction: NSAccessibilityConfirmAction];
+}
+
+- (BOOL) FEX_decrement
+{
+    return [self FEX_performAccessibilityAction: NSAccessibilityDecrementAction];
+}
+
+- (BOOL) FEX_delete
+{
+    return [self FEX_performAccessibilityAction: NSAccessibilityDeleteAction];
+}
+
+- (BOOL) FEX_increment
+{
+    return [self FEX_performAccessibilityAction: NSAccessibilityIncrementAction];
+}
+
+- (BOOL) FEX_pick
+{
+    return [self FEX_performAccessibilityAction: NSAccessibilityPickAction];
+}
+
+- (BOOL) FEX_showMenu
+{
+    return [self FEX_performAccessibilityAction: NSAccessibilityShowMenuAction];
+}
+
 @end
 
 @implementation NSApplication (FrankAutomation)
@@ -153,14 +188,59 @@ MAKE_CATEGORIES_LOADABLE(NSObject_FrankAutomation)
 
 - (NSString*) FEX_accessibilityLabel
 {
-    return [self title];
+    NSString* returnValue = [super FEX_accessibilityLabel];
+    
+    if (returnValue == nil)
+    {
+        returnValue = [self title];
+    }
+    
+    return returnValue;
 }
 
 - (BOOL) FEX_simulateClick
 {
-    [[self menu] performActionForItemAtIndex: [[self menu] indexOfItem: self]];
+    BOOL returnValue = NO;
     
-    return YES;
+    if ([self menu] != nil)
+    {
+        NSInteger itemIndex = [[self menu] indexOfItem: self];
+        
+        if (itemIndex >= 0)
+        {
+            [[self menu] performActionForItemAtIndex: itemIndex];
+            returnValue = YES;
+        }
+    }
+    
+    return returnValue;
+}
+
+@end
+
+@implementation NSView (FrankAutomation)
+
+- (BOOL) FEX_raise
+{
+    return [[self window] FEX_raise];
+}
+
+- (BOOL) FEX_simulateClick
+{
+    BOOL returnValue = [super FEX_simulateClick];
+    
+    if (!returnValue)
+    {
+        returnValue = [[self window] makeFirstResponder: nil];
+        
+        if (returnValue)
+        {
+            [[self window] makeKeyWindow];
+            returnValue = [[self window] makeFirstResponder: self];
+        }
+    }
+    
+    return returnValue;
 }
 
 @end
