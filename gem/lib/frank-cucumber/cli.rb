@@ -129,7 +129,7 @@ module Frank
 
     desc "launch", "open the Frankified app in the simulator"
     method_option :debug, :type => :boolean, :default => false
-    method_option :idiom, :banner => 'iphone|ipad|mac', :type => :string, :default => (ENV['FRANK_SIM_IDIOM'] || 'iphone')
+    method_option :idiom, :banner => 'iphone|ipad', :type => :string, :default => (ENV['FRANK_SIM_IDIOM'] || 'iphone')
     def launch
       $DEBUG = options[:debug]
       launcher = case options[:idiom].downcase
@@ -137,10 +137,8 @@ module Frank
         SimLauncher::DirectClient.for_iphone_app( frankified_app_dir )
       when 'ipad'
         SimLauncher::DirectClient.for_ipad_app( frankified_app_dir )
-      when 'mac'
-        Frank::MacLauncher.new( frankified_app_dir )
       else
-        say "idiom must be either iphone, ipad, or mac. You supplied '#{options[:idiom]}'", :red
+        say "idiom must be either iphone or ipad. You supplied '#{options[:idiom]}'", :red
         exit 10
       end
 
@@ -151,7 +149,12 @@ module Frank
           invoke :build
         end
 
-        say "LAUNCHING IN THE SIMULATOR..."
+        if built_product_is_mac_app( frankified_app_dir )
+          launcher = Frank::MacLauncher.new( frankified_app_dir )
+          say "LAUNCHING APP..."
+        else
+          say "LAUNCHING IN THE SIMULATOR..."
+        end
 
         launcher.relaunch
       end
@@ -203,6 +206,10 @@ module Frank
 
     def frankified_app_dir
       File.join( build_output_dir, app_bundle_name )
+    end
+
+    def built_product_is_mac_app ( app_dir )
+        return File.exists? File.join( app_dir, "Contents", "MacOS" )
     end
 
     def fix_frankified_apps_bundle_identifier
