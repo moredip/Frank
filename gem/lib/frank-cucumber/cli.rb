@@ -54,7 +54,7 @@ module Frank
       directory( 'frank_static_resources.bundle', 'Frank/frank_static_resources.bundle', :force => true )
     end
 
-    XCODEBUILD_OPTIONS = %w{workspace scheme target}
+    XCODEBUILD_OPTIONS = %w{workspace scheme target configuration}
     desc "build", "builds a Frankified version of your native app"
     XCODEBUILD_OPTIONS.each do |option|
       method_option option
@@ -90,12 +90,20 @@ module Frank
 
       extra_opts = XCODEBUILD_OPTIONS.map{ |o| "-#{o} \"#{options[o]}\"" if options[o] }.compact.join(' ')
 
+      # If there is a scheme specified we don't want to inject the default configuration
+      # If there is a configuration specified, we also do not want to inject the default configuration 
+      if options['scheme'] || options['configuration']
+        separate_configuration_option = ""
+      else
+        separate_configuration_option = "-configuration Debug"
+      end
+
       if options['mac']
-        run %Q|xcodebuild -xcconfig Frank/frankify.xcconfig #{build_steps} #{extra_opts} -configuration Debug DEPLOYMENT_LOCATION=YES DSTROOT="#{build_output_dir}" FRANK_LIBRARY_SEARCH_PATHS="\\"#{frank_lib_directory}\\""|
+        run %Q|xcodebuild -xcconfig Frank/frankify.xcconfig #{build_steps} #{extra_opts} #{separate_configuration_option} DEPLOYMENT_LOCATION=YES DSTROOT="#{build_output_dir}" FRANK_LIBRARY_SEARCH_PATHS="\\"#{frank_lib_directory}\\""|
       else
         extra_opts += " -arch #{options['arch']}"
 
-        run %Q|xcodebuild -xcconfig Frank/frankify.xcconfig #{build_steps} #{extra_opts} -configuration Debug -sdk iphonesimulator DEPLOYMENT_LOCATION=YES DSTROOT="#{build_output_dir}" FRANK_LIBRARY_SEARCH_PATHS="\\"#{frank_lib_directory}\\""|
+        run %Q|xcodebuild -xcconfig Frank/frankify.xcconfig #{build_steps} #{extra_opts} #{separate_configuration_option} -sdk iphonesimulator DEPLOYMENT_LOCATION=YES DSTROOT="#{build_output_dir}" FRANK_LIBRARY_SEARCH_PATHS="\\"#{frank_lib_directory}\\""|
       end
 
       app = Dir.glob("#{build_output_dir}/*.app").delete_if { |x| x =~ /\/#{app_bundle_name}$/ }
