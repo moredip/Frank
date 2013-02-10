@@ -32,7 +32,7 @@ module Frank
       frankrc_path = find_frankrc
       if frankrc_path
         @root_directory = File.dirname(frankrc_path)
-        @configuration = YAML.load_file(frankrc_path)
+        @configuration = YAML.load(ERB.new(File.read(frankrc_path)).result)
       else
         @root_directory = Dir.pwd
         @configuration = {}

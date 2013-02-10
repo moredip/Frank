@@ -68,7 +68,7 @@ Configuration via `.frankrc`
 
 The `frank` command line interface supports a configuration file with the name `.frankrc` placed in the root directory of your project. If this file is present you can run `frank` from any sub-directory of the project and it will behave as if you ran it from the project's root directory.
 
-This configuration file is in [YAML](http://www.yaml.org/) format and there are a number of settings you can control with this file.
+This configuration file is in [YAML](http://www.yaml.org/) format and is also pre-processed as [ERB](http://ruby-doc.org/stdlib-1.9.3/libdoc/erb/rdoc/ERB.html) which can be helpful if part of the file needs to be dynamic. There are a number of settings you can control with this file:
 
 _NOTE: For settings that define a path, a relative path will be treated as relative to the directory of the `.frankrc` file._
 
