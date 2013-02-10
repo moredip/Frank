@@ -229,7 +229,12 @@ module Frank
           end
         end
       else
-        remove_dir locations.build_files if File.exists? locations.build_files
+        unless locations.features.to_s.start_with?(locations.build_files.to_s) || 
+               locations.build_output.to_s.start_with?(locations.build_files.to_s)
+          # Remove the build_files path (so long as it doesn't contain the features 
+          # or build_output path) as we aren't going to copy any files into it:
+          remove_dir locations.build_files if File.exists? locations.build_files
+        end
       end
     end
 
