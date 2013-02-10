@@ -273,7 +273,7 @@ module Frank
     end
 
     def build_output_dir
-      File.join(configuration.locations.build_files, "frankified_build")
+      configuration.locations.build_output
     end
 
     def frankified_app_dir

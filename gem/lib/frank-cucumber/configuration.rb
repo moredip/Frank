@@ -13,7 +13,8 @@ module Frank
         },
         'locations' => {
           'features' => 'Frank/features',
-          'build_files' => 'Frank'
+          'build_files' => 'Frank',
+          'build_output' => 'Frank/frankified_build'
         },
         'xcode' => {
           'without_cocoa_http_server' => false,
