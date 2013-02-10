@@ -12,7 +12,56 @@ Learn More
 Getting Started
 ----
 
-Getting started is easy. You just need to install a ruby gem, create a new target for your app in XCode, and start writing cucumber tests.
+Getting started is easy, start by installing the `frank-cucumber` gem:
+
+```bash
+$ gem install frank-cucumber
+```
+
+Now you need to setup your project to use Frank, before you do this consider using a `.frankrc` configuration file (documented below) to customize your setup. You don't need a configuration file though, the command to run inside the root directory of your project is:
+
+```bash
+$ frank setup
+```
+
+You can now build a frankfied version of your app:
+
+```bash
+$ frank build
+```
+
+Test your frankified app by launching it in the simulator and opening the Symbiote inspector:
+
+```bash
+$ frank launch
+$ frank inspect
+```
+
+If setup was successful you should see the Symbiote inspector in your browser.
+
+`frank setup` created an example feature for you, you can run this now using cucumber (the path to your features directory may differ if you have a custom `.frankrc`), running cucumber you should see output like this:
+
+```bash
+$ cucumber Frank/features/
+Feature: 
+  As an iOS developer
+  I want to have a sample feature file
+  So I can see what my next step is in the wonderful world of Frank/Cucumber testing
+
+  Scenario:                                             # Frank/features/my_first.feature:6
+      Rotating the simulator for demonstration purposes
+    Given I launch the app                              # Frank/features/step_definitions/launch_steps.rb:5
+    Given the device is in landscape orientation        # /gems/frank-cucumber/core_frank_steps.rb:151
+    Given the device is in portrait orientation         # /gems/frank-cucumber/core_frank_steps.rb:151
+    Given the device is in landscape orientation        # /gems/frank-cucumber/core_frank_steps.rb:151
+    Given the device is in portrait orientation         # /gems/frank-cucumber/core_frank_steps.rb:151
+
+1 scenario (1 passed)
+5 steps (5 passed)
+0m15.410s
+```
+
+If you are having trouble go to [The Frank website](http://www.testingwithfrank.com) for further support. Otherwse you can now start writing your real cucumber tests!
 
 Configuration via `.frankrc`
 ----
