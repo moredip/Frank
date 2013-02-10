@@ -18,7 +18,7 @@ Getting started is easy, start by installing the `frank-cucumber` gem:
 $ gem install frank-cucumber
 ```
 
-Now you need to setup your project to use Frank, before you do this consider using a `.frankrc` configuration file (documented below) to customize your setup. You don't need a configuration file though, the command to run inside the root directory of your project is:
+Now you need to setup your project to use Frank, but before you do this consider using [a `.frankrc` configuration file](#configuration-via-frankrc) to customize your setup - especially if you need to work with Xcode workspaces. You don't need a configuration file though, and the command to run inside the root directory of your project is:
 
 ```bash
 $ frank setup
