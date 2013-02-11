@@ -13,6 +13,7 @@
 #import "StaticResourcesRoute.h"
 #import "ImageCaptureRoute.h"
 #import "FrankCommandRoute.h"
+#import "DeviceCommand.h"
 #import "DumpCommand.h"
 #import "ExitCommand.h"
 #import "AppCommand.h"
@@ -58,6 +59,7 @@ static NSUInteger __defaultPort = FRANK_SERVER_PORT;
 			bundleName = [bundleName stringByAppendingString:@".bundle"];
 		
 		FrankCommandRoute *frankCommandRoute = [FrankCommandRoute singleton];
+        [frankCommandRoute registerCommand:[[[DeviceCommand alloc] init] autorelease] withName:@"device"];
 		[frankCommandRoute registerCommand:[[[DumpCommand alloc]init]autorelease] withName:@"dump"];
 		[frankCommandRoute registerCommand:[[[AccessibilityCheckCommand alloc] init]autorelease] withName:@"accessibility_check"];
 		[frankCommandRoute registerCommand:[[[AppCommand alloc] init]autorelease] withName:@"app_exec"];
