@@ -19,6 +19,10 @@
 		302B80411646DE02000F9861 /* NSImage+Frank.h in Headers */ = {isa = PBXBuildFile; fileRef = 302B803F1646DE02000F9861 /* NSImage+Frank.h */; };
 		302B80421646DE02000F9861 /* NSImage+Frank.m in Sources */ = {isa = PBXBuildFile; fileRef = 302B80401646DE02000F9861 /* NSImage+Frank.m */; };
 		303A751316702D3D00B93673 /* NSObject+FrankAutomation.m in Sources */ = {isa = PBXBuildFile; fileRef = 303A751116702D3D00B93673 /* NSObject+FrankAutomation.m */; };
+		303CFCE416C80B830004BD05 /* DeviceCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 303CFCE216C80B830004BD05 /* DeviceCommand.h */; };
+		303CFCE516C80B830004BD05 /* DeviceCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 303CFCE216C80B830004BD05 /* DeviceCommand.h */; };
+		303CFCE616C80B830004BD05 /* DeviceCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 303CFCE316C80B830004BD05 /* DeviceCommand.m */; };
+		303CFCE716C80B830004BD05 /* DeviceCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 303CFCE316C80B830004BD05 /* DeviceCommand.m */; };
 		30412D30165333E300719CD2 /* NSView+FrankImageCapture.h in Headers */ = {isa = PBXBuildFile; fileRef = 30412D2E165333E300719CD2 /* NSView+FrankImageCapture.h */; };
 		30412D31165333E300719CD2 /* NSView+FrankImageCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 30412D2F165333E300719CD2 /* NSView+FrankImageCapture.m */; };
 		304374F6167D2BC8006D5D71 /* AnyJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = C177A4CB1632319A0081DF77 /* AnyJSON.m */; };
@@ -280,6 +284,8 @@
 		302B803F1646DE02000F9861 /* NSImage+Frank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+Frank.h"; sourceTree = "<group>"; };
 		302B80401646DE02000F9861 /* NSImage+Frank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+Frank.m"; sourceTree = "<group>"; };
 		303A751116702D3D00B93673 /* NSObject+FrankAutomation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+FrankAutomation.m"; sourceTree = "<group>"; };
+		303CFCE216C80B830004BD05 /* DeviceCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceCommand.h; sourceTree = "<group>"; };
+		303CFCE316C80B830004BD05 /* DeviceCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceCommand.m; sourceTree = "<group>"; };
 		30412D2E165333E300719CD2 /* NSView+FrankImageCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+FrankImageCapture.h"; sourceTree = "<group>"; };
 		30412D2F165333E300719CD2 /* NSView+FrankImageCapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+FrankImageCapture.m"; sourceTree = "<group>"; };
 		304A0C801699105600150BE8 /* NSApplication+FrankAutomation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSApplication+FrankAutomation.m"; sourceTree = "<group>"; };
@@ -661,6 +667,8 @@
 				D67F2AAC13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.m */,
 				4C1DD76B12BADFE100E10B8C /* AppCommand.h */,
 				4C1DD76A12BADFE100E10B8C /* AppCommand.m */,
+				303CFCE216C80B830004BD05 /* DeviceCommand.h */,
+				303CFCE316C80B830004BD05 /* DeviceCommand.m */,
 				D6D05CA111C883AA0081C5A5 /* DumpCommand.h */,
 				D6D05CA211C883AA0081C5A5 /* DumpCommand.m */,
 				D6FA01B714283C4F00576AF0 /* EnginesCommand.h */,
@@ -799,6 +807,7 @@
 				30AC65A7165C3A4D00DEB0AB /* OSXKeyboardCommand.h in Headers */,
 				30C544B2167E4D9E0034F49C /* SuccessCommand.h in Headers */,
 				C189EF1F16BB5A8100F8236D /* VersionCommand.h in Headers */,
+				303CFCE516C80B830004BD05 /* DeviceCommand.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -840,6 +849,7 @@
 				9B3E52AF163FB98300EB24C2 /* LocationCommand.h in Headers */,
 				30C544B1167E4D9E0034F49C /* SuccessCommand.h in Headers */,
 				C189EF1E16BB5A8100F8236D /* VersionCommand.h in Headers */,
+				303CFCE416C80B830004BD05 /* DeviceCommand.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1082,6 +1092,7 @@
 				30C544B4167E4D9E0034F49C /* SuccessCommand.m in Sources */,
 				304A0C821699105600150BE8 /* NSApplication+FrankAutomation.m in Sources */,
 				C189EF2116BB5A8100F8236D /* VersionCommand.m in Sources */,
+				303CFCE716C80B830004BD05 /* DeviceCommand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1208,6 +1219,7 @@
 				9B3E52B0163FB98300EB24C2 /* LocationCommand.m in Sources */,
 				30C544B3167E4D9E0034F49C /* SuccessCommand.m in Sources */,
 				C189EF2016BB5A8100F8236D /* VersionCommand.m in Sources */,
+				303CFCE616C80B830004BD05 /* DeviceCommand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
