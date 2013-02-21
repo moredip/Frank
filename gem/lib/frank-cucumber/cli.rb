@@ -48,7 +48,7 @@ module Frank
     desc "update", "updates the frank server components inside your Frank directory"
     long_desc "This updates the parts of Frank that are embedded inside your app (e.g. libFrank.a and frank_static_resources.bundle)"
     def update
-      %w{libFrank.a libCocoaAsyncSocket.a libCocoaLumberjack.a libCocoaHTTPServer.a libShelley.a libFrankMac.a libShelleyMac libCocoaAsyncSocketMac.a libCocoaLumberjackMac.a libCocoaHTTPServerMac.a}.each do |f|
+      %w{libFrank.a libCocoaAsyncSocket.a libCocoaLumberjack.a libCocoaHTTPServer.a libShelley.a libFrankMac.a libShelleyMac.a libCocoaAsyncSocketMac.a libCocoaLumberjackMac.a libCocoaHTTPServerMac.a}.each do |f|
         copy_file f, File.join( 'Frank', f ), :force => true
       end
       directory( 'frank_static_resources.bundle', 'Frank/frank_static_resources.bundle', :force => true )
