@@ -10,7 +10,7 @@
 
 @interface NSImage (Frank)
 
-+ (NSImage *)imageFromApplication:(BOOL)allWindows;
++ (NSImage *)imageFromApplication;
 - (NSImage *)imageCropedToFrame:(CGRect)cropFrame;
 - (NSImage *)imageMaskedAtFrame:(CGRect)maskFrame;
 
