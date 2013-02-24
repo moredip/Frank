@@ -108,13 +108,13 @@
     if ( [path count] > 1 && [@"view-snapshot" isEqualToString:[path objectAtIndex:1]] ){
         return [self responseWithSnapshotOfViewWithUid:[path objectAtIndex:2] withConnection:connection];
     }
-
-    BOOL allWindows = [path count] > 1 && [[path objectAtIndex:1] isEqualToString:@"allwindows"];
     
 #if TARGET_OS_IPHONE
+    BOOL allWindows = [path count] > 1 && [[path objectAtIndex:1] isEqualToString:@"allwindows"];
+    
     UIImage *screenshot = [UIImage imageFromApplication:allWindows];
 #else
-    NSImage *screenshot = [NSImage imageFromApplication:allWindows];
+    NSImage *screenshot = [NSImage imageFromApplication];
 #endif
     
     if ([path count] == 4)
@@ -142,7 +142,13 @@
 #if TARGET_OS_IPHONE
     NSData *response = UIImagePNGRepresentation(screenshot);
 #else
-    NSData *response = [[[screenshot representations] objectAtIndex:0] representationUsingType:NSPNGFileType properties:nil];
+    [screenshot lockFocus];
+    NSSize size = [screenshot size];
+    NSBitmapImageRep* rep = [[NSBitmapImageRep alloc] initWithFocusedViewRect: NSMakeRect(0, 0, size.height, size.height)];
+    [screenshot unlockFocus];
+    
+    NSData *response = [rep representationUsingType:NSPNGFileType properties:nil];
+    [rep release];
 #endif
     
     return [[[HTTPDataResponse alloc] initWithData:response] autorelease];

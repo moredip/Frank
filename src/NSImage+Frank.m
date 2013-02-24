@@ -9,24 +9,86 @@
 #import "NSImage+Frank.h"
 #import "NSView+FrankImageCapture.h"
 
+@interface NSApplication ()
+- (CGRect) FEX_accessibilityFrame;
+@end
+
 @implementation NSImage (Frank)
 
-+ (NSImage *) imageFromApplication:(BOOL)allWindows
++ (NSImage *) imageFromApplication
 {
-    NSWindow* mainWindow = [[NSApplication sharedApplication] mainWindow];
+    NSRect screenFrame = (NSRect) [[NSApplication sharedApplication] FEX_accessibilityFrame];
     
-    if (allWindows){
-        NSMutableArray *views = [NSMutableArray array];
+    NSImage* screenshot = [[[NSImage alloc] initWithSize: screenFrame.size] autorelease];
+    
+    NSMutableDictionary* appWindows        = [NSMutableDictionary dictionary];
+    NSMutableArray*      screenshotWindows = [NSMutableArray array];
+    
+    for (NSWindow* window in [[NSApplication sharedApplication] windows])
+    {
+        [appWindows setObject: window forKey: [NSNumber numberWithInteger: [window windowNumber]]];
+    }
+    
+    NSArray* allWindows = (NSArray*) CGWindowListCopyWindowInfo(kCGWindowListOptionOnScreenOnly | kCGWindowListExcludeDesktopElements, kCGNullWindowID);
+    
+    for (NSDictionary* windowInfo in allWindows)
+    {
+        NSNumber* windowNumber = [windowInfo objectForKey: (NSString*) kCGWindowNumber];
         
-        for (NSWindow *window in [[NSApplication sharedApplication] windows]){
-            [views addObject:[window contentView]];
+        if ([appWindows objectForKey: windowNumber] != nil)
+        {
+            [screenshotWindows addObject: [appWindows objectForKey: windowNumber]];
         }
+    }
+    
+    [allWindows release];
+    
+    [screenshot lockFocus];
         
-        return [NSView captureImageOfSize:mainWindow.frame.size fromViews:views];
+    for (NSScreen* screen in [NSScreen screens])
+    {
+        NSRect frame = [screen frame];
+        
+        NSURL* backgroundURL = [[NSWorkspace sharedWorkspace] desktopImageURLForScreen: screen];
+        NSData* data = [NSData dataWithContentsOfURL: backgroundURL];
+        NSImage* background = [[NSImage  alloc] initWithData: data];
+        
+        [screenshot lockFocus];
+        
+        [background drawInRect: frame
+                      fromRect: NSZeroRect
+                     operation: NSCompositeSourceOver
+                      fraction: 1.0];
+        
+        [screenshot unlockFocus];
+        
+        [background release];
     }
-    else{
-        return [[mainWindow contentView] captureImage];
+    
+    for (NSWindow* window in [screenshotWindows reverseObjectEnumerator])
+    {
+        NSInteger windowNumber = [window windowNumber];
+        CGImageRef cgImage = CGWindowListCreateImage(CGRectNull,
+                                                     kCGWindowListOptionIncludingWindow,
+                                                     (CGWindowID) windowNumber,
+                                                     kCGWindowImageDefault);
+        
+        NSImage* nsImage = [[NSImage alloc] initWithCGImage: cgImage size: [window frame].size];
+        
+        [screenshot lockFocus];
+        
+        [nsImage drawInRect: [window frame]
+                   fromRect: NSZeroRect
+                  operation: NSCompositeSourceOver
+                   fraction: 1.0];
+        
+        [screenshot unlockFocus];
+        
+        [nsImage release];
+        CFRelease(cgImage);
     }
+        
+    return  screenshot;
 }
 
 - (NSImage *)imageCropedToFrame:(CGRect)cropFrame
