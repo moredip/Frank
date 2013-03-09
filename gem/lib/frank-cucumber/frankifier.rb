@@ -13,6 +13,7 @@ class Frankifier
   def initialize( root_dir, options = {} )
     @root = Pathname.new( root_dir )
     @target_build_configuration = options[:build_config]
+    @target_selection = options[:target]
   end
 
   def frankify!
@@ -53,6 +54,8 @@ class Frankifier
 
   def decide_on_target
     targets = @project.targets
+    @target = targets.find { |item| item.name.eql?(@target_selection) } if @target_selection
+    return @target if @target
     @target = case targets.size
     when 0
       raise "Sorry, this project appears to contain no targets. Nothing I can do here."
