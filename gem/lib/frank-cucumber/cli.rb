@@ -31,6 +31,7 @@ module Frank
     method_option WITHOUT_ASYNC_SOCKET, :type => :boolean
     method_option WITHOUT_LUMBERJACK, :type => :boolean
     method_option :build_configuration, :aliases=>'--conf', :type=>:string, :default => 'Debug'
+    method_option :target, :type=>:string
     def setup
       @libs = %w(Shelley CocoaAsyncSocket CocoaLumberjack CocoaHTTPServer Frank)
       @libsMac = %w(CocoaAsyncSocketMac CocoaLumberjackMac CocoaHTTPServerMac FrankMac)
@@ -42,13 +43,13 @@ module Frank
       @libsMac -= %w(CocoaLumberjackMac) if options[WITHOUT_LUMBERJACK]
       directory ".", "Frank"
 
-      Frankifier.frankify!( File.expand_path('.'), :build_config => options[:build_configuration] )
+      Frankifier.frankify!( File.expand_path('.'), :build_config => options[:build_configuration], :target => options[:target] )
     end
 
     desc "update", "updates the frank server components inside your Frank directory"
     long_desc "This updates the parts of Frank that are embedded inside your app (e.g. libFrank.a and frank_static_resources.bundle)"
     def update
-      %w{libFrank.a libCocoaAsyncSocket.a libCocoaLumberjack.a libCocoaHTTPServer.a libShelley.a libFrankMac.a libShelleyMac libCocoaAsyncSocketMac.a libCocoaLumberjackMac.a libCocoaHTTPServerMac.a}.each do |f|
+      %w{libFrank.a libCocoaAsyncSocket.a libCocoaLumberjack.a libCocoaHTTPServer.a libShelley.a libFrankMac.a libShelleyMac.a libCocoaAsyncSocketMac.a libCocoaLumberjackMac.a libCocoaHTTPServerMac.a}.each do |f|
         copy_file f, File.join( 'Frank', f ), :force => true
       end
       directory( 'frank_static_resources.bundle', 'Frank/frank_static_resources.bundle', :force => true )
@@ -91,7 +92,7 @@ module Frank
       extra_opts = XCODEBUILD_OPTIONS.map{ |o| "-#{o} \"#{options[o]}\"" if options[o] }.compact.join(' ')
 
       # If there is a scheme specified we don't want to inject the default configuration
-      # If there is a configuration specified, we also do not want to inject the default configuration 
+      # If there is a configuration specified, we also do not want to inject the default configuration
       if options['scheme'] || options['configuration']
         separate_configuration_option = ""
       else
