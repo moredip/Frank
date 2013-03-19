@@ -6,32 +6,55 @@
 //
 //
 
+#import <objc/runtime.h>
+
 #import <Foundation/Foundation.h>
 
 #import "LoadableCategory.h"
 MAKE_CATEGORIES_LOADABLE(NSObject_FrankAutomation)
 
+static const NSString* FEX_AccessibilityDescriptionAttribute = @"FEX_AccessibilityDescriptionAttribute";
+
 @implementation NSObject (FrankAutomation)
 
-- (NSString *) FEX_accessibilityLabel {
-    NSString* returnValue = nil;
-    
-    if ([self respondsToSelector: @selector(accessibilityAttributeNames)] &&
-        [self respondsToSelector: @selector(accessibilityAttributeValue:)])
++ (void) load
+{
+    method_exchangeImplementations(class_getInstanceMethod(self, @selector(accessibilitySetOverrideValue:forAttribute:)),
+                                   class_getInstanceMethod(self, @selector(FEX_accessibilitySetOverrideValue:forAttribute:)));
+}
+
+- (BOOL) FEX_accessibilitySetOverrideValue: (id) value forAttribute: (NSString*) attribute
+{
+    if ([value isKindOfClass: [NSString class]] && [attribute isEqualToString: NSAccessibilityDescriptionAttribute])
     {
-        NSArray *candidateAttributes = @[ NSAccessibilityDescriptionAttribute,
-                                          NSAccessibilityTitleAttribute,
-                                          NSAccessibilityValueAttribute ];
-        
-        for (NSString *candidateAttribute in candidateAttributes)
+        objc_setAssociatedObject(self, FEX_AccessibilityDescriptionAttribute, value, OBJC_ASSOCIATION_COPY_NONATOMIC);
+    }
+    
+    return [self FEX_accessibilitySetOverrideValue: value forAttribute: attribute];
+}
+
+- (NSString *) FEX_accessibilityLabel
+{
+    NSString* returnValue = objc_getAssociatedObject(self, FEX_AccessibilityDescriptionAttribute);
+    
+    if (returnValue == nil || [returnValue isEqualToString: @""])
+    {
+        if ([self respondsToSelector: @selector(accessibilityAttributeNames)] &&
+            [self respondsToSelector: @selector(accessibilityAttributeValue:)])
         {
-            if ([[self accessibilityAttributeNames] containsObject: candidateAttribute])
+            NSArray *candidateAttributes = @[ NSAccessibilityDescriptionAttribute,
+                                              NSAccessibilityTitleAttribute ];
+            
+            for (NSString *candidateAttribute in candidateAttributes)
             {
-                id value = [self accessibilityAttributeValue: candidateAttribute];
-                                
-                if ([value isKindOfClass: [NSString class]]) {
-                    returnValue = value;
-                    break;
+                if ([[self accessibilityAttributeNames] containsObject: candidateAttribute])
+                {
+                    id value = [self accessibilityAttributeValue: candidateAttribute];
+                                    
+                    if ([value isKindOfClass: [NSString class]]) {
+                        returnValue = value;
+                        break;
+                    }
                 }
             }
         }
@@ -148,11 +171,11 @@ MAKE_CATEGORIES_LOADABLE(NSObject_FrankAutomation)
 
 - (NSString*) FEX_accessibilityLabel
 {
-    NSString* returnValue = [[self cell] FEX_accessibilityLabel];
+    NSString* returnValue = [super FEX_accessibilityLabel];
     
-    if (returnValue == nil)
+    if (returnValue == nil || [returnValue isEqualToString: @""])
     {
-        returnValue = [super FEX_accessibilityLabel];
+        returnValue = [[self cell] FEX_accessibilityLabel];
     }
     
     return returnValue;
@@ -188,11 +211,20 @@ MAKE_CATEGORIES_LOADABLE(NSObject_FrankAutomation)
 
 - (NSString*) FEX_accessibilityLabel
 {
-    NSString* returnValue = [super FEX_accessibilityLabel];
+    NSString* returnValue = nil;
     
-    if (returnValue == nil)
+    if ([self isSeparatorItem])
     {
-        returnValue = [self title];
+        returnValue = @"Separator";
+    }
+    else
+    {
+        [super FEX_accessibilityLabel];
+        
+        if (returnValue == nil)
+        {
+            returnValue = [self title];
+        }
     }
     
     return returnValue;
