@@ -136,5 +136,11 @@ NSString *formatCGPointVal( NSValue *val ){
     return YES;
 }
 
+- (BOOL) dragThumbToValue:(double)value withDuration:(NSTimeInterval)interval {
+    return [UIAutomationBridge dragThumbInSlider:self toValue:value withDuration:interval];
+}
 
+- (BOOL) dragThumbToValue:(double) value {
+    return [UIAutomationBridge dragThumbInSlider:self toValue:value];
+}
 @end
