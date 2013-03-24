@@ -52,19 +52,17 @@ module Launcher
     end
 
     num_timeouts = 0
-    loop do
-      begin
-        simulator.relaunch
-        wait_for_frank_to_come_up
-        break # if we make it this far without an exception then we're good to move on
-
-      rescue Timeout::Error
-        num_timeouts += 1
-        puts "Encountered #{num_timeouts} timeouts while launching the app."
-        if num_timeouts > 3
-          raise "Encountered #{num_timeouts} timeouts in a row while trying to launch the app." 
-        end
+    begin
+      simulator.relaunch
+      wait_for_frank_to_come_up
+    rescue Timeout::Error
+      num_timeouts += 1
+      puts "Encountered #{num_timeouts} timeouts while launching the app."
+      if num_timeouts > 3
+        raise "Encountered #{num_timeouts} timeouts in a row while trying to launch the app."
       end
+      quit_double_simulator
+      retry
     end
 
   end

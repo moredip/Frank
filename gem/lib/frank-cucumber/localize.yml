@@ -8,6 +8,7 @@ en:
   simulate_memory_warning: Simulate Memory Warning
   toggle_in_call_status_bar: Toggle In-Call Status Bar
   simulate_hardware_keyboard: Simulate Hardware Keyboard
+  only_one_simulator: Only one iOS Simulator can run at a time.
 
 fr:
   iphone_simulator: Simulateur iOS
@@ -19,6 +20,7 @@ fr:
   simulate_memory_warning: Simuler un avertissement de mémoire
   toggle_in_call_status_bar: Afficher/Masquer la barre d'état d'appel en cour
   simulate_hardware_keyboard: Simuler un clavier matériel
+  only_one_simulator: Un seul Simulateur iOS peut être exécuté à la fois.
 
 de:
   iphone_simulator: iOS-Simulator
@@ -30,6 +32,7 @@ de:
   simulate_memory_warning: Speicherwarnhinweis simulieren
   toggle_in_call_status_bar: Status für eingeh. Anrufe ein/aus
   simulate_hardware_keyboard: Hardware-Tastatur simulieren
+  only_one_simulator: Es kann jeweils nur eine iOS-Simulator-Instanz aktiv sein.
 
 ru:
   iphone_simulator: Симулятор iOS
@@ -41,6 +44,7 @@ ru:
   simulate_memory_warning: Симулировать предупреждение о нехватке памяти
   toggle_in_call_status_bar: Переключить на строку состояния поступающего вызова
   simulate_hardware_keyboard: Симулировать физическую клавиатуру
+  only_one_simulator: Два и более Симуляторов iOS не могут быть запущены одновременно.
 
 zh:
   iphone_simulator: iOS 模拟器
@@ -52,6 +56,7 @@ zh:
   simulate_memory_warning: 模拟内存警告
   toggle_in_call_status_bar: 切换呼叫状态栏
   simulate_hardware_keyboard: 模拟硬件键盘
+  only_one_simulator: 一次只能运行一个“iOS 模拟器”。
 
 ja:
   iphone_simulator: iOSシミュレータ
@@ -63,6 +68,7 @@ ja:
   simulate_memory_warning: メモリ警告をシミュレート
   toggle_in_call_status_bar: 着信ステータスバーを切り替える
   simulate_hardware_keyboard: ハードウェアキーボードをシミュレート
+  only_one_simulator: 実行できるiOSシミュレータは1度に1つのみです。
 
 es:
   iphone_simulator: Simulador iOS
@@ -74,3 +80,4 @@ es:
   simulate_memory_warning: Simular aviso de memoria
   toggle_in_call_status_bar: Activar/Desactivar barra de estado durante llamada
   simulate_hardware_keyboard: Simular teclado físico
+  only_one_simulator: Sólo se puede ejecutar un Simulador iOS a la vez.
