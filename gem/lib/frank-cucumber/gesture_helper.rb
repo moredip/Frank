@@ -64,7 +64,7 @@ module Frank
 			    raise "Some views could not be double tap (probably because they are not within the current viewport)" if touch_successes.include?(false)
 			end
 			
-						# Drag the slider thumb to required value, taking the specified time
+			# Drag the slider thumb to required value, taking the specified time
 			#
 			# @param [String] selector A view selector
 			# @param [Number] value The value up to which the slider should be dragged
@@ -75,7 +75,7 @@ module Frank
 			# @raise an expection if no views matched the selector
 			# @raise an expection if no views which matched the selector could have their thumbs dragged
 			def drag_thumb_in_slider( selector, value, duration )
-				touch_successes = frankly_map( selector, "dragThumbToValue:withDuration:", value, duration)
+				touch_successes = frankly_map( selector, "FEX_dragThumbToValue:withDuration:", value, duration)
 				raise "Could not find anything matching [#{selector}] to have its thumb dragged" if touch_successes.empty?
 			    raise "Some views could not had their thumbs dragged (are they even UISLiders?)" if touch_successes.include?(false)
 			end
@@ -90,7 +90,7 @@ module Frank
 			# @raise an expection if no views matched the selector
 			# @raise an expection if no views which matched the selector could have their thumbs dragged
 			def drag_thumb_in_slider_with_default_duration( selector, value )
-				touch_successes = frankly_map( selector, "dragThumbToValue:", value )
+				touch_successes = frankly_map( selector, "FEX_dragThumbToValue:", value )
 				raise "Could not find anything matching [#{selector}] to have its thumb dragged" if touch_successes.empty?
 			    raise "Some views could not had their thumbs dragged (are they even UISLiders?)" if touch_successes.include?(false)
 			end
