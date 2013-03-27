@@ -63,6 +63,7 @@
 		30C544B3167E4D9E0034F49C /* SuccessCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C544B0167E4D9E0034F49C /* SuccessCommand.m */; };
 		30C544B4167E4D9E0034F49C /* SuccessCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C544B0167E4D9E0034F49C /* SuccessCommand.m */; };
 		30C9352716A5261800A4BFD1 /* MapOperationCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D05CA811C883AA0081C5A5 /* MapOperationCommand.m */; };
+		387BFA7D17036DDA007B9F17 /* UISlider+PublicAutomation.m in Sources */ = {isa = PBXBuildFile; fileRef = 387BFA7C17036DDA007B9F17 /* UISlider+PublicAutomation.m */; };
 		4C1DD76C12BADFE100E10B8C /* OrientationCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1DD76812BADFE100E10B8C /* OrientationCommand.m */; };
 		4C1DD76D12BADFE100E10B8C /* OrientationCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C1DD76912BADFE100E10B8C /* OrientationCommand.h */; };
 		4C1DD76E12BADFE100E10B8C /* AppCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1DD76A12BADFE100E10B8C /* AppCommand.m */; };
@@ -301,6 +302,7 @@
 		30AC65A6165C3A4D00DEB0AB /* OSXKeyboardCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSXKeyboardCommand.m; sourceTree = "<group>"; };
 		30C544AF167E4D9E0034F49C /* SuccessCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuccessCommand.h; sourceTree = "<group>"; };
 		30C544B0167E4D9E0034F49C /* SuccessCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuccessCommand.m; sourceTree = "<group>"; };
+		387BFA7C17036DDA007B9F17 /* UISlider+PublicAutomation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISlider+PublicAutomation.m"; sourceTree = "<group>"; };
 		4C1DD76812BADFE100E10B8C /* OrientationCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrientationCommand.m; sourceTree = "<group>"; };
 		4C1DD76912BADFE100E10B8C /* OrientationCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrientationCommand.h; sourceTree = "<group>"; };
 		4C1DD76A12BADFE100E10B8C /* AppCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppCommand.m; sourceTree = "<group>"; };
@@ -748,6 +750,7 @@
 				C18A5EF4160D4AD300DC25F6 /* UIView+ImageCapture.m */,
 				C9605E661606BF8E00170F88 /* UIView+MapKitWorkaround.m */,
 				C18A5F1D160D547A00DC25F6 /* UIView+PublicAutomation.m */,
+				387BFA7C17036DDA007B9F17 /* UISlider+PublicAutomation.m */,
 				00E864BA161D6E6400E01209 /* UIScrollView+FrankScrolling.m */,
 				C177A4CE163234B60081DF77 /* JSON.h */,
 				304A0C801699105600150BE8 /* NSApplication+FrankAutomation.m */,
@@ -1220,6 +1223,7 @@
 				30C544B3167E4D9E0034F49C /* SuccessCommand.m in Sources */,
 				C189EF2016BB5A8100F8236D /* VersionCommand.m in Sources */,
 				303CFCE616C80B830004BD05 /* DeviceCommand.m in Sources */,
+				387BFA7D17036DDA007B9F17 /* UISlider+PublicAutomation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
