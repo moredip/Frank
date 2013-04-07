@@ -99,7 +99,9 @@ module Frank
         separate_configuration_option = "-configuration Debug"
       end
 
-      if determine_build_patform(options) == :osx
+      build_mac = determine_build_patform(options) == :osx
+
+      if build_mac
         run %Q|xcodebuild -xcconfig Frank/frankify.xcconfig #{build_steps} #{extra_opts} #{separate_configuration_option} DEPLOYMENT_LOCATION=YES DSTROOT="#{build_output_dir}" FRANK_LIBRARY_SEARCH_PATHS="\\"#{frank_lib_directory}\\""|
       else
         extra_opts += " -arch #{options['arch']}"
@@ -111,7 +113,7 @@ module Frank
       app = app.first
       FileUtils.cp_r("#{app}/.", frankified_app_dir)
 
-      if options['mac']
+      if build_mac
         in_root do
           FileUtils.cp_r(
             File.join( 'Frank',static_bundle),
