@@ -6,8 +6,9 @@
 //
 //
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
+#import "FrankCommandRoute.h"
 
-@interface ResolutionCommand : NSobject<FrankCommand>
+@interface ResolutionCommand : NSObject<FrankCommand>
 
 @end
