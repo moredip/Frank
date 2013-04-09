@@ -19,7 +19,7 @@ MAKE_CATEGORIES_LOADABLE(NSApplication_FrankAutomation)
     
     for (NSScreen* screen in [NSScreen screens])
     {
-        NSRect  frame  = [screen frame];
+        NSRect  frame  = [screen convertRectFromBacking: [screen frame]];
         CGFloat width  = frame.origin.x + frame.size.width;
         CGFloat height = frame.origin.y + frame.size.height;
         
