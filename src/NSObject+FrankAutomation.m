@@ -99,7 +99,7 @@ static const NSString* FEX_AccessibilityDescriptionAttribute = @"FEX_Accessibili
     
     for (NSScreen* screen in [NSScreen screens])
     {
-        NSRect screenFrame = [screen frame];
+        NSRect screenFrame = [screen convertRectFromBacking: [screen frame]];
         screenHeight = MAX(screenHeight, screenFrame.origin.y + screenFrame.size.height);
     }
     

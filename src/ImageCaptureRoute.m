@@ -144,7 +144,7 @@
 #else
     [screenshot lockFocus];
     NSSize size = [screenshot size];
-    NSBitmapImageRep* rep = [[NSBitmapImageRep alloc] initWithFocusedViewRect: NSMakeRect(0, 0, size.height, size.height)];
+    NSBitmapImageRep* rep = [[NSBitmapImageRep alloc] initWithFocusedViewRect: NSMakeRect(0, 0, size.width, size.height)];
     [screenshot unlockFocus];
     
     NSData *response = [rep representationUsingType:NSPNGFileType properties:nil];

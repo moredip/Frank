@@ -47,7 +47,7 @@
         
     for (NSScreen* screen in [NSScreen screens])
     {
-        NSRect frame = [screen frame];
+        NSRect frame = [screen convertRectFromBacking: [screen frame]];
         
         NSURL* backgroundURL = [[NSWorkspace sharedWorkspace] desktopImageURLForScreen: screen];
         NSData* data = [NSData dataWithContentsOfURL: backgroundURL];
@@ -71,13 +71,14 @@
         CGImageRef cgImage = CGWindowListCreateImage(CGRectNull,
                                                      kCGWindowListOptionIncludingWindow,
                                                      (CGWindowID) windowNumber,
-                                                     kCGWindowImageDefault);
+                                                     kCGWindowImageBoundsIgnoreFraming);
         
-        NSImage* nsImage = [[NSImage alloc] initWithCGImage: cgImage size: [window frame].size];
+        CGRect frame = [window convertRectFromBacking: [window frame]];
+        NSImage* nsImage = [[NSImage alloc] initWithCGImage: cgImage size: frame.size];
         
         [screenshot lockFocus];
         
-        [nsImage drawInRect: [window frame]
+        [nsImage drawInRect: frame
                    fromRect: NSZeroRect
                   operation: NSCompositeSourceOver
                    fraction: 1.0];
