@@ -22,7 +22,10 @@
     CGSize resolution = CGSizeMake(0, 0);
     
 #if TARGET_OS_IPHONE
-    resolution = [[UIScreen mainScreen] bounds].size;
+    CGFloat scale     = [[UIScreen mainScreen] scale];
+    resolution        = [[UIScreen mainScreen] bounds].size;
+    resolution.width  = resolution.width * scale;
+    resolution.height = resolution.height * scale;
 #else
     resolution = [[NSApplication sharedApplication] FEX_accessibilityFrame].size;
 #endif
