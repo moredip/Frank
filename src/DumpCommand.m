@@ -128,7 +128,11 @@
     [serializedView setObject:NSStringFromClass(view.class) forKey: @"class"];
 
     // use the view's raw location in memory as a poor man's uid
+#if TARGET_OS_IPHONE
     [serializedView setObject:[NSNumber numberWithInt:(int)view] forKey:@"uid"];
+#else
+    [serializedView setObject:[NSString stringWithFormat:@"%lu",(uintptr_t)view] forKey:@"uid"];
+#endif
     
     // iterate on all mapping definition classes looking for a (super) class of the current object
     for(NSString *key in classMapping.keyEnumerator) {
