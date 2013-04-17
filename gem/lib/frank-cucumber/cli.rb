@@ -55,7 +55,7 @@ module Frank
       directory( 'frank_static_resources.bundle', 'Frank/frank_static_resources.bundle', :force => true )
     end
 
-    XCODEBUILD_OPTIONS = %w{workspace scheme target configuration}
+    XCODEBUILD_OPTIONS = %w{workspace project scheme target configuration}
     desc "build", "builds a Frankified version of your native app"
     XCODEBUILD_OPTIONS.each do |option|
       method_option option
