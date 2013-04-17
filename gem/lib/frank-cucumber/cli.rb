@@ -32,6 +32,7 @@ module Frank
     method_option WITHOUT_LUMBERJACK, :type => :boolean
     method_option :build_configuration, :aliases=>'--conf', :type=>:string, :default => 'Debug'
     method_option :target, :type=>:string
+    method_option :project, :type=>:string
     def setup
       @libs = %w(Shelley CocoaAsyncSocket CocoaLumberjack CocoaHTTPServer Frank)
       @libsMac = %w(CocoaAsyncSocketMac CocoaLumberjackMac CocoaHTTPServerMac FrankMac)
@@ -43,7 +44,7 @@ module Frank
       @libsMac -= %w(CocoaLumberjackMac) if options[WITHOUT_LUMBERJACK]
       directory ".", "Frank"
 
-      Frankifier.frankify!( File.expand_path('.'), :build_config => options[:build_configuration], :target => options[:target] )
+      Frankifier.frankify!( File.expand_path('.'), :build_config => options[:build_configuration], :target => options[:target], :project => options[:project] )
     end
 
     desc "update", "updates the frank server components inside your Frank directory"
