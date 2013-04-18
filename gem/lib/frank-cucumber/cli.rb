@@ -54,7 +54,7 @@ module Frank
       end
       directory( 'frank_static_resources.bundle', 'Frank/frank_static_resources.bundle', :force => true )
     end
-
+    
     XCODEBUILD_OPTIONS = %w{workspace scheme target configuration}
     desc "build", "builds a Frankified version of your native app"
     XCODEBUILD_OPTIONS.each do |option|
@@ -100,16 +100,21 @@ module Frank
       end
 
       if options['mac']
-        run %Q|xcodebuild -xcconfig Frank/frankify.xcconfig #{build_steps} #{extra_opts} #{separate_configuration_option} DEPLOYMENT_LOCATION=YES DSTROOT="#{build_output_dir}" FRANK_LIBRARY_SEARCH_PATHS="\\"#{frank_lib_directory}\\""|
+        run %Q|xcodebuild -xcconfig Frank/frankify.xcconfig #{build_steps} #{extra_opts} #{separate_configuration_option} FRANK_LIBRARY_SEARCH_PATHS="\\"#{frank_lib_directory}\\""|
       else
         extra_opts += " -arch #{options['arch']}"
 
-        run %Q|xcodebuild -xcconfig Frank/frankify.xcconfig #{build_steps} #{extra_opts} #{separate_configuration_option} -sdk iphonesimulator DEPLOYMENT_LOCATION=YES DSTROOT="#{build_output_dir}" FRANK_LIBRARY_SEARCH_PATHS="\\"#{frank_lib_directory}\\""|
+        run %Q|xcodebuild -xcconfig Frank/frankify.xcconfig #{build_steps} #{extra_opts} #{separate_configuration_option} -sdk iphonesimulator FRANK_LIBRARY_SEARCH_PATHS="\\"#{frank_lib_directory}\\""|
       end
 
-      app = Dir.glob("#{build_output_dir}/*.app").delete_if { |x| x =~ /\/#{app_bundle_name}$/ }
-      app = app.first
-      FileUtils.cp_r("#{app}/.", frankified_app_dir)
+      settings = build_settings(options)
+      built_product = "#{settings[:BUILT_PRODUCTS_DIR]}/#{settings[:FULL_PRODUCT_NAME]}"
+      puts built_product
+      FileUtils.cp_r(built_product, build_output_dir)
+
+      copy_src = "#{app(options)}/."
+      puts copy_src
+      FileUtils.cp_r(copy_src, frankified_app_dir)
 
       if options['mac']
         in_root do
@@ -195,8 +200,59 @@ module Frank
       end
     end
 
-    private
 
+    private
+    
+    
+    def app(options)
+      File.join(build_output_dir, "#{app_product_name(options)}.app")
+    end
+
+    def app_product_name(options)
+      name = build_settings(options)[:PRODUCT_NAME]
+      puts name
+      name
+    end
+
+    def build_settings_regex
+      Regexp.new('(\w+) = (.+)')
+    end
+
+    def build_settings_cmd(options)
+      extra_opts = XCODEBUILD_OPTIONS.map{ |o| "-#{o} \"#{options[o]}\"" if options[o] }.compact.join(' ')
+
+      # If there is a scheme specified we don't want to inject the default configuration
+      # If there is a configuration specified, we also do not want to inject the default configuration
+      if options['scheme'] || options['configuration']
+        separate_configuration_option = ""
+      else
+        separate_configuration_option = "-configuration Debug"
+      end
+
+      if options['mac']
+        %Q|xcodebuild -showBuildSettings -xcconfig Frank/frankify.xcconfig #{extra_opts} #{separate_configuration_option} FRANK_LIBRARY_SEARCH_PATHS="\\"#{frank_lib_directory}\\""|
+      else
+        extra_opts += " -arch #{options['arch']}"
+
+        %Q|xcodebuild  -showBuildSettings -xcconfig Frank/frankify.xcconfig #{extra_opts} #{separate_configuration_option} -sdk iphonesimulator FRANK_LIBRARY_SEARCH_PATHS="\\"#{frank_lib_directory}\\""|
+      end
+    end
+
+    def build_settings(options)
+      output = `#{build_settings_cmd(options)}`
+      settings = {}
+      output.scan(build_settings_regex) do |match|
+        key = match[0]
+        value = match[1]
+        settings[key.to_sym] = value
+      end
+  
+      puts settings
+      settings
+    end
+
+  
+  
     def product_name
       "Frankified"
     end
