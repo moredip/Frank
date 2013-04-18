@@ -89,32 +89,16 @@ module Frank
         build_steps = 'clean ' + build_steps
       end
 
-      extra_opts = XCODEBUILD_OPTIONS.map{ |o| "-#{o} \"#{options[o]}\"" if options[o] }.compact.join(' ')
-
-      # If there is a scheme specified we don't want to inject the default configuration
-      # If there is a configuration specified, we also do not want to inject the default configuration
-      if options['scheme'] || options['configuration']
-        separate_configuration_option = ""
-      else
-        separate_configuration_option = "-configuration Debug"
-      end
-
-      if options['mac']
-        run %Q|xcodebuild -xcconfig Frank/frankify.xcconfig #{build_steps} #{extra_opts} #{separate_configuration_option} FRANK_LIBRARY_SEARCH_PATHS="\\"#{frank_lib_directory}\\""|
-      else
-        extra_opts += " -arch #{options['arch']}"
-
-        run %Q|xcodebuild -xcconfig Frank/frankify.xcconfig #{build_steps} #{extra_opts} #{separate_configuration_option} -sdk iphonesimulator FRANK_LIBRARY_SEARCH_PATHS="\\"#{frank_lib_directory}\\""|
-      end
-
+      run xcodebuild_command(options, build_steps)
+     
       settings = build_settings(options)
-      built_product = "#{settings[:BUILT_PRODUCTS_DIR]}/#{settings[:FULL_PRODUCT_NAME]}"
-      puts built_product
+      full_product_name = settings[:FULL_PRODUCT_NAME]
+      built_products_dir = settings[:BUILT_PRODUCTS_DIR]
+      built_product = "#{built_products_dir}/#{full_product_name}"
       FileUtils.cp_r(built_product, build_output_dir)
 
-      copy_src = "#{app(options)}/."
-      puts copy_src
-      FileUtils.cp_r(copy_src, frankified_app_dir)
+      app = File.join(build_output_dir, full_product_name)
+      FileUtils.cp_r("#{app}/.", frankified_app_dir)
 
       if options['mac']
         in_root do
@@ -202,40 +186,13 @@ module Frank
 
 
     private
-    
-    
-    def app(options)
-      File.join(build_output_dir, "#{app_product_name(options)}.app")
-    end
-
-    def app_product_name(options)
-      name = build_settings(options)[:PRODUCT_NAME]
-      puts name
-      name
-    end
 
     def build_settings_regex
       Regexp.new('(\w+) = (.+)')
     end
 
     def build_settings_cmd(options)
-      extra_opts = XCODEBUILD_OPTIONS.map{ |o| "-#{o} \"#{options[o]}\"" if options[o] }.compact.join(' ')
-
-      # If there is a scheme specified we don't want to inject the default configuration
-      # If there is a configuration specified, we also do not want to inject the default configuration
-      if options['scheme'] || options['configuration']
-        separate_configuration_option = ""
-      else
-        separate_configuration_option = "-configuration Debug"
-      end
-
-      if options['mac']
-        %Q|xcodebuild -showBuildSettings -xcconfig Frank/frankify.xcconfig #{extra_opts} #{separate_configuration_option} FRANK_LIBRARY_SEARCH_PATHS="\\"#{frank_lib_directory}\\""|
-      else
-        extra_opts += " -arch #{options['arch']}"
-
-        %Q|xcodebuild  -showBuildSettings -xcconfig Frank/frankify.xcconfig #{extra_opts} #{separate_configuration_option} -sdk iphonesimulator FRANK_LIBRARY_SEARCH_PATHS="\\"#{frank_lib_directory}\\""|
-      end
+      xcodebuild_command(options, '-showBuildSettings')
     end
 
     def build_settings(options)
@@ -251,7 +208,25 @@ module Frank
       settings
     end
 
-  
+    def xcodebuild_command(options, build_steps)
+      extra_opts = XCODEBUILD_OPTIONS.map{ |o| "-#{o} \"#{options[o]}\"" if options[o] }.compact.join(' ')
+
+      # If there is a scheme specified we don't want to inject the default configuration
+      # If there is a configuration specified, we also do not want to inject the default configuration
+      if options['scheme'] || options['configuration']
+        separate_configuration_option = ""
+      else
+        separate_configuration_option = "-configuration Debug"
+      end
+
+      if options['mac']
+        %Q|xcodebuild -xcconfig Frank/frankify.xcconfig #{build_steps} #{extra_opts} #{separate_configuration_option} FRANK_LIBRARY_SEARCH_PATHS="\\"#{frank_lib_directory}\\""|
+      else
+        extra_opts += " -arch #{options['arch']}"
+
+        %Q|xcodebuild -xcconfig Frank/frankify.xcconfig #{build_steps} #{extra_opts} #{separate_configuration_option} -sdk iphonesimulator FRANK_LIBRARY_SEARCH_PATHS="\\"#{frank_lib_directory}\\""|
+      end
+    end
   
     def product_name
       "Frankified"
