@@ -14,10 +14,11 @@ class Frankifier
     @root = Pathname.new( root_dir )
     @target_build_configuration = options[:build_config]
     @target_selection = options[:target]
+    load_xcode_proj_option(options[:project])
   end
 
   def frankify!
-    decide_on_project
+    decide_on_project if @project.nil?
     decide_on_target
     report_project_and_target
 
@@ -33,6 +34,17 @@ class Frankifier
   end
 
   private
+  def load_xcode_proj_option(xcodeproj)
+    if xcodeproj
+      unless File.exists?(xcodeproj)
+        raise "Project file '#{xcodeproj}' does not exist. Please specify the relative path."
+      end
+      
+      @xcodeproj_path = Pathname.new(xcodeproj)
+      @project = Xcodeproj::Project.new(@xcodeproj_path)
+    end
+  end
+  
   def decide_on_project
     projects = Pathname.glob( @root+'*.xcodeproj' )
     xcodeproj = case projects.size
