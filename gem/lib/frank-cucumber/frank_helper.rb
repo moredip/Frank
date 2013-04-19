@@ -87,7 +87,23 @@ module FrankHelper
     raise "some views could not be touched (probably because they are not within the current viewport)" if touch_successes.include?(false)
     touch_successes
   end
-  
+
+  # Fill in text in a text field.
+  #
+  # @param [String] the placeholder text for the desired text field
+  # @param [Hash{Symbol => String}] a hash with a :with key and a string of text to fill in
+  # @raise an exception if the :with key DSL syntax is missing
+  # @raise an exception if a text field with the given placeholder text could not be found
+  def fill_in( placeholder_field_name, options={} )
+    raise "Must pass a hash containing the key :with" if not options.is_a?(Hash) or not options.has_key?(:with)
+    text_to_type = options[:with]
+
+    quote = get_selector_quote(placeholder_field_name)
+    text_fields_modified = frankly_map( "textField placeholder:#{quote}#{placeholder_field_name}#{quote}", "setText:", text_to_type )
+    raise "could not find text fields with placeholder #{quote}#{placeholder_field_name}#{quote}" if text_fields_modified.empty?
+    #TODO raise warning if text_fields_modified.count > 1
+  end
+
   # Indicate whether there are any views in the current view heirarchy which match the specified selector.
   # @param [String] selector a view selector.
   # @return [Boolean]

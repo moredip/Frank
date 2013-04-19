@@ -116,10 +116,7 @@ end
 # -- Type/Fill in -- #
 
 When /^I type "([^\"]*)" into the "([^\"]*)" text field$/ do |text_to_type, field_name|
-  quote = get_selector_quote(field_name)
-  text_fields_modified = frankly_map( "textField placeholder:#{quote}#{field_name}#{quote}", "setText:", text_to_type )
-  raise "could not find text fields with placeholder #{quote}#{field_name}#{quote}" if text_fields_modified.empty?
-  #TODO raise warning if text_fields_modified.count > 1
+  fill_in field_name, :with => text_to_type
 end
 
 # alias 
