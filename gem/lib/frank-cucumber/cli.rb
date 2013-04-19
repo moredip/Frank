@@ -8,6 +8,7 @@ require 'frank-cucumber/launcher'
 require 'frank-cucumber/console'
 require 'frank-cucumber/frankifier'
 require 'frank-cucumber/mac_launcher'
+require 'xcodeproj'
 
 module Frank
   class CLI < Thor
@@ -62,7 +63,6 @@ module Frank
       method_option option
     end
     method_option 'arch', :type => :string, :default => 'i386'
-    method_option 'mac', :type => :boolean, :default => false
     method_option :noclean, :type => :boolean, :default => false, :aliases => '--nc', :desc => "Don't clean the build directory before building"
     def build
       clean = !options['noclean']
@@ -100,7 +100,9 @@ module Frank
         separate_configuration_option = "-configuration Debug"
       end
 
-      if options['mac']
+      build_mac = determine_build_patform(options) == :osx
+
+      if build_mac
         run %Q|xcodebuild -xcconfig Frank/frankify.xcconfig #{build_steps} #{extra_opts} #{separate_configuration_option} DEPLOYMENT_LOCATION=YES DSTROOT="#{build_output_dir}" FRANK_LIBRARY_SEARCH_PATHS="\\"#{frank_lib_directory}\\""|
       else
         extra_opts += " -arch #{options['arch']}"
@@ -112,7 +114,7 @@ module Frank
       app = app.first
       FileUtils.cp_r("#{app}/.", frankified_app_dir)
 
-      if options['mac']
+      if build_mac
         in_root do
           FileUtils.cp_r(
             File.join( 'Frank',static_bundle),
@@ -235,6 +237,88 @@ module Frank
         run %Q|/usr/libexec/PlistBuddy -c 'Set :CFBundleIdentifier #{new_bundle_identifier}' Info.plist|
         run %Q|/usr/libexec/PlistBuddy -c 'Set :CFBundleDisplayName Frankified' Info.plist|
       end
+    end
+
+    # The xcodeproj gem doesn't currently support schemes, and schemes have been difficult
+    # to figure out. I plan to either implement schemes in xcodeproj at a later date, or
+    # wait for them to be implemented, and then fix this function
+    def determine_build_patform ( options )
+      project_path = nil
+
+      if options["workspace"] != nil
+        if options["scheme"] != nil
+          workspace = Xcodeproj::Workspace.new_from_xcworkspace(options["workspace"])
+          projects = workspace.projpaths
+
+          projects.each { | current_project |
+            lines = `xcodebuild -project #{current_project} -list`
+
+            found_schemes = false
+
+            lines.split("\n").each { | line |
+              if found_schemes
+                line = line[8..-1]
+
+                if line == ""
+                  found_schemes = false
+                else
+                  if line == options["scheme"]
+                    project_path = current_project
+                  end
+                end
+
+              else
+                line = line [4..-1]
+
+                if line == "Schemes:"
+                  found_schemes = true
+                end
+
+              end
+            }
+          }
+        else
+          say "You must specify a scheme if you specify a workplace"
+          exit 10
+        end
+      else
+        project_path = options["project"]
+      end
+
+      if project_path == nil
+        Dir.foreach(Dir.pwd) { | file |
+          if file.end_with? ".xcodeproj"
+            if project_path != nil
+              say "You must specify a project if there are more than one .xcodeproj bundles in a directory"
+              exit 10
+            else
+              project_path = file
+            end
+          end
+        }
+      end
+
+      project = Xcodeproj::Project.new(project_path)
+
+      target = nil
+
+      if options["target"] != nil
+        project.targets.each { | proj_target |
+          if target.name == options["target"]
+            target = proj_target
+          end
+        }
+      else
+        target = project.targets[0]
+      end
+
+      if target == nil
+        say "Unable to determine a target from the options provided"
+        exit 10
+      end
+
+      return target.platform_name
+
     end
 
   end

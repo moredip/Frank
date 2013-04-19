@@ -71,6 +71,9 @@ static const NSString* FEX_AccessibilityDescriptionAttribute = @"FEX_Accessibili
     NSValue *originValue = nil;
     NSValue *sizeValue   = nil;
     
+    CGFloat screenHeight = 0.0;
+    CGFloat flippedY     = 0.0;
+    
     if ([self respondsToSelector: @selector(accessibilityAttributeNames)] &&
         [self respondsToSelector: @selector(accessibilityAttributeValue:)])
     {
@@ -92,6 +95,19 @@ static const NSString* FEX_AccessibilityDescriptionAttribute = @"FEX_Accessibili
     if (sizeValue != nil)
     {
         size = [sizeValue sizeValue];
+    }
+    
+    for (NSScreen* screen in [NSScreen screens])
+    {
+        NSRect screenFrame = [screen convertRectFromBacking: [screen frame]];
+        screenHeight = MAX(screenHeight, screenFrame.origin.y + screenFrame.size.height);
+    }
+    
+    flippedY = screenHeight - (origin.y + size.height);
+    
+    if (flippedY >= 0)
+    {
+        origin.y = flippedY;
     }
     
     return CGRectMake(origin.x, origin.y, size.width, size.height);

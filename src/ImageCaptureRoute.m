@@ -37,6 +37,13 @@
     return [[self snapshotDir] stringByAppendingPathComponent:filename];
 }
 
+#if !TARGET_OS_IPHONE
+- (NSString *) pathForTransparentPNG
+{
+    return [[self snapshotDir] stringByAppendingPathComponent: @"transparent.png"];
+}
+#endif
+
 #if TARGET_OS_IPHONE
 - (void) snapshotView:(UIView *)view{
     UIImage *image = [view captureImage];
@@ -65,8 +72,27 @@
 - (void) prepSnapshotDir{
     [[NSFileManager defaultManager] removeItemAtPath:[self snapshotDir] error:nil];
     [[NSFileManager defaultManager] createDirectoryAtPath:[self snapshotDir] withIntermediateDirectories:YES attributes:nil error:nil];
-}
     
+#if !TARGET_OS_IPHONE
+    NSImage* image = [[NSImage alloc] initWithSize:NSMakeSize(1.0, 1.0)];
+    
+    [image lockFocus];
+    [NSColor colorWithDeviceWhite:1.0 alpha:0.0];
+    NSRectFill(NSMakeRect(0, 0, 1.0, 1.0));
+    
+    NSBitmapImageRep* bitmapRep = [[NSBitmapImageRep alloc] initWithFocusedViewRect:NSMakeRect(0, 0, 1.0, 1.0)];
+    [image unlockFocus];
+    
+    NSData* data = [bitmapRep representationUsingType:NSPNGFileType properties:nil];
+    
+    [data writeToFile:[self pathForTransparentPNG] atomically:NO];
+    
+    [bitmapRep release];
+    [image release];
+    
+#endif
+}
+
 - (void) snapshotAllViews{
     CFAbsoluteTime before = CFAbsoluteTimeGetCurrent();
     
@@ -91,7 +117,11 @@
     if( [[NSFileManager defaultManager] fileExistsAtPath:snapshotImagePath] )
         return [[HTTPFileResponse alloc] initWithFilePath:snapshotImagePath forConnection:connection];
    	else
+#if TARGET_OS_IPHONE
    		return nil;
+#else
+    return [[HTTPFileResponse alloc] initWithFilePath:[self pathForTransparentPNG] forConnection:connection];
+#endif
 }
 
 - (NSObject<HTTPResponse> *) handleRequestForPath: (NSArray *)path withConnection:(RoutingHTTPConnection *)connection{
@@ -144,7 +174,7 @@
 #else
     [screenshot lockFocus];
     NSSize size = [screenshot size];
-    NSBitmapImageRep* rep = [[NSBitmapImageRep alloc] initWithFocusedViewRect: NSMakeRect(0, 0, size.height, size.height)];
+    NSBitmapImageRep* rep = [[NSBitmapImageRep alloc] initWithFocusedViewRect: NSMakeRect(0, 0, size.width, size.height)];
     [screenshot unlockFocus];
     
     NSData *response = [rep representationUsingType:NSPNGFileType properties:nil];

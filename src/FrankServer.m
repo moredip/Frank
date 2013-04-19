@@ -22,6 +22,7 @@
 #import "VersionCommand.h"
 #import "SuccessCommand.h"
 #import "MapOperationCommand.h"
+#import "ResolutionCommand.h"
 
 #if TARGET_OS_IPHONE
 #import "OrientationCommand.h"
@@ -59,6 +60,7 @@ static NSUInteger __defaultPort = FRANK_SERVER_PORT;
 			bundleName = [bundleName stringByAppendingString:@".bundle"];
 		
 		FrankCommandRoute *frankCommandRoute = [FrankCommandRoute singleton];
+        [frankCommandRoute registerCommand:[[[ResolutionCommand alloc] init] autorelease] withName:@"resolution"];
         [frankCommandRoute registerCommand:[[[DeviceCommand alloc] init] autorelease] withName:@"device"];
 		[frankCommandRoute registerCommand:[[[DumpCommand alloc]init]autorelease] withName:@"dump"];
 		[frankCommandRoute registerCommand:[[[AccessibilityCheckCommand alloc] init]autorelease] withName:@"accessibility_check"];
