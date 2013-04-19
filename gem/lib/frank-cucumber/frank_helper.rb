@@ -95,7 +95,7 @@ module FrankHelper
   # @raise an exception if the :with key DSL syntax is missing
   # @raise an exception if a text field with the given placeholder text could not be found
   def fill_in( placeholder_field_name, options={} )
-    raise "Must pass a hash containing the key :with" if not options.is_a?(Hash) or not options.has_key?(:with)
+    raise "Must pass a hash containing the key :with" unless (options.is_a?(Hash) && options.has_key?(:with))
     text_to_type = options[:with]
 
     quote = get_selector_quote(placeholder_field_name)
