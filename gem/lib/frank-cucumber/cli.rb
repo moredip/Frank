@@ -95,7 +95,9 @@ module Frank
       full_product_name = settings[:FULL_PRODUCT_NAME]
       built_products_dir = settings[:BUILT_PRODUCTS_DIR]
       built_product = "#{built_products_dir}/#{full_product_name}"
-      FileUtils.cp_r(built_product, build_output_dir)
+
+      FileUtils.mkdir build_output_dir unless File.exists?(build_output_dir)
+      FileUtils.cp_r(built_product, File.join(build_output_dir, full_product_name))
 
       app = File.join(build_output_dir, full_product_name)
       FileUtils.cp_r("#{app}/.", frankified_app_dir)
