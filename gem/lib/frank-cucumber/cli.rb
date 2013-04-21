@@ -97,7 +97,7 @@ module Frank
       built_product = "#{built_products_dir}/#{full_product_name}"
 
       FileUtils.mkdir build_output_dir unless File.exists?(build_output_dir)
-      FileUtils.cp_r(built_product, File.join(build_output_dir, full_product_name))
+      FileUtils.cp_r(built_product, build_output_dir)
 
       app = File.join(build_output_dir, full_product_name)
       FileUtils.cp_r("#{app}/.", frankified_app_dir)
