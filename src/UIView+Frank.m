@@ -46,4 +46,9 @@ MAKE_CATEGORIES_LOADABLE(UIView_Frank)
     }
 }
 
+- (BOOL)FEX_isFullyWithinWindow {
+    CGRect myFrameInWindowCoords = [self.window convertRect:self.bounds fromView:self];
+    return CGRectContainsRect(self.window.bounds, myFrameInWindowCoords);
+}
+
 @end
