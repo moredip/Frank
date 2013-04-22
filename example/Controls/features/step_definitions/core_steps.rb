@@ -2,6 +2,11 @@ Given /^this scenario is MARKED PENDING (.*)$/ do |reason|
   pending reason
 end
 
+Then /^I drop into the console$/ do
+  require 'pry'
+  binding.pry
+end
+
 When /^I swipe "([^"]*)" (left|right|up|down)wards$/ do |mark,direction|
   frankly_map( "view marked:'#{mark}'", 'swipeInDirection:', direction )
 end
@@ -29,6 +34,11 @@ end
 Then /^there should not be any hidden views$/ do
   frankly_map("view isHidden",'tag').should be_empty
 end
+
+Then /^I should see a button "(.*?)"$/ do |expected_mark|
+  wait_for_element_to_exist("button marked:'#{expected_mark}'")
+end
+
 
 Then /^I wait until the progress of "([^"]*)" is (\d+)$/ do |mark, required_value|
   required_value = required_value.to_f
