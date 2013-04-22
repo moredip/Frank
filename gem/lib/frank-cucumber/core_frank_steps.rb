@@ -113,40 +113,6 @@ Then /^I should not see an element of class "([^\"]*)"$/ do |className|
 end
 
 
-# -- Type/Fill in -- #
-
-When /^I type "([^\"]*)" into the "([^\"]*)" text field$/ do |text_to_type, field_name|
-  quote = get_selector_quote(field_name)
-  text_fields_modified = frankly_map( "textField placeholder:#{quote}#{field_name}#{quote}", "setText:", text_to_type )
-  raise "could not find text fields with placeholder #{quote}#{field_name}#{quote}" if text_fields_modified.empty?
-  #TODO raise warning if text_fields_modified.count > 1
-end
-
-# alias 
-When /^I fill in "([^\"]*)" with "([^\"]*)"$/ do |text_field, text_to_type|
-  step %Q|I type "#{text_to_type}" into the "#{text_field}" text field|
-end
-
-When /^I fill in text fields as follows:$/ do |table|
-  table.hashes.each do |row|
-    step %Q|I type "#{row['text']}" into the "#{row['field']}" text field|
-  end
-end
-
-# simulate entering text from keyboard
-When /^I enter the text "([^\\"]*)" from keyboard to the textfield "([^\\"]*)"$/ do |text_to_type, text_field_mark| # !> ambiguous first argument; put parentheses or even spaces
-  selector = "view marked:'#{text_field_mark}' first"
-  if element_exists(selector)
-     touch( selector )
-  else
-     raise "Could not find [#{text_field_mark}], it does not exist."
-  end
-  text_field_selector =  "textField placeholder:'#{text_field_mark}'"
-  frankly_map( text_field_selector, 'becomeFirstResponder' )
-  frankly_map( text_field_selector, 'setText:', text_to_type )
-  frankly_map( text_field_selector, 'endEditing:', true )
-end
-
 # -- Rotate -- #
 Given /^the device is in (a )?(landscape|portrait) orientation$/ do |_,orientation|
   frankly_set_orientation orientation
