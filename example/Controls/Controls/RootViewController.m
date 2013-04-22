@@ -80,6 +80,23 @@ typedef enum {
     return RowsCount;
 }
 
+- (NSString *) rowNameForRow:(NSInteger)rowIndex{
+    NSArray *rowNames = @[
+                 @"UISwitch",
+                 @"Carousel",
+                 @"Editable Table",
+                 @"Data Entry",
+                 @"UIProgressView",
+                 @"View Properties",
+                 @"Location",
+                 @"Long Press",
+                 @"Double Tap",
+                 @"Empty Table",
+                 @"UIAlertView"
+                 ];
+    return [rowNames objectAtIndex:rowIndex];
+}
+
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -89,44 +106,7 @@ typedef enum {
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
-    
-    switch ([indexPath row]) {
-        case RowsUISwitch:
-            cell.textLabel.text = @"UISwitch";
-            break;
-        case RowsCarousel:
-            cell.textLabel.text = @"Carousel";
-            break;
-        case RowsEditableTable:
-            cell.textLabel.text = @"Editable Table";
-            break;
-        case RowsDataEntry:
-            cell.textLabel.text = @"Data Entry";
-            break;
-        case RowsUIProgressView:
-            cell.textLabel.text = @"UIProgressView";
-            break;
-        case RowsViewProperties:
-            cell.textLabel.text = @"View Properties";
-            break;
-        case RowsLocation:
-            cell.textLabel.text = @"Location";
-            break;
-		case RowsLongPress:
-			cell.textLabel.text = @"Long Press";
-			break;
-		case RowsDoubleTap:
-			cell.textLabel.text = @"Double Tap";
-			break;
-        case RowsEmptyTable:
-            cell.textLabel.text = @"Empty Table";
-            break;
-        case RowsUIAlertView:
-            cell.textLabel.text = @"UIAlertView";
-            break;
-    }
-
-    // Configure the cell.
+    cell.textLabel.text = [self rowNameForRow:[indexPath row]];
     return cell;
 }
 
@@ -211,6 +191,8 @@ typedef enum {
             break;
 
     }
+    
+    detailVC.title = [self rowNameForRow:[indexPath row]];
 
     [self.navigationController pushViewController:detailVC animated:YES];
     [detailVC release];

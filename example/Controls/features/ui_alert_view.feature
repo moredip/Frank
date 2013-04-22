@@ -5,14 +5,24 @@ Feature:
 
 Background:
 	Given I launch the app
-	And I touch "UIAlertView"
+	And I am have navigated to the "UIAlertView" section
 
-Scenario: Showing the Alert View
-	When I touch "Show UIAlertView"
-	Then I should see "AlertView Title"
-
-Scenario: Showing the Alert View in landscape mode
-	Given the device is in landscape orientation
+Scenario Outline: Showing and dismissing the Alert View
+	Given the device is in <orientation> orientation
   And I wait for nothing to be animating
+
 	When I touch "Show UIAlertView"
 	Then I should see "AlertView Title"
+	And I should see a button "Button1"
+	And I should see a button "Button 2"
+
+	When I touch the alert view's "Ok" button
+  And I wait for nothing to be animating
+	Then I should not see "AlertView Title"
+
+Examples:
+  | orientation | 
+	| portrait    |
+	| landscape   |
+
+
