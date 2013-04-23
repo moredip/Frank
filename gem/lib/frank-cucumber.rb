@@ -10,5 +10,5 @@ World(Frank::Cucumber::FrankHelper)
 World(Frank::Cucumber::Launcher)
 
 AfterConfiguration do
-  require 'frank-cucumber/core_frank_steps'
+  require '../features/step_definitions/core_frank_steps'
 end
