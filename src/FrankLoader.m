@@ -15,6 +15,10 @@
 #import "DDLog.h"
 #import "DDTTYLogger.h"
 
+#if !TARGET_OS_IPHONE
+#import "NSApplication+FrankAutomation.h"
+#endif
+
 BOOL frankLogEnabled = NO;
 
 @implementation FrankLoader
@@ -22,6 +26,10 @@ BOOL frankLogEnabled = NO;
 + (void)applicationDidBecomeActive:(NSNotification *)notification{
     FrankServer *server = [[FrankServer alloc] initWithDefaultBundle];
     [server startServer];
+    
+#if !TARGET_OS_IPHONE
+    [[NSApplication sharedApplication] FEX_startTrackingMenus];
+#endif
 }
 
 + (void)load{

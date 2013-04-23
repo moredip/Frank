@@ -16,6 +16,12 @@ module FrankHelper
     raise "some objects do not support the bring to front action" if touch_successes.include?(false)
   end
 
+  def show_menu( selector )
+    successes = frankly_map( selector, 'FEX_showMenu' )
+    raise "could not find anything matching [#{selector}] to show a menu on" if successes == nil or successes.empty?
+    raise "some objects do not support the show menu action" if successes.include?(false)
+  end
+
 end
 
 end
