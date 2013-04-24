@@ -18,9 +18,57 @@ NSString *formatCGPointVal( NSValue *val ){
 
 @implementation UIView(PublicAutomation)
 
-- (BOOL)touchPointIfInsideWindow:(CGPoint)point {
+#pragma mark - Utils
+
+- (CGPoint)FEX_centerPoint {
+    return CGPointMake(0.5 * self.bounds.size.width, 0.5 * self.bounds.size.height);
+}
+
+- (CGPoint)FEX_pointFromX:(NSNumber*)x andY:(NSNumber*)y {
+    if (CGFLOAT_IS_DOUBLE) {
+		return CGPointMake([x doubleValue], [y doubleValue]);
+	}
+	else {
+        return CGPointMake([x floatValue], [y floatValue]);
+    }
+}
+
+#pragma mark - Test touch
+
+- (BOOL)FEX_canTouch {
+    return [self FEX_canTouchPoint:[self FEX_centerPoint]];
+}
+
+- (BOOL)FEX_canTouchPointX:(NSNumber*)x y:(NSNumber*)y {
+    CGPoint point = [self FEX_pointFromX:x andY:y];
+    
+    return [self FEX_canTouchPoint:point];
+}
+
+- (BOOL)FEX_canTouchPoint:(CGPoint)point {
+    if ([[UIApplication sharedApplication] isIgnoringInteractionEvents]) {
+        return NO;
+    }
+
     CGPoint pointInWindowCoords = [self.window convertPoint:point fromView:self];
-    if (!CGRectContainsPoint(self.window.bounds, pointInWindowCoords)) {
+    
+    UIView* touchedView = [self.window hitTest:pointInWindowCoords withEvent:nil];
+    
+    while (touchedView != nil) {
+        if (touchedView == self) {
+            return YES;
+        }
+        
+        touchedView = touchedView.superview;
+    }
+    
+    return NO;
+}
+
+#pragma mark - Touch
+
+- (BOOL)FEX_touchPoint:(CGPoint)point {
+    if (![self FEX_canTouchPoint:point]) {
         return NO;
     }
     
@@ -29,44 +77,36 @@ NSString *formatCGPointVal( NSValue *val ){
 }
 
 - (BOOL)touch {
-    CGPoint centerPoint = CGPointMake(self.frame.size.width * 0.5f, self.frame.size.height * 0.5f);
-    return [self touchPointIfInsideWindow:centerPoint];
+    return [self FEX_touchPoint:[self FEX_centerPoint]];
 }
 
 - (BOOL)touchx:(NSNumber *)x y:(NSNumber *)y {
-	if (CGFLOAT_IS_DOUBLE) {
-		return [self touchPointIfInsideWindow:CGPointMake([x doubleValue], [y doubleValue])];
-	}
-	
-	return [self touchPointIfInsideWindow:CGPointMake([x floatValue], [y floatValue])];
+    CGPoint point = [self FEX_pointFromX:x andY:y];
+    
+	return [self FEX_touchPoint:point];
 }
 
 //Modled on UIAutomation
 #pragma mark - Touch Gestures
 
 //Double Tap
-- (BOOL)doubleTapPointIfInsideWindow:(CGPoint)point {
-	CGPoint pointInWindowCoords = [self.window convertPoint:point fromView:self];
-	if (!(CGRectContainsPoint(self.window.bounds, pointInWindowCoords))) {
-		return NO;
-	}
+- (BOOL)doubleTapPoint:(CGPoint)point {
+    if (![self FEX_canTouchPoint:point]) {
+        return NO;
+    }
 	
 	[UIAutomationBridge doubleTapView:self atPoint:point];
 	return YES;
 }
 
 - (BOOL)doubleTap {
-	CGPoint centerPoint = CGPointMake(self.frame.size.width * 0.5f, self.frame.size.height * 0.5f);
-    return [self doubleTapPointIfInsideWindow:centerPoint];
+    return [self doubleTapPoint:[self FEX_centerPoint]];
 }
 
 - (BOOL)doubleTapx:(NSNumber *)x y:(NSNumber *)y {
-	if (CGFLOAT_IS_DOUBLE)
-	{
-		return [self doubleTapPointIfInsideWindow:CGPointMake([x doubleValue], [y doubleValue])];
-	}
-	
-	return [self doubleTapPointIfInsideWindow:CGPointMake([x floatValue], [y floatValue])];
+    CGPoint point = [self FEX_pointFromX:x andY:y];
+    
+    return [self doubleTapPoint:point];
 }
 
 ////Tap With Options
@@ -83,28 +123,23 @@ NSString *formatCGPointVal( NSValue *val ){
 //}
 
 //Touch and hold
-- (BOOL)touchAndHold:(NSTimeInterval)duration pointIfInsideWindow:(CGPoint)point {
-	CGPoint pointInWindowCoords = [self.window convertPoint:point fromView:self];
-	if (!(CGRectContainsPoint(self.window.bounds, pointInWindowCoords))) {
-		return NO;
-	}
+- (BOOL)touchAndHold:(NSTimeInterval)duration point:(CGPoint)point {
+    if (![self FEX_canTouchPoint:point]) {
+        return NO;
+    }
 	
 	[UIAutomationBridge longTapView:self atPoint:point forDuration:duration];
 	return YES;
 }
 
 - (BOOL)touchAndHold:(CGFloat)duration {
-	CGPoint centerPoint = CGPointMake(self.frame.size.width * 0.5f, self.frame.size.height * 0.5f);
-    return [self touchAndHold:duration pointIfInsideWindow:centerPoint];
+    return [self touchAndHold:duration point:[self FEX_centerPoint]];
 }
 
 - (BOOL)touchAndHold:(CGFloat)duration x:(NSNumber *)x y:(NSNumber *)y {
-	if (CGFLOAT_IS_DOUBLE)
-	{
-		return [self touchAndHold:duration pointIfInsideWindow:CGPointMake([x doubleValue], [y doubleValue])];
-	}
-	
-	return [self touchAndHold:duration pointIfInsideWindow:CGPointMake([x floatValue], [y floatValue])];
+    CGPoint point = [self FEX_pointFromX:x andY:y];
+    
+    return [self touchAndHold:duration point:point];
 }
 
 ////Two finger tap
