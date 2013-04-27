@@ -10,9 +10,7 @@
 #import "JSON.h"
 
 #if !TARGET_OS_IPHONE
-@interface NSApplication ()
-- (CGRect) FEX_accessibilityFrame;
-@end
+#import "NSApplication+FrankAutomation.h"
 #endif
 
 @implementation ResolutionCommand
