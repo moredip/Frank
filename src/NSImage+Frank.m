@@ -6,12 +6,9 @@
 //
 //
 
+#import "NSApplication+FrankAutomation.h"
 #import "NSImage+Frank.h"
 #import "NSView+FrankImageCapture.h"
-
-@interface NSApplication ()
-- (CGRect) FEX_accessibilityFrame;
-@end
 
 @implementation NSImage (Frank)
 

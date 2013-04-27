@@ -16,6 +16,7 @@
 #if TARGET_OS_IPHONE
 #define FrankSerializeViewType UIView
 #else
+#include "NSApplication+FrankAutomation.h"
 #define FrankSerializeViewType NSObject
 #endif
 
@@ -188,6 +189,12 @@
         }
         
         [serializedSubviews addObject: [self serializeView: [((NSApplication*) view) mainMenu]]];
+        
+        NSSet* contextualMenus = [((NSApplication*) view) FEX_menus];
+        for (NSMenu* menu in contextualMenus)
+        {
+            [serializedSubviews addObject: [self serializeView: menu]];
+        }
         
         [serializedView setObject: serializedSubviews forKey: @"subviews"];
     }
