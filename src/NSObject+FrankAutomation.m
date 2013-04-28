@@ -105,7 +105,7 @@ static const NSString* FEX_AccessibilityDescriptionAttribute = @"FEX_Accessibili
     
     flippedY = screenHeight - (origin.y + size.height);
     
-    if (flippedY >= 0)
+    if (flippedY >= 0 && originValue != nil)
     {
         origin.y = flippedY;
     }
