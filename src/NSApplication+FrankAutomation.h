@@ -12,5 +12,8 @@
 
 - (void) FEX_startTrackingMenus;
 - (NSSet*) FEX_menus;
+- (NSDictionary*) FEX_axMenus;
 
 @end
+
+NSDictionary* FEX_DictionaryForAXMenu(AXUIElementRef menu);
