@@ -29,6 +29,19 @@ module HostScripting
     APPLESCRIPT}
   end
 
+  def quit_double_simulator
+    %x{osascript<<APPLESCRIPT
+      activate application "iPhone Simulator"
+      tell application "System Events"
+        tell process "#{Localize.t(:iphone_simulator)}"
+          if (value of static text 1 of window 1) is "#{Localize.t(:only_one_simulator)}" then
+            click button 1 of window 1
+          end if
+        end tell
+      end tell
+    }
+  end
+
 def simulator_reset_data
   %x{osascript<<APPLESCRIPT
 activate application "iPhone Simulator"
