@@ -109,6 +109,7 @@ module Frank
 
         run %Q|xcodebuild -xcconfig Frank/frankify.xcconfig #{build_steps} #{extra_opts} #{separate_configuration_option} -sdk iphonesimulator DEPLOYMENT_LOCATION=YES DSTROOT="#{build_output_dir}" FRANK_LIBRARY_SEARCH_PATHS="\\"#{frank_lib_directory}\\""|
       end
+      exit $?.exitstatus if not $?.success?
 
       app = Dir.glob("#{build_output_dir}/*.app").delete_if { |x| x =~ /\/#{app_bundle_name}$/ }
       app = app.first
@@ -304,7 +305,7 @@ module Frank
 
       if options["target"] != nil
         project.targets.each { | proj_target |
-          if target.name == options["target"]
+          if proj_target.name == options["target"]
             target = proj_target
           end
         }
