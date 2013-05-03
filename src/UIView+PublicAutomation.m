@@ -54,12 +54,42 @@ NSString *formatCGPointVal( NSValue *val ){
     
     UIView* touchedView = [self.window hitTest:pointInWindowCoords withEvent:nil];
     
-    while (touchedView != nil) {
-        if (touchedView == self) {
-            return YES;
-        }
+    if ([touchedView isDescendantOfView:self]) {
+        return YES;
+    }
+    else if ([self isDescendantOfView:touchedView]) {
+        /* the following code implements the same functionality as `hitTest:withEvent:`
+           but it doesn't ignore views with disabled user interactions */
         
-        touchedView = touchedView.superview;
+        BOOL canContinue;
+        
+        do {
+            canContinue = NO;
+            
+            CGPoint testedPoint = [self.window convertPoint:pointInWindowCoords toView:touchedView];            
+            NSArray* subviews = [[touchedView.subviews copy] autorelease];
+            
+            for (NSUInteger i = subviews.count; i > 0; i--) {
+                UIView* subview = [subviews objectAtIndex:(i - 1)];
+                
+                if (subview.alpha < 0.01 || subview.hidden) {
+                    continue;
+                }
+                
+                CGPoint testedPointInSubviewCoords = [subview convertPoint:testedPoint fromView:touchedView];
+                
+                if ([subview pointInside:testedPointInSubviewCoords withEvent:nil]) {
+                    if (subview == self) {
+                        return YES;
+                    }
+                    else {
+                        touchedView = subview;
+                        canContinue = YES;
+                        break;
+                    }
+                }
+            }
+        } while (canContinue);
     }
     
     return NO;
