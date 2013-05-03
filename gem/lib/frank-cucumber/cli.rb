@@ -305,7 +305,7 @@ module Frank
 
       if options["target"] != nil
         project.targets.each { | proj_target |
-          if target.name == options["target"]
+          if proj_target.name == options["target"]
             target = proj_target
           end
         }
