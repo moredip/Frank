@@ -10,6 +10,7 @@
 
 #import <Foundation/Foundation.h>
 
+#import "NSApplication+FrankAutomation.h"
 #import "LoadableCategory.h"
 MAKE_CATEGORIES_LOADABLE(NSObject_FrankAutomation)
 
@@ -105,7 +106,7 @@ static const NSString* FEX_AccessibilityDescriptionAttribute = @"FEX_Accessibili
     
     flippedY = screenHeight - (origin.y + size.height);
     
-    if (flippedY >= 0)
+    if (flippedY >= 0 && originValue != nil)
     {
         origin.y = flippedY;
     }
@@ -173,16 +174,6 @@ static const NSString* FEX_AccessibilityDescriptionAttribute = @"FEX_Accessibili
 
 @end
 
-@implementation NSApplication (FrankAutomation)
-
-- (BOOL) FEX_raise
-{
-    [self activateIgnoringOtherApps: YES];
-    return YES;
-}
-
-@end
-
 @implementation NSControl (FrankAutomation)
 
 - (NSString*) FEX_accessibilityLabel
@@ -246,18 +237,54 @@ static const NSString* FEX_AccessibilityDescriptionAttribute = @"FEX_Accessibili
     return returnValue;
 }
 
+- (CGRect) FEX_accessibilityFrame
+{
+    CGRect         returnValue = NSMakeRect(0, 0, 0, 0);
+    NSDictionary*  menuDict    = nil;
+    
+    if ([[self menu] isEqual: [[NSApplication sharedApplication] mainMenu]])
+    {
+        
+        AXUIElementRef app  = AXUIElementCreateApplication([[NSRunningApplication currentApplication] processIdentifier]);
+        AXUIElementRef menu = NULL;
+        
+        AXUIElementCopyAttributeValue(app, kAXMenuBarAttribute, (CFTypeRef*) &menu);
+        
+        menuDict = FEX_DictionaryForAXMenu(menu);
+    }
+    else
+    {
+        NSValue* menuPointer = [NSValue valueWithPointer: [self menu]];
+        menuDict = [[[NSApplication sharedApplication] FEX_axMenus] objectForKey: menuPointer];
+    }
+    
+    if (menuDict != NULL)
+    {
+        returnValue = [[menuDict objectForKey: [self title]] rectValue];
+    }
+    
+    return returnValue;
+}
+
 - (BOOL) FEX_simulateClick
 {
     BOOL returnValue = NO;
     
     if ([self menu] != nil)
     {
-        NSInteger itemIndex = [[self menu] indexOfItem: self];
-        
-        if (itemIndex >= 0)
+        if ([self hasSubmenu])
         {
-            [[self menu] performActionForItemAtIndex: itemIndex];
-            returnValue = YES;
+            returnValue = [super FEX_simulateClick];
+        }
+        else
+        {
+            NSInteger itemIndex = [[self menu] indexOfItem: self];
+            
+            if (itemIndex >= 0)
+            {
+                [[self menu] performActionForItemAtIndex: itemIndex];
+                returnValue = YES;
+            }
         }
     }
     

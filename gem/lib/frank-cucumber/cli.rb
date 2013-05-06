@@ -252,7 +252,7 @@ module Frank
           projects = workspace.projpaths
 
           projects.each { | current_project |
-            lines = `xcodebuild -project #{current_project} -list`
+            lines = `xcodebuild -project "#{current_project}" -list`
 
             found_schemes = false
 
@@ -305,7 +305,7 @@ module Frank
 
       if options["target"] != nil
         project.targets.each { | proj_target |
-          if target.name == options["target"]
+          if proj_target.name == options["target"]
             target = proj_target
           end
         }
