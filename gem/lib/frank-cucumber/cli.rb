@@ -252,7 +252,7 @@ module Frank
           projects = workspace.projpaths
 
           projects.each { | current_project |
-            lines = `xcodebuild -project #{current_project} -list`
+            lines = `xcodebuild -project "#{current_project}" -list`
 
             found_schemes = false
 
