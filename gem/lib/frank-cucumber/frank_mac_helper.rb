@@ -4,22 +4,46 @@ module Frank module Cucumber
 
 module FrankHelper
 
+  def perform_action_on_selector( action, selector )
+    touch_successes = frankly_map( selector, action )
+    raise "could not find anything matching [#{selector}] which supports that action" if touch_successes == nil or touch_successes.empty?
+    raise "some objects do not support that action" if touch_successes.include?(false)
+  end
+
   def simulate_click( selector )
-    touch_successes = frankly_map( selector, 'FEX_simulateClick' )
-    raise "could not find anything matching [#{selector}] to press" if touch_successes == nil or touch_successes.empty?
-    raise "some objects do not support the press action" if touch_successes.include?(false)
+    perform_action_on_selector( 'FEX_simulateClick', selector )
   end
 
   def bring_to_front( selector )
-    touch_successes = frankly_map( selector, 'FEX_raise' )
-    raise "could not find anything matching [#{selector}] to bring to the front" if touch_successes == nil or touch_successes.empty?
-    raise "some objects do not support the bring to front action" if touch_successes.include?(false)
+    perform_action_on_selector( 'FEX_raise', selector )
+  end
+
+  def cancel( selector )
+    perform_action_on_selector( 'FEX_cancel', selector )
+  end
+
+  def confirm( selector )
+    perform_action_on_selector( 'FEX_confirm', selector )
+  end
+
+  def decrement_value( selector )
+    perform_action_on_selector( 'FEX_decrement', selector )
+  end
+
+  def delete_value( selector )
+    perform_action_on_selector( 'FEX_delete', selector )
+  end
+
+  def increment_value( selector )
+    perform_action_on_selector( 'FEX_increment', selector )
+  end
+
+  def pick( selector )
+    perform_action_on_selector( 'FEX_pick', selector )
   end
 
   def show_menu( selector )
-    successes = frankly_map( selector, 'FEX_showMenu' )
-    raise "could not find anything matching [#{selector}] to show a menu on" if successes == nil or successes.empty?
-    raise "some objects do not support the show menu action" if successes.include?(false)
+    perform_action_on_selector( 'FEX_showMenu', selector )
   end
 
 end
