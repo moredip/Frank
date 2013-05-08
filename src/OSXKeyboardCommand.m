@@ -12,7 +12,7 @@
 
 @implementation OSXKeyboardCommand
 
-- (void) synthesizeNSEventForString:(NSString *)aString
+- (void) synthesizeNSEventForString: (NSString*) aString modifiers: (NSUInteger) modifiers
 {
     for (NSUInteger charIndex = 0; charIndex < [aString length]; ++charIndex)
     {
@@ -20,12 +20,12 @@
         
         NSEvent *event = [NSEvent keyEventWithType:NSKeyDown
                                           location:NSMakePoint(0, 0)
-                                     modifierFlags:0
+                                     modifierFlags:modifiers
                                          timestamp:0
                                       windowNumber:0
                                            context:nil
                                         characters:eventChar
-                       charactersIgnoringModifiers:nil
+                       charactersIgnoringModifiers:eventChar
                                          isARepeat:NO
                                            keyCode:0];
         
@@ -33,12 +33,12 @@
         
         event = event = [NSEvent keyEventWithType:NSKeyUp
                                          location:NSMakePoint(0, 0)
-                                    modifierFlags:0
+                                    modifierFlags:modifiers
                                         timestamp:0
                                      windowNumber:0
                                           context:nil
                                        characters:eventChar
-                      charactersIgnoringModifiers:nil
+                      charactersIgnoringModifiers:eventChar
                                         isARepeat:NO
                                           keyCode:0];
         
@@ -46,12 +46,36 @@
     }
 }
 
-- (NSString *)handleCommandWithRequestBody:(NSString *)requestBody {
+- (NSString *)handleCommandWithRequestBody: (NSString*) requestBody {
     
     NSDictionary *requestCommand = FROM_JSON(requestBody);
 	NSString *textToType = [requestCommand objectForKey:@"text_to_type"];
+    NSDictionary* modifiers = [requestCommand objectForKey:@"modifiers"];
+    NSUInteger modifierFlags = 0;
     
-    [self synthesizeNSEventForString:textToType];    
+    for (NSString* modifier in modifiers)
+    {
+        modifier = [modifier lowercaseString];
+        
+        if ([modifier isEqual: @"command"] || [modifier isEqual: @"cmd"])
+        {
+            modifierFlags |= NSCommandKeyMask;
+        }
+        if ([modifier isEqual: @"shift"])
+        {
+            modifierFlags |= NSShiftKeyMask;
+        }
+        if ([modifier isEqual: @"option"] || [modifier isEqual: @"alt"] )
+        {
+            modifierFlags |= NSAlternateKeyMask;
+        }
+        if ([modifier isEqual: @"control"] || [modifier isEqual: @"ctrl"])
+        {
+            modifierFlags |= NSControlKeyMask;
+        }
+    }
+    
+    [self synthesizeNSEventForString: textToType modifiers: modifierFlags];
     
 	return [FranklyProtocolHelper generateSuccessResponseWithoutResults];
 }
