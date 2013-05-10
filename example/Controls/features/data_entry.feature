@@ -19,6 +19,5 @@ Scenario: Using the Email keyboard
   Then I should be able to enter "foo@example.com" correctly using the keyboard
 
 Scenario: Enter text into an auto-capitalizing field
-  Given this scenario is MARKED PENDING because there seems to be a bug in KIFTypist for auto-capitalized fields
   When I turn on auto-capitalization
   Then I should be able to enter "foo bar baz" correctly using the keyboard
