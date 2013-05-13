@@ -81,3 +81,16 @@ es:
   toggle_in_call_status_bar: Activar/Desactivar barra de estado durante llamada
   simulate_hardware_keyboard: Simular teclado físico
   only_one_simulator: Sólo se puede ejecutar un Simulador iOS a la vez.
+
+it:
+  iphone_simulator: Simulatore iOS
+  hardware: Hardware
+  home: Home
+  rotate_left: Ruota a sinistra
+  rotate_right: Ruota a destra
+  shake_gesture: Gesto Agita
+  simulate_memory_warning: Simula avviso memoria
+  toggle_in_call_status_bar: Attiva/disattiva barra di state chiamata
+  simulate_hardware_keyboard: Simula la tastiera hardware
+  only_one_simulator: Solo un Simulatore iOS può essere eseguito in un momento.
+
