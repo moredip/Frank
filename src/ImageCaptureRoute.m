@@ -126,23 +126,27 @@
 
 - (NSObject<HTTPResponse> *) handleRequestForPath: (NSArray *)path withConnection:(RoutingHTTPConnection *)connection{
     
-    if( ![@"screenshot" isEqualToString:[path objectAtIndex:0]] )
+    if (![@"screenshot" isEqualToString:[path objectAtIndex:0]]) {
         return nil;
+    }
+    
+    NSString* pathComponent2 = ([path count] > 1) ? [path objectAtIndex:1] : nil;    
 
-
-    if ( [path count] > 1 && [@"snapshot-all-views" isEqualToString:[path objectAtIndex:1]] ){
+    if ([pathComponent2 isEqualToString:@"snapshot-all-views"]) {
         [self snapshotAllViews];
         return [self generateGenericSuccessResponse];
     }
-
-    if ( [path count] > 1 && [@"view-snapshot" isEqualToString:[path objectAtIndex:1]] ){
+    else if ([pathComponent2 isEqualToString:@"view-snapshot"]) {
         return [self responseWithSnapshotOfViewWithUid:[path objectAtIndex:2] withConnection:connection];
     }
     
 #if TARGET_OS_IPHONE
-    BOOL allWindows = [path count] > 1 && [[path objectAtIndex:1] isEqualToString:@"allwindows"];
     
-    UIImage *screenshot = [UIImage imageFromApplication:allWindows];
+    BOOL allWindows = ([pathComponent2 isEqualToString:@"allwindows"] || [pathComponent2 isEqualToString:@"allwindows-rotated"]);
+    BOOL rotated = ([pathComponent2 isEqualToString:@"rotated"] || [pathComponent2 isEqualToString:@"allwindows-rotated"]);
+    
+    UIImage *screenshot = [UIImage imageFromApplication:allWindows
+                                       resultInPortrait:!rotated];
 #else
     NSImage *screenshot = [NSImage imageFromApplication];
 #endif
