@@ -11,7 +11,7 @@
 
 @interface UIImage(Frank)
 
-+ (UIImage *)imageFromApplication:(BOOL)allWindows;
++ (UIImage *)imageFromApplication:(BOOL)allWindows resultInPortrait:(BOOL)resultInPortrait;
 - (UIImage *)imageCropedToFrame:(CGRect)cropFrame;
 - (UIImage *)imageMaskedAtFrame:(CGRect)maskFrame;
 
