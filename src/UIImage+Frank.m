@@ -19,7 +19,7 @@
     
     UIInterfaceOrientation currentOrientation = application.statusBarOrientation;
     
-    CGSize size = application.keyWindow.bounds.size;
+    CGSize size = [UIScreen mainScreen].bounds.size;
 
     if (!resultInPortrait && UIInterfaceOrientationIsLandscape(currentOrientation)) {
         size = CGSizeMake(size.height, size.width);
