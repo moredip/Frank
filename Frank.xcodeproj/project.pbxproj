@@ -13,6 +13,7 @@
 		00E864C5161D708B00E01209 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00E864C4161D708B00E01209 /* MapKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		0626BFAE174300240020B33B /* DumpCommandRoute.h in Headers */ = {isa = PBXBuildFile; fileRef = 0626BFAC174300240020B33B /* DumpCommandRoute.h */; };
 		0626BFAF174300240020B33B /* DumpCommandRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 0626BFAD174300240020B33B /* DumpCommandRoute.m */; };
+		06CF35CA1744DECB00268ABF /* DumpCommandRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 0626BFAD174300240020B33B /* DumpCommandRoute.m */; };
 		30228E201642161200B1F9E7 /* AccessibilityCheckCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D67F2AAC13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.m */; };
 		30228E221642161200B1F9E7 /* AppCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1DD76A12BADFE100E10B8C /* AppCommand.m */; };
 		30228E261642161200B1F9E7 /* EnginesCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FA01B714283C4F00576AEE /* EnginesCommand.m */; };
@@ -1081,6 +1082,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06CF35CA1744DECB00268ABF /* DumpCommandRoute.m in Sources */,
 				304374F6167D2BC8006D5D71 /* AnyJSON.m in Sources */,
 				302B80421646DE02000F9861 /* NSImage+Frank.m in Sources */,
 				303A751316702D3D00B93673 /* NSObject+FrankAutomation.m in Sources */,

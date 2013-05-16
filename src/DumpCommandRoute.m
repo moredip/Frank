@@ -199,8 +199,8 @@
         NSMutableArray *descendants = [NSMutableArray array];
         
         [descendants addObjectsFromArray:[application windows]];
-        [descendants addObject:[applicatoin mainMenu]];
-        [descendants addObjectsFromArray:[application FEX_menus]];        
+        [descendants addObject:[application mainMenu]];
+        [descendants addObjectsFromArray:[[application FEX_menus] allObjects]];
         
         return descendants;
     }
