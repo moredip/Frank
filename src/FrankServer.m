@@ -11,10 +11,10 @@
 #import "HTTPServer.h"
 #import "RoutingHTTPConnection.h"
 #import "StaticResourcesRoute.h"
+#import "DumpCommandRoute.h"
 #import "ImageCaptureRoute.h"
 #import "FrankCommandRoute.h"
 #import "DeviceCommand.h"
-#import "DumpCommand.h"
 #import "ExitCommand.h"
 #import "AppCommand.h"
 #import "AccessibilityCheckCommand.h"
@@ -62,7 +62,6 @@ static NSUInteger __defaultPort = FRANK_SERVER_PORT;
 		FrankCommandRoute *frankCommandRoute = [FrankCommandRoute singleton];
         [frankCommandRoute registerCommand:[[[ResolutionCommand alloc] init] autorelease] withName:@"resolution"];
         [frankCommandRoute registerCommand:[[[DeviceCommand alloc] init] autorelease] withName:@"device"];
-		[frankCommandRoute registerCommand:[[[DumpCommand alloc]init]autorelease] withName:@"dump"];
 		[frankCommandRoute registerCommand:[[[AccessibilityCheckCommand alloc] init]autorelease] withName:@"accessibility_check"];
 		[frankCommandRoute registerCommand:[[[AppCommand alloc] init]autorelease] withName:@"app_exec"];
         [frankCommandRoute registerCommand:[[[EnginesCommand alloc] init]autorelease] withName:@"engines"];
@@ -84,6 +83,9 @@ static NSUInteger __defaultPort = FRANK_SERVER_PORT;
 		
 		StaticResourcesRoute *staticRoute = [[[StaticResourcesRoute alloc] initWithStaticResourceSubDir:bundleName] autorelease];
 		[[RequestRouter singleton] registerRoute:staticRoute];
+        
+        DumpCommandRoute *dumpCaptureCommand = [[[DumpCommandRoute alloc] init] autorelease];
+		[[RequestRouter singleton] registerRoute:dumpCaptureCommand];        
         
         ImageCaptureRoute *imageCaptureCommand = [[[ImageCaptureRoute alloc] init] autorelease];
 		[[RequestRouter singleton] registerRoute:imageCaptureCommand];

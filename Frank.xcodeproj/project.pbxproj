@@ -11,9 +11,11 @@
 		0071264714F8956700E738ED /* ViewJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0071264514F8956700E738ED /* ViewJSONSerializer.m */; };
 		00E864BC161D6E6400E01209 /* UIScrollView+FrankScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E864BA161D6E6400E01209 /* UIScrollView+FrankScrolling.m */; };
 		00E864C5161D708B00E01209 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00E864C4161D708B00E01209 /* MapKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		0626BFAE174300240020B33B /* DumpCommandRoute.h in Headers */ = {isa = PBXBuildFile; fileRef = 0626BFAC174300240020B33B /* DumpCommandRoute.h */; };
+		0626BFAF174300240020B33B /* DumpCommandRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 0626BFAD174300240020B33B /* DumpCommandRoute.m */; };
+		06CF35CA1744DECB00268ABF /* DumpCommandRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 0626BFAD174300240020B33B /* DumpCommandRoute.m */; };
 		30228E201642161200B1F9E7 /* AccessibilityCheckCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D67F2AAC13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.m */; };
 		30228E221642161200B1F9E7 /* AppCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1DD76A12BADFE100E10B8C /* AppCommand.m */; };
-		30228E241642161200B1F9E7 /* DumpCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D05CA211C883AA0081C5A5 /* DumpCommand.m */; };
 		30228E261642161200B1F9E7 /* EnginesCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FA01B714283C4F00576AEE /* EnginesCommand.m */; };
 		30228E281642161200B1F9E7 /* ExitCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = A91F3AA515F6E456003F434F /* ExitCommand.m */; };
 		302B80411646DE02000F9861 /* NSImage+Frank.h in Headers */ = {isa = PBXBuildFile; fileRef = 302B803F1646DE02000F9861 /* NSImage+Frank.h */; };
@@ -149,8 +151,6 @@
 		D6A1D28015A8D05E00EC056C /* UIView+Frank.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A1D27E15A8D05E00EC056C /* UIView+Frank.m */; };
 		D6BD521E146C34BF001770B1 /* SelectorEngineRegistry.h in Headers */ = {isa = PBXBuildFile; fileRef = D6BD521C146C34BF001770B1 /* SelectorEngineRegistry.h */; settings = {ATTRIBUTES = (); }; };
 		D6BD521F146C34BF001770B1 /* SelectorEngineRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = D6BD521D146C34BF001770B1 /* SelectorEngineRegistry.m */; };
-		D6D05CB311C883AA0081C5A5 /* DumpCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = D6D05CA111C883AA0081C5A5 /* DumpCommand.h */; };
-		D6D05CB411C883AA0081C5A5 /* DumpCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D05CA211C883AA0081C5A5 /* DumpCommand.m */; };
 		D6D05CB511C883AA0081C5A5 /* FrankCommandRoute.h in Headers */ = {isa = PBXBuildFile; fileRef = D6D05CA311C883AA0081C5A5 /* FrankCommandRoute.h */; };
 		D6D05CB611C883AA0081C5A5 /* FrankCommandRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D05CA411C883AA0081C5A5 /* FrankCommandRoute.m */; };
 		D6D05CB711C883AA0081C5A5 /* FrankServer.h in Headers */ = {isa = PBXBuildFile; fileRef = D6D05CA511C883AA0081C5A5 /* FrankServer.h */; };
@@ -285,6 +285,8 @@
 		0071264514F8956700E738ED /* ViewJSONSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewJSONSerializer.m; sourceTree = "<group>"; };
 		00E864BA161D6E6400E01209 /* UIScrollView+FrankScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+FrankScrolling.m"; sourceTree = "<group>"; };
 		00E864C4161D708B00E01209 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		0626BFAC174300240020B33B /* DumpCommandRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DumpCommandRoute.h; sourceTree = "<group>"; };
+		0626BFAD174300240020B33B /* DumpCommandRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DumpCommandRoute.m; sourceTree = "<group>"; };
 		30228E2916421C4400B1F9E7 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		302B803F1646DE02000F9861 /* NSImage+Frank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+Frank.h"; sourceTree = "<group>"; };
 		302B80401646DE02000F9861 /* NSImage+Frank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+Frank.m"; sourceTree = "<group>"; };
@@ -403,8 +405,6 @@
 		D6A1D27E15A8D05E00EC056C /* UIView+Frank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frank.m"; sourceTree = "<group>"; };
 		D6BD521C146C34BF001770B1 /* SelectorEngineRegistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectorEngineRegistry.h; sourceTree = "<group>"; };
 		D6BD521D146C34BF001770B1 /* SelectorEngineRegistry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectorEngineRegistry.m; sourceTree = "<group>"; };
-		D6D05CA111C883AA0081C5A5 /* DumpCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DumpCommand.h; sourceTree = "<group>"; };
-		D6D05CA211C883AA0081C5A5 /* DumpCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DumpCommand.m; sourceTree = "<group>"; };
 		D6D05CA311C883AA0081C5A5 /* FrankCommandRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrankCommandRoute.h; sourceTree = "<group>"; };
 		D6D05CA411C883AA0081C5A5 /* FrankCommandRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrankCommandRoute.m; sourceTree = "<group>"; };
 		D6D05CA511C883AA0081C5A5 /* FrankServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrankServer.h; sourceTree = "<group>"; };
@@ -678,8 +678,6 @@
 				4C1DD76A12BADFE100E10B8C /* AppCommand.m */,
 				303CFCE216C80B830004BD05 /* DeviceCommand.h */,
 				303CFCE316C80B830004BD05 /* DeviceCommand.m */,
-				D6D05CA111C883AA0081C5A5 /* DumpCommand.h */,
-				D6D05CA211C883AA0081C5A5 /* DumpCommand.m */,
 				D6FA01B714283C4F00576AF0 /* EnginesCommand.h */,
 				D6FA01B714283C4F00576AEE /* EnginesCommand.m */,
 				A91F3AA415F6E456003F434F /* ExitCommand.h */,
@@ -707,6 +705,8 @@
 		C9605E701606C4BD00170F88 /* Routing */ = {
 			isa = PBXGroup;
 			children = (
+				0626BFAC174300240020B33B /* DumpCommandRoute.h */,
+				0626BFAD174300240020B33B /* DumpCommandRoute.m */,
 				D6D05CA311C883AA0081C5A5 /* FrankCommandRoute.h */,
 				D6D05CA411C883AA0081C5A5 /* FrankCommandRoute.m */,
 				C18A5EEE160D4AB400DC25F6 /* ImageCaptureRoute.h */,
@@ -831,7 +831,6 @@
 			files = (
 				D6BD521E146C34BF001770B1 /* SelectorEngineRegistry.h in Headers */,
 				AA747D9F0F9514B9006C5449 /* Frank_Prefix.pch in Headers */,
-				D6D05CB311C883AA0081C5A5 /* DumpCommand.h in Headers */,
 				D6D05CB511C883AA0081C5A5 /* FrankCommandRoute.h in Headers */,
 				D6D05CB711C883AA0081C5A5 /* FrankServer.h in Headers */,
 				D6D05CB911C883AA0081C5A5 /* MapOperationCommand.h in Headers */,
@@ -865,6 +864,7 @@
 				C189EF1E16BB5A8100F8236D /* VersionCommand.h in Headers */,
 				303CFCE416C80B830004BD05 /* DeviceCommand.h in Headers */,
 				30E82E3217128AB500E5BC7C /* ResolutionCommand.h in Headers */,
+				0626BFAE174300240020B33B /* DumpCommandRoute.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1082,6 +1082,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06CF35CA1744DECB00268ABF /* DumpCommandRoute.m in Sources */,
 				304374F6167D2BC8006D5D71 /* AnyJSON.m in Sources */,
 				302B80421646DE02000F9861 /* NSImage+Frank.m in Sources */,
 				303A751316702D3D00B93673 /* NSObject+FrankAutomation.m in Sources */,
@@ -1090,7 +1091,6 @@
 				306249F71644E67400E8C20A /* FrankServer.m in Sources */,
 				30228E201642161200B1F9E7 /* AccessibilityCheckCommand.m in Sources */,
 				30228E221642161200B1F9E7 /* AppCommand.m in Sources */,
-				30228E241642161200B1F9E7 /* DumpCommand.m in Sources */,
 				30228E261642161200B1F9E7 /* EnginesCommand.m in Sources */,
 				30228E281642161200B1F9E7 /* ExitCommand.m in Sources */,
 				30C9352716A5261800A4BFD1 /* MapOperationCommand.m in Sources */,
@@ -1206,7 +1206,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6D05CB411C883AA0081C5A5 /* DumpCommand.m in Sources */,
 				D6D05CB611C883AA0081C5A5 /* FrankCommandRoute.m in Sources */,
 				D6D05CB811C883AA0081C5A5 /* FrankServer.m in Sources */,
 				D6D05CBA11C883AA0081C5A5 /* MapOperationCommand.m in Sources */,
@@ -1238,6 +1237,7 @@
 				303CFCE616C80B830004BD05 /* DeviceCommand.m in Sources */,
 				30E82E3417128AB500E5BC7C /* ResolutionCommand.m in Sources */,
 				387BFA7D17036DDA007B9F17 /* UISlider+PublicAutomation.m in Sources */,
+				0626BFAF174300240020B33B /* DumpCommandRoute.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
