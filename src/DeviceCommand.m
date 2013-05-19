@@ -9,6 +9,8 @@
 #import "DeviceCommand.h"
 #import "JSON.h"
 
+// These constants are duplicated with ruby code in gem/lib.
+// Don't change one without changing the other. 
 static NSString * const PadDevice = @"ipad";
 static NSString * const PadRetinaDevice = @"retina ipad";
 
