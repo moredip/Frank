@@ -210,6 +210,10 @@ module Frank
       settings
     end
 
+    def build_mac
+      determine_build_patform(options) == :osx
+    end
+
     def xcodebuild_command(options, build_steps)
       extra_opts = XCODEBUILD_OPTIONS.map{ |o| "-#{o} \"#{options[o]}\"" if options[o] }.compact.join(' ')
 
@@ -220,9 +224,7 @@ module Frank
       else
         separate_configuration_option = "-configuration Debug"
       end
-
-      build_mac = determine_build_patform(options) == :osx
-
+      
       if build_mac
         %Q|xcodebuild -xcconfig Frank/frankify.xcconfig #{build_steps} #{extra_opts} #{separate_configuration_option} FRANK_LIBRARY_SEARCH_PATHS="\\"#{frank_lib_directory}\\""|
       else
