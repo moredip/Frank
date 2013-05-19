@@ -9,6 +9,13 @@
 #import "DeviceCommand.h"
 #import "JSON.h"
 
+static NSString * const PadDevice = @"ipad";
+static NSString * const PadRetinaDevice = @"retina ipad";
+
+static NSString * const PhoneDevice = @"iphone";
+static NSString * const PhoneRetina3_5InchDevice = @"retina iphone (3.5 inch)";
+static NSString * const PhoneRetina4InchDevice = @"retina iphone (4 inch)";
+
 @implementation DeviceCommand
 
 - (NSString *) handleCommandWithRequestBody:(NSString *) requestBody {
@@ -23,20 +30,20 @@
                 BOOL isTall = ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON ); // from http://stackoverflow.com/questions/12446990/how-to-detect-iphone-5-widescreen-devices
                 
                 if (isTall) {
-                    device = @"retina iphone (4 inch)";
+                    device = PhoneRetina4InchDevice;
                 }else{
-                    device = @"retina iphone (3.5 inch)";
+                    device = PhoneRetina3_5InchDevice;
                 }
             }else{
-                device = @"iphone";
+                device = PhoneDevice;
             }
             break;
             
         case UIUserInterfaceIdiomPad:
             if (isRetina) {
-                device = @"retina ipad";
+                device = PadRetinaDevice;
             }else{
-                device = @"ipad";
+                device = PadDevice;
             }
             break;
             
