@@ -15,13 +15,29 @@
     NSString* device = nil;
     
 #if TARGET_OS_IPHONE
+    BOOL isRetina = ([[UIScreen mainScreen] scale] == 2.0);
+    
     switch ([[UIDevice currentDevice] userInterfaceIdiom]) {
         case UIUserInterfaceIdiomPhone:
-            device = @"iphone";
+            if (isRetina) {
+                BOOL isTall = ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON ); // from http://stackoverflow.com/questions/12446990/how-to-detect-iphone-5-widescreen-devices
+                
+                if (isTall) {
+                    device = @"retina iphone (4 inch)";
+                }else{
+                    device = @"retina iphone (3.5 inch)";
+                }
+            }else{
+                device = @"iphone";
+            }
             break;
             
         case UIUserInterfaceIdiomPad:
-            device = @"ipad";
+            if (isRetina) {
+                device = @"retina ipad";
+            }else{
+                device = @"ipad";
+            }
             break;
             
         default:
