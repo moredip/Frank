@@ -358,7 +358,7 @@ module FrankHelper
   def wait_for_frank_to_come_up
     num_consec_successes = 0
     num_consec_failures = 0
-    Timeout.timeout(20) do
+    Timeout.timeout(5) do
       while num_consec_successes <= 6
         if frankly_ping
           num_consec_failures = 0

@@ -7,11 +7,11 @@ module Launcher
   attr_accessor :application_path, :sdk, :version
 
   def simulator_client
-    @simulator_client ||= SimLauncher::Client.new(@application_path, @sdk, @version)
+    @simulator_client ||= SimLauncher::Client.new(@application_path, @options)
   end
 
   def simulator_direct_client
-    @simulator_direct_client ||= SimLauncher::DirectClient.new(@application_path, @sdk, @version)
+    @simulator_direct_client ||= SimLauncher::DirectClient.new(@application_path, @options)
   end
 
   def enforce(app_path, locator = Frank::Cucumber::AppBundleLocator.new)
@@ -31,9 +31,12 @@ module Launcher
   end
 
   def launch_app(app_path, sdk = nil, version = 'iphone')
+    launch_app_with_options(app_path, :sdk => sdk, :device => default_device_for_family(version))
+  end
+
+  def launch_app_with_options(app_path, options = {})
     @application_path = app_path
-    @sdk = sdk
-    @version = version
+    @options = options
 
     enforce(app_path)
 
@@ -64,7 +67,10 @@ module Launcher
       quit_double_simulator
       retry
     end
+  end
 
+  def default_device_for_family( family )
+    family
   end
 end
 end end
