@@ -8,6 +8,7 @@ require 'frank-cucumber/launcher'
 require 'frank-cucumber/console'
 require 'frank-cucumber/frankifier'
 require 'frank-cucumber/mac_launcher'
+require 'frank-cucumber/plugins/plugin'
 require 'xcodeproj'
 
 module Frank
@@ -62,10 +63,12 @@ module Frank
     XCODEBUILD_OPTIONS.each do |option|
       method_option option
     end
+    method_option 'no-plugins', :type => :boolean, :default => false, :aliases => '--np', :desc => 'Disable plugins'
     method_option 'arch', :type => :string, :default => 'i386'
     method_option :noclean, :type => :boolean, :default => false, :aliases => '--nc', :desc => "Don't clean the build directory before building"
     def build
       clean = !options['noclean']
+      use_plugins = !options['no-plugins']
 
       in_root do
         unless File.directory? 'Frank'
@@ -90,6 +93,15 @@ module Frank
         build_steps = 'clean ' + build_steps
       end
 
+      plugins = use_plugins ? gather_plugins : []
+
+      say "Detected plugins: #{plugins.map {|p| p.name}.join(', ')}" unless plugins.empty?
+
+      xcconfig_data = Frank::Plugins::Plugin.generate_xcconfig_from(plugins)
+
+      xcconfig_file = 'Frank/frank.xcconfig'
+      File.open(xcconfig_file,'w') {|f| f.write(xcconfig_data) }
+
       extra_opts = XCODEBUILD_OPTIONS.map{ |o| "-#{o} \"#{options[o]}\"" if options[o] }.compact.join(' ')
 
       # If there is a scheme specified we don't want to inject the default configuration
@@ -103,11 +115,11 @@ module Frank
       build_mac = determine_build_patform(options) == :osx
 
       if build_mac
-        run %Q|xcodebuild -xcconfig Frank/frankify.xcconfig #{build_steps} #{extra_opts} #{separate_configuration_option} DEPLOYMENT_LOCATION=YES DSTROOT="#{build_output_dir}" FRANK_LIBRARY_SEARCH_PATHS="\\"#{frank_lib_directory}\\""|
+        run %Q|xcodebuild -xcconfig #{xcconfig_file} #{build_steps} #{extra_opts} #{separate_configuration_option} DEPLOYMENT_LOCATION=YES DSTROOT="#{build_output_dir}" FRANK_LIBRARY_SEARCH_PATHS="#{frank_lib_search_paths}"|
       else
         extra_opts += " -arch #{options['arch']}"
 
-        run %Q|xcodebuild -xcconfig Frank/frankify.xcconfig #{build_steps} #{extra_opts} #{separate_configuration_option} -sdk iphonesimulator DEPLOYMENT_LOCATION=YES DSTROOT="#{build_output_dir}" FRANK_LIBRARY_SEARCH_PATHS="\\"#{frank_lib_directory}\\""|
+        run %Q|xcodebuild -xcconfig #{xcconfig_file} #{build_steps} #{extra_opts} #{separate_configuration_option} -sdk iphonesimulator DEPLOYMENT_LOCATION=YES DSTROOT="#{build_output_dir}" FRANK_LIBRARY_SEARCH_PATHS="#{frank_lib_search_paths}"|
       end
       exit $?.exitstatus if not $?.success?
 
@@ -213,12 +225,25 @@ module Frank
       File.expand_path "Frank"
     end
 
+    def frank_lib_search_paths
+      paths = [frank_lib_directory]
+      each_plugin_path do |path|
+        paths << path
+      end
+
+      paths.map {|path| %Q[\\"#{path}\\"]}.join(' ')
+    end
+
     def build_output_dir
       File.expand_path "Frank/frankified_build"
     end
 
     def frankified_app_dir
       File.join( build_output_dir, app_bundle_name )
+    end
+
+    def plugin_dir
+      File.expand_path 'Frank/plugins'
     end
 
     def built_product_is_mac_app ( app_dir )
@@ -320,6 +345,19 @@ module Frank
 
       return target.platform_name
 
+    end
+
+    def each_plugin_path(&block)
+      plugin_glob = File.join("#{plugin_dir}","*")
+      Dir[plugin_glob].map do |plugin_path|
+        yield plugin_path
+      end
+    end
+
+    def gather_plugins
+      each_plugin_path do |plugin_path|
+        Frank::Plugins::Plugin.from_plugin_directory(plugin_path)
+      end
     end
 
   end
