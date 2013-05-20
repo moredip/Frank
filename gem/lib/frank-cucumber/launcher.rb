@@ -34,6 +34,12 @@ module Launcher
     launch_app_with_options(app_path, :sdk => sdk, :device => default_device_for_family(version))
   end
 
+  # @param [String] app_path the app_path to launch.
+  # @param [Hash] options the options to launch the app with.
+  # @option options [String] :sdk the sdk version. Defaults to latest.
+  # @option options [String] :device the device. Defaults to non-retina iphone.
+  # @see https://github.com/moredip/Sim-Launcher SimLauncher::DeviceType for supported devices. 
+  # @option options [String] :app_args arguments to pass to the app being launched.
   def launch_app_with_options(app_path, options = {})
     @application_path = app_path
     @options = options
@@ -70,7 +76,8 @@ module Launcher
   end
 
   def default_device_for_family( family )
-    family
+    SimLauncher::DeviceType::IPHONE if family == SimLauncher::DeviceFamily::IPHONE
+    SimLauncher::DeviceType::IPAD if family == SimLauncher::DeviceFamily::IPAD
   end
 end
 end end

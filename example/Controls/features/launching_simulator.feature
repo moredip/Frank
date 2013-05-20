@@ -32,4 +32,3 @@ Scenario: Launching a device in the iPhone family launches iPhone
 Scenario: Launching a device in the iPad family launches iPad
   When I launch the app using the ipad family simulator
   And I pause briefly for demonstration purposes
-
