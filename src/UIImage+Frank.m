@@ -25,7 +25,7 @@
         size = CGSizeMake(size.height, size.width);
     }
     
-    UIGraphicsBeginImageContext(size);
+    UIGraphicsBeginImageContextWithOptions(size, NO, 0.0);
     CGContextRef context = UIGraphicsGetCurrentContext();
 
     if (!resultInPortrait) {
