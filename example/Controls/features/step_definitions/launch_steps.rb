@@ -15,7 +15,7 @@ end
 Given /^I launch the app using the (iphone|ipad|retina iphone \(3.5 inch\)|retina iphone \(4 inch\)|retina ipad) simulator$/ do |device|
   unless $USING_PHYSICAL_DEVICE
     # The device names in the step definition are defined as constants in SimLauncher::DeviceType. 
-    # Reference a non-retina iPhone as: SimLauncher::DeviceType::IPHONE
+    # Reference a non-retina iPhone as: SimLauncher::DeviceType::Phone
     launch_app_with_options APP_BUNDLE_PATH, :device => device
   end
 end

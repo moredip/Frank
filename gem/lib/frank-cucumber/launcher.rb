@@ -76,8 +76,8 @@ module Launcher
   end
 
   def default_device_for_family( family )
-    SimLauncher::DeviceType::IPHONE if family == SimLauncher::DeviceFamily::IPHONE
-    SimLauncher::DeviceType::IPAD if family == SimLauncher::DeviceFamily::IPAD
+    SimLauncher::DeviceType::Phone if family == SimLauncher::DeviceFamily::Phone
+    SimLauncher::DeviceType::Pad if family == SimLauncher::DeviceFamily::Pad
   end
 end
 end end
