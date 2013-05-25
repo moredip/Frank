@@ -63,12 +63,16 @@ module Frank
     XCODEBUILD_OPTIONS.each do |option|
       method_option option
     end
+
+    WITHOUT_DEPS = 'without-dependencies'
     method_option 'no-plugins', :type => :boolean, :default => false, :aliases => '--np', :desc => 'Disable plugins'
     method_option 'arch', :type => :string, :default => 'i386'
     method_option :noclean, :type => :boolean, :default => false, :aliases => '--nc', :desc => "Don't clean the build directory before building"
+    method_option WITHOUT_DEPS, :type => :array
     def build
       clean = !options['noclean']
       use_plugins = !options['no-plugins']
+      exclude_dependencies = options[WITHOUT_DEPS] || []
 
       in_root do
         unless File.directory? 'Frank'
@@ -97,7 +101,9 @@ module Frank
 
       say "Detected plugins: #{plugins.map {|p| p.name}.join(', ')}" unless plugins.empty?
 
-      xcconfig_data = Frank::Plugins::Plugin.generate_xcconfig_from(plugins)
+      plugins.each {|plugin| plugin.write_xcconfig(exclude_dependencies)}
+
+      xcconfig_data = Frank::Plugins::Plugin.generate_core_xcconfig(plugins)
 
       xcconfig_file = 'Frank/frank.xcconfig'
       File.open(xcconfig_file,'w') {|f| f.write(xcconfig_data) }
@@ -348,7 +354,7 @@ module Frank
     end
 
     def each_plugin_path(&block)
-      plugin_glob = File.join("#{plugin_dir}","*")
+      plugin_glob = File.join("#{plugin_dir}",'*')
       Dir[plugin_glob].map do |plugin_path|
         yield plugin_path
       end
