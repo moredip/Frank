@@ -12,9 +12,8 @@ module Frank
       end
 
       def dependency(lib,linker_flag="-l#{lib}")
-        unless exclude_dependencies.include?(lib)
-           linker_flag
-        end
+        return linker_flag unless exclude_dependencies.include?(lib)
+        ''
       end
 
       def write_xcconfig(exclude_dependencies)
