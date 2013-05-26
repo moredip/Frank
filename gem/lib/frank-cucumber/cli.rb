@@ -68,7 +68,7 @@ module Frank
     method_option 'no-plugins', :type => :boolean, :default => false, :aliases => '--np', :desc => 'Disable plugins'
     method_option 'arch', :type => :string, :default => 'i386'
     method_option :noclean, :type => :boolean, :default => false, :aliases => '--nc', :desc => "Don't clean the build directory before building"
-    method_option WITHOUT_DEPS, :type => :array
+    method_option WITHOUT_DEPS, :type => :array, :desc => 'An array (space separated list) of plugin dependencies to exclude'
     def build
       clean = !options['noclean']
       use_plugins = !options['no-plugins']
