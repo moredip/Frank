@@ -101,6 +101,8 @@ module Frank
 
       say "Detected plugins: #{plugins.map {|p| p.name}.join(', ')}" unless plugins.empty?
 
+      say "Excluding plugin dependencies: #{exclude_dependencies.join(', ')}" unless exclude_dependencies.empty?
+
       plugins.each {|plugin| plugin.write_xcconfig(exclude_dependencies)}
 
       xcconfig_data = Frank::Plugins::Plugin.generate_core_xcconfig(plugins)
