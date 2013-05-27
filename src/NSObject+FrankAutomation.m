@@ -10,9 +10,42 @@
 
 #import <Foundation/Foundation.h>
 
-#import "NSApplication+FrankAutomation.h"
 #import "LoadableCategory.h"
 MAKE_CATEGORIES_LOADABLE(NSObject_FrankAutomation)
+
+#if TARGET_OS_IPHONE
+
+@implementation NSObject (FrankAutomation)
+
+- (NSString *) FEX_accessibilityLabel
+{
+    NSString* returnValue = nil;
+    
+    if ([self respondsToSelector: @selector(accessibilityLabel)])
+    {
+        returnValue = [self accessibilityLabel];
+    }
+    
+    return returnValue;
+}
+
+- (CGRect) FEX_accessibilityFrame
+{
+    CGRect returnValue = CGRectZero;
+    
+    if ([self respondsToSelector: @selector(accessibilityFrame)])
+    {
+        returnValue = [self accessibilityFrame];
+    }
+    
+    return returnValue;
+}
+
+@end
+
+#else
+
+#import "NSApplication+FrankAutomation.h"
 
 static const NSString* FEX_AccessibilityDescriptionAttribute = @"FEX_AccessibilityDescriptionAttribute";
 
@@ -319,3 +352,5 @@ static const NSString* FEX_AccessibilityDescriptionAttribute = @"FEX_Accessibili
 }
 
 @end
+
+#endif
