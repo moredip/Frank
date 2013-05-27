@@ -314,8 +314,8 @@ module Frank
       end
 
       if target == nil
-        say "Unable to determine a target from the options provided"
-        exit 10
+        say "Unable to determine a target from the options provided. Assuming iOS"
+        return :ios
       end
 
       return target.platform_name
