@@ -11,18 +11,15 @@
 
 @implementation UIView (ImageCapture)
 
-+ (UIImage *) captureImageOfSize:(CGSize)size fromViews:(NSArray *)views {
-	UIGraphicsBeginImageContext(size);
-    for (UIView *view in views) {
-        [view.layer renderInContext:UIGraphicsGetCurrentContext()];
-    }
+- (UIImage *)captureImage {
+    UIGraphicsBeginImageContext(self.bounds.size);
+    
+    [self.layer renderInContext:UIGraphicsGetCurrentContext()];
+	
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();	
-	return image;    
-}
-
-- (UIImage *) captureImage{
-    return [UIView captureImageOfSize:self.bounds.size fromViews:[NSArray arrayWithObject:self]];
+    UIGraphicsEndImageContext();
+    
+    return image;
 }
 
 @end

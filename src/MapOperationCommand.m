@@ -16,7 +16,6 @@
 #import "SelectorEngineRegistry.h"
 
 #import "Operation.h"
-#import "DumpCommand.h"
 
 #if TARGET_OS_IPHONE
 #define FrankMapViewType UIView
