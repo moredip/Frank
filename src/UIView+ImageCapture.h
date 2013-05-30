@@ -10,7 +10,6 @@
 
 @interface UIView (ImageCapture)
 
-+ (UIImage *) captureImageOfSize:(CGSize)size fromViews:(NSArray *)views;
-- (UIImage *) captureImage;
+- (UIImage *)captureImage;
 
 @end

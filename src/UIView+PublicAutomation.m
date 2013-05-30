@@ -110,6 +110,24 @@ NSString *formatCGPointVal( NSValue *val ){
     return [self FEX_touchPoint:[self FEX_centerPoint]];
 }
 
+- (BOOL)FEX_forcedTouch {
+    if ([[UIApplication sharedApplication] isIgnoringInteractionEvents]) {
+        return NO;
+    }
+    
+    CGPoint point = [self FEX_centerPoint];
+    
+    CGPoint pointInWindowCoords = [self.window convertPoint:point fromView:self];
+    
+    if(!CGRectContainsPoint(self.window.bounds, pointInWindowCoords) ){
+        return NO;
+    }
+    
+    [UIAutomationBridge tapView:self atPoint:point];
+    
+    return YES;
+}
+
 - (BOOL)touchx:(NSNumber *)x y:(NSNumber *)y {
     CGPoint point = [self FEX_pointFromX:x andY:y];
     
