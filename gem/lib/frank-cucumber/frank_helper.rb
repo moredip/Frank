@@ -7,6 +7,7 @@ require 'frank-cucumber/scroll_helper'
 require 'frank-cucumber/gesture_helper'
 require 'frank-cucumber/location_helper'
 require 'frank-cucumber/bonjour'
+require 'frank-cucumber/rect.rb'
 
 module Frank module Cucumber
 
@@ -247,7 +248,25 @@ module FrankHelper
 
     dest_frame = accessibility_frame(to)
 
-    frankly_map( from, 'FEX_dragWithInitialDelayToX:y:', dest_frame.center.x, dest_frame.center.y )
+    if is_mac
+      from_frame = accessibility_frame(from)
+
+      frankly_map( from, 'FEX_mouseDownX:y:', from_frame.center.x, from_frame.center.y )
+
+      sleep 0.3
+
+      frankly_map( from, 'FEX_dragToX:y:', dest_frame.center.x, dest_frame.center.y )
+
+      sleep 0.3
+
+      frankly_map( from, 'FEX_mouseUpX:y:', dest_frame.center.x, dest_frame.center.y )
+
+    else
+
+      frankly_map( from, 'FEX_dragWithInitialDelayToX:y:', dest_frame.center.x, dest_frame.center.y )
+
+    end
+
   end
 
 
@@ -390,6 +409,30 @@ module FrankHelper
     unless frankly_is_accessibility_enabled
       raise "ACCESSIBILITY DOES NOT APPEAR TO BE ENABLED ON YOUR SIMULATOR. Hit the home button, go to settings, select Accessibility, and turn the inspector on."
     end
+  end
+
+  # @return [String] the name of the device currently running the application
+  # @note this is a low-level API. In most cases you should use {is_iphone}, {is_ipad} or {is_mac} instead.
+  def frankly_device_name
+    res = frank_server.send_get( 'device' )
+    device = JSON.parse( res )['device']
+    puts "device reported as '#{device}'" if $DEBUG
+    device
+  end
+
+  # @return [Boolean] is the device running the application an iPhone.
+  def is_iphone
+    return frankly_device_name == "iphone"
+  end
+
+  # @return [Boolean] is the device running the application an iPhone.
+  def is_ipad
+    return frankly_device_name == "ipad"
+  end
+
+  # @return [Boolean] is the device running the application a Mac.
+  def is_mac
+    return frankly_device_name == "mac"
   end
 
   # Check whether Frank is able to communicate with the application under automation
