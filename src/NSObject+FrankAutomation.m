@@ -351,6 +351,156 @@ static const NSString* FEX_AccessibilityDescriptionAttribute = @"FEX_Accessibili
     return returnValue;
 }
 
+- (BOOL) FEX_mouseDownX: (CGFloat) x y: (CGFloat) y
+{
+    BOOL returnValue = NO;
+    
+    CGPoint location = CGPointMake(x, y);
+    
+    CGEventRef event = CGEventCreateMouseEvent(NULL,
+                                               kCGEventLeftMouseDown,
+                                               location,
+                                               kCGMouseButtonLeft);
+
+    if (event != NULL)
+    {
+        CGEventPost(kCGSessionEventTap, event);
+        CFRelease(event);
+        event = NULL;
+        
+        returnValue = YES;
+    }
+    
+    return returnValue;
+}
+
+- (BOOL) FEX_dragToX: (CGFloat) x y: (CGFloat) y
+{
+    BOOL returnValue = NO;
+    
+    CGPoint location = CGPointMake(x, y);
+    
+    CGEventRef event = CGEventCreateMouseEvent(NULL,
+                                               kCGEventLeftMouseDragged,
+                                               location,
+                                               kCGMouseButtonLeft);
+    if (event != NULL)
+    {            
+        CGEventPost(kCGSessionEventTap, event);
+        CFRelease(event);
+        event = NULL;
+        
+        returnValue = YES;
+    }
+
+    return returnValue;
+}
+
+- (BOOL) FEX_mouseUpX: (CGFloat) x y: (CGFloat) y
+{
+    BOOL returnValue = NO;
+    
+    CGPoint location = CGPointMake(x, y);
+    
+    CGEventRef event = CGEventCreateMouseEvent(NULL,
+                                               kCGEventLeftMouseUp,
+                                               location,
+                                               kCGMouseButtonLeft);
+    if (event != NULL)
+    {            
+        CGEventPost(kCGSessionEventTap, event);
+        CFRelease(event);
+        event = NULL;
+        
+        returnValue = YES;
+    }
+    
+    return returnValue;
+}
+ 
+/*#define DRAG_DELAY 3.0
+#define DRAG_STEPS 100
+
+- (BOOL) FEX_dragWithInitialDelayToX: (CGFloat) x y: (CGFloat) y
+{
+    BOOL returnValue = YES;
+    
+    NSRect   frame    = [self FEX_accessibilityFrame];
+    CGPoint  start    = CGPointMake(NSMidX(frame), NSMidY(frame));
+    CGPoint  end      = CGPointMake(x, y);
+    CGPoint  current  = start;
+    CGFloat  deltaX   = (end.x - start.x) / DRAG_STEPS;
+    CGFloat  deltaY   = (end.y - start.y) / DRAG_STEPS;
+    CGFloat  timeStep = DRAG_DELAY / DRAG_STEPS;
+    
+    CGEventRef event = CGEventCreateMouseEvent(NULL,
+                                               kCGEventLeftMouseDown,
+                                               start,
+                                               kCGMouseButtonLeft);
+    
+    if (event != NULL)
+    {
+        CGEventPost(kCGHIDEventTap, event);
+        CFRelease(event);
+        event = NULL;
+        
+        //[[NSRunLoop currentRunLoop] runUntilDate: [NSDate dateWithTimeIntervalSinceNow: DRAG_DELAY]];
+        
+        CFRunLoopRunInMode((CFStringRef) NSEventTrackingRunLoopMode, DRAG_DELAY, false);
+    }
+    else
+    {
+        returnValue = NO;
+    }
+    
+    for (int step = 0; returnValue && step < DRAG_STEPS; ++step)
+    {
+        current.x += deltaX;
+        current.y += deltaY;
+        event = CGEventCreateMouseEvent(NULL,
+                                        kCGEventLeftMouseDragged,
+                                        current,
+                                        kCGMouseButtonLeft);
+        
+        if (event != NULL)
+        {
+            CGEventPost(kCGHIDEventTap, event);
+            CFRelease(event);
+            event = NULL;
+            
+            
+            CFRunLoopRunInMode((CFStringRef) NSEventTrackingRunLoopMode, timeStep, false);
+        }
+        else
+        {
+            returnValue = NO;
+        }
+    }
+    
+    if (returnValue)
+    {        
+        CFRunLoopRunInMode((CFStringRef) NSEventTrackingRunLoopMode, DRAG_DELAY, false);
+        
+        event = CGEventCreateMouseEvent(NULL,
+                                        kCGEventLeftMouseUp,
+                                        end,
+                                        kCGMouseButtonLeft);
+        
+        if (event != NULL)
+        {
+            CGEventPost(kCGHIDEventTap, event);
+            CFRelease(event);
+            event = NULL;
+        }
+        else
+        {
+            returnValue = NO;
+        }
+    }
+    
+    return returnValue;
+}*/
+
 @end
 
 #endif
