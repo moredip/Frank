@@ -18,6 +18,8 @@ module Frank
           :ja
         when /^es_/
           :es
+        when /^it_/
+          :it
         else
           :en
         end
