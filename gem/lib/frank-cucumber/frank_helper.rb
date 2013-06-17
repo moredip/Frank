@@ -62,8 +62,8 @@ module FrankHelper
 
   # Specify ip address to run on
   def test_on_physical_device_with_ip(ip_address)
-      @server_base_url = ip_address #Bonjour.new.lookup_frank_base_uri
-      raise 'IP Address is incorrectl' unless @server_base_url.match(%r{\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b})
+      @server_base_url = ip_address
+      raise 'IP Address is incorrect' unless @server_base_url.match(%r{\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b})
       puts "Running on Frank server #{@server_base_url}"
     end
   end
