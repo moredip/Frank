@@ -7,6 +7,7 @@ require 'frank-cucumber/scroll_helper'
 require 'frank-cucumber/gesture_helper'
 require 'frank-cucumber/location_helper'
 require 'frank-cucumber/bonjour'
+require 'frank-cucumber/rect.rb'
 
 module Frank module Cucumber
 
@@ -20,11 +21,11 @@ module Frank module Cucumber
   # * {#app_exec}
   #
   # == Configuring the Frank driver
-  # There are some class-level facilities which configure how all Frank interactions work. For example you can specify which selector engine to use 
+  # There are some class-level facilities which configure how all Frank interactions work. For example you can specify which selector engine to use
   # with {FrankHelper.selector_engine}. You can specify the base url which the native app's Frank server is listening on with {FrankHelper.server_base_url}.
   #
   # Two common use cases are covered more conveniently with {FrankHelper.use_shelley_from_now_on} and {FrankHelper.test_on_physical_device_via_bonjour}.
-module FrankHelper 
+module FrankHelper
   include WaitHelper
   include KeyboardHelper
   include ScrollHelper
@@ -34,7 +35,7 @@ module FrankHelper
 
   # @!attribute [rw] selector_engine
   class << self
-    # @return [String] the selector engine we tell Frank to use when interpreting view selectors. 
+    # @return [String] the selector engine we tell Frank to use when interpreting view selectors.
     attr_accessor :selector_engine
     # @return [String] the base url which the Frank server is running on. All Frank commands will be sent to that server.
     attr_accessor :server_base_url
@@ -51,7 +52,7 @@ module FrankHelper
       raise 'could not detect running Frank server' unless @server_base_url
     end
   end
-  
+
   # Get the correct quote for the selector
   def get_selector_quote(selector)
     if selector.index("'") == nil
@@ -79,7 +80,7 @@ module FrankHelper
   def base_server_url
     Frank::Cucumber::FrankHelper.server_base_url
   end
-  
+
   # Ask Frank to touch all views matching the specified selector. There may be views in the view heirarchy which match the selector but
   # which Frank cannot or will not touch - for example views which are outside the current viewport. You can discover which of the matching
   # views were actually touched by inspecting the Array which is returned.
@@ -116,7 +117,7 @@ module FrankHelper
   # @return [Boolean]
   # @see #check_element_exists
   def element_exists( selector )
-    matches = frankly_map( selector, 'accessibilityLabel' )
+    matches = frankly_map( selector, 'FEX_accessibilityLabel' )
     # TODO: raise warning if matches.count > 1
     !matches.empty?
   end
@@ -173,9 +174,9 @@ module FrankHelper
   end
 
 
-  # Waits for any of the specified selectors to match a view. 
+  # Waits for any of the specified selectors to match a view.
   #
-  # Checks each selector in turn within a {http://sauceio.com/index.php/2011/04/how-to-lose-races-and-win-at-selenium/ spin assert} loop and yields the first one which is found to exist in the view heirarchy. 
+  # Checks each selector in turn within a {http://sauceio.com/index.php/2011/04/how-to-lose-races-and-win-at-selenium/ spin assert} loop and yields the first one which is found to exist in the view heirarchy.
   # Raises an exception if no views could be found to match any of the provided selectors within {WaitHelper::TIMEOUT} seconds.
   #
   # @see WaitHelper#wait_until
@@ -194,7 +195,7 @@ module FrankHelper
 
   # Waits for the specified selector to not match any views.
   #
-  # Uses {WaitHelper#wait_until} to check for any matching views within a {http://sauceio.com/index.php/2011/04/how-to-lose-races-and-win-at-selenium/ spin assert} loop. 
+  # Uses {WaitHelper#wait_until} to check for any matching views within a {http://sauceio.com/index.php/2011/04/how-to-lose-races-and-win-at-selenium/ spin assert} loop.
   # Returns as soon as no views match the specified selector.
   # Raises an exception if there continued to be at least one view which matched the selector by the time {WaitHelper::TIMEOUT} seconds passed.
   #
@@ -206,14 +207,14 @@ module FrankHelper
     end
   end
 
-  # Waits for a view to exist and then send a touch command to that view. 
+  # Waits for a view to exist and then send a touch command to that view.
   #
   # @param selectors takes one or more selectors to use to search for a view. The first selector which is found to matches a view is the selector
   # which is then used to send a touch command.
   #
   # Raises an exception if no views could be found to match any of the provided selectors within {WaitHelper::TIMEOUT} seconds.
   def wait_for_element_to_exist_and_then_touch_it(*selectors)
-    wait_for_element_to_exist(*selectors) do |sel| 
+    wait_for_element_to_exist(*selectors) do |sel|
       touch(sel)
     end
   end
@@ -230,7 +231,7 @@ module FrankHelper
   end
 
 
-  # Checks that the specified selector matches at least one view, and that at least one of the matched 
+  # Checks that the specified selector matches at least one view, and that at least one of the matched
   # views has an isHidden property set to false
   #
   # a better name for this method would be element_exists_and_is_not_hidden
@@ -241,7 +242,7 @@ module FrankHelper
   end
 
   def accessibility_frame(selector)
-    frames = frankly_map( selector, 'accessibilityFrame' )
+    frames = frankly_map( selector, 'FEX_accessibilityFrame' )
     raise "the supplied selector [#{selector}] did not match any views" if frames.empty?
     raise "the supplied selector [#{selector}] matched more than one views (#{frames.count} views matched)" if frames.count > 1
     Rect.from_api_repr( frames.first )
@@ -254,7 +255,25 @@ module FrankHelper
 
     dest_frame = accessibility_frame(to)
 
-    frankly_map( from, 'FEX_dragWithInitialDelayToX:y:', dest_frame.center.x, dest_frame.center.y )
+    if is_mac
+      from_frame = accessibility_frame(from)
+
+      frankly_map( from, 'FEX_mouseDownX:y:', from_frame.center.x, from_frame.center.y )
+
+      sleep 0.3
+
+      frankly_map( from, 'FEX_dragToX:y:', dest_frame.center.x, dest_frame.center.y )
+
+      sleep 0.3
+
+      frankly_map( from, 'FEX_mouseUpX:y:', dest_frame.center.x, dest_frame.center.y )
+
+    else
+
+      frankly_map( from, 'FEX_dragWithInitialDelayToX:y:', dest_frame.center.x, dest_frame.center.y )
+
+    end
+
   end
 
 
@@ -262,8 +281,8 @@ module FrankHelper
   # @param method_sig [String] the method signature
   # @param method_args the method arguments
   #
-  # @example 
-  #   # the same as calling 
+  # @example
+  #   # the same as calling
   #   # [[[UIApplication sharedApplication] appDelegate] setServiceBaseUrl:@"http://example.com/my_api" withPort:8080]
   #   # from your native app
   #   app_exec( "setServiceBaseUrl:withPort:", "http://example.com/my_api", 8080 )
@@ -271,24 +290,24 @@ module FrankHelper
   #
   def app_exec(method_sig, *method_args)
     operation_map = Gateway.build_operation_map(method_sig.to_s, method_args)
-    
-    res = frank_server.send_post( 
-      'app_exec', 
-      :operation => operation_map 
+
+    res = frank_server.send_post(
+      'app_exec',
+      :operation => operation_map
     )
 
     return Gateway.evaluate_frankly_response( res, "app_exec #{method_sig}" )
   end
 
-  # Ask Frank to execute an arbitrary Objective-C method on each view which matches the specified selector. 
+  # Ask Frank to execute an arbitrary Objective-C method on each view which matches the specified selector.
   #
   # @return [Array] an array with an element for each view matched by the selector, each element in the array gives the return value from invoking the specified method on that view.
   def frankly_map( selector, method_name, *method_args )
     operation_map = Gateway.build_operation_map(method_name.to_s, method_args)
-    res = frank_server.send_post( 
+    res = frank_server.send_post(
       'map',
-      :query => selector, 
-      :operation => operation_map, 
+      :query => selector,
+      :operation => operation_map,
       :selector_engine => selector_engine
     )
 
@@ -344,7 +363,7 @@ module FrankHelper
   # @param orientation can be 'landscape','landscape_left','landscape_right','portrait', or 'portrait_upside_down'
   def frankly_set_orientation(orientation)
     orientation = orientation.to_s
-    orientation = 'landscape_left' if orientation == 'landscape' 
+    orientation = 'landscape_left' if orientation == 'landscape'
     res = frank_server.send_post( 'orientation',  orientation )
     return Gateway.evaluate_frankly_response( res, "set_orientation #{orientation}" )
   end
@@ -398,7 +417,31 @@ module FrankHelper
       raise "ACCESSIBILITY DOES NOT APPEAR TO BE ENABLED ON YOUR SIMULATOR. Hit the home button, go to settings, select Accessibility, and turn the inspector on."
     end
   end
-  
+
+  # @return [String] the name of the device currently running the application
+  # @note this is a low-level API. In most cases you should use {is_iphone}, {is_ipad} or {is_mac} instead.
+  def frankly_device_name
+    res = frank_server.send_get( 'device' )
+    device = JSON.parse( res )['device']
+    puts "device reported as '#{device}'" if $DEBUG
+    device
+  end
+
+  # @return [Boolean] is the device running the application an iPhone.
+  def is_iphone
+    return frankly_device_name == "iphone"
+  end
+
+  # @return [Boolean] is the device running the application an iPhone.
+  def is_ipad
+    return frankly_device_name == "ipad"
+  end
+
+  # @return [Boolean] is the device running the application a Mac.
+  def is_mac
+    return frankly_device_name == "mac"
+  end
+
   # Check whether Frank is able to communicate with the application under automation
   def frankly_ping
     frank_server.ping
@@ -409,7 +452,7 @@ module FrankHelper
   def frank_server
     @_frank_server ||= Frank::Cucumber::Gateway.new( base_server_url )
   end
- 
+
 end
 
 

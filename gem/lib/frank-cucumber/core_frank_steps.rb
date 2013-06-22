@@ -6,7 +6,7 @@ require 'rspec/expectations'
 Then /^I wait to see "([^\"]*)"$/ do |expected_mark|
   quote = get_selector_quote(expected_mark)
   wait_until(:message => "waited to see view marked #{quote}#{expected_mark}#{quote}"){
-    view_with_mark_exists( expected_mark ) 
+    view_with_mark_exists( expected_mark )
   }
 end
 
@@ -52,14 +52,14 @@ Then /^I should not see "([^\"]*)"$/ do |expected_mark|
 end
 
 Then /I should see the following:/ do |table|
-  values = frankly_map( 'view', 'accessibilityLabel' )
+  values = frankly_map( 'view', 'FEX_accessibilityLabel' )
   table.raw.each do |expected_mark|
     values.should include( expected_mark.first )
   end
 end
 
 Then /I should not see the following:/ do |table|
-  values = frankly_map( 'view', 'accessibilityLabel' )
+  values = frankly_map( 'view', 'FEX_accessibilityLabel' )
   table.raw.each do |expected_mark|
     values.should_not include( expected_mark.first )
   end
@@ -127,7 +127,7 @@ Then /^I rotate to the "([^\"]*)"$/ do |direction|
     rotate_simulator_right
   elsif direction == "left"
     rotate_simulator_left
-  else 
+  else
     raise %Q|Rotation direction specified ("#{direction}") is invalid. Please specify right or left.|
   end
   sleep 1
@@ -141,7 +141,7 @@ When /^I touch "([^\"]*)"$/ do |mark|
   if element_exists(selector)
      touch( selector )
   else
-     raise "Could not touch [#{mark}], it does not exist."  
+     raise "Could not touch [#{mark}], it does not exist."
   end
   sleep 1
 end
@@ -171,7 +171,7 @@ When /^I touch the (\d*)(?:st|nd|rd|th)? table cell$/ do |ordinal|
 end
 
 Then /I touch the following:/ do |table|
-  values = frankly_map( 'view', 'accessibilityLabel' )
+  values = frankly_map( 'view', 'FEX_accessibilityLabel' )
   table.raw.each do |expected_mark|
     quote = get_selector_quote(expected_mark)
     touch( "view marked:#{quote}#{expected_mark}#{quote}" )
@@ -198,10 +198,10 @@ end
 
 # alert views
 When /^I touch the "([^\"]*)" alert view button$/ do |mark|
-  quote = get_selector_quote(mark) 
+  quote = get_selector_quote(mark)
   touch( "alertView threePartButton marked:#{quote}#{mark}#{quote}" )
 end
-                                                                     
+
 When /^I touch the (\d*)(?:st|nd|rd|th)? alert view button$/ do |ordinal|
   ordinal = ordinal.to_i
   touch( "alertView threePartButton tag:#{ordinal}" )
@@ -217,7 +217,7 @@ end
 
 Then /^switch "([^\"]*)" should be (on|off)$/ do |mark,expected_state|
   expected_state = expected_state == 'on'
-  
+
   quote = get_selector_quote(mark)
   selector = "view:'UISwitch' marked:#{quote}#{mark}#{quote}"
   switch_states = frankly_map( selector, "isOn" )
@@ -252,7 +252,7 @@ When /^I dump the DOM$/ do
 end
 
 When /^I quit the simulator/ do
-  quit_simulator 
+  quit_simulator
 end
 
 When /^I reset the simulator/ do

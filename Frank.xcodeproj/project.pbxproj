@@ -57,6 +57,7 @@
 		3072649B165812FB00815A1A /* Operation.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D79B5C11D7FB8B003E0E60 /* Operation.m */; };
 		3072649D165812FB00815A1A /* SelectorEngineRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = D6BD521D146C34BF001770B1 /* SelectorEngineRegistry.m */; };
 		3072649F165812FB00815A1A /* ViewJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0071264514F8956700E738ED /* ViewJSONSerializer.m */; };
+		3078E33C175417AE0016889C /* NSObject+FrankAutomation.m in Sources */ = {isa = PBXBuildFile; fileRef = 303A751116702D3D00B93673 /* NSObject+FrankAutomation.m */; };
 		30AC65A4165C39FF00DEB0AB /* FrankMac-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 30AC65A3165C39FF00DEB0AB /* FrankMac-Prefix.pch */; };
 		30AC65A7165C3A4D00DEB0AB /* OSXKeyboardCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 30AC65A5165C3A4D00DEB0AB /* OSXKeyboardCommand.h */; };
 		30AC65A8165C3A4D00DEB0AB /* OSXKeyboardCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 30AC65A6165C3A4D00DEB0AB /* OSXKeyboardCommand.m */; };
@@ -1238,6 +1239,7 @@
 				30E82E3417128AB500E5BC7C /* ResolutionCommand.m in Sources */,
 				387BFA7D17036DDA007B9F17 /* UISlider+PublicAutomation.m in Sources */,
 				0626BFAF174300240020B33B /* DumpCommandRoute.m in Sources */,
+				3078E33C175417AE0016889C /* NSObject+FrankAutomation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
