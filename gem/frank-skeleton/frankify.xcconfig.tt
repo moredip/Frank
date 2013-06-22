@@ -1,6 +1,6 @@
 INSTALL_PATH = /./
 
-FRANK_CORE_LDFLAGS = -all_load -ObjC -framework CFNetwork -framework Security -lShelley -lFrank <%= @libs.map { |lib| "-l#{lib}" }.join(' ') %>
-FRANK_CORE_MAC_LDFLAGS = -all_load -ObjC -framework CFNetwork -framework Security -lShelleyMac -lFrankMac <%= @libsMac.map { |lib| "-l#{lib}" }.join(' ') %>
+FRANK_CORE_LDFLAGS = -all_load -ObjC -framework CFNetwork -framework Security <%= @libs.map { |lib| "-l#{lib}" }.join(' ') %>
+FRANK_CORE_MAC_LDFLAGS = -all_load -ObjC -framework CFNetwork -framework Security <%= @libsMac.map { |lib| "-l#{lib}" }.join(' ') %>
 
 FRANK_CORE_GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = FRANKIFIED
