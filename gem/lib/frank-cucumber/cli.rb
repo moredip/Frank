@@ -37,7 +37,7 @@ module Frank
     method_option :project, :type=>:string
     def setup
       @libs = %w(Shelley CocoaAsyncSocket CocoaLumberjack CocoaHTTPServer Frank)
-      @libsMac = %w(CocoaAsyncSocketMac CocoaLumberjackMac CocoaHTTPServerMac FrankMac)
+      @libsMac = %w(ShelleyMac CocoaAsyncSocketMac CocoaLumberjackMac CocoaHTTPServerMac FrankMac)
       @libs -= %w(CocoaHTTPServer) if options[WITHOUT_SERVER]
       @libsMac -= %w(CocoaHTTPServerMac) if options[WITHOUT_SERVER]
       @libs -= %w(CocoaAsyncSocket) if options[WITHOUT_ASYNC_SOCKET]
