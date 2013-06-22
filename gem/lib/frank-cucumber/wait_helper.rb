@@ -11,7 +11,7 @@ module Cucumber
 #
 module WaitHelper
   # Default option for how long (in seconds) to keep checking before timing out the entire wait
-  TIMEOUT = ENV['WAIT_TIMEOUT'].to_i || 240
+  TIMEOUT = (ENV['WAIT_TIMEOUT'] || 240).to_i
   # How long to pause (in seconds) inbetween each spin through the assertion block
   POLL_SLEEP = 0.1
 
