@@ -59,7 +59,7 @@ module Frank
     end
 
     XCODEBUILD_OPTIONS = %w{workspace project scheme target configuration}
-    desc "build", "builds a Frankified version of your native app"
+    desc "build [<buildsetting>=<value>]...", "builds a Frankified version of your native app"
     XCODEBUILD_OPTIONS.each do |option|
       method_option option
     end
@@ -69,7 +69,7 @@ module Frank
     method_option 'arch', :type => :string, :default => 'i386'
     method_option :noclean, :type => :boolean, :default => false, :aliases => '--nc', :desc => "Don't clean the build directory before building"
     method_option WITHOUT_DEPS, :type => :array, :desc => 'An array (space separated list) of plugin dependencies to exclude'
-    def build
+    def build(*args)
       clean = !options['noclean']
       use_plugins = !options['no-plugins']
       exclude_dependencies = options[WITHOUT_DEPS] || []
@@ -122,12 +122,14 @@ module Frank
 
       build_mac = determine_build_patform(options) == :osx
 
+      xcodebuild_args = args.join(" ")
+
       if build_mac
-        run %Q|xcodebuild -xcconfig #{xcconfig_file} #{build_steps} #{extra_opts} #{separate_configuration_option} DEPLOYMENT_LOCATION=YES DSTROOT="#{build_output_dir}" FRANK_LIBRARY_SEARCH_PATHS="#{frank_lib_search_paths}"|
+        run %Q|xcodebuild -xcconfig #{xcconfig_file} #{build_steps} #{extra_opts} #{separate_configuration_option} DEPLOYMENT_LOCATION=YES DSTROOT="#{build_output_dir}" FRANK_LIBRARY_SEARCH_PATHS="#{frank_lib_search_paths}" #{xcodebuild_args}|
       else
         extra_opts += " -arch #{options['arch']}"
 
-        run %Q|xcodebuild -xcconfig #{xcconfig_file} #{build_steps} #{extra_opts} #{separate_configuration_option} -sdk iphonesimulator DEPLOYMENT_LOCATION=YES DSTROOT="#{build_output_dir}" FRANK_LIBRARY_SEARCH_PATHS="#{frank_lib_search_paths}"|
+        run %Q|xcodebuild -xcconfig #{xcconfig_file} #{build_steps} #{extra_opts} #{separate_configuration_option} -sdk iphonesimulator DEPLOYMENT_LOCATION=YES DSTROOT="#{build_output_dir}" FRANK_LIBRARY_SEARCH_PATHS="#{frank_lib_search_paths}" #{xcodebuild_args}|
       end
       exit $?.exitstatus if not $?.success?
 
