@@ -33,7 +33,7 @@
 
 - (NSString *) captureBase64PngImage {
     NSImage* image = [self captureImage];
-    if ( image && [image representations].count>0 ) {
+    if ( image && ([image representations].count>0) ) {
         NSData *imgData = [[[image representations] objectAtIndex:0] representationUsingType:NSPNGFileType properties:nil];
         return [imgData base64Encoded];
     }
