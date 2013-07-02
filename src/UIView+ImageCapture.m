@@ -8,10 +8,15 @@
 
 #import "UIView+ImageCapture.h"
 #import <QuartzCore/QuartzCore.h>
+#import "DDData.h"
 
 @implementation UIView (ImageCapture)
 
 - (UIImage *)captureImage {
+    if ([self respondsToSelector:@selector(snapshot)]) {
+        return [self performSelector:@selector(snapshot)];
+    }
+    
     UIGraphicsBeginImageContext(self.bounds.size);
     
     [self.layer renderInContext:UIGraphicsGetCurrentContext()];
@@ -20,6 +25,15 @@
     UIGraphicsEndImageContext();
     
     return image;
+}
+
+- (NSString *)captureBase64PngImage {
+    UIImage* image = [self captureImage];
+    if ( image ) {
+        NSData *imgData = UIImagePNGRepresentation(image);
+        return [imgData base64Encoded];
+    }
+    return nil;
 }
 
 @end

@@ -1,4 +1,5 @@
 require 'json'
+require 'base64'
 require 'frank-cucumber/gateway'
 require 'frank-cucumber/host_scripting'
 require 'frank-cucumber/wait_helper'
@@ -94,6 +95,20 @@ module FrankHelper
     raise "could not find anything matching [#{selector}] to touch" if touch_successes.empty?
     raise "some views could not be touched (probably because they are not within the current viewport)" if touch_successes.include?(false)
     touch_successes
+  end
+
+  # grab screenshots of all views matching the specified selector.
+  # @param [String] selector a view selector.
+  # @return [Array<PNG>] an array of PNG-image binary.
+  # @raise an expection if no views matched the selector
+  # @raise an expection if no views which matched the selector could be capture
+  def capture( selector )
+    images = frankly_map( selector, 'captureBase64PngImage' )
+    raise "could not find anything matching [#{selector}] to capture" if images.empty?
+    raise "some views could not be capture image (probably because they are not within the current viewport)" if images.include?(nil)
+    images.map do |base64png|
+      Base64.decode64( base64png )
+    end
   end
 
   # Fill in text in a text field.

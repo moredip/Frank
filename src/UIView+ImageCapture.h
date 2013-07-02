@@ -11,5 +11,6 @@
 @interface UIView (ImageCapture)
 
 - (UIImage *)captureImage;
+- (NSString *)captureBase64PngImage;
 
 @end

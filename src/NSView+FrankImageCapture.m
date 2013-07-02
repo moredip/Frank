@@ -7,6 +7,7 @@
 //
 
 #import "NSView+FrankImageCapture.h"
+#import "DDData.h"
 
 @implementation NSView (FrankImageCapture)
 
@@ -28,6 +29,15 @@
 
 - (NSImage *) captureImage{
     return [NSView captureImageOfSize:self.bounds.size fromViews:[NSArray arrayWithObject:self]];
+}
+
+- (NSString *) captureBase64PngImage {
+    NSImage* image = [self captureImage];
+    if ( image && ([image representations].count>0) ) {
+        NSData *imgData = [[[image representations] objectAtIndex:0] representationUsingType:NSPNGFileType properties:nil];
+        return [imgData base64Encoded];
+    }
+    return nil;
 }
 
 @end
