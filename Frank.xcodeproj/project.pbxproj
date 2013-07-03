@@ -74,6 +74,9 @@
 		4C1DD76D12BADFE100E10B8C /* OrientationCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C1DD76912BADFE100E10B8C /* OrientationCommand.h */; };
 		4C1DD76E12BADFE100E10B8C /* AppCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1DD76A12BADFE100E10B8C /* AppCommand.m */; };
 		4C1DD76F12BADFE100E10B8C /* AppCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C1DD76B12BADFE100E10B8C /* AppCommand.h */; };
+		52B355C717844C2700060740 /* GLKView+ImageCapture.h in Headers */ = {isa = PBXBuildFile; fileRef = 52B355C517844C2700060740 /* GLKView+ImageCapture.h */; };
+		52B355C817844C2700060740 /* GLKView+ImageCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B355C617844C2700060740 /* GLKView+ImageCapture.m */; };
+		52B355CB17844DA400060740 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B355CA17844DA400060740 /* GLKit.framework */; };
 		65DBDD7416A89CCA007D3D43 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7947C115C4418700052B74 /* GCDAsyncSocket.m */; };
 		65DBDD8D16A89CCA007D3D43 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		65DBDDA816A89CDC007D3D43 /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA9E4BB15C81E7900112290 /* DDAbstractDatabaseLogger.m */; };
@@ -316,6 +319,9 @@
 		4C1DD76912BADFE100E10B8C /* OrientationCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrientationCommand.h; sourceTree = "<group>"; };
 		4C1DD76A12BADFE100E10B8C /* AppCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppCommand.m; sourceTree = "<group>"; };
 		4C1DD76B12BADFE100E10B8C /* AppCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppCommand.h; sourceTree = "<group>"; };
+		52B355C517844C2700060740 /* GLKView+ImageCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GLKView+ImageCapture.h"; sourceTree = "<group>"; };
+		52B355C617844C2700060740 /* GLKView+ImageCapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GLKView+ImageCapture.m"; sourceTree = "<group>"; };
+		52B355CA17844DA400060740 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		65DBDD9216A89CCA007D3D43 /* libCocoaAsyncSocket.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCocoaAsyncSocket.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		65DBDDB516A89CDC007D3D43 /* libCocoaLumberjack.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCocoaLumberjack.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		65DBDDDA16A89E5B007D3D43 /* libCocoaAsyncSocketMac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCocoaAsyncSocketMac.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -489,6 +495,7 @@
 				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
 				D629938011AB2DF300CE0FB0 /* UIKit.framework in Frameworks */,
 				00E864C5161D708B00E01209 /* MapKit.framework in Frameworks */,
+				52B355CB17844DA400060740 /* GLKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,6 +524,7 @@
 				305CA7A31642063E00C4ACE5 /* Foundation.framework */,
 				C18A5F20160D572300DC25F6 /* libPublicAutomation.a */,
 				00E864C4161D708B00E01209 /* MapKit.framework */,
+				52B355CA17844DA400060740 /* GLKit.framework */,
 				08FB77AEFE84172EC02AAC07 /* src */,
 				D629926711AB2CF700CE0FB0 /* lib */,
 				0867D69AFE84028FC02AAC07 /* Frameworks */,
@@ -757,6 +765,8 @@
 				D6A1D27E15A8D05E00EC056C /* UIView+Frank.m */,
 				C18A5EF3160D4AD300DC25F6 /* UIView+ImageCapture.h */,
 				C18A5EF4160D4AD300DC25F6 /* UIView+ImageCapture.m */,
+				52B355C517844C2700060740 /* GLKView+ImageCapture.h */,
+				52B355C617844C2700060740 /* GLKView+ImageCapture.m */,
 				C9605E661606BF8E00170F88 /* UIView+MapKitWorkaround.m */,
 				C18A5F1D160D547A00DC25F6 /* UIView+PublicAutomation.m */,
 				387BFA7C17036DDA007B9F17 /* UISlider+PublicAutomation.m */,
@@ -865,6 +875,7 @@
 				303CFCE416C80B830004BD05 /* DeviceCommand.h in Headers */,
 				30E82E3217128AB500E5BC7C /* ResolutionCommand.h in Headers */,
 				0626BFAE174300240020B33B /* DumpCommandRoute.h in Headers */,
+				52B355C717844C2700060740 /* GLKView+ImageCapture.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1238,6 +1249,7 @@
 				30E82E3417128AB500E5BC7C /* ResolutionCommand.m in Sources */,
 				387BFA7D17036DDA007B9F17 /* UISlider+PublicAutomation.m in Sources */,
 				0626BFAF174300240020B33B /* DumpCommandRoute.m in Sources */,
+				52B355C817844C2700060740 /* GLKView+ImageCapture.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

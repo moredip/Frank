@@ -13,10 +13,6 @@
 @implementation UIView (ImageCapture)
 
 - (UIImage *)captureImage {
-    if ([self respondsToSelector:@selector(snapshot)]) {
-        return [self performSelector:@selector(snapshot)];
-    }
-    
     UIGraphicsBeginImageContext(self.bounds.size);
     
     [self.layer renderInContext:UIGraphicsGetCurrentContext()];
