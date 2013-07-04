@@ -1,3 +1,4 @@
 ---
 default: --tags ~@not_supported_by_frank_yet
 hysical: USE_PHYSICAL_DEVICE=yes --tags ~@simulator_only
+wip: -p default --tags @wip --wip

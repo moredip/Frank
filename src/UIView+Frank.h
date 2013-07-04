@@ -10,6 +10,7 @@
 
 - (void)FEX_flash;
 - (BOOL)FEX_isVisible;
+- (BOOL)FEX_userVisible;
 - (BOOL)FEX_isFullyWithinWindow;
 
 @end

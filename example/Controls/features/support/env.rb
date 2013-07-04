@@ -1,3 +1,5 @@
+ENV['WAIT_TIMEOUT'] = "5" # much more reasonable than the frank default of 240 seconds
+
 require 'frank-cucumber'
 
 APP_BUNDLE_PATH= ENV['APP_BUNDLE_PATH'] || "Frank/frankified_build/Frankified.app"

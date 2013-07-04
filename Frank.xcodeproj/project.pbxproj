@@ -70,6 +70,14 @@
 		30E82E3417128AB500E5BC7C /* ResolutionCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 30E82E3117128AB500E5BC7C /* ResolutionCommand.m */; };
 		30E82E3517128AB500E5BC7C /* ResolutionCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 30E82E3117128AB500E5BC7C /* ResolutionCommand.m */; };
 		387BFA7D17036DDA007B9F17 /* UISlider+PublicAutomation.m in Sources */ = {isa = PBXBuildFile; fileRef = 387BFA7C17036DDA007B9F17 /* UISlider+PublicAutomation.m */; };
+		4BFF556B1785E22000EAAC44 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABA9E45015C81C2600112290 /* SenTestingKit.framework */; };
+		4BFF556C1785E22000EAAC44 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D629937F11AB2DF300CE0FB0 /* UIKit.framework */; };
+		4BFF556D1785E22000EAAC44 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		4BFF55731785E22000EAAC44 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4BFF55711785E22000EAAC44 /* InfoPlist.strings */; };
+		4BFF557E1785E24400EAAC44 /* UIView+IsUserVisibleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF557D1785E24400EAAC44 /* UIView+IsUserVisibleTests.m */; };
+		4BFF55851785EBE300EAAC44 /* UIView+Frank.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A1D27E15A8D05E00EC056C /* UIView+Frank.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4BFF55871785EC9A00EAAC44 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BFF55861785EC9A00EAAC44 /* CoreGraphics.framework */; };
+		4BFF558B1786016A00EAAC44 /* NonOpaqueViewForTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF558A1786016A00EAAC44 /* NonOpaqueViewForTesting.m */; };
 		4C1DD76C12BADFE100E10B8C /* OrientationCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1DD76812BADFE100E10B8C /* OrientationCommand.m */; };
 		4C1DD76D12BADFE100E10B8C /* OrientationCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C1DD76912BADFE100E10B8C /* OrientationCommand.h */; };
 		4C1DD76E12BADFE100E10B8C /* AppCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1DD76A12BADFE100E10B8C /* AppCommand.m */; };
@@ -312,6 +320,15 @@
 		30E82E3017128AB500E5BC7C /* ResolutionCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResolutionCommand.h; sourceTree = "<group>"; };
 		30E82E3117128AB500E5BC7C /* ResolutionCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResolutionCommand.m; sourceTree = "<group>"; };
 		387BFA7C17036DDA007B9F17 /* UISlider+PublicAutomation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISlider+PublicAutomation.m"; sourceTree = "<group>"; };
+		4BFF556A1785E22000EAAC44 /* iOS Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS Tests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4BFF55701785E22000EAAC44 /* Frank Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Frank Tests-Info.plist"; sourceTree = "<group>"; };
+		4BFF55721785E22000EAAC44 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4BFF55771785E22000EAAC44 /* Frank Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Frank Tests-Prefix.pch"; sourceTree = "<group>"; };
+		4BFF557D1785E24400EAAC44 /* UIView+IsUserVisibleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+IsUserVisibleTests.m"; sourceTree = "<group>"; };
+		4BFF557F1785E29100EAAC44 /* UIView+Frank.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Frank.h"; sourceTree = "<group>"; };
+		4BFF55861785EC9A00EAAC44 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		4BFF55891786016A00EAAC44 /* NonOpaqueViewForTesting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NonOpaqueViewForTesting.h; sourceTree = "<group>"; };
+		4BFF558A1786016A00EAAC44 /* NonOpaqueViewForTesting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NonOpaqueViewForTesting.m; sourceTree = "<group>"; };
 		4C1DD76812BADFE100E10B8C /* OrientationCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrientationCommand.m; sourceTree = "<group>"; };
 		4C1DD76912BADFE100E10B8C /* OrientationCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrientationCommand.h; sourceTree = "<group>"; };
 		4C1DD76A12BADFE100E10B8C /* AppCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppCommand.m; sourceTree = "<group>"; };
@@ -441,6 +458,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4BFF55661785E22000EAAC44 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4BFF55871785EC9A00EAAC44 /* CoreGraphics.framework in Frameworks */,
+				4BFF556B1785E22000EAAC44 /* SenTestingKit.framework in Frameworks */,
+				4BFF556C1785E22000EAAC44 /* UIKit.framework in Frameworks */,
+				4BFF556D1785E22000EAAC44 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		65DBDD8C16A89CCA007D3D43 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -506,6 +534,7 @@
 				65DBDDB516A89CDC007D3D43 /* libCocoaLumberjack.a */,
 				65DBDDDA16A89E5B007D3D43 /* libCocoaAsyncSocketMac.a */,
 				65DBDDFB16A89E72007D3D43 /* libCocoaLumberjackMac.a */,
+				4BFF556A1785E22000EAAC44 /* iOS Tests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -513,12 +542,14 @@
 		0867D691FE84028FC02AAC07 /* Frank */ = {
 			isa = PBXGroup;
 			children = (
+				4BFF55861785EC9A00EAAC44 /* CoreGraphics.framework */,
 				30228E2916421C4400B1F9E7 /* Cocoa.framework */,
 				305CA7A31642063E00C4ACE5 /* Foundation.framework */,
 				C18A5F20160D572300DC25F6 /* libPublicAutomation.a */,
 				00E864C4161D708B00E01209 /* MapKit.framework */,
 				08FB77AEFE84172EC02AAC07 /* src */,
 				D629926711AB2CF700CE0FB0 /* lib */,
+				4BFF556E1785E22000EAAC44 /* Frank iOS Tests */,
 				0867D69AFE84028FC02AAC07 /* Frameworks */,
 				034768DFFF38A50411DB9C8B /* Products */,
 			);
@@ -557,6 +588,36 @@
 				305CA7781642059400C4ACE5 /* Foundation.framework */,
 			);
 			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		4BFF556E1785E22000EAAC44 /* Frank iOS Tests */ = {
+			isa = PBXGroup;
+			children = (
+				4BFF55881786015300EAAC44 /* Other Sources */,
+				4BFF557D1785E24400EAAC44 /* UIView+IsUserVisibleTests.m */,
+				4BFF556F1785E22000EAAC44 /* Supporting Files */,
+			);
+			name = "Frank iOS Tests";
+			path = "Frank Tests";
+			sourceTree = "<group>";
+		};
+		4BFF556F1785E22000EAAC44 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4BFF55701785E22000EAAC44 /* Frank Tests-Info.plist */,
+				4BFF55711785E22000EAAC44 /* InfoPlist.strings */,
+				4BFF55771785E22000EAAC44 /* Frank Tests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4BFF55881786015300EAAC44 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				4BFF55891786016A00EAAC44 /* NonOpaqueViewForTesting.h */,
+				4BFF558A1786016A00EAAC44 /* NonOpaqueViewForTesting.m */,
+			);
+			name = "Other Sources";
 			sourceTree = "<group>";
 		};
 		AB79477615C4412300052B74 /* Categories */ = {
@@ -754,6 +815,7 @@
 			children = (
 				C9605E681606BFAE00170F88 /* UIImage+Frank.h */,
 				C9605E691606BFAE00170F88 /* UIImage+Frank.m */,
+				4BFF557F1785E29100EAAC44 /* UIView+Frank.h */,
 				D6A1D27E15A8D05E00EC056C /* UIView+Frank.m */,
 				C18A5EF3160D4AD300DC25F6 /* UIView+ImageCapture.h */,
 				C18A5EF4160D4AD300DC25F6 /* UIView+ImageCapture.m */,
@@ -908,6 +970,24 @@
 			productReference = 305CA7A2164205F800C4ACE5 /* libCocoaHTTPServerMac.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		4BFF55691785E22000EAAC44 /* iOS Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4BFF557B1785E22000EAAC44 /* Build configuration list for PBXNativeTarget "iOS Tests" */;
+			buildPhases = (
+				4BFF55651785E22000EAAC44 /* Sources */,
+				4BFF55661785E22000EAAC44 /* Frameworks */,
+				4BFF55671785E22000EAAC44 /* Resources */,
+				4BFF55681785E22000EAAC44 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "iOS Tests";
+			productName = "Frank Tests";
+			productReference = 4BFF556A1785E22000EAAC44 /* iOS Tests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 		65DBDD7216A89CCA007D3D43 /* CocoaAsyncSocket */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 65DBDD8F16A89CCA007D3D43 /* Build configuration list for PBXNativeTarget "CocoaAsyncSocket" */;
@@ -1052,6 +1132,7 @@
 				65DBDD9516A89CDC007D3D43 /* CocoaLumberjack */,
 				65DBDDBA16A89E5B007D3D43 /* CocoaAsyncSocketMac */,
 				65DBDDDB16A89E72007D3D43 /* CocoaLumberjackMac */,
+				4BFF55691785E22000EAAC44 /* iOS Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -1067,6 +1148,14 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4BFF55671785E22000EAAC44 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4BFF55731785E22000EAAC44 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D6782DD711BC67FE00FD0CE1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1076,6 +1165,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4BFF55681785E22000EAAC44 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		305CA76E1642059400C4ACE5 /* Sources */ = {
@@ -1132,6 +1237,16 @@
 				305CA792164205F800C4ACE5 /* HTTPDynamicFileResponse.m in Sources */,
 				305CA793164205F800C4ACE5 /* HTTPFileResponse.m in Sources */,
 				305CA794164205F800C4ACE5 /* HTTPRedirectResponse.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4BFF55651785E22000EAAC44 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4BFF55851785EBE300EAAC44 /* UIView+Frank.m in Sources */,
+				4BFF557E1785E24400EAAC44 /* UIView+IsUserVisibleTests.m in Sources */,
+				4BFF558B1786016A00EAAC44 /* NonOpaqueViewForTesting.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1275,6 +1390,17 @@
 			targetProxy = ABA9E46715C81C8D00112290 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4BFF55711785E22000EAAC44 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4BFF55721785E22000EAAC44 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1DEB921F08733DC00010E9CD /* Debug */ = {
@@ -1474,6 +1600,70 @@
 				SKIP_INSTALL = YES;
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = x86_64;
+			};
+			name = Release;
+		};
+		4BFF55781785E22000EAAC44 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Frank Tests/Frank Tests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				INFOPLIST_FILE = "Frank Tests/Frank Tests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		4BFF55791785E22000EAAC44 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Frank Tests/Frank Tests-Prefix.pch";
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				INFOPLIST_FILE = "Frank Tests/Frank Tests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
@@ -1760,6 +1950,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		4BFF557B1785E22000EAAC44 /* Build configuration list for PBXNativeTarget "iOS Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4BFF55781785E22000EAAC44 /* Debug */,
+				4BFF55791785E22000EAAC44 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		65DBDD8F16A89CCA007D3D43 /* Build configuration list for PBXNativeTarget "CocoaAsyncSocket" */ = {
 			isa = XCConfigurationList;

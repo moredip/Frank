@@ -13,6 +13,7 @@
 #import "DataEntryViewController.h"
 #import "UIProgressViewController.h"
 #import "ViewPropertiesViewController.h"
+#import "FEX_UserVisibleViewController.h"
 #import "LocationViewController.h"
 #import "SampleTableViewController.h"
 #import "LongTouchViewController.h"
@@ -26,6 +27,7 @@ typedef enum {
     RowsDataEntry,
     RowsUIProgressView,
     RowsViewProperties,
+    RowsFEX_userVisible,
     RowsLocation,
 	RowsLongPress,
 	RowsDoubleTap,
@@ -88,6 +90,7 @@ typedef enum {
                  @"Data Entry",
                  @"UIProgressView",
                  @"View Properties",
+                 @"FEX_userVisible",
                  @"Location",
                  @"Long Press",
                  @"Double Tap",
@@ -173,6 +176,9 @@ typedef enum {
             break;
         case RowsViewProperties:
             detailVC = [[ViewPropertiesViewController alloc] initWithNibName:@"ViewPropertiesViewController" bundle:nil];
+            break;
+        case RowsFEX_userVisible:
+            detailVC = [[FEX_UserVisibleViewController alloc] initWithNibName:@"FEX_UserVisibleViewController" bundle:nil];
             break;
         case RowsLocation:
             detailVC = [[LocationViewController alloc] initWithNibName:@"LocationViewController" bundle:nil];

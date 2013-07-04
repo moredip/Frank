@@ -1,0 +1,8 @@
+//
+// Prefix header for all source files of the 'Frank Tests' target in the 'Frank Tests' project
+//
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+#endif
