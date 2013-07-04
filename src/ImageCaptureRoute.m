@@ -14,9 +14,11 @@
 
 #if TARGET_OS_IPHONE
 #import "UIImage+Frank.h"
+#import "UIView+Frank.h"
 #import "UIView+ImageCapture.h"
 #else
 #import "NSImage+Frank.h"
+#import "NSView+Frank.h"
 #import "NSView+FrankImageCapture.h"
 #endif
 #import "FranklyProtocolHelper.h"
@@ -49,7 +51,7 @@
     UIImage *image = [view captureImage];
     NSData *imgData = UIImagePNGRepresentation(image);
 
-    NSString *viewUID = [NSString stringWithFormat:@"%i",(int)view];
+    NSString *viewUID = [view FEX_UID];
     [imgData writeToFile:[self pathForSnapshotOfViewWithUID:viewUID] atomically:NO];
 }
 #else
@@ -57,7 +59,7 @@
     NSImage *image = [view captureImage];
     NSData *imgData = [[[image representations] objectAtIndex:0] representationUsingType:NSPNGFileType properties:nil];
     
-    NSString *viewUID = [NSString stringWithFormat:@"%lu",(uintptr_t)view];
+    NSString *viewUID = [view FEX_UID];
     [imgData writeToFile:[self pathForSnapshotOfViewWithUID:viewUID] atomically:NO];
 }
 #endif
