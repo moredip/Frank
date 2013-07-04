@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 ThoughtWorks. All rights reserved.
 //
 
-
+#import "UIView+Frank.h"
 #import "LoadableCategory.h"
 
 MAKE_CATEGORIES_LOADABLE(UIView_Frank)
@@ -49,6 +49,10 @@ MAKE_CATEGORIES_LOADABLE(UIView_Frank)
 - (BOOL)FEX_isFullyWithinWindow {
     CGRect myFrameInWindowCoords = [self.window convertRect:self.bounds fromView:self];
     return CGRectContainsRect(self.window.bounds, myFrameInWindowCoords);
+}
+
+- (NSString *) FEX_UID {
+    return [NSString stringWithFormat:@"%i",(int)self];
 }
 
 @end

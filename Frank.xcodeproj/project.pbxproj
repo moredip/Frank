@@ -74,6 +74,9 @@
 		4C1DD76D12BADFE100E10B8C /* OrientationCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C1DD76912BADFE100E10B8C /* OrientationCommand.h */; };
 		4C1DD76E12BADFE100E10B8C /* AppCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1DD76A12BADFE100E10B8C /* AppCommand.m */; };
 		4C1DD76F12BADFE100E10B8C /* AppCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C1DD76B12BADFE100E10B8C /* AppCommand.h */; };
+		520C60F617858EB9003D2535 /* NSView+Frank.m in Sources */ = {isa = PBXBuildFile; fileRef = 520C60F417858EB9003D2535 /* NSView+Frank.m */; };
+		520C60F917858FD7003D2535 /* NSView+Frank.h in Headers */ = {isa = PBXBuildFile; fileRef = 520C60F817858FD7003D2535 /* NSView+Frank.h */; };
+		520C60FB1785901D003D2535 /* UIView+Frank.h in Headers */ = {isa = PBXBuildFile; fileRef = 520C60FA1785901D003D2535 /* UIView+Frank.h */; };
 		52B355C717844C2700060740 /* GLKView+ImageCapture.h in Headers */ = {isa = PBXBuildFile; fileRef = 52B355C517844C2700060740 /* GLKView+ImageCapture.h */; };
 		52B355C817844C2700060740 /* GLKView+ImageCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B355C617844C2700060740 /* GLKView+ImageCapture.m */; };
 		52B355CB17844DA400060740 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B355CA17844DA400060740 /* GLKit.framework */; };
@@ -319,6 +322,9 @@
 		4C1DD76912BADFE100E10B8C /* OrientationCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrientationCommand.h; sourceTree = "<group>"; };
 		4C1DD76A12BADFE100E10B8C /* AppCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppCommand.m; sourceTree = "<group>"; };
 		4C1DD76B12BADFE100E10B8C /* AppCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppCommand.h; sourceTree = "<group>"; };
+		520C60F417858EB9003D2535 /* NSView+Frank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+Frank.m"; sourceTree = "<group>"; };
+		520C60F817858FD7003D2535 /* NSView+Frank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+Frank.h"; sourceTree = "<group>"; };
+		520C60FA1785901D003D2535 /* UIView+Frank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frank.h"; sourceTree = "<group>"; };
 		52B355C517844C2700060740 /* GLKView+ImageCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GLKView+ImageCapture.h"; sourceTree = "<group>"; };
 		52B355C617844C2700060740 /* GLKView+ImageCapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GLKView+ImageCapture.m"; sourceTree = "<group>"; };
 		52B355CA17844DA400060740 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
@@ -762,6 +768,7 @@
 			children = (
 				C9605E681606BFAE00170F88 /* UIImage+Frank.h */,
 				C9605E691606BFAE00170F88 /* UIImage+Frank.m */,
+				520C60FA1785901D003D2535 /* UIView+Frank.h */,
 				D6A1D27E15A8D05E00EC056C /* UIView+Frank.m */,
 				C18A5EF3160D4AD300DC25F6 /* UIView+ImageCapture.h */,
 				C18A5EF4160D4AD300DC25F6 /* UIView+ImageCapture.m */,
@@ -777,6 +784,8 @@
 				302B803F1646DE02000F9861 /* NSImage+Frank.h */,
 				302B80401646DE02000F9861 /* NSImage+Frank.m */,
 				303A751116702D3D00B93673 /* NSObject+FrankAutomation.m */,
+				520C60F817858FD7003D2535 /* NSView+Frank.h */,
+				520C60F417858EB9003D2535 /* NSView+Frank.m */,
 				30412D2E165333E300719CD2 /* NSView+FrankImageCapture.h */,
 				30412D2F165333E300719CD2 /* NSView+FrankImageCapture.m */,
 			);
@@ -832,6 +841,7 @@
 				C189EF1F16BB5A8100F8236D /* VersionCommand.h in Headers */,
 				303CFCE516C80B830004BD05 /* DeviceCommand.h in Headers */,
 				30E82E3317128AB500E5BC7C /* ResolutionCommand.h in Headers */,
+				520C60F917858FD7003D2535 /* NSView+Frank.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -876,6 +886,7 @@
 				30E82E3217128AB500E5BC7C /* ResolutionCommand.h in Headers */,
 				0626BFAE174300240020B33B /* DumpCommandRoute.h in Headers */,
 				52B355C717844C2700060740 /* GLKView+ImageCapture.h in Headers */,
+				520C60FB1785901D003D2535 /* UIView+Frank.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1120,6 +1131,7 @@
 				C189EF2116BB5A8100F8236D /* VersionCommand.m in Sources */,
 				303CFCE716C80B830004BD05 /* DeviceCommand.m in Sources */,
 				30E82E3517128AB500E5BC7C /* ResolutionCommand.m in Sources */,
+				520C60F617858EB9003D2535 /* NSView+Frank.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
