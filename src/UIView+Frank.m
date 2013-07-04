@@ -14,7 +14,7 @@ MAKE_CATEGORIES_LOADABLE(UIView_Frank)
 @implementation UIView (Frank)
 
 // Based on UISpec's flash method
-- (void) FEX_flash{
+- (void)FEX_flash {
 	UIColor *originalBackgroundColor = [self.backgroundColor retain];
     CGFloat orginalAlpha = self.alpha;
     for (NSUInteger i = 0; i < 5; i++) {
@@ -35,7 +35,7 @@ MAKE_CATEGORIES_LOADABLE(UIView_Frank)
     [originalBackgroundColor release];
 }
 
-- (BOOL) FEX_isVisible{
+- (BOOL)FEX_isVisible {
     if( [self isHidden] )
         return false;
     
