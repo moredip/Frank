@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 ThoughtWorks. All rights reserved.
 //
 
-
+#import "UIView+Frank.h"
 #import "LoadableCategory.h"
 
 MAKE_CATEGORIES_LOADABLE(UIView_Frank)
