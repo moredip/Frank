@@ -12,6 +12,5 @@
 
 + (NSImage *) captureImageOfSize:(CGSize)size fromViews:(NSArray *)views;
 - (NSImage *) captureImage;
-- (NSString *) captureBase64PngImage;
 
 @end
