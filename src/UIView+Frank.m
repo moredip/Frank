@@ -67,11 +67,24 @@ MAKE_CATEGORIES_LOADABLE(UIView_Frank)
     return NO;
 }
 
-- (NSUInteger)FEX_positionInParentSubviews
+- (BOOL)FEX_fullyOccludedByOpaqueSibling
 {
-    UIView *superview = [self superview];
-    NSUInteger ourIndex = [superview.subviews indexOfObject:self];
-    return ourIndex;
+    for (UIView *aSiblingAbove in [self FEX_siblingsAboveUs]) {
+        if ([aSiblingAbove FEX_fullyOverlapsView:self] && [aSiblingAbove isOpaque] && [aSiblingAbove alpha] == 1.0) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
+- (NSArray *)FEX_siblingsAboveUs
+{
+    if ([self FEX_isLastSubviewInParent]) {
+        return @[];
+    }
+    
+    return [self FEX_superviewsSubviewsByMakingSubarrayUntilEnd];
 }
 
 - (BOOL)FEX_isLastSubviewInParent
@@ -83,34 +96,19 @@ MAKE_CATEGORIES_LOADABLE(UIView_Frank)
     return (ourIndex == lastPositionInParentSubviews);
 }
 
-- (NSArray *)FEX_siblingsAboveUs
+- (NSUInteger)FEX_positionInParentSubviews
 {
-    if ([self FEX_isLastSubviewInParent]) {
-        return @[];
-    }
-
-    return [self FEX_superviewsSubviewsByMakingSubarrayUntilEnd];
+    UIView *superview = [self superview];
+    NSUInteger ourIndex = [superview.subviews indexOfObject:self];
+    return ourIndex;
 }
 
 - (NSArray *)FEX_superviewsSubviewsByMakingSubarrayUntilEnd
 {
     UIView *superview = [self superview];
     NSUInteger nextIndex = [self FEX_positionInParentSubviews] + 1;
-    // check here
-    
     NSUInteger remainingElements = [[superview subviews] count]  - nextIndex;
     return [superview.subviews subarrayWithRange:NSMakeRange(nextIndex, remainingElements)];
-}
-
-- (BOOL)FEX_fullyOccludedByOpaqueSibling
-{
-    for (UIView *aSiblingAbove in [self FEX_siblingsAboveUs]) {
-        if ([aSiblingAbove FEX_fullyOverlapsView:self] && [aSiblingAbove isOpaque] && [aSiblingAbove alpha] == 1.0) {
-            return YES;
-        }
-    }
-    
-    return NO;
 }
 
 - (BOOL)FEX_fullyOverlapsView:(UIView *)anotherView
