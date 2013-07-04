@@ -95,12 +95,17 @@ module FrankHelper
   # @raise an expection if no views matched the selector
   # @raise an expection if no views which matched the selector could be capture
   def capture( selector )
-    images = frankly_map( selector, 'captureBase64PngImage' )
-    raise "could not find anything matching [#{selector}] to capture" if images.empty?
-    raise "some views could not be capture image (probably because they are not within the current viewport)" if images.include?(nil)
-    images.map do |base64png|
-      Base64.decode64( base64png )
-    end
+    view_uids = frankly_map( selector, 'FEX_UID' )
+    raise "could not find anything matching [#{selector}] to capture" if view_uids.empty?
+    raise "some views could not be capture image" if view_uids.include?(nil)
+
+    frank_server.send_get( 'screenshot/snapshot-all-views' )
+    screenshots = view_uids.map{|uid|
+      path = "screenshot/view-snapshot/#{uid}"
+      frank_server.send_get( path )
+    }
+    raise "some views failed to capture image" if screenshots.include?(nil)
+    screenshots
   end
 
   # Fill in text in a text field.
