@@ -11,9 +11,9 @@
 #import "LoadableCategory.h"
 MAKE_CATEGORIES_LOADABLE(UIView_PublicAutomation)
 
-NSString *formatCGPointVal( NSValue *val ){
+NSString * formatCGPointVal(NSValue *val) {
     CGPoint p = [val CGPointValue];
-    return [NSString stringWithFormat:@"[%.2f,%.2f]", p.x, p.y];
+    return [NSString stringWithFormat:@"[%.2f, %.2f]", p.x, p.y];
 }
 
 @implementation UIView(PublicAutomation)
@@ -35,38 +35,34 @@ NSString *formatCGPointVal( NSValue *val ){
 
 #pragma mark - Test touch
 
-- (BOOL)FEX_canTouch {
-    return [self FEX_canTouchPoint:[self FEX_centerPoint]];
-}
-
-- (BOOL)FEX_canTouchPointX:(NSNumber*)x y:(NSNumber*)y {
-    CGPoint point = [self FEX_pointFromX:x andY:y];
+- (BOOL)FEX_isPointInWindow:(CGPoint)point {
+    CGPoint pointInWindowCoords = [self.window convertPoint:point fromView:self];
     
-    return [self FEX_canTouchPoint:point];
+    return (CGRectContainsPoint(self.window.bounds, pointInWindowCoords));
 }
 
-- (BOOL)FEX_canTouchPoint:(CGPoint)point {
-    if ([[UIApplication sharedApplication] isIgnoringInteractionEvents]) {
-        return NO;
-    }
-
+- (BOOL)FEX_isPointInDirectViewHierarchy:(CGPoint)point touchRecipient:(UIView**)touchRecipient {
     CGPoint pointInWindowCoords = [self.window convertPoint:point fromView:self];
     
     UIView* touchedView = [self.window hitTest:pointInWindowCoords withEvent:nil];
+    
+    if (touchRecipient) {
+        *touchRecipient = touchedView;
+    }
     
     if ([touchedView isDescendantOfView:self]) {
         return YES;
     }
     else if ([self isDescendantOfView:touchedView]) {
         /* the following code implements the same functionality as `hitTest:withEvent:`
-           but it doesn't ignore views with disabled user interactions */
+         but it doesn't ignore views with disabled user interactions */
         
         BOOL canContinue;
         
         do {
             canContinue = NO;
             
-            CGPoint testedPoint = [self.window convertPoint:pointInWindowCoords toView:touchedView];            
+            CGPoint testedPoint = [self.window convertPoint:pointInWindowCoords toView:touchedView];
             NSArray* subviews = [[touchedView.subviews copy] autorelease];
             
             for (NSUInteger i = subviews.count; i > 0; i--) {
@@ -95,10 +91,72 @@ NSString *formatCGPointVal( NSValue *val ){
     return NO;
 }
 
+- (BOOL)FEX_canTouchPoint:(CGPoint)point force:(BOOL)force raiseExceptions:(BOOL)raiseExceptions {
+    NSString* errorTitle = @"Touch failed";
+    
+    if ([[UIApplication sharedApplication] isIgnoringInteractionEvents]) {
+        NSString* errorMessage = @"Application is ignoring interaction events";
+        
+        NSLog(@"%@ - %@", errorTitle, errorMessage);        
+        
+        if (raiseExceptions) {
+            [NSException raise:errorTitle format:@"%@", errorMessage];
+        }
+        
+        return NO;
+    }
+    
+    if (![self FEX_isPointInWindow:point]) {
+        NSString* errorMessage = @"Touch point is outside window bounds";
+        
+        NSLog(@"%@ - %@", errorTitle, errorMessage);
+        
+        if (raiseExceptions) {
+            [NSException raise:errorTitle format:@"%@", errorMessage];
+        }
+        
+        return NO;
+    }
+    
+    UIView* touchedView = nil;
+    
+    if (!force && ![self FEX_isPointInDirectViewHierarchy:point touchRecipient:&touchedView]) {
+        NSString* touchedViewDescriptor = nil;
+        
+        if (touchedView != nil) {
+            touchedViewDescriptor = [NSString stringWithFormat:@"%p#%@", touchedView, NSStringFromClass([touchedView class])];
+        }
+        
+        NSString* errorMessage = [NSString stringWithFormat:
+                                  @"View not touched because it would not be the recipient of the touch event - consider FEX_forcedTouch instead (touch recipient: %@)",
+                                  touchedViewDescriptor];
+        
+        NSLog(@"%@ - %@", errorTitle, errorMessage);
+        
+        if (raiseExceptions) {
+            [NSException raise:errorTitle format:@"%@", errorMessage];
+        }
+        
+        return NO;
+    }
+    
+    return YES;
+}
+
+- (BOOL)FEX_canTouch {
+    return [self FEX_canTouchPoint:[self FEX_centerPoint] force:NO raiseExceptions:NO];
+}
+
+- (BOOL)FEX_canTouchPointX:(NSNumber*)x y:(NSNumber*)y {
+    CGPoint point = [self FEX_pointFromX:x andY:y];
+    
+    return [self FEX_canTouchPoint:point force:NO raiseExceptions:NO];
+}
+
 #pragma mark - Touch
 
 - (BOOL)FEX_touchPoint:(CGPoint)point {
-    if (![self FEX_canTouchPoint:point]) {
+    if (![self FEX_canTouchPoint:point force:NO raiseExceptions:YES]) {
         return NO;
     }
     
@@ -111,15 +169,9 @@ NSString *formatCGPointVal( NSValue *val ){
 }
 
 - (BOOL)FEX_forcedTouch {
-    if ([[UIApplication sharedApplication] isIgnoringInteractionEvents]) {
-        return NO;
-    }
-    
     CGPoint point = [self FEX_centerPoint];
     
-    CGPoint pointInWindowCoords = [self.window convertPoint:point fromView:self];
-    
-    if(!CGRectContainsPoint(self.window.bounds, pointInWindowCoords) ){
+    if (![self FEX_canTouchPoint:point force:YES raiseExceptions:YES]) {
         return NO;
     }
     
@@ -139,7 +191,7 @@ NSString *formatCGPointVal( NSValue *val ){
 
 //Double Tap
 - (BOOL)doubleTapPoint:(CGPoint)point {
-    if (![self FEX_canTouchPoint:point]) {
+    if (![self FEX_canTouchPoint:point force:NO raiseExceptions:YES]) {
         return NO;
     }
 	
@@ -172,7 +224,7 @@ NSString *formatCGPointVal( NSValue *val ){
 
 //Touch and hold
 - (BOOL)touchAndHold:(NSTimeInterval)duration point:(CGPoint)point {
-    if (![self FEX_canTouchPoint:point]) {
+    if (![self FEX_canTouchPoint:point force:NO raiseExceptions:YES]) {
         return NO;
     }
 	
@@ -211,7 +263,7 @@ NSString *formatCGPointVal( NSValue *val ){
 - (NSString *)swipeInDirection:(NSString *)strDir {
     PADirection dir = [UIAutomationBridge parseDirection:strDir];
     NSArray *swipeExtremes = [UIAutomationBridge swipeView:self inDirection:dir];
-    return [NSString stringWithFormat:@"%@ => %@", formatCGPointVal([swipeExtremes objectAtIndex:0]),formatCGPointVal([swipeExtremes objectAtIndex:1])];
+    return [NSString stringWithFormat:@"%@ => %@", formatCGPointVal([swipeExtremes objectAtIndex:0]), formatCGPointVal([swipeExtremes objectAtIndex:1])];
 }
 
 - (BOOL)FEX_dragWithInitialDelayToX:(CGFloat)x y:(CGFloat)y {
