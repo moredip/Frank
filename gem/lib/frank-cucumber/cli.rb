@@ -9,7 +9,7 @@ require 'frank-cucumber/console'
 require 'frank-cucumber/frankifier'
 require 'frank-cucumber/mac_launcher'
 require 'frank-cucumber/plugins/plugin'
-require 'xcodeproj'
+require 'xcoder'
 
 module Frank
   class CLI < Thor
@@ -110,7 +110,7 @@ module Frank
       xcconfig_file = 'Frank/frank.xcconfig'
       File.open(xcconfig_file,'w') {|f| f.write(xcconfig_data) }
 
-      extra_opts = XCODEBUILD_OPTIONS.map{ |o| "-#{o} \"#{options[o]}\"" if options[o] }.compact.join(' ')
+      extra_opts = XCODEBUILD_OPTIONS.map{ |o| "-#{o} \"#{options[o]}\"" if options[o] and (o != "target" or options['workspace'] == nil)}.compact.join(' ')
 
       # If there is a scheme specified we don't want to inject the default configuration
       # If there is a configuration specified, we also do not want to inject the default configuration
@@ -120,7 +120,8 @@ module Frank
         separate_configuration_option = "-configuration Debug"
       end
 
-      build_mac = determine_build_patform(options) == :osx
+      platform, app_name = get_platform_and_app_name(options)
+      build_mac = platform == :osx
 
       xcodebuild_args = args.join(" ")
 
@@ -133,9 +134,8 @@ module Frank
       end
       exit $?.exitstatus if not $?.success?
 
-      app = Dir.glob("#{build_output_dir}/*.app").delete_if { |x| x =~ /\/#{app_bundle_name}$/ }
-      app = app.first
-      FileUtils.cp_r("#{app}/.", frankified_app_dir)
+      Dir.glob("#{build_output_dir}/*.app").delete_if { |x| x =~ /\/#{app_bundle_name}$/ }
+      FileUtils.cp_r("#{build_output_dir}/#{app_name}/.", frankified_app_dir)
 
       if build_mac
         in_root do
@@ -275,51 +275,59 @@ module Frank
       end
     end
 
-    # The xcodeproj gem doesn't currently support schemes, and schemes have been difficult
-    # to figure out. I plan to either implement schemes in xcodeproj at a later date, or
-    # wait for them to be implemented, and then fix this function
-    def determine_build_patform ( options )
-      project_path = nil
+    def get_platform_and_app_name ( options )
+      platform = :ios
+      app_name = nil
+      config = get_config_from_options ( options )
+
+      if config == nil
+        say "Unable to find a configuration using the options given"
+        exit 10
+      else
+        if config.sdkroot.include? "macosx"
+          platform = :osx
+        end
+
+        app_name = config.product_name + ".app"
+      end
+
+      return platform, app_name
+
+    end
+
+    def get_config_from_options ( options )
+      config = nil
 
       if options["workspace"] != nil
-        if options["scheme"] != nil
-          workspace = Xcodeproj::Workspace.new_from_xcworkspace(options["workspace"])
-          projects = workspace.projpaths
-
-          projects.each { | current_project |
-            lines = `xcodebuild -project "#{current_project}" -list`
-
-            found_schemes = false
-
-            lines.split("\n").each { | line |
-              if found_schemes
-                line = line[8..-1]
-
-                if line == ""
-                  found_schemes = false
-                else
-                  if line == options["scheme"]
-                    project_path = current_project
-                  end
-                end
-
-              else
-                line = line [4..-1]
-
-                if line == "Schemes:"
-                  found_schemes = true
-                end
-
-              end
-            }
-          }
-        else
-          say "You must specify a scheme if you specify a workplace"
-          exit 10
-        end
+        config = get_config_from_workspace(options)
       else
-        project_path = options["project"]
+        config = get_config_from_project(options)
       end
+
+      return config
+
+    end
+
+    def get_config_from_workspace ( options )
+      config = nil
+
+      if options["scheme"] != nil
+        workspace = Xcode.workspace(options["workspace"])
+        scheme = workspace.scheme(options["scheme"])
+
+      else
+        say "You must specify a scheme if you specify a workplace"
+      end
+
+      config = get_config_from_targets(scheme.build_targets, options)
+
+      return config
+
+    end
+
+    def get_config_from_project ( options )
+      config = nil
+      project_path = options["project"]
 
       if project_path == nil
         Dir.foreach(Dir.pwd) { | file |
@@ -334,27 +342,52 @@ module Frank
         }
       end
 
-      project = Xcodeproj::Project.new(project_path)
-
-      target = nil
-
-      if options["target"] != nil
-        project.targets.each { | proj_target |
-          if proj_target.name == options["target"]
-            target = proj_target
-          end
-        }
-      else
-        target = project.targets[0]
+      if project_path != nil
+        project = Xcode.project(project_path)
+        config = get_config_from_targets(project.targets, options)
       end
 
-      if target == nil
-        say "Unable to determine a target from the options provided. Assuming iOS"
-        return :ios
+      return config
+    end
+
+    def get_config_from_targets( targets, options )
+      config = nil
+
+      expeted_config_name = options['configuration']
+      if expeted_config_name == nil
+        expeted_config_name = "Debug"
       end
 
-      return target.platform_name
+      targets.each { | target |
+        if options["target"] != nil and target.name != options["target"]
+          next
+        end
 
+        candidate = nil
+
+        begin
+          candidate = target.config(expeted_config_name)
+        rescue RuntimeError
+          next
+        end
+
+        if candidate.wrapper_extension != "app"
+          candidate = nil
+        end
+
+        if candidate != nil and config != nil
+          say "The specified project or scheme contains multiple app targets. Please specify a project or scheme with only one app target or use --target to specify a target."
+          return nil
+        elsif candidate != nil
+          config = candidate
+        end
+      }
+
+      if config == nil
+        say "Could not find an appropriate target for the options provided."
+      end
+
+      return config
     end
 
     def each_plugin_path(&block)

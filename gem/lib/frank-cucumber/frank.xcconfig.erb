@@ -8,4 +8,6 @@ INSTALL_PATH = /./
 
 FRANK_LDFLAGS = $(FRANK_CORE_LDFLAGS) <%= plugin_names.map {|name| "$(#{name.upcase}_LDFLAGS)"}.join(' ') %>
 
+FRANK_MAC_LDFLAGS = $(FRANK_CORE_MAC_LDFLAGS) <%= plugin_names.map {|name| "$(#{name.upcase}_MAC_LDFLAGS)"}.join(' ') %>
+
 FRANK_GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = $(FRANK_CORE_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS) <%= plugin_names.map {|name| "$(#{name.upcase}_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS)"}.join(' ') %>
