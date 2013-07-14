@@ -207,6 +207,22 @@ static const NSString* FEX_AccessibilityDescriptionAttribute = @"FEX_Accessibili
 
 @end
 
+@implementation NSWindow(FrankAutomation)
+
+- (CGRect) FEX_accessibilityFrame
+{
+    CGRect returnValue = NSZeroRect;
+    
+    if ([self isVisible] && ![self isMiniaturized])
+    {
+        returnValue = [super FEX_accessibilityFrame];
+    }
+    
+    return returnValue;
+}
+
+@end
+
 @implementation NSControl (FrankAutomation)
 
 - (NSString*) FEX_accessibilityLabel
