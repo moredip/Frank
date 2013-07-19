@@ -14,12 +14,16 @@
 		0626BFAE174300240020B33B /* DumpCommandRoute.h in Headers */ = {isa = PBXBuildFile; fileRef = 0626BFAC174300240020B33B /* DumpCommandRoute.h */; };
 		0626BFAF174300240020B33B /* DumpCommandRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 0626BFAD174300240020B33B /* DumpCommandRoute.m */; };
 		06CF35CA1744DECB00268ABF /* DumpCommandRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 0626BFAD174300240020B33B /* DumpCommandRoute.m */; };
+		30198DFB17936DCD00F686A7 /* FEXTableCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 30198DF917936DCD00F686A7 /* FEXTableCell.h */; };
+		30198DFC17936DCD00F686A7 /* FEXTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30198DFA17936DCD00F686A7 /* FEXTableCell.m */; };
 		30228E201642161200B1F9E7 /* AccessibilityCheckCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D67F2AAC13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.m */; };
 		30228E221642161200B1F9E7 /* AppCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1DD76A12BADFE100E10B8C /* AppCommand.m */; };
 		30228E261642161200B1F9E7 /* EnginesCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FA01B714283C4F00576AEE /* EnginesCommand.m */; };
 		30228E281642161200B1F9E7 /* ExitCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = A91F3AA515F6E456003F434F /* ExitCommand.m */; };
 		302B80411646DE02000F9861 /* NSImage+Frank.h in Headers */ = {isa = PBXBuildFile; fileRef = 302B803F1646DE02000F9861 /* NSImage+Frank.h */; };
 		302B80421646DE02000F9861 /* NSImage+Frank.m in Sources */ = {isa = PBXBuildFile; fileRef = 302B80401646DE02000F9861 /* NSImage+Frank.m */; };
+		3034CD4B1794CCE000A3794F /* FEXTableRow.h in Headers */ = {isa = PBXBuildFile; fileRef = 3034CD491794CCE000A3794F /* FEXTableRow.h */; };
+		3034CD4C1794CCE000A3794F /* FEXTableRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 3034CD4A1794CCE000A3794F /* FEXTableRow.m */; };
 		303A751316702D3D00B93673 /* NSObject+FrankAutomation.m in Sources */ = {isa = PBXBuildFile; fileRef = 303A751116702D3D00B93673 /* NSObject+FrankAutomation.m */; };
 		303CFCE416C80B830004BD05 /* DeviceCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 303CFCE216C80B830004BD05 /* DeviceCommand.h */; };
 		303CFCE516C80B830004BD05 /* DeviceCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 303CFCE216C80B830004BD05 /* DeviceCommand.h */; };
@@ -288,9 +292,13 @@
 		00E864C4161D708B00E01209 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		0626BFAC174300240020B33B /* DumpCommandRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DumpCommandRoute.h; sourceTree = "<group>"; };
 		0626BFAD174300240020B33B /* DumpCommandRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DumpCommandRoute.m; sourceTree = "<group>"; };
+		30198DF917936DCD00F686A7 /* FEXTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEXTableCell.h; sourceTree = "<group>"; };
+		30198DFA17936DCD00F686A7 /* FEXTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEXTableCell.m; sourceTree = "<group>"; };
 		30228E2916421C4400B1F9E7 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		302B803F1646DE02000F9861 /* NSImage+Frank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+Frank.h"; sourceTree = "<group>"; };
 		302B80401646DE02000F9861 /* NSImage+Frank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+Frank.m"; sourceTree = "<group>"; };
+		3034CD491794CCE000A3794F /* FEXTableRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEXTableRow.h; sourceTree = "<group>"; };
+		3034CD4A1794CCE000A3794F /* FEXTableRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEXTableRow.m; sourceTree = "<group>"; };
 		303A751116702D3D00B93673 /* NSObject+FrankAutomation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+FrankAutomation.m"; sourceTree = "<group>"; };
 		303CFCE216C80B830004BD05 /* DeviceCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceCommand.h; sourceTree = "<group>"; };
 		303CFCE316C80B830004BD05 /* DeviceCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceCommand.m; sourceTree = "<group>"; };
@@ -770,6 +778,10 @@
 				303A751116702D3D00B93673 /* NSObject+FrankAutomation.m */,
 				30412D2E165333E300719CD2 /* NSView+FrankImageCapture.h */,
 				30412D2F165333E300719CD2 /* NSView+FrankImageCapture.m */,
+				30198DF917936DCD00F686A7 /* FEXTableCell.h */,
+				30198DFA17936DCD00F686A7 /* FEXTableCell.m */,
+				3034CD491794CCE000A3794F /* FEXTableRow.h */,
+				3034CD4A1794CCE000A3794F /* FEXTableRow.m */,
 			);
 			name = Additions;
 			sourceTree = "<group>";
@@ -823,6 +835,8 @@
 				C189EF1F16BB5A8100F8236D /* VersionCommand.h in Headers */,
 				303CFCE516C80B830004BD05 /* DeviceCommand.h in Headers */,
 				30E82E3317128AB500E5BC7C /* ResolutionCommand.h in Headers */,
+				30198DFB17936DCD00F686A7 /* FEXTableCell.h in Headers */,
+				3034CD4B1794CCE000A3794F /* FEXTableRow.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1110,6 +1124,8 @@
 				C189EF2116BB5A8100F8236D /* VersionCommand.m in Sources */,
 				303CFCE716C80B830004BD05 /* DeviceCommand.m in Sources */,
 				30E82E3517128AB500E5BC7C /* ResolutionCommand.m in Sources */,
+				30198DFC17936DCD00F686A7 /* FEXTableCell.m in Sources */,
+				3034CD4C1794CCE000A3794F /* FEXTableRow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

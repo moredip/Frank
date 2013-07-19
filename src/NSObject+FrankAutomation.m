@@ -48,6 +48,7 @@ MAKE_CATEGORIES_LOADABLE(NSObject_FrankAutomation)
 #import "NSApplication+FrankAutomation.h"
 
 static const NSString* FEX_AccessibilityDescriptionAttribute = @"FEX_AccessibilityDescriptionAttribute";
+static const NSString* FEX_ParentAttribute = @"FEX_ParentAttribute";
 
 @implementation NSObject (FrankAutomation)
 
@@ -95,6 +96,16 @@ static const NSString* FEX_AccessibilityDescriptionAttribute = @"FEX_Accessibili
     }
     
     return [[returnValue copy] autorelease];
+}
+
+- (void) FEX_setParent: (id) aParent
+{
+    objc_setAssociatedObject(self, FEX_ParentAttribute, aParent, OBJC_ASSOCIATION_ASSIGN);
+}
+
+- (id) FEX_parent
+{
+    return objc_getAssociatedObject(self, FEX_ParentAttribute);
 }
 
 - (CGRect) FEX_accessibilityFrame
@@ -232,6 +243,11 @@ static const NSString* FEX_AccessibilityDescriptionAttribute = @"FEX_Accessibili
     if (returnValue == nil || [returnValue isEqualToString: @""])
     {
         returnValue = [[self cell] FEX_accessibilityLabel];
+        
+        if (returnValue == nil || [returnValue isEqualToString: @""])
+        {
+            returnValue = [[self cell] title];
+        }
     }
     
     return returnValue;
@@ -275,7 +291,7 @@ static const NSString* FEX_AccessibilityDescriptionAttribute = @"FEX_Accessibili
     }
     else
     {
-        [super FEX_accessibilityLabel];
+        returnValue = [super FEX_accessibilityLabel];
         
         if (returnValue == nil)
         {
@@ -423,7 +439,7 @@ static const NSString* FEX_AccessibilityDescriptionAttribute = @"FEX_Accessibili
                                                location,
                                                kCGMouseButtonLeft);
     if (event != NULL)
-    {            
+    {
         CGEventPost(kCGSessionEventTap, event);
         CFRelease(event);
         event = NULL;
@@ -433,89 +449,61 @@ static const NSString* FEX_AccessibilityDescriptionAttribute = @"FEX_Accessibili
     
     return returnValue;
 }
- 
-/*#define DRAG_DELAY 3.0
-#define DRAG_STEPS 100
 
-- (BOOL) FEX_dragWithInitialDelayToX: (CGFloat) x y: (CGFloat) y
+@end
+
+@implementation NSTableColumn (FrankAutomation)
+
+- (NSString*) FEX_accessibilityLabel
 {
-    BOOL returnValue = YES;
+    NSString* returnValue = [super FEX_accessibilityLabel];
     
-    NSRect   frame    = [self FEX_accessibilityFrame];
-    CGPoint  start    = CGPointMake(NSMidX(frame), NSMidY(frame));
-    CGPoint  end      = CGPointMake(x, y);
-    CGPoint  current  = start;
-    CGFloat  deltaX   = (end.x - start.x) / DRAG_STEPS;
-    CGFloat  deltaY   = (end.y - start.y) / DRAG_STEPS;
-    CGFloat  timeStep = DRAG_DELAY / DRAG_STEPS;
-    
-    CGEventRef event = CGEventCreateMouseEvent(NULL,
-                                               kCGEventLeftMouseDown,
-                                               start,
-                                               kCGMouseButtonLeft);
-    
-    if (event != NULL)
+    if (returnValue == nil || [returnValue isEqualToString: @""])
     {
-        CGEventPost(kCGHIDEventTap, event);
-        CFRelease(event);
-        event = NULL;
+        returnValue = [[self headerCell] FEX_accessibilityLabel];
         
-        //[[NSRunLoop currentRunLoop] runUntilDate: [NSDate dateWithTimeIntervalSinceNow: DRAG_DELAY]];
-        
-        CFRunLoopRunInMode((CFStringRef) NSEventTrackingRunLoopMode, DRAG_DELAY, false);
-    }
-    else
-    {
-        returnValue = NO;
-    }
-    
-    for (int step = 0; returnValue && step < DRAG_STEPS; ++step)
-    {
-        current.x += deltaX;
-        current.y += deltaY;
-        event = CGEventCreateMouseEvent(NULL,
-                                        kCGEventLeftMouseDragged,
-                                        current,
-                                        kCGMouseButtonLeft);
-        
-        if (event != NULL)
+        if (returnValue == nil || [returnValue isEqualToString: @""])
         {
-            CGEventPost(kCGHIDEventTap, event);
-            CFRelease(event);
-            event = NULL;
-            
-            
-            CFRunLoopRunInMode((CFStringRef) NSEventTrackingRunLoopMode, timeStep, false);
-        }
-        else
-        {
-            returnValue = NO;
-        }
-    }
-    
-    if (returnValue)
-    {        
-        CFRunLoopRunInMode((CFStringRef) NSEventTrackingRunLoopMode, DRAG_DELAY, false);
-        
-        event = CGEventCreateMouseEvent(NULL,
-                                        kCGEventLeftMouseUp,
-                                        end,
-                                        kCGMouseButtonLeft);
-        
-        if (event != NULL)
-        {
-            CGEventPost(kCGHIDEventTap, event);
-            CFRelease(event);
-            event = NULL;
-        }
-        else
-        {
-            returnValue = NO;
+            returnValue = [[self headerCell] stringValue];
         }
     }
     
     return returnValue;
-}*/
+}
+
+- (CGRect) FEX_accessibilityFrame
+{
+    NSTableHeaderView* headerView = [[self tableView] headerView];
+    CGRect enclosingFrame = [[[headerView tableView] enclosingScrollView] visibleRect];
+    CGRect headerFrame = [headerView frame];
+    NSUInteger colNum = [[[self tableView] tableColumns] indexOfObject: self];
+    CGRect columnFrame = [[self tableView] rectOfColumn: colNum];
+    
+    headerFrame.origin.x = columnFrame.origin.x;
+    headerFrame.size.width = columnFrame.size.width;
+    
+    headerFrame = NSIntersectionRect(headerFrame, enclosingFrame);
+    
+    CGRect accessibilityFrame = [headerView convertRect: headerFrame toView: nil];
+    accessibilityFrame = [[headerView window] convertRectToScreen: accessibilityFrame];
+    
+    CGFloat screenHeight = 0;
+    
+    for (NSScreen* screen in [NSScreen screens])
+    {
+        NSRect screenFrame = [screen convertRectFromBacking: [screen frame]];
+        screenHeight = MAX(screenHeight, screenFrame.origin.y + screenFrame.size.height);
+    }
+    
+    CGFloat flippedY = screenHeight - (accessibilityFrame.origin.y + accessibilityFrame.size.height);
+    
+    if (flippedY >= 0)
+    {
+        accessibilityFrame.origin.y = flippedY;
+    }
+    
+    return accessibilityFrame;
+}
 
 @end
 
