@@ -135,19 +135,6 @@ NSDictionary* FEX_DictionaryForAXMenu(AXUIElementRef menu)
 
 @implementation FrankMenuTracker
 
-- (void) applicationDidBecomeActive: (NSNotification*) aNotification
-{
-    
-}
-
-+ (void) load
-{
-    [[NSNotificationCenter defaultCenter] addObserver: [self class]
-                                             selector: @selector(applicationDidBecomeActive:)
-                                                 name: NSApplicationDidFinishLaunchingNotification 
-                                               object: nil];
-}
-
 - (void) menuOpened: (NSNotification*) aNotification
 {
     if (![[aNotification object] isEqual: [NSApp mainMenu]])
