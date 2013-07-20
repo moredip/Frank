@@ -34,19 +34,19 @@
 
 - (void)testSingleViewUserVisible
 {
-    STAssertTrue([occludedView FEX_userVisible], nil);
+    STAssertTrue([occludedView FEX_isUserVisible], nil);
 }
 
 - (void)testWindowUserVisible
 {
-    STAssertTrue([window FEX_userVisible], nil);
+    STAssertTrue([window FEX_isUserVisible], nil);
 }
 
 - (void)testViewNotVisibleIsNotUserVisible
 {
     [occludedView setHidden:YES];
     
-    STAssertFalse([occludedView FEX_userVisible], nil);
+    STAssertFalse([occludedView FEX_isUserVisible], nil);
 }
 
 - (void)testCompletelyOccludedByOpaqueSibling
@@ -56,8 +56,8 @@
     
     [window addSubview:opaqueSibling];
     
-    STAssertFalse([occludedView FEX_userVisible], nil);
-    STAssertTrue([opaqueSibling FEX_userVisible], nil);
+    STAssertFalse([occludedView FEX_isUserVisible], nil);
+    STAssertTrue([opaqueSibling FEX_isUserVisible], nil);
 }
 
 - (void)testCompletelyOccludedByTransparentSibling
@@ -67,8 +67,8 @@
     
     [window addSubview:transparentSibling];
     
-    STAssertTrue([occludedView FEX_userVisible], nil);
-    STAssertTrue([transparentSibling FEX_userVisible], nil);
+    STAssertTrue([occludedView FEX_isUserVisible], nil);
+    STAssertTrue([transparentSibling FEX_isUserVisible], nil);
 }
 
 - (void)testOccludedByAClearViewIncorrectlyMarkedOpaque
@@ -79,8 +79,8 @@
     [window addSubview:clearViewMarkedOpaque];
     
     STAssertTrue([clearViewMarkedOpaque isOpaque], nil);
-    STAssertFalse([occludedView FEX_userVisible], nil);
-    STAssertTrue([clearViewMarkedOpaque FEX_userVisible], nil);
+    STAssertFalse([occludedView FEX_isUserVisible], nil);
+    STAssertTrue([clearViewMarkedOpaque FEX_isUserVisible], nil);
 }
 
 - (void)testOccludedByANonOpaqueView
@@ -90,8 +90,8 @@
     
     [window addSubview:nonOpaqueView];
     
-    STAssertTrue([occludedView FEX_userVisible], nil);
-    STAssertTrue([nonOpaqueView FEX_userVisible], nil);
+    STAssertTrue([occludedView FEX_isUserVisible], nil);
+    STAssertTrue([nonOpaqueView FEX_isUserVisible], nil);
 }
 
 - (void)testPartiallyOccluded
@@ -100,8 +100,8 @@
 
     [window addSubview:partiallyOverlappingSibling];
     
-    STAssertTrue([occludedView FEX_userVisible], nil);
-    STAssertTrue([partiallyOverlappingSibling FEX_userVisible], nil);
+    STAssertTrue([occludedView FEX_isUserVisible], nil);
+    STAssertTrue([partiallyOverlappingSibling FEX_isUserVisible], nil);
 }
 
 - (void)testSuperviewCompletelyOccludedByOpaqueSibling
@@ -114,9 +114,9 @@
     
     [window addSubview:opaqueSibling];
     
-    STAssertFalse([occludedView FEX_userVisible], nil);
-    STAssertFalse([occludedSubview FEX_userVisible], nil);
-    STAssertTrue([opaqueSibling FEX_userVisible], nil);
+    STAssertFalse([occludedView FEX_isUserVisible], nil);
+    STAssertFalse([occludedSubview FEX_isUserVisible], nil);
+    STAssertTrue([opaqueSibling FEX_isUserVisible], nil);
 }
 
 @end

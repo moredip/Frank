@@ -1,18 +1,18 @@
 //
-//  FEX_UserVisibleViewController.m
+//  FEX_IsUserVisibleViewController.m
 //  Controls
 //
 //  Created by Robert Gilliam on 7/4/13.
 //  Copyright (c) 2013 ThoughtWorks. All rights reserved.
 //
 
-#import "FEX_UserVisibleViewController.h"
+#import "FEX_IsUserVisibleViewController.h"
 
-@interface FEX_UserVisibleViewController ()
+@interface FEX_IsUserVisibleViewController ()
 
 @end
 
-@implementation FEX_UserVisibleViewController
+@implementation FEX_IsUserVisibleViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

@@ -7,12 +7,12 @@ Then(/^the occluded yellow view should not be user visible$/) do
 end
 
 def wait_for_element_to_exist_and_be_user_visible(selector)
-  wait_for_element_to_exist("#{selector} FEX_userVisible")
+  wait_for_element_to_exist("#{selector} FEX_isUserVisible")
 end
 
 def wait_for_element_to_exist_and_not_be_user_visible(selector)
   wait_for_element_to_exist("#{selector}")
-  wait_for_element_to_not_exist("#{selector} FEX_userVisible")
+  wait_for_element_to_not_exist("#{selector} FEX_isUserVisible")
 end
 
 def view_colored(color)
@@ -32,12 +32,12 @@ def orange_view
 end
 
 def wait_for_square_view_of_color_to_exist_and_be_user_visible(color)
-  wait_for_element_to_exist("#{view_colored(color)} FEX_userVisible")
+  wait_for_element_to_exist("#{view_colored(color)} FEX_isUserVisible")
 end
 
 def wait_for_square_view_of_color_to_exist_and_not_be_user_visible(color)
   wait_for_element_to_exist("#{view_colored(color)}")
-  check_element_does_not_exist("#{view_colored(color)} FEX_userVisible")
+  check_element_does_not_exist("#{view_colored(color)} FEX_isUserVisible")
 end
 
 Then(/^the partially transparent orange view should be user visible$/) do

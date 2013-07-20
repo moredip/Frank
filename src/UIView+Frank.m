@@ -46,7 +46,7 @@ MAKE_CATEGORIES_LOADABLE(UIView_Frank)
     }
 }
 
-- (BOOL)FEX_userVisible {
+- (BOOL)FEX_isUserVisible {
     return ![self FEX_userInvisible];
 }
 

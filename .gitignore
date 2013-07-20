@@ -12,3 +12,5 @@ xcuserdata
 
 .yardoc/
 .DS_Store
+gem/doc
+.LSOverride

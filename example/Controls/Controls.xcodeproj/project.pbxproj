@@ -16,8 +16,8 @@
 		49543E4D1538791E001D87F1 /* Carousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 49543E4C1538791E001D87F1 /* Carousel.m */; };
 		49543E511538793B001D87F1 /* CarouselViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49543E501538793B001D87F1 /* CarouselViewController.m */; };
 		49543E5415387AD8001D87F1 /* CarouselViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49543E5315387AD8001D87F1 /* CarouselViewController.xib */; };
-		4BFF55831785E71A00EAAC44 /* FEX_UserVisibleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF55811785E71A00EAAC44 /* FEX_UserVisibleViewController.m */; };
-		4BFF55841785E71A00EAAC44 /* FEX_UserVisibleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BFF55821785E71A00EAAC44 /* FEX_UserVisibleViewController.xib */; };
+		4BFF55831785E71A00EAAC44 /* FEX_IsUserVisibleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF55811785E71A00EAAC44 /* FEX_IsUserVisibleViewController.m */; };
+		4BFF55841785E71A00EAAC44 /* FEX_IsUserVisibleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BFF55821785E71A00EAAC44 /* FEX_IsUserVisibleViewController.xib */; };
 		529777D9164C63CC009726F3 /* SampleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 529777D8164C63CC009726F3 /* SampleTableViewController.m */; };
 		9C60AD54157C97FB008EE16A /* UIProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C60AD52157C97FB008EE16A /* UIProgressViewController.m */; };
 		9C60AD56157C97FB008EE16A /* UIProgressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C60AD53157C97FB008EE16A /* UIProgressViewController.xib */; };
@@ -64,9 +64,9 @@
 		49543E4F1538793B001D87F1 /* CarouselViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarouselViewController.h; sourceTree = "<group>"; };
 		49543E501538793B001D87F1 /* CarouselViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarouselViewController.m; sourceTree = "<group>"; };
 		49543E5315387AD8001D87F1 /* CarouselViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarouselViewController.xib; sourceTree = "<group>"; };
-		4BFF55801785E71A00EAAC44 /* FEX_UserVisibleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEX_UserVisibleViewController.h; sourceTree = "<group>"; };
-		4BFF55811785E71A00EAAC44 /* FEX_UserVisibleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEX_UserVisibleViewController.m; sourceTree = "<group>"; };
-		4BFF55821785E71A00EAAC44 /* FEX_UserVisibleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FEX_UserVisibleViewController.xib; sourceTree = "<group>"; };
+		4BFF55801785E71A00EAAC44 /* FEX_IsUserVisibleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEX_IsUserVisibleViewController.h; sourceTree = "<group>"; };
+		4BFF55811785E71A00EAAC44 /* FEX_IsUserVisibleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEX_IsUserVisibleViewController.m; sourceTree = "<group>"; };
+		4BFF55821785E71A00EAAC44 /* FEX_IsUserVisibleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FEX_IsUserVisibleViewController.xib; sourceTree = "<group>"; };
 		529777D7164C63CC009726F3 /* SampleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleTableViewController.h; sourceTree = "<group>"; };
 		529777D8164C63CC009726F3 /* SampleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleTableViewController.m; sourceTree = "<group>"; };
 		9C60AD51157C97FB008EE16A /* UIProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIProgressViewController.h; sourceTree = "<group>"; };
@@ -211,9 +211,9 @@
 				C177A4CF16323CD50081DF77 /* ViewPropertiesViewController.h */,
 				C177A4D016323CD50081DF77 /* ViewPropertiesViewController.m */,
 				C177A4D116323CD50081DF77 /* ViewPropertiesViewController.xib */,
-				4BFF55801785E71A00EAAC44 /* FEX_UserVisibleViewController.h */,
-				4BFF55811785E71A00EAAC44 /* FEX_UserVisibleViewController.m */,
-				4BFF55821785E71A00EAAC44 /* FEX_UserVisibleViewController.xib */,
+				4BFF55801785E71A00EAAC44 /* FEX_IsUserVisibleViewController.h */,
+				4BFF55811785E71A00EAAC44 /* FEX_IsUserVisibleViewController.m */,
+				4BFF55821785E71A00EAAC44 /* FEX_IsUserVisibleViewController.xib */,
 				C1CE57C116402BC60027BCAC /* LocationViewController.h */,
 				C1CE57C216402BC60027BCAC /* LocationViewController.m */,
 				C1CE57C316402BC60027BCAC /* LocationViewController.xib */,
@@ -314,7 +314,7 @@
 				03FF0B7F169F3FB1007131E5 /* LongTouchViewController.xib in Resources */,
 				03FF0B85169F5069007131E5 /* DoubleTapViewController.xib in Resources */,
 				1542BFE4169B74EE00573367 /* AlertViewController.xib in Resources */,
-				4BFF55841785E71A00EAAC44 /* FEX_UserVisibleViewController.xib in Resources */,
+				4BFF55841785E71A00EAAC44 /* FEX_IsUserVisibleViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,7 +341,7 @@
 				03FF0B7E169F3FB1007131E5 /* LongTouchViewController.m in Sources */,
 				03FF0B84169F5069007131E5 /* DoubleTapViewController.m in Sources */,
 				1542BFE3169B74EE00573367 /* AlertViewController.m in Sources */,
-				4BFF55831785E71A00EAAC44 /* FEX_UserVisibleViewController.m in Sources */,
+				4BFF55831785E71A00EAAC44 /* FEX_IsUserVisibleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

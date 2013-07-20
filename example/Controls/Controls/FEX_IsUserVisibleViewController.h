@@ -1,5 +1,5 @@
 //
-//  FEX_UserVisibleViewController.h
+//  FEX_IsUserVisibleViewController.h
 //  Controls
 //
 //  Created by Robert Gilliam on 7/4/13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FEX_UserVisibleViewController : UIViewController
+@interface FEX_IsUserVisibleViewController : UIViewController
 
 @end

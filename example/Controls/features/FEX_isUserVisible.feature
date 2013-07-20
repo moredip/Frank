@@ -1,8 +1,8 @@
-Feature: FEX_userVisible
+Feature: FEX_isUserVisible
 
 Background:
   Given I launch the app
-  And I touch "FEX_userVisible"
+  And I touch "FEX_isUserVisible"
 
 Scenario: view not user visible when completely occluded by a non-transparent sibling view
   Then the opaque green view should be user visible
