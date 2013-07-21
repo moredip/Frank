@@ -246,4 +246,20 @@ void MyAXObserverCallback(AXObserverRef  observer,
     return YES;
 }
 
+- (NSArray*) FEX_children
+{    
+    NSMutableArray *descendants = [NSMutableArray array];
+    
+    [descendants addObjectsFromArray:[self windows]];
+    [descendants addObject:[self mainMenu]];
+    [descendants addObjectsFromArray:[[self FEX_menus] allObjects]];
+    
+    return descendants;
+}
+
+- (id) FEX_parent
+{
+    return nil;
+}
+
 @end

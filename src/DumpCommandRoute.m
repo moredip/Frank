@@ -13,8 +13,6 @@
 #import "JSON.h"
 
 #if !TARGET_OS_IPHONE
-#import "FEXTableRow.h"
-#import "FEXTableCell.h"
 #import "NSApplication+FrankAutomation.h"
 #endif
 
@@ -195,157 +193,9 @@
     }
 
 #else
-    if ([object isKindOfClass:[NSApplication class]]) {
-        NSApplication *application = (NSApplication*) object;
-        
-        NSMutableArray *descendants = [NSMutableArray array];
-        
-        [descendants addObjectsFromArray:[application windows]];
-        [descendants addObject:[application mainMenu]];
-        [descendants addObjectsFromArray:[[application FEX_menus] allObjects]];
-        
-        return descendants;
-    }
-    else if ([object isKindOfClass:[NSWindow class]]) {
-        return [NSArray arrayWithObject:[(NSWindow*) object contentView]];
-    }
-    else if ([object isKindOfClass:[NSMenu class]]) {
-        return [(NSMenu *) object itemArray];
-    }
-    else if ([object isKindOfClass:[NSMenuItem class]]) {
-        NSMutableArray *descendants = [NSMutableArray array];
-        
-        NSMenu *submenu = [(NSMenuItem*) object submenu];
-        
-        if (submenu != nil) {
-            [descendants addObject:submenu];
-        }
-        
-        return descendants;
-    }
-    else if ([object isKindOfClass:[NSView class]]) {
-        NSArray* subviews = [[(NSView *) object subviews] mutableCopy];
-        NSMutableArray* descendants = [NSMutableArray array];
-        
-        for (NSView* subview in subviews)
-        {
-            CGRect visibleRect = [subview visibleRect];
-            
-            if (visibleRect.size.width > 0 && visibleRect.size.height > 0)
-            {
-                [descendants addObject: subview];
-            }
-        }
-        
-        if ([object isKindOfClass:[FEXTableCell class]])
-        {
-            id cellValue = [(FEXTableCell*) object value];
-            
-            if ([cellValue isKindOfClass: [NSView class]])
-            {
-                [descendants addObject: cellValue];
-            }
-        }
-        else if ([object isKindOfClass:[NSTableView class]])
-        {
-            [descendants removeAllObjects];
-            
-            if ([(NSTableView*) object headerView] != nil)
-            {
-                [descendants addObjectsFromArray: [(NSTableView*) object tableColumns]];
-            }
-            
-            CGRect visibleRect = [(NSTableView*) object visibleRect];
-            NSRange rowRange = [(NSTableView*) object rowsInRect: visibleRect];
-            
-            for (NSUInteger rowNum = rowRange.location; rowNum < rowRange.length; ++rowNum)
-            {
-                CGRect rowRect = [(NSTableView*) object rectOfRow: rowNum];
-                rowRect = NSIntersectionRect(rowRect, visibleRect);
-                
-                FEXTableRow* row = [[[FEXTableRow alloc] initWithFrame: rowRect
-                                                                 table: (NSTableView*) object] autorelease];
-                
-                for (NSUInteger colNum = 0; colNum < [(NSTableView*) object numberOfColumns]; ++colNum)
-                {
-                    CGRect objectFrame = [(NSTableView*) object frameOfCellAtColumn: colNum row: rowNum];
-                    objectFrame = NSIntersectionRect(objectFrame, visibleRect);
-                    
-                    id cellValue = [(NSTableView*) object viewAtColumn: colNum
-                                                                   row: rowNum
-                                                       makeIfNecessary: NO];
-                    
-                    if (cellValue != nil)
-                    {
-                        if (colNum == 0)
-                        {
-                            [descendants addObject: [cellValue superview]];
-                        }
-                    }
-                    else
-                    {
-                        // We need to wrap the NSTableView cell in an object to
-                        // be accessible to Frank.
-                        
-                        id<NSTableViewDataSource> dataSource = [(NSTableView*) object dataSource];
-                        
-                        if (dataSource != nil)
-                        {
-                            cellValue = [dataSource tableView: (NSTableView*) object
-                                    objectValueForTableColumn: colNum
-                                                          row: rowNum];
-                        }
-                        else
-                        {
-                            NSTableColumn* column = [[(NSTableView*) object tableColumns] objectAtIndex: colNum];
-                            NSDictionary* bindingInfo = [column infoForBinding: NSValueBinding];
-                            NSString* observedKey = [bindingInfo objectForKey: NSObservedKeyPathKey];
-                            id observedObject = [bindingInfo objectForKey: NSObservedObjectKey];
-                            
-                            for (NSString* component in [observedKey componentsSeparatedByString: @"."])
-                            {
-                                if (cellValue == nil)
-                                {
-                                    cellValue = [observedObject valueForKey: component];
-                                }
-                                else
-                                {
-                                    if ([cellValue isKindOfClass: [NSArray class]])
-                                    {
-                                        cellValue = [[cellValue objectAtIndex: rowNum] valueForKey: component];
-                                    }
-                                    else
-                                    {
-                                        cellValue = [cellValue valueForKey: component];
-                                    }
-                                }
-                            }
-                        }
-                        
-                        if (cellValue != nil)
-                        {
-                            FEXTableCell* cell = [[FEXTableCell alloc] initWithFrame: objectFrame
-                                                                                 row: row
-                                                                               value: cellValue];
-                            
-                            if (objectFrame.size.width > 0 && objectFrame.size.height > 0)
-                            {
-                                [row addSubview: cell];
-                            }
-                        }
-                        
-                        if (row != nil && colNum == 0)
-                        {
-                            [descendants addObject: row];
-                        }
-                    }
-                }
-            }
-            
-            return descendants;
-        }
-        
-        return descendants;
+    if ([object respondsToSelector: @selector(FEX_children)])
+    {
+        return [object performSelector: @selector(FEX_children)];
     }
 #endif
     

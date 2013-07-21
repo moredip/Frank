@@ -70,6 +70,19 @@
     }
 }
 
+- (NSArray*) FEX_children
+{
+    NSArray* children = nil;
+    id value = [self value];
+    
+    if ([value isKindOfClass: [NSView class]])
+    {
+        children = [NSArray arrayWithObject: value];
+    }
+    
+    return children;
+}
+
 - (id) FEX_parent
 {
     return _row;

@@ -11,6 +11,12 @@
 #import <Foundation/Foundation.h>
 
 #import "LoadableCategory.h"
+
+#if !TARGET_OS_IPHONE
+#import "FEXTableRow.h"
+#import "FEXTableCell.h"
+#endif
+
 MAKE_CATEGORIES_LOADABLE(NSObject_FrankAutomation)
 
 #if TARGET_OS_IPHONE
@@ -232,6 +238,16 @@ static const NSString* FEX_ParentAttribute = @"FEX_ParentAttribute";
     return returnValue;
 }
 
+- (NSArray*) FEX_children
+{
+    return [NSArray arrayWithObject:[self contentView]];
+}
+
+- (id) FEX_parent
+{
+    return NSApp;
+}
+
 @end
 
 @implementation NSControl (FrankAutomation)
@@ -275,6 +291,20 @@ static const NSString* FEX_ParentAttribute = @"FEX_ParentAttribute";
     }
     
     return returnValue;
+}
+
+@end
+
+@implementation NSMenu (FrankAutomation)
+
+- (NSArray*) FEX_children
+{
+    return [self itemArray];
+}
+
+- (id) FEX_parent
+{
+    return NSApp;
 }
 
 @end
@@ -354,6 +384,31 @@ static const NSString* FEX_ParentAttribute = @"FEX_ParentAttribute";
     }
     
     return returnValue;
+}
+
+- (NSArray*) FEX_children
+{
+    NSMutableArray *children = [NSMutableArray array];
+    
+    NSMenu *submenu = [self submenu];
+    
+    if (submenu != nil) {
+        [children addObject:submenu];
+    }
+    
+    return children;
+}
+
+- (id) FEX_parent
+{
+    id parent = [self parentItem];
+    
+    if (parent == nil)
+    {
+        parent = NSApp;
+    }
+    
+    return parent;
 }
 
 @end
@@ -459,6 +514,152 @@ static const NSString* FEX_ParentAttribute = @"FEX_ParentAttribute";
     returnValue.size.height = visibleRect.size.height;
     
     return returnValue;
+}
+
+- (NSArray*) FEX_children
+{
+    NSArray* subviews = [[self subviews] mutableCopy];
+    NSMutableArray* children = [NSMutableArray array];
+    
+    for (NSView* subview in subviews)
+    {
+        CGRect frame = [subview FEX_accessibilityFrame];
+        
+        if (frame.size.width > 0 && frame.size.height > 0)
+        {
+            [children addObject: subview];
+        }
+    }
+    
+    return children;
+}
+
+- (id) FEX_parent
+{
+    id parent = [super FEX_parent];
+    
+    if (parent == nil)
+    {
+        parent = [self superview];
+    }
+    
+    if (parent == nil)
+    {
+        parent = [self window];
+    }
+}
+
+@end
+
+@implementation NSTableView (FrankAutomation)
+
+- (NSArray*) FEX_children
+{
+    NSMutableArray* children = [NSMutableArray array];
+    
+    if ([self headerView] != nil)
+    {
+        for (NSTableColumn* column in [self tableColumns])
+        {
+            CGRect frame = [column FEX_accessibilityFrame];
+            
+            if (frame.size.width > 0 && frame.size.height > 0)
+            {
+                [children addObject: column];
+            }
+        }
+    }
+    
+    CGRect visibleRect = [self visibleRect];
+    NSRange rowRange = [self rowsInRect: visibleRect];
+    
+    for (NSUInteger rowNum = rowRange.location; rowNum < rowRange.length; ++rowNum)
+    {
+        CGRect rowRect = [self rectOfRow: rowNum];
+        rowRect = NSIntersectionRect(rowRect, visibleRect);
+        
+        FEXTableRow* row = [[[FEXTableRow alloc] initWithFrame: rowRect
+                                                         table: self] autorelease];
+        
+        for (NSUInteger colNum = 0; colNum < [self numberOfColumns]; ++colNum)
+        {
+            CGRect objectFrame = [self frameOfCellAtColumn: colNum row: rowNum];
+            objectFrame = NSIntersectionRect(objectFrame, visibleRect);
+            
+            id cellValue = [self viewAtColumn: colNum
+                                                           row: rowNum
+                                               makeIfNecessary: NO];
+            
+            if (cellValue != nil)
+            {
+                if (colNum == 0)
+                {
+                    [children addObject: [cellValue superview]];
+                }
+            }
+            else
+            {
+                // We need to wrap the NSTableView cell in an object to
+                // be accessible to Frank.
+                
+                id<NSTableViewDataSource> dataSource = [self dataSource];
+                
+                if (dataSource != nil)
+                {
+                    cellValue = [dataSource tableView: self
+                            objectValueForTableColumn: colNum
+                                                  row: rowNum];
+                }
+                else
+                {
+                    NSTableColumn* column = [[self tableColumns] objectAtIndex: colNum];
+                    NSDictionary* bindingInfo = [column infoForBinding: NSValueBinding];
+                    NSString* observedKey = [bindingInfo objectForKey: NSObservedKeyPathKey];
+                    id observedObject = [bindingInfo objectForKey: NSObservedObjectKey];
+                    
+                    for (NSString* component in [observedKey componentsSeparatedByString: @"."])
+                    {
+                        if (cellValue == nil)
+                        {
+                            cellValue = [observedObject valueForKey: component];
+                        }
+                        else
+                        {
+                            if ([cellValue isKindOfClass: [NSArray class]])
+                            {
+                                cellValue = [[cellValue objectAtIndex: rowNum] valueForKey: component];
+                            }
+                            else
+                            {
+                                cellValue = [cellValue valueForKey: component];
+                            }
+                        }
+                    }
+                }
+                
+                if (cellValue != nil)
+                {
+                    FEXTableCell* cell = [[FEXTableCell alloc] initWithFrame: objectFrame
+                                                                         row: row
+                                                                       value: cellValue];
+                    
+                    if (objectFrame.size.width > 0 && objectFrame.size.height > 0)
+                    {
+                        [row addSubview: cell];
+                    }
+                    
+                    [cell release];
+                }
+                
+                if (row != nil && colNum == 0)
+                {
+                    [children addObject: row];
+                }
+            }
+        }
+    }
+    
+    return children;
 }
 
 @end
