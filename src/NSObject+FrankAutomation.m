@@ -450,6 +450,17 @@ static const NSString* FEX_ParentAttribute = @"FEX_ParentAttribute";
     return returnValue;
 }
 
+- (CGRect) FEX_accessibilityFrame
+{
+    CGRect returnValue = [super FEX_accessibilityFrame];
+    CGRect visibleRect = [self visibleRect];
+    
+    returnValue.size.width = visibleRect.size.width;
+    returnValue.size.height = visibleRect.size.height;
+    
+    return returnValue;
+}
+
 @end
 
 @implementation NSTableColumn (FrankAutomation)

@@ -224,7 +224,18 @@
         return descendants;
     }
     else if ([object isKindOfClass:[NSView class]]) {
-        NSMutableArray* descendants = [[(NSView *) object subviews] mutableCopy];
+        NSArray* subviews = [[(NSView *) object subviews] mutableCopy];
+        NSMutableArray* descendants = [NSMutableArray array];
+        
+        for (NSView* subview in subviews)
+        {
+            CGRect visibleRect = [subview visibleRect];
+            
+            if (visibleRect.size.width > 0 && visibleRect.size.height > 0)
+            {
+                [descendants addObject: subview];
+            }
+        }
         
         if ([object isKindOfClass:[FEXTableCell class]])
         {
@@ -237,14 +248,14 @@
         }
         else if ([object isKindOfClass:[NSTableView class]])
         {
+            [descendants removeAllObjects];
             
             if ([(NSTableView*) object headerView] != nil)
             {
                 [descendants addObjectsFromArray: [(NSTableView*) object tableColumns]];
             }
             
-            NSScrollView* enclosingScrollView = [(NSTableView*) object enclosingScrollView];
-            CGRect visibleRect = [enclosingScrollView visibleRect];
+            CGRect visibleRect = [(NSTableView*) object visibleRect];
             NSRange rowRange = [(NSTableView*) object rowsInRect: visibleRect];
             
             for (NSUInteger rowNum = rowRange.location; rowNum < rowRange.length; ++rowNum)
@@ -266,9 +277,9 @@
                     
                     if (cellValue != nil)
                     {
-                        if ([cellValue respondsToSelector: @selector(FEX_setParent:)])
+                        if (colNum == 0)
                         {
-                            [cellValue performSelector: @selector(FEX_setParent:) withObject: row];
+                            [descendants addObject: [cellValue superview]];
                         }
                     }
                     else
@@ -310,21 +321,24 @@
                                 }
                             }
                         }
-                    }
-                    
-                    if (cellValue != nil)
-                    {
-                        FEXTableCell* cell = [[FEXTableCell alloc] initWithFrame: objectFrame
-                                                                             row: row
-                                                                           value: cellValue];
                         
-                        [row addSubview: cell];
+                        if (cellValue != nil)
+                        {
+                            FEXTableCell* cell = [[FEXTableCell alloc] initWithFrame: objectFrame
+                                                                                 row: row
+                                                                               value: cellValue];
+                            
+                            if (objectFrame.size.width > 0 && objectFrame.size.height > 0)
+                            {
+                                [row addSubview: cell];
+                            }
+                        }
+                        
+                        if (row != nil && colNum == 0)
+                        {
+                            [descendants addObject: row];
+                        }
                     }
-                }
-                
-                if (row != nil)
-                {
-                    [descendants addObject: row];
                 }
             }
             
