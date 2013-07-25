@@ -536,6 +536,8 @@ static const NSString* FEX_ParentAttribute = @"FEX_ParentAttribute";
     {
         parent = [self window];
     }
+    
+    return parent;
 }
 
 @end
