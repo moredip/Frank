@@ -664,6 +664,92 @@ static const NSString* FEX_ParentAttribute = @"FEX_ParentAttribute";
 
 @end
 
+@implementation NSOutlineView (FrankAutomation)
+
+- (NSArray*) FEX_children
+{
+    NSMutableArray* children = [NSMutableArray array];
+    
+    if ([self headerView] != nil)
+    {
+        for (NSTableColumn* column in [self tableColumns])
+        {
+            CGRect frame = [column FEX_accessibilityFrame];
+            
+            if (frame.size.width > 0 && frame.size.height > 0)
+            {
+                [children addObject: column];
+            }
+        }
+    }
+    
+    CGRect visibleRect = [self visibleRect];
+    NSRange rowRange = [self rowsInRect: visibleRect];
+    id<NSOutlineViewDataSource> dataSource = [self dataSource];
+    
+    for (NSUInteger rowNum = rowRange.location; rowNum < rowRange.length; ++rowNum)
+    {
+        NSView* rowView = [self rowViewAtRow: rowNum makeIfNecessary: NO];
+        
+        if (rowView != nil)
+        {
+            [children addObject: rowView];
+        }
+        else
+        {
+            CGRect rowRect = [self rectOfRow: rowNum];
+            rowRect = NSIntersectionRect(rowRect, visibleRect);
+            
+            FEXTableRow* row = [[[FEXTableRow alloc] initWithFrame: rowRect
+                                                             table: self] autorelease];
+            
+            id item = [self itemAtRow: rowNum];
+            
+            for (NSUInteger colNum = 0; colNum < [self numberOfColumns]; ++colNum)
+            {
+                id cellValue = nil;
+                
+                CGRect colRect = [self frameOfCellAtColumn: colNum row: rowNum];
+                colRect = NSIntersectionRect(colRect, visibleRect);
+                
+                if (colRect.size.width > 0 && colRect.size.height > 0)
+                {
+                    if (dataSource != nil)
+                    {
+                    
+                        cellValue = [dataSource outlineView: self
+                                  objectValueForTableColumn: [[self tableColumns] objectAtIndex: colNum]
+                                                     byItem: item];
+                    }
+                    else
+                    {
+                        cellValue = [[self preparedCellAtColumn: colNum row: rowNum] objectValue];
+                    }
+                }
+                
+                if (cellValue != nil)
+                {
+                    FEXTableCell* cell = [[FEXTableCell alloc] initWithFrame: colRect
+                                                                         row: row
+                                                                       value: cellValue];
+                    
+                    [row addSubview: cell];
+                    [cell release];
+                }
+            }
+            
+            if (row != nil)
+            {
+                [children addObject: row];
+            }
+        }
+    }
+    
+    return children;
+}
+
+@end
+
 @implementation NSTableColumn (FrankAutomation)
 
 - (NSString*) FEX_accessibilityLabel
