@@ -7,6 +7,7 @@
 //
 
 #import "FEXTableRow.h"
+#import "NSScreen+Frank.h"
 
 @implementation FEXTableRow
 
@@ -30,20 +31,7 @@
     CGRect accessibilityFrame = [_table convertRect: _frame toView: nil];
     accessibilityFrame = [[_table window] convertRectToScreen: accessibilityFrame];
     
-    CGFloat screenHeight = 0;
-    
-    for (NSScreen* screen in [NSScreen screens])
-    {
-        NSRect screenFrame = [screen convertRectFromBacking: [screen frame]];
-        screenHeight = MAX(screenHeight, screenFrame.origin.y + screenFrame.size.height);
-    }
-    
-    CGFloat flippedY = screenHeight - (accessibilityFrame.origin.y + accessibilityFrame.size.height);
-    
-    if (flippedY >= 0)
-    {
-        accessibilityFrame.origin.y = flippedY;
-    }
+    accessibilityFrame = [NSScreen FEX_flipCoordinates: accessibilityFrame];
     
     return accessibilityFrame;
 }

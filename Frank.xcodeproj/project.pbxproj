@@ -62,6 +62,8 @@
 		3072649D165812FB00815A1A /* SelectorEngineRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = D6BD521D146C34BF001770B1 /* SelectorEngineRegistry.m */; };
 		3072649F165812FB00815A1A /* ViewJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0071264514F8956700E738ED /* ViewJSONSerializer.m */; };
 		3078E33C175417AE0016889C /* NSObject+FrankAutomation.m in Sources */ = {isa = PBXBuildFile; fileRef = 303A751116702D3D00B93673 /* NSObject+FrankAutomation.m */; };
+		30A7271E17A0B7B8006E16CC /* NSScreen+Frank.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A7271C17A0B7B8006E16CC /* NSScreen+Frank.h */; };
+		30A7271F17A0B7B8006E16CC /* NSScreen+Frank.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A7271D17A0B7B8006E16CC /* NSScreen+Frank.m */; };
 		30AC65A4165C39FF00DEB0AB /* FrankMac-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 30AC65A3165C39FF00DEB0AB /* FrankMac-Prefix.pch */; };
 		30AC65A7165C3A4D00DEB0AB /* OSXKeyboardCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 30AC65A5165C3A4D00DEB0AB /* OSXKeyboardCommand.h */; };
 		30AC65A8165C3A4D00DEB0AB /* OSXKeyboardCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 30AC65A6165C3A4D00DEB0AB /* OSXKeyboardCommand.m */; };
@@ -313,6 +315,8 @@
 		305CA7A2164205F800C4ACE5 /* libCocoaHTTPServerMac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCocoaHTTPServerMac.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		305CA7A31642063E00C4ACE5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		30852E7B172641EE001511B1 /* NSApplication+FrankAutomation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSApplication+FrankAutomation.h"; sourceTree = "<group>"; };
+		30A7271C17A0B7B8006E16CC /* NSScreen+Frank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSScreen+Frank.h"; sourceTree = "<group>"; };
+		30A7271D17A0B7B8006E16CC /* NSScreen+Frank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSScreen+Frank.m"; sourceTree = "<group>"; };
 		30AC65A3165C39FF00DEB0AB /* FrankMac-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FrankMac-Prefix.pch"; sourceTree = "<group>"; };
 		30AC65A5165C3A4D00DEB0AB /* OSXKeyboardCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSXKeyboardCommand.h; sourceTree = "<group>"; };
 		30AC65A6165C3A4D00DEB0AB /* OSXKeyboardCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSXKeyboardCommand.m; sourceTree = "<group>"; };
@@ -782,6 +786,8 @@
 				30198DFA17936DCD00F686A7 /* FEXTableCell.m */,
 				3034CD491794CCE000A3794F /* FEXTableRow.h */,
 				3034CD4A1794CCE000A3794F /* FEXTableRow.m */,
+				30A7271C17A0B7B8006E16CC /* NSScreen+Frank.h */,
+				30A7271D17A0B7B8006E16CC /* NSScreen+Frank.m */,
 			);
 			name = Additions;
 			sourceTree = "<group>";
@@ -837,6 +843,7 @@
 				30E82E3317128AB500E5BC7C /* ResolutionCommand.h in Headers */,
 				30198DFB17936DCD00F686A7 /* FEXTableCell.h in Headers */,
 				3034CD4B1794CCE000A3794F /* FEXTableRow.h in Headers */,
+				30A7271E17A0B7B8006E16CC /* NSScreen+Frank.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1126,6 +1133,7 @@
 				30E82E3517128AB500E5BC7C /* ResolutionCommand.m in Sources */,
 				30198DFC17936DCD00F686A7 /* FEXTableCell.m in Sources */,
 				3034CD4C1794CCE000A3794F /* FEXTableRow.m in Sources */,
+				30A7271F17A0B7B8006E16CC /* NSScreen+Frank.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

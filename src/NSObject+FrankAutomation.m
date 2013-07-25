@@ -15,6 +15,7 @@
 #if !TARGET_OS_IPHONE
 #import "FEXTableRow.h"
 #import "FEXTableCell.h"
+#import "NSScreen+Frank.h"
 #endif
 
 MAKE_CATEGORIES_LOADABLE(NSObject_FrankAutomation)
@@ -121,10 +122,7 @@ static const NSString* FEX_ParentAttribute = @"FEX_ParentAttribute";
     
     NSValue *originValue = nil;
     NSValue *sizeValue   = nil;
-    
-    CGFloat screenHeight = 0.0;
-    CGFloat flippedY     = 0.0;
-    
+        
     if ([self respondsToSelector: @selector(accessibilityAttributeNames)] &&
         [self respondsToSelector: @selector(accessibilityAttributeValue:)])
     {
@@ -148,20 +146,11 @@ static const NSString* FEX_ParentAttribute = @"FEX_ParentAttribute";
         size = [sizeValue sizeValue];
     }
     
-    for (NSScreen* screen in [NSScreen screens])
-    {
-        NSRect screenFrame = [screen convertRectFromBacking: [screen frame]];
-        screenHeight = MAX(screenHeight, screenFrame.origin.y + screenFrame.size.height);
-    }
+    CGRect accessibilityFrame = CGRectMake(origin.x, origin.y, size.width, size.height);
     
-    flippedY = screenHeight - (origin.y + size.height);
+    accessibilityFrame = [NSScreen FEX_flipCoordinates: accessibilityFrame];
     
-    if (flippedY >= 0 && originValue != nil)
-    {
-        origin.y = flippedY;
-    }
-    
-    return CGRectMake(origin.x, origin.y, size.width, size.height);
+    return accessibilityFrame;
 }
 
 - (BOOL) FEX_performAccessibilityAction: (NSString*) anAction
@@ -785,20 +774,7 @@ static const NSString* FEX_ParentAttribute = @"FEX_ParentAttribute";
     CGRect accessibilityFrame = [headerView convertRect: headerFrame toView: nil];
     accessibilityFrame = [[headerView window] convertRectToScreen: accessibilityFrame];
     
-    CGFloat screenHeight = 0;
-    
-    for (NSScreen* screen in [NSScreen screens])
-    {
-        NSRect screenFrame = [screen convertRectFromBacking: [screen frame]];
-        screenHeight = MAX(screenHeight, screenFrame.origin.y + screenFrame.size.height);
-    }
-    
-    CGFloat flippedY = screenHeight - (accessibilityFrame.origin.y + accessibilityFrame.size.height);
-    
-    if (flippedY >= 0)
-    {
-        accessibilityFrame.origin.y = flippedY;
-    }
+    accessibilityFrame = [NSScreen FEX_flipCoordinates: accessibilityFrame];
     
     return accessibilityFrame;
 }
