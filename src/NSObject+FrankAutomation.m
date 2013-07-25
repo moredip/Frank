@@ -601,29 +601,7 @@ static const NSString* FEX_ParentAttribute = @"FEX_ParentAttribute";
                 }
                 else
                 {
-                    NSTableColumn* column = [[self tableColumns] objectAtIndex: colNum];
-                    NSDictionary* bindingInfo = [column infoForBinding: NSValueBinding];
-                    NSString* observedKey = [bindingInfo objectForKey: NSObservedKeyPathKey];
-                    id observedObject = [bindingInfo objectForKey: NSObservedObjectKey];
-                    
-                    for (NSString* component in [observedKey componentsSeparatedByString: @"."])
-                    {
-                        if (cellValue == nil)
-                        {
-                            cellValue = [observedObject valueForKey: component];
-                        }
-                        else
-                        {
-                            if ([cellValue isKindOfClass: [NSArray class]])
-                            {
-                                cellValue = [[cellValue objectAtIndex: rowNum] valueForKey: component];
-                            }
-                            else
-                            {
-                                cellValue = [cellValue valueForKey: component];
-                            }
-                        }
-                    }
+                    cellValue = [[self preparedCellAtColumn: colNum row: rowNum] objectValue];
                 }
                 
                 if (cellValue != nil)
