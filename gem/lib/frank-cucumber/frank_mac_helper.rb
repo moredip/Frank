@@ -4,6 +4,17 @@ module Frank module Cucumber
 
 module FrankHelper
 
+  def click ( selector )
+    frame = accessibility_frame(selector)
+    frankly_map( selector, 'FEX_mouseDownX:y:', frame.center.x, frame.center.y )
+    frankly_map( selector, 'FEX_mouseUpX:y:', frame.center.x, frame.center.y )
+  end
+
+  def double_click ( selector )
+    click(selector)
+    click(selector)
+  end
+
   def perform_action_on_selector( action, selector )
     touch_successes = frankly_map( selector, action )
     raise "could not find anything matching [#{selector}] which supports that action" if touch_successes == nil or touch_successes.empty?

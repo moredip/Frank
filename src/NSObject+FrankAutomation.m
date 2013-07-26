@@ -166,6 +166,73 @@ static const NSString* FEX_ParentAttribute = @"FEX_ParentAttribute";
     return returnValue;
 }
 
+- (BOOL) FEX_mouseDownX: (CGFloat) x y: (CGFloat) y
+{
+    BOOL returnValue = NO;
+    
+    CGPoint location = CGPointMake(x, y);
+    
+    CGEventRef event = CGEventCreateMouseEvent(NULL,
+                                               kCGEventLeftMouseDown,
+                                               location,
+                                               kCGMouseButtonLeft);
+    
+    if (event != NULL)
+    {
+        CGEventPost(kCGSessionEventTap, event);
+        CFRelease(event);
+        event = NULL;
+        
+        returnValue = YES;
+    }
+    
+    return returnValue;
+}
+
+- (BOOL) FEX_dragToX: (CGFloat) x y: (CGFloat) y
+{
+    BOOL returnValue = NO;
+    
+    CGPoint location = CGPointMake(x, y);
+    
+    CGEventRef event = CGEventCreateMouseEvent(NULL,
+                                               kCGEventLeftMouseDragged,
+                                               location,
+                                               kCGMouseButtonLeft);
+    if (event != NULL)
+    {
+        CGEventPost(kCGSessionEventTap, event);
+        CFRelease(event);
+        event = NULL;
+        
+        returnValue = YES;
+    }
+    
+    return returnValue;
+}
+
+- (BOOL) FEX_mouseUpX: (CGFloat) x y: (CGFloat) y
+{
+    BOOL returnValue = NO;
+    
+    CGPoint location = CGPointMake(x, y);
+    
+    CGEventRef event = CGEventCreateMouseEvent(NULL,
+                                               kCGEventLeftMouseUp,
+                                               location,
+                                               kCGMouseButtonLeft);
+    if (event != NULL)
+    {
+        CGEventPost(kCGSessionEventTap, event);
+        CFRelease(event);
+        event = NULL;
+        
+        returnValue = YES;
+    }
+    
+    return returnValue;
+}
+
 - (BOOL) FEX_simulateClick
 {
     return [self FEX_performAccessibilityAction: NSAccessibilityPressAction];
@@ -422,73 +489,6 @@ static const NSString* FEX_ParentAttribute = @"FEX_ParentAttribute";
             [[self window] makeKeyWindow];
             returnValue = [[self window] makeFirstResponder: self];
         }
-    }
-    
-    return returnValue;
-}
-
-- (BOOL) FEX_mouseDownX: (CGFloat) x y: (CGFloat) y
-{
-    BOOL returnValue = NO;
-    
-    CGPoint location = CGPointMake(x, y);
-    
-    CGEventRef event = CGEventCreateMouseEvent(NULL,
-                                               kCGEventLeftMouseDown,
-                                               location,
-                                               kCGMouseButtonLeft);
-
-    if (event != NULL)
-    {
-        CGEventPost(kCGSessionEventTap, event);
-        CFRelease(event);
-        event = NULL;
-        
-        returnValue = YES;
-    }
-    
-    return returnValue;
-}
-
-- (BOOL) FEX_dragToX: (CGFloat) x y: (CGFloat) y
-{
-    BOOL returnValue = NO;
-    
-    CGPoint location = CGPointMake(x, y);
-    
-    CGEventRef event = CGEventCreateMouseEvent(NULL,
-                                               kCGEventLeftMouseDragged,
-                                               location,
-                                               kCGMouseButtonLeft);
-    if (event != NULL)
-    {            
-        CGEventPost(kCGSessionEventTap, event);
-        CFRelease(event);
-        event = NULL;
-        
-        returnValue = YES;
-    }
-
-    return returnValue;
-}
-
-- (BOOL) FEX_mouseUpX: (CGFloat) x y: (CGFloat) y
-{
-    BOOL returnValue = NO;
-    
-    CGPoint location = CGPointMake(x, y);
-    
-    CGEventRef event = CGEventCreateMouseEvent(NULL,
-                                               kCGEventLeftMouseUp,
-                                               location,
-                                               kCGMouseButtonLeft);
-    if (event != NULL)
-    {
-        CGEventPost(kCGSessionEventTap, event);
-        CFRelease(event);
-        event = NULL;
-        
-        returnValue = YES;
     }
     
     return returnValue;
