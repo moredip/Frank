@@ -39,12 +39,12 @@ class Frankifier
       unless File.exists?(xcodeproj)
         raise "Project file '#{xcodeproj}' does not exist. Please specify the relative path."
       end
-      
+
       @xcodeproj_path = Pathname.new(xcodeproj)
       @project = Xcodeproj::Project.new(@xcodeproj_path)
     end
   end
-  
+
   def decide_on_project
     projects = Pathname.glob( @root+'*.xcodeproj' )
     xcodeproj = case projects.size
@@ -86,19 +86,8 @@ class Frankifier
     puts "Frankifying target [#{@target.name}] in project #{@xcodeproj_path.basename}"
   end
 
-  def target_is_mac
-    settings = @target.build_configurations.first.build_settings['SDKROOT'] \
-      || @project.build_configurations.first.build_settings['SDKROOT']
-
-    return settings.include? 'macosx'
-  end
-
   def add_linker_flag
-    if target_is_mac
-      add_frank_entry_to_build_setting( 'OTHER_LDFLAGS', 'FRANK_MAC_LDFLAGS' )
-    else
-      add_frank_entry_to_build_setting( 'OTHER_LDFLAGS', 'FRANK_LDFLAGS' )
-    end
+    add_frank_entry_to_build_setting( 'OTHER_LDFLAGS', 'FRANK_LDFLAGS' )
   end
 
   def add_library_search_path
