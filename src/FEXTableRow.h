@@ -11,10 +11,16 @@
 @interface FEXTableRow : NSView
 {
     NSTableView* _table;
+    NSUInteger   _index;
 }
 
-- (id) initWithFrame: (NSRect) frame table: (NSTableView*) table;
+- (id) initWithFrame: (NSRect) frame table: (NSTableView*) table index: (NSUInteger) index;
 
 - (NSTableView*) table;
+
+- (BOOL) FEX_simulateClick;
+- (BOOL) FEX_isExpanded;
+- (BOOL) FEX_expand;
+- (BOOL) FEX_collapse;
 
 @end

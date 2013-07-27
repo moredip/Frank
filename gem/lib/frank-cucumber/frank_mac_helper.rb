@@ -57,6 +57,20 @@ module FrankHelper
     perform_action_on_selector( 'FEX_showMenu', selector )
   end
 
+  def expand_row( selector )
+    perform_action_on_selector( 'FEX_expand', selector )
+  end
+
+  def collapse_row( selector )
+    perform_action_on_selector( 'FEX_collapse', selector )
+  end
+
+  def row_is_expanded( selector )
+    successes = frankly_map( selector, "FEX_isExpanded" )
+    return false if successes == nil or successes.empty?
+    return !successes.include?(false)
+  end
+
 end
 
 end

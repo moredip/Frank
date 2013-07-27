@@ -81,4 +81,24 @@
     return _value;
 }
 
+- (BOOL) FEX_simulateClick
+{
+    return [_row FEX_simulateClick];
+}
+
+- (BOOL) FEX_isExpanded
+{
+    return [_row FEX_isExpanded];
+}
+
+- (BOOL) FEX_expand
+{
+    return [_row FEX_expand];
+}
+
+- (BOOL) FEX_collapse
+{
+    return [_row FEX_collapse];
+}
+
 @end

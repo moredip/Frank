@@ -540,6 +540,98 @@ static const NSString* FEX_ParentAttribute = @"FEX_ParentAttribute";
     return parent;
 }
 
+- (BOOL) FEX_isExpanded
+{
+    return [[self superview] FEX_isExpanded];
+}
+
+- (BOOL) FEX_expand
+{
+    return [[self superview] FEX_expand];
+}
+
+- (BOOL) FEX_collapse
+{
+    return [[self superview] FEX_collapse];
+}
+
+@end
+
+static const NSString* FEX_TableAttribute = @"FEX_TableAttribute";
+static const NSString* FEX_IndexAttribute = @"FEX_IndexAttribute";
+
+
+@implementation NSTableRowView (FrankAutomation)
+
+- (void) FEX_setTable: (NSTableView*) table
+{
+    objc_setAssociatedObject(self, FEX_TableAttribute, table, OBJC_ASSOCIATION_ASSIGN);
+}
+
+- (void) FEX_setIndex: (NSUInteger) index
+{
+    objc_setAssociatedObject(self, FEX_IndexAttribute, [NSNumber numberWithInteger: index], OBJC_ASSOCIATION_RETAIN);
+}
+
+- (BOOL) FEX_isExpanded
+{
+    BOOL returnValue = NO;
+    
+    NSTableView* table = objc_getAssociatedObject(self, FEX_TableAttribute);
+    
+    if ([table isKindOfClass: [NSOutlineView class]])
+    {
+        NSUInteger index = [objc_getAssociatedObject(self, FEX_IndexAttribute) integerValue];
+        
+        id item = [(NSOutlineView*) table itemAtRow: index];
+        returnValue = [(NSOutlineView*) table isItemExpanded: item];
+    }
+    
+    return returnValue;
+}
+
+- (BOOL) FEX_expand
+{
+    BOOL returnValue = NO;
+    
+    NSTableView* table = objc_getAssociatedObject(self, FEX_TableAttribute);
+    
+    if ([table isKindOfClass: [NSOutlineView class]])
+    {
+        NSUInteger index = [objc_getAssociatedObject(self, FEX_IndexAttribute) integerValue];
+        returnValue = YES;
+        
+        id item = [(NSOutlineView*) table itemAtRow: index];
+        if (![(NSOutlineView*) table isItemExpanded: item])
+        {
+            [(NSOutlineView*) table expandItem: item];
+        }
+    }
+    
+    return returnValue;
+}
+
+- (BOOL) FEX_collapse
+{
+    BOOL returnValue = NO;
+    
+    NSTableView* table = objc_getAssociatedObject(self, FEX_TableAttribute);
+    
+    if ([table isKindOfClass: [NSOutlineView class]])
+    {
+        NSUInteger index = [objc_getAssociatedObject(self, FEX_IndexAttribute) integerValue];
+        returnValue = YES;
+        
+        id item = [(NSOutlineView*) table itemAtRow: index];
+        if ([(NSOutlineView*) table isItemExpanded: item])
+        {
+            [(NSOutlineView*) table collapseItem: item];
+        }
+    }
+    
+    return returnValue;
+}
+
 @end
 
 @implementation NSTableView (FrankAutomation)
@@ -570,7 +662,8 @@ static const NSString* FEX_ParentAttribute = @"FEX_ParentAttribute";
         rowRect = NSIntersectionRect(rowRect, visibleRect);
         
         FEXTableRow* row = [[[FEXTableRow alloc] initWithFrame: rowRect
-                                                         table: self] autorelease];
+                                                         table: self
+                                                         index: rowNum] autorelease];
         
         for (NSUInteger colNum = 0; colNum < [self numberOfColumns]; ++colNum)
         {
@@ -585,6 +678,9 @@ static const NSString* FEX_ParentAttribute = @"FEX_ParentAttribute";
             {
                 if (colNum == 0)
                 {
+                    [(NSTableRowView*) [cellValue superview] FEX_setTable: self];
+                    [(NSTableRowView*) [cellValue superview] FEX_setIndex: rowNum];
+                    
                     [children addObject: [cellValue superview]];
                 }
             }
@@ -662,6 +758,8 @@ static const NSString* FEX_ParentAttribute = @"FEX_ParentAttribute";
         
         if (rowView != nil)
         {
+            [(NSTableRowView*) rowView FEX_setTable: self];
+            [(NSTableRowView*) rowView FEX_setIndex: rowNum];
             [children addObject: rowView];
         }
         else
@@ -670,7 +768,8 @@ static const NSString* FEX_ParentAttribute = @"FEX_ParentAttribute";
             rowRect = NSIntersectionRect(rowRect, visibleRect);
             
             FEXTableRow* row = [[[FEXTableRow alloc] initWithFrame: rowRect
-                                                             table: self] autorelease];
+                                                             table: self
+                                                             index: rowNum] autorelease];
             
             id item = [self itemAtRow: rowNum];
             
