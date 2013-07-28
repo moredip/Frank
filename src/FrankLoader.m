@@ -36,6 +36,10 @@ BOOL frankLogEnabled = NO;
         [server startServer];
         
         [[NSApplication sharedApplication] FEX_startTrackingMenus];
+        
+        [[NSNotificationCenter defaultCenter] removeObserver: [self class]
+                                                        name: NSApplicationDidUpdateNotification
+                                                      object: nil];
     });
 #endif
 }
@@ -72,7 +76,7 @@ BOOL frankLogEnabled = NO;
 #if TARGET_OS_IPHONE
     NSString *notificationName = @"UIApplicationDidBecomeActiveNotification";
 #else
-    NSString *notificationName = NSApplicationDidBecomeActiveNotification;
+    NSString *notificationName = NSApplicationDidUpdateNotification;
 #endif
     
     [[NSNotificationCenter defaultCenter] addObserver:[self class] 
