@@ -607,6 +607,30 @@ static const NSString* FEX_ParentAttribute = @"FEX_ParentAttribute";
 
 @end
 
+@implementation NSScrollView (FrankAutomation)
+
+- (void) FEX_scrollToTop
+{
+    [[self contentView] scrollToPoint: CGPointZero];
+}
+
+- (void) FEX_scrollToBottom
+{
+    CGPoint maxContentOffset = CGPointZero;
+    maxContentOffset.y = [self contentSize].height - [self frame].size.height;
+    
+    [[self contentView] scrollToPoint: maxContentOffset];
+}
+
+
+- (void) FEX_setContentOffsetX: (NSInteger) x
+                             y: (NSInteger) y
+{
+    [[self contentView] scrollToPoint: CGPointMake(x, y)];
+}
+
+@end
+
 static const NSString* FEX_TableAttribute = @"FEX_TableAttribute";
 static const NSString* FEX_IndexAttribute = @"FEX_IndexAttribute";
 
@@ -775,6 +799,12 @@ static const NSString* FEX_IndexAttribute = @"FEX_IndexAttribute";
     }
     
     return children;
+}
+
+- (void) FEX_scrollToRow: (NSInteger) row
+               inSection: (NSInteger) section
+{
+    [self scrollRowToVisible: row];
 }
 
 @end
