@@ -29,7 +29,6 @@ Gem::Specification.new do |s|
   s.add_dependency( "dnssd" )
   s.add_dependency( "thor" )
   s.add_dependency( "xcodeproj", [">=0.5.3"] )
-  s.add_dependency( "xcoder", [">=0.1.15"] )
 
   s.add_development_dependency( "rr" )
   s.add_development_dependency( "yard" )

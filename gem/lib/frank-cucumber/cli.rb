@@ -9,7 +9,6 @@ require 'frank-cucumber/console'
 require 'frank-cucumber/frankifier'
 require 'frank-cucumber/mac_launcher'
 require 'frank-cucumber/plugins/plugin'
-require 'xcoder'
 
 module Frank
   class CLI < Thor
@@ -67,6 +66,7 @@ module Frank
     WITHOUT_DEPS = 'without-dependencies'
     method_option 'no-plugins', :type => :boolean, :default => false, :aliases => '--np', :desc => 'Disable plugins'
     method_option 'arch', :type => :string, :default => 'i386'
+    method_option 'mac', :type => :string, :default => false
     method_option :noclean, :type => :boolean, :default => false, :aliases => '--nc', :desc => "Don't clean the build directory before building"
     method_option WITHOUT_DEPS, :type => :array, :desc => 'An array (space separated list) of plugin dependencies to exclude'
     def build(*args)
@@ -120,12 +120,9 @@ module Frank
         separate_configuration_option = "-configuration Debug"
       end
 
-      platform, app_name = get_platform_and_app_name(options)
-      build_mac = platform == :osx
-
       xcodebuild_args = args.join(" ")
 
-      if build_mac
+      if options['mac']
         run %Q|xcodebuild -xcconfig #{xcconfig_file} #{build_steps} #{extra_opts} #{separate_configuration_option} DEPLOYMENT_LOCATION=YES DSTROOT="#{build_output_dir}" FRANK_LIBRARY_SEARCH_PATHS="#{frank_lib_search_paths}" #{xcodebuild_args}|
       else
         extra_opts += " -arch #{options['arch']}"
@@ -134,10 +131,11 @@ module Frank
       end
       exit $?.exitstatus if not $?.success?
 
-      Dir.glob("#{build_output_dir}/*.app").delete_if { |x| x =~ /\/#{app_bundle_name}$/ }
-      FileUtils.cp_r("#{build_output_dir}/#{app_name}/.", frankified_app_dir)
+      app = Dir.glob("#{build_output_dir}/*.app").delete_if { |x| x =~ /\/#{app_bundle_name}$/ }
+      app = app.first
+      FileUtils.cp_r("#{app}/.", frankified_app_dir)
 
-      if build_mac
+      if options['mac']
         in_root do
           FileUtils.cp_r(
             File.join( 'Frank',static_bundle),
@@ -273,121 +271,6 @@ module Frank
         run %Q|/usr/libexec/PlistBuddy -c 'Set :CFBundleIdentifier #{new_bundle_identifier}' Info.plist|
         run %Q|/usr/libexec/PlistBuddy -c 'Set :CFBundleDisplayName Frankified' Info.plist|
       end
-    end
-
-    def get_platform_and_app_name ( options )
-      platform = :ios
-      app_name = nil
-      config = get_config_from_options ( options )
-
-      if config == nil
-        say "Unable to find a configuration using the options given"
-        exit 10
-      else
-        if config.sdkroot.include? "macosx"
-          platform = :osx
-        end
-
-        app_name = config.product_name + ".app"
-      end
-
-      return platform, app_name
-
-    end
-
-    def get_config_from_options ( options )
-      config = nil
-
-      if options["workspace"] != nil
-        config = get_config_from_workspace(options)
-      else
-        config = get_config_from_project(options)
-      end
-
-      return config
-
-    end
-
-    def get_config_from_workspace ( options )
-      config = nil
-
-      if options["scheme"] != nil
-        workspace = Xcode.workspace(options["workspace"])
-        scheme = workspace.scheme(options["scheme"])
-
-      else
-        say "You must specify a scheme if you specify a workplace"
-      end
-
-      config = get_config_from_targets(scheme.build_targets, options)
-
-      return config
-
-    end
-
-    def get_config_from_project ( options )
-      config = nil
-      project_path = options["project"]
-
-      if project_path == nil
-        Dir.foreach(Dir.pwd) { | file |
-          if file.end_with? ".xcodeproj"
-            if project_path != nil
-              say "You must specify a project if there are more than one .xcodeproj bundles in a directory"
-              exit 10
-            else
-              project_path = file
-            end
-          end
-        }
-      end
-
-      if project_path != nil
-        project = Xcode.project(project_path)
-        config = get_config_from_targets(project.targets, options)
-      end
-
-      return config
-    end
-
-    def get_config_from_targets( targets, options )
-      config = nil
-
-      expeted_config_name = options['configuration']
-      if expeted_config_name == nil
-        expeted_config_name = "Debug"
-      end
-
-      targets.each { | target |
-        if options["target"] != nil and target.name != options["target"]
-          next
-        end
-
-        candidate = nil
-
-        begin
-          candidate = target.config(expeted_config_name)
-        rescue RuntimeError
-          next
-        end
-
-        if candidate.wrapper_extension != "app"
-          candidate = nil
-        end
-
-        if candidate != nil and config != nil
-          say "The specified project or scheme contains multiple app targets. Please specify a project or scheme with only one app target or use --target to specify a target."
-          return nil
-        elsif candidate != nil
-          config = candidate
-        end
-      }
-
-      if config == nil
-        say "Could not find an appropriate target for the options provided."
-      end
-
-      return config
     end
 
     def each_plugin_path(&block)
