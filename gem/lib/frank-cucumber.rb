@@ -7,6 +7,7 @@ require 'frank-cucumber/mac_launcher'
 
 World(Frank::Cucumber::ColorHelper)
 World(Frank::Cucumber::FrankHelper)
+World(Frank::Cucumber::FrankMacHelper)
 World(Frank::Cucumber::Launcher)
 
 AfterConfiguration do
