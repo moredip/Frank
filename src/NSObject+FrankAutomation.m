@@ -278,6 +278,16 @@ static const NSString* FEX_ParentAttribute = @"FEX_ParentAttribute";
     return [self FEX_performAccessibilityAction: NSAccessibilityShowMenuAction];
 }
 
+- (BOOL) FEX_isVisible
+{
+    return YES;
+}
+
+- (BOOL) FEX_isFullyVisible
+{
+    return YES;
+}
+
 @end
 
 @implementation NSWindow(FrankAutomation)
@@ -292,6 +302,16 @@ static const NSString* FEX_ParentAttribute = @"FEX_ParentAttribute";
     }
     
     return returnValue;
+}
+
+- (BOOL) FEX_isVisible
+{
+    return [self isVisible];
+}
+
+- (BOOL) FEX_isFullyVisible
+{
+    return [[self contentView] FEX_isFullyVisible];
 }
 
 - (NSArray*) FEX_children
@@ -553,6 +573,36 @@ static const NSString* FEX_ParentAttribute = @"FEX_ParentAttribute";
 - (BOOL) FEX_collapse
 {
     return [[self superview] FEX_collapse];
+}
+
+- (BOOL) FEX_isVisible
+{
+    if ([self isHidden])
+    {
+        return NO;
+    }
+    
+    if ([self superview] != nil)
+    {
+        return [[self superview] FEX_isVisible];
+    }
+    else
+    {
+        return YES;
+    }
+}
+
+- (BOOL) FEX_isFullyVisible
+{
+    if (![self FEX_isVisible])
+    {
+        return NO;
+    }
+    
+    CGRect frame       = [self frame];
+    CGRect visibleRect = [self visibleRect];
+    
+    return NSEqualSizes(frame.size, visibleRect.size);
 }
 
 @end

@@ -246,6 +246,16 @@ void MyAXObserverCallback(AXObserverRef  observer,
     return YES;
 }
 
+- (BOOL) FEX_isVisible
+{
+    return ![self isHidden];
+}
+
+- (BOOL) FEX_isFullyVisible
+{
+    return [self FEX_isVisible];
+}
+
 - (NSArray*) FEX_children
 {    
     NSMutableArray *descendants = [NSMutableArray array];
