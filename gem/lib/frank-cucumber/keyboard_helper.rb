@@ -41,6 +41,15 @@ module KeyboardHelper
     Frank::Cucumber::Gateway.evaluate_frankly_response( res, "typing the following into the keyboard '#{text_to_type}'" )
   end
 
+  # Type a keyboard shortcut (Mac only)
+  #
+  # This function takes as arguments either a single string, or an array of strings, with
+  # each string representing a different key to press. Modifier keys are represented by
+  # the strings "command", "shift", "option", and "control".
+  #
+  # For example, to sent a keyboard shortcut to quit the app, you would call
+  #
+  # type shortcut "command", "q"
   def type_shortcut(*args)
     if args[0].kind_of?(Array)
       return type_shortcut(*args)
