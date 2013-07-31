@@ -55,6 +55,10 @@ module Frank
         copy_file f, File.join( 'Frank', f ), :force => true
       end
       directory( 'frank_static_resources.bundle', 'Frank/frank_static_resources.bundle', :force => true )
+
+      if yes? "\nOne or more static libraries may have been updated. For these changes to take effect the 'frankified_build' directory must be cleaned. Would you like me to do that now? Type 'y' or 'yes' to delete the contents of frankified_build."
+        remove_file('Frank/frankified_build')
+      end
     end
 
     XCODEBUILD_OPTIONS = %w{workspace project scheme target configuration}
