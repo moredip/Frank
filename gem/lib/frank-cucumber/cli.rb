@@ -207,6 +207,8 @@ module Frank
     end
 
     desc 'console', "launch a ruby console connected to your Frankified app"
+    method_option :bonjour, :type => :boolean, :default => false, :aliases => :b, :desc => "find Frank via Bonjour." 
+    method_option :server, :type => :string, :default => false, :aliases => :s, :desc => "server URL for Frank."
     def console
       # TODO: check whether app is running (using ps or similar), and launch it if it's not
 
@@ -220,6 +222,8 @@ module Frank
 
       Frank::Cucumber::FrankHelper.use_shelley_from_now_on
       console = Frank::Console.new
+      Frank::Cucumber::FrankHelper.test_on_physical_device_via_bonjour if options[:bonjour]
+      Frank::Cucumber::FrankHelper.server_base_url = options[:server] if options[:server]
       if console.check_for_running_app
         console.pry
       end
