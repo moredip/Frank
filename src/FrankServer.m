@@ -28,6 +28,7 @@
 #import "OrientationCommand.h"
 #import "LocationCommand.h"
 #import "IOSKeyboardCommand.h"
+#import "SaveScreenshotInCameraRollCommand.h"
 #else
 #import "OSXKeyboardCommand.h"
 #endif
@@ -73,6 +74,7 @@ static NSUInteger __defaultPort = FRANK_SERVER_PORT;
         [frankCommandRoute registerCommand:[[[OrientationCommand alloc]init]autorelease] withName:@"orientation"];
         [frankCommandRoute registerCommand:[[[LocationCommand alloc]init]autorelease] withName:@"location"];
         [frankCommandRoute registerCommand:[[[IOSKeyboardCommand alloc] init]autorelease] withName:@"type_into_keyboard"];
+        [frankCommandRoute registerCommand:[[[SaveScreenshotInCameraRollCommand alloc] init]autorelease] withName:@"save_screenshot_in_camera_roll"];
 #else
         [frankCommandRoute registerCommand:[[[SuccessCommand alloc]init]autorelease] withName:@"orientation"];
         [frankCommandRoute registerCommand:[[[SuccessCommand alloc]init]autorelease] withName:@"location"];
