@@ -41,7 +41,7 @@ class Frankifier
       end
 
       @xcodeproj_path = Pathname.new(xcodeproj)
-      @project = Xcodeproj::Project.new(@xcodeproj_path)
+      @project = Xcodeproj::Project.open(@xcodeproj_path)
     end
   end
 
@@ -61,7 +61,7 @@ class Frankifier
     end
 
     @xcodeproj_path = xcodeproj
-    @project = Xcodeproj::Project.new(xcodeproj)
+    @project = Xcodeproj::Project.open(xcodeproj)
   end
 
   def decide_on_target
@@ -129,7 +129,7 @@ class Frankifier
   end
 
   def save_changes
-    @project.save_as( @xcodeproj_path )
+    @project.save
   end
 
   # TODO: send this as a pull request to thor
