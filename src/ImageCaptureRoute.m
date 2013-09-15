@@ -14,6 +14,7 @@
 
 #if TARGET_OS_IPHONE
 #import "UIImage+Frank.h"
+#import "UIApplication+FrankAutomation.h"
 #import "UIView+ImageCapture.h"
 #else
 #import "NSImage+Frank.h"
@@ -99,7 +100,7 @@
     [self prepSnapshotDir];
     
 #if TARGET_OS_IPHONE
-    for (UIWindow *window in [[UIApplication sharedApplication] windows]) {
+    for (UIWindow *window in [[UIApplication sharedApplication] FEX_windows]) {
         [self snapshotViewAndSubviews:window];
     }
 #else
