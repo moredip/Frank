@@ -133,7 +133,7 @@ module Frank
       else
         extra_opts += " -arch #{options['arch']}"
 
-        run %Q|xcodebuild -xcconfig #{xcconfig_file} #{build_steps} #{extra_opts} #{separate_configuration_option} -sdk iphonesimulator DEPLOYMENT_LOCATION=YES DSTROOT="#{build_output_dir}" FRANK_LIBRARY_SEARCH_PATHS="#{frank_lib_search_paths}" #{xcodebuild_args}|
+        run %Q|xcodebuild -xcconfig #{xcconfig_file} #{build_steps} #{extra_opts} #{separate_configuration_option} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO DEPLOYMENT_LOCATION=YES DSTROOT="#{build_output_dir}" FRANK_LIBRARY_SEARCH_PATHS="#{frank_lib_search_paths}" #{xcodebuild_args}|
       end
       exit $?.exitstatus if not $?.success?
 
