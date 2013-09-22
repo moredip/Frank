@@ -1,5 +1,6 @@
 en:
   iphone_simulator: iPhone Simulator
+  iphone_simulator_reset: Reset
   hardware: Hardware
   home: Home
   rotate_left: Rotate Left
@@ -12,6 +13,7 @@ en:
 
 fr:
   iphone_simulator: Simulateur iOS
+  iphone_simulator_reset: Réinitialiser
   hardware: Matériel
   home: Écran d’accueil
   rotate_left: Rotation à gauche
@@ -24,6 +26,7 @@ fr:
 
 de:
   iphone_simulator: iOS-Simulator
+  iphone_simulator_reset: Zurücksetzen
   hardware: Hardware
   home: Home
   rotate_left: Links drehen
@@ -36,6 +39,7 @@ de:
 
 ru:
   iphone_simulator: Симулятор iOS
+  iphone_simulator_reset: Сбросить
   hardware: Аппаратура
   home: Экран «Домой»
   rotate_left: Повернуть влево
@@ -48,6 +52,7 @@ ru:
 
 zh:
   iphone_simulator: iOS 模拟器
+  iphone_simulator_reset: 还原
   hardware: 硬件
   home: 首页
   rotate_left: 向左旋转
@@ -60,6 +65,7 @@ zh:
 
 ja:
   iphone_simulator: iOSシミュレータ
+  iphone_simulator_reset: リセット
   hardware: ハードウェア
   home: ホーム
   rotate_left: 反時計回りに回転
@@ -72,6 +78,7 @@ ja:
 
 es:
   iphone_simulator: Simulador iOS
+  iphone_simulator_reset: Restablecer
   hardware: Hardware
   home: Inicio
   rotate_left: Girar a la izquierda
@@ -84,6 +91,7 @@ es:
 
 it:
   iphone_simulator: Simulatore iOS
+  iphone_simulator_reset: Reimposta
   hardware: Hardware
   home: Home
   rotate_left: Ruota a sinistra

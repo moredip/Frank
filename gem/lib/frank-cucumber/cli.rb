@@ -131,7 +131,7 @@ module Frank
       else
         extra_opts += " -arch #{options['arch']}"
 
-        run %Q|xcodebuild -xcconfig #{xcconfig_file} #{build_steps} #{extra_opts} #{separate_configuration_option} -sdk iphonesimulator DEPLOYMENT_LOCATION=YES DSTROOT="#{build_output_dir}" FRANK_LIBRARY_SEARCH_PATHS="#{frank_lib_search_paths}" #{xcodebuild_args}|
+        run %Q|xcodebuild -xcconfig #{xcconfig_file} #{build_steps} #{extra_opts} #{separate_configuration_option} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO DEPLOYMENT_LOCATION=YES DSTROOT="#{build_output_dir}" FRANK_LIBRARY_SEARCH_PATHS="#{frank_lib_search_paths}" #{xcodebuild_args}|
       end
       exit $?.exitstatus if not $?.success?
 
@@ -205,6 +205,8 @@ module Frank
     end
 
     desc 'console', "launch a ruby console connected to your Frankified app"
+    method_option :bonjour, :type => :boolean, :default => false, :aliases => :b, :desc => "find Frank via Bonjour." 
+    method_option :server, :type => :string, :default => false, :aliases => :s, :desc => "server URL for Frank."
     def console
       # TODO: check whether app is running (using ps or similar), and launch it if it's not
 
@@ -218,6 +220,8 @@ module Frank
 
       Frank::Cucumber::FrankHelper.use_shelley_from_now_on
       console = Frank::Console.new
+      Frank::Cucumber::FrankHelper.test_on_physical_device_via_bonjour if options[:bonjour]
+      Frank::Cucumber::FrankHelper.server_base_url = options[:server] if options[:server]
       if console.check_for_running_app
         console.pry
       end

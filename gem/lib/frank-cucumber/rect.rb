@@ -1,3 +1,5 @@
+require "ostruct"
+
 module Frank module Cucumber
 
   class Rect
