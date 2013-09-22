@@ -12,7 +12,10 @@
 @implementation UIView (ImageCapture)
 
 - (UIImage *)captureImage {
-    UIGraphicsBeginImageContext(self.bounds.size);
+    CGFloat scale = [UIScreen mainScreen].scale;
+    CGSize size = self.bounds.size;
+    
+    UIGraphicsBeginImageContextWithOptions(size, NO, scale);
     
     [self.layer renderInContext:UIGraphicsGetCurrentContext()];
 	
