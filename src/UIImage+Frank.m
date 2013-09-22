@@ -19,13 +19,14 @@
     
     UIInterfaceOrientation currentOrientation = application.statusBarOrientation;
     
+    CGFloat scale = [UIScreen mainScreen].scale;
     CGSize size = [UIScreen mainScreen].bounds.size;
-
+    
     if (!resultInPortrait && UIInterfaceOrientationIsLandscape(currentOrientation)) {
         size = CGSizeMake(size.height, size.width);
     }
     
-    UIGraphicsBeginImageContext(size);
+    UIGraphicsBeginImageContextWithOptions(size, NO, scale);
     CGContextRef context = UIGraphicsGetCurrentContext();
 
     if (!resultInPortrait) {
@@ -54,7 +55,7 @@
                               - window.bounds.size.width * window.layer.anchorPoint.x,
                               - window.bounds.size.height * window.layer.anchorPoint.y);
         
-        [window.layer renderInContext:UIGraphicsGetCurrentContext()];
+        [window.layer.presentationLayer renderInContext:UIGraphicsGetCurrentContext()];
         
         CGContextRestoreGState(context);
     }
@@ -65,18 +66,16 @@
     return image;
 }
 
-- (UIImage *)imageCropedToFrame:(CGRect)cropFrame
-{
+- (UIImage *)imageCropedToFrame:(CGRect)cropFrame {
     CGImageRef imageRef = CGImageCreateWithImageInRect([self CGImage], cropFrame);
     UIImage *result = [UIImage imageWithCGImage:imageRef]; 
     CGImageRelease(imageRef);
     return result;
 }
 
-- (UIImage *)imageMaskedAtFrame:(CGRect)maskFrame
-{
+- (UIImage *)imageMaskedAtFrame:(CGRect)maskFrame {
     CGRect imageFrame = CGRectMake(0, 0, self.size.width, self.size.height);
-    UIGraphicsBeginImageContext(self.size);
+    UIGraphicsBeginImageContextWithOptions(self.size, NO, self.scale);
     [self drawInRect:imageFrame];
     
     [[UIColor blackColor] set];
