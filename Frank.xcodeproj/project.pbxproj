@@ -13,6 +13,8 @@
 		00E864C5161D708B00E01209 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00E864C4161D708B00E01209 /* MapKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		0626BFAE174300240020B33B /* DumpCommandRoute.h in Headers */ = {isa = PBXBuildFile; fileRef = 0626BFAC174300240020B33B /* DumpCommandRoute.h */; };
 		0626BFAF174300240020B33B /* DumpCommandRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 0626BFAD174300240020B33B /* DumpCommandRoute.m */; };
+		0658EF1E17E52FBB000614E6 /* UIApplication+FrankAutomation.h in Headers */ = {isa = PBXBuildFile; fileRef = 0658EF1C17E52FBB000614E6 /* UIApplication+FrankAutomation.h */; };
+		0658EF1F17E52FBB000614E6 /* UIApplication+FrankAutomation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0658EF1D17E52FBB000614E6 /* UIApplication+FrankAutomation.m */; };
 		06CF35CA1744DECB00268ABF /* DumpCommandRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 0626BFAD174300240020B33B /* DumpCommandRoute.m */; };
 		30228E201642161200B1F9E7 /* AccessibilityCheckCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D67F2AAC13F5E7FA00A0BFF1 /* AccessibilityCheckCommand.m */; };
 		30228E221642161200B1F9E7 /* AppCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1DD76A12BADFE100E10B8C /* AppCommand.m */; };
@@ -288,6 +290,8 @@
 		00E864C4161D708B00E01209 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		0626BFAC174300240020B33B /* DumpCommandRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DumpCommandRoute.h; sourceTree = "<group>"; };
 		0626BFAD174300240020B33B /* DumpCommandRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DumpCommandRoute.m; sourceTree = "<group>"; };
+		0658EF1C17E52FBB000614E6 /* UIApplication+FrankAutomation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+FrankAutomation.h"; sourceTree = "<group>"; };
+		0658EF1D17E52FBB000614E6 /* UIApplication+FrankAutomation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+FrankAutomation.m"; sourceTree = "<group>"; };
 		30228E2916421C4400B1F9E7 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		302B803F1646DE02000F9861 /* NSImage+Frank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+Frank.h"; sourceTree = "<group>"; };
 		302B80401646DE02000F9861 /* NSImage+Frank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+Frank.m"; sourceTree = "<group>"; };
@@ -770,6 +774,8 @@
 				303A751116702D3D00B93673 /* NSObject+FrankAutomation.m */,
 				30412D2E165333E300719CD2 /* NSView+FrankImageCapture.h */,
 				30412D2F165333E300719CD2 /* NSView+FrankImageCapture.m */,
+				0658EF1C17E52FBB000614E6 /* UIApplication+FrankAutomation.h */,
+				0658EF1D17E52FBB000614E6 /* UIApplication+FrankAutomation.m */,
 			);
 			name = Additions;
 			sourceTree = "<group>";
@@ -865,6 +871,7 @@
 				C189EF1E16BB5A8100F8236D /* VersionCommand.h in Headers */,
 				303CFCE416C80B830004BD05 /* DeviceCommand.h in Headers */,
 				30E82E3217128AB500E5BC7C /* ResolutionCommand.h in Headers */,
+				0658EF1E17E52FBB000614E6 /* UIApplication+FrankAutomation.h in Headers */,
 				0626BFAE174300240020B33B /* DumpCommandRoute.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1225,6 +1232,7 @@
 				D6FA01B714283C4F00576AEF /* EnginesCommand.m in Sources */,
 				A91F3AA715F6E456003F434F /* ExitCommand.m in Sources */,
 				C9605E651606BF2900170F88 /* IOSKeyboardCommand.m in Sources */,
+				0658EF1F17E52FBB000614E6 /* UIApplication+FrankAutomation.m in Sources */,
 				C9605E671606BF8E00170F88 /* UIView+MapKitWorkaround.m in Sources */,
 				C9605E6B1606BFAE00170F88 /* UIImage+Frank.m in Sources */,
 				C18A5EF1160D4AB400DC25F6 /* ImageCaptureRoute.m in Sources */,
