@@ -9,13 +9,14 @@
 #import "UIImage+Frank.h"
 #import <QuartzCore/QuartzCore.h>
 
+#import "UIApplication+FrankAutomation.h"
 #import "UIView+ImageCapture.h"
 
 @implementation UIImage(Frank)
 
 + (UIImage *)imageFromApplication:(BOOL)allWindows resultInPortrait:(BOOL)resultInPortrait {
     UIApplication *application = [UIApplication sharedApplication];
-    NSArray* windows = (allWindows) ? application.windows : [NSArray arrayWithObject:application.keyWindow];
+    NSArray* windows = (allWindows) ? [application FEX_windows] : [NSArray arrayWithObject:application.keyWindow];
     
     UIInterfaceOrientation currentOrientation = application.statusBarOrientation;
     
