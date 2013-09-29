@@ -7,16 +7,21 @@
 //
 
 #import "SelectorEngineRegistry.h"
+#import "FrankApplication.h"
 
 static NSMutableDictionary *s_engines;
+static FrankApplication *s_application;
 
 @implementation SelectorEngineRegistry
 
 + (void)initialize {
     s_engines = [[NSMutableDictionary alloc] init];
+    s_application = [[FrankApplication alloc] init];
 }
 
 + (void) registerSelectorEngine:(id<SelectorEngine>)engine WithName:(NSString *)string {
+    // set up application wrapper here. Its primary purpose is to give the selector engine correct set of windows to work with
+    engine.application = s_application;
     [s_engines setObject:engine forKey:string];
 }
 

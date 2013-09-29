@@ -97,6 +97,8 @@
 		65DBDDF316A89E72007D3D43 /* ContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA9E4CA15C81E8700112290 /* ContextFilterLogFormatter.m */; };
 		65DBDDF416A89E72007D3D43 /* DispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA9E4CC15C81E8700112290 /* DispatchQueueLogFormatter.m */; };
 		65DBDDF616A89E72007D3D43 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 305CA7A31642063E00C4ACE5 /* Foundation.framework */; };
+		6EC121F517F8438600566318 /* FrankApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = 6EC121F317F8438600566318 /* FrankApplication.h */; };
+		6EC121F617F8438600566318 /* FrankApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EC121F417F8438600566318 /* FrankApplication.m */; };
 		9B3E52AF163FB98300EB24C2 /* LocationCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B3E52AD163FB98300EB24C2 /* LocationCommand.h */; };
 		9B3E52B0163FB98300EB24C2 /* LocationCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3E52AE163FB98300EB24C2 /* LocationCommand.m */; };
 		A91F3AA615F6E456003F434F /* ExitCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = A91F3AA415F6E456003F434F /* ExitCommand.h */; };
@@ -325,6 +327,9 @@
 		65DBDDB516A89CDC007D3D43 /* libCocoaLumberjack.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCocoaLumberjack.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		65DBDDDA16A89E5B007D3D43 /* libCocoaAsyncSocketMac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCocoaAsyncSocketMac.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		65DBDDFB16A89E72007D3D43 /* libCocoaLumberjackMac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCocoaLumberjackMac.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		6EC121F317F8438600566318 /* FrankApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrankApplication.h; sourceTree = "<group>"; };
+		6EC121F417F8438600566318 /* FrankApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrankApplication.m; sourceTree = "<group>"; };
+		6EC121F817F8B16600566318 /* SelectorEngineProtocols.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectorEngineProtocols.h; sourceTree = "<group>"; };
 		9B3E52AD163FB98300EB24C2 /* LocationCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationCommand.h; sourceTree = "<group>"; };
 		9B3E52AE163FB98300EB24C2 /* LocationCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationCommand.m; sourceTree = "<group>"; };
 		A91F3AA415F6E456003F434F /* ExitCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExitCommand.h; sourceTree = "<group>"; };
@@ -737,6 +742,9 @@
 				D6BD521D146C34BF001770B1 /* SelectorEngineRegistry.m */,
 				0071264414F8956700E738ED /* ViewJSONSerializer.h */,
 				0071264514F8956700E738ED /* ViewJSONSerializer.m */,
+				6EC121F817F8B16600566318 /* SelectorEngineProtocols.h */,
+				6EC121F317F8438600566318 /* FrankApplication.h */,
+				6EC121F417F8438600566318 /* FrankApplication.m */,
 			);
 			name = Selectors;
 			sourceTree = "<group>";
@@ -866,6 +874,7 @@
 				C18A5EF0160D4AB400DC25F6 /* ImageCaptureRoute.h in Headers */,
 				C18A5EF5160D4AD300DC25F6 /* UIView+ImageCapture.h in Headers */,
 				C177A4CC1632319A0081DF77 /* AnyJSON.h in Headers */,
+				6EC121F517F8438600566318 /* FrankApplication.h in Headers */,
 				9B3E52AF163FB98300EB24C2 /* LocationCommand.h in Headers */,
 				30C544B1167E4D9E0034F49C /* SuccessCommand.h in Headers */,
 				C189EF1E16BB5A8100F8236D /* VersionCommand.h in Headers */,
@@ -1231,6 +1240,7 @@
 				D6A1D28015A8D05E00EC056C /* UIView+Frank.m in Sources */,
 				D6FA01B714283C4F00576AEF /* EnginesCommand.m in Sources */,
 				A91F3AA715F6E456003F434F /* ExitCommand.m in Sources */,
+				6EC121F617F8438600566318 /* FrankApplication.m in Sources */,
 				C9605E651606BF2900170F88 /* IOSKeyboardCommand.m in Sources */,
 				0658EF1F17E52FBB000614E6 /* UIApplication+FrankAutomation.m in Sources */,
 				C9605E671606BF8E00170F88 /* UIView+MapKitWorkaround.m in Sources */,
