@@ -20,8 +20,11 @@ static FrankApplication *s_application;
 }
 
 + (void) registerSelectorEngine:(id<SelectorEngine>)engine WithName:(NSString *)string {
-    // set up application wrapper here. Its primary purpose is to give the selector engine correct set of windows to work with
-    engine.application = s_application;
+    // make sure we are setting application wrapper to the selector engine that expects it to be set
+    if ([engine respondsToSelector:@selector(application)]) {
+        // set up application wrapper here. Its primary purpose is to give the selector engine correct set of windows to work with
+        engine.application = s_application;
+    }
     [s_engines setObject:engine forKey:string];
 }
 
