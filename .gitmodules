@@ -3,7 +3,7 @@
 	url = https://github.com/moredip/UISpec
 [submodule "lib/Shelley"]
 	path = lib/Shelley
-	url = https://github.com/oradyvan/Shelley.git
+	url = https://github.com/TestingWithFrank/Shelley.git
 [submodule "symbiote"]
 	path = symbiote
 	url = https://github.com/TestingWithFrank/symbiote.git
