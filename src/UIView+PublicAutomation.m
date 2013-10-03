@@ -186,6 +186,22 @@ NSString * formatCGPointVal(NSValue *val) {
 	return [self FEX_touchPoint:point];
 }
 
+// New code by Carmen Bay
+
+- (BOOL)FEX_forcedTouchx:(NSNumber *)x y:(NSNumber *)y {
+    CGPoint point = [self FEX_pointFromX:x andY:y];
+    
+    if (![self FEX_canTouchPoint:point force:YES raiseExceptions:NO]) {
+        return NO;
+    }
+    
+    [UIAutomationBridge tapView:self atPoint:point];
+    
+    return YES;
+}
+
+// End of new code
+
 //Modled on UIAutomation
 #pragma mark - Touch Gestures
 
