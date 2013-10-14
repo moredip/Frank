@@ -7,6 +7,7 @@
 //
 
 #import "SelectorEngineRegistry.h"
+#import "UIApplication+FrankAutomation.h"
 
 static NSMutableDictionary *s_engines;
 
@@ -25,8 +26,15 @@ static NSMutableDictionary *s_engines;
     if( !engine ){
         [NSException raise:@"unrecognized engine" format:@"engine named '%@' hasn't been registered with the SelectorEngineRegistry", engineName];
     }
-    
-    return [engine selectViewsWithSelector:selector];
+    if ([engine respondsToSelector:@selector(selectViewsWithSelector:inWindows:)]) {
+        return [engine selectViewsWithSelector:selector inWindows:[[UIApplication sharedApplication] FEX_windows]];
+    }
+    else if ([engine respondsToSelector:@selector(selectViewsWithSelector:)]) {
+        return [engine selectViewsWithSelector:selector];
+    }
+    else {
+        [NSException raise:@"Engine error" format:@"engine named '%@' does not implement the SelectorEngine protocol", engineName];
+    }
 }
 
 + (NSArray *)getEngineNames {
