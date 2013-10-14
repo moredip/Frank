@@ -35,6 +35,7 @@ static NSMutableDictionary *s_engines;
     else {
         [NSException raise:@"Engine error" format:@"engine named '%@' does not implement the SelectorEngine protocol", engineName];
     }
+    return nil;
 }
 
 + (NSArray *)getEngineNames {
