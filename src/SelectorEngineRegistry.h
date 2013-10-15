@@ -19,7 +19,7 @@
 - (NSArray *) selectViewsWithSelector:(NSString *)selector;
 
 /* If a selector engine implements this method, it should return all matching views in
- * any of the windows provided.
+ * any of the windows provided. Currently only supported on iOS.
  */
 - (NSArray *) selectViewsWithSelector:(NSString *)selector inWindows:(NSArray *)windows;
 
