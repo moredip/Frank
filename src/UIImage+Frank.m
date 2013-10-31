@@ -56,7 +56,13 @@
                               - window.bounds.size.width * window.layer.anchorPoint.x,
                               - window.bounds.size.height * window.layer.anchorPoint.y);
         
-        [window.layer.presentationLayer renderInContext:UIGraphicsGetCurrentContext()];
+        // iOS7 has a much more efficient means of capturing the current view hierarchy
+        if ([window respondsToSelector:@selector(drawViewHierarchyInRect:afterScreenUpdates:)]) {
+            [window drawViewHierarchyInRect:window.bounds afterScreenUpdates:YES];
+        }
+        else {
+            [window.layer.presentationLayer renderInContext:UIGraphicsGetCurrentContext()];
+        }
         
         CGContextRestoreGState(context);
     }
