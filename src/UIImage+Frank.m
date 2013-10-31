@@ -56,7 +56,7 @@
                               - window.bounds.size.width * window.layer.anchorPoint.x,
                               - window.bounds.size.height * window.layer.anchorPoint.y);
         
-        [window.layer.presentationLayer renderInContext:UIGraphicsGetCurrentContext()];
+        [window.layer renderInContext:UIGraphicsGetCurrentContext()];
         
         CGContextRestoreGState(context);
     }
