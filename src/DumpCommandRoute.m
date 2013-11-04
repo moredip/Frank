@@ -12,8 +12,10 @@
 #import "ViewJSONSerializer.h"
 #import "JSON.h"
 
-#if !TARGET_OS_IPHONE
-#import "NSApplication+FrankAutomation.h"
+#if TARGET_OS_IPHONE
+#include "UIApplication+FrankAutomation.h"
+#else
+#include "NSApplication+FrankAutomation.h"
 #endif
 
 @implementation DumpCommandRoute {
@@ -186,7 +188,7 @@
     // now, recurse on all subviews
 #if TARGET_OS_IPHONE
     if ([object isKindOfClass:[UIApplication class]]) {
-        return [(UIApplication *) object windows];
+        return [(UIApplication *) object FEX_windows];
     }
     else if ([object isKindOfClass:[UIView class]]) {
         return [(UIView *) object subviews];
