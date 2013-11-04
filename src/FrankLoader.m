@@ -16,6 +16,7 @@
 #import "DDTTYLogger.h"
 
 #if !TARGET_OS_IPHONE
+#import "AccessibilityCheckCommand.h"
 #import "NSApplication+FrankAutomation.h"
 #endif
 
@@ -40,6 +41,8 @@ BOOL frankLogEnabled = NO;
         [[NSNotificationCenter defaultCenter] removeObserver: [self class]
                                                         name: NSApplicationDidUpdateNotification
                                                       object: nil];
+        
+        [AccessibilityCheckCommand accessibilitySeemsToBeTurnedOn];
     });
 #endif
 }
