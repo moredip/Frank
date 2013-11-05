@@ -13,6 +13,7 @@
 
 - (NSString *) handleCommandWithRequestBody:(NSString *) requestBody {
     NSString* device = nil;
+    NSString* version = nil;
     
 #if TARGET_OS_IPHONE
     switch ([[UIDevice currentDevice] userInterfaceIdiom]) {
@@ -28,11 +29,16 @@
             device = @"unknown";
             break;
     }
+    version = [[UIDevice currentDevice] systemVersion];
 #else
     device = @"mac";
+    version = [NSString stringWithFormat:@"%.2f", NSAppKitVersionNumber];
 #endif
-    
-    return TO_JSON ([NSDictionary dictionaryWithObject: device forKey: @"device"]);
+  
+    NSArray* objects = [NSArray arrayWithObjects:device, version, nil];
+    NSArray* keys = [NSArray arrayWithObjects:@"device", @"version", nil];
+
+    return TO_JSON ([NSDictionary dictionaryWithObjects:objects forKeys:keys]);
 }
 
 @end
