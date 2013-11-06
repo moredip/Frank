@@ -442,6 +442,14 @@ module FrankHelper
     return frankly_device_name == "mac"
   end
 
+  # @return [String] the operating system version currently running the application
+  def frankly_os_version
+    res = frank_server.send_get( 'device' )
+    os_version = JSON.parse( res )['os_version']
+    puts "os_version reported as '#{os_version}'" if $DEBUG
+    os_version
+  end
+
   # Check whether Frank is able to communicate with the application under automation
   def frankly_ping
     frank_server.ping
