@@ -35,10 +35,8 @@
     osVersion = [NSString stringWithFormat:@"%.2f", NSAppKitVersionNumber];
 #endif
   
-    NSArray* objects = [NSArray arrayWithObjects:device, osVersion, nil];
-    NSArray* keys = [NSArray arrayWithObjects:@"device", @"os_version", nil];
-
-    return TO_JSON ([NSDictionary dictionaryWithObjects:objects forKeys:keys]);
+    NSDictionary *deviceAndOSVersion = @{@"device": device, @"os_version": osVersion};
+    return TO_JSON (deviceAndOSVersion);
 }
 
 @end
