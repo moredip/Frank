@@ -317,7 +317,7 @@ static const NSString* FEX_ParentAttribute = @"FEX_ParentAttribute";
 
 - (NSArray*) FEX_children
 {
-    NSMutableArray* children = [NSMutableArray new];
+    NSMutableArray* children = [NSMutableArray array];
     
     if ([self toolbar] != NULL)
     {
