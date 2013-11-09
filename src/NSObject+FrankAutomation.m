@@ -157,7 +157,8 @@ static const NSString* FEX_ParentAttribute = @"FEX_ParentAttribute";
 {
     BOOL returnValue = NO;
     
-    if ([[self accessibilityActionNames] containsObject: anAction])
+    if ([self respondsToSelector: @selector(accessibilityActionNames)] &&
+        [[self accessibilityActionNames] containsObject: anAction])
     {
         [self accessibilityPerformAction: anAction];
         returnValue = YES;
@@ -316,12 +317,75 @@ static const NSString* FEX_ParentAttribute = @"FEX_ParentAttribute";
 
 - (NSArray*) FEX_children
 {
-    return [NSArray arrayWithObject:[self contentView]];
+    NSMutableArray* children = [NSMutableArray new];
+    
+    if ([self toolbar] != NULL)
+    {
+        // NSToolbars do not keep references to their parent NSWindows
+        [[self toolbar] FEX_setParent: self];
+        [children addObject: [self toolbar]];
+    }
+    
+    if ([self contentView] != NULL)
+    {
+        [children addObject: [self contentView]];
+    }
+    
+    return children;
 }
 
 - (id) FEX_parent
 {
     return NSApp;
+}
+
+@end
+
+@implementation NSToolbar (FrankAutomation)
+
+- (NSArray*) FEX_children
+{
+    return [self visibleItems];
+}
+
+@end
+
+@implementation NSToolbarItem (FrankAutomation)
+
+- (BOOL) FEX_simulateClick
+{
+    id target = [self target];
+    
+    if (target == nil)
+    {
+        target = [NSApplication sharedApplication];
+    }
+    
+    BOOL returnValue = [self isEnabled] && target != nil && [self action] != nil && [target respondsToSelector: [self action]];
+    
+    if (returnValue)
+    {
+        [target performSelector: [self action] withObject: self];
+    }
+    
+    return returnValue;
+}
+
+- (id) FEX_parent
+{
+    return [self toolbar];
+}
+
+- (NSString*) FEX_accessibilityLabel
+{
+    NSString* accessibilityLabel = [super FEX_accessibilityLabel];
+    
+    if (accessibilityLabel == nil)
+    {
+        accessibilityLabel = [self label];
+    }
+    
+    return accessibilityLabel;
 }
 
 @end
