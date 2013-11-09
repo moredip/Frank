@@ -263,6 +263,7 @@ void MyAXObserverCallback(AXObserverRef  observer,
     [descendants addObjectsFromArray:[self windows]];
     [descendants addObject:[self mainMenu]];
     [descendants addObjectsFromArray:[[self FEX_menus] allObjects]];
+    [descendants addObject: [NSStatusBar systemStatusBar]];
     
     return descendants;
 }

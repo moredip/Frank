@@ -64,6 +64,8 @@
 		3072649D165812FB00815A1A /* SelectorEngineRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = D6BD521D146C34BF001770B1 /* SelectorEngineRegistry.m */; };
 		3072649F165812FB00815A1A /* ViewJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0071264514F8956700E738ED /* ViewJSONSerializer.m */; };
 		3078E33C175417AE0016889C /* NSObject+FrankAutomation.m in Sources */ = {isa = PBXBuildFile; fileRef = 303A751116702D3D00B93673 /* NSObject+FrankAutomation.m */; };
+		3092A57F182EB2AB0041C1F5 /* NSStatusBar+FrankAutomation.h in Headers */ = {isa = PBXBuildFile; fileRef = 3092A57D182EB2AB0041C1F5 /* NSStatusBar+FrankAutomation.h */; };
+		3092A580182EB2AB0041C1F5 /* NSStatusBar+FrankAutomation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3092A57E182EB2AB0041C1F5 /* NSStatusBar+FrankAutomation.m */; };
 		30A7271E17A0B7B8006E16CC /* NSScreen+Frank.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A7271C17A0B7B8006E16CC /* NSScreen+Frank.h */; };
 		30A7271F17A0B7B8006E16CC /* NSScreen+Frank.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A7271D17A0B7B8006E16CC /* NSScreen+Frank.m */; };
 		30AC65A4165C39FF00DEB0AB /* FrankMac-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 30AC65A3165C39FF00DEB0AB /* FrankMac-Prefix.pch */; };
@@ -296,10 +298,10 @@
 		00E864C4161D708B00E01209 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		0626BFAC174300240020B33B /* DumpCommandRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DumpCommandRoute.h; sourceTree = "<group>"; };
 		0626BFAD174300240020B33B /* DumpCommandRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DumpCommandRoute.m; sourceTree = "<group>"; };
-		30198DF917936DCD00F686A7 /* FEXTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEXTableCell.h; sourceTree = "<group>"; };
-		30198DFA17936DCD00F686A7 /* FEXTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEXTableCell.m; sourceTree = "<group>"; };
 		0658EF1C17E52FBB000614E6 /* UIApplication+FrankAutomation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+FrankAutomation.h"; sourceTree = "<group>"; };
 		0658EF1D17E52FBB000614E6 /* UIApplication+FrankAutomation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+FrankAutomation.m"; sourceTree = "<group>"; };
+		30198DF917936DCD00F686A7 /* FEXTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEXTableCell.h; sourceTree = "<group>"; };
+		30198DFA17936DCD00F686A7 /* FEXTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEXTableCell.m; sourceTree = "<group>"; };
 		30228E2916421C4400B1F9E7 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		302B803F1646DE02000F9861 /* NSImage+Frank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+Frank.h"; sourceTree = "<group>"; };
 		302B80401646DE02000F9861 /* NSImage+Frank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+Frank.m"; sourceTree = "<group>"; };
@@ -319,6 +321,8 @@
 		305CA7A2164205F800C4ACE5 /* libCocoaHTTPServerMac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCocoaHTTPServerMac.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		305CA7A31642063E00C4ACE5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		30852E7B172641EE001511B1 /* NSApplication+FrankAutomation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSApplication+FrankAutomation.h"; sourceTree = "<group>"; };
+		3092A57D182EB2AB0041C1F5 /* NSStatusBar+FrankAutomation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSStatusBar+FrankAutomation.h"; sourceTree = "<group>"; };
+		3092A57E182EB2AB0041C1F5 /* NSStatusBar+FrankAutomation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSStatusBar+FrankAutomation.m"; sourceTree = "<group>"; };
 		30A7271C17A0B7B8006E16CC /* NSScreen+Frank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSScreen+Frank.h"; sourceTree = "<group>"; };
 		30A7271D17A0B7B8006E16CC /* NSScreen+Frank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSScreen+Frank.m"; sourceTree = "<group>"; };
 		30AC65A3165C39FF00DEB0AB /* FrankMac-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FrankMac-Prefix.pch"; sourceTree = "<group>"; };
@@ -796,6 +800,8 @@
 				30A7271D17A0B7B8006E16CC /* NSScreen+Frank.m */,
 				0658EF1C17E52FBB000614E6 /* UIApplication+FrankAutomation.h */,
 				0658EF1D17E52FBB000614E6 /* UIApplication+FrankAutomation.m */,
+				3092A57D182EB2AB0041C1F5 /* NSStatusBar+FrankAutomation.h */,
+				3092A57E182EB2AB0041C1F5 /* NSStatusBar+FrankAutomation.m */,
 			);
 			name = Additions;
 			sourceTree = "<group>";
@@ -848,6 +854,7 @@
 				30C544B2167E4D9E0034F49C /* SuccessCommand.h in Headers */,
 				C189EF1F16BB5A8100F8236D /* VersionCommand.h in Headers */,
 				303CFCE516C80B830004BD05 /* DeviceCommand.h in Headers */,
+				3092A57F182EB2AB0041C1F5 /* NSStatusBar+FrankAutomation.h in Headers */,
 				30E82E3317128AB500E5BC7C /* ResolutionCommand.h in Headers */,
 				30198DFB17936DCD00F686A7 /* FEXTableCell.h in Headers */,
 				3034CD4B1794CCE000A3794F /* FEXTableRow.h in Headers */,
@@ -1116,6 +1123,7 @@
 				06CF35CA1744DECB00268ABF /* DumpCommandRoute.m in Sources */,
 				304374F6167D2BC8006D5D71 /* AnyJSON.m in Sources */,
 				302B80421646DE02000F9861 /* NSImage+Frank.m in Sources */,
+				3092A580182EB2AB0041C1F5 /* NSStatusBar+FrankAutomation.m in Sources */,
 				303A751316702D3D00B93673 /* NSObject+FrankAutomation.m in Sources */,
 				30412D31165333E300719CD2 /* NSView+FrankImageCapture.m in Sources */,
 				306249F51644E67400E8C20A /* FrankLoader.m in Sources */,
