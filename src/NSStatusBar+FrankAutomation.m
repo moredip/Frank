@@ -75,29 +75,3 @@ static const NSString* FEX_StatusBarItemsKey = @"FEX_StatusBarItemsKey";
 }
 
 @end
-
-@implementation NSStatusItem (FrankAutomation)
-
-- (NSArray*) FEX_children
-{
-    NSMutableArray* children = [NSMutableArray array];
-    
-    if ([self menu] != nil)
-    {
-        [children addObject: [self menu]];
-    }
-    
-    return children;
-}
-
-- (void) FEX_simulateClick
-{
-    [self popUpStatusItemMenu: [self menu]];
-}
-
-- (NSString*) FEX_title
-{
-    return [self title];
-}
-
-@end

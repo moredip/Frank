@@ -553,6 +553,39 @@ static const NSString* FEX_ParentAttribute = @"FEX_ParentAttribute";
 
 @end
 
+@implementation NSStatusItem (FrankAutomation)
+
+- (NSArray*) FEX_children
+{
+    NSMutableArray* children = [NSMutableArray array];
+    
+    if ([self menu] != nil)
+    {
+        [children addObject: [self menu]];
+    }
+    
+    return children;
+}
+
+- (void) FEX_simulateClick
+{
+    [self popUpStatusItemMenu: [self menu]];
+}
+
+- (NSString*) FEX_accessibilityLabel
+{
+    NSString* accessibilityLabel = [super FEX_accessibilityLabel];
+    
+    if ([accessibilityLabel length] == 0)
+    {
+        accessibilityLabel = [self title];
+    }
+    
+    return accessibilityLabel;
+}
+
+@end
+
 @implementation NSView (FrankAutomation)
 
 - (BOOL) FEX_raise
@@ -1000,6 +1033,41 @@ static const NSString* FEX_IndexAttribute = @"FEX_IndexAttribute";
     accessibilityFrame = [NSScreen FEX_flipCoordinates: accessibilityFrame];
     
     return accessibilityFrame;
+}
+
+@end
+
+@implementation NSTabView (FrankAutomation)
+
+- (NSArray*) FEX_children
+{
+    NSMutableArray* children = [NSMutableArray array];
+    
+    [children addObjectsFromArray: [self tabViewItems]];
+    [children addObjectsFromArray: [super FEX_children]];
+    
+    return children;
+}
+
+@end
+
+@implementation NSTabViewItem (FrankAutomation)
+
+- (void) FEX_simulateClick
+{
+    [[self tabView] selectTabViewItem: self];
+}
+
+- (NSString*) FEX_accessibilityLabel
+{
+    NSString* accessibilityLabel = [super FEX_accessibilityLabel];
+    
+    if ([accessibilityLabel length] == 0)
+    {
+        accessibilityLabel = [self label];
+    }
+    
+    return accessibilityLabel;
 }
 
 @end
