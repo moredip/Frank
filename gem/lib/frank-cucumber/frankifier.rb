@@ -25,12 +25,14 @@ class Frankifier
     check_target_build_configuration_is_valid!
 
     say ''
-    add_linker_flag
+    project_changed |= add_linker_flag
 
     say ''
-    add_library_search_path
+    project_changed |= add_library_search_path
 
-    save_changes
+    if project_changed
+      save_changes
+    end
   end
 
   private
@@ -99,7 +101,7 @@ class Frankifier
 
     if setting_array.find{ |flag| flag.start_with? "$(FRANK_" }
       say "It appears that your '#{@target_build_configuration}' configuration's #{build_setting} build setting already include some FRANK setup. Namely: #{setting_array.inspect}. I won't change anything here."
-      return
+      return false
     end
 
     say "Adding $(inherited) and $(#{entry_to_add}) to your '#{@target_build_configuration}' configuration's #{build_setting} build setting ..."
@@ -109,6 +111,7 @@ class Frankifier
     say "... #{build_setting} is now: #{setting_array.inspect}"
 
     build_settings_to_edit[build_setting] = setting_array
+    true
   end
 
   def check_target_build_configuration_is_valid!
