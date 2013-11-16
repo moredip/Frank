@@ -33,7 +33,9 @@ module HostScripting
     %x{osascript<<APPLESCRIPT
       activate application id "com.apple.iphonesimulator"
       tell application "System Events"
-        tell process "#{Localize.t(:iphone_simulator)}"
+        set process_name_list to name of (application processes where bundle identifier is "com.apple.iphonesimulator")
+	    set process_name to first item of process_name_list
+        tell process process_name
           if (value of static text 1 of window 1) is "#{Localize.t(:only_one_simulator)}" then
             click button 1 of window 1
           end if
@@ -46,9 +48,11 @@ def simulator_reset_data
   %x{osascript<<APPLESCRIPT
 activate application id "com.apple.iphonesimulator"
 tell application "System Events"
-  click menu item 5 of menu 1 of menu bar item 2 of menu bar 1 of process "#{Localize.t(:iphone_simulator)}"
+  set process_name_list to name of (application processes where bundle identifier is "com.apple.iphonesimulator")
+  set process_name to first item of process_name_list
+  click menu item 5 of menu 1 of menu bar item 2 of menu bar 1 of process process_name
   delay 0.5
-  click button "#{Localize.t(:iphone_simulator_reset)}" of window 1 of process "#{Localize.t(:iphone_simulator)}"
+  click button "#{Localize.t(:iphone_simulator_reset)}" of window 1 of process process_name
 end tell
   APPLESCRIPT}
 end
@@ -56,10 +60,12 @@ end
   #Note this needs to have "Enable access for assistive devices"
   #chcked in the Universal Access system preferences
   def simulator_hardware_menu_press( menu_label )
-    %x{osascript<<APPLESCRIPT
+    %x{osascript -s o <<APPLESCRIPT
 activate application id "com.apple.iphonesimulator"
 tell application "System Events"
-	click menu item "#{menu_label}" of menu "#{Localize.t(:hardware)}" of menu bar of process "#{Localize.t(:iphone_simulator)}"
+    set process_name_list to name of (application processes where bundle identifier is "com.apple.iphonesimulator")
+	set process_name to first item of process_name_list
+	click menu item "#{menu_label}" of menu "#{Localize.t(:hardware)}" of menu bar of process process_name
 end tell
   APPLESCRIPT}
   end

@@ -7,12 +7,12 @@ require 'thor'
 require 'frank-cucumber/launcher'
 require 'frank-cucumber/console'
 require 'frank-cucumber/frankifier'
-require 'frank-cucumber/mac_launcher'
 require 'frank-cucumber/plugins/plugin'
 
 module Frank
   class CLI < Thor
     include Thor::Actions
+    include Frank::Cucumber::Launcher
 
     def self.source_root
       File.join( File.dirname(__FILE__), '..','..','frank-skeleton' )
@@ -169,11 +169,11 @@ module Frank
     method_option :idiom, :banner => 'iphone|ipad', :type => :string, :default => (ENV['FRANK_SIM_IDIOM'] || 'iphone')
     def launch
       $DEBUG = options[:debug]
-      launcher = case options[:idiom].downcase
+      version = case options[:idiom].downcase
       when 'iphone'
-        SimLauncher::DirectClient.for_iphone_app( frankified_app_dir )
+        'iphone'
       when 'ipad'
-        SimLauncher::DirectClient.for_ipad_app( frankified_app_dir )
+        'ipad'
       else
         say "idiom must be either iphone or ipad. You supplied '#{options[:idiom]}'", :red
         exit 10
@@ -186,14 +186,9 @@ module Frank
           invoke :build
         end
 
-        if built_product_is_mac_app( frankified_app_dir )
-          launcher = Frank::MacLauncher.new( frankified_app_dir )
-          say "LAUNCHING APP..."
-        else
-          say "LAUNCHING IN THE SIMULATOR..."
-        end
+        say "LAUNCHING APP..."
 
-        launcher.relaunch
+        launch_app(frankified_app_dir, nil, version, false)
       end
     end
 
@@ -205,7 +200,7 @@ module Frank
     end
 
     desc 'console', "launch a ruby console connected to your Frankified app"
-    method_option :bonjour, :type => :boolean, :default => false, :aliases => :b, :desc => "find Frank via Bonjour." 
+    method_option :bonjour, :type => :boolean, :default => false, :aliases => :b, :desc => "find Frank via Bonjour."
     method_option :server, :type => :string, :default => false, :aliases => :s, :desc => "server URL for Frank."
     def console
       # TODO: check whether app is running (using ps or similar), and launch it if it's not
@@ -260,10 +255,6 @@ module Frank
 
     def plugin_dir
       File.expand_path 'Frank/plugins'
-    end
-
-    def built_product_is_mac_app ( app_dir )
-        return File.exists? File.join( app_dir, "Contents", "MacOS" )
     end
 
     def fix_frankified_apps_bundle_identifier
