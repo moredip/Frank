@@ -59,7 +59,7 @@ end
     %x{osascript<<APPLESCRIPT
 activate application "iPhone Simulator"
 tell application "System Events"
-	click menu item "#{menu_label}" of menu "#{Localize.t(:hardware)}" of menu bar of process "#{Localize.t(:iphone_simulator)}"
+	click menu item "#{menu_label}" of menu "#{Localize.t(:hardware)}" of menu bar 1 of process "#{Localize.t(:iphone_simulator)}"
 end tell
   APPLESCRIPT}  
   end
