@@ -60,13 +60,13 @@ module FrankHelper
     else
       return '"'
     end
+  end
 
   # Specify ip address to run on
   def test_on_physical_device_with_ip(ip_address)
-      @server_base_url = ip_address
-      raise 'IP Address is incorrect' unless @server_base_url.match(%r{\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b})
-      puts "Running on Frank server #{@server_base_url}"
-    end
+    @server_base_url = ip_address
+    raise 'IP Address is incorrect' unless @server_base_url.match(%r{\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b})
+    puts "Running on Frank server #{@server_base_url}"
   end
 
   #@api private
@@ -372,6 +372,11 @@ module FrankHelper
   # If accessibility is not enabled then a lot of Frank functionality will not work.
   def frankly_is_accessibility_enabled
     res = frank_server.send_get( 'accessibility_check' )
+
+    if JSON.parse( res )['key_window_exists'] == 'false'
+      raise "You must have a UIWindow"
+    end
+
     JSON.parse( res )['accessibility_enabled'] == 'true'
   end
 

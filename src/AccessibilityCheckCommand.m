@@ -34,9 +34,11 @@
 #endif // TARGET_OS_IPHONE
 
 - (NSString *)handleCommandWithRequestBody:(NSString *)requestBody {
+    NSString *boolWindowString = ([[UIApplication sharedApplication] keyWindow] != nil ? @"true" : @"false");
 	NSString *boolString = ([self accessibilitySeemsToBeTurnedOn] ? @"true" : @"false");
-	NSDictionary *response = [NSDictionary dictionaryWithObject:boolString
-														forKey:@"accessibility_enabled"];
+    NSDictionary *response = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:boolString, boolWindowString, nil]
+                                                         forKeys:[NSArray arrayWithObjects:@"accessibility_enabled", @"key_window_exists", nil]];
+
 	return TO_JSON(response);
 }
 
