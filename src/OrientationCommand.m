@@ -82,7 +82,7 @@
 - (NSString *)handleGet{
    	NSDictionary *orientationDescription = [self getOrientationRepresentationViaDevice];
     if( !orientationDescription )
-        orientationDescription = [self getOrientationRepresentationViaDevice];
+        orientationDescription = [self getOrientationRepresentationViaStatusBar];
 	
 	return TO_JSON(orientationDescription);
 }
