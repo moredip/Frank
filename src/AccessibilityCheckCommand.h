@@ -12,4 +12,6 @@
 	
 }
 
++ (BOOL) accessibilitySeemsToBeTurnedOn;
+
 @end

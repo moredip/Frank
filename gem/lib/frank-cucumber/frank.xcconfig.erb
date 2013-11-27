@@ -6,6 +6,12 @@ INSTALL_PATH = /./
 
 <% plugin_names = plugins.map {|plugin| plugin.name } %>
 
-FRANK_LDFLAGS = $(FRANK_CORE_LDFLAGS) <%= plugin_names.map {|name| "$(#{name.upcase}_LDFLAGS)"}.join(' ') %>
+FRANK_LDFLAGS_iphoneos = $(FRANK_CORE_LDFLAGS) <%= plugin_names.map {|name| "$(#{name.upcase}_LDFLAGS)"}.join(' ') %>
+
+FRANK_LDFLAGS_macosx = $(FRANK_CORE_MAC_LDFLAGS) <%= plugin_names.map {|name| "$(#{name.upcase}_MAC_LDFLAGS)"}.join(' ') %>
+
+FRANK_LDFLAGS_iphonesimulator = $(FRANK_LDFLAGS_iphoneos)
+
+FRANK_LDFLAGS = $(FRANK_LDFLAGS_$(PLATFORM_NAME))
 
 FRANK_GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = $(FRANK_CORE_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS) <%= plugin_names.map {|name| "$(#{name.upcase}_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS)"}.join(' ') %>

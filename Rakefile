@@ -10,7 +10,7 @@ def build_dir
 end
 
 def build_library(scheme, sdk)
-  puts "building #{{scheme:scheme,sdk:sdk}}"
+  puts "building scheme: #{scheme}, sdk: #{sdk}"
   preprocessor_flag = %Q|GCC_PREPROCESSOR_DEFINITIONS='$(inherited) SHELLEY_PRODUCT_VERSION=\"#{PRODUCT_VERSION}\" FRANK_PRODUCT_VERSION=\"#{PRODUCT_VERSION}\"'|
   sh "xcodebuild -workspace Frank.xcworkspace -scheme #{scheme} -configuration Release -sdk #{sdk} BUILD_DIR=\"#{build_dir}\" #{preprocessor_flag} clean build"
 end

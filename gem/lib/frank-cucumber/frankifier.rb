@@ -25,12 +25,14 @@ class Frankifier
     check_target_build_configuration_is_valid!
 
     say ''
-    add_linker_flag
+    project_changed |= add_linker_flag
 
     say ''
-    add_library_search_path
+    project_changed |= add_library_search_path
 
-    save_changes
+    if project_changed
+      save_changes
+    end
   end
 
   private
@@ -39,12 +41,12 @@ class Frankifier
       unless File.exists?(xcodeproj)
         raise "Project file '#{xcodeproj}' does not exist. Please specify the relative path."
       end
-      
+
       @xcodeproj_path = Pathname.new(xcodeproj)
-      @project = Xcodeproj::Project.new(@xcodeproj_path)
+      @project = Xcodeproj::Project.open(@xcodeproj_path)
     end
   end
-  
+
   def decide_on_project
     projects = Pathname.glob( @root+'*.xcodeproj' )
     xcodeproj = case projects.size
@@ -61,7 +63,7 @@ class Frankifier
     end
 
     @xcodeproj_path = xcodeproj
-    @project = Xcodeproj::Project.new(xcodeproj)
+    @project = Xcodeproj::Project.open(xcodeproj)
   end
 
   def decide_on_target
@@ -86,19 +88,8 @@ class Frankifier
     puts "Frankifying target [#{@target.name}] in project #{@xcodeproj_path.basename}"
   end
 
-  def target_is_mac
-    settings = @target.build_configurations.first.build_settings['SDKROOT'] \
-      || @project.build_configurations.first.build_settings['SDKROOT']
-
-    return settings.include? 'macosx'
-  end
-
   def add_linker_flag
-    if target_is_mac
-      add_frank_entry_to_build_setting( 'OTHER_LDFLAGS', 'FRANK_MAC_LDFLAGS' )
-    else
-      add_frank_entry_to_build_setting( 'OTHER_LDFLAGS', 'FRANK_LDFLAGS' )
-    end
+    add_frank_entry_to_build_setting( 'OTHER_LDFLAGS', 'FRANK_LDFLAGS' )
   end
 
   def add_library_search_path
@@ -110,7 +101,7 @@ class Frankifier
 
     if setting_array.find{ |flag| flag.start_with? "$(FRANK_" }
       say "It appears that your '#{@target_build_configuration}' configuration's #{build_setting} build setting already include some FRANK setup. Namely: #{setting_array.inspect}. I won't change anything here."
-      return
+      return false
     end
 
     say "Adding $(inherited) and $(#{entry_to_add}) to your '#{@target_build_configuration}' configuration's #{build_setting} build setting ..."
@@ -120,6 +111,7 @@ class Frankifier
     say "... #{build_setting} is now: #{setting_array.inspect}"
 
     build_settings_to_edit[build_setting] = setting_array
+    true
   end
 
   def check_target_build_configuration_is_valid!
@@ -140,7 +132,7 @@ class Frankifier
   end
 
   def save_changes
-    @project.save_as( @xcodeproj_path )
+    @project.save
   end
 
   # TODO: send this as a pull request to thor

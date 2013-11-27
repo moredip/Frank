@@ -16,6 +16,7 @@
 #import "DDTTYLogger.h"
 
 #if !TARGET_OS_IPHONE
+#import "AccessibilityCheckCommand.h"
 #import "NSApplication+FrankAutomation.h"
 #endif
 
@@ -24,11 +25,25 @@ BOOL frankLogEnabled = NO;
 @implementation FrankLoader
 
 + (void)applicationDidBecomeActive:(NSNotification *)notification{
+#if TARGET_OS_IPHONE
     FrankServer *server = [[FrankServer alloc] initWithDefaultBundle];
     [server startServer];
     
-#if !TARGET_OS_IPHONE
-    [[NSApplication sharedApplication] FEX_startTrackingMenus];
+#else
+    static dispatch_once_t frankDidBecomeActiveToken;
+    
+    dispatch_once(&frankDidBecomeActiveToken, ^{
+        FrankServer *server = [[FrankServer alloc] initWithDefaultBundle];
+        [server startServer];
+        
+        [[NSApplication sharedApplication] FEX_startTrackingMenus];
+        
+        [[NSNotificationCenter defaultCenter] removeObserver: [self class]
+                                                        name: NSApplicationDidUpdateNotification
+                                                      object: nil];
+        
+        [AccessibilityCheckCommand accessibilitySeemsToBeTurnedOn];
+    });
 #endif
 }
 
@@ -64,11 +79,11 @@ BOOL frankLogEnabled = NO;
 #if TARGET_OS_IPHONE
     NSString *notificationName = @"UIApplicationDidBecomeActiveNotification";
 #else
-    NSString *notificationName = NSApplicationDidFinishLaunchingNotification;
+    NSString *notificationName = NSApplicationDidUpdateNotification;
 #endif
     
     [[NSNotificationCenter defaultCenter] addObserver:[self class] 
-                                             selector:@selector(applicationDidBecomeActive:) 
+                                             selector:@selector(applicationDidBecomeActive:)
                                                  name:notificationName
                                                object:nil];
 }

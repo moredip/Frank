@@ -7,13 +7,12 @@ require 'thor'
 require 'frank-cucumber/launcher'
 require 'frank-cucumber/console'
 require 'frank-cucumber/frankifier'
-require 'frank-cucumber/mac_launcher'
 require 'frank-cucumber/plugins/plugin'
-require 'xcodeproj'
 
 module Frank
   class CLI < Thor
     include Thor::Actions
+    include Frank::Cucumber::Launcher
 
     def self.source_root
       File.join( File.dirname(__FILE__), '..','..','frank-skeleton' )
@@ -71,6 +70,7 @@ module Frank
     WITHOUT_DEPS = 'without-dependencies'
     method_option 'no-plugins', :type => :boolean, :default => false, :aliases => '--np', :desc => 'Disable plugins'
     method_option 'arch', :type => :string, :default => 'i386'
+    method_option 'mac', :type => :string, :default => false
     method_option :noclean, :type => :boolean, :default => false, :aliases => '--nc', :desc => "Don't clean the build directory before building"
     method_option WITHOUT_DEPS, :type => :array, :desc => 'An array (space separated list) of plugin dependencies to exclude'
     def build(*args)
@@ -114,7 +114,7 @@ module Frank
       xcconfig_file = 'Frank/frank.xcconfig'
       File.open(xcconfig_file,'w') {|f| f.write(xcconfig_data) }
 
-      extra_opts = XCODEBUILD_OPTIONS.map{ |o| "-#{o} \"#{options[o]}\"" if options[o] }.compact.join(' ')
+      extra_opts = XCODEBUILD_OPTIONS.map{ |o| "-#{o} \"#{options[o]}\"" if options[o] and (o != "target" or options['workspace'] == nil)}.compact.join(' ')
 
       # If there is a scheme specified we don't want to inject the default configuration
       # If there is a configuration specified, we also do not want to inject the default configuration
@@ -124,11 +124,9 @@ module Frank
         separate_configuration_option = "-configuration Debug"
       end
 
-      build_mac = determine_build_patform(options) == :osx
-
       xcodebuild_args = args.join(" ")
 
-      if build_mac
+      if options['mac']
         run %Q|xcodebuild -xcconfig #{xcconfig_file} #{build_steps} #{extra_opts} #{separate_configuration_option} DEPLOYMENT_LOCATION=YES DSTROOT="#{build_output_dir}" FRANK_LIBRARY_SEARCH_PATHS="#{frank_lib_search_paths}" #{xcodebuild_args}|
       else
         extra_opts += " -arch #{options['arch']}"
@@ -141,7 +139,7 @@ module Frank
       app = app.first
       FileUtils.cp_r("#{app}/.", frankified_app_dir)
 
-      if build_mac
+      if options['mac']
         in_root do
           FileUtils.cp_r(
             File.join( 'Frank',static_bundle),
@@ -171,11 +169,11 @@ module Frank
     method_option :idiom, :banner => 'iphone|ipad', :type => :string, :default => (ENV['FRANK_SIM_IDIOM'] || 'iphone')
     def launch
       $DEBUG = options[:debug]
-      launcher = case options[:idiom].downcase
+      version = case options[:idiom].downcase
       when 'iphone'
-        SimLauncher::DirectClient.for_iphone_app( frankified_app_dir )
+        'iphone'
       when 'ipad'
-        SimLauncher::DirectClient.for_ipad_app( frankified_app_dir )
+        'ipad'
       else
         say "idiom must be either iphone or ipad. You supplied '#{options[:idiom]}'", :red
         exit 10
@@ -188,14 +186,9 @@ module Frank
           invoke :build
         end
 
-        if built_product_is_mac_app( frankified_app_dir )
-          launcher = Frank::MacLauncher.new( frankified_app_dir )
-          say "LAUNCHING APP..."
-        else
-          say "LAUNCHING IN THE SIMULATOR..."
-        end
+        say "LAUNCHING APP..."
 
-        launcher.relaunch
+        launch_app(frankified_app_dir, nil, version, false)
       end
     end
 
@@ -207,7 +200,7 @@ module Frank
     end
 
     desc 'console', "launch a ruby console connected to your Frankified app"
-    method_option :bonjour, :type => :boolean, :default => false, :aliases => :b, :desc => "find Frank via Bonjour." 
+    method_option :bonjour, :type => :boolean, :default => false, :aliases => :b, :desc => "find Frank via Bonjour."
     method_option :server, :type => :string, :default => false, :aliases => :s, :desc => "server URL for Frank."
     def console
       # TODO: check whether app is running (using ps or similar), and launch it if it's not
@@ -264,10 +257,6 @@ module Frank
       File.expand_path 'Frank/plugins'
     end
 
-    def built_product_is_mac_app ( app_dir )
-        return File.exists? File.join( app_dir, "Contents", "MacOS" )
-    end
-
     def fix_frankified_apps_bundle_identifier
       # as of iOS 6 the iOS Simulator locks up with a black screen if you try and launch an app which has the same
       # bundle identifier as a previously installed app but which is in fact a different app. This impacts us because our
@@ -281,88 +270,6 @@ module Frank
         run %Q|/usr/libexec/PlistBuddy -c 'Set :CFBundleIdentifier #{new_bundle_identifier}' Info.plist|
         run %Q|/usr/libexec/PlistBuddy -c 'Set :CFBundleDisplayName Frankified' Info.plist|
       end
-    end
-
-    # The xcodeproj gem doesn't currently support schemes, and schemes have been difficult
-    # to figure out. I plan to either implement schemes in xcodeproj at a later date, or
-    # wait for them to be implemented, and then fix this function
-    def determine_build_patform ( options )
-      project_path = nil
-
-      if options["workspace"] != nil
-        if options["scheme"] != nil
-          workspace = Xcodeproj::Workspace.new_from_xcworkspace(options["workspace"])
-          projects = workspace.projpaths
-
-          projects.each { | current_project |
-            lines = `xcodebuild -project "#{current_project}" -list`
-
-            found_schemes = false
-
-            lines.split("\n").each { | line |
-              if found_schemes
-                line = line[8..-1]
-
-                if line == ""
-                  found_schemes = false
-                else
-                  if line == options["scheme"]
-                    project_path = current_project
-                  end
-                end
-
-              else
-                line = line [4..-1]
-
-                if line == "Schemes:"
-                  found_schemes = true
-                end
-
-              end
-            }
-          }
-        else
-          say "You must specify a scheme if you specify a workplace"
-          exit 10
-        end
-      else
-        project_path = options["project"]
-      end
-
-      if project_path == nil
-        Dir.foreach(Dir.pwd) { | file |
-          if file.end_with? ".xcodeproj"
-            if project_path != nil
-              say "You must specify a project if there are more than one .xcodeproj bundles in a directory"
-              exit 10
-            else
-              project_path = file
-            end
-          end
-        }
-      end
-
-      project = Xcodeproj::Project.new(project_path)
-
-      target = nil
-
-      if options["target"] != nil
-        project.targets.each { | proj_target |
-          if proj_target.name == options["target"]
-            target = proj_target
-          end
-        }
-      else
-        target = project.targets[0]
-      end
-
-      if target == nil
-        say "Unable to determine a target from the options provided. Assuming iOS"
-        return :ios
-      end
-
-      return target.platform_name
-
     end
 
     def each_plugin_path(&block)

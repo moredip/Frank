@@ -135,19 +135,6 @@ NSDictionary* FEX_DictionaryForAXMenu(AXUIElementRef menu)
 
 @implementation FrankMenuTracker
 
-- (void) applicationDidBecomeActive: (NSNotification*) aNotification
-{
-    
-}
-
-+ (void) load
-{
-    [[NSNotificationCenter defaultCenter] addObserver: [self class]
-                                             selector: @selector(applicationDidBecomeActive:)
-                                                 name: NSApplicationDidFinishLaunchingNotification 
-                                               object: nil];
-}
-
 - (void) menuOpened: (NSNotification*) aNotification
 {
     if (![[aNotification object] isEqual: [NSApp mainMenu]])
@@ -257,6 +244,33 @@ void MyAXObserverCallback(AXObserverRef  observer,
 {
     [self activateIgnoringOtherApps: YES];
     return YES;
+}
+
+- (BOOL) FEX_isVisible
+{
+    return ![self isHidden];
+}
+
+- (BOOL) FEX_isFullyVisible
+{
+    return [self FEX_isVisible];
+}
+
+- (NSArray*) FEX_children
+{    
+    NSMutableArray *descendants = [NSMutableArray array];
+    
+    [descendants addObjectsFromArray:[self windows]];
+    [descendants addObject:[self mainMenu]];
+    [descendants addObjectsFromArray:[[self FEX_menus] allObjects]];
+    [descendants addObject: [NSStatusBar systemStatusBar]];
+    
+    return descendants;
+}
+
+- (id) FEX_parent
+{
+    return nil;
 }
 
 @end

@@ -5,6 +5,7 @@ require 'frank-cucumber/launcher'
 module Frank
   class Console
     include Frank::Cucumber::FrankHelper
+    include Frank::Cucumber::FrankMacHelper
     include Frank::Cucumber::Launcher
 
     def check_for_running_app
