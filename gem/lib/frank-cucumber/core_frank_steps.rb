@@ -80,7 +80,7 @@ Then /^I should see an alert view with the message "([^\"]*)"$/ do |expected_mar
 end
 
 Then /^I should not see an alert view$/ do
-  if ENV['LAST_IOS_VERSION'].to_f >= 7.0
+  if frankly_os_version.to_f >= 7.0
     check_element_does_not_exist( '_UIModalItemRepresentationView' )
   else
     check_element_does_not_exist( 'alertView' )
