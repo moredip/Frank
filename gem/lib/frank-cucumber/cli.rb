@@ -136,6 +136,12 @@ module Frank
       exit $?.exitstatus if not $?.success?
 
       app = Dir.glob("#{build_output_dir}/*.app").delete_if { |x| x =~ /\/#{app_bundle_name}$/ }
+
+      # when building with Cocoapods, the app is built in an "Applications" subdirectory
+      if app.empty?
+        app = Dir.glob("#{build_output_dir}/Applications/*.app").delete_if { |x| x =~ /\/#{app_bundle_name}$/ }
+      end
+
       app = app.first
       FileUtils.cp_r("#{app}/.", frankified_app_dir)
 
