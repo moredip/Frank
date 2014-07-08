@@ -18,6 +18,7 @@ module Frank module Cucumber
   # * {#wait_for_element_to_exist}
   # * {#wait_for_element_to_exist_and_then_touch_it}
   # * {#wait_for_nothing_to_be_animating}
+  # * {#wait_for_nothing_visible_to_be_animating}
   # * {#app_exec}
   #
   # == Configuring the Frank driver
@@ -230,6 +231,24 @@ module FrankHelper
     end
   end
 
+  # Waits for there to be no frank visible views which are animating
+  #
+  # @param timeout [Number] number of seconds to wait for nothing to be animating before timeout out. Defaults to {WaitHelper::TIMEOUT}
+  #
+  # Raises an exception if there were still visible views animating after {timeout} seconds.
+  def wait_for_nothing_visible_to_be_animating( timeout = false )
+
+    wait_until :timeout => timeout do
+
+      visibleViews = frankly_map( 'view', 'FEX_isVisible' )
+      animatingViews = frankly_map( 'view','isAnimating' )
+
+      hash = visibleViews.zip( animatingViews )
+
+      visibleAnimatingViews = hash.select { | visibleView, animatingView | visibleView && animatingView }
+      visibleAnimatingViews.empty?
+    end
+  end
 
   # Checks that the specified selector matches at least one view, and that at least one of the matched
   # views has an isHidden property set to false
