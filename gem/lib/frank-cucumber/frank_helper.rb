@@ -368,6 +368,14 @@ module FrankHelper
     return Gateway.evaluate_frankly_response( res, "set_orientation #{orientation}" )
   end
 
+  # takes an screenshot and saves it an specific number of times in the camera roll.
+  # @param number the number of times the screenshot will be saved.
+  # @return always success, because there is no way of knowing wether the screenshots were succesfully saved or not.
+  def frankly_save_screenshot_in_camera_roll(number)
+    res = frank_server.send_post( 'save_screenshot_in_camera_roll', number )
+    return Gateway.evaluate_frankly_response( res, "save_screenshot_in_camera_roll #{number}" )
+  end
+
   # @return [Boolean] Does the device running the application have accessibility enabled.
   # If accessibility is not enabled then a lot of Frank functionality will not work.
   def frankly_is_accessibility_enabled

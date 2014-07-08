@@ -120,6 +120,10 @@ Then /^I should not see an element of class "([^\"]*)"$/ do |className|
   element_exists_and_is_not_hidden.should be_false
 end
 
+# -- Save screenshots in the camera roll -- #
+Given /^the device saves (\d+) screenshot(s)? in the camera roll$/ do |number,_|
+  frankly_save_screenshot_in_camera_roll number
+end
 
 # -- Rotate -- #
 Given /^the device is in (a )?(landscape|portrait) orientation$/ do |_,orientation|
