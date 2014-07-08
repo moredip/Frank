@@ -75,13 +75,17 @@ Then /^I should see an alert view titled "([^\"]*)"$/ do |expected_mark|
 end
 
 Then /^I should see an alert view with the message "([^\"]*)"$/ do |expected_mark|
+  if frankly_os_version.to_f >= 7.0
+    values = frankly_map( "view:'_UIModalItemRepresentationView' label", 'text')
+  else
     values = frankly_map( 'alertView', 'message')
-    values.should include(expected_mark)
+  end
+  values.should include(expected_mark)
 end
 
 Then /^I should not see an alert view$/ do
   if frankly_os_version.to_f >= 7.0
-    check_element_does_not_exist( '_UIModalItemRepresentationView' ) 
+    check_element_does_not_exist( '_UIModalItemRepresentationView' )
   else
     check_element_does_not_exist( 'alertView' )
   end
