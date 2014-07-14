@@ -37,7 +37,7 @@ extern CFStringRef kAXTrustedCheckOptionPrompt;
 + (BOOL) accessibilitySeemsToBeTurnedOn {
     BOOL returnValue = NO;
     
-    if (AXIsProcessTrusted != NULL)
+    if (AXIsProcessTrustedWithOptions != NULL)
     {
         NSDictionary* options = @{ (id) kAXTrustedCheckOptionPrompt : @YES };
         return AXIsProcessTrustedWithOptions((CFDictionaryRef) options);
