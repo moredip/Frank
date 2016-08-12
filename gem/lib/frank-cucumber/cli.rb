@@ -27,6 +27,7 @@ module Frank
     WITHOUT_SERVER = "without-cocoa-http-server"
     WITHOUT_ASYNC_SOCKET = "without-cocoa-async-socket"
     WITHOUT_LUMBERJACK = "without-cocoa-lumberjack"
+    
     desc "setup", "set up your iOS app by adding a Frank subdirectory containing everything Frank needs"
     method_option WITHOUT_SERVER, :type => :boolean
     method_option WITHOUT_ASYNC_SOCKET, :type => :boolean
@@ -67,12 +68,14 @@ module Frank
       method_option option
     end
 
+    WITHOUT_FRANKIFIED_BUNDLE_ID = "without-frankified-bundle-id"
     WITHOUT_DEPS = 'without-dependencies'
     method_option 'no-plugins', :type => :boolean, :default => false, :aliases => '--np', :desc => 'Disable plugins'
     method_option 'arch', :type => :string, :default => 'i386'
     method_option 'mac', :type => :string, :default => false
     method_option :noclean, :type => :boolean, :default => false, :aliases => '--nc', :desc => "Don't clean the build directory before building"
     method_option WITHOUT_DEPS, :type => :array, :desc => 'An array (space separated list) of plugin dependencies to exclude'
+    method_option WITHOUT_FRANKIFIED_BUNDLE_ID, :type => :boolean, :aliases => '--wtf', :default => false
     def build(*args)
       clean = !options['noclean']
       use_plugins = !options['no-plugins']
@@ -147,7 +150,8 @@ module Frank
           )
         end
       else
-        fix_frankified_apps_bundle_identifier
+        puts "FUUU!!" if options[WITHOUT_FRANKIFIED_BUNDLE_ID]
+        fix_frankified_apps_bundle_identifier unless options[WITHOUT_FRANKIFIED_BUNDLE_ID]
 
         in_root do
           FileUtils.cp_r(
