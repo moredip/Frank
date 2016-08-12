@@ -8,6 +8,7 @@ require 'frank-cucumber/gesture_helper'
 require 'frank-cucumber/location_helper'
 require 'frank-cucumber/bonjour'
 require 'frank-cucumber/rect.rb'
+require 'frank-cucumber/shelley_bridge'
 
 module Frank module Cucumber
 
@@ -32,6 +33,7 @@ module FrankHelper
   include GestureHelper
   include HostScripting
   include LocationHelper
+  include SSelector
 
   # @!attribute [rw] selector_engine
   class << self
@@ -303,6 +305,12 @@ module FrankHelper
   #
   # @return [Array] an array with an element for each view matched by the selector, each element in the array gives the return value from invoking the specified method on that view.
   def frankly_map( selector, method_name, *method_args )
+    if selector.respond_to? :selector
+      selector = selector.selector
+    end
+    if selector.is_a? Hash
+      selector = Selector.selector selector
+    end
     operation_map = Gateway.build_operation_map(method_name.to_s, method_args)
     res = frank_server.send_post(
       'map',
